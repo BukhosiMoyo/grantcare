@@ -17,7 +17,7 @@ import {
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { db } from "@/lib/prisma";
-import { type Locale, buildLocalePath, isLocale } from "@/lib/site";
+import { SITE_URL, type Locale, buildLocalePath, isLocale } from "@/lib/site";
 import { isDatabaseConfigured } from "@/lib/server-env";
 
 type GuideBodyBlock =
@@ -211,6 +211,7 @@ export async function generateMetadata({
     path: `/guides/${slug}`,
     title: guide.title,
     description: guide.summary,
+    openGraphType: "article",
   });
 }
 
@@ -227,7 +228,7 @@ export default async function GuideDetailPage({
 
   const [guide, relatedGuides, relatedFaqs, blocks] = await Promise.all([
     getGuideBySlug(locale, slug),
-    listRelatedGuides(locale, 2, slug),
+    listRelatedGuides(locale, 2, slug, slug),
     listRelatedFaqs(locale, 2),
     listMonetizationBlocks(locale, {
       placement: "guide-inline",
@@ -258,9 +259,26 @@ export default async function GuideDetailPage({
     "@type": "Article",
     headline: guide.title,
     description: guide.summary,
+    mainEntityOfPage: new URL(buildLocalePath(locale, `/guides/${guide.slug}`), SITE_URL).toString(),
+    inLanguage: locale,
   };
   const faqSections = guide.sections.filter((section) => section.title.startsWith("FAQ: "));
   const contentSections = guide.sections.filter((section) => !section.title.startsWith("FAQ: "));
+  const faqSchema =
+    faqSections.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqSections.map((section) => ({
+            "@type": "Question",
+            name: section.title.replace(/^FAQ:\s*/, ""),
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: section.body,
+            },
+          })),
+        }
+      : null;
 
   return (
     <div className="space-y-8">
@@ -275,6 +293,12 @@ export default async function GuideDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      {faqSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      ) : null}
       <header className="mx-auto max-w-3xl space-y-5">
         <div className="space-y-2">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">{copy.guideLabel}</p>

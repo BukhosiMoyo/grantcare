@@ -3,7 +3,7 @@ import { createHash, randomBytes } from "node:crypto";
 import { db } from "@/lib/prisma";
 import { getResendClient } from "@/lib/resend";
 import { isProductionServer } from "@/lib/server-env";
-import { SITE_URL, type Locale, buildLocalePath } from "@/lib/site";
+import { SITE_URL, SUPPORT_EMAIL, type Locale, buildLocalePath } from "@/lib/site";
 import { getUserByEmail } from "@/lib/users";
 import { PasswordResetEmail } from "@/emails/password-reset-email";
 
@@ -59,6 +59,7 @@ export async function createPasswordResetRequest(input: {
     await resend.emails.send(
       {
         from: fromEmail,
+        replyTo: SUPPORT_EMAIL,
         to: user.email,
         subject: "GrantCare password reset",
         react: PasswordResetEmail({

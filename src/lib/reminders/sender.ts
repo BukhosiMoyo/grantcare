@@ -5,7 +5,7 @@ import { getResendClient } from "@/lib/resend";
 import { parseReminderPayload } from "@/lib/reminders/payload";
 import { createReminderUnsubscribeToken } from "@/lib/reminders/unsubscribe";
 import { isReminderEmailConfigured } from "@/lib/server-env";
-import { SITE_URL, buildLocalePath } from "@/lib/site";
+import { SITE_URL, SUPPORT_EMAIL, buildLocalePath } from "@/lib/site";
 
 export type ReminderJobForSend = Prisma.ReminderJobGetPayload<{
   include: {
@@ -55,6 +55,7 @@ export async function sendReminderEmail(job: ReminderJobForSend) {
   const { data, error } = await resend.emails.send(
     {
       from: process.env.REMINDER_FROM_EMAIL as string,
+      replyTo: SUPPORT_EMAIL,
       to: job.user.email,
       subject: getReminderSubject(payload.locale, payload.grantName),
       react: ReminderEmail({

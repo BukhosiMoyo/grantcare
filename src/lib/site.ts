@@ -1,5 +1,7 @@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://grantcare.example";
+export const SUPPORT_EMAIL = "hello@symaxx.com";
+export const SUPPORT_MAILTO = `mailto:${SUPPORT_EMAIL}`;
 
 export const LOCALE_COOKIE_NAME = "grantcare-locale";
 export const LEGACY_LOCALE_COOKIE_NAME = "grantease-locale";

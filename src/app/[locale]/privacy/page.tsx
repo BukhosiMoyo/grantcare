@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { Card, Section } from "@/components/ui";
 import { getCopy } from "@/lib/copy";
-import { isLocale } from "@/lib/site";
+import { SUPPORT_EMAIL, SUPPORT_MAILTO, isLocale } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy",
@@ -30,6 +30,12 @@ export default async function PrivacyPage({
         </p>
         <p className="text-sm text-muted">
           Do not store sensitive grant information unless it is necessary, lawful, and protected.
+        </p>
+        <p className="text-sm text-muted">
+          Contact:{" "}
+          <a href={SUPPORT_MAILTO} className="font-semibold text-primary">
+            {SUPPORT_EMAIL}
+          </a>
         </p>
       </Card>
     </Section>

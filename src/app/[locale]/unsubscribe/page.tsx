@@ -1,9 +1,31 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { Card, Section } from "@/components/ui";
 import { getCopy } from "@/lib/copy";
+import { buildLocalizedMetadata } from "@/lib/metadata";
 import { unsubscribeFromReminderToken } from "@/lib/reminders";
 import { buildLocalePath, isLocale } from "@/lib/site";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (!isLocale(locale)) {
+    return {};
+  }
+
+  return buildLocalizedMetadata({
+    locale,
+    path: "/unsubscribe",
+    title: "Unsubscribe",
+    description: "Manage reminder unsubscribe requests for GrantCare email reminders.",
+    noIndex: true,
+  });
+}
 
 export default async function UnsubscribePage({
   params,

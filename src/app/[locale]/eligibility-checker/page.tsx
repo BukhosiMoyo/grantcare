@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { EligibilityChecker } from "@/components/eligibility-checker";
 import { Card, Section } from "@/components/ui";
 import { listPublicGrantTypes } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
 export async function generateMetadata({
@@ -20,14 +22,13 @@ export async function generateMetadata({
     return {};
   }
 
-  const copy = getCopy(locale);
-
-  return {
-    title: copy.eligibilityTitle,
-    alternates: {
-      canonical: `/${locale}/eligibility-checker`,
-    },
-  };
+  return buildLocalizedMetadata({
+    locale,
+    path: "/eligibility-checker",
+    title: "Eligibility checker and grant guidance",
+    description:
+      "Use the GrantCare eligibility checker for general guidance, then move to grant pages, payment dates, or official channels for the next step.",
+  });
 }
 
 export default async function EligibilityPage({
@@ -43,6 +44,28 @@ export default async function EligibilityPage({
 
   const copy = getCopy(locale);
   const grants = await listPublicGrantTypes(locale);
+  const hubLinks = [
+    {
+      href: "/grants",
+      title: copy.grantTypesTitle,
+      description: "Compare grant pages if you want to read checks and documents side by side.",
+    },
+    {
+      href: "/payment-dates",
+      title: copy.paymentDates,
+      description: "Open payment dates after you know which grant category you need to follow.",
+    },
+    {
+      href: "/status",
+      title: copy.statusHelp,
+      description: "Use status help if your question is about wording, not eligibility.",
+    },
+    {
+      href: "/guides/how-to-prepare-before-applying",
+      title: "Prepare before applying",
+      description: "Read the preparation guide if you want a calmer application checklist before using official channels.",
+    },
+  ];
 
   return (
     <div className="space-y-8">
@@ -66,6 +89,7 @@ export default async function EligibilityPage({
           ))}
         </div>
       </Section>
+      <InternalLinkGrid locale={locale} title="Next pages to open" items={hubLinks} />
     </div>
   );
 }

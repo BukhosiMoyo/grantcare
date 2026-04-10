@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { MonetizationBlocks } from "@/components/monetization-blocks";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { TrackedExternalLink } from "@/components/tracked-external-link";
@@ -68,7 +69,12 @@ export default async function PaymentGrantPage({
   }
 
   const [relatedGuides, recentPeriods, blocks] = await Promise.all([
-    listRelatedGuides(locale, 2),
+    listRelatedGuides(
+      locale,
+      2,
+      undefined,
+      `${paymentEntry.grantName} ${paymentMonth.label} payment date`,
+    ),
     listRecentPaymentPeriods(locale, {
       excludeMonth: paymentMonth.month,
       excludeYear: paymentMonth.year,
@@ -80,6 +86,28 @@ export default async function PaymentGrantPage({
       limit: 2,
     }),
   ]);
+  const hubLinks = [
+    {
+      href: `/grants/${paymentEntry.grantSlug}`,
+      title: `${paymentEntry.grantName} grant guide`,
+      description: "Open the grant page for checks, documents, and official next-step links tied to this payment category.",
+    },
+    {
+      href: "/status/approved",
+      title: "Approved status meaning",
+      description: "Read the approved page when the payment date matters but the status wording still needs context.",
+    },
+    {
+      href: "/guides/how-to-know-if-your-payment-is-ready",
+      title: "How to know if payment is ready",
+      description: "Use the readiness guide after approval or when you are waiting for release wording to change.",
+    },
+    {
+      href: "/guides/how-to-fix-missing-payment-issues",
+      title: "Missing payment help",
+      description: "Open the missing-payment guide if the date passed and the payment still has not arrived.",
+    },
+  ];
 
   return (
     <div className="space-y-8">
@@ -159,6 +187,8 @@ export default async function PaymentGrantPage({
           ))}
         </div>
       </Section>
+
+      <InternalLinkGrid locale={locale} title="Related payment help" items={hubLinks} />
 
       {blocks.length > 0 ? (
         <Section title={copy.sponsoredTitle}>

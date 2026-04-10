@@ -4,10 +4,23 @@ import { SITE_URL } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: [
+          "/api/",
+          "/*/admin",
+          "/*/admin/",
+          "/*/dashboard",
+          "/*/forgot-password",
+          "/*/reset-password",
+          "/*/sign-in",
+          "/*/sign-up",
+          "/*/unsubscribe",
+        ],
+      },
+    ],
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

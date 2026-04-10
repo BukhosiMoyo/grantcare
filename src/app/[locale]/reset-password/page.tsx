@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -5,9 +6,30 @@ import { AuthShell } from "@/components/auth-shell";
 import { ResetPasswordForm } from "@/components/reset-password-form";
 import { StatusMessage } from "@/components/ui";
 import { getCopy } from "@/lib/copy";
+import { buildLocalizedMetadata } from "@/lib/metadata";
 import { getPasswordResetTokenRecord } from "@/lib/password-reset";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { isDatabaseConfigured } from "@/lib/server-env";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (!isLocale(locale)) {
+    return {};
+  }
+
+  return buildLocalizedMetadata({
+    locale,
+    path: "/reset-password",
+    title: "Reset password",
+    description: "Choose a new password for your GrantCare account.",
+    noIndex: true,
+  });
+}
 
 export default async function ResetPasswordPage({
   params,

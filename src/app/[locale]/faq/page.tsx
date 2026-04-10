@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { Card, Section } from "@/components/ui";
 import { listFaqs } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { buildLocalizedMetadata } from "@/lib/metadata";
 import { isLocale } from "@/lib/site";
 
 export async function generateMetadata({
@@ -18,14 +20,13 @@ export async function generateMetadata({
     return {};
   }
 
-  const copy = getCopy(locale);
-
-  return {
-    title: copy.faq,
-    alternates: {
-      canonical: `/${locale}/faq`,
-    },
-  };
+  return buildLocalizedMetadata({
+    locale,
+    path: "/faq",
+    title: "GrantCare FAQ and quick answers",
+    description:
+      "Read quick answers about GrantCare, payment dates, official actions, eligibility guidance, and how to use the site safely.",
+  });
 }
 
 export default async function FaqPage({
@@ -41,10 +42,48 @@ export default async function FaqPage({
 
   const copy = getCopy(locale);
   const faqs = await listFaqs(locale);
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+  const hubLinks = [
+    {
+      href: "/payment-dates",
+      title: copy.paymentDates,
+      description: "Go straight to the payment-date hub if your question is about timing.",
+    },
+    {
+      href: "/status",
+      title: copy.statusHelp,
+      description: "Open the status hub if your question starts with a status message.",
+    },
+    {
+      href: "/eligibility-checker",
+      title: copy.eligibilityChecker,
+      description: "Use the checker when you want general guidance about where to start.",
+    },
+    {
+      href: "/guides",
+      title: copy.guides,
+      description: "Read the full guide library for longer problem-solving help.",
+    },
+  ];
 
   return (
     <>
       <PageViewTracker name="page.viewed" locale={locale} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Section eyebrow={copy.faq} title={copy.frequentlyAskedQuestionsTitle}>
         <div className="grid gap-3">
           {faqs.map((item) => (
@@ -55,6 +94,7 @@ export default async function FaqPage({
           ))}
         </div>
       </Section>
+      <InternalLinkGrid locale={locale} title="Helpful next pages" items={hubLinks} />
     </>
   );
 }

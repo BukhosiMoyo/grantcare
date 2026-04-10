@@ -14,6 +14,27 @@ import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
+function getStatusGuidePath(statusSlug: string) {
+  switch (statusSlug) {
+    case "declined":
+      return "/guides/how-to-fix-declined-status";
+    case "pending":
+      return "/guides/why-is-my-status-pending";
+    case "approved":
+      return "/guides/what-to-do-after-approval";
+    case "identity-verification":
+      return "/guides/identity-verification-required-meaning";
+    case "banking-issue":
+      return "/guides/how-to-update-banking-details";
+    case "reapplication-needed":
+      return "/guides/reapplication-needed-meaning";
+    case "payment-failed":
+      return "/guides/how-to-fix-missing-payment-issues";
+    default:
+      return "/guides/how-to-check-your-status";
+  }
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -53,7 +74,7 @@ export default async function StatusDetailPage({
   const copy = getCopy(locale);
   const [status, relatedGuides, relatedStatuses] = await Promise.all([
     getStatusMeaningBySlug(locale, statusSlug),
-    listRelatedGuides(locale, 2),
+    listRelatedGuides(locale, 2, undefined, statusSlug),
     listRelatedStatuses(locale, statusSlug, 3),
   ]);
 
@@ -117,7 +138,7 @@ export default async function StatusDetailPage({
             >
               {copy.officialLink}
             </TrackedExternalLink>
-            <ButtonLink href={buildLocalePath(locale, "/guides/appeal-after-decline")} variant="secondary">
+            <ButtonLink href={buildLocalePath(locale, getStatusGuidePath(statusSlug))} variant="secondary">
               {copy.readGuide}
             </ButtonLink>
           </div>

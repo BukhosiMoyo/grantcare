@@ -144,6 +144,39 @@ function getLocalizedSections(
   return translatedSections.length > 0 ? translatedSections : toSections(baseValue);
 }
 
+function tokenizeSeoValue(value: string) {
+  return value
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .map((part) => part.trim())
+    .filter((part) => part.length > 2);
+}
+
+function scoreRelatedGuide(
+  guide: PublicGuide,
+  referenceTerms: string[],
+) {
+  if (referenceTerms.length === 0) {
+    return guide.featured ? 2 : 0;
+  }
+
+  const guideTerms = new Set([
+    ...tokenizeSeoValue(guide.slug),
+    ...tokenizeSeoValue(guide.title),
+    ...tokenizeSeoValue(guide.summary),
+  ]);
+
+  let score = guide.featured ? 2 : 0;
+
+  for (const term of referenceTerms) {
+    if (guideTerms.has(term)) {
+      score += 3;
+    }
+  }
+
+  return score;
+}
+
 async function withPublicFallback<T>(query: () => Promise<T>, fallback: () => T) {
   if (!isDatabaseConfigured()) {
     return fallback();
@@ -784,9 +817,26 @@ export async function listRecentPaymentPeriods(
     .slice(0, input?.limit ?? 3);
 }
 
-export async function listRelatedGuides(locale: Locale, limit = 2, excludeSlug?: string) {
+export async function listRelatedGuides(
+  locale: Locale,
+  limit = 2,
+  excludeSlug?: string,
+  referenceText?: string,
+) {
+  const referenceTerms = tokenizeSeoValue(referenceText ?? excludeSlug ?? "");
+
   return (await listGuides(locale))
     .filter((guide) => guide.slug !== excludeSlug)
+    .sort((left, right) => {
+      const scoreDiff =
+        scoreRelatedGuide(right, referenceTerms) - scoreRelatedGuide(left, referenceTerms);
+
+      if (scoreDiff !== 0) {
+        return scoreDiff;
+      }
+
+      return left.sortOrder - right.sortOrder;
+    })
     .slice(0, limit);
 }
 

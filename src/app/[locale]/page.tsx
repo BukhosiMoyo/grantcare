@@ -15,6 +15,7 @@ import {
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { getHomepageContent } from "@/lib/homepage-content";
+import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { formatDateLabel } from "@/lib/utils";
 
@@ -31,13 +32,12 @@ export async function generateMetadata({
 
   const homepage = getHomepageContent(locale);
 
-  return {
+  return buildLocalizedMetadata({
+    locale,
+    path: "/",
     title: homepage.metaTitle,
     description: homepage.metaDescription,
-    alternates: {
-      canonical: `/${locale}`,
-    },
-  };
+  });
 }
 
 export default async function HomePage({

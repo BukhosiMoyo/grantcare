@@ -20,6 +20,7 @@ import { formatDateLabel } from "@/lib/utils";
 import { requireUser } from "@/lib/auth-guards";
 import { listGrantTypes, listMonetizationBlocks, listPaymentCategories } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { buildLocalizedMetadata } from "@/lib/metadata";
 import { getDashboardData } from "@/lib/users";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
@@ -36,12 +37,13 @@ export async function generateMetadata({
 
   const copy = getCopy(locale);
 
-  return {
+  return buildLocalizedMetadata({
+    locale,
+    path: "/dashboard",
     title: copy.dashboard,
-    alternates: {
-      canonical: `/${locale}/dashboard`,
-    },
-  };
+    description: "Manage your GrantCare preferences, reminders, and saved pages.",
+    noIndex: true,
+  });
 }
 
 export default async function DashboardPage({

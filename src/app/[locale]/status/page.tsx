@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { StatusPicker } from "@/components/status-picker";
 import { Card, Section } from "@/components/ui";
 import { listStatusMeanings } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
 export async function generateMetadata({
@@ -20,14 +22,13 @@ export async function generateMetadata({
     return {};
   }
 
-  const copy = getCopy(locale);
-
-  return {
-    title: copy.statusMeanings,
-    alternates: {
-      canonical: `/${locale}/status`,
-    },
-  };
+  return buildLocalizedMetadata({
+    locale,
+    path: "/status",
+    title: "Grant status meanings and next steps",
+    description:
+      "Read clear explanations for common status messages, possible causes, common fixes, and the next step to check.",
+  });
 }
 
 export default async function StatusPage({
@@ -43,6 +44,28 @@ export default async function StatusPage({
 
   const copy = getCopy(locale);
   const statuses = await listStatusMeanings(locale);
+  const hubLinks = [
+    {
+      href: "/payment-dates",
+      title: copy.paymentDates,
+      description: "Open payment dates when your status moved forward and you need the next timing check.",
+    },
+    {
+      href: "/guides/how-to-fix-declined-status",
+      title: "Fix declined status",
+      description: "Read the decline guide if your result points to a rejection or reconsideration issue.",
+    },
+    {
+      href: "/guides/what-to-do-if-your-status-does-not-change",
+      title: "Status not changing",
+      description: "Use the stuck-status guide when the wording stays the same for too long.",
+    },
+    {
+      href: "/eligibility-checker",
+      title: copy.eligibilityChecker,
+      description: "Return to general guidance if you need to reassess which grant path fits best.",
+    },
+  ];
 
   return (
     <div className="space-y-8">
@@ -74,6 +97,7 @@ export default async function StatusPage({
           ))}
         </div>
       </Section>
+      <InternalLinkGrid locale={locale} title="Related help" items={hubLinks} />
     </div>
   );
 }

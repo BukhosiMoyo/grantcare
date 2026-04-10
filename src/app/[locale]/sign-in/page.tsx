@@ -1,10 +1,32 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AuthShell } from "@/components/auth-shell";
 import { SignInForm } from "@/components/sign-in-form";
 import { getCopy } from "@/lib/copy";
+import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (!isLocale(locale)) {
+    return {};
+  }
+
+  return buildLocalizedMetadata({
+    locale,
+    path: "/sign-in",
+    title: "Sign in",
+    description: "Sign in to GrantCare to manage reminders, preferences, and saved guides.",
+    noIndex: true,
+  });
+}
 
 export default async function SignInPage({
   params,

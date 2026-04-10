@@ -1,8 +1,20 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { AdminNav } from "@/components/admin-nav";
 import { requireAdmin } from "@/lib/auth-guards";
 import { isLocale, type Locale } from "@/lib/site";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+};
 
 export default async function AdminLayout({
   children,

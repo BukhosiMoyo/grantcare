@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { TrackedExternalLink } from "@/components/tracked-external-link";
 import { ButtonLink, Card, Section } from "@/components/ui";
 import {
@@ -9,6 +10,7 @@ import {
   getPaymentRouteDefaults,
   listRelatedGrantTypes,
   listRelatedGuides,
+  listStatusMeanings,
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
@@ -51,10 +53,11 @@ export default async function GrantDetailPage({
   }
 
   const copy = getCopy(locale);
-  const [grant, relatedGuides, relatedGrants, paymentDefaults] = await Promise.all([
+  const [grant, relatedGuides, relatedGrants, statuses, paymentDefaults] = await Promise.all([
     getGrantBySlug(locale, grantType),
-    listRelatedGuides(locale, 2),
+    listRelatedGuides(locale, 2, undefined, grantType),
     listRelatedGrantTypes(locale, grantType, 3),
+    listStatusMeanings(locale),
     getPaymentRouteDefaults(locale),
   ]);
 
@@ -69,6 +72,11 @@ export default async function GrantDetailPage({
         `/payment-dates/${paymentDefaults.year}/${paymentDefaults.monthSlug}/${paymentGrantSlug}`,
       )
     : buildLocalePath(locale, "/payment-dates");
+  const hubLinks = statuses.slice(0, 4).map((status) => ({
+    href: `/status/${status.slug}`,
+    title: status.title,
+    description: status.meaning,
+  }));
 
   return (
     <div className="space-y-8">
@@ -130,6 +138,8 @@ export default async function GrantDetailPage({
           ))}
         </div>
       </Section>
+
+      <InternalLinkGrid locale={locale} title={copy.relatedStatusesTitle} items={hubLinks} columns="md:grid-cols-2" />
 
       <Section title={copy.otherGrantsTitle}>
         <div className="grid gap-4 md:grid-cols-3">

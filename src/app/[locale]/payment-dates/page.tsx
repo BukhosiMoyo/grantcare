@@ -2,15 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { PaymentDateTool } from "@/components/payment-date-tool";
 import { Card, Section } from "@/components/ui";
 import {
   getPaymentRouteDefaults,
+  listLatestGuides,
   listPaymentCategories,
   listPaymentPeriods,
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
 export async function generateMetadata({
@@ -24,14 +27,13 @@ export async function generateMetadata({
     return {};
   }
 
-  const copy = getCopy(locale);
-
-  return {
-    title: copy.paymentDates,
-    alternates: {
-      canonical: `/${locale}/payment-dates`,
-    },
-  };
+  return buildLocalizedMetadata({
+    locale,
+    path: "/payment-dates",
+    title: "Grant payment dates by month and grant type",
+    description:
+      "Check the latest month, open payment-date pages by grant type, and follow guides that explain delays, processing, and missing payments.",
+  });
 }
 
 export default async function PaymentDatesPage({
@@ -46,13 +48,36 @@ export default async function PaymentDatesPage({
   }
 
   const copy = getCopy(locale);
-  const [periods, paymentCategories, defaults] = await Promise.all([
+  const [periods, paymentCategories, defaults, latestGuides] = await Promise.all([
     listPaymentPeriods(locale),
     listPaymentCategories(locale),
     getPaymentRouteDefaults(locale),
+    listLatestGuides(locale, 4),
   ]);
 
   const archive = periods.filter((entry) => entry.year >= new Date().getFullYear()).slice(0, 12);
+  const hubLinks = [
+    {
+      href: "/status/approved",
+      title: "Approved but waiting",
+      description: "Read the approved status meaning when the payment date is not the only thing you need to understand.",
+    },
+    {
+      href: "/guides/how-to-understand-payment-dates",
+      title: "How to understand payment dates",
+      description: "Use the guide when you need help reading expected, pending, or portal-only timing.",
+    },
+    {
+      href: "/guides/why-payment-is-delayed",
+      title: "Why payment is delayed",
+      description: "Open the delay guide if the date has passed or the wording still does not make sense.",
+    },
+    {
+      href: "/guides/how-to-know-if-your-payment-is-ready",
+      title: "How to know if payment is ready",
+      description: "Check the readiness guide when you need the next step after approval or release wording.",
+    },
+  ];
 
   return (
     <div className="space-y-8">
@@ -98,6 +123,21 @@ export default async function PaymentDatesPage({
           ))}
         </div>
       </Section>
+
+      <Section title={copy.relatedGuidesTitle}>
+        <div className="grid gap-4 md:grid-cols-2">
+          {latestGuides.map((guide) => (
+            <Link key={guide.slug} href={buildLocalePath(locale, `/guides/${guide.slug}`)}>
+              <Card className="space-y-2">
+                <h3 className="text-xl font-semibold">{guide.title}</h3>
+                <p className="text-sm leading-7 text-muted">{guide.summary}</p>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      <InternalLinkGrid locale={locale} title="Payment-date follow-up" items={hubLinks} />
     </div>
   );
 }

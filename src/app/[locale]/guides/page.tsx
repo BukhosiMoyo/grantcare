@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { Card, Section } from "@/components/ui";
 import { listGuides } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
 export async function generateMetadata({
@@ -19,14 +21,13 @@ export async function generateMetadata({
     return {};
   }
 
-  const copy = getCopy(locale);
-
-  return {
-    title: copy.guides,
-    alternates: {
-      canonical: `/${locale}/guides`,
-    },
-  };
+  return buildLocalizedMetadata({
+    locale,
+    path: "/guides",
+    title: "Grant guides and support help",
+    description:
+      "Read plain-language GrantCare guides about payment dates, status meanings, delays, appeals, documents, and next steps.",
+  });
 }
 
 export default async function GuidesPage({
@@ -42,6 +43,28 @@ export default async function GuidesPage({
 
   const copy = getCopy(locale);
   const guides = await listGuides(locale);
+  const hubLinks = [
+    {
+      href: "/payment-dates",
+      title: copy.paymentDates,
+      description: "Check the current month first, then use guides when you need more detail.",
+    },
+    {
+      href: "/status",
+      title: copy.statusHelp,
+      description: "Open the status library when your question starts with a specific status message.",
+    },
+    {
+      href: "/eligibility-checker",
+      title: copy.eligibilityChecker,
+      description: "Use the checker for general direction before you read grant-specific guides.",
+    },
+    {
+      href: "/faq",
+      title: copy.faq,
+      description: "Read the short answers first if you only need the basics.",
+    },
+  ];
 
   return (
     <div className="space-y-8">
@@ -58,6 +81,7 @@ export default async function GuidesPage({
           ))}
         </div>
       </Section>
+      <InternalLinkGrid locale={locale} title="More ways to explore" items={hubLinks} />
     </div>
   );
 }

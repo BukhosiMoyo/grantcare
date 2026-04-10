@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { Card, Section } from "@/components/ui";
 import { listPublicGrantTypes } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
 export async function generateMetadata({
@@ -19,14 +21,13 @@ export async function generateMetadata({
     return {};
   }
 
-  const copy = getCopy(locale);
-
-  return {
-    title: copy.grantTypesTitle,
-    alternates: {
-      canonical: `/${locale}/grants`,
-    },
-  };
+  return buildLocalizedMetadata({
+    locale,
+    path: "/grants",
+    title: "Grant types, checks, and document help",
+    description:
+      "Compare grant types, read basic checks, and see which documents or next steps may matter before using official channels.",
+  });
 }
 
 export default async function GrantsPage({
@@ -42,6 +43,28 @@ export default async function GrantsPage({
 
   const copy = getCopy(locale);
   const grants = await listPublicGrantTypes(locale);
+  const hubLinks = [
+    {
+      href: "/eligibility-checker",
+      title: copy.eligibilityChecker,
+      description: "Use the checker when you are not sure which grant type to read first.",
+    },
+    {
+      href: "/payment-dates",
+      title: copy.paymentDates,
+      description: "Open payment dates after you identify the grant type you need to follow.",
+    },
+    {
+      href: "/status",
+      title: copy.statusHelp,
+      description: "Use status help when your question is about wording rather than grant type.",
+    },
+    {
+      href: "/guides",
+      title: copy.guides,
+      description: "Read deeper support guides for appeals, delays, banking details, and documents.",
+    },
+  ];
 
   return (
     <>
@@ -63,6 +86,7 @@ export default async function GrantsPage({
           ))}
         </div>
       </Section>
+      <InternalLinkGrid locale={locale} title="Start from the right hub" items={hubLinks} />
     </>
   );
 }

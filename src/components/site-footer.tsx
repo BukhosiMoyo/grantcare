@@ -5,7 +5,7 @@ import { OFFICIAL_LINKS } from "@/lib/content";
 import { getSessionUser } from "@/lib/auth-guards";
 import { getCopy } from "@/lib/copy";
 import type { Locale } from "@/lib/site";
-import { buildLocalePath } from "@/lib/site";
+import { SUPPORT_EMAIL, SUPPORT_MAILTO, buildLocalePath } from "@/lib/site";
 
 export async function SiteFooter({ locale }: { locale: Locale }) {
   const copy = getCopy(locale);
@@ -17,6 +17,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
     { href: buildLocalePath(locale, "/guides"), label: copy.guides },
     { href: buildLocalePath(locale, "/faq"), label: copy.faq },
     { href: buildLocalePath(locale, "/privacy"), label: copy.privacy },
+    { href: "/sitemap.xml", label: "Sitemap" },
   ];
 
   return (
@@ -26,6 +27,9 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
           <div className="space-y-3">
             <BrandLogo variant="full" className="h-9 w-auto" />
             <p className="max-w-xl text-sm text-muted">{copy.officialNotice}</p>
+            <a href={SUPPORT_MAILTO} className="inline-flex text-sm font-semibold text-primary hover:text-primary-strong">
+              {SUPPORT_EMAIL}
+            </a>
           </div>
           <div className="space-y-2">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{copy.explore}</p>
