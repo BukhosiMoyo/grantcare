@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f0e2;
+  --surface: #fffaf0;
+  --surface-strong: #efe2c7;
+  --surface-muted: #f1eadc;
+  --foreground: #18241f;
+  --muted: #5d685f;
+  --border: #d7cab0;
+  --primary: #174c3c;
+  --primary-strong: #10382c;
+  --accent: #c98a2c;
+  --danger: #9c3d32;
+  --shadow: rgba(24, 36, 31, 0.08);
+  --radius-card: 1.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-surface-muted: var(--surface-muted);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(201, 138, 44, 0.12), transparent 28%),
+    linear-gradient(180deg, #fbf7ef 0%, #f6f0e2 48%, #efe6d3 100%);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(23, 76, 60, 0.05), transparent 20%),
+    radial-gradient(circle at 85% 12%, rgba(201, 138, 44, 0.08), transparent 22%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(23, 76, 60, 0.18);
+}
+
+.shell {
+  width: min(100%, 78rem);
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
+.surface-card {
+  background: color-mix(in srgb, var(--surface) 92%, white);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 42px -28px var(--shadow);
+}
+
+.tap-target {
+  min-height: 3.25rem;
+}
+
+.focus-ring:focus-visible {
+  outline: 3px solid rgba(23, 76, 60, 0.25);
+  outline-offset: 2px;
+}
+
+.primary-action,
+.primary-action:visited,
+.primary-action:hover,
+.primary-action:focus-visible {
+  color: #fff;
+}
+
+.narrative-copy {
+  color: color-mix(in srgb, var(--foreground) 82%, var(--muted));
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.narrative-copy > * + * {
+  margin-top: 1rem;
+}
+
+.narrative-copy p {
+  margin: 0;
+  max-width: 72ch;
+  text-wrap: pretty;
+}
+
+.narrative-copy ul {
+  margin: 0;
+  max-width: 68ch;
+  list-style: disc;
+  padding-left: 1.3rem;
+}
+
+.narrative-copy li + li {
+  margin-top: 0.55rem;
+}
+
+.narrative-copy li::marker {
+  color: var(--accent);
+}
+
+.guide-body {
+  color: color-mix(in srgb, var(--foreground) 78%, var(--muted));
+  font-size: 1.02rem;
+  line-height: 1.95;
+}
+
+.guide-body > * + * {
+  margin-top: 1.35rem;
+}
+
+.guide-body p {
+  margin: 0;
+  max-width: 68ch;
+  text-wrap: pretty;
+}
+
+.guide-body ul,
+.guide-body ol {
+  margin: 0;
+  max-width: 66ch;
+  padding-left: 1.45rem;
+}
+
+.guide-body ul {
+  list-style: disc;
+}
+
+.guide-body ol {
+  list-style: decimal;
+}
+
+.guide-body li {
+  padding-left: 0.15rem;
+}
+
+.guide-body li + li {
+  margin-top: 0.85rem;
+}
+
+.guide-body li::marker {
+  color: var(--accent);
+}
+
+.guide-body p + ul,
+.guide-body p + ol {
+  margin-top: 0.25rem;
+}
+
+.guide-body a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 0.22em;
+}
+
+@media (min-width: 640px) {
+  .guide-body {
+    font-size: 1.09rem;
+  }
+}

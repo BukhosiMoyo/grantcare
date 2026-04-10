@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="GrantCare icon">
+  <rect width="256" height="256" rx="56" fill="#174c3c" />
+  <path
+    d="M64 136c0-30.9 25.1-56 56-56h72v28h-72c-15.5 0-28 12.5-28 28s12.5 28 28 28h28v-20h28v48h-56c-30.9 0-56-25.1-56-56Z"
+    fill="#f6f0e2"
+  />
+  <circle cx="184" cy="72" r="20" fill="#c98a2c" />
+</svg>

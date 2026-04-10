@@ -1,0 +1,556 @@
+const section = (title: string, body: string) => ({ title, body });
+const faq = (question: string, answer: string) =>
+  section(`FAQ: ${question}`, answer);
+
+export const SEO_BATCH_THREE_GUIDES = [
+  {
+    slug: "how-to-fix-declined-status",
+    title: "How to fix a declined status",
+    summary:
+      "A step-by-step guide for users who want to respond properly to a declined status by checking the official reason first, correcting details where needed, and using the right appeal path.",
+    sections: [
+      section(
+        "Quick answer",
+        "To fix a declined status, start by reading the exact official decline reason. The right fix depends on whether the problem is income, identity, duplication, banking, or another rule. Guessing usually wastes time.",
+      ),
+      section(
+        "What this means",
+        "A declined status is not one single problem. It is a result with a reason behind it. Some users need to appeal. Others need to correct details or wait for a new application cycle. The safest way forward is to match your next step to the actual official reason, not just the word declined.",
+      ),
+      section(
+        "Why this happens",
+        "A status can be declined because the official system found income or support that affects eligibility, because records did not match, because another application or support record caused a conflict, or because an important rule was not met for that period. Even a small mistake in personal details can lead to a result that looks stronger than the real problem.",
+      ),
+      section(
+        "What you can do next",
+        "1. Open the official status result and read the decline reason carefully.\n2. Compare that reason with your own documents and details.\n3. Check whether the problem is something you can correct, such as a mismatch in information.\n4. Use the official appeal or reconsideration route if you believe the decline is incorrect.\n5. Keep screenshots, dates, and notes so you can track what happened and when.",
+      ),
+      section(
+        "Common mistakes to avoid",
+        "Do not appeal before you understand the decline reason. Do not submit random changes that do not match the official problem. Do not pay someone who claims they can remove a decline outside the official process. If the official reason is clear, work from that first.",
+      ),
+      section(
+        "Important things to remember",
+        "Declined does not always mean the same next step for every user. Some people need to appeal. Some need to reapply later. Some need to resolve a record issue. GrantCare is an independent information platform, so official actions must still happen on the relevant government system.",
+      ),
+      section(
+        "How GrantCare can help",
+        "GrantCare can help you translate decline wording into plain language, compare related guides, and follow a calm sequence of steps before you go back to the official system.",
+      ),
+      section(
+        "Related help",
+        "Useful next pages:\n• /status/declined\n• /guides/how-to-appeal-rejection\n• /guides/what-documents-you-may-need\n• /guides/who-may-qualify-for-support\n• /eligibility-checker",
+      ),
+      faq(
+        "Can a declined status be fixed without an appeal?",
+        "Sometimes yes, but only if the official issue is something that can be corrected directly. In many cases, an official appeal is still the correct route.",
+      ),
+      faq(
+        "Should I submit a new application instead?",
+        "Only if the official system tells you to reapply. A new application is not always the right answer after a decline.",
+      ),
+      faq(
+        "What if I do not understand the decline reason?",
+        "Start with the wording shown on the official system, then use a plain-language guide before taking the next official step.",
+      ),
+    ],
+    featured: false,
+    sponsored: false,
+    sortOrder: 24,
+  },
+  {
+    slug: "why-payment-is-delayed",
+    title: "Why payment is delayed",
+    summary:
+      "A practical guide to common reasons payments are delayed, how to check whether the delay is normal or needs action, and where to look before assuming payment has failed.",
+    sections: [
+      section(
+        "Quick answer",
+        "A delayed payment usually means the payment step has not finished yet, the payment method still has an issue, or the official timing has shifted. It does not always mean the application is gone or permanently lost.",
+      ),
+      section(
+        "What this means",
+        "Payment delays can happen after approval, during payment processing, or even after a payment date has been expected. The key is to work out whether you are seeing a normal timing delay, a banking problem, a verification problem, or a true missing-payment issue.",
+      ),
+      section(
+        "Why this happens",
+        "Common causes include a payment batch running later than expected, bank or collection details still being checked, a recent change to personal or banking information, public holidays, weekends, system backlogs, or a payment attempt that failed and needs another update cycle.",
+      ),
+      section(
+        "What you can do next",
+        "1. Check the latest status wording, not only the last date you saw.\n2. Look for payment processing, banking issue, or verification wording.\n3. Confirm your payment details are still current.\n4. Give the system time if the update is very recent.\n5. Use the official route if the delay continues beyond a reasonable update window.",
+      ),
+      section(
+        "How to tell normal waiting from a real problem",
+        "A short delay after an update can be normal. A long delay with no new wording, or a delay after a published date has clearly passed, is more likely to need attention. If the status changes again while you wait, follow the latest official wording rather than older assumptions.",
+      ),
+      section(
+        "Important things to remember",
+        "Do not keep changing your details without a clear reason. Do not trust social media claims that every delayed payment is proof of a hidden rejection. The official wording still matters most.",
+      ),
+      section(
+        "How GrantCare can help",
+        "GrantCare can help you compare delayed-payment situations with approved, pending, payment processing, and banking-issue guides so you can take a calmer and more informed next step.",
+      ),
+      section(
+        "Related help",
+        "Useful next pages:\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /status/banking-issue\n• /guides/how-to-fix-missing-payment-issues\n• /payment-dates",
+      ),
+      faq(
+        "Does a delayed payment mean I was declined?",
+        "Not necessarily. Many delays happen after approval or during payment processing.",
+      ),
+      faq(
+        "Should I wait first if payment is late?",
+        "If the delay is very short, waiting for the next update can make sense. If it continues, the official route becomes more important.",
+      ),
+      faq(
+        "Can bank details cause a payment delay?",
+        "Yes. Banking issues are one of the most common reasons for payment delays.",
+      ),
+    ],
+    featured: false,
+    sponsored: false,
+    sortOrder: 25,
+  },
+  {
+    slug: "how-to-update-banking-details",
+    title: "How to update banking details",
+    summary:
+      "A careful guide to updating banking details through the correct official route, avoiding common errors, and understanding what to expect after you submit the change.",
+    sections: [
+      section(
+        "Quick answer",
+        "To update banking details, use the official system for your grant or support category and enter the information carefully. The most important rule is to use the correct official channel and avoid repeated unnecessary changes.",
+      ),
+      section(
+        "What this means",
+        "Updating banking details is a payment-method task, not only a profile task. A small mistake can delay payment, so the goal is not speed at any cost. The goal is to submit clean, accurate information once, through the right official route.",
+      ),
+      section(
+        "Why this happens",
+        "People usually need to update banking details because they changed banks, closed an account, entered the wrong account details before, or received a status that points to banking verification or payment failure. In some cases, the issue is not the bank itself but a mismatch between the account and the account holder’s name.",
+      ),
+      section(
+        "What you can do next",
+        "1. Open the relevant official payment-details route.\n2. Confirm which support record or grant the change applies to.\n3. Enter the account information exactly as it appears on official bank records.\n4. Make sure the account is active and in your own name if that is required.\n5. Submit once and wait for the next official update before changing it again.",
+      ),
+      section(
+        "What to check before submitting",
+        "Check the account number carefully. Check the branch or bank selection carefully. Check whether the name on the account matches the person receiving support. If the official system offers a confirmation message or reference, keep a record of it.",
+      ),
+      section(
+        "Important things to remember",
+        "Do not share your banking details on unofficial websites. Do not pay anyone to change your banking information for you. Do not keep resubmitting different details because you are anxious. That can create more confusion instead of less.",
+      ),
+      section(
+        "How GrantCare can help",
+        "GrantCare can help you understand banking-issue wording, compare common payment-method problems, and track what to watch for after a banking update has been submitted.",
+      ),
+      section(
+        "Related help",
+        "Useful next pages:\n• /guides/fix-banking-details\n• /status/banking-issue\n• /guides/why-bank-verification-fails\n• /guides/what-to-do-if-your-bank-details-changed\n• /guides/why-payment-is-delayed",
+      ),
+      faq(
+        "How long does a banking update take to reflect?",
+        "There is no single answer. It depends on the official update cycle and whether the new details pass verification cleanly.",
+      ),
+      faq(
+        "Can I use a different person's bank account?",
+        "That often causes problems. Follow the official payment-method rules closely and use the allowed account type.",
+      ),
+      faq(
+        "What if I already submitted the wrong details?",
+        "Use the official route to correct them, then wait for the system to update before making more changes.",
+      ),
+    ],
+    featured: false,
+    sponsored: false,
+    sortOrder: 26,
+  },
+  {
+    slug: "how-to-change-phone-number",
+    title: "How to change your phone number",
+    summary:
+      "A practical guide to changing the phone number linked to your support record, why the number matters, and how to avoid creating verification or OTP problems.",
+    sections: [
+      section(
+        "Quick answer",
+        "To change your phone number, use the relevant official system and make sure the new number is active and under your control. Your phone number matters because it is often tied to OTPs, status updates, and account access.",
+      ),
+      section(
+        "What this means",
+        "A phone number is not just a contact detail. It is often part of how the official system confirms identity and sends updates. Changing it carelessly can lock you out of important steps, while leaving an old number active can mean you miss messages that matter.",
+      ),
+      section(
+        "Why this happens",
+        "Users usually need to change numbers after a lost SIM card, a new contract or prepaid number, a stolen phone, or a long gap where the original number is no longer available. Sometimes the number must also be corrected because the wrong one was entered during the first application.",
+      ),
+      section(
+        "What you can do next",
+        "1. Use the official number-change route for the relevant support record.\n2. Check that the new number is working and available for OTPs.\n3. Keep the old number active during the change if possible, unless it is no longer safe or available.\n4. Save proof or screenshots of the change if the official system provides them.\n5. Check your status again after the update has had time to reflect.",
+      ),
+      section(
+        "Why the phone number matters so much",
+        "A phone number can be tied to login access, one-time pins, account recovery, and update messages. If the number is wrong, the result is not only inconvenience. It can delay or block progress when the system asks you to verify something.",
+      ),
+      section(
+        "Important things to remember",
+        "Never give OTPs or phone access to someone who claims they will update your details for you. Use official channels only. If your number change is linked to a fraud concern, official action becomes even more important.",
+      ),
+      section(
+        "How GrantCare can help",
+        "GrantCare can help you understand why a number change matters, what problems often follow a phone-number mismatch, and which related guide to read if your status becomes pending or verification-related after the change.",
+      ),
+      section(
+        "Related help",
+        "Useful next pages:\n• /guides/how-to-keep-your-details-updated\n• /guides/why-identity-verification-fails\n• /guides/what-to-do-if-your-status-does-not-change\n• /guides/how-to-check-your-status\n• /status/identity-verification",
+      ),
+      faq(
+        "Can changing my phone number delay my status?",
+        "It can, especially if the system needs to verify the updated detail before moving forward.",
+      ),
+      faq(
+        "Should I change my phone number if the old one still works?",
+        "Only if you actually need to. Unnecessary changes can create extra complications.",
+      ),
+      faq(
+        "What if I cannot access my old number anymore?",
+        "Use the official recovery or update path as soon as possible so your record can be tied to the correct active number.",
+      ),
+    ],
+    featured: false,
+    sponsored: false,
+    sortOrder: 27,
+  },
+  {
+    slug: "what-to-do-after-approval",
+    title: "What to do after approval",
+    summary:
+      "A practical guide for the period after approval, covering payment dates, payment method checks, and the signs that tell you whether to wait, prepare, or follow up.",
+    sections: [
+      section(
+        "Quick answer",
+        "After approval, your next focus should be payment timing and payment method details. Approval is a strong step forward, but it is not always the final step before money is available.",
+      ),
+      section(
+        "What this means",
+        "An approved status tells you the review has passed for that stage. The next practical questions are whether a payment date is available, whether the bank or collection method is correct, and whether any payment-related wording appears after the approval message.",
+      ),
+      section(
+        "Why this matters",
+        "Many users stop checking carefully once they see approved because it feels like the hard part is over. Sometimes that is true. Sometimes the next issue appears only after approval, especially if the payment method still needs attention or if the payment date has not yet been finalised.",
+      ),
+      section(
+        "What you can do next",
+        "1. Check whether there is already a payment date for your category.\n2. Confirm your banking or collection details are still correct.\n3. Watch for wording such as payment processing or banking issue.\n4. Save the month page or reminder if you want to track the next update.\n5. Use the official route if approval remains in place but payment does not arrive.",
+      ),
+      section(
+        "What not to do",
+        "Do not make random profile changes just because you feel nervous after approval. Do not assume one approval message means payment is already in your account. Do not rely on hearsay when the official system can still show the next real status.",
+      ),
+      section(
+        "Important things to remember",
+        "Approval is encouraging, but there is still value in checking the next stages carefully. GrantCare is an independent information platform. For official confirmation of payment outcomes, use the relevant government channel.",
+      ),
+      section(
+        "How GrantCare can help",
+        "GrantCare can help you move from approval to the right next page quickly, whether that means checking payment dates, understanding payment processing, or reading a missing-payment guide.",
+      ),
+      section(
+        "Related help",
+        "Useful next pages:\n• /status/approved\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /payment-dates\n• /guides/how-to-know-if-your-payment-is-ready",
+      ),
+      faq(
+        "Does approval mean I can stop checking my status?",
+        "Not yet. It is still wise to follow the payment side of the process carefully.",
+      ),
+      faq(
+        "Should I expect money immediately after approval?",
+        "Not always. Payment timing can still take another step or update cycle.",
+      ),
+      faq(
+        "What if approval stays there but nothing else happens?",
+        "Compare it with the approved-but-no-payment guide and then use the official route if the delay continues.",
+      ),
+    ],
+    featured: false,
+    sponsored: false,
+    sortOrder: 28,
+  },
+  {
+    slug: "how-to-appeal-rejection",
+    title: "How to appeal a rejection",
+    summary:
+      "A plain-language guide to preparing an appeal after a rejection, understanding what to check first, and using the official appeal route carefully and correctly.",
+    sections: [
+      section(
+        "Quick answer",
+        "To appeal a rejection, first read the exact official reason, gather the documents or facts that support your case, and then use only the official appeal route. A good appeal starts with the reason for the rejection, not with emotion alone.",
+      ),
+      section(
+        "What this means",
+        "An appeal is your chance to challenge a result you believe is incorrect. It is not simply a second application. It is a response to a specific official decision. That is why the strongest appeals are tied closely to the exact rejection reason.",
+      ),
+      section(
+        "Why appeals fail",
+        "Appeals often go badly when users do not understand the original reason, when they submit without supporting information, or when they use unofficial advice instead of the official route. Another common problem is appealing the wrong issue because the wording was misunderstood.",
+      ),
+      section(
+        "What you can do next",
+        "1. Read the rejection reason carefully on the official system.\n2. Decide whether the reason looks factually wrong, incomplete, or based on outdated information.\n3. Gather documents or records that support your appeal.\n4. Submit through the official appeal route only.\n5. Keep a record of the submission date and any reference information.",
+      ),
+      section(
+        "How to prepare a stronger appeal",
+        "Be specific. Match your supporting information to the reason that was given. If the issue is income, focus on income records. If the issue is identity, focus on identity details. A focused appeal is usually more useful than a broad complaint.",
+      ),
+      section(
+        "Important things to remember",
+        "An appeal does not guarantee a different outcome. It is an official review step, not a promise. GrantCare is independent and can help you prepare, but the actual appeal must stay on the official system.",
+      ),
+      section(
+        "How GrantCare can help",
+        "GrantCare can help you understand rejection wording, prepare supporting information, and move through related guides before you submit the official appeal.",
+      ),
+      section(
+        "Related help",
+        "Useful next pages:\n• /guides/appeal-after-decline\n• /status/declined\n• /guides/how-long-an-appeal-takes\n• /guides/what-documents-you-may-need\n• /guides/how-to-fix-declined-status",
+      ),
+      faq(
+        "Can I appeal without documents?",
+        "Sometimes the official system may still allow the appeal, but supporting information usually makes your case clearer and stronger.",
+      ),
+      faq(
+        "Is an appeal the same as reapplying?",
+        "No. An appeal challenges a specific result. Reapplying starts a new application process.",
+      ),
+      faq(
+        "Should I appeal immediately?",
+        "Read the reason first. Acting fast is helpful, but acting without understanding the reason can weaken your next step.",
+      ),
+    ],
+    featured: false,
+    sponsored: false,
+    sortOrder: 29,
+  },
+  {
+    slug: "how-long-an-appeal-takes",
+    title: "How long an appeal can take",
+    summary:
+      "A realistic guide to appeal waiting times, what affects the pace of a decision, and how to stay organized while the appeal is still under review.",
+    sections: [
+      section(
+        "Quick answer",
+        "There is no single fixed timeline for every appeal. Some move faster than others, and the safest approach is to treat appeal timing as a waiting process that depends on official review and the details of your case.",
+      ),
+      section(
+        "What this means",
+        "Appeals take time because they involve another review step. Many users want a simple number of days or weeks, but a more honest answer is that the timing can vary. The appeal process can depend on workload, the reason for the original decision, and whether the case needs extra checking.",
+      ),
+      section(
+        "Why timing can vary",
+        "Appeal timing can change because different cases need different checks, because official backlogs rise and fall, or because the original issue itself was complex. An appeal linked to identity or data matching may move differently from one linked to income or another eligibility rule.",
+      ),
+      section(
+        "What you can do while you wait",
+        "1. Keep the appeal submission date written down.\n2. Save any reference details or screenshots.\n3. Check your status at reasonable intervals instead of constantly refreshing.\n4. Keep your phone, email, and payment details current in the official system.\n5. Read related guides so you know what each new status message could mean if it changes.",
+      ),
+      section(
+        "How to tell whether the wait is still normal",
+        "A short wait after appeal submission is expected. A much longer wait with no movement may feel worrying, but it still does not automatically mean the appeal failed. The best sign to follow is the latest official status wording rather than how anxious the wait feels.",
+      ),
+      section(
+        "Important things to remember",
+        "No independent site can guarantee appeal timing. Be cautious of anyone who promises to speed up an appeal for money. Official systems and official review paths remain the only legitimate route for the decision itself.",
+      ),
+      section(
+        "How GrantCare can help",
+        "GrantCare can help you stay organized during the wait, understand related status messages, and know which page to read next if the appeal result changes to approved, declined again, or another review status.",
+      ),
+      section(
+        "Related help",
+        "Useful next pages:\n• /guides/how-to-appeal-rejection\n• /guides/what-to-do-if-your-status-does-not-change\n• /status/pending\n• /status/approved\n• /status/declined",
+      ),
+      faq(
+        "Can an appeal take longer than expected?",
+        "Yes. Timing varies, and some cases move more slowly than others.",
+      ),
+      faq(
+        "Should I submit a second appeal if the first one is slow?",
+        "Not unless the official system tells you to. A second submission can create more confusion.",
+      ),
+      faq(
+        "What should I do while waiting for an appeal result?",
+        "Keep your records organized, check status sensibly, and follow the latest official wording if it changes.",
+      ),
+    ],
+    featured: false,
+    sponsored: false,
+    sortOrder: 30,
+  },
+  {
+    slug: "why-bank-verification-fails",
+    title: "Why bank verification fails",
+    summary:
+      "A clear guide to why bank verification fails, what usually causes the mismatch, and how to correct the issue without creating extra payment delays.",
+    sections: [
+      section(
+        "Quick answer",
+        "Bank verification usually fails when the account details do not match the official record closely enough. The most common causes are name mismatches, wrong account details, or using an account that does not meet the official requirements.",
+      ),
+      section(
+        "What this means",
+        "Bank verification is the system checking whether the payment details can be trusted for the intended payout. A failed verification does not always mean fraud or rejection. Often it means the payment details and the person’s official record are not lining up cleanly enough yet.",
+      ),
+      section(
+        "Why this happens",
+        "Common causes include using an account not in your own name, typing the wrong account number, entering the wrong bank information, using a recently changed account that has not settled properly, or having personal details on the account that do not match the application record.",
+      ),
+      section(
+        "What you can do next",
+        "1. Recheck the exact banking details entered.\n2. Confirm the account is active and matches the allowed payment rules.\n3. Make sure the account holder details line up with your official record.\n4. Correct the details through the official route if needed.\n5. Wait for the updated verification result before making more changes.",
+      ),
+      section(
+        "How to avoid making it worse",
+        "Avoid changing details repeatedly when you are unsure. Avoid trying multiple unrelated accounts just to test what works. A clean correction based on the real issue is better than a series of guesses.",
+      ),
+      section(
+        "Important things to remember",
+        "Bank verification failure is usually a payment-detail problem, not always a full decision problem. GrantCare is independent, so for any official correction you must still use the official channel.",
+      ),
+      section(
+        "How GrantCare can help",
+        "GrantCare can help you understand banking language, compare it with payment-failed or delayed-payment scenarios, and work through the likely causes before you resubmit anything.",
+      ),
+      section(
+        "Related help",
+        "Useful next pages:\n• /guides/how-to-update-banking-details\n• /status/banking-issue\n• /guides/what-to-do-if-your-bank-details-changed\n• /guides/why-payment-is-delayed\n• /guides/fix-banking-details",
+      ),
+      faq(
+        "Can bank verification fail even if I am approved?",
+        "Yes. Approval and payment verification are related, but they are not exactly the same step.",
+      ),
+      faq(
+        "Should I use another account if verification fails?",
+        "Only if the official rules allow it and the new account clearly meets the requirements.",
+      ),
+      faq(
+        "Does a failed bank check mean no payment will come?",
+        "Not permanently. It usually means the payment details need to be corrected or verified before payment can move forward.",
+      ),
+    ],
+    featured: false,
+    sponsored: false,
+    sortOrder: 31,
+  },
+  {
+    slug: "why-identity-verification-fails",
+    title: "Why identity verification fails",
+    summary:
+      "A practical guide to identity verification failures, the common record mismatches behind them, and how to approach the official fix without panic.",
+    sections: [
+      section(
+        "Quick answer",
+        "Identity verification usually fails when the details on the application do not match official records closely enough or when the system needs another identity check before it can continue.",
+      ),
+      section(
+        "What this means",
+        "Identity verification failure is not always an accusation of fraud. It is usually a sign that the system could not confirm the identity step confidently enough. That can happen because of small detail mismatches, linked records, or an extra official check that still needs to happen.",
+      ),
+      section(
+        "Why this happens",
+        "Common causes include an incorrect ID number, a name mismatch, outdated personal records, a phone number linked to another record, or an official verification step that was not completed properly. In some cases, the underlying issue is very small, but the system still stops until the identity check is clear.",
+      ),
+      section(
+        "What you can do next",
+        "1. Read the exact official identity-related wording.\n2. Compare your entered details carefully with your ID and other records.\n3. Complete any official verification step shown on the system.\n4. Keep a record of what you did and when.\n5. Check again after the system has had time to update.",
+      ),
+      section(
+        "What not to do",
+        "Do not try unofficial shortcuts. Do not share sensitive identity information with anyone who is not part of the official process. Do not keep retrying the same incorrect details and expect a different result.",
+      ),
+      section(
+        "Important things to remember",
+        "Identity verification failure can be stressful because it sounds serious. In many cases, it is still a fixable record problem. The most useful response is calm accuracy, not rushed changes.",
+      ),
+      section(
+        "How GrantCare can help",
+        "GrantCare can help you understand identity wording, compare it with pending or declined statuses, and work out whether you need to verify, wait, or review your details more carefully.",
+      ),
+      section(
+        "Related help",
+        "Useful next pages:\n• /status/identity-verification\n• /guides/identity-verification-required-meaning\n• /guides/how-to-change-phone-number\n• /guides/how-to-check-your-status\n• /guides/what-to-do-if-your-status-does-not-change",
+      ),
+      faq(
+        "Can identity verification fail because of a phone number issue?",
+        "Yes. A number mismatch or linked-record problem can sometimes affect identity-related checks.",
+      ),
+      faq(
+        "Should I expect my status to change right away after fixing it?",
+        "Not always. The official system may need another update cycle before the result changes.",
+      ),
+      faq(
+        "Is identity verification failure the same as declined?",
+        "No. It usually points to a verification problem that must be cleared before the final process can continue.",
+      ),
+    ],
+    featured: false,
+    sponsored: false,
+    sortOrder: 32,
+  },
+  {
+    slug: "what-to-do-if-your-status-does-not-change",
+    title: "What to do if your status does not change",
+    summary:
+      "A calm guide for users whose status seems frozen, covering how to tell whether the pause is still normal, what to check first, and when the official route becomes necessary.",
+    sections: [
+      section(
+        "Quick answer",
+        "If your status does not change, start by checking how long it has been the same and what the exact wording is. A slow update is not always a problem, but a long frozen status needs a more careful check.",
+      ),
+      section(
+        "What this means",
+        "A status that does not change can feel like nothing is happening. Sometimes that is simply because the next official update has not run yet. Other times it can mean a record issue, a pending verification, or a step that has not become visible in the wording yet.",
+      ),
+      section(
+        "Why this happens",
+        "No-change situations often come from backlogs, slow update cycles, recent changes to details, hidden payment-method problems, or an appeal or review that is still in progress. Users also often feel the status is frozen because they are checking very frequently during a period when no real updates are expected.",
+      ),
+      section(
+        "What you can do next",
+        "1. Write down how long the status has stayed the same.\n2. Check whether you recently changed your bank details, phone number, or other important information.\n3. Compare the wording with related guides for pending, identity verification, and banking issues.\n4. Wait for the next normal update if the pause is still short.\n5. Use the official route if the status remains unchanged well beyond a reasonable period.",
+      ),
+      section(
+        "How to stay organized while waiting",
+        "Keep a simple timeline of status checks, updates, and changes you submitted. That makes it easier to see whether anything actually moved and helps you explain the situation clearly if you need official support later.",
+      ),
+      section(
+        "Important things to remember",
+        "A frozen status does not always mean a negative outcome. At the same time, endless waiting without checking the right things can waste time. The goal is to balance patience with a sensible review of the facts.",
+      ),
+      section(
+        "How GrantCare can help",
+        "GrantCare can help you compare unchanged statuses with more specific guides, keep track of related payment-date pages, and understand the likely next step before you escalate anything officially.",
+      ),
+      section(
+        "Related help",
+        "Useful next pages:\n• /guides/status-stuck-pending\n• /guides/why-is-my-status-pending\n• /guides/how-long-an-appeal-takes\n• /guides/why-payment-is-delayed\n• /status/pending",
+      ),
+      faq(
+        "How long should I wait before I worry?",
+        "There is no single answer for everyone, but a status that stays unchanged across multiple normal update windows deserves a closer look.",
+      ),
+      faq(
+        "Can changing details cause the status to stop moving for a while?",
+        "Yes. Recent changes can create a short delay while the system catches up.",
+      ),
+      faq(
+        "Should I submit a new application because nothing changes?",
+        "Not unless the official system tells you to reapply. A frozen status does not automatically mean a new application is needed.",
+      ),
+    ],
+    featured: false,
+    sponsored: false,
+    sortOrder: 33,
+  },
+];

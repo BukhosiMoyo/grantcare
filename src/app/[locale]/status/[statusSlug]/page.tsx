@@ -1,0 +1,154 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
+import { PageViewTracker } from "@/components/page-view-tracker";
+import { TrackedExternalLink } from "@/components/tracked-external-link";
+import { ButtonLink, Card, Section } from "@/components/ui";
+import {
+  getStatusMeaningBySlug,
+  listRelatedGuides,
+  listRelatedStatuses,
+} from "@/lib/content";
+import { getCopy } from "@/lib/copy";
+import { buildLocalizedMetadata } from "@/lib/metadata";
+import { buildLocalePath, isLocale } from "@/lib/site";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; statusSlug: string }>;
+}): Promise<Metadata> {
+  const { locale, statusSlug } = await params;
+
+  if (!isLocale(locale)) {
+    return {};
+  }
+
+  const status = await getStatusMeaningBySlug(locale, statusSlug);
+
+  if (!status) {
+    return {};
+  }
+
+  return buildLocalizedMetadata({
+    locale,
+    path: `/status/${statusSlug}`,
+    title: `${status.title} status meaning`,
+    description: status.meaning,
+  });
+}
+
+export default async function StatusDetailPage({
+  params,
+}: {
+  params: Promise<{ locale: string; statusSlug: string }>;
+}) {
+  const { locale, statusSlug } = await params;
+
+  if (!isLocale(locale)) {
+    notFound();
+  }
+
+  const copy = getCopy(locale);
+  const [status, relatedGuides, relatedStatuses] = await Promise.all([
+    getStatusMeaningBySlug(locale, statusSlug),
+    listRelatedGuides(locale, 2),
+    listRelatedStatuses(locale, statusSlug, 3),
+  ]);
+
+  if (!status) {
+    notFound();
+  }
+
+  return (
+    <div className="space-y-8">
+      <PageViewTracker
+        name="status.viewed"
+        locale={locale}
+        payload={{
+          statusSlug,
+        }}
+      />
+      <Section eyebrow={copy.statusHelp} title={status.title}>
+        <Card className="space-y-6">
+          <div className="space-y-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{copy.meaningLabel}</p>
+            <p className="text-lg text-foreground">{status.meaning}</p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="space-y-2">
+              <p className="font-semibold">{copy.possibleCauses}</p>
+              <ul className="space-y-2 text-sm text-muted">
+                {status.causes.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-2">
+              <p className="font-semibold">{copy.commonFixes}</p>
+              <ul className="space-y-2 text-sm text-muted">
+                {status.fixes.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-2">
+              <p className="font-semibold">{copy.nextSteps}</p>
+              <ul className="space-y-2 text-sm text-muted">
+                {status.nextSteps.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <TrackedExternalLink
+              href={status.officialHref}
+              locale={locale}
+              eventName="official_resource.clicked"
+              eventPayload={{
+                destination: "status",
+                statusSlug,
+              }}
+              target="_blank"
+              rel="noreferrer"
+              className="primary-action focus-ring tap-target inline-flex items-center justify-center rounded-full bg-primary px-5 text-base font-semibold text-white hover:bg-primary-strong"
+            >
+              {copy.officialLink}
+            </TrackedExternalLink>
+            <ButtonLink href={buildLocalePath(locale, "/guides/appeal-after-decline")} variant="secondary">
+              {copy.readGuide}
+            </ButtonLink>
+          </div>
+        </Card>
+      </Section>
+
+      <Section title={copy.relatedStatusesTitle}>
+        <div className="grid gap-3 md:grid-cols-3">
+          {relatedStatuses.map((relatedStatus) => (
+            <Link key={relatedStatus.slug} href={buildLocalePath(locale, `/status/${relatedStatus.slug}`)}>
+              <Card className="space-y-2">
+                <h3 className="text-xl font-semibold">{relatedStatus.title}</h3>
+                <p className="text-sm text-muted">{relatedStatus.meaning}</p>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      <Section title={copy.relatedGuidesTitle}>
+        <div className="grid gap-3 md:grid-cols-2">
+          {relatedGuides.map((guide) => (
+            <Link key={guide.slug} href={buildLocalePath(locale, `/guides/${guide.slug}`)}>
+              <Card className="space-y-2">
+                <h3 className="text-xl font-semibold">{guide.title}</h3>
+                <p className="text-sm text-muted">{guide.summary}</p>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </Section>
+    </div>
+  );
+}
