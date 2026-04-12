@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { IBM_Plex_Mono, Noto_Sans } from "next/font/google";
 import "./globals.css";
 
-import { SITE_URL } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site-url";
 import {
   DEFAULT_LOCALE,
   LEGACY_LOCALE_COOKIE_NAME,
@@ -23,7 +23,7 @@ const monoFont = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: "GrantCare",
     template: "%s | GrantCare",
@@ -32,8 +32,11 @@ export const metadata: Metadata = {
     "Independent grant-help platform for payment dates, status guidance, eligibility help, reminders, and multilingual support.",
   applicationName: "GrantCare",
   icons: {
-    shortcut: [{ url: "/favicon.png", type: "image/png" }],
-    icon: [{ url: "/grantcare-icon.png", type: "image/png" }],
+    shortcut: [{ url: "/favicon.ico", sizes: "any" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+    ],
     apple: [{ url: "/apple-icon.png", type: "image/png" }],
   },
   alternates: {

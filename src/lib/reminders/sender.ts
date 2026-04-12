@@ -5,7 +5,8 @@ import { getResendClient } from "@/lib/resend";
 import { parseReminderPayload } from "@/lib/reminders/payload";
 import { createReminderUnsubscribeToken } from "@/lib/reminders/unsubscribe";
 import { isReminderEmailConfigured } from "@/lib/server-env";
-import { SITE_URL, SUPPORT_EMAIL, buildLocalePath } from "@/lib/site";
+import { SUPPORT_EMAIL, buildLocalePath } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site-url";
 
 export type ReminderJobForSend = Prisma.ReminderJobGetPayload<{
   include: {
@@ -21,7 +22,7 @@ export type ReminderJobForSend = Prisma.ReminderJobGetPayload<{
 }>;
 
 function toAbsoluteUrl(path: string) {
-  return new URL(path, SITE_URL).toString();
+  return new URL(path, getSiteUrl()).toString();
 }
 
 export async function sendReminderEmail(job: ReminderJobForSend) {

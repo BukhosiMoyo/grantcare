@@ -66,6 +66,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.3,
     }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
+      path: "/sitemap",
+      changeFrequency: "weekly",
+      priority: 0.2,
+    }),
   ]);
 
   const paymentRoutes = LOCALES.flatMap((locale) =>

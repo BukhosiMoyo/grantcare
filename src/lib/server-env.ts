@@ -1,3 +1,5 @@
+import { isSiteUrlReady } from "@/lib/site-url";
+
 export function isDatabaseConfigured() {
   return Boolean(process.env.DATABASE_URL);
 }
@@ -17,7 +19,7 @@ export function isAuthSecretConfigured() {
 }
 
 export function isSiteUrlConfigured() {
-  return Boolean(process.env.NEXT_PUBLIC_SITE_URL);
+  return isSiteUrlReady();
 }
 
 export function isReminderEmailConfigured() {

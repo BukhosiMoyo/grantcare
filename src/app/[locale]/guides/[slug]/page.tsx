@@ -17,7 +17,8 @@ import {
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { db } from "@/lib/prisma";
-import { SITE_URL, type Locale, buildLocalePath, isLocale } from "@/lib/site";
+import { type Locale, buildLocalePath, isLocale } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site-url";
 import { isDatabaseConfigured } from "@/lib/server-env";
 
 type GuideBodyBlock =
@@ -259,7 +260,10 @@ export default async function GuideDetailPage({
     "@type": "Article",
     headline: guide.title,
     description: guide.summary,
-    mainEntityOfPage: new URL(buildLocalePath(locale, `/guides/${guide.slug}`), SITE_URL).toString(),
+    mainEntityOfPage: new URL(
+      buildLocalePath(locale, `/guides/${guide.slug}`),
+      getSiteUrl(),
+    ).toString(),
     inLanguage: locale,
   };
   const faqSections = guide.sections.filter((section) => section.title.startsWith("FAQ: "));

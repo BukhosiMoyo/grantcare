@@ -17,7 +17,8 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
     { href: buildLocalePath(locale, "/guides"), label: copy.guides },
     { href: buildLocalePath(locale, "/faq"), label: copy.faq },
     { href: buildLocalePath(locale, "/privacy"), label: copy.privacy },
-    { href: "/sitemap.xml", label: "Sitemap" },
+    { href: buildLocalePath(locale, "/sitemap"), label: "HTML sitemap" },
+    { href: "/sitemap.xml", label: "XML sitemap" },
   ];
 
   return (

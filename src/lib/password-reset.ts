@@ -3,7 +3,8 @@ import { createHash, randomBytes } from "node:crypto";
 import { db } from "@/lib/prisma";
 import { getResendClient } from "@/lib/resend";
 import { isProductionServer } from "@/lib/server-env";
-import { SITE_URL, SUPPORT_EMAIL, type Locale, buildLocalePath } from "@/lib/site";
+import { SUPPORT_EMAIL, type Locale, buildLocalePath } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site-url";
 import { getUserByEmail } from "@/lib/users";
 import { PasswordResetEmail } from "@/emails/password-reset-email";
 
@@ -18,7 +19,7 @@ function getResetPath(locale: Locale, token: string) {
 }
 
 function toAbsoluteUrl(path: string) {
-  return new URL(path, SITE_URL).toString();
+  return new URL(path, getSiteUrl()).toString();
 }
 
 export async function createPasswordResetRequest(input: {

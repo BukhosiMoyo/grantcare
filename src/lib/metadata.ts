@@ -1,12 +1,15 @@
 import type { Metadata, MetadataRoute } from "next";
 
-import { LOCALES, SITE_URL, buildLocalePath, type Locale } from "@/lib/site";
+import { LOCALES, buildLocalePath, type Locale } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site-url";
 
 function buildLanguageAlternates(path: string) {
+  const siteUrl = getSiteUrl();
+
   return Object.fromEntries(
     LOCALES.map((entry) => [
       entry.code,
-      new URL(buildLocalePath(entry.code, path), SITE_URL).toString(),
+      new URL(buildLocalePath(entry.code, path), siteUrl).toString(),
     ]),
   );
 }
@@ -19,8 +22,9 @@ export function buildLocalizedMetadata(input: {
   path: string;
   title: string;
 }) {
+  const siteUrl = getSiteUrl();
   const canonicalPath = buildLocalePath(input.locale, input.path);
-  const canonicalUrl = new URL(canonicalPath, SITE_URL).toString();
+  const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
   const languages = buildLanguageAlternates(input.path);
 
   return {
@@ -63,8 +67,9 @@ export function buildLocalizedSitemapEntry(input: {
   changeFrequency?: MetadataRoute.Sitemap[number]["changeFrequency"];
   priority?: number;
 }) {
+  const siteUrl = getSiteUrl();
   const canonicalPath = buildLocalePath(input.locale, input.path);
-  const canonicalUrl = new URL(canonicalPath, SITE_URL).toString();
+  const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
 
   return {
     url: canonicalUrl,
