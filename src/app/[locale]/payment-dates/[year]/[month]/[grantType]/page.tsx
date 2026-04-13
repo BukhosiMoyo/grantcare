@@ -16,6 +16,7 @@ import {
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
+import { GRANT_AMOUNT_SOURCE, getGrantAmountLabel } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { formatDateLabel } from "@/lib/utils";
 
@@ -108,6 +109,7 @@ export default async function PaymentGrantPage({
       description: "Open the missing-payment guide if the date passed and the payment still has not arrived.",
     },
   ];
+  const amountLabel = getGrantAmountLabel(paymentEntry.grantSlug);
 
   return (
     <div className="space-y-8">
@@ -134,6 +136,14 @@ export default async function PaymentGrantPage({
             <p className="text-3xl font-semibold text-primary">
               {paymentEntry.date ? formatDateLabel(paymentEntry.date) : copy.paymentPortalOnly}
             </p>
+            {amountLabel ? (
+              <div className="space-y-1">
+                <p className="text-sm font-semibold text-foreground">Current amount: {amountLabel}</p>
+                <a href={GRANT_AMOUNT_SOURCE.href} target="_blank" rel="noreferrer" className="text-sm font-semibold text-primary">
+                  Official amount source
+                </a>
+              </div>
+            ) : null}
             <p className="max-w-2xl text-sm text-muted">{paymentEntry.note}</p>
           </div>
           <div className="flex flex-wrap gap-3">

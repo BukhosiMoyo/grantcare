@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 import { BrandLogo } from "@/components/brand-logo";
-import { OFFICIAL_LINKS } from "@/lib/content";
 import { getSessionUser } from "@/lib/auth-guards";
 import { getCopy } from "@/lib/copy";
+import { LEGAL_LINKS, OFFICIAL_SASSA_CONTACTS } from "@/lib/official-resources";
 import type { Locale } from "@/lib/site";
 import { SUPPORT_EMAIL, SUPPORT_MAILTO, buildLocalePath } from "@/lib/site";
 
@@ -15,10 +15,9 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
     { href: buildLocalePath(locale, "/status"), label: copy.statusHelp },
     { href: buildLocalePath(locale, "/eligibility-checker"), label: copy.eligibility },
     { href: buildLocalePath(locale, "/guides"), label: copy.guides },
+    { href: buildLocalePath(locale, "/grants"), label: copy.grantTypesTitle },
     { href: buildLocalePath(locale, "/faq"), label: copy.faq },
-    { href: buildLocalePath(locale, "/privacy"), label: copy.privacy },
-    { href: buildLocalePath(locale, "/sitemap"), label: "HTML sitemap" },
-    { href: "/sitemap.xml", label: "XML sitemap" },
+    { href: buildLocalePath(locale, "/contact"), label: "Contact" },
   ];
 
   return (
@@ -47,15 +46,36 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
               {copy.officialLinks}
             </p>
             <div className="flex flex-col gap-2 text-sm text-muted">
-              {OFFICIAL_LINKS.map((link) => (
-                <a key={link.href} href={link.href} target="_blank" rel="noreferrer" className="hover:text-foreground">
-                  {link.label}
-                </a>
-              ))}
+              {OFFICIAL_SASSA_CONTACTS.map((link) => {
+                const isHttp = link.href.startsWith("http");
+
+                return (
+                  <a
+                    key={link.title}
+                    href={link.href}
+                    target={isHttp ? "_blank" : undefined}
+                    rel={isHttp ? "noreferrer" : undefined}
+                    className="hover:text-foreground"
+                  >
+                    {link.title}: {link.value}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
         <div className="flex flex-wrap gap-4 border-t border-border/70 pt-4 text-sm text-muted">
+          {LEGAL_LINKS.map((link) => (
+            <Link key={link.path} href={buildLocalePath(locale, link.path)} className="hover:text-foreground">
+              {link.label}
+            </Link>
+          ))}
+          <Link href={buildLocalePath(locale, "/sitemap")} className="hover:text-foreground">
+            HTML sitemap
+          </Link>
+          <Link href="/sitemap.xml" className="hover:text-foreground">
+            XML sitemap
+          </Link>
           <Link href={buildLocalePath(locale, "/dashboard")} className="hover:text-foreground">
             {copy.dashboard}
           </Link>

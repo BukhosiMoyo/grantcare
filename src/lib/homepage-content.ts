@@ -31,7 +31,7 @@ const ENGLISH_HOMEPAGE_CONTENT: HomepageContent = {
   heroDescription:
     "GrantCare helps you read payment dates, understand common status wording, and find the next useful step without pretending to be the official system.",
   heroDisclaimer:
-    "GrantCare is independent. Use official government channels for applications, appeals, and official status checks.",
+    "GrantCare is independent and not affiliated with SASSA or the South African government. Use official government channels for applications, appeals, and official status checks.",
   heroPreviewTitle: "Payment dates at a glance",
   heroPreviewBody:
     "Open the current month, check the grant type, and read whether the date is published, expected, or still pending.",

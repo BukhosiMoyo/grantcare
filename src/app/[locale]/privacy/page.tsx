@@ -1,13 +1,29 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { Card, Section } from "@/components/ui";
-import { getCopy } from "@/lib/copy";
-import { SUPPORT_EMAIL, SUPPORT_MAILTO, isLocale } from "@/lib/site";
+import { LegalPage } from "@/components/legal-page";
+import { buildLocalizedMetadata } from "@/lib/metadata";
+import { isLocale } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Privacy",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (!isLocale(locale)) {
+    return {};
+  }
+
+  return buildLocalizedMetadata({
+    locale,
+    path: "/privacy",
+    title: "GrantCare privacy",
+    description:
+      "Read how GrantCare handles reminders, saved preferences, account access, and support contact details.",
+  });
+}
 
 export default async function PrivacyPage({
   params,
@@ -20,24 +36,39 @@ export default async function PrivacyPage({
     notFound();
   }
 
-  const copy = getCopy(locale);
-
   return (
-    <Section eyebrow={copy.privacy} title={`${copy.privacy} notice`}>
-      <Card className="space-y-3">
-        <p className="text-sm text-muted">
-          GrantCare should collect only the minimum data needed for reminders, saved preferences, and account access.
-        </p>
-        <p className="text-sm text-muted">
-          Do not store sensitive grant information unless it is necessary, lawful, and protected.
-        </p>
-        <p className="text-sm text-muted">
-          Contact:{" "}
-          <a href={SUPPORT_MAILTO} className="font-semibold text-primary">
-            {SUPPORT_EMAIL}
-          </a>
-        </p>
-      </Card>
-    </Section>
+    <LegalPage
+      currentPath="/privacy"
+      eyebrow="Privacy"
+      intro={[
+        "GrantCare keeps product data limited to reminders, saved preferences, account access, and basic support handling.",
+        "GrantCare is independent and not affiliated with SASSA or the South African government.",
+      ]}
+      locale={locale}
+      sections={[
+        {
+          title: "What GrantCare may store",
+          paragraphs: [
+            "Account email addresses, sign-in details, reminder settings, saved guides, and grant preferences may be stored so the product can work.",
+            "Official applications, appeals, and official status checks belong on government systems, not on GrantCare.",
+          ],
+        },
+        {
+          title: "How the data is used",
+          paragraphs: [
+            "GrantCare uses stored data to support sign-in, reminders, saved pages, and core product analytics.",
+            "GrantCare should avoid collecting sensitive grant documents or official application data unless that changes in a clearly stated feature.",
+          ],
+        },
+        {
+          title: "Support contact",
+          paragraphs: [
+            "GrantCare support email: hello@symaxx.com.",
+            "Official government questions should go through the official SASSA contacts and portals listed on the contact page.",
+          ],
+        },
+      ]}
+      title="Privacy"
+    />
   );
 }

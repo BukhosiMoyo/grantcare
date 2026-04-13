@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
+import { QuickCheckOptions } from "@/components/quick-check-options";
 import { StatusPicker } from "@/components/status-picker";
 import { Card, Section } from "@/components/ui";
 import { listStatusMeanings } from "@/lib/content";
@@ -96,6 +97,9 @@ export default async function StatusPage({
             </Link>
           ))}
         </div>
+      </Section>
+      <Section title="Quick check options">
+        <QuickCheckOptions />
       </Section>
       <InternalLinkGrid locale={locale} title="Related help" items={hubLinks} />
     </div>

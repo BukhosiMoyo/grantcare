@@ -151,7 +151,7 @@ const ENGLISH_COPY: HomeCopy = {
   createAccount: "Create account",
   dashboard: "Dashboard",
   disclaimer:
-    "GrantCare is independent. Official applications and official status checks stay on government systems.",
+    "GrantCare is independent and not affiliated with SASSA or the South African government.",
   documents: "Documents",
   eligibility: "Eligibility",
   eligibilityChecker: "Eligibility checker",
@@ -208,7 +208,8 @@ const ENGLISH_COPY: HomeCopy = {
   officialLink: "Official link",
   officialLinks: "Official links",
   officialNextStep: "Official next step",
-  officialNotice: "Use official channels for applications, appeals, and official checks.",
+  officialNotice:
+    "GrantCare is independent and not affiliated with SASSA or the South African government. Use official channels for applications, appeals, and official checks.",
   onPublishReminder: "When a new payment date is published",
   oneDayBefore: "1 day before payment",
   open: "Open",

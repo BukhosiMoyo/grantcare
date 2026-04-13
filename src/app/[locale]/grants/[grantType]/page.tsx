@@ -14,6 +14,7 @@ import {
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
+import { GRANT_AMOUNT_SOURCE, getGrantAmountLabel } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
 export async function generateMetadata({
@@ -72,6 +73,7 @@ export default async function GrantDetailPage({
         `/payment-dates/${paymentDefaults.year}/${paymentDefaults.monthSlug}/${paymentGrantSlug}`,
       )
     : buildLocalePath(locale, "/payment-dates");
+  const amountLabel = getGrantAmountLabel(grant.slug);
   const hubLinks = statuses.slice(0, 4).map((status) => ({
     href: `/status/${status.slug}`,
     title: status.title,
@@ -83,6 +85,15 @@ export default async function GrantDetailPage({
       <Section eyebrow={copy.eligibility} title={grant.name}>
         <Card className="space-y-6">
           <p className="max-w-2xl text-base text-muted">{grant.summary}</p>
+          {amountLabel ? (
+            <div className="rounded-3xl bg-surface px-4 py-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">Current amount</p>
+              <p className="mt-1 text-lg font-semibold text-primary">{amountLabel}</p>
+              <a href={GRANT_AMOUNT_SOURCE.href} target="_blank" rel="noreferrer" className="mt-2 inline-flex text-sm font-semibold text-primary">
+                Official amount source
+              </a>
+            </div>
+          ) : null}
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
               <p className="font-semibold">{copy.whoItMayFit}</p>

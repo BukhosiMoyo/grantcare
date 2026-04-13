@@ -5,6 +5,9 @@ import { notFound } from "next/navigation";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { PaymentDateTool } from "@/components/payment-date-tool";
+import { PaymentScheduleTable } from "@/components/payment-schedule-table";
+import { GrantAmountTable } from "@/components/grant-amount-table";
+import { QuickCheckOptions } from "@/components/quick-check-options";
 import { Card, Section } from "@/components/ui";
 import {
   getPaymentRouteDefaults,
@@ -105,7 +108,23 @@ export default async function PaymentDatesPage({
             grantTypeLabel={copy.grantTypeLabel}
             openLabel={copy.open}
           />
+          <PaymentScheduleTable
+            entries={defaults.entries}
+            locale={locale}
+            monthLabel={defaults.label}
+            monthPath={`/payment-dates/${defaults.year}/${defaults.monthSlug}`}
+          />
         </Card>
+      </Section>
+
+      <Section title="Current grant amounts">
+        <Card>
+          <GrantAmountTable />
+        </Card>
+      </Section>
+
+      <Section title="Quick check options">
+        <QuickCheckOptions />
       </Section>
 
       <Section title={copy.archiveTitle}>

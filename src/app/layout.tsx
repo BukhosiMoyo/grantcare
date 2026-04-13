@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { IBM_Plex_Mono, Noto_Sans } from "next/font/google";
 import "./globals.css";
 
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { getSiteUrl } from "@/lib/site-url";
 import {
   DEFAULT_LOCALE,
@@ -65,7 +66,10 @@ export default async function RootLayout({
       data-scroll-behavior="smooth"
       className={`${bodyFont.variable} ${monoFont.variable}`}
     >
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        <GoogleAnalytics />
+        {children}
+      </body>
     </html>
   );
 }

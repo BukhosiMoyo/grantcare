@@ -76,6 +76,12 @@ export default async function HtmlSitemapPage({
     { href: buildLocalePath(locale, "/guides"), label: "Guides" },
     { href: buildLocalePath(locale, "/grants"), label: "Grant types" },
     { href: buildLocalePath(locale, "/faq"), label: "FAQ" },
+    { href: buildLocalePath(locale, "/contact"), label: "Contact" },
+    { href: buildLocalePath(locale, "/privacy"), label: "Privacy" },
+    { href: buildLocalePath(locale, "/disclaimer"), label: "Disclaimer" },
+    { href: buildLocalePath(locale, "/terms"), label: "Terms" },
+    { href: buildLocalePath(locale, "/editorial-policy"), label: "Editorial policy" },
+    { href: buildLocalePath(locale, "/cookie-policy"), label: "Cookie policy" },
     { href: "/sitemap.xml", label: "XML sitemap" },
   ];
 

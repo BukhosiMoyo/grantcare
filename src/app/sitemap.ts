@@ -68,6 +68,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
     buildLocalizedSitemapEntry({
       locale: locale.code,
+      path: "/contact",
+      changeFrequency: "monthly",
+      priority: 0.35,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
+      path: "/disclaimer",
+      changeFrequency: "monthly",
+      priority: 0.2,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
+      path: "/terms",
+      changeFrequency: "monthly",
+      priority: 0.2,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
+      path: "/editorial-policy",
+      changeFrequency: "monthly",
+      priority: 0.2,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
+      path: "/cookie-policy",
+      changeFrequency: "monthly",
+      priority: 0.2,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
       path: "/sitemap",
       changeFrequency: "weekly",
       priority: 0.2,

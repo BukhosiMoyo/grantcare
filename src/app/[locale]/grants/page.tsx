@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { GrantAmountTable } from "@/components/grant-amount-table";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
+import { QuickCheckOptions } from "@/components/quick-check-options";
 import { Card, Section } from "@/components/ui";
 import { listPublicGrantTypes } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
+import { getGrantAmountLabel } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
 export async function generateMetadata({
@@ -75,6 +78,9 @@ export default async function GrantsPage({
             <Link key={grant.slug} href={buildLocalePath(locale, `/grants/${grant.slug}`)}>
               <Card className="space-y-3">
                 <h3 className="text-xl font-semibold">{grant.name}</h3>
+                {getGrantAmountLabel(grant.slug) ? (
+                  <p className="text-base font-semibold text-primary">{getGrantAmountLabel(grant.slug)}</p>
+                ) : null}
                 <p className="text-sm text-muted">{grant.summary}</p>
                 <ul className="space-y-2 text-sm text-muted">
                   {grant.checks.slice(0, 2).map((item) => (
@@ -85,6 +91,14 @@ export default async function GrantsPage({
             </Link>
           ))}
         </div>
+      </Section>
+      <Section title="Current grant amounts">
+        <Card>
+          <GrantAmountTable />
+        </Card>
+      </Section>
+      <Section title="Quick check options">
+        <QuickCheckOptions />
       </Section>
       <InternalLinkGrid locale={locale} title="Start from the right hub" items={hubLinks} />
     </>

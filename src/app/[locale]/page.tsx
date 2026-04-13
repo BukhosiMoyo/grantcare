@@ -4,7 +4,10 @@ import { notFound } from "next/navigation";
 
 import { BrandLogo } from "@/components/brand-logo";
 import { BellIcon, CalendarIcon, CompassIcon, StatusIcon } from "@/components/icons";
+import { GrantAmountTable } from "@/components/grant-amount-table";
+import { OfficialContactGrid } from "@/components/official-contact-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
+import { QuickCheckOptions } from "@/components/quick-check-options";
 import { ButtonLink, Card, Section } from "@/components/ui";
 import {
   getPaymentRouteDefaults,
@@ -16,6 +19,7 @@ import {
 import { getCopy } from "@/lib/copy";
 import { getHomepageContent } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
+import { getGrantAmountLabel } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { formatDateLabel } from "@/lib/utils";
 
@@ -53,6 +57,7 @@ export default async function HomePage({
 
   const copy = getCopy(locale);
   const homepage = getHomepageContent(locale);
+  const homeSteps = [copy.homeStepOne, copy.homeStepTwo, copy.homeStepThree];
   const [defaults, statuses, notices, latestGuides, faqs] = await Promise.all([
     getPaymentRouteDefaults(locale),
     listStatusMeanings(locale),
@@ -149,6 +154,9 @@ export default async function HomePage({
                               ? copy.paymentPending
                               : copy.paymentPortalOnly}
                         </p>
+                        {getGrantAmountLabel(entry.grantSlug) ? (
+                          <p className="text-xs text-muted">{getGrantAmountLabel(entry.grantSlug)}</p>
+                        ) : null}
                       </div>
                       <p className="text-right text-sm font-medium text-primary">
                         {entry.date ? formatDateLabel(entry.date) : copy.paymentPortalOnly}
@@ -214,6 +222,27 @@ export default async function HomePage({
         </div>
       </Section>
 
+      <Section eyebrow={copy.howItWorks} title={copy.howItWorks}>
+        <div className="grid gap-4 md:grid-cols-3">
+          {homeSteps.map((step, index) => (
+            <Card key={step} className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">Step {index + 1}</p>
+              <p className="text-base text-foreground">{step}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow={copy.paymentDates} title="Quick check options">
+        <QuickCheckOptions />
+      </Section>
+
+      <Section eyebrow={copy.paymentDates} title="Current grant amounts">
+        <Card>
+          <GrantAmountTable />
+        </Card>
+      </Section>
+
       <Section eyebrow={copy.latestDates} title="Read the latest month carefully before you plan around a date.">
         <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
           <Card className="space-y-4">
@@ -251,6 +280,9 @@ export default async function HomePage({
                               ? copy.paymentPending
                               : copy.paymentPortalOnly}
                         </p>
+                        {getGrantAmountLabel(entry.grantSlug) ? (
+                          <p className="text-xs text-muted">{getGrantAmountLabel(entry.grantSlug)}</p>
+                        ) : null}
                       </div>
                       <p className="text-right text-sm font-medium text-primary">
                         {entry.date ? formatDateLabel(entry.date) : copy.paymentPortalOnly}
@@ -301,6 +333,10 @@ export default async function HomePage({
             </ul>
           </Card>
         </div>
+      </Section>
+
+      <Section eyebrow={copy.officialLinks} title="Official contacts">
+        <OfficialContactGrid />
       </Section>
 
       <Section eyebrow={copy.guides} title={homepage.latestGuidesTitle}>

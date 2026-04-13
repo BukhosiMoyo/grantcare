@@ -14,6 +14,7 @@ import {
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
+import { getGrantAmountLabel } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { formatDateLabel } from "@/lib/utils";
 
@@ -127,6 +128,9 @@ export default async function PaymentMonthPage({
                 <p className="text-base font-medium text-primary">
                   {entry.date ? formatDateLabel(entry.date) : copy.paymentPortalOnly}
                 </p>
+                {getGrantAmountLabel(entry.grantSlug) ? (
+                  <p className="text-base font-semibold text-primary">{getGrantAmountLabel(entry.grantSlug)}</p>
+                ) : null}
                 <p className="text-sm text-muted">{entry.note}</p>
               </Card>
             </Link>
