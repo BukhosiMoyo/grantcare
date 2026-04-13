@@ -7,7 +7,7 @@ import { QuickCheckOptions } from "@/components/quick-check-options";
 import { Card, Section } from "@/components/ui";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { LEGAL_LINKS } from "@/lib/official-resources";
-import { SUPPORT_EMAIL, SUPPORT_MAILTO, buildLocalePath, isLocale } from "@/lib/site";
+import { buildLocalePath, isLocale } from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -25,7 +25,7 @@ export async function generateMetadata({
     path: "/contact",
     title: "GrantCare contact and official SASSA details",
     description:
-      "Find GrantCare support details together with official SASSA website, portal, phone, email, and address details.",
+      "Find official SASSA website, portal, phone, email, and address details together with public check routes.",
   });
 }
 
@@ -55,17 +55,6 @@ export default async function ContactPage({
       </Section>
 
       <OfficialContactGrid />
-
-      <Section title="GrantCare support">
-        <Card className="space-y-3">
-          <p className="text-sm leading-7 text-muted">
-            GrantCare product support is separate from official SASSA support.
-          </p>
-          <a href={SUPPORT_MAILTO} className="text-sm font-semibold text-primary">
-            {SUPPORT_EMAIL}
-          </a>
-        </Card>
-      </Section>
 
       <Section title="Related pages">
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">

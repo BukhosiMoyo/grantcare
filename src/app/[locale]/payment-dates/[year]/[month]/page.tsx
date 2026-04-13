@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import {
+  getPaymentSummaryDayText,
+  getPaymentSummaryStatusText,
+  GrantSummaryCard,
+} from "@/components/grant-summary-card";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { MonetizationBlocks } from "@/components/monetization-blocks";
 import { PageViewTracker } from "@/components/page-view-tracker";
@@ -14,7 +19,7 @@ import {
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
-import { getGrantAmountLabel } from "@/lib/official-resources";
+import { getGrantAmountDetails } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { formatDateLabel } from "@/lib/utils";
 
@@ -108,33 +113,32 @@ export default async function PaymentMonthPage({
         }}
       />
       <Section eyebrow={copy.paymentDates} title={paymentMonth.label}>
-        <div className="grid gap-4 md:grid-cols-2">
-          {paymentMonth.entries.map((entry) => (
-            <Link
-              key={entry.grantSlug}
-              href={buildLocalePath(locale, `/payment-dates/${year}/${month}/${entry.grantSlug}`)}
-            >
-              <Card className="space-y-3">
-                <div className="space-y-1">
-                  <h3 className="text-xl font-semibold">{entry.grantName}</h3>
-                  <p className="text-sm text-muted">
-                    {entry.state === "expected"
-                      ? copy.paymentEstimate
-                      : entry.state === "pending"
-                        ? copy.paymentPending
-                        : copy.paymentPortalOnly}
-                  </p>
-                </div>
-                <p className="text-base font-medium text-primary">
-                  {entry.date ? formatDateLabel(entry.date) : copy.paymentPortalOnly}
-                </p>
-                {getGrantAmountLabel(entry.grantSlug) ? (
-                  <p className="text-base font-semibold text-primary">{getGrantAmountLabel(entry.grantSlug)}</p>
-                ) : null}
-                <p className="text-sm text-muted">{entry.note}</p>
-              </Card>
-            </Link>
-          ))}
+        <div className="grid gap-4">
+          {paymentMonth.entries.map((entry) => {
+            const amountDetails = getGrantAmountDetails(entry.grantSlug);
+
+            return (
+              <Link
+                key={entry.grantSlug}
+                href={buildLocalePath(locale, `/payment-dates/${year}/${month}/${entry.grantSlug}`)}
+                className="block"
+              >
+                <GrantSummaryCard
+                  amountDetails={amountDetails}
+                  amountLabel={copy.summaryAmountLabel}
+                  className="h-full transition-colors hover:bg-surface-muted"
+                  footer={<p className="text-base text-muted">{entry.note}</p>}
+                  payDayLabel={copy.summaryPayDayLabel}
+                  payDayText={getPaymentSummaryDayText(copy, {
+                    date: entry.date ? formatDateLabel(entry.date) : null,
+                    state: entry.state,
+                  })}
+                  statusText={getPaymentSummaryStatusText(copy, entry.state)}
+                  title={entry.grantName}
+                />
+              </Link>
+            );
+          })}
         </div>
       </Section>
 

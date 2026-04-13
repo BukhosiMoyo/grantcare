@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import {
+  getPaymentSummaryDayText,
+  getPaymentSummaryStatusText,
+  GrantSummaryCard,
+} from "@/components/grant-summary-card";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { TrackedExternalLink } from "@/components/tracked-external-link";
 import { ButtonLink, Card, Section } from "@/components/ui";
@@ -14,8 +19,9 @@ import {
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
-import { GRANT_AMOUNT_SOURCE, getGrantAmountLabel } from "@/lib/official-resources";
+import { GRANT_AMOUNT_SOURCE, getGrantAmountDetails } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
+import { formatDateLabel } from "@/lib/utils";
 
 export async function generateMetadata({
   params,
@@ -73,7 +79,8 @@ export default async function GrantDetailPage({
         `/payment-dates/${paymentDefaults.year}/${paymentDefaults.monthSlug}/${paymentGrantSlug}`,
       )
     : buildLocalePath(locale, "/payment-dates");
-  const amountLabel = getGrantAmountLabel(grant.slug);
+  const amountDetails = getGrantAmountDetails(grant.slug);
+  const paymentEntry = paymentGrantSlug ? paymentDefaults.grants[paymentGrantSlug] ?? null : null;
   const hubLinks = statuses.slice(0, 4).map((status) => ({
     href: `/status/${status.slug}`,
     title: status.title,
@@ -83,58 +90,80 @@ export default async function GrantDetailPage({
   return (
     <div className="space-y-8">
       <Section eyebrow={copy.eligibility} title={grant.name}>
-        <Card className="space-y-6">
-          <p className="max-w-2xl text-base text-muted">{grant.summary}</p>
-          {amountLabel ? (
-            <div className="rounded-3xl bg-surface px-4 py-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">Current amount</p>
-              <p className="mt-1 text-lg font-semibold text-primary">{amountLabel}</p>
-              <a href={GRANT_AMOUNT_SOURCE.href} target="_blank" rel="noreferrer" className="mt-2 inline-flex text-sm font-semibold text-primary">
-                Official amount source
-              </a>
-            </div>
-          ) : null}
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="space-y-2">
-              <p className="font-semibold">{copy.whoItMayFit}</p>
-              <ul className="space-y-2 text-sm text-muted">
-                {grant.checks.map((item) => (
-                  <li key={item}>• {item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="space-y-2">
-              <p className="font-semibold">{copy.documents}</p>
-              <ul className="space-y-2 text-sm text-muted">
-                {grant.documents.map((item) => (
-                  <li key={item}>• {item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <TrackedExternalLink
-              href={grant.officialHref}
-              locale={locale}
-              eventName="official_resource.clicked"
-              eventPayload={{
-                destination: "grant",
-                grantSlug: grant.slug,
-              }}
-              target="_blank"
-              rel="noreferrer"
-              className="primary-action focus-ring tap-target inline-flex items-center justify-center rounded-full bg-primary px-5 text-base font-semibold text-white hover:bg-primary-strong"
-            >
-              {copy.officialNextStep}
-            </TrackedExternalLink>
-            <ButtonLink href={buildLocalePath(locale, "/eligibility-checker")} variant="secondary">
-              {copy.eligibility}
-            </ButtonLink>
-            <ButtonLink href={paymentDatesHref} variant="secondary">
-              Payment dates
-            </ButtonLink>
-          </div>
-        </Card>
+        <GrantSummaryCard
+          amountDetails={amountDetails}
+          amountLabel={copy.summaryAmountLabel}
+          footer={
+            <>
+              <p className="max-w-2xl text-base text-muted">{grant.summary}</p>
+              {amountDetails ? (
+                <a
+                  href={GRANT_AMOUNT_SOURCE.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex text-sm font-semibold text-primary"
+                >
+                  Official amount source
+                </a>
+              ) : null}
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="space-y-2">
+                  <p className="font-semibold">{copy.whoItMayFit}</p>
+                  <ul className="space-y-2 text-sm text-muted">
+                    {grant.checks.map((item) => (
+                      <li key={item}>• {item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="space-y-2">
+                  <p className="font-semibold">{copy.documents}</p>
+                  <ul className="space-y-2 text-sm text-muted">
+                    {grant.documents.map((item) => (
+                      <li key={item}>• {item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <TrackedExternalLink
+                  href={grant.officialHref}
+                  locale={locale}
+                  eventName="official_resource.clicked"
+                  eventPayload={{
+                    destination: "grant",
+                    grantSlug: grant.slug,
+                  }}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="primary-action focus-ring tap-target inline-flex items-center justify-center rounded-full bg-primary px-5 text-base font-semibold text-white hover:bg-primary-strong"
+                >
+                  {copy.officialNextStep}
+                </TrackedExternalLink>
+                <ButtonLink href={buildLocalePath(locale, "/eligibility-checker")} variant="secondary">
+                  {copy.eligibility}
+                </ButtonLink>
+                <ButtonLink href={paymentDatesHref} variant="secondary">
+                  {copy.paymentDates}
+                </ButtonLink>
+              </div>
+            </>
+          }
+          payDayLabel={copy.summaryPayDayLabel}
+          payDayText={
+            paymentEntry
+              ? getPaymentSummaryDayText(copy, {
+                  date: paymentEntry.date ? formatDateLabel(paymentEntry.date) : null,
+                  state: paymentEntry.state,
+                })
+              : copy.summarySeePaymentDates
+          }
+          statusText={
+            paymentEntry
+              ? getPaymentSummaryStatusText(copy, paymentEntry.state)
+              : copy.summarySeePaymentDates
+          }
+          title={grant.name}
+        />
       </Section>
 
       <Section title={copy.relatedGuidesTitle}>

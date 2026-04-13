@@ -6,6 +6,7 @@ import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { PaymentDateTool } from "@/components/payment-date-tool";
 import { PaymentScheduleTable } from "@/components/payment-schedule-table";
+import { PaymentYearTable } from "@/components/payment-year-table";
 import { GrantAmountTable } from "@/components/grant-amount-table";
 import { QuickCheckOptions } from "@/components/quick-check-options";
 import { Card, Section } from "@/components/ui";
@@ -59,6 +60,10 @@ export default async function PaymentDatesPage({
   ]);
 
   const archive = periods.filter((entry) => entry.year >= new Date().getFullYear()).slice(0, 12);
+  const annualPeriods = periods.filter((entry) => entry.year === 2026);
+  const annualCategories = paymentCategories.filter((category) =>
+    annualPeriods.some((period) => Boolean(period.grants[category.slug])),
+  );
   const hubLinks = [
     {
       href: "/status/approved",
@@ -114,6 +119,22 @@ export default async function PaymentDatesPage({
             monthLabel={defaults.label}
             monthPath={`/payment-dates/${defaults.year}/${defaults.monthSlug}`}
           />
+          {annualCategories.length > 0 ? (
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">2026 tables</p>
+              <div className="flex flex-wrap gap-3">
+                {annualCategories.map((category) => (
+                  <a
+                    key={category.slug}
+                    href={`#${category.slug}-2026`}
+                    className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-5 text-base font-semibold hover:bg-surface-muted"
+                  >
+                    {category.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </Card>
       </Section>
 
@@ -122,6 +143,23 @@ export default async function PaymentDatesPage({
           <GrantAmountTable />
         </Card>
       </Section>
+
+      {annualCategories.length > 0 ? (
+        <Section title="2026 payment tables">
+          <div className="space-y-4">
+            {annualCategories.map((category) => (
+              <PaymentYearTable
+                key={category.slug}
+                anchorId={`${category.slug}-2026`}
+                grantSlug={category.slug}
+                locale={locale}
+                periods={annualPeriods}
+                title={category.name}
+              />
+            ))}
+          </div>
+        </Section>
+      ) : null}
 
       <Section title="Quick check options">
         <QuickCheckOptions />

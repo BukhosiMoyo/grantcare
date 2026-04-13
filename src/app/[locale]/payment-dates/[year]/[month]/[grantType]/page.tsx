@@ -2,11 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import {
+  getPaymentSummaryDayText,
+  getPaymentSummaryStatusText,
+  GrantSummaryCard,
+} from "@/components/grant-summary-card";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { MonetizationBlocks } from "@/components/monetization-blocks";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { TrackedExternalLink } from "@/components/tracked-external-link";
-import { ButtonLink, Card, Pill, Section } from "@/components/ui";
+import { ButtonLink, Card, Section } from "@/components/ui";
 import {
   getPaymentEntry,
   getPaymentPeriod,
@@ -16,7 +21,7 @@ import {
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
-import { GRANT_AMOUNT_SOURCE, getGrantAmountLabel } from "@/lib/official-resources";
+import { GRANT_AMOUNT_SOURCE, getGrantAmountDetails } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { formatDateLabel } from "@/lib/utils";
 
@@ -109,7 +114,7 @@ export default async function PaymentGrantPage({
       description: "Open the missing-payment guide if the date passed and the payment still has not arrived.",
     },
   ];
-  const amountLabel = getGrantAmountLabel(paymentEntry.grantSlug);
+  const amountDetails = getGrantAmountDetails(paymentEntry.grantSlug);
 
   return (
     <div className="space-y-8">
@@ -124,49 +129,52 @@ export default async function PaymentGrantPage({
         }}
       />
       <Section eyebrow={copy.paymentDates} title={`${paymentEntry.grantName} for ${paymentMonth.label}`}>
-        <Card className="space-y-5">
-          <Pill>
-            {paymentEntry.state === "expected"
-              ? copy.paymentEstimate
-              : paymentEntry.state === "pending"
-                ? copy.paymentPending
-                : copy.paymentPortalOnly}
-          </Pill>
-          <div className="space-y-2">
-            <p className="text-3xl font-semibold text-primary">
-              {paymentEntry.date ? formatDateLabel(paymentEntry.date) : copy.paymentPortalOnly}
-            </p>
-            {amountLabel ? (
-              <div className="space-y-1">
-                <p className="text-sm font-semibold text-foreground">Current amount: {amountLabel}</p>
-                <a href={GRANT_AMOUNT_SOURCE.href} target="_blank" rel="noreferrer" className="text-sm font-semibold text-primary">
+        <GrantSummaryCard
+          amountDetails={amountDetails}
+          amountLabel={copy.summaryAmountLabel}
+          footer={
+            <>
+              {amountDetails ? (
+                <a
+                  href={GRANT_AMOUNT_SOURCE.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex text-sm font-semibold text-primary"
+                >
                   Official amount source
                 </a>
+              ) : null}
+              <p className="max-w-2xl text-base text-muted">{paymentEntry.note}</p>
+              <div className="flex flex-wrap gap-3">
+                <ButtonLink href={buildLocalePath(locale, "/dashboard")}>{copy.saveDate}</ButtonLink>
+                <ButtonLink href={buildLocalePath(locale, "/dashboard")} variant="secondary">
+                  {copy.notifyMe}
+                </ButtonLink>
+                <TrackedExternalLink
+                  href={paymentEntry.officialHref}
+                  locale={locale}
+                  eventName="official_resource.clicked"
+                  eventPayload={{
+                    destination: "payment-date",
+                    grantSlug: paymentEntry.grantSlug,
+                  }}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-5 text-base font-semibold hover:bg-surface-muted"
+                >
+                  {copy.officialLink}
+                </TrackedExternalLink>
               </div>
-            ) : null}
-            <p className="max-w-2xl text-sm text-muted">{paymentEntry.note}</p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <ButtonLink href={buildLocalePath(locale, "/dashboard")}>{copy.saveDate}</ButtonLink>
-            <ButtonLink href={buildLocalePath(locale, "/dashboard")} variant="secondary">
-              {copy.notifyMe}
-            </ButtonLink>
-            <TrackedExternalLink
-              href={paymentEntry.officialHref}
-              locale={locale}
-              eventName="official_resource.clicked"
-              eventPayload={{
-                destination: "payment-date",
-                grantSlug: paymentEntry.grantSlug,
-              }}
-              target="_blank"
-              rel="noreferrer"
-              className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-5 text-base font-semibold hover:bg-surface-muted"
-            >
-              {copy.officialLink}
-            </TrackedExternalLink>
-          </div>
-        </Card>
+            </>
+          }
+          payDayLabel={copy.summaryPayDayLabel}
+          payDayText={getPaymentSummaryDayText(copy, {
+            date: paymentEntry.date ? formatDateLabel(paymentEntry.date) : null,
+            state: paymentEntry.state,
+          })}
+          statusText={getPaymentSummaryStatusText(copy, paymentEntry.state)}
+          title={paymentEntry.grantName}
+        />
       </Section>
 
       <Section title={copy.relatedGuidesTitle}>

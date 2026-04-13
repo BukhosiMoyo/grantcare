@@ -29,12 +29,11 @@ const ENGLISH_HOMEPAGE_CONTENT: HomepageContent = {
   heroEyebrow: "Independent grant help",
   heroTitle: "Need help checking payment dates or understanding your status?",
   heroDescription:
-    "GrantCare helps you read payment dates, understand common status wording, and find the next useful step without pretending to be the official system.",
+    "GrantCare helps you check pay days, understand status words, and find the next step.",
   heroDisclaimer:
-    "GrantCare is independent and not affiliated with SASSA or the South African government. Use official government channels for applications, appeals, and official status checks.",
-  heroPreviewTitle: "Payment dates at a glance",
-  heroPreviewBody:
-    "Open the current month, check the grant type, and read whether the date is published, expected, or still pending.",
+    "GrantCare is not SASSA or the South African government. Use official government channels for applications, appeals, and official status checks.",
+  heroPreviewTitle: "This month’s grant summary",
+  heroPreviewBody: "See the pay day and the amount for each grant.",
   toolsTitle: "Choose the task you need today.",
   toolsIntro:
     "Start with the tool that matches your question, then move to the official route only when you need a formal action.",

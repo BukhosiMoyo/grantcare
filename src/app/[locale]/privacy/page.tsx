@@ -21,7 +21,7 @@ export async function generateMetadata({
     path: "/privacy",
     title: "GrantCare privacy",
     description:
-      "Read how GrantCare handles reminders, saved preferences, account access, and support contact details.",
+      "Read how GrantCare handles reminders, saved preferences, account access, and product analytics.",
   });
 }
 
@@ -61,9 +61,8 @@ export default async function PrivacyPage({
           ],
         },
         {
-          title: "Support contact",
+          title: "Official contact routes",
           paragraphs: [
-            "GrantCare support email: hello@symaxx.com.",
             "Official government questions should go through the official SASSA contacts and portals listed on the contact page.",
           ],
         },

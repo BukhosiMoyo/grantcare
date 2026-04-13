@@ -79,6 +79,10 @@ type HomeCopy = {
   paymentPending: string;
   paymentPortalOnly: string;
   paymentScheduleIntro: string;
+  summaryAmountLabel: string;
+  summaryMonthLabel: string;
+  summaryPayDayLabel: string;
+  summarySeePaymentDates: string;
   possibleCauses: string;
   confirmPasswordLabel: string;
   preferredGrant: string;
@@ -216,11 +220,15 @@ const ENGLISH_COPY: HomeCopy = {
   openDashboard: "Open dashboard",
   otherGrantsTitle: "Other grants",
   paymentDates: "Payment dates",
-  paymentEstimate: "Expected schedule",
-  paymentPending: "Awaiting official release",
-  paymentPortalOnly: "Check the official SRD portal",
+  paymentEstimate: "Date expected",
+  paymentPending: "Date not out yet",
+  paymentPortalOnly: "Check the official SRD site",
   paymentScheduleIntro:
-    "Choose a month and grant type. Expected dates are marked clearly until official dates are published.",
+    "Choose a month and a grant. If the pay day is not out yet, it will say so clearly.",
+  summaryAmountLabel: "How much you get",
+  summaryMonthLabel: "This month",
+  summaryPayDayLabel: "Pay day",
+  summarySeePaymentDates: "See payment dates page",
   passwordLabel: "Password",
   possibleCauses: "Possible causes",
   confirmPasswordLabel: "Confirm password",

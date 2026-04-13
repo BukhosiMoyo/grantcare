@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { BrandLogo } from "@/components/brand-logo";
 import { BellIcon, CalendarIcon, CompassIcon, StatusIcon } from "@/components/icons";
 import { GrantAmountTable } from "@/components/grant-amount-table";
+import {
+  getPaymentSummaryDayText,
+  getPaymentSummaryStatusText,
+  GrantSummaryCard,
+} from "@/components/grant-summary-card";
 import { OfficialContactGrid } from "@/components/official-contact-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { QuickCheckOptions } from "@/components/quick-check-options";
@@ -19,9 +23,55 @@ import {
 import { getCopy } from "@/lib/copy";
 import { getHomepageContent } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
-import { getGrantAmountLabel } from "@/lib/official-resources";
-import { buildLocalePath, isLocale } from "@/lib/site";
+import { getGrantAmountDetails } from "@/lib/official-resources";
+import { buildLocalePath, isLocale, type Locale } from "@/lib/site";
 import { formatDateLabel } from "@/lib/utils";
+
+type HomepageGrantPreviewEntry = {
+  date: string | null;
+  grantName: string;
+  grantSlug: string;
+  state: "expected" | "pending" | "portal-only";
+};
+
+function HomepagePaymentPreviewCard({
+  amountLabel,
+  entry,
+  locale,
+  monthSlug,
+  payDayLabel,
+  payDayText,
+  statusText,
+  year,
+}: {
+  amountLabel: string;
+  entry: HomepageGrantPreviewEntry;
+  locale: Locale;
+  monthSlug: string;
+  payDayLabel: string;
+  payDayText: string;
+  statusText: string;
+  year: number;
+}) {
+  const amountDetails = getGrantAmountDetails(entry.grantSlug);
+
+  return (
+    <Link
+      href={buildLocalePath(locale, `/payment-dates/${year}/${monthSlug}/${entry.grantSlug}`)}
+      className="block"
+    >
+      <GrantSummaryCard
+        amountDetails={amountDetails}
+        amountLabel={amountLabel}
+        className="h-full transition-colors hover:bg-surface-muted"
+        payDayLabel={payDayLabel}
+        payDayText={payDayText}
+        statusText={statusText}
+        title={entry.grantName}
+      />
+    </Link>
+  );
+}
 
 export async function generateMetadata({
   params,
@@ -98,16 +148,16 @@ export default async function HomePage({
       <PageViewTracker name="page.viewed" locale={locale} />
 
       <section className="surface-card overflow-hidden rounded-[2rem] px-6 py-7 sm:px-8 sm:py-9 lg:px-10 lg:py-10">
-        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div className="space-y-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">
+        <div className="space-y-8">
+          <div className="space-y-6 pt-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/70 sm:text-sm">
               {homepage.heroEyebrow}
             </p>
-            <div className="space-y-3">
-              <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            <div className="space-y-4">
+              <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
                 {homepage.heroTitle}
               </h1>
-              <p className="max-w-2xl text-base leading-8 text-muted sm:text-lg">
+              <p className="max-w-3xl text-base leading-8 text-muted sm:text-lg">
                 {homepage.heroDescription}
               </p>
             </div>
@@ -117,62 +167,58 @@ export default async function HomePage({
                 {copy.statusHelp}
               </ButtonLink>
             </div>
-            <p className="max-w-2xl text-sm leading-7 text-muted">{homepage.heroDisclaimer}</p>
+            <p className="max-w-3xl text-base leading-8 text-muted">{homepage.heroDisclaimer}</p>
           </div>
 
-          <div className="rounded-[1.75rem] border border-border bg-[linear-gradient(180deg,rgba(23,76,60,0.06),rgba(255,250,240,0.96))] p-5 sm:p-6">
-            <div className="mb-5 flex items-center justify-between gap-4">
-              <div className="space-y-2">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
-                  {defaults.label}
-                </p>
-                <h2 className="text-2xl font-semibold tracking-tight">{homepage.heroPreviewTitle}</h2>
-                <p className="max-w-md text-sm leading-7 text-muted">{homepage.heroPreviewBody}</p>
-              </div>
-              <BrandLogo variant="icon" className="hidden w-[4.5rem] opacity-95 sm:block" priority />
-            </div>
-
-            <div className="grid gap-3">
-              {Object.values(defaults.grants)
-                .slice(0, 3)
-                .map((entry) => (
-                  <Link
-                    key={entry.grantSlug}
-                    href={buildLocalePath(
-                      locale,
-                      `/payment-dates/${defaults.year}/${defaults.monthSlug}/${entry.grantSlug}`,
-                    )}
-                    className="rounded-3xl border border-border bg-surface px-4 py-4 transition-colors hover:bg-surface-muted"
+          <div className="space-y-4">
+            <div className="rounded-[1.75rem] border border-border bg-[linear-gradient(180deg,rgba(23,76,60,0.06),rgba(255,250,240,0.96))] p-5 sm:p-6">
+              <div className="rounded-[1.5rem] border border-border bg-surface px-5 py-5">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                  <div className="space-y-2">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70 sm:text-sm">
+                      {copy.summaryMonthLabel}
+                    </p>
+                    <p className="text-xl font-semibold text-primary sm:text-2xl">{defaults.label}</p>
+                  </div>
+                  <ButtonLink
+                    href={buildLocalePath(locale, `/payment-dates/${defaults.year}/${defaults.monthSlug}`)}
+                    variant="secondary"
                   >
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="font-semibold text-foreground">{entry.grantName}</p>
-                        <p className="text-sm text-muted">
-                          {entry.state === "expected"
-                            ? copy.paymentEstimate
-                            : entry.state === "pending"
-                              ? copy.paymentPending
-                              : copy.paymentPortalOnly}
-                        </p>
-                        {getGrantAmountLabel(entry.grantSlug) ? (
-                          <p className="text-xs text-muted">{getGrantAmountLabel(entry.grantSlug)}</p>
-                        ) : null}
-                      </div>
-                      <p className="text-right text-sm font-medium text-primary">
-                        {entry.date ? formatDateLabel(entry.date) : copy.paymentPortalOnly}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-            </div>
+                    {copy.viewMonth}
+                  </ButtonLink>
+                </div>
+              </div>
 
-            <div className="mt-5">
-              <ButtonLink
-                href={buildLocalePath(locale, `/payment-dates/${defaults.year}/${defaults.monthSlug}`)}
-                variant="secondary"
-              >
-                {copy.viewMonth}
-              </ButtonLink>
+              <div className="mt-4 space-y-2">
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70 sm:text-sm">
+                    {defaults.label}
+                  </p>
+                  <h2 className="text-2xl font-semibold tracking-tight">{homepage.heroPreviewTitle}</h2>
+                  <p className="max-w-3xl text-base leading-8 text-muted">{homepage.heroPreviewBody}</p>
+                </div>
+              </div>
+
+              <div className="mt-4 grid gap-3">
+                {Object.values(defaults.grants)
+                  .slice(0, 3)
+                  .map((entry) => (
+                    <HomepagePaymentPreviewCard
+                      key={entry.grantSlug}
+                      amountLabel={copy.summaryAmountLabel}
+                      entry={entry}
+                      locale={locale}
+                      monthSlug={defaults.monthSlug}
+                      payDayLabel={copy.summaryPayDayLabel}
+                      payDayText={getPaymentSummaryDayText(copy, {
+                        date: entry.date ? formatDateLabel(entry.date) : null,
+                        state: entry.state,
+                      })}
+                      statusText={getPaymentSummaryStatusText(copy, entry.state)}
+                      year={defaults.year}
+                    />
+                  ))}
+              </div>
             </div>
           </div>
         </div>
@@ -244,7 +290,7 @@ export default async function HomePage({
       </Section>
 
       <Section eyebrow={copy.latestDates} title="Read the latest month carefully before you plan around a date.">
-        <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="space-y-4">
           <Card className="space-y-4">
             <div className="flex items-center justify-between gap-3">
               <div>
@@ -261,36 +307,24 @@ export default async function HomePage({
               </ButtonLink>
             </div>
             <div className="grid gap-3">
-              {Object.values(defaults.grants).map((entry) => (
-                <Link
-                  key={entry.grantSlug}
-                  href={buildLocalePath(
-                    locale,
-                    `/payment-dates/${defaults.year}/${defaults.monthSlug}/${entry.grantSlug}`,
-                  )}
-                >
-                  <div className="rounded-3xl border border-border bg-surface px-4 py-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="font-semibold text-foreground">{entry.grantName}</p>
-                        <p className="text-sm text-muted">
-                          {entry.state === "expected"
-                            ? copy.paymentEstimate
-                            : entry.state === "pending"
-                              ? copy.paymentPending
-                              : copy.paymentPortalOnly}
-                        </p>
-                        {getGrantAmountLabel(entry.grantSlug) ? (
-                          <p className="text-xs text-muted">{getGrantAmountLabel(entry.grantSlug)}</p>
-                        ) : null}
-                      </div>
-                      <p className="text-right text-sm font-medium text-primary">
-                        {entry.date ? formatDateLabel(entry.date) : copy.paymentPortalOnly}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+              {Object.values(defaults.grants).map((entry) => {
+                return (
+                  <HomepagePaymentPreviewCard
+                    key={entry.grantSlug}
+                    amountLabel={copy.summaryAmountLabel}
+                    entry={entry}
+                    locale={locale}
+                    monthSlug={defaults.monthSlug}
+                    payDayLabel={copy.summaryPayDayLabel}
+                    payDayText={getPaymentSummaryDayText(copy, {
+                      date: entry.date ? formatDateLabel(entry.date) : null,
+                      state: entry.state,
+                    })}
+                    statusText={getPaymentSummaryStatusText(copy, entry.state)}
+                    year={defaults.year}
+                  />
+                );
+              })}
             </div>
           </Card>
 
@@ -298,7 +332,7 @@ export default async function HomePage({
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
               {copy.statusMeanings}
             </p>
-            <div className="grid gap-3">
+            <div className="grid gap-3 sm:grid-cols-2">
               {statuses.slice(0, 4).map((status) => (
                 <Link
                   key={status.slug}

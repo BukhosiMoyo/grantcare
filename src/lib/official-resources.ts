@@ -84,45 +84,116 @@ export const REPORTED_CHECK_METHODS = [
 export const CURRENT_GRANT_AMOUNT_ROWS = [
   {
     name: "Older Persons Grant",
-    amount: "R2 400 (60-74) / R2 420 (75+)",
+    slug: "older-persons",
   },
   {
     name: "Disability Grant",
-    amount: "R2 400",
+    slug: "disability",
   },
   {
     name: "Care Dependency Grant",
-    amount: "R2 400",
+    slug: "care-dependency",
   },
   {
     name: "Child Support Grant",
-    amount: "R580",
+    slug: "child-support",
   },
   {
     name: "Foster Child Grant",
-    amount: "R1 290 (R1 300 from October 2026)",
+    slug: "foster-child",
   },
   {
     name: "Grant-in-Aid",
-    amount: "R580",
+    slug: "grant-in-aid",
   },
   {
     name: "Social Relief of Distress",
-    amount: "R370",
+    slug: "social-relief",
   },
 ] as const;
 
-const GRANT_AMOUNT_LABELS: Record<string, string> = {
-  "older-persons": "R2 400 (60-74) / R2 420 (75+)",
-  disability: "R2 400",
-  children: "Child Support R580 / Foster Child R1 290 / Care Dependency R2 400",
-  "child-support": "R580",
-  "foster-child": "R1 290 (R1 300 from October 2026)",
-  "care-dependency": "R2 400",
-  "grant-in-aid": "R580",
-  "social-relief": "R370",
+export type GrantAmountDetail = {
+  label: string;
+  amount: string;
 };
 
+const GRANT_AMOUNT_DETAILS: Record<string, readonly GrantAmountDetail[]> = {
+  "older-persons": [
+    {
+      label: "Age 60 to 74",
+      amount: "R2 400",
+    },
+    {
+      label: "Age 75 or older",
+      amount: "R2 420",
+    },
+  ],
+  disability: [
+    {
+      label: "Disability Grant",
+      amount: "R2 400",
+    },
+  ],
+  children: [
+    {
+      label: "Child Support",
+      amount: "R580",
+    },
+    {
+      label: "Foster Child",
+      amount: "R1 290 (R1 300 from October 2026)",
+    },
+    {
+      label: "Care Dependency",
+      amount: "R2 400",
+    },
+  ],
+  "child-support": [
+    {
+      label: "Child Support Grant",
+      amount: "R580",
+    },
+  ],
+  "foster-child": [
+    {
+      label: "Foster Child Grant",
+      amount: "R1 290 (R1 300 from October 2026)",
+    },
+  ],
+  "care-dependency": [
+    {
+      label: "Care Dependency Grant",
+      amount: "R2 400",
+    },
+  ],
+  "grant-in-aid": [
+    {
+      label: "Grant-in-Aid",
+      amount: "R580",
+    },
+  ],
+  "social-relief": [
+    {
+      label: "Social Relief of Distress",
+      amount: "R370",
+    },
+  ],
+};
+
+export function getGrantAmountDetails(slug: string) {
+  return GRANT_AMOUNT_DETAILS[slug] ?? null;
+}
+
 export function getGrantAmountLabel(slug: string) {
-  return GRANT_AMOUNT_LABELS[slug] ?? null;
+  const details = getGrantAmountDetails(slug);
+
+  if (!details || details.length === 0) {
+    return null;
+  }
+
+  if (details.length === 1) {
+    return details[0].amount;
+  }
+
+  return details.map((detail) => `${detail.label} ${detail.amount}`).join(" / ");
 }

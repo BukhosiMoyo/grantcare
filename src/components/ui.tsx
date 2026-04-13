@@ -21,7 +21,7 @@ export function Section({
     <section className="space-y-4">
       <div className="space-y-1">
         {eyebrow ? (
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">{eyebrow}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/70 sm:text-sm">{eyebrow}</p>
         ) : null}
         <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">{title}</h2>
       </div>
@@ -46,7 +46,7 @@ export function Card({
 
 export function Pill({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full bg-surface-strong px-3 py-1 text-sm font-medium text-primary">
+    <span className="inline-flex items-center rounded-full bg-surface-strong px-3 py-1 text-xs font-medium text-primary sm:text-sm">
       {children}
     </span>
   );
