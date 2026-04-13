@@ -9,7 +9,16 @@ import {
 import { buildLocalizedSitemapEntry } from "@/lib/metadata";
 import { LOCALES } from "@/lib/site";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+function escapeXml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
+}
+
+export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
   const [guides, grants, statuses, paymentPeriods] = await Promise.all([
     listGuides("en"),
     listPublicGrantTypes("en"),
@@ -157,4 +166,48 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   return [...staticRoutes, ...paymentRoutes, ...guideRoutes, ...grantRoutes, ...statusRoutes];
+}
+
+export function buildSitemapXml(entries: MetadataRoute.Sitemap) {
+  const lines = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+  ];
+
+  for (const entry of entries) {
+    lines.push("  <url>");
+    lines.push(`    <loc>${escapeXml(entry.url)}</loc>`);
+
+    const languages = entry.alternates?.languages
+      ? Object.entries(entry.alternates.languages)
+      : [];
+
+    for (const [locale, href] of languages) {
+      if (typeof href !== "string") {
+        continue;
+      }
+
+      lines.push(
+        `    <xhtml:link rel="alternate" hreflang="${escapeXml(locale)}" href="${escapeXml(href)}" />`,
+      );
+    }
+
+    if (entry.lastModified) {
+      lines.push(`    <lastmod>${new Date(entry.lastModified).toISOString()}</lastmod>`);
+    }
+
+    if (entry.changeFrequency) {
+      lines.push(`    <changefreq>${entry.changeFrequency}</changefreq>`);
+    }
+
+    if (typeof entry.priority === "number") {
+      lines.push(`    <priority>${entry.priority}</priority>`);
+    }
+
+    lines.push("  </url>");
+  }
+
+  lines.push("</urlset>");
+
+  return `${lines.join("\n")}\n`;
 }
