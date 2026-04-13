@@ -7,7 +7,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
     slug: "how-to-understand-payment-dates",
     title: "How to understand payment dates",
     summary:
-      "A simple guide to reading payment-date pages properly, knowing the difference between expected and confirmed dates, and using date information without false certainty.",
+      "How to read payment-date pages properly, understand the difference between expected and confirmed dates, and use date information without false certainty.",
     sections: [
       section(
         "Quick answer",
@@ -15,11 +15,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "What this means",
-        "Payment-date pages can be very helpful, but only if you read them carefully. Some dates are clearly published. Others are expected based on the latest available information. In some periods, the date is not available yet and the safest answer is to wait for official confirmation.",
+        "Payment-date pages can be very helpful, but only if you read them carefully. Some dates are clearly published. Others are expected based on the latest available information. At times, the date is not available yet and the safest answer is to wait for official confirmation.",
       ),
       section(
         "Why people get confused by payment dates",
-        "Many users see a month and a date online and assume payment is guaranteed for that exact day. The real situation can be more complex. Different grant types may have different timing, some dates may still be pending, and official updates can change.",
+        "Many users see a month and a date online and assume payment is guaranteed for that exact day. The real situation is more complex. Different grant types have different timing, some dates remain pending, and official updates can change.",
       ),
       section(
         "What you can do next",
@@ -27,15 +27,15 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "The key words to watch",
-        "The most important words are published, expected, pending, and portal-only. Those words change how confidently you should rely on the information. Reading the note next to the date can matter as much as the date itself.",
+        "The most important words are published, expected, pending, and portal-only. Those words change how confidently you should rely on the information. Reading the note next to the date matters as much as the date itself.",
       ),
       section(
         "Important things to remember",
         "GrantCare is independent and does not issue official payment schedules. Its role is to organise and explain payment-date information clearly. For final confirmation, always use the relevant official channel.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare monthly payment-date pages, follow updates by grant type, and save reminders so you are not depending on guesses or rumours.",
+        "Date tracking on GrantCare",
+        "Compare monthly payment-date pages, follow updates by grant type, and save reminders so you are not depending on guesses or rumours.",
       ),
       section(
         "Related help",
@@ -47,7 +47,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       faq(
         "Can a payment date change?",
-        "Yes. That is why it is important to keep checking the latest published information.",
+        "Yes. Keep checking the latest published information to stay accurate.",
       ),
       faq(
         "What if there is no date yet?",
@@ -62,7 +62,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
     slug: "how-to-know-if-your-payment-is-ready",
     title: "How to know if your payment is ready",
     summary:
-      "A practical guide to the signs that a payment may be ready, what messages still mean wait, and how to avoid confusing approval with money already available.",
+      "The signs that a payment may be ready, what messages mean you should still wait, and how to avoid confusing approval with money already available.",
     sections: [
       section(
         "Quick answer",
@@ -89,8 +89,8 @@ export const SEO_BATCH_FIVE_GUIDES = [
         "Do not assume that approval alone means same-day access to funds. Do not ignore a banking warning just because the application was approved. Official updates still matter most.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare payment-related messages, understand what a published date really means, and track the right next page while you wait.",
+        "Payment readiness tracking",
+        "Compare payment-related messages, understand what a published date really means, and track the right next page while you wait.",
       ),
       section(
         "Related help",
@@ -117,7 +117,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
     slug: "what-pending-verification-means",
     title: "What pending verification means",
     summary:
-      "A calm explanation of pending verification, why it appears, and how to respond without making the process harder by changing the wrong information.",
+      "Why pending verification appears, what it means for your status, and how to respond without making the process harder by changing the wrong information.",
     sections: [
       section(
         "Quick answer",
@@ -129,7 +129,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Why this happens",
-        "This status can appear when records need more time to match, when a recent update is still moving through the system, or when there is a heavy volume of checks underway. It can also appear if one detail is unclear and the system needs another cycle before showing a final result.",
+        "This status can appear when records need more time to match, when a recent update is still moving through the system, or when there is a heavy volume of checks underway. It can also appear if one detail is unclear and the system needs another cycle to show a final result.",
       ),
       section(
         "What you can do next",
@@ -137,15 +137,15 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "What verification is often checking",
-        "The process may be checking identity details, contact details, bank-related information, or whether records line up correctly across systems. The message itself may not always say which one immediately, which is why careful reading and patience both matter.",
+        "The process may be checking identity details, contact details, bank-related information, or whether records line up correctly across systems. The message itself may not immediately specify which one, which is why careful reading and patience matter.",
       ),
       section(
         "Important things to remember",
-        "Pending verification does not automatically mean decline. It also does not mean you should keep changing details every day. GrantCare is independent and can explain the wording, but official verification still belongs to the official system.",
+        "Pending verification does not mean an automatic decline. It also does not mean you should change details every day. GrantCare is independent and can explain the wording, but official verification still rests with the official system.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare pending, identity, and banking-related guides so you can understand which kind of verification issue may be closest to your situation.",
+        "Verification guidance on GrantCare",
+        "Compare pending, identity, and banking-related guides so you can understand which kind of verification issue may be closest to your situation.",
       ),
       section(
         "Related help",
@@ -161,7 +161,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       faq(
         "Can pending verification become approved later?",
-        "Yes. It can later change into approved, declined, or another message depending on the official result.",
+        "Yes. It can change into approved, declined, or another message depending on the official result.",
       ),
     ],
     featured: false,
@@ -172,7 +172,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
     slug: "what-declined-after-reconsideration-means",
     title: "What declined after reconsideration means",
     summary:
-      "A plain-language guide to a declined result after reconsideration or review, what it usually means for that case, and how to think about the next step carefully.",
+      "What a declined result after reconsideration or review usually means for your case, and how to think about your next step carefully.",
     sections: [
       section(
         "Quick answer",
@@ -180,27 +180,27 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "What this means",
-        "A reconsideration step exists to review a previous result. If the outcome is still declined, it usually means the review did not find enough reason to change the decision. That does not mean you should panic, but it does mean your next step should be based on the exact reason now shown.",
+        "A reconsideration step exists to review a previous result. If the outcome is still declined, the review did not find enough reason to change the decision. That does not mean you should panic, but your next step must be based on the exact reason now shown.",
       ),
       section(
         "Why this happens",
-        "This can happen when the information reviewed still points to the same eligibility problem, when the supporting records do not change the outcome, or when the reconsideration did not find an error in the earlier decision. In some cases, users expect reconsideration to work automatically, but it still depends on the official evidence and rules.",
+        "This can happen when the information reviewed still points to the same eligibility problem, when the supporting records do not change the outcome, or when the reconsideration did not find an error in the earlier decision. Some users expect reconsideration to bypass rules, but it still depends entirely on official evidence.",
       ),
       section(
         "What you can do next",
-        "1. Read the current official reason carefully.\n2. Compare it with the original issue if you still have that record.\n3. Work out whether another official route exists for your case.\n4. Keep your documents and status records together.\n5. Avoid random reapplications unless the official system clearly says that is the correct next step.",
+        "1. Read the current official reason carefully.\n2. Compare it with the original issue if you still have that record.\n3. Work out whether another official route exists for your case.\n4. Keep your documents and status records together.\n5. Avoid random reapplications unless the official system says that is the correct next step.",
       ),
       section(
         "How to think about the next step",
-        "The next step may not be the same for every person. Some cases may need a new application later if circumstances change. Others may end with the reconsideration result for that period. The important thing is to rely on the current official wording rather than assumptions from older messages.",
+        "The next step may not be the same for every person. Some cases need a new application later if circumstances change. Others end with the reconsideration result for that period. Rely on the current official wording rather than assumptions from older messages.",
       ),
       section(
         "Important things to remember",
         "A second decline feels heavy, but do not hand your case to unofficial fixers or paid shortcuts. GrantCare can help explain the wording, but official reconsideration and official decisions remain outside GrantCare.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you read decline wording calmly, compare appeal and document guides, and understand whether your next focus should be evidence, eligibility, or a future application cycle.",
+        "Reconsideration guides on GrantCare",
+        "Read decline wording calmly, compare appeal and document guides, and understand whether your next focus should be evidence, eligibility, or a future application cycle.",
       ),
       section(
         "Related help",
@@ -208,7 +208,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       faq(
         "Does this mean the case is completely closed forever?",
-        "Not necessarily forever, but it does mean the reconsideration did not change that decision for the review in question.",
+        "Not necessarily forever, but the reconsideration did not change that decision for the review in question.",
       ),
       faq(
         "Should I submit another reconsideration immediately?",
@@ -227,7 +227,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
     slug: "how-to-fix-missing-payment-issues",
     title: "How to fix missing payment issues",
     summary:
-      "A practical guide for users who expected payment but did not receive it, with calm checks to help separate timing problems from true missing-payment cases.",
+      "If you expected a payment but did not receive it, here are the calm checks to separate timing problems from true missing-payment cases.",
     sections: [
       section(
         "Quick answer",
@@ -235,11 +235,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "What this means",
-        "A missing payment issue is different from a short delay. It usually means the date or expected window has passed and the money still has not arrived. At that point, the key question is whether the problem is timing, payment method, or a change in status that you have not noticed yet.",
+        "A missing payment issue is different from a short delay. It usually means the date or expected window has passed and the money still has not arrived. The key question is whether the problem is timing, the payment method, or a change in status that you have not noticed yet.",
       ),
       section(
         "Why this happens",
-        "Missing-payment situations can happen because the payment method failed, banking details were not accepted, the payment date changed, a processing issue appeared after approval, or the official system still has another step open that was easy to miss.",
+        "Missing-payment situations happen because the payment method failed, banking details were not accepted, the payment date changed, a processing issue appeared after approval, or the official system still has another step open that was easily missed.",
       ),
       section(
         "What you can do next",
@@ -247,15 +247,15 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "How to avoid fixing the wrong problem",
-        "Do not jump straight to changing your bank details unless you have a real reason. Do not assume the date was final if it was only expected. Work through the steps one by one so you know whether the problem is timing, status, or payment method.",
+        "Do not jump straight to changing your bank details unless you have a real reason. Do not assume the date was final if it was only expected. Work through the steps one by one to see whether the problem is timing, status, or payment method.",
       ),
       section(
         "Important things to remember",
-        "GrantCare is independent and does not issue payments. It helps you interpret what may be happening before you use the official route. If money is missing, the official system is still the place for final confirmation and action.",
+        "GrantCare is independent and does not issue payments. It helps interpret what may be happening before you use the official route. If money is missing, the official system is still the place for final confirmation and action.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare approval, payment-processing, banking, and payment-date pages so you can narrow down the likely reason the payment did not arrive.",
+        "Payment tracking on GrantCare",
+        "Compare approval, payment-processing, banking, and payment-date pages to narrow down the likely reason the payment did not arrive.",
       ),
       section(
         "Related help",
@@ -263,7 +263,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       faq(
         "What if the date I saw was only expected?",
-        "Then it is possible the official timing moved. Check the latest published information before treating it as a missing payment.",
+        "The official timing may have moved. Check the latest published information before treating it as a missing payment.",
       ),
       faq(
         "Should I change my banking details immediately?",
@@ -271,7 +271,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       faq(
         "When should I use the official route?",
-        "Use it once the payment is clearly overdue or the status points to a specific issue that needs official action.",
+        "Use it once the payment is clearly overdue or the status points to a specific issue requiring official action.",
       ),
     ],
     featured: false,
@@ -282,7 +282,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
     slug: "what-to-do-if-you-missed-a-payment",
     title: "What to do if you missed a payment",
     summary:
-      "A calm guide for users who think they missed a payment window, with steps to check whether the payment was truly missed and what to review before panicking.",
+      "If you think you missed a payment window, here is how to check whether the payment was truly missed and what to review before making changes.",
     sections: [
       section(
         "Quick answer",
@@ -290,11 +290,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "What this means",
-        "A missed payment does not always mean the same thing. Sometimes the date was misunderstood. Sometimes the payment was delayed. Sometimes the money was not released because another issue blocked it. The right response depends on which of those situations you are actually in.",
+        "A missed payment does not always mean the same thing. Sometimes the date was misunderstood. Sometimes the payment was delayed. Sometimes the money was not released because another issue blocked it. Your next step depends on which of those situations you are actually in.",
       ),
       section(
         "Why this happens",
-        "People can miss payments because they relied on an unofficial date, because they did not see a change in the status message, because the payment method had a problem, or because the money was expected but not yet available when they checked.",
+        "People can miss payments because they relied on an unofficial date, did not see a change in the status message, had a payment method problem, or expected money that was not yet available when they checked.",
       ),
       section(
         "What you can do next",
@@ -302,15 +302,15 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "How to tell a missed payment from a delay",
-        "A missed payment usually means the expected window has clearly passed and the latest information still does not explain the gap. A delay is more likely when the timing is still moving, the date was only expected, or the status now shows a payment-related issue.",
+        "A missed payment typically means the expected window has clearly passed and the latest information still does not explain the gap. A delay is more likely when the timing is still moving, the date was only expected, or the status now shows a payment-related issue.",
       ),
       section(
         "Important things to remember",
-        "Do not rely on panic or rumours when money feels missing. Work from the date status, the payment status, and your payment details in that order. GrantCare helps you organise the check, but official action belongs on the official system.",
+        "Do not rely on panic or rumours when money feels missing. Work from the date status, the payment status, and your payment details in order. GrantCare helps organise the check, but official action belongs on the official system.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare missing-payment, delayed-payment, and payment-date guides so you can work out whether you missed a real payment or simply need updated information.",
+        "Missing payment flow on GrantCare",
+        "Compare missing-payment, delayed-payment, and payment-date guides to confirm whether you missed a real payment or simply need an updated timeline.",
       ),
       section(
         "Related help",
@@ -318,7 +318,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       faq(
         "What if I checked too early on the payment day?",
-        "That can happen. Timing during the day can vary, so first confirm whether the payment was actually late or you checked too soon.",
+        "Timing during the day can vary, so confirm whether the payment was actually late or you checked too early.",
       ),
       faq(
         "Does missing a payment mean the grant is gone?",
@@ -337,7 +337,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
     slug: "how-grant-reminders-can-help",
     title: "How grant reminders can help",
     summary:
-      "A simple guide to why reminders are useful for payment-date tracking and follow-up, especially for users who do not want to keep checking the same pages repeatedly.",
+      "Why reminders are useful for payment-date tracking and follow-up, especially if you want to avoid checking the same pages repeatedly.",
     sections: [
       section(
         "Quick answer",
@@ -345,11 +345,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "What this means",
-        "Reminders are not only about convenience. They can lower stress. Many users check the same page many times because they are worried about missing an update. A reminder helps move that work into a simple alert instead of constant manual checking.",
+        "Reminders are not only about convenience — they can lower stress. Many users check the same page multiple times because they are worried about missing an update. A reminder moves that work into a simple alert.",
       ),
       section(
         "Why reminders are useful",
-        "Payment dates can change, and status-related follow-up can be easy to forget when life is busy. Some users also support other family members and need one place to track dates and useful guides. A reminder can make the process calmer without pretending to be an official notice.",
+        "Payment dates can change, and status-related follow-up can be easy to forget when life is busy. Users supporting other family members also need one place to track dates and useful guides. A reminder creates a calmer process without pretending to be an official notice.",
       ),
       section(
         "What you can do next",
@@ -357,15 +357,15 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "What reminders can and cannot do",
-        "A reminder can tell you when new payment information is available or when a saved date is close. It cannot guarantee payment, approval, or an official decision. It is there to help you stay organised, not to replace the official system.",
+        "A reminder can tell you when new payment information is available or when a saved date is close. It cannot guarantee payment, approval, or an official decision. It exists to help you stay organised, not to replace the official system.",
       ),
       section(
         "Important things to remember",
         "GrantCare reminders come from an independent platform. They should be used as support, not as the final official confirmation of a payment or decision.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you save relevant pages, choose a preferred grant type, and receive reminder notifications without needing to search for the same information every time.",
+        "How reminders work on GrantCare",
+        "Save relevant pages, choose a preferred grant type, and receive reminder notifications without needing to search for the same information every time.",
       ),
       section(
         "Related help",
@@ -373,15 +373,15 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       faq(
         "Are reminders official notices?",
-        "No. They are helpful prompts from GrantCare, which is an independent information platform.",
+        "No. They are helpful prompts from GrantCare, an independent information platform.",
       ),
       faq(
         "Can reminders tell me if I am approved?",
-        "No. You should still use the official system for official status and approval actions.",
+        "No. Use the official system for official status and approval actions.",
       ),
       faq(
         "Do reminders stop me from checking official updates?",
-        "No. They are there to help you track information more easily, not replace official confirmation.",
+        "No. They help you track information more easily but do not replace official confirmation.",
       ),
     ],
     featured: false,
@@ -392,19 +392,19 @@ export const SEO_BATCH_FIVE_GUIDES = [
     slug: "how-to-keep-your-details-updated",
     title: "How to keep your details updated",
     summary:
-      "A practical guide to keeping your contact and payment details current so you avoid preventable verification, access, and payment problems later on.",
+      "Keeping your contact and payment details current to avoid preventable verification, access, and payment problems later on.",
     sections: [
       section(
         "Quick answer",
-        "To keep your details updated, regularly check that your phone number, personal details, and payment information still match your current situation, and use the official channel when a real change is needed.",
+        "To keep your details updated, regularly check that your phone number, personal details, and payment information match your current situation, and use the official channel when a real change is needed.",
       ),
       section(
         "What this means",
-        "Your details do not only matter at application time. They matter later too. A wrong phone number can affect OTPs and updates. Outdated banking details can delay payment. Small mismatches can become bigger problems if they are only discovered after a status changes.",
+        "Your details do not only matter at application time. A wrong phone number can affect OTPs and updates. Outdated banking details can delay payment. Small mismatches can become larger problems if they are only discovered after a status changes.",
       ),
       section(
         "Why this matters",
-        "Many avoidable problems begin with old information. People change numbers, switch banks, move, or realise that a detail was wrong from the start. If those updates are not handled properly, they can lead to delays, failed verification, or missed communication.",
+        "Many avoidable problems begin with old information. People change numbers, switch banks, move, or realise a detail was initially entered incorrectly. If those updates are forgotten, they can lead to delays, failed verification, or missed communication.",
       ),
       section(
         "What you can do next",
@@ -412,15 +412,15 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "The details worth checking most often",
-        "The most important details are your phone number, ID-linked personal details, banking information, and any other information tied to contact, verification, or payment. If one of those changes in real life, your official record may need attention too.",
+        "The most critical details are your phone number, ID-linked personal details, banking information, and anything tied to contact or payment. If one of those changes in real life, your official record may need attention.",
       ),
       section(
         "Important things to remember",
-        "Do not make repeated changes out of anxiety. Update details when something is actually wrong or outdated. GrantCare can explain why the change matters, but the official update still belongs on the official system.",
+        "Do not make repeated changes out of anxiety. Update details only when something is actually wrong or outdated. GrantCare can explain why the change matters, but the update itself still belongs on the official system.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you identify which detail issue is most likely affecting your case and guide you to the right page before you use the official route to make a change.",
+        "Details guidance on GrantCare",
+        "Identify which detail issue is most likely affecting your case and find the right page before you use the official route to make a change.",
       ),
       section(
         "Related help",
@@ -432,11 +432,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       faq(
         "Which detail causes the most trouble when it is wrong?",
-        "Phone numbers and banking details are both common problem areas because they affect access and payment.",
+        "Phone numbers and banking details are common problem areas because they affect system access and payment flow.",
       ),
       faq(
         "Can an old detail affect approval or payment later?",
-        "Yes. A mismatch may only become visible later in the process, which is why updates matter.",
+        "Yes. A mismatch may only become visible later in the process.",
       ),
     ],
     featured: false,
@@ -447,7 +447,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
     slug: "what-to-do-if-your-bank-details-changed",
     title: "What to do if your bank details changed",
     summary:
-      "A simple guide for users whose bank account details changed and who want to update the official record carefully without creating extra payment delays.",
+      "If your bank account details changed, here is how to update the official record properly without creating extra payment delays.",
     sections: [
       section(
         "Quick answer",
@@ -455,11 +455,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "What this means",
-        "A bank-detail change affects payment, not only profile information. If the old account is closed, inactive, or no longer the right one, payment can fail or be delayed until the official record is corrected.",
+        "A bank-detail change affects actual payment, not only profile information. If the old account is closed, inactive, or incorrect, payment can fail or be delayed until the official record reflects the updated account.",
       ),
       section(
         "Why this happens",
-        "People change bank details for many reasons. They may switch banks, replace an account, close an old account, or correct a detail that was entered incorrectly before. The official system then needs the new details to be verified and matched correctly.",
+        "People change bank details for many reasons. They switch banks, replace an account, close an old account, or fix a previously incorrect entry. The official system needs the new details to be verified and matched correctly.",
       ),
       section(
         "What you can do next",
@@ -467,15 +467,15 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "What to check before you submit the new details",
-        "Check the account number, the bank selection, and whether the account name aligns with the official rules for payment. A clean update submitted once is usually better than several rushed attempts.",
+        "Check the account number, the bank selection, and whether the account name aligns with the official rules for payment. A clean update submitted once is far better than several rushed attempts.",
       ),
       section(
         "Important things to remember",
         "Do not share bank details on unofficial websites. Do not pay someone to change them for you. GrantCare can explain the process, but the change itself must happen through the official system.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare banking-detail guides, payment-delay guidance, and missing-payment pages so you know what to watch after the update.",
+        "Bank updates on GrantCare",
+        "Compare banking-detail guides, payment-delay guidance, and missing-payment pages so you know what to watch for after the update.",
       ),
       section(
         "Related help",
@@ -483,15 +483,15 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       faq(
         "Should I update bank details before the next payment cycle?",
-        "If the old details are no longer correct, it is usually better to update them through the official route rather than wait.",
+        "If the old details are no longer correct, it is generally better to update them through the official route rather than wait.",
       ),
       faq(
         "Can a bank-detail change delay payment?",
-        "Yes. The new details may need to be verified before payment can move smoothly again.",
+        "Yes. The new details may need to be verified before payment can move smoothly.",
       ),
       faq(
         "What if I changed bank details recently and payment is still pending?",
-        "That can happen while the new information is still being processed. Watch for the next official update.",
+        "That can sometimes happen while the new information is still processing. Watch for the next official update.",
       ),
     ],
     featured: false,
@@ -502,7 +502,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
     slug: "where-to-find-official-updates-safely",
     title: "Where to find official updates safely",
     summary:
-      "A trust-focused guide to finding official grant-related updates without relying on fake pages, misleading social posts, or unofficial shortcuts.",
+      "Finding official grant-related updates without relying on fake pages, misleading social posts, or unofficial shortcuts.",
     sections: [
       section(
         "Quick answer",
@@ -510,7 +510,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "What this means",
-        "People often search for updates when they are anxious or short on time. That makes it easier for misleading pages, copied posts, and fake helpers to spread confusion. The safest approach is to separate explanation from confirmation: explanation can come from a trusted independent guide, but confirmation must come from the official source.",
+        "People often search for updates when they are anxious or short on time, making it easier for misleading pages, copied posts, and fake helpers to spread confusion. The safest approach is to separate explanation from confirmation: explanation can come from a trusted independent guide, but confirmation must come from the official source.",
       ),
       section(
         "Why this matters",
@@ -518,19 +518,19 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "What you can do next",
-        "1. Use known official channels for official applications, status actions, and final confirmation.\n2. Check whether the site clearly says if it is official or independent.\n3. Be cautious with links from random messages or social media posts.\n4. Avoid sharing ID, OTP, or banking information outside the official process.\n5. Use GrantCare to understand updates, then confirm them on the official channel if needed.",
+        "1. Use known official channels for official applications, status actions, and final confirmation.\n2. Check whether the site clearly says if it is official or independent.\n3. Be cautious with links from random messages or social media posts.\n4. Avoid sharing ID, OTP, or banking information outside the official process.\n5. Use GrantCare to understand updates, then confirm them on the official channel.",
       ),
       section(
         "How to judge whether an update source is safe",
-        "Look for clear ownership, a clear explanation of whether the platform is official or independent, and whether the page is trying to collect sensitive information. A trustworthy independent platform will explain what it does and will not pretend to be the official system.",
+        "Look for clear ownership, a clear explanation of whether the platform is official or independent, and whether the page tries to collect sensitive information. A trustworthy independent platform explains what it does and does not pretend to be the official system.",
       ),
       section(
         "Important things to remember",
         "GrantCare is an independent information and reminder platform. It does not replace official government systems. If you need an official application action or official status action, use the relevant official channel.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you understand payment dates, status meanings, and next steps in plain language while still directing you back to official channels for official actions.",
+        "Safe updates on GrantCare",
+        "Understand payment dates, status meanings, and next steps in plain language while still directing you back to official channels for official actions.",
       ),
       section(
         "Related help",
@@ -546,7 +546,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       faq(
         "What details should I never share on an unofficial page?",
-        "Be very careful with ID information, OTPs, and banking details unless you are on the correct official channel.",
+        "Be extremely careful with ID information, OTPs, and banking details unless you are on the correct official channel.",
       ),
     ],
     featured: false,

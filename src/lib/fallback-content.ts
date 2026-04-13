@@ -625,6 +625,24 @@ export function findFallbackPaymentPeriod(year: number, month: string | number) 
   );
 }
 
+/**
+ * Check whether all non-null payment dates in a period have already passed.
+ * Uses SAST (UTC+2) since the target audience is South African.
+ */
+export function hasAllDatesPassed(period: PublicPaymentPeriod): boolean {
+  const now = new Date();
+  const todaySAST = new Date(now.getTime() + 2 * 60 * 60 * 1000);
+  const todayStr = todaySAST.toISOString().slice(0, 10);
+
+  const datesWithValues = period.entries.filter((entry) => entry.date !== null);
+
+  if (datesWithValues.length === 0) {
+    return false;
+  }
+
+  return datesWithValues.every((entry) => entry.date! < todayStr);
+}
+
 export function getFallbackPaymentRouteDefaults() {
   const currentYear = new Date().getUTCFullYear();
   const currentMonth = new Date().getUTCMonth() + 1;

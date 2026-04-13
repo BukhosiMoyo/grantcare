@@ -7,31 +7,31 @@ export const SEO_BATCH_ONE_GUIDES = [
     slug: "why-is-my-status-pending",
     title: "Why your status is pending",
     summary:
-      "A plain-language guide to what a pending status usually means, why it can stay that way, and what to do next without making the situation worse.",
+      "What a pending status usually means, why it can stay that way for a while, and what to do next without making the situation worse.",
     sections: [
       section(
         "Quick answer",
-        "A pending status usually means the official review is not finished yet. It does not automatically mean you will be declined, but it does mean the final outcome is still outstanding.",
+        "A pending status usually means the official review is not finished yet. It does not mean you have been declined — it means the final outcome is still outstanding.",
       ),
       section(
         "What this means",
-        "When a status shows pending, the official system is still checking records or waiting for a process to clear. In many cases, nothing is wrong on your side yet. It often means the application has not reached a final approved or declined result for that cycle.",
+        "When a status shows pending, the official system is still checking records or waiting for a process to clear. Often, nothing is wrong on your side. The application simply has not reached a final approved or declined result for that cycle.",
       ),
       section(
         "Why this happens",
-        "Pending can happen when records still need to match, when updates are moving through the system, or when there is a high volume of applications under review. It can also happen after a recent change to your phone number, banking details, or personal information, because the system may need time to process the update.",
+        "Pending can happen when records still need to match, when updates are moving through the system, or when there is a high volume of applications under review. It can also appear after a recent change to your phone number, banking details, or personal information, because the system may need time to process the update.",
       ),
       section(
         "What you can do next",
-        "1. Check the exact wording on the official status page.\n2. Make sure your contact and banking details are still correct.\n3. Avoid resubmitting the same information unless the official system asks you to do that.\n4. Check again after the next normal update cycle.\n5. If the status stays pending for a long time, use the official channel to see whether another step is required.",
+        "1. Check the exact wording on the official status page.\n2. Make sure your contact and banking details are still correct.\n3. Avoid resubmitting the same information unless the official system asks you to.\n4. Check again after the next normal update cycle.\n5. If the status stays pending for a long time, use the official channel to see whether another step is required.",
       ),
       section(
         "Important things to remember",
-        "Pending is a waiting status, not a final answer. Rechecking the page many times in one day usually does not change the result. Be careful of anyone who promises to speed up a pending application for money, because official decisions must stay on the official system.",
+        "Pending is a waiting status, not a final answer. Rechecking the page many times in one day will not change the result. Be careful of anyone who promises to speed up a pending application for money — official decisions only happen on the official system.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare is an independent information and reminder platform. It can help you understand common status wording, follow payment date updates, and keep track of the next page to read while you wait for an official update.",
+        "Where GrantCare fits in",
+        "GrantCare is an independent information platform. Use it to understand common status wording, follow payment date updates, and keep track of the right pages to check while you wait for an official update.",
       ),
       section(
         "Related help",
@@ -47,7 +47,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       faq(
         "Should I reapply while my status is pending?",
-        "Only reapply if the official system clearly tells you to do that. A duplicate application can create more confusion.",
+        "Only reapply if the official system clearly tells you to. A duplicate application can create more confusion.",
       ),
     ],
     featured: true,
@@ -58,7 +58,7 @@ export const SEO_BATCH_ONE_GUIDES = [
     slug: "what-does-declined-mean",
     title: "What declined means",
     summary:
-      "A calm guide to what a declined status means, why it happens, and how to decide whether you should gather proof, appeal, or review your details first.",
+      "What a declined status means, why it happens, and how to decide whether to gather proof, appeal, or review your details first.",
     sections: [
       section(
         "Quick answer",
@@ -66,7 +66,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "What this means",
-        "Declined usually means the official review found a reason not to approve the application at that stage. The key point is the exact decline reason shown on the official system. That reason tells you whether the issue is about income, identity, duplication, another form of support, or missing information.",
+        "Declined usually means the official review found a reason not to approve the application at that stage. The key question is the exact decline reason shown on the official system — that reason tells you whether the issue is about income, identity, duplication, another form of support, or missing information.",
       ),
       section(
         "Why this happens",
@@ -78,11 +78,11 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Do not guess the reason for a decline if the official system already gives one. Do not pay anyone to 'fix' a decline outside the official route. A decline is serious, but it does not always mean you have no next step. In some cases, the best next move is an appeal. In others, it may be correcting information or waiting for a new application window.",
+        "Do not guess the reason for a decline if the official system already gives one. Do not pay anyone to fix a decline outside the official route. A decline is serious, but there is often a next step available — in some cases it is an appeal, in others it may be correcting information or waiting for a new application window.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you understand common decline reasons in plain language, compare the next-step options, and read practical guidance before you use the official channel. The aim is to reduce confusion, not replace the official process.",
+        "What you can use GrantCare for",
+        "Use GrantCare to understand common decline reasons in plain language, compare the next-step options available to you, and read through practical guidance before you contact the official channel. The aim is to reduce confusion, not to replace the official process.",
       ),
       section(
         "Related help",
@@ -90,7 +90,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       faq(
         "Can a declined status be appealed?",
-        "In many cases there is an official appeal or reconsideration path, but you should follow the exact option shown on the official system.",
+        "Often, yes. There is usually an official appeal or reconsideration path, but follow the exact option shown on the official system.",
       ),
       faq(
         "Should I submit a new application straight away?",
@@ -98,7 +98,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       faq(
         "Does declined mean I can never qualify?",
-        "No. It means the application was not approved for that review. Whether you may qualify later depends on your official circumstances and the current rules.",
+        "No. It means the application was not approved for that review. Whether you may qualify later depends on your circumstances and the current rules.",
       ),
     ],
     featured: true,
@@ -109,7 +109,7 @@ export const SEO_BATCH_ONE_GUIDES = [
     slug: "what-does-approved-mean",
     title: "What approved means",
     summary:
-      "A clear explanation of what an approved status usually means, what it does not mean yet, and the next checks to make before expecting payment.",
+      "What an approved status usually means, what it does not mean yet, and the next checks to make before expecting payment.",
     sections: [
       section(
         "Quick answer",
@@ -117,11 +117,11 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "What this means",
-        "When a status shows approved, the system has accepted the application for that stage. The next part is often payment scheduling, payment method confirmation, or waiting for the correct payment cycle. Many users feel relief when they see approved, but the process may still have one more practical step before funds are available.",
+        "When a status shows approved, the system has accepted the application for that stage. The next part is often payment scheduling, payment method confirmation, or waiting for the correct payment cycle. Many users feel relief when they see approved, but there may still be one more practical step before funds are available.",
       ),
       section(
         "Why this happens",
-        "Approved appears when the available records matched the rules closely enough for the application to pass. It may show before a payment date is published, before the bank or collection method is confirmed, or before the next payout run happens. That is why approved can exist for a while before a payment reflects.",
+        "Approved appears when the available records matched the rules closely enough for the application to pass. It may show before a payment date is published, before the bank or collection method is confirmed, or before the next payout run happens. So approved can exist for a while before a payment actually reflects.",
       ),
       section(
         "What you can do next",
@@ -132,8 +132,8 @@ export const SEO_BATCH_ONE_GUIDES = [
         "Approved does not always mean paid. The official payment date can still be pending, and different payment methods can move at different speeds. Always use the official system for confirmation if the payment does not arrive when expected.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you read the difference between approved, payment processing, banking issues, and missing-payment situations. You can also use the payment date pages and reminders to keep track of the next expected update.",
+        "Using GrantCare after approval",
+        "GrantCare breaks down the difference between approved, payment processing, banking issues, and missing-payment situations. You can also use the payment date pages and reminders to know when to check again.",
       ),
       section(
         "Related help",
@@ -141,11 +141,11 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       faq(
         "If I am approved, when will I be paid?",
-        "There is no single answer for every case. Look for an official payment date or payment-related update rather than assuming payment is immediate.",
+        "There is no single answer. Look for an official payment date or payment-related update rather than assuming payment is immediate.",
       ),
       faq(
         "Can approved change later?",
-        "Sometimes the wording after approval changes into a payment or verification step. That does not always mean the approval was taken away, but it does mean you should read the latest message carefully.",
+        "Sometimes the wording after approval changes into a payment or verification step. This does not always mean the approval was taken away, but read the latest message carefully.",
       ),
       faq(
         "Should I do anything after approval?",
@@ -160,7 +160,7 @@ export const SEO_BATCH_ONE_GUIDES = [
     slug: "approved-but-no-payment",
     title: "Status says approved but no payment",
     summary:
-      "A practical page for users who can see approved on the official system but still have not received payment, with calm checks to make before escalating.",
+      "If you can see approved on the official system but still have not received payment, here are calm checks to make before escalating.",
     sections: [
       section(
         "Quick answer",
@@ -168,11 +168,11 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "What this means",
-        "Approved without payment usually means the application passed review, but the payment date, payment batch, or payment method is still not complete. In some cases, the delay is short. In others, the official system may show a new message later that points to banking, verification, or processing.",
+        "Approved without payment usually means the application passed review, but the payment date, payment batch, or payment method is still not complete. Sometimes the delay is short. Other times, the official system may show a new message later that points to banking, verification, or processing.",
       ),
       section(
         "Why this happens",
-        "This gap can happen when the payment date has not been published yet, when bank or collection details still need to clear, when a payment batch is delayed, or when the money was sent back because the payment method failed. It can also happen around weekends, public holidays, or heavy update periods.",
+        "This gap can happen when the payment date has not been published yet, when bank or collection details still need to clear, when a payment batch is delayed, or when the money was sent back because the payment method failed. It also happens around weekends, public holidays, or heavy update periods.",
       ),
       section(
         "What you can do next",
@@ -180,11 +180,11 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Do not assume approved means same-day payment. Do not change your details repeatedly unless something is actually wrong. A rushed change can create a new delay. For official confirmation, always go back to the relevant government channel.",
+        "Do not assume approved means same-day payment. Avoid changing your details repeatedly unless something is actually wrong — a rushed change can create a new delay. For official confirmation, always go back to the relevant government channel.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare approval wording with payment-related wording, track the latest published dates, and save the pages that matter while you wait for the next update.",
+        "How GrantCare helps with this",
+        "Compare approval wording with payment-related wording on GrantCare, track the latest published dates, and save the pages that matter while you wait for the next update.",
       ),
       section(
         "Related help",
@@ -192,11 +192,11 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       faq(
         "Can I be approved and still have a banking problem?",
-        "Yes. Approval can happen before the payment method issue is fully visible, so it is worth checking for any new payment-related message.",
+        "Yes. Approval can happen before the payment method issue is fully visible, so check for any new payment-related message.",
       ),
       faq(
         "Should I wait or report the problem straight away?",
-        "If approval is very recent, waiting for the next update can be reasonable. If the delay has gone on for a while, use the official route to check whether another step is needed.",
+        "If approval is very recent, waiting for the next update is reasonable. If the delay has gone on for a while, use the official route to check whether another step is needed.",
       ),
       faq(
         "Could my payment date still be missing?",
@@ -211,7 +211,7 @@ export const SEO_BATCH_ONE_GUIDES = [
     slug: "banking-details-pending-meaning",
     title: "Banking details pending meaning",
     summary:
-      "A simple explanation of what banking details pending usually means, why it happens, and how to avoid common mistakes when fixing it.",
+      "What banking details pending usually means, why it happens, and how to avoid common mistakes when fixing it.",
     sections: [
       section(
         "Quick answer",
@@ -231,11 +231,11 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Using someone else's account can cause problems. A pending banking status does not always mean the whole application failed. It often means the payment route is still being settled. Only update banking details through the official system.",
+        "Using someone else's account can cause problems. A pending banking status does not mean the whole application failed — it often means the payment route is still being settled. Only update banking details through the official system.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you understand payment method wording, read guides about common banking issues, and keep track of payment date pages once the banking step is sorted out.",
+        "GrantCare resources for banking issues",
+        "GrantCare explains payment method wording, covers common banking issues in dedicated guides, and tracks payment date pages you can check once the banking step is sorted out.",
       ),
       section(
         "Related help",
@@ -251,7 +251,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       faq(
         "How long does banking verification take?",
-        "There is no single fixed answer. It depends on the official update cycle and whether the submitted details match correctly.",
+        "It varies, but it usually takes a few days. It depends on the official update cycle and whether the submitted details match correctly.",
       ),
     ],
     featured: false,
@@ -262,15 +262,15 @@ export const SEO_BATCH_ONE_GUIDES = [
     slug: "identity-verification-required-meaning",
     title: "Identity verification required meaning",
     summary:
-      "A practical guide to what identity verification required usually means, why the step appears, and how to handle it safely through official channels.",
+      "What identity verification required usually means, why the step appears, and how to handle it safely through official channels.",
     sections: [
       section(
         "Quick answer",
-        "Identity verification required means the official system still needs to confirm who you are before the process can move on. It is a verification step, not automatically a rejection.",
+        "Identity verification required means the official system still needs to confirm who you are before the process can move on. It is a verification step, not a rejection.",
       ),
       section(
         "What this means",
-        "This status usually appears when the system cannot complete the ID check with enough confidence. The record may need another confirmation step before approval or payment can continue. The exact process depends on the official route being used, so the safest move is always to follow the official instruction shown with that status.",
+        "This status usually appears when the system cannot complete the ID check with enough confidence. The record may need another confirmation step before approval or payment can continue. The exact process depends on the official route being used, so always follow the official instruction shown with that status.",
       ),
       section(
         "Why this happens",
@@ -285,8 +285,8 @@ export const SEO_BATCH_ONE_GUIDES = [
         "Do not use third-party websites or pay someone to complete identity verification for you. Verification is sensitive, and official channels matter. A verification status is usually something to resolve, not something to panic about.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you understand why identity wording appears, compare it with pending or declined statuses, and read the next best guide before you return to the official system.",
+        "What GrantCare covers on this topic",
+        "GrantCare explains why identity wording appears, compares it with pending or declined statuses, and points you to the right guide before you return to the official system.",
       ),
       section(
         "Related help",
@@ -313,7 +313,7 @@ export const SEO_BATCH_ONE_GUIDES = [
     slug: "failed-status-meaning",
     title: "Failed status meaning",
     summary:
-      "A careful explanation of what a failed status can mean, why the exact wording matters, and how to work out whether the problem is with payment, verification, or another step.",
+      "What a failed status can mean, why the exact wording matters, and how to work out whether the problem is with payment, verification, or another step.",
     sections: [
       section(
         "Quick answer",
@@ -321,7 +321,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "What this means",
-        "Failed is a broad warning word. It often points to a broken step rather than a full explanation by itself. On some records, the failure is about payment. On others, it may be tied to banking details, verification, or a technical problem. That is why the exact wording around the failed message matters so much.",
+        "Failed is a broad warning word. It often points to a broken step rather than a full explanation by itself. On some records, the failure is about payment. On others, it may be tied to banking details, verification, or a technical problem. The exact wording around the failed message matters the most.",
       ),
       section(
         "Why this happens",
@@ -336,8 +336,8 @@ export const SEO_BATCH_ONE_GUIDES = [
         "Failed does not tell the whole story on its own. Treat it as a signal to look more closely, not as a final explanation. Do not share sensitive information with unofficial helpers who claim they can repair a failed record for a fee.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you break down failed wording into common categories, so you know whether to read a banking guide, a verification guide, or a payment issue guide next.",
+        "How GrantCare breaks this down",
+        "GrantCare breaks down failed wording into common categories so you know whether to read a banking guide, a verification guide, or a payment issue guide next.",
       ),
       section(
         "Related help",
@@ -364,19 +364,19 @@ export const SEO_BATCH_ONE_GUIDES = [
     slug: "status-stuck-pending",
     title: "Status stuck on pending",
     summary:
-      "A focused guide for users whose status stays on pending for too long, with calm checks that help you decide whether to wait, verify details, or follow up officially.",
+      "If your status has stayed on pending for too long, here are calm checks that help you decide whether to wait, verify details, or follow up officially.",
     sections: [
       section(
         "Quick answer",
-        "If your status seems stuck on pending, it usually means the review has not cleared yet or another hidden step has not moved forward. It does not automatically mean there is a permanent problem, but it does mean you should check carefully instead of only refreshing the page.",
+        "If your status seems stuck on pending, it usually means the review has not cleared yet or another hidden step has not moved forward. It does not mean there is a permanent problem, but you should check carefully instead of only refreshing the page.",
       ),
       section(
         "What this means",
-        "A long pending period is different from a fresh pending status. When it stays the same for an unusual amount of time, users often start wondering whether the system missed something, whether details are holding it up, or whether they need to act. The truth is usually less dramatic: the status has not resolved yet, and the next helpful step is to look for signals around it.",
+        "A long pending period is different from a fresh pending status. When it stays the same for an unusual amount of time, you might wonder whether the system missed something, whether details are holding it up, or whether you need to act. The reality is usually less dramatic than it feels — the status simply has not resolved yet, and the next helpful step is to look for signals around it.",
       ),
       section(
         "Why this happens",
-        "A status can stay pending because there is a backlog, because records still need to match, because an earlier update has not fully reflected, or because another issue such as identity or banking verification has not become visible yet. In some cases, users keep seeing pending because they are checking before the next official update cycle has run.",
+        "A status can stay pending because there is a backlog, because records still need to match, because an earlier update has not fully reflected, or because another issue such as identity or banking verification has not become visible yet. Some users keep seeing pending because they check before the next official update cycle has actually run.",
       ),
       section(
         "What you can do next",
@@ -387,8 +387,8 @@ export const SEO_BATCH_ONE_GUIDES = [
         "A stuck pending status feels stressful, but repeated applications or repeated changes can make things messier. The safest approach is a calm review of your details, the wording, and the available official next steps.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare pending with other common statuses, read the most relevant next guide, and keep track of payment-date updates if the status later clears to approved.",
+        "Useful GrantCare pages for this situation",
+        "Compare pending with other common statuses on GrantCare, read the most relevant guide for your situation, and track payment-date updates if the status later clears to approved.",
       ),
       section(
         "Related help",
@@ -396,7 +396,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       faq(
         "How long is too long for pending?",
-        "There is no single answer for every case, but a status that has not changed after multiple normal update cycles is worth checking more closely.",
+        "There is no fixed rule, but a status that has not changed after multiple normal update cycles is worth checking more closely.",
       ),
       faq(
         "Should I keep checking every day?",
@@ -404,7 +404,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       faq(
         "Can pending stay there even if I need to verify something?",
-        "Yes. Sometimes the related issue becomes obvious only later, which is why it helps to look out for new wording.",
+        "Yes. Sometimes the related issue only becomes obvious later, which is why it helps to look out for new wording.",
       ),
     ],
     featured: false,
@@ -415,7 +415,7 @@ export const SEO_BATCH_ONE_GUIDES = [
     slug: "reapplication-needed-meaning",
     title: "Reapplication needed meaning",
     summary:
-      "A practical explanation of what reapplication needed usually means, when a fresh application is the right move, and when you should first check for another official option.",
+      "What reapplication needed usually means, when a fresh application is the right move, and when you should first check for another official option.",
     sections: [
       section(
         "Quick answer",
@@ -423,7 +423,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "What this means",
-        "This wording usually appears when an earlier application cannot keep moving forward under the current cycle or process. The system may require a fresh submission with current details. That does not always mean something went badly wrong. In many cases, it simply means a new application step is now required.",
+        "This wording usually appears when an earlier application cannot keep moving forward under the current cycle or process. The system may require a fresh submission with current details. This does not always mean something went badly wrong — in many situations, it simply means a new application step is now required.",
       ),
       section(
         "Why this happens",
@@ -435,11 +435,11 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Do not assume reapplication needed is the same as declined. It is a process instruction. At the same time, do not ignore it and keep waiting on the old application if the official system clearly says a new one is required.",
+        "Do not assume reapplication needed is the same as declined — it is a process instruction. At the same time, do not ignore it and keep waiting on the old application if the official system clearly says a new one is required.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you prepare before starting again, understand which details to double-check, and read related pages about documents, status wording, and payment-date expectations.",
+        "Preparing with GrantCare",
+        "Use GrantCare to prepare before starting again — check which details to double-check, read related pages about documents and status wording, and understand what to expect for payment-date timing after reapplying.",
       ),
       section(
         "Related help",
@@ -466,19 +466,19 @@ export const SEO_BATCH_ONE_GUIDES = [
     slug: "payment-processing-meaning",
     title: "Payment processing meaning",
     summary:
-      "A clear guide to what payment processing usually means, why it does not always mean money is already available, and how to tell when to wait and when to follow up.",
+      "What payment processing usually means, why it does not always mean money is already available, and how to tell when to wait versus when to follow up.",
     sections: [
       section(
         "Quick answer",
-        "Payment processing usually means the case has moved into the payout stage, but the money is not necessarily available yet. It is a positive movement, not final proof that payment has already landed.",
+        "Payment processing usually means the case has moved into the payout stage, but the money is not necessarily available yet. It is a positive sign, not final proof that payment has landed.",
       ),
       section(
         "What this means",
-        "This wording usually appears after approval and before successful payment completion. It suggests that the system is preparing, scheduling, or handing over the payment. Many users read payment processing as if the money is already in the account, but that is not always correct. It often means the transfer is in motion, not finished.",
+        "This wording usually appears after approval and before successful payment completion. It suggests the system is preparing, scheduling, or handing over the payment. Many users read payment processing as if the money is already in the account, but that is not always correct — it often means the transfer is in motion, not finished.",
       ),
       section(
         "Why this happens",
-        "Payment processing can remain visible while the payment date is being finalised, while a payment batch is being run, while the chosen payment method is being used, or while the system works through weekends, public holidays, or other timing delays. In some cases, it appears after a previous failed payment is being retried.",
+        "Payment processing can remain visible while the payment date is being finalised, while a payment batch is being run, while the chosen payment method is being used, or while the system works through weekends, public holidays, or other timing delays. It sometimes appears after a previous failed payment is being retried.",
       ),
       section(
         "What you can do next",
@@ -486,11 +486,11 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Processing is not the same as paid. It is also not the same as approved. It sits between those ideas. The safest approach is to treat payment processing as a good sign that still needs final confirmation.",
+        "Processing is not the same as paid. It is also not the same as approved. It sits between those two stages. Treat payment processing as a good sign that still needs final confirmation.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare payment processing with approved, failed, and missing-payment situations. You can also use payment-date pages and reminders so you know when to check again.",
+        "GrantCare's payment guides",
+        "Compare payment processing with approved, failed, and missing-payment situations on GrantCare. Use the payment-date pages and reminders so you know when to check again.",
       ),
       section(
         "Related help",
@@ -502,7 +502,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       faq(
         "How long can payment processing last?",
-        "There is no single timeline for every user. It depends on the payment cycle and the payment method being used.",
+        "It varies — it depends on the payment cycle and the payment method being used. A few days is common.",
       ),
       faq(
         "Should I change my details while it is processing?",

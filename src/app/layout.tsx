@@ -4,6 +4,7 @@ import { IBM_Plex_Mono, Noto_Sans } from "next/font/google";
 import "./globals.css";
 
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { SiteSchema } from "@/components/site-schema";
 import { getSiteUrl } from "@/lib/site-url";
 import {
   DEFAULT_LOCALE,
@@ -67,6 +68,7 @@ export default async function RootLayout({
       className={`${bodyFont.variable} ${monoFont.variable}`}
     >
       <body suppressHydrationWarning>
+        <SiteSchema />
         <GoogleAnalytics />
         {children}
       </body>

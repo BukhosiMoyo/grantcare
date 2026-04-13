@@ -7,7 +7,7 @@ export const SEO_BATCH_FOUR_GUIDES = [
     slug: "how-to-apply-for-support",
     title: "How to apply for support",
     summary:
-      "A simple guide to getting ready for an application, using the right official channel, and avoiding mistakes that create delays before the process even starts.",
+      "Getting ready for an application, using the right official channel, and avoiding mistakes that create delays before the process even starts.",
     sections: [
       section(
         "Quick answer",
@@ -15,7 +15,7 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "What this means",
-        "Applying is easier when you break it into small steps. The goal is not to rush into the first form you find online. The goal is to identify the right support type, make sure your details are accurate, and use the official process from the start. That reduces avoidable problems later.",
+        "Applying is easier when you break it into small steps. The goal is not to rush into the first form you find online — the goal is to identify the right support type, make sure your details are accurate, and use the official process from the start. That reduces avoidable problems later.",
       ),
       section(
         "Why this matters before you start",
@@ -31,11 +31,11 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "GrantCare is an independent information platform. It does not submit official applications for you. Be careful with any website or person who claims they can guarantee approval or fast-track an application. Official decisions stay with the relevant government system.",
+        "GrantCare is an independent platform and does not submit official applications for you. Be careful with any website or person who claims they can guarantee approval or fast-track an application. Official decisions stay with the relevant government system.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare grant types, understand common application problems, and keep useful pages in one place while you prepare to use the official route.",
+        "Application preparation with GrantCare",
+        "Compare grant types, understand common application problems, and keep useful pages in one place while you prepare to use the official route.",
       ),
       section(
         "Related help",
@@ -62,19 +62,19 @@ export const SEO_BATCH_FOUR_GUIDES = [
     slug: "who-may-qualify-for-support",
     title: "Who may qualify for support",
     summary:
-      "A plain-language guide to the main groups of people who may qualify for support and how to think about eligibility without assuming an outcome too early.",
+      "The main groups of people who may qualify for support and how to think about eligibility without assuming an outcome too early.",
     sections: [
       section(
         "Quick answer",
-        "Who may qualify depends on the type of support, your age, your income situation, your care responsibilities, and other official rules. The safest way to think about eligibility is as a screening step, not a promise.",
+        "Who may qualify depends on the type of support, your age, your income situation, your care responsibilities, and other official rules. A good starting point is to think of eligibility as a screening step, not a promise.",
       ),
       section(
         "What this means",
-        "Different support categories exist for different life situations. Some are based on age. Some are linked to disability or care needs. Others are linked to being the primary caregiver of a child. Short-term relief has its own rules. That is why one person can qualify for one type of support but not another.",
+        "Different support categories exist for different life situations. Some are based on age, some are linked to disability or care needs, and others are linked to being the primary caregiver of a child. Short-term relief has its own rules. Because of this, one person can qualify for one type of support but not another.",
       ),
       section(
         "Why eligibility can feel confusing",
-        "People often hear advice from friends, social media posts, or older rules that may not match their own situation. Eligibility can also change when income changes, documents are missing, or official rules are updated. The same word qualify can mean something different depending on the grant type.",
+        "People often hear advice from friends, social media posts, or older rules that may not match their own situation. Eligibility can also change when income changes, documents are missing, or official rules are updated. The word 'qualify' can mean something different depending on the grant type.",
       ),
       section(
         "What you can do next",
@@ -82,15 +82,15 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "Common eligibility areas to think about",
-        "The main areas usually include age, whether you live in South Africa, your income or means-test position, whether you care for a child, and whether a disability or care dependency is part of the application. These are not the full official rules, but they are useful starting points.",
+        "The main areas usually include age, whether you live in South Africa, your income or means-test position, whether you care for a child, and whether a disability or care dependency is part of the application. These are useful general starting points, though not the full official rules.",
       ),
       section(
         "Important things to remember",
         "General guidance is not the same as official approval. You should not assume that because someone with a similar story qualified, your own result will be the same. Use guidance to prepare, then use the official system for the actual decision.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare support categories, understand typical document needs, and move from broad eligibility questions to the right next guide without pressure.",
+        "Eligibility tracking on GrantCare",
+        "Compare support categories, understand typical document needs, and move from broad eligibility questions to the right next guide without being pressured.",
       ),
       section(
         "Related help",
@@ -117,19 +117,19 @@ export const SEO_BATCH_FOUR_GUIDES = [
     slug: "what-documents-you-may-need",
     title: "What documents you may need",
     summary:
-      "A practical guide to the documents commonly needed for grant-related processes and how to prepare them before you start an application or follow-up step.",
+      "The documents commonly needed for grant-related processes and how to prepare them before you start an application or follow-up step.",
     sections: [
       section(
         "Quick answer",
-        "The documents you may need depend on the support type, but the safest approach is to prepare your ID, contact details, proof linked to the grant category, and any records that support your application before you begin.",
+        "The documents you may need depend on the support type. A solid start is to prepare your ID, contact details, proof linked to the grant category, and any records that support your application before you begin.",
       ),
       section(
         "What this means",
-        "Documents are not only paperwork. They are often the difference between a smooth application and a delayed one. If the system asks for proof and you do not have it ready, the process can slow down or stop while you try to gather it later.",
+        "Documents are not only paperwork — they are often the difference between a smooth application and a delayed one. If the system asks for proof and you do not have it ready, the process can slow down or stop while you try to gather it later.",
       ),
       section(
         "Why document preparation matters",
-        "Some people only think about documents after a status changes or an official system asks for more information. That creates pressure. Preparing early helps you spot missing records, outdated details, or gaps between your personal information and the documents you plan to use.",
+        "Some people only think about documents after a status changes or an official system asks for more information, which creates pressure. Preparing early helps you spot missing records, outdated details, or gaps between your personal information and the documents you plan to use.",
       ),
       section(
         "What you can do next",
@@ -137,15 +137,15 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "Common document categories",
-        "Many users will need identity documents, proof linked to age or caregiving, income or means-test information, and grant-specific supporting records. The exact list changes by grant type, so it is better to think in categories first and then confirm the official list.",
+        "Many users will need identity documents, proof linked to age or caregiving, income or means-test information, and grant-specific supporting records. The exact list changes by grant type, so it is better to think in categories first and then confirm the specific official list.",
       ),
       section(
         "Important things to remember",
         "Do not upload or share sensitive documents on unofficial websites. GrantCare can help you prepare, but official document submission should only happen through the official route. If a document is missing, find out whether an alternative is accepted before guessing.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you identify likely document categories, compare grant-type requirements, and plan the next page to read before you begin an application or appeal.",
+        "Document guidance on GrantCare",
+        "Identify likely document categories, compare grant-type requirements, and plan the next page to read before you begin an application or appeal.",
       ),
       section(
         "Related help",
@@ -172,7 +172,7 @@ export const SEO_BATCH_FOUR_GUIDES = [
     slug: "how-long-approval-can-take",
     title: "How long approval can take",
     summary:
-      "A realistic guide to approval timing, why there is no single answer for every case, and how to tell normal waiting from a problem that needs attention.",
+      "A realistic look at approval timing, why there is no single answer for every case, and how to tell normal waiting from an issue that needs attention.",
     sections: [
       section(
         "Quick answer",
@@ -180,7 +180,7 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "What this means",
-        "Approval is not only about the day you applied. It is shaped by checks, queues, record matching, and the workload on the official system. Some applications move quickly. Others stay pending for longer because a detail needs extra review or the update cycle is slower than usual.",
+        "Approval is not only about the day you applied. It is shaped by checks, queues, record matching, and the workload on the official system. Some applications move quickly, while others stay pending for longer because a detail needs extra review or the update cycle is slower than usual.",
       ),
       section(
         "Why timing varies",
@@ -192,15 +192,15 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "How to judge the waiting period",
-        "A short wait with a moving status can be normal. A long period with no movement at all may need closer attention. The wording matters more than the number of times you refresh the page, so focus on whether the message changes and whether another step is clearly requested.",
+        "A short wait with a moving status can be normal. A long period with no movement at all may need closer attention. The wording matters more than the number of times you refresh the page — focus on whether the message changes and whether another step is clearly requested.",
       ),
       section(
         "Important things to remember",
         "Be careful of anyone who offers a guaranteed faster approval for money. Official approval timing is outside GrantCare and outside third-party websites. It is better to prepare properly and read the status accurately than to chase shortcuts.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you understand status wording, save related guides, and follow payment-date updates once approval is closer or already in place.",
+        "Approval tracking on GrantCare",
+        "Understand status wording, save related guides, and follow payment-date updates once approval is closer or already in place.",
       ),
       section(
         "Related help",
@@ -227,7 +227,7 @@ export const SEO_BATCH_FOUR_GUIDES = [
     slug: "how-payments-work",
     title: "How grant payments work",
     summary:
-      "A straightforward guide to how payment timing, payment methods, and payment-related statuses usually work after approval so users know what to watch for next.",
+      "How payment timing, payment methods, and payment-related statuses usually function after approval so you know what to watch for next.",
     sections: [
       section(
         "Quick answer",
@@ -235,11 +235,11 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "What this means",
-        "Once a grant or support record is approved, the next questions are usually when payment is scheduled, how the money will be paid, and whether any extra wording appears about banking, processing, or verification. Understanding these steps helps you avoid thinking payment has failed when it may simply still be in progress.",
+        "Once a grant or support record is approved, the next questions are usually when payment is scheduled, how it will be paid, and whether any extra wording appears about banking, processing, or verification. Understanding these steps helps you avoid thinking payment has failed when it may simply still be in progress.",
       ),
       section(
         "Why payment can feel unclear",
-        "Many users see approved and expect immediate payment. In practice, the process can include a wait for a published date, a banking confirmation, or a payment-processing step. Different grant categories can also have different timing patterns.",
+        "Many users see an approved status and expect immediate payment. In practice, the process can include a wait for a published date, a banking confirmation, or a payment-processing step. Different grant categories can also have different timing patterns.",
       ),
       section(
         "What you can do next",
@@ -247,15 +247,15 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "The main parts of the payment process",
-        "The key parts are approval, payment scheduling, payment method verification, and actual release of funds. Problems usually appear when one of those parts is delayed or when the system changes the wording after approval. That is why status reading remains important even after a positive result.",
+        "The key parts are approval, payment scheduling, payment method verification, and the actual release of funds. Problems usually appear when one of those parts is delayed or when the system changes the wording after approval. That makes status reading important even after a positive result.",
       ),
       section(
         "Important things to remember",
         "Official dates may change. An expected date is not the same as money already available. Payment methods also matter, so do not ignore banking or collection details. GrantCare is an independent help platform, not the official payment system.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you track payment-date pages, understand payment-related statuses, and save reminders so you are not relying on rumours or repeated manual checking.",
+        "Payment guides on GrantCare",
+        "Track payment-date pages, understand payment-related statuses, and save reminders so you are not relying on rumours or repeated manual checking.",
       ),
       section(
         "Related help",
@@ -263,11 +263,11 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       faq(
         "Does approved mean paid?",
-        "No. Approved is a positive step, but the payment step can still come later.",
+        "No. Approved is a positive step, but the payment itself can still come later.",
       ),
       faq(
         "Can payment dates change?",
-        "Yes. You should treat payment information carefully and confirm the latest published dates through the official channel.",
+        "Yes. Treat payment information carefully and confirm the latest published dates through the official channel.",
       ),
       faq(
         "What if payment is late?",
@@ -282,7 +282,7 @@ export const SEO_BATCH_FOUR_GUIDES = [
     slug: "how-to-check-your-status",
     title: "How to check your status",
     summary:
-      "A clear guide to checking a grant-related status safely, reading the exact wording properly, and avoiding fake websites or misleading shortcuts.",
+      "Checking a grant-related status safely, reading the exact wording properly, and avoiding fake websites or misleading shortcuts.",
     sections: [
       section(
         "Quick answer",
@@ -302,15 +302,15 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "How to avoid common status-check mistakes",
-        "Do not rely on social media screenshots as proof of your own result. Do not assume one status means the same thing for every person. Do not use unofficial forms that ask for sensitive details. The safest route is the official status page plus clear explanation from an independent guide.",
+        "Do not rely on social media screenshots as proof of your own result. Do not assume one status means the same thing for every person. Do not use unofficial forms that ask for sensitive details. The most reliable route is the official status page plus clear explanation from an independent guide.",
       ),
       section(
         "Important things to remember",
-        "GrantCare does not replace the official status system. It helps explain what common status messages usually mean. For official status actions, always use the relevant government channel.",
+        "GrantCare does not replace the official status system — it helps explain what common status messages usually mean. For official status actions, always use the relevant government channel.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you understand status meanings, compare the next likely steps, and save the guides that match the wording you saw on the official page.",
+        "Status checking on GrantCare",
+        "Understand status meanings, compare the next likely steps, and save the guides that match the wording you saw on the official page.",
       ),
       section(
         "Related help",
@@ -337,23 +337,23 @@ export const SEO_BATCH_FOUR_GUIDES = [
     slug: "how-to-fix-common-application-problems",
     title: "How to fix common application problems",
     summary:
-      "A practical guide to the common mistakes and record issues that slow applications down, with simple checks to help users solve the right problem first.",
+      "Common mistakes and record issues that slow applications down, with simple checks to help users solve the right problem first.",
     sections: [
       section(
         "Quick answer",
-        "To fix a common application problem, first identify whether the issue is with your details, your documents, your phone number, your banking information, or the official status wording. The right fix depends on the real problem, not on guesswork.",
+        "To fix a common application problem, first identify whether the issue is with your details, your documents, your phone number, your banking information, or an official status check. The right fix depends on the real problem, not on guesswork.",
       ),
       section(
         "What this means",
-        "Application problems are often grouped together as if they are the same, but they are not. A missing document, a phone-number mismatch, and a declined status all need different action. Working out which category your problem fits into is usually the most important first step.",
+        "Application problems are often grouped together as if they are the same, but they are not. A missing document, a phone-number mismatch, and a declined status each need different action. Working out which category your problem fits into is usually the most important first step.",
       ),
       section(
         "Why these problems happen",
-        "Applications can run into trouble because details were typed incorrectly, documents were incomplete, a phone number changed, bank records did not match, identity checks failed, or the wrong next step was taken after a status update. Small errors can have bigger effects than people expect.",
+        "Applications can run into trouble because details were typed incorrectly, documents were incomplete, a phone number changed, bank records did not match, identity checks failed, or the wrong step was taken after a status update. Small errors can have bigger effects than people expect.",
       ),
       section(
         "What you can do next",
-        "1. Read the latest official message carefully.\n2. Match the issue to one category before changing anything.\n3. Correct only the detail that is actually wrong.\n4. Keep a record of what you changed and when.\n5. Use the official route if the system asks for a further step such as appeal, verification, or reapplication.",
+        "1. Read the latest official message carefully.\n2. Match the issue to one category before changing anything.\n3. Correct only the detail that is actually wrong.\n4. Keep a record of what you changed and when.\n5. Use the official route if the system asks for a further step like varied verification or reapplication.",
       ),
       section(
         "The most common problem areas",
@@ -361,11 +361,11 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Not every problem needs a brand-new application. Some need a correction. Some need an appeal. Some only need time. GrantCare is independent, so use it to understand the path, then take the official action on the official system.",
+        "Not every problem needs a brand-new application. Some need a correction. Some need an appeal. Some only need time. Use independent resources to understand the path, then take the official action on the official system.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare common problems, read plain-language explanations, and move to the exact guide that matches your current issue instead of trying random fixes.",
+        "Troubleshooting on GrantCare",
+        "Compare common problems, read plain-language explanations, and move to the exact guide that matches your current issue instead of trying random fixes.",
       ),
       section(
         "Related help",
@@ -392,35 +392,35 @@ export const SEO_BATCH_FOUR_GUIDES = [
     slug: "what-happens-after-approval",
     title: "What happens after approval",
     summary:
-      "A calm guide to the period after approval, including payment scheduling, payment-method checks, and the signs that tell you whether to wait or take further action.",
+      "The period after approval, including payment scheduling, payment-method checks, and the signs that tell you whether to wait or take further action.",
     sections: [
       section(
         "Quick answer",
-        "After approval, the process usually moves into payment timing and payment-method checks. The next important thing is not only the word approved. It is what appears after that, especially around payment dates and payment-related messages.",
+        "After approval, the process usually moves into payment timing and payment-method checks. The important thing is not only the word 'approved', but what appears next — especially regarding payment dates and expected clearing.",
       ),
       section(
         "What this means",
-        "Approval is a strong step forward, but it does not end the process. A grant can still move through payment scheduling, banking confirmation, or payment processing before money is actually available. That is why some users feel confused even after seeing a positive result.",
+        "Approval is a strong step forward, but it does not end the process. A grant can still move through payment scheduling, banking confirmation, or payment processing before money is actually available. This is why some users remain confused even after seeing a positive result.",
       ),
       section(
         "Why this stage can still feel uncertain",
-        "People often expect immediate payment after approval. In reality, there can be a gap between approval and payment. There may also be a change in wording if the official system needs to show a payment date, a processing step, or a banking issue.",
+        "People often expect immediate payment after approval. In reality, there is often a gap between approval and payment. There may also be a change in wording if the official system needs to show a payment date, a processing step, or a banking issue.",
       ),
       section(
         "What you can do next",
-        "1. Check whether a payment date is already shown.\n2. Confirm that your payment details are still correct.\n3. Watch for payment processing or banking-related messages.\n4. Keep a note of the date approval first appeared.\n5. Use the official route if approval stays in place but no payment follows after a reasonable update window.",
+        "1. Check whether a payment date is already shown.\n2. Confirm that your payment details are still correct.\n3. Watch for payment processing or banking-related messages.\n4. Keep a note of the date approval first appeared.\n5. Use the official route if approval stays in place but no payment follows after a reasonable wait.",
       ),
       section(
         "What usually comes next",
-        "The next stage is often a published date, a payment-processing message, or quiet waiting while the payment step catches up. If another status appears, the safest approach is to read that exact wording instead of assuming something has gone wrong.",
+        "The next stage is often a published date, a payment-processing message, or quiet waiting while the payment step catches up. If another status appears, carefully read that exact wording instead of assuming something has gone wrong.",
       ),
       section(
         "Important things to remember",
         "Approved is not the same as paid. Do not rush to change details unless the official system points to a real issue. GrantCare is here to explain the process, but official action still belongs on the official system.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you move from approval to the right next page, whether that is payment dates, payment processing, banking detail checks, or missing-payment guidance.",
+        "Post-approval guides on GrantCare",
+        "Move from approval to the right next page, whether that is payment dates, payment processing, banking detail checks, or missing-payment guidance.",
       ),
       section(
         "Related help",
@@ -447,7 +447,7 @@ export const SEO_BATCH_FOUR_GUIDES = [
     slug: "how-to-prepare-before-applying",
     title: "How to prepare before applying",
     summary:
-      "A step-by-step preparation guide for people who want to avoid preventable application problems by getting their details, documents, and support type clear first.",
+      "A preparation sequence for people who want to avoid preventable application problems by getting their details, documents, and support type clear first.",
     sections: [
       section(
         "Quick answer",
@@ -455,11 +455,11 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "What this means",
-        "Preparation is often the most overlooked part of the process. Many users focus on submitting quickly, but a rushed start can lead to missing documents, wrong contact details, or confusion about which support type they should have chosen in the first place.",
+        "Preparation is often the most overlooked part of the process. Many users focus on submitting quickly, but a rushed start can lead to missing documents, wrong contact details, or confusion about which support type they should have chosen.",
       ),
       section(
         "Why preparation helps",
-        "Preparing early lets you spot obvious issues before they become official problems. It also helps you answer a simple but important question: are you ready to apply now, or do you still need to gather something first? That can reduce stress and unnecessary follow-up later.",
+        "Preparing early lets you spot obvious issues before they become official problems. It also helps answer a simple but important question: are you ready to apply now, or do you still need to gather something first? That saves significant stress down the road.",
       ),
       section(
         "What you can do next",
@@ -467,15 +467,15 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "A simple preparation checklist",
-        "Think in four parts: the right grant type, the right documents, the right personal details, and the right official application channel. If one of those parts is weak, the process may become harder later even if the rest is correct.",
+        "Think in four parts: the right grant type, the right documents, the right personal details, and the right official application channel. If one of those parts is weak, the process may become harder later even if the rest is solid.",
       ),
       section(
         "Important things to remember",
-        "Preparation is not a delay. It is part of applying properly. GrantCare is independent and cannot submit the application for you, but it can help you avoid starting blind or relying on incorrect information.",
+        "Preparation is not a delay — it is part of applying properly. GrantCare is independent and cannot submit the application for you, but it can help you avoid starting blind or relying on incorrect information.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare grant types, read document guidance, and move through the early part of the process with less confusion before you use the official channel.",
+        "Application staging on GrantCare",
+        "Compare grant types, read document guidance, and move through the early part of the process with less confusion before you use the official channel.",
       ),
       section(
         "Related help",
@@ -491,7 +491,7 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       faq(
         "Can preparation improve my chances?",
-        "It cannot guarantee approval, but it can reduce avoidable mistakes and delays.",
+        "It cannot guarantee approval, but it can reduce avoidable mistakes and back-and-forth delays.",
       ),
     ],
     featured: false,
@@ -502,19 +502,19 @@ export const SEO_BATCH_FOUR_GUIDES = [
     slug: "common-reasons-applications-are-delayed",
     title: "Common reasons applications are delayed",
     summary:
-      "A practical guide to the usual reasons applications take longer than expected and how to tell the difference between normal waiting and a problem that needs action.",
+      "The usual reasons applications take longer than expected and how to tell the difference between normal waiting and a problem that needs action.",
     sections: [
       section(
         "Quick answer",
-        "Applications are commonly delayed by missing documents, detail mismatches, verification checks, heavy processing volumes, or updates that have not reflected yet. The reason matters because the fix is different in each case.",
+        "Applications are commonly delayed by missing documents, detail mismatches, verification checks, heavy processing volumes, or regular updates that have not reflected yet. Identifying the actual reason matters because the fix is different in each case.",
       ),
       section(
         "What this means",
-        "A delay does not always mean something has gone badly wrong. It often means one part of the process has not cleared yet. The safest approach is to look at the latest official wording, then decide whether the issue is normal waiting, missing information, or a specific problem like banking or identity verification.",
+        "A delay does not always mean something has gone badly wrong. It often means one part of the process has not cleared yet. The clearest approach is to look at the latest official wording, then decide whether the issue is normal waiting or a specific problem like banking or identity checks.",
       ),
       section(
         "Why delays happen",
-        "Delays can happen when the official system is busy, when a document is incomplete, when names or numbers do not match, when a phone number was changed recently, or when a verification step needs more time. Some delays also happen because users take an unnecessary action that interrupts a clean process.",
+        "Delays occur when the official system is busy, when a document is incomplete, when names or numbers do not match, when a phone number was changed recently, or when a verification step needs more time. Some delays also happen because users take an unnecessary side action that interrupts a clean process.",
       ),
       section(
         "What you can do next",
@@ -522,15 +522,15 @@ export const SEO_BATCH_FOUR_GUIDES = [
       ),
       section(
         "The delay categories to watch",
-        "Most delays fit into one of four categories: missing or mismatched information, verification still in progress, system backlog, or a payment-related issue after approval. Knowing which category you are dealing with helps you avoid random changes that make the situation harder.",
+        "Most delays fit into one of four categories: missing or mismatched information, verification still in progress, system backlog, or a payment-related issue after approval. Knowing which category you are dealing with helps you avoid random changes.",
       ),
       section(
         "Important things to remember",
-        "A delay is frustrating, but rushing can create more delay. GrantCare is an independent information platform, so its role is to help you understand what may be happening before you take the official next step.",
+        "A delay is frustrating, but rushing can create more delays. GrantCare is an independent information platform, so its role is to help you understand what may be happening before you take the official next step.",
       ),
       section(
-        "How GrantCare can help",
-        "GrantCare can help you compare pending, verification, banking, and declined guides so you can narrow down the cause of the delay more carefully.",
+        "Delay diagnosis on GrantCare",
+        "Compare pending, verification, banking, and declined guides so you can narrow down the cause of the delay more carefully.",
       ),
       section(
         "Related help",

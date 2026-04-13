@@ -5,6 +5,7 @@ import { Fragment } from "react";
 
 import { toggleSavedGuideAction } from "@/actions/dashboard";
 import { auth } from "@/auth";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import { MonetizationBlocks } from "@/components/monetization-blocks";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { ButtonLink, Section } from "@/components/ui";
@@ -210,7 +211,7 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: `/guides/${slug}`,
-    title: guide.title,
+    title: `${guide.title} — SASSA Help Guide`,
     description: guide.summary,
     openGraphType: "article",
   });
@@ -303,6 +304,14 @@ export default async function GuideDetailPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       ) : null}
+      <BreadcrumbSchema
+        locale={locale}
+        items={[
+          { label: "Home", path: "/" },
+          { label: "Guides", path: "/guides" },
+          { label: guide.title, path: `/guides/${guide.slug}` },
+        ]}
+      />
       <header className="mx-auto max-w-3xl space-y-5">
         <div className="space-y-2">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">{copy.guideLabel}</p>

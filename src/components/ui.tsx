@@ -56,19 +56,22 @@ export function ButtonLink({
   href,
   children,
   variant = "primary",
+  className,
 }: {
   href: string;
   children: ReactNode;
   variant?: "primary" | "secondary";
+  className?: string;
 }) {
   return (
     <Link
       href={href}
       className={cn(
-        "focus-ring tap-target inline-flex items-center justify-center rounded-full px-5 text-base font-semibold transition-colors",
+        "focus-ring tap-target inline-flex items-center justify-center rounded-full px-6 py-2.5 text-[18px] font-semibold transition-colors",
         variant === "primary"
           ? "primary-action bg-primary text-white hover:bg-primary-strong"
           : "border border-border bg-surface text-foreground hover:bg-surface-muted",
+        className,
       )}
     >
       {children}

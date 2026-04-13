@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import {
   getPaymentSummaryDayText,
   getPaymentSummaryStatusText,
@@ -21,7 +22,8 @@ import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { getGrantAmountDetails } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
-import { formatDateLabel } from "@/lib/utils";
+import { getSiteUrl } from "@/lib/site-url";
+import { formatDateLabel, sentenceCase } from "@/lib/utils";
 
 export async function generateMetadata({
   params,
@@ -43,8 +45,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: `/payment-dates/${year}/${month}`,
-    title: `${paymentMonth.label} payment dates`,
-    description: `Published and expected payment dates for ${paymentMonth.label}.`,
+    title: `SASSA Payment Dates for ${paymentMonth.label} — All Grant Types`,
+    description: `Check SASSA payment dates for ${paymentMonth.label}. See confirmed dates for Older Persons, Disability, and Children's grants.`,
   });
 }
 
@@ -101,8 +103,37 @@ export default async function PaymentMonthPage({
     },
   ];
 
+  const siteUrl = getSiteUrl();
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `SASSA Payment Dates for ${paymentMonth.label}`,
+    numberOfItems: paymentMonth.entries.length,
+    itemListElement: paymentMonth.entries.map((entry, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: `${entry.grantName} — ${entry.date ? formatDateLabel(entry.date) : sentenceCase(entry.state)}`,
+      url: new URL(
+        buildLocalePath(locale, `/payment-dates/${year}/${month}/${entry.grantSlug}`),
+        siteUrl,
+      ).toString(),
+    })),
+  };
+
   return (
     <div className="space-y-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <BreadcrumbSchema
+        locale={locale}
+        items={[
+          { label: "Home", path: "/" },
+          { label: "Payment dates", path: "/payment-dates" },
+          { label: paymentMonth.label, path: `/payment-dates/${year}/${month}` },
+        ]}
+      />
       <PageViewTracker
         name="payment_date.viewed"
         locale={locale}

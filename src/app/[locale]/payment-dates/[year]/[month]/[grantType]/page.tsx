@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
+
 import {
   getPaymentSummaryDayText,
   getPaymentSummaryStatusText,
@@ -48,8 +50,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: `/payment-dates/${year}/${month}/${grantType}`,
-    title: `${paymentEntry.grantName} payment date for ${paymentMonth.label}`,
-    description: paymentEntry.note,
+    title: `${paymentEntry.grantName} Payment Date — ${paymentMonth.label} SASSA Schedule`,
+    description: `Find the ${paymentEntry.grantName} payment date for ${paymentMonth.label}. See the confirmed pay day, grant amount, and current status.`,
   });
 }
 
@@ -116,8 +118,44 @@ export default async function PaymentGrantPage({
   ];
   const amountDetails = getGrantAmountDetails(paymentEntry.grantSlug);
 
+  const eventSchema = paymentEntry.date
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        name: `${paymentEntry.grantName} Payment — ${paymentMonth.label}`,
+        description: `SASSA ${paymentEntry.grantName} payment date for ${paymentMonth.label}.`,
+        startDate: paymentEntry.date,
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+        organizer: {
+          "@type": "Organization",
+          name: "SASSA",
+          url: "https://www.sassa.gov.za/",
+        },
+        location: {
+          "@type": "VirtualLocation",
+          url: paymentEntry.officialHref,
+        },
+      }
+    : null;
+
   return (
     <div className="space-y-8">
+      {eventSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
+        />
+      ) : null}
+      <BreadcrumbSchema
+        locale={locale}
+        items={[
+          { label: "Home", path: "/" },
+          { label: "Payment dates", path: "/payment-dates" },
+          { label: paymentMonth.label, path: `/payment-dates/${year}/${month}` },
+          { label: paymentEntry.grantName, path: `/payment-dates/${year}/${month}/${grantType}` },
+        ]}
+      />
       <PageViewTracker
         name="payment_date.viewed"
         locale={locale}

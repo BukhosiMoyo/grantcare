@@ -1,3 +1,8 @@
+export const WHATSAPP_CHANNEL = {
+  label: "GrantCare WhatsApp Channel",
+  href: "https://whatsapp.com/channel/0029VbC2OuyJpe8bnXFVWe3k",
+} as const;
+
 export const GRANT_AMOUNT_SOURCE = {
   label: "South African Government grant amounts effective April 2026",
   href: "https://www.gov.za/news/media-statements/social-grant-amount-increases-effective-april-2026-24-mar-2026",
@@ -120,17 +125,21 @@ export type GrantAmountDetail = {
 const GRANT_AMOUNT_DETAILS: Record<string, readonly GrantAmountDetail[]> = {
   "older-persons": [
     {
-      label: "Age 60 to 74",
+      label: "Old Age (60–74)",
       amount: "R2 400",
     },
     {
-      label: "Age 75 or older",
+      label: "Old Age (75+)",
+      amount: "R2 420",
+    },
+    {
+      label: "War Veterans",
       amount: "R2 420",
     },
   ],
   disability: [
     {
-      label: "Disability Grant",
+      label: "Disability",
       amount: "R2 400",
     },
   ],
@@ -141,7 +150,7 @@ const GRANT_AMOUNT_DETAILS: Record<string, readonly GrantAmountDetail[]> = {
     },
     {
       label: "Foster Child",
-      amount: "R1 290 (R1 300 from October 2026)",
+      amount: "R1 290 (R1 300 from October)",
     },
     {
       label: "Care Dependency",
@@ -150,19 +159,19 @@ const GRANT_AMOUNT_DETAILS: Record<string, readonly GrantAmountDetail[]> = {
   ],
   "child-support": [
     {
-      label: "Child Support Grant",
+      label: "Child Support",
       amount: "R580",
     },
   ],
   "foster-child": [
     {
-      label: "Foster Child Grant",
-      amount: "R1 290 (R1 300 from October 2026)",
+      label: "Foster Child",
+      amount: "R1 290 (R1 300 from October)",
     },
   ],
   "care-dependency": [
     {
-      label: "Care Dependency Grant",
+      label: "Care Dependency",
       amount: "R2 400",
     },
   ],
@@ -174,7 +183,7 @@ const GRANT_AMOUNT_DETAILS: Record<string, readonly GrantAmountDetail[]> = {
   ],
   "social-relief": [
     {
-      label: "Social Relief of Distress",
+      label: "SRD Grant",
       amount: "R370",
     },
   ],

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
+
 import {
   getPaymentSummaryDayText,
   getPaymentSummaryStatusText,
@@ -21,6 +23,7 @@ import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { GRANT_AMOUNT_SOURCE, getGrantAmountDetails } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site-url";
 import { formatDateLabel } from "@/lib/utils";
 
 export async function generateMetadata({
@@ -40,11 +43,15 @@ export async function generateMetadata({
     return {};
   }
 
+  const amountLabel = (await import("@/lib/official-resources")).getGrantAmountLabel(grantType);
+
   return buildLocalizedMetadata({
     locale,
     path: `/grants/${grantType}`,
-    title: grant.name,
-    description: grant.summary,
+    title: `SASSA ${grant.name} — Eligibility, Amount & How to Apply`,
+    description: amountLabel
+      ? `Learn about the SASSA ${grant.name}. Check eligibility, current amount (${amountLabel}), required documents, and how to apply.`
+      : `Learn about the SASSA ${grant.name}. ${grant.summary}`,
   });
 }
 
@@ -87,8 +94,39 @@ export default async function GrantDetailPage({
     description: status.meaning,
   }));
 
+  const siteUrl = getSiteUrl();
+  const govServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": "GovernmentService",
+    name: `SASSA ${grant.name}`,
+    description: grant.summary,
+    serviceType: "Social grant",
+    provider: {
+      "@type": "GovernmentOrganization",
+      name: "South African Social Security Agency (SASSA)",
+      url: "https://www.sassa.gov.za/",
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "South Africa",
+    },
+    url: new URL(buildLocalePath(locale, `/grants/${grantType}`), siteUrl).toString(),
+  };
+
   return (
     <div className="space-y-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(govServiceSchema) }}
+      />
+      <BreadcrumbSchema
+        locale={locale}
+        items={[
+          { label: "Home", path: "/" },
+          { label: "Grants", path: "/grants" },
+          { label: grant.name, path: `/grants/${grantType}` },
+        ]}
+      />
       <Section eyebrow={copy.eligibility} title={grant.name}>
         <GrantSummaryCard
           amountDetails={amountDetails}

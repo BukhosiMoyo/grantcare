@@ -3,6 +3,7 @@ import Link from "next/link";
 import { signOutAction } from "@/actions/auth";
 import { BrandLogo } from "@/components/brand-logo";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
 import { getSessionUser } from "@/lib/auth-guards";
 import { getCopy } from "@/lib/copy";
 import type { Locale } from "@/lib/site";
@@ -103,6 +104,9 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
                     </Link>
                   ))}
                 </nav>
+                <div className="mt-2">
+                  <WhatsAppChannelBanner compact />
+                </div>
                 <div className="mt-4 border-t border-border/80 pt-4">
                   <div className="grid gap-2">
                     {sessionUser ? (

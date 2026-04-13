@@ -13,6 +13,7 @@ import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { getGrantAmountDetails } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site-url";
 
 export async function generateMetadata({
   params,
@@ -25,12 +26,13 @@ export async function generateMetadata({
     return {};
   }
 
+  const currentYear = new Date().getUTCFullYear();
+
   return buildLocalizedMetadata({
     locale,
     path: "/grants",
-    title: "Grant types, checks, and document help",
-    description:
-      "Compare grant types, read basic checks, and see which documents or next steps may matter before using official channels.",
+    title: `SASSA Grant Types ${currentYear} — Eligibility, Amounts & Documents`,
+    description: `Compare all SASSA grant types for ${currentYear}. Check eligibility requirements, see current amounts, and find what documents you need.`,
   });
 }
 
@@ -70,8 +72,26 @@ export default async function GrantsPage({
     },
   ];
 
+  const siteUrl = getSiteUrl();
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "SASSA Grant Types",
+    numberOfItems: grants.length,
+    itemListElement: grants.map((grant, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: grant.name,
+      url: new URL(buildLocalePath(locale, `/grants/${grant.slug}`), siteUrl).toString(),
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       <PageViewTracker name="page.viewed" locale={locale} />
       <Section eyebrow={copy.eligibility} title={copy.grantTypesTitle}>
         <div className="grid gap-4 md:grid-cols-2">

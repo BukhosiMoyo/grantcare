@@ -26,9 +26,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/sitemap",
-    title: "GrantCare HTML sitemap",
+    title: "SASSA GrantCare Sitemap — All Pages",
     description:
-      "Browse GrantCare sections, payment-date archives, status pages, grant pages, and guides from one page.",
+      "Browse all SASSA pages on GrantCare: payment dates, status help, grant types, guides, and official contact details.",
   });
 }
 

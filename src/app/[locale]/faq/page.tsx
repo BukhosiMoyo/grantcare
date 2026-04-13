@@ -20,12 +20,14 @@ export async function generateMetadata({
     return {};
   }
 
+  const currentYear = new Date().getUTCFullYear();
+
   return buildLocalizedMetadata({
     locale,
     path: "/faq",
-    title: "GrantCare FAQ and quick answers",
+    title: `SASSA FAQ ${currentYear} — Common Questions About Grants & Payments`,
     description:
-      "Read quick answers about GrantCare, payment dates, official actions, eligibility guidance, and how to use the site safely.",
+      `Get quick answers about SASSA payment dates, grant status checks, eligibility rules, and how to use official channels.`,
   });
 }
 

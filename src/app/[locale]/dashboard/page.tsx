@@ -16,6 +16,7 @@ import {
   StatusMessage,
 } from "@/components/ui";
 import { MonetizationBlocks } from "@/components/monetization-blocks";
+import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
 import { formatDateLabel } from "@/lib/utils";
 import { requireUser } from "@/lib/auth-guards";
 import { listGrantTypes, listMonetizationBlocks, listPaymentCategories } from "@/lib/content";
@@ -181,6 +182,22 @@ export default async function DashboardPage({
             );
           })}
         </div>
+      </Section>
+
+      {/* ── WhatsApp Channel ── */}
+      <Section title="WhatsApp updates">
+        <Card className="space-y-4">
+          <div className="space-y-2">
+            <p className="text-sm text-muted">
+              Get payment date reminders and grant updates directly on WhatsApp. Join our channel to stay informed.
+            </p>
+            <p className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
+              WhatsApp notifications coming soon
+            </p>
+          </div>
+          <WhatsAppChannelBanner />
+        </Card>
       </Section>
 
       <Section title={copy.savedGuidesTitle}>

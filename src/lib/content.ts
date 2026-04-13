@@ -20,6 +20,7 @@ import {
   findFallbackPaymentPeriod,
   findFallbackStatusMeaning,
   getFallbackPaymentRouteDefaults,
+  hasAllDatesPassed,
   getMonthLabel,
   getMonthNumberFromSlug,
   getMonthSlugFromNumber,
@@ -789,10 +790,39 @@ export async function getPaymentRouteDefaults(locale: Locale) {
   const currentYear = new Date().getUTCFullYear();
   const currentMonth = new Date().getUTCMonth() + 1;
 
-  return (
-    periods.find((entry) => entry.year === currentYear && entry.month === currentMonth) ??
-    getFallbackPaymentRouteDefaults()
+  const currentPeriod = periods.find(
+    (entry) => entry.year === currentYear && entry.month === currentMonth,
   );
+
+  // If the current month's dates have all passed, advance to next month
+  if (currentPeriod && hasAllDatesPassed(currentPeriod)) {
+    const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
+    const nextYear = currentMonth === 12 ? currentYear + 1 : currentYear;
+    const nextPeriod = periods.find(
+      (entry) => entry.year === nextYear && entry.month === nextMonth,
+    );
+
+    if (nextPeriod) {
+      return nextPeriod;
+    }
+  }
+
+  return currentPeriod ?? getFallbackPaymentRouteDefaults();
+}
+
+export async function getNextPaymentPeriod(locale: Locale, currentPeriod: PublicPaymentPeriod) {
+  const periods = await listPaymentPeriods(locale);
+  const nextMonth = currentPeriod.month === 12 ? 1 : currentPeriod.month + 1;
+  const nextYear = currentPeriod.month === 12 ? currentPeriod.year + 1 : currentPeriod.year;
+
+  return periods.find((entry) => entry.year === nextYear && entry.month === nextMonth) ?? null;
+}
+
+export async function listPaymentPeriodsForYear(locale: Locale, year: number) {
+  const periods = await listPaymentPeriods(locale);
+  return periods
+    .filter((entry) => entry.year === year)
+    .sort((a, b) => a.month - b.month);
 }
 
 export async function listRecentPaymentPeriods(

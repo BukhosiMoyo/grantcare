@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { BrandLogo } from "@/components/brand-logo";
+import { WhatsAppChannelLink } from "@/components/whatsapp-channel";
 import { getSessionUser } from "@/lib/auth-guards";
 import { getCopy } from "@/lib/copy";
 import { LEGAL_LINKS, OFFICIAL_SASSA_CONTACTS } from "@/lib/official-resources";
@@ -58,6 +59,9 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
                   </a>
                 );
               })}
+            </div>
+            <div className="mt-3 pt-3 border-t border-border/50">
+              <WhatsAppChannelLink />
             </div>
           </div>
         </div>

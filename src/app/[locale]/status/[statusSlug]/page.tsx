@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { TrackedExternalLink } from "@/components/tracked-external-link";
 import { ButtonLink, Card, Section } from "@/components/ui";
@@ -55,8 +56,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: `/status/${statusSlug}`,
-    title: `${status.title} status meaning`,
-    description: status.meaning,
+    title: `SASSA Status "${status.title}" Meaning — What to Do Next`,
+    description: `Your SASSA status shows "${status.title}". Learn what it means, possible causes, common fixes, and your next steps.`,
   });
 }
 
@@ -82,8 +83,44 @@ export default async function StatusDetailPage({
     notFound();
   }
 
+  const howToSteps = [
+    ...status.fixes.map((fix, i) => ({
+      "@type": "HowToStep" as const,
+      position: i + 1,
+      name: fix,
+      text: fix,
+    })),
+    ...status.nextSteps.map((step, i) => ({
+      "@type": "HowToStep" as const,
+      position: status.fixes.length + i + 1,
+      name: step,
+      text: step,
+    })),
+  ];
+
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How to fix SASSA "${status.title}" status`,
+    description: status.meaning,
+    step: howToSteps,
+    totalTime: "PT30M",
+  };
+
   return (
     <div className="space-y-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <BreadcrumbSchema
+        locale={locale}
+        items={[
+          { label: "Home", path: "/" },
+          { label: "Status help", path: "/status" },
+          { label: status.title, path: `/status/${statusSlug}` },
+        ]}
+      />
       <PageViewTracker
         name="status.viewed"
         locale={locale}

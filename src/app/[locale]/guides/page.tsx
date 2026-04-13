@@ -24,9 +24,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/guides",
-    title: "Grant guides and support help",
+    title: "SASSA Guides — Payment Help, Status Meanings & Appeals",
     description:
-      "Read plain-language GrantCare guides about payment dates, status meanings, delays, appeals, documents, and next steps.",
+      "Read plain-language SASSA guides about payment dates, status meanings, delays, appeals, documents, and next steps.",
   });
 }
 
