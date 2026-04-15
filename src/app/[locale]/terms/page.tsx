@@ -19,9 +19,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/terms",
-    title: "GrantCare terms",
+    title: "Terms and Conditions",
     description:
-      "Read the short terms for using GrantCare as an independent information and reminder product.",
+      "Read the terms for using GrantCare as an independent information and reminder product.",
   });
 }
 

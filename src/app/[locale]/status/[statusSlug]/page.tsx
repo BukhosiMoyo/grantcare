@@ -56,8 +56,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: `/status/${statusSlug}`,
-    title: `SASSA Status "${status.title}" Meaning — What to Do Next`,
-    description: `Your SASSA status shows "${status.title}". Learn what it means, possible causes, common fixes, and your next steps.`,
+    title: `${status.title} SASSA Status Meaning and Next Steps`,
+    description: `See what "${status.title}" means on SASSA, why it happens, and the safest next step before you act.`,
   });
 }
 

@@ -26,9 +26,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/sitemap",
-    title: "SASSA GrantCare Sitemap — All Pages",
+    title: "SASSA Pages, Guides and Payment Dates",
     description:
-      "Browse all SASSA pages on GrantCare: payment dates, status help, grant types, guides, and official contact details.",
+      "Browse GrantCare pages for SASSA payment dates, status help, grant guides, FAQs, and official contact routes.",
   });
 }
 
@@ -75,6 +75,8 @@ export default async function HtmlSitemapPage({
     { href: buildLocalePath(locale, "/eligibility-checker"), label: "Eligibility checker" },
     { href: buildLocalePath(locale, "/guides"), label: "Guides" },
     { href: buildLocalePath(locale, "/grants"), label: "Grant types" },
+    { href: buildLocalePath(locale, "/grant-amounts"), label: "Grant amounts" },
+    { href: buildLocalePath(locale, "/claim-checker"), label: "Claim checker" },
     { href: buildLocalePath(locale, "/faq"), label: "FAQ" },
     { href: buildLocalePath(locale, "/contact"), label: "Contact" },
     { href: buildLocalePath(locale, "/privacy"), label: "Privacy" },

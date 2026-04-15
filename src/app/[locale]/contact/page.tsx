@@ -26,9 +26,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/contact",
-    title: `SASSA Contact Details ${currentYear} — Phone, Email & Office`,
+    title: `SASSA Contact Details ${currentYear}: Phone Number and Offices`,
     description:
-      `Find official SASSA contact numbers, email addresses, office locations, and online portal links for ${currentYear} in one place.`,
+      "Get the official SASSA phone number, email, office details, and portal links in one place.",
   });
 }
 

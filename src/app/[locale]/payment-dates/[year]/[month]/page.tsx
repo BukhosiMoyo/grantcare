@@ -45,8 +45,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: `/payment-dates/${year}/${month}`,
-    title: `SASSA Payment Dates for ${paymentMonth.label} — All Grant Types`,
-    description: `Check SASSA payment dates for ${paymentMonth.label}. See confirmed dates for Older Persons, Disability, and Children's grants.`,
+    title: `SASSA Payment Dates ${paymentMonth.label}`,
+    description: `See SASSA payment dates for ${paymentMonth.label} across Older Persons, Disability, Children's, and SRD grants, with direct grant pages for details.`,
   });
 }
 
@@ -74,7 +74,7 @@ export default async function PaymentMonthPage({
       excludeYear: paymentMonth.year,
       limit: 3,
     }),
-    listRelatedGuides(locale, 4, undefined, `${paymentMonth.label} payment dates`),
+    listRelatedGuides(locale, 4, undefined, `${paymentMonth.label} grant dates social grant dates grant pay date`),
     listMonetizationBlocks(locale, {
       placement: "payment-dates",
       limit: 2,

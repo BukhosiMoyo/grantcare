@@ -3,6 +3,8 @@ import type { Metadata, MetadataRoute } from "next";
 import { LOCALES, buildLocalePath, type Locale } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
 
+const META_DESCRIPTION_MAX_LENGTH = 160;
+
 function buildLanguageAlternates(path: string) {
   const siteUrl = getSiteUrl();
 
@@ -12,6 +14,46 @@ function buildLanguageAlternates(path: string) {
       new URL(buildLocalePath(entry.code, path), siteUrl).toString(),
     ]),
   );
+}
+
+function normalizeMetaText(value: string) {
+  return value.replace(/\s+/g, " ").trim();
+}
+
+export function truncateMetaDescription(
+  value: string,
+  maxLength = META_DESCRIPTION_MAX_LENGTH,
+) {
+  const normalized = normalizeMetaText(value);
+
+  if (normalized.length <= maxLength) {
+    return normalized;
+  }
+
+  const truncated = normalized.slice(0, maxLength - 1);
+  const lastSpace = truncated.lastIndexOf(" ");
+  const safeTruncate = lastSpace > 0 ? truncated.slice(0, lastSpace) : truncated;
+
+  return `${safeTruncate.trim()}…`;
+}
+
+export function buildGuideMetaTitle(title: string) {
+  const normalized = normalizeMetaText(title);
+
+  return /\bsassa\b/i.test(normalized) ? normalized : `${normalized} — SASSA`;
+}
+
+export function buildGuideMetaDescription(summary: string) {
+  const normalized = normalizeMetaText(summary);
+
+  if (/\b(sassa|srd|grant)\b/i.test(normalized)) {
+    return truncateMetaDescription(normalized);
+  }
+
+  const firstCharacter = normalized.charAt(0);
+  const lowerCasedSummary = `${firstCharacter.toLowerCase()}${normalized.slice(1)}`;
+
+  return truncateMetaDescription(`SASSA guide: ${lowerCasedSummary}`);
 }
 
 export function buildLocalizedMetadata(input: {

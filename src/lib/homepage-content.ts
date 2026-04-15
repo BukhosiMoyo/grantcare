@@ -35,8 +35,8 @@ function buildHomepageContent(month: number, year: number): HomepageContent {
   const monthLabel = sentenceCase(monthSlug);
 
   return {
-    metaTitle: `SASSA Payment Dates ${monthLabel} ${year} — Status Help`,
-    metaDescription: `Check SASSA ${monthLabel} ${year} payment dates for all grant types, understand grant status wording, and find your next step. Free, independent grant help for South African beneficiaries.`,
+    metaTitle: "SASSA Grants, Payment Dates and Status Check",
+    metaDescription: `Check SASSA payment dates for ${monthLabel} ${year}, compare grant amounts, understand status checks, and find the next step for SRD and other grants.`,
     heroEyebrow: "Independent grant help",
     heroTitle: `SASSA Payment Dates for ${monthLabel} ${year}`,
     heroDescription: `Check ${monthLabel} ${year} pay days, understand status words, and find the next step — with calm, independent support.`,

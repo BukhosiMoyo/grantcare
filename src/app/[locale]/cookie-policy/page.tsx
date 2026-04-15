@@ -19,9 +19,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/cookie-policy",
-    title: "GrantCare cookie policy",
+    title: "Cookie Policy",
     description:
-      "Read the short cookie policy for locale preferences, sign-in sessions, and product analytics on GrantCare.",
+      "Read the cookie policy for locale preferences, sign-in sessions, and product analytics on GrantCare.",
   });
 }
 

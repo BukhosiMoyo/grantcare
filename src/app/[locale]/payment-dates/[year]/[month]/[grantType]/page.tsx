@@ -24,6 +24,12 @@ import {
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { GRANT_AMOUNT_SOURCE, getGrantAmountDetails } from "@/lib/official-resources";
+import {
+  getPaymentGrantSeoDescription,
+  getPaymentGrantSeoDisplayName,
+  getPaymentGrantSeoReferenceText,
+  getPaymentGrantSeoTitle,
+} from "@/lib/seo-aliases";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { formatDateLabel } from "@/lib/utils";
 
@@ -50,8 +56,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: `/payment-dates/${year}/${month}/${grantType}`,
-    title: `${paymentEntry.grantName} Payment Date — ${paymentMonth.label} SASSA Schedule`,
-    description: `Find the ${paymentEntry.grantName} payment date for ${paymentMonth.label}. See the confirmed pay day, grant amount, and current status.`,
+    title: getPaymentGrantSeoTitle(paymentEntry, paymentMonth.label),
+    description: getPaymentGrantSeoDescription(paymentEntry, paymentMonth.label),
   });
 }
 
@@ -76,13 +82,10 @@ export default async function PaymentGrantPage({
     notFound();
   }
 
+  const displayGrantName = getPaymentGrantSeoDisplayName(paymentEntry);
+
   const [relatedGuides, recentPeriods, blocks] = await Promise.all([
-    listRelatedGuides(
-      locale,
-      2,
-      undefined,
-      `${paymentEntry.grantName} ${paymentMonth.label} payment date`,
-    ),
+    listRelatedGuides(locale, 2, undefined, getPaymentGrantSeoReferenceText(paymentEntry, paymentMonth.label)),
     listRecentPaymentPeriods(locale, {
       excludeMonth: paymentMonth.month,
       excludeYear: paymentMonth.year,
@@ -97,7 +100,7 @@ export default async function PaymentGrantPage({
   const hubLinks = [
     {
       href: `/grants/${paymentEntry.grantSlug}`,
-      title: `${paymentEntry.grantName} grant guide`,
+      title: `${displayGrantName} guide`,
       description: "Open the grant page for checks, documents, and official next-step links tied to this payment category.",
     },
     {
@@ -122,8 +125,8 @@ export default async function PaymentGrantPage({
     ? {
         "@context": "https://schema.org",
         "@type": "Event",
-        name: `${paymentEntry.grantName} Payment — ${paymentMonth.label}`,
-        description: `SASSA ${paymentEntry.grantName} payment date for ${paymentMonth.label}.`,
+        name: `${displayGrantName} Payment — ${paymentMonth.label}`,
+        description: `SASSA ${displayGrantName} payment date for ${paymentMonth.label}.`,
         startDate: paymentEntry.date,
         eventStatus: "https://schema.org/EventScheduled",
         eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
@@ -153,7 +156,7 @@ export default async function PaymentGrantPage({
           { label: "Home", path: "/" },
           { label: "Payment dates", path: "/payment-dates" },
           { label: paymentMonth.label, path: `/payment-dates/${year}/${month}` },
-          { label: paymentEntry.grantName, path: `/payment-dates/${year}/${month}/${grantType}` },
+          { label: displayGrantName, path: `/payment-dates/${year}/${month}/${grantType}` },
         ]}
       />
       <PageViewTracker
@@ -166,7 +169,7 @@ export default async function PaymentGrantPage({
           year: paymentMonth.year,
         }}
       />
-      <Section eyebrow={copy.paymentDates} title={`${paymentEntry.grantName} for ${paymentMonth.label}`}>
+      <Section eyebrow={copy.paymentDates} title={`${displayGrantName} for ${paymentMonth.label}`}>
         <GrantSummaryCard
           amountDetails={amountDetails}
           amountLabel={copy.summaryAmountLabel}
@@ -211,7 +214,7 @@ export default async function PaymentGrantPage({
             state: paymentEntry.state,
           })}
           statusText={getPaymentSummaryStatusText(copy, paymentEntry.state)}
-          title={paymentEntry.grantName}
+          title={displayGrantName}
         />
       </Section>
 

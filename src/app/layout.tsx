@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | GrantCare",
   },
   description:
-    "Independent grant-help platform for payment dates, status guidance, eligibility help, reminders, and multilingual support.",
+    "Independent SASSA grant help for payment dates, status checks, eligibility, reminders, and official contact routes in South Africa.",
   applicationName: "GrantCare",
   icons: {
     shortcut: [{ url: "/favicon.ico", sizes: "any" }],

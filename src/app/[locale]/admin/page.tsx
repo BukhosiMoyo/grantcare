@@ -40,6 +40,74 @@ function RankingCard({
   );
 }
 
+function formatPercent(rate: number) {
+  const percentage = rate * 100;
+  return `${percentage % 1 === 0 ? percentage.toFixed(0) : percentage.toFixed(1)}%`;
+}
+
+function FunnelRateCard({
+  label,
+  numerator,
+  denominator,
+}: {
+  denominator: number;
+  label: string;
+  numerator: number;
+}) {
+  return (
+    <Card className="space-y-2">
+      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{label}</p>
+      <p className="text-3xl font-semibold">
+        {formatPercent(denominator > 0 ? numerator / denominator : 0)}
+      </p>
+      <p className="text-sm text-muted">
+        {numerator} / {denominator}
+      </p>
+    </Card>
+  );
+}
+
+function ClaimCheckerTypeFunnelCard({
+  items,
+}: {
+  items: Array<{
+    clicks: number;
+    label: string;
+    startToUseRate: number;
+    starts: number;
+    useToClickRate: number;
+    uses: number;
+  }>;
+}) {
+  return (
+    <Card className="space-y-3">
+      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
+        Claim checker type conversion
+      </p>
+      {items.length > 0 ? (
+        <div className="space-y-3">
+          {items.map((item) => (
+            <div key={item.label} className="space-y-2 border-t border-border pt-3 first:border-t-0 first:pt-0">
+              <div className="flex items-start justify-between gap-4 text-sm">
+                <span className="text-foreground">{item.label}</span>
+                <span className="shrink-0 font-semibold text-foreground">
+                  {item.starts} / {item.uses} / {item.clicks}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-3 text-xs text-muted">
+                <span>{formatPercent(item.startToUseRate)} start to use</span>
+                <span>{formatPercent(item.useToClickRate)} use to click</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-sm text-muted">No data yet.</p>
+      )}
+    </Card>
+  );
+}
+
 export default async function AdminPage({
   params,
   searchParams,
@@ -155,6 +223,9 @@ export default async function AdminPage({
 
   const analyticsCards = [
     { label: "Route views", value: analytics.totals.routeViews },
+    { label: "Claim checker clicks", value: analytics.totals.claimCheckerClicks },
+    { label: "Claim checker starts", value: analytics.totals.claimCheckerStarts },
+    { label: "Claim checker uses", value: analytics.totals.claimCheckerUses },
     { label: "Reminder signups", value: analytics.totals.reminderSignups },
     { label: "Reminder unsubscribes", value: analytics.totals.reminderUnsubscribes },
     { label: "Signups", value: analytics.totals.signups },
@@ -230,8 +301,28 @@ export default async function AdminPage({
               </Card>
             ))}
           </div>
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <FunnelRateCard
+              label="Start to use"
+              numerator={analytics.claimCheckerFunnel.uses}
+              denominator={analytics.claimCheckerFunnel.starts}
+            />
+            <FunnelRateCard
+              label="Use to click"
+              numerator={analytics.claimCheckerFunnel.clicks}
+              denominator={analytics.claimCheckerFunnel.uses}
+            />
+            <FunnelRateCard
+              label="Start to click"
+              numerator={analytics.claimCheckerFunnel.clicks}
+              denominator={analytics.claimCheckerFunnel.starts}
+            />
+          </div>
           <div className="grid gap-4 xl:grid-cols-3">
             <RankingCard items={analytics.routeViews} title="Views by route" />
+            <RankingCard items={analytics.claimCheckerTopics} title="Claim checker topics" />
+            <ClaimCheckerTypeFunnelCard items={analytics.claimCheckerTypeFunnel} />
+            <RankingCard items={analytics.claimCheckerTargets} title="Claim checker targets" />
             <RankingCard items={analytics.guideViews} title="Guide views" />
             <RankingCard items={analytics.paymentViews} title="Payment-date views" />
             <RankingCard items={analytics.statusViews} title="Status views" />

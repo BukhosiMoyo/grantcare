@@ -28,9 +28,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/status",
-    title: "SASSA Status Check Meanings — Approved, Pending, Declined",
+    title: "SASSA Status Check Meanings and Next Steps",
     description:
-      "Understand what your SASSA status means. Read clear explanations for approved, pending, declined, and other common status messages.",
+      "Find out what Approved, Pending, Declined, Banking Issue, and other SASSA status messages usually mean, plus what to check next.",
   });
 }
 
@@ -71,6 +71,11 @@ export default async function StatusPage({
       href: "/eligibility-checker",
       title: copy.eligibilityChecker,
       description: "Return to general guidance if you need to reassess which grant path fits best.",
+    },
+    {
+      href: "/claim-checker",
+      title: "Claim checker",
+      description: "Open the checker if the status story is mixed with rumours, warning messages, or doubtful payment claims.",
     },
   ];
 

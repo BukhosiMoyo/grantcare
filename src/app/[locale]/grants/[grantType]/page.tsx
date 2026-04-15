@@ -22,6 +22,12 @@ import {
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { GRANT_AMOUNT_SOURCE, getGrantAmountDetails } from "@/lib/official-resources";
+import {
+  getGrantSeoDescription,
+  getGrantSeoDisplayName,
+  getGrantSeoMetadataName,
+  getGrantSeoReferenceText,
+} from "@/lib/seo-aliases";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
 import { formatDateLabel } from "@/lib/utils";
@@ -45,13 +51,13 @@ export async function generateMetadata({
 
   const amountLabel = (await import("@/lib/official-resources")).getGrantAmountLabel(grantType);
 
+  const seoName = getGrantSeoMetadataName(grant);
+
   return buildLocalizedMetadata({
     locale,
     path: `/grants/${grantType}`,
-    title: `SASSA ${grant.name} — Eligibility, Amount & How to Apply`,
-    description: amountLabel
-      ? `Learn about the SASSA ${grant.name}. Check eligibility, current amount (${amountLabel}), required documents, and how to apply.`
-      : `Learn about the SASSA ${grant.name}. ${grant.summary}`,
+    title: `${seoName}: SASSA Eligibility, Amount and How to Apply`,
+    description: getGrantSeoDescription(grant, amountLabel),
   });
 }
 
@@ -67,9 +73,8 @@ export default async function GrantDetailPage({
   }
 
   const copy = getCopy(locale);
-  const [grant, relatedGuides, relatedGrants, statuses, paymentDefaults] = await Promise.all([
+  const [grant, relatedGrants, statuses, paymentDefaults] = await Promise.all([
     getGrantBySlug(locale, grantType),
-    listRelatedGuides(locale, 2, undefined, grantType),
     listRelatedGrantTypes(locale, grantType, 3),
     listStatusMeanings(locale),
     getPaymentRouteDefaults(locale),
@@ -78,6 +83,13 @@ export default async function GrantDetailPage({
   if (!grant) {
     notFound();
   }
+
+  const relatedGuides = await listRelatedGuides(
+    locale,
+    2,
+    undefined,
+    getGrantSeoReferenceText(grant),
+  );
 
   const paymentGrantSlug = grant.showInPaymentTool ? grant.slug : grant.paymentGroupSlug;
   const paymentDatesHref = paymentGrantSlug
@@ -88,6 +100,7 @@ export default async function GrantDetailPage({
     : buildLocalePath(locale, "/payment-dates");
   const amountDetails = getGrantAmountDetails(grant.slug);
   const paymentEntry = paymentGrantSlug ? paymentDefaults.grants[paymentGrantSlug] ?? null : null;
+  const displayGrantName = getGrantSeoDisplayName(grant);
   const hubLinks = statuses.slice(0, 4).map((status) => ({
     href: `/status/${status.slug}`,
     title: status.title,
@@ -98,7 +111,7 @@ export default async function GrantDetailPage({
   const govServiceSchema = {
     "@context": "https://schema.org",
     "@type": "GovernmentService",
-    name: `SASSA ${grant.name}`,
+    name: `SASSA ${displayGrantName}`,
     description: grant.summary,
     serviceType: "Social grant",
     provider: {
@@ -124,10 +137,10 @@ export default async function GrantDetailPage({
         items={[
           { label: "Home", path: "/" },
           { label: "Grants", path: "/grants" },
-          { label: grant.name, path: `/grants/${grantType}` },
+          { label: displayGrantName, path: `/grants/${grantType}` },
         ]}
       />
-      <Section eyebrow={copy.eligibility} title={grant.name}>
+      <Section eyebrow={copy.eligibility} title={displayGrantName}>
         <GrantSummaryCard
           amountDetails={amountDetails}
           amountLabel={copy.summaryAmountLabel}
@@ -167,10 +180,7 @@ export default async function GrantDetailPage({
                   href={grant.officialHref}
                   locale={locale}
                   eventName="official_resource.clicked"
-                  eventPayload={{
-                    destination: "grant",
-                    grantSlug: grant.slug,
-                  }}
+                  eventPayload={{ destination: "grant", grantSlug: grant.slug }}
                   target="_blank"
                   rel="noreferrer"
                   className="primary-action focus-ring tap-target inline-flex items-center justify-center rounded-full bg-primary px-5 text-base font-semibold text-white hover:bg-primary-strong"
@@ -200,7 +210,7 @@ export default async function GrantDetailPage({
               ? getPaymentSummaryStatusText(copy, paymentEntry.state)
               : copy.summarySeePaymentDates
           }
-          title={grant.name}
+          title={displayGrantName}
         />
       </Section>
 
@@ -224,7 +234,7 @@ export default async function GrantDetailPage({
           {relatedGrants.map((relatedGrant) => (
             <Link key={relatedGrant.slug} href={buildLocalePath(locale, `/grants/${relatedGrant.slug}`)}>
               <Card className="space-y-2">
-                <h3 className="text-xl font-semibold">{relatedGrant.name}</h3>
+                <h3 className="text-xl font-semibold">{getGrantSeoDisplayName(relatedGrant)}</h3>
                 <p className="text-sm text-muted">{relatedGrant.summary}</p>
               </Card>
             </Link>

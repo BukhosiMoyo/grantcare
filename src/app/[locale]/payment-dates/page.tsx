@@ -39,8 +39,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/payment-dates",
-    title: `SASSA Payment Dates ${currentYear} — All Grants by Month`,
-    description: `Find SASSA payment dates for ${currentYear}. Check Older Persons, Disability, Children's grants, and SRD dates by month with status help.`,
+    title: `SASSA Payment Dates ${currentYear} by Month`,
+    description: `See SASSA payment dates for ${currentYear} by month, including SRD, Older Persons, Disability, and Children's grants.`,
   });
 }
 
@@ -71,9 +71,14 @@ export default async function PaymentDatesPage({
   );
   const hubLinks = [
     {
-      href: "/status/approved",
-      title: "Approved but waiting",
-      description: "Read the approved status meaning when the payment date is not the only thing you need to understand.",
+      href: `/payment-dates/${defaults.year}/${defaults.monthSlug}/older-persons`,
+      title: "Old age grant pay dates",
+      description: `Open ${defaults.label} Older Persons Grant payment dates when you need the old age grant pay day first.`,
+    },
+    {
+      href: `/payment-dates/${defaults.year}/${defaults.monthSlug}/social-relief`,
+      title: "SRD payment dates",
+      description: `Open ${defaults.label} SRD payment dates for Social Relief of Distress, R350, and R370 timing.`,
     },
     {
       href: "/guides/how-to-understand-payment-dates",
@@ -86,9 +91,14 @@ export default async function PaymentDatesPage({
       description: "Open the delay guide if the date has passed or the wording still does not make sense.",
     },
     {
-      href: "/guides/how-to-know-if-your-payment-is-ready",
-      title: "How to know if payment is ready",
-      description: "Check the readiness guide when you need the next step after approval or release wording.",
+      href: "/grant-amounts",
+      title: "Grant amounts",
+      description: "Open current SASSA grant amounts if you need the amount beside the pay date.",
+    },
+    {
+      href: "/claim-checker",
+      title: "Claim checker",
+      description: "Open the checker if a payment story or delay claim sounds doubtful and you want the right next guide first.",
     },
   ];
 
@@ -102,10 +112,10 @@ export default async function PaymentDatesPage({
       <section className="flex flex-col items-center justify-center space-y-8 rounded-[2rem] bg-surface px-4 py-12 text-center shadow-sm sm:px-6 sm:py-20 lg:py-24">
         <div className="space-y-4">
           <h1 className="text-4xl font-black tracking-tight text-primary sm:text-5xl lg:text-7xl">
-            {copy.monthlyPaymentSchedule} 2026
+            SASSA grant pay dates {defaults.year}
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-8 text-muted sm:text-xl">
-             Select a month to check dates for Older Persons, Disability, Children&apos;s Grants, and more. Or find your schedule below.
+            Check social grant dates, old age grant pay dates, SRD payment dates, and the monthly schedule for every main grant category.
           </p>
         </div>
 
@@ -249,7 +259,7 @@ export default async function PaymentDatesPage({
         </Section>
       ) : null}
 
-      <InternalLinkGrid locale={locale} title="Payment-date follow-up" items={hubLinks} />
+      <InternalLinkGrid locale={locale} title="Popular payment routes" items={hubLinks} />
     </div>
   );
 }

@@ -12,6 +12,7 @@ import { listPublicGrantTypes } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { getGrantAmountDetails } from "@/lib/official-resources";
+import { getGrantSeoDisplayName } from "@/lib/seo-aliases";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -31,8 +32,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/grants",
-    title: `SASSA Grant Types ${currentYear} — Eligibility, Amounts & Documents`,
-    description: `Compare all SASSA grant types for ${currentYear}. Check eligibility requirements, see current amounts, and find what documents you need.`,
+    title: `SASSA Grants and SRD ${currentYear}: Eligibility and Amounts`,
+    description: `Compare SASSA grants, current amounts, eligibility rules, and documents for Older Persons, Disability, Child Support, and SRD.`,
   });
 }
 
@@ -51,24 +52,34 @@ export default async function GrantsPage({
   const grants = await listPublicGrantTypes(locale);
   const hubLinks = [
     {
+      href: "/grants/social-relief",
+      title: "SRD grant",
+      description: "Open Social Relief of Distress if you need SRD, R350, or R370 grant guidance.",
+    },
+    {
+      href: "/grants/older-persons",
+      title: "Old age grant",
+      description: "Open the Older Persons Grant page for old age grant eligibility, amounts, and pay date links.",
+    },
+    {
+      href: "/payment-dates",
+      title: copy.paymentDates,
+      description: "Open social grant and grant pay dates after you identify the grant type you need to follow.",
+    },
+    {
       href: "/eligibility-checker",
       title: copy.eligibilityChecker,
       description: "Use the checker when you are not sure which grant type to read first.",
     },
     {
-      href: "/payment-dates",
-      title: copy.paymentDates,
-      description: "Open payment dates after you identify the grant type you need to follow.",
+      href: "/grant-amounts",
+      title: "Grant amounts",
+      description: "Open current SASSA grant amounts and increase-focused guides in one place.",
     },
     {
-      href: "/status",
-      title: copy.statusHelp,
-      description: "Use status help when your question is about wording rather than grant type.",
-    },
-    {
-      href: "/guides",
-      title: copy.guides,
-      description: "Read deeper support guides for appeals, delays, banking details, and documents.",
+      href: "/claim-checker",
+      title: "Claim checker",
+      description: "Open the checker if you want to test whether a grant, increase, or payment story sounds real.",
     },
   ];
 
@@ -81,7 +92,7 @@ export default async function GrantsPage({
     itemListElement: grants.map((grant, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: grant.name,
+      name: getGrantSeoDisplayName(grant),
       url: new URL(buildLocalePath(locale, `/grants/${grant.slug}`), siteUrl).toString(),
     })),
   };
@@ -93,7 +104,7 @@ export default async function GrantsPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <PageViewTracker name="page.viewed" locale={locale} />
-      <Section eyebrow={copy.eligibility} title={copy.grantTypesTitle}>
+      <Section eyebrow={copy.eligibility} title="SASSA grants in South Africa">
         <div className="grid gap-4 md:grid-cols-2">
           {grants.map((grant) => {
             const amountDetails = getGrantAmountDetails(grant.slug);
@@ -101,7 +112,7 @@ export default async function GrantsPage({
             return (
               <Link key={grant.slug} href={buildLocalePath(locale, `/grants/${grant.slug}`)}>
                 <Card className="space-y-3">
-                  <h3 className="text-xl font-semibold">{grant.name}</h3>
+                  <h3 className="text-xl font-semibold">{getGrantSeoDisplayName(grant)}</h3>
                   {amountDetails ? <GrantAmountDisplay details={amountDetails} /> : null}
                   <p className="text-sm text-muted">{grant.summary}</p>
                   <ul className="space-y-2 text-sm text-muted">
@@ -123,7 +134,7 @@ export default async function GrantsPage({
       <Section title="Quick check options">
         <QuickCheckOptions />
       </Section>
-      <InternalLinkGrid locale={locale} title="Start from the right hub" items={hubLinks} />
+      <InternalLinkGrid locale={locale} title="Popular grant routes" items={hubLinks} />
     </>
   );
 }

@@ -16,7 +16,11 @@ import {
   listRelatedGuides,
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
-import { buildLocalizedMetadata } from "@/lib/metadata";
+import {
+  buildGuideMetaDescription,
+  buildGuideMetaTitle,
+  buildLocalizedMetadata,
+} from "@/lib/metadata";
 import { db } from "@/lib/prisma";
 import { type Locale, buildLocalePath, isLocale } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
@@ -211,8 +215,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: `/guides/${slug}`,
-    title: `${guide.title} — SASSA Help Guide`,
-    description: guide.summary,
+    title: buildGuideMetaTitle(guide.title),
+    description: buildGuideMetaDescription(guide.summary),
     openGraphType: "article",
   });
 }

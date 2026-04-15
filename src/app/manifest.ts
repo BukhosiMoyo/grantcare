@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "GrantCare",
     short_name: "GrantCare",
     description:
-      "Independent mobile-first grant-help platform for payment dates, status guidance, and reminders.",
+      "Independent SASSA grant help for payment dates, status checks, eligibility, and reminders.",
     start_url: "/",
     display: "standalone",
     background_color: "#f6f0e2",

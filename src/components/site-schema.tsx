@@ -24,7 +24,7 @@ export function SiteSchema() {
         height: 512,
       },
       description:
-        "Independent grant-help platform for SASSA payment dates, status guidance, eligibility help, and multilingual support in South Africa.",
+        "Independent SASSA grant help for payment dates, status checks, eligibility, reminders, and official contact routes in South Africa.",
       contactPoint: [
         {
           "@type": "ContactPoint",

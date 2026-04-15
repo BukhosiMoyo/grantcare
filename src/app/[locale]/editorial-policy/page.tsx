@@ -19,9 +19,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/editorial-policy",
-    title: "GrantCare editorial policy",
-    description:
-      "Read how GrantCare handles official-source checks, payment-date updates, and status guidance.",
+    title: "Editorial Policy",
+    description: "Read how GrantCare handles official-source checks, payment-date updates, and status guidance.",
   });
 }
 

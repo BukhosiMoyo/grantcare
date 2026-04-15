@@ -25,9 +25,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/faq",
-    title: `SASSA FAQ ${currentYear} — Common Questions About Grants & Payments`,
+    title: `SASSA FAQ ${currentYear}: Grants, Payment Dates and Status Check`,
     description:
-      `Get quick answers about SASSA payment dates, grant status checks, eligibility rules, and how to use official channels.`,
+      "Get quick answers about SASSA grants, payment dates, status checks, eligibility, and official next steps.",
   });
 }
 

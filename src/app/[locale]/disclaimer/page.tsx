@@ -19,7 +19,7 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/disclaimer",
-    title: "GrantCare disclaimer",
+    title: "Disclaimer",
     description:
       "GrantCare is an independent information site and is not affiliated with SASSA or the South African government.",
   });

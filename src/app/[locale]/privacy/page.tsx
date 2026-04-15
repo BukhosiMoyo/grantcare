@@ -19,9 +19,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/privacy",
-    title: "GrantCare privacy",
-    description:
-      "Read how GrantCare handles reminders, saved preferences, account access, and product analytics.",
+    title: "Privacy Policy",
+    description: "Read how GrantCare handles reminders, saved preferences, account access, and product analytics.",
   });
 }
 

@@ -59,6 +59,18 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     }),
     buildLocalizedSitemapEntry({
       locale: locale.code,
+      path: "/grant-amounts",
+      changeFrequency: "weekly",
+      priority: 0.78,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
+      path: "/claim-checker",
+      changeFrequency: "weekly",
+      priority: 0.78,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
       path: "/guides",
       changeFrequency: "daily",
       priority: 0.85,

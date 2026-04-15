@@ -24,9 +24,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/guides",
-    title: "SASSA Guides — Payment Help, Status Meanings & Appeals",
+    title: "SASSA Guides for Status, Appeals and Payments",
     description:
-      "Read plain-language SASSA guides about payment dates, status meanings, delays, appeals, documents, and next steps.",
+      "Browse SASSA guides for status check problems, payment delays, appeals, banking details, documents, and SRD questions.",
   });
 }
 

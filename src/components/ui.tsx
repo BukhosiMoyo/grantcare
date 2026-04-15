@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type {
+  AnchorHTMLAttributes,
   InputHTMLAttributes,
   ReactNode,
   SelectHTMLAttributes,
@@ -57,15 +58,18 @@ export function ButtonLink({
   children,
   variant = "primary",
   className,
+  onClick,
 }: {
   href: string;
   children: ReactNode;
   variant?: "primary" | "secondary";
   className?: string;
+  onClick?: AnchorHTMLAttributes<HTMLAnchorElement>["onClick"];
 }) {
   return (
     <Link
       href={href}
+      onClick={onClick}
       className={cn(
         "focus-ring tap-target inline-flex items-center justify-center rounded-full px-6 py-2.5 text-[18px] font-semibold transition-colors",
         variant === "primary"

@@ -26,9 +26,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/eligibility-checker",
-    title: "SASSA Eligibility Checker — Find the Right Grant",
+    title: "SASSA Eligibility Checker for Grants and SRD",
     description:
-      "Answer a few questions to find which SASSA grant you may qualify for. Free guidance for Older Persons, Disability, Child Support, and SRD grants.",
+      "Use the SASSA eligibility checker to find the right grant or SRD path before you apply. Free guidance for the main grant types.",
   });
 }
 
@@ -69,6 +69,11 @@ export default async function EligibilityPage({
       href: "/guides/how-to-prepare-before-applying",
       title: "Prepare before applying",
       description: "Read the preparation guide if you want a calmer application checklist before using official channels.",
+    },
+    {
+      href: "/claim-checker",
+      title: "Claim checker",
+      description: "Open the checker if the page you found sounds like a claim or rumour rather than a normal grant route.",
     },
   ];
 
