@@ -23,6 +23,7 @@ import {
   grantTypeSchema,
   guideSchema,
   monetizationBlockSchema,
+  newsArticleSchema,
   noticeSchema,
   paymentEntrySchema,
   statusMeaningSchema,
@@ -430,6 +431,84 @@ export async function deleteGuideAction(formData: FormData) {
   redirect(
     buildRedirect(buildLocalePath(locale, "/admin/guides"), {
       message: "Guide deleted.",
+    }),
+  );
+}
+
+export async function upsertNewsArticleAction(formData: FormData) {
+  const locale = getLocale(formData.get("locale"));
+  await requireAdmin(locale, buildLocalePath(locale, "/admin/news"));
+
+  const parsed = newsArticleSchema.safeParse({
+    id: getOptionalString(formData, "id"),
+    slug: getRequiredString(formData, "slug"),
+    title: getRequiredString(formData, "title"),
+    summary: getRequiredString(formData, "summary"),
+    featured: getBoolean(formData, "featured"),
+    sortOrder: getNumber(formData, "sortOrder"),
+    status: formData.get("status"),
+  });
+
+  if (!parsed.success) {
+    handleAdminError(locale, "/admin/news", "Check the news form and try again.");
+  }
+
+  const data = parsed.data;
+  const existingArticle = data.id
+    ? await db.newsArticle.findUnique({
+        where: { id: data.id },
+        select: { publishedAt: true },
+      })
+    : null;
+
+  const translations = parseLocalizedFields(formData, ["title", "summary"]);
+  const sourceUrls = parseLineList(getOptionalString(formData, "sourceUrls"));
+
+  const payload = {
+    slug: data.slug,
+    title: data.title,
+    summary: data.summary,
+    sections: parseSectionsInput(getOptionalString(formData, "sections")),
+    sourceUrls,
+    featured: data.featured,
+    sortOrder: data.sortOrder,
+    status: data.status,
+    publishedAt: resolvePublishedAt(data.status, existingArticle?.publishedAt),
+    translations: translations ?? undefined,
+  };
+
+  if (data.id) {
+    await db.newsArticle.update({
+      where: { id: data.id },
+      data: payload,
+    });
+  } else {
+    await db.newsArticle.create({
+      data: payload,
+    });
+  }
+
+  revalidatePath(buildLocalePath(locale, "/admin/news"));
+  revalidatePath(buildLocalePath(locale, "/news"));
+  redirect(
+    buildRedirect(buildLocalePath(locale, "/admin/news"), {
+      message: "News article saved.",
+    }),
+  );
+}
+
+export async function deleteNewsArticleAction(formData: FormData) {
+  const locale = getLocale(formData.get("locale"));
+  await requireAdmin(locale, buildLocalePath(locale, "/admin/news"));
+  const id = getRequiredString(formData, "id");
+
+  await db.newsArticle.delete({ where: { id } });
+
+  revalidatePath(buildLocalePath(locale, "/admin/news"));
+  revalidatePath(buildLocalePath(locale, "/news"));
+  redirect(
+    buildRedirect(buildLocalePath(locale, "/admin/news"), {
+      message: "News article deleted.",
     }),
   );
 }

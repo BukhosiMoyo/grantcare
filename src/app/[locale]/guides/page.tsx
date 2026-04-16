@@ -60,6 +60,11 @@ export default async function GuidesPage({
       description: "Use the checker for general direction before you read grant-specific guides.",
     },
     {
+      href: "/news",
+      title: copy.news,
+      description: "Open the news archive when you need the latest announcement coverage first.",
+    },
+    {
       href: "/faq",
       title: copy.faq,
       description: "Read the short answers first if you only need the basics.",

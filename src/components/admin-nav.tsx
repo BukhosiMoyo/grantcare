@@ -12,6 +12,7 @@ const ADMIN_ITEMS = [
   { href: "/admin/payment-dates", label: "Payment dates" },
   { href: "/admin/statuses", label: "Statuses" },
   { href: "/admin/guides", label: "Guides" },
+  { href: "/admin/news", label: "News" },
   { href: "/admin/faqs", label: "FAQ" },
   { href: "/admin/notices", label: "Notices" },
   { href: "/admin/placements", label: "Placements" },

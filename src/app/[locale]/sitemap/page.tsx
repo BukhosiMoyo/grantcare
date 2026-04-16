@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/ui";
 import {
   listGuides,
+  listNewsArticles,
   listPaymentPeriods,
   listPublicGrantTypes,
   listStatusMeanings,
@@ -26,9 +27,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/sitemap",
-    title: "SASSA Pages, Guides and Payment Dates",
+    title: "SASSA Pages, News, Guides and Payment Dates",
     description:
-      "Browse GrantCare pages for SASSA payment dates, status help, grant guides, FAQs, and official contact routes.",
+      "Browse GrantCare pages for SASSA payment dates, news, status help, grant guides, FAQs, and official contact routes.",
   });
 }
 
@@ -61,8 +62,9 @@ export default async function HtmlSitemapPage({
     notFound();
   }
 
-  const [guides, grants, statuses, periods] = await Promise.all([
+  const [guides, newsArticles, grants, statuses, periods] = await Promise.all([
     listGuides(locale),
+    listNewsArticles(locale),
     listPublicGrantTypes(locale),
     listStatusMeanings(locale),
     listPaymentPeriods(locale),
@@ -73,6 +75,7 @@ export default async function HtmlSitemapPage({
     { href: buildLocalePath(locale, "/payment-dates"), label: "Payment dates" },
     { href: buildLocalePath(locale, "/status"), label: "Status help" },
     { href: buildLocalePath(locale, "/eligibility-checker"), label: "Eligibility checker" },
+    { href: buildLocalePath(locale, "/news"), label: "News" },
     { href: buildLocalePath(locale, "/guides"), label: "Guides" },
     { href: buildLocalePath(locale, "/grants"), label: "Grant types" },
     { href: buildLocalePath(locale, "/grant-amounts"), label: "Grant amounts" },
@@ -116,11 +119,16 @@ export default async function HtmlSitemapPage({
     label: guide.title,
   }));
 
+  const newsPages = newsArticles.map((article) => ({
+    href: buildLocalePath(locale, `/news/${article.slug}`),
+    label: article.title,
+  }));
+
   return (
     <div className="shell space-y-10 py-8 sm:py-10">
       <Section eyebrow="Sitemap" title="All public GrantCare pages">
         <p className="max-w-3xl text-sm leading-7 text-muted sm:text-base">
-          Use this page to browse the main sections, payment-date archives, status help,
+          Use this page to browse the main sections, payment-date archives, news, status help,
           grant pages, and guides. GrantCare is an independent information platform.
         </p>
       </Section>
@@ -146,6 +154,12 @@ export default async function HtmlSitemapPage({
       <Section title="Guide pages">
         <div className="columns-1 gap-8 sm:columns-2 xl:columns-3">
           <LinkList items={guidePages} />
+        </div>
+      </Section>
+
+      <Section title="News pages">
+        <div className="columns-1 gap-8 sm:columns-2 xl:columns-3">
+          <LinkList items={newsPages} />
         </div>
       </Section>
     </div>

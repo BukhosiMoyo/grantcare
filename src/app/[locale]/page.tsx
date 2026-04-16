@@ -17,6 +17,7 @@ import { ButtonLink, Card, Section } from "@/components/ui";
 import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
 import {
   getPaymentRouteDefaults,
+  listLatestNews,
   getNextPaymentPeriod,
   listPaymentPeriodsForYear,
   listFaqs,
@@ -67,10 +68,11 @@ export default async function HomePage({
 
   const copy = getCopy(locale);
   const homeSteps = [copy.homeStepOne, copy.homeStepTwo, copy.homeStepThree];
-  const [defaults, statuses, notices, latestGuides, faqs] = await Promise.all([
+  const [defaults, statuses, notices, latestNews, latestGuides, faqs] = await Promise.all([
     getPaymentRouteDefaults(locale),
     listStatusMeanings(locale),
     listHomepageNotices(locale),
+    listLatestNews(locale, 3),
     listLatestGuides(locale, 6),
     listFaqs(locale),
   ]);
@@ -222,6 +224,26 @@ export default async function HomePage({
             </Card>
           ))}
         </section>
+      ) : null}
+
+      {latestNews.length > 0 ? (
+        <Section eyebrow={copy.news} title="Latest news">
+          <div className="grid gap-4 md:grid-cols-3">
+            {latestNews.map((article) => (
+              <Link key={article.slug} href={buildLocalePath(locale, `/news/${article.slug}`)}>
+                <Card className="space-y-2">
+                  {article.publishedAt ? (
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">
+                      {article.publishedAt.slice(0, 10)}
+                    </p>
+                  ) : null}
+                  <h2 className="text-xl font-semibold tracking-tight">{article.title}</h2>
+                  <p className="text-[16px] leading-[1.7] text-muted">{article.summary}</p>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </Section>
       ) : null}
 
       {/* ── 3. Popular Tools ── */}

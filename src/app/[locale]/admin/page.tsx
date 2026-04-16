@@ -14,6 +14,14 @@ export const metadata: Metadata = {
   title: "Admin",
 };
 
+function isMissingNewsArticleTableError(error: unknown) {
+  return (
+    error instanceof Prisma.PrismaClientKnownRequestError &&
+    error.code === "P2021" &&
+    String(error.meta?.table ?? "").includes("NewsArticle")
+  );
+}
+
 function RankingCard({
   items,
   title,
@@ -136,6 +144,18 @@ export default async function AdminPage({
 
   const missingTranslationsFilter = { equals: Prisma.AnyNull };
 
+  const newsStats = await Promise.all([
+    db.newsArticle.count(),
+    db.newsArticle.count({ where: { status: "published" } }),
+    db.newsArticle.count({ where: { status: "published", translations: missingTranslationsFilter } }),
+  ]).catch((error) => {
+    if (isMissingNewsArticleTableError(error)) {
+      return [0, 0, 0] as const;
+    }
+
+    throw error;
+  });
+
   const [
     grantCount,
     grantPublishedCount,
@@ -185,6 +205,8 @@ export default async function AdminPage({
       db.notice.count({ where: { status: "published", startsAt: { gt: new Date() } } }),
     ]);
 
+  const [newsCount, newsPublishedCount, newsMissingTranslations] = newsStats;
+
   const window =
     resolvedSearchParams.window === "30d" ? "30d" : "7d";
   const analytics = await getAdminAnalytics(window as AnalyticsWindow);
@@ -193,12 +215,14 @@ export default async function AdminPage({
     (grantCount - grantPublishedCount) +
     (statusCount - statusPublishedCount) +
     (guideCount - guidePublishedCount) +
+    (newsCount - newsPublishedCount) +
     (faqCount - faqPublishedCount) +
     (noticeCount - noticePublishedCount) +
     (placementCount - placementPublishedCount);
   const missingTranslationCount =
     grantMissingTranslations +
     guideMissingTranslations +
+    newsMissingTranslations +
     statusMissingTranslations +
     faqMissingTranslations +
     noticeMissingTranslations;
@@ -208,6 +232,7 @@ export default async function AdminPage({
     { label: "Payment dates", live: paymentPublishedCount, value: paymentCount, href: buildLocalePath(locale, "/admin/payment-dates") },
     { label: "Statuses", live: statusPublishedCount, value: statusCount, href: buildLocalePath(locale, "/admin/statuses") },
     { label: "Guides", live: guidePublishedCount, value: guideCount, href: buildLocalePath(locale, "/admin/guides") },
+    { label: "News", live: newsPublishedCount, value: newsCount, href: buildLocalePath(locale, "/admin/news") },
     { label: "FAQ entries", live: faqPublishedCount, value: faqCount, href: buildLocalePath(locale, "/admin/faqs") },
     { label: "Notices", live: noticePublishedCount, value: noticeCount, href: buildLocalePath(locale, "/admin/notices") },
     { label: "Placements", live: placementPublishedCount, value: placementCount, href: buildLocalePath(locale, "/admin/placements") },

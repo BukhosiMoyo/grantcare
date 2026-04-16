@@ -56,6 +56,10 @@ function getInternalPathLabel(path: string) {
     return titleCase(segments[1]);
   }
 
+  if (segments[0] === "news" && segments[1]) {
+    return titleCase(segments[1]);
+  }
+
   if (segments[0] === "status" && segments[1]) {
     return `${titleCase(segments[1])} status meaning`;
   }

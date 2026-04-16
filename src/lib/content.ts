@@ -1,4 +1,4 @@
-import { ContentStatus, MonetizationPlacement } from "@prisma/client";
+import { ContentStatus, MonetizationPlacement, Prisma } from "@prisma/client";
 
 import { canQueryDatabase, isRecoverableDatabaseError, markDatabaseUnavailable } from "@/lib/database-readiness";
 import { db } from "@/lib/prisma";
@@ -7,6 +7,7 @@ import {
   FALLBACK_FAQS,
   FALLBACK_GRANT_TYPES,
   FALLBACK_GUIDES,
+  FALLBACK_NEWS_ARTICLES,
   FALLBACK_MONETIZATION_BLOCKS,
   FALLBACK_NOTICES,
   FALLBACK_PAYMENT_PERIODS,
@@ -17,6 +18,7 @@ import {
   SEO_KEYWORD_CLUSTERS,
   findFallbackGrantType,
   findFallbackGuide,
+  findFallbackNewsArticle,
   findFallbackPaymentPeriod,
   findFallbackStatusMeaning,
   getFallbackPaymentRouteDefaults,
@@ -31,6 +33,7 @@ import {
   type PublicGuide,
   type PublicMonetizationBlock,
   type PublicMonetizationPlacement,
+  type PublicNewsArticle,
   type PublicNotice,
   type PublicPaymentDateState,
   type PublicPaymentEntry,
@@ -55,6 +58,7 @@ export {
   type PublicGuide,
   type PublicMonetizationBlock,
   type PublicMonetizationPlacement,
+  type PublicNewsArticle,
   type PublicNotice,
   type PublicPaymentDateState,
   type PublicPaymentEntry,
@@ -63,6 +67,14 @@ export {
 };
 
 type TranslationFields = Record<string, unknown>;
+
+function isMissingNewsArticleTableError(error: unknown) {
+  return (
+    error instanceof Prisma.PrismaClientKnownRequestError &&
+    error.code === "P2021" &&
+    String(error.meta?.table ?? "").includes("NewsArticle")
+  );
+}
 
 function parseLocalizedFields(value: unknown): LocalizedFields {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -309,6 +321,34 @@ function mapFaqRecord(
     question: getLocalizedString(record.question, record.translations, locale, "question"),
     answer: getLocalizedString(record.answer, record.translations, locale, "answer"),
     sortOrder: record.sortOrder,
+  };
+}
+
+function mapNewsRecord(
+  record: {
+    id: string;
+    slug: string;
+    title: string;
+    summary: string;
+    sections: unknown;
+    sourceUrls: unknown;
+    featured: boolean;
+    sortOrder: number;
+    publishedAt: Date | null;
+    translations: unknown;
+  },
+  locale: Locale,
+): PublicNewsArticle {
+  return {
+    id: record.id,
+    slug: record.slug,
+    title: getLocalizedString(record.title, record.translations, locale, "title"),
+    summary: getLocalizedString(record.summary, record.translations, locale, "summary"),
+    sections: getLocalizedSections(record.sections, record.translations, locale, "sections"),
+    sourceUrls: toStringArray(record.sourceUrls),
+    featured: record.featured,
+    sortOrder: record.sortOrder,
+    publishedAt: record.publishedAt?.toISOString() ?? null,
   };
 }
 
@@ -601,6 +641,65 @@ export async function getGuideBySlug(locale: Locale, slug: string) {
   );
 }
 
+export async function listNewsArticles(locale: Locale) {
+  return withPublicFallback(
+    async () => {
+      let records;
+
+      try {
+        records = await db.newsArticle.findMany({
+          where: { status: ContentStatus.published },
+          orderBy: [{ publishedAt: "desc" }, { sortOrder: "asc" }, { createdAt: "desc" }],
+        });
+      } catch (error) {
+        if (isMissingNewsArticleTableError(error)) {
+          return [...FALLBACK_NEWS_ARTICLES];
+        }
+
+        throw error;
+      }
+
+      return records.map((record) => mapNewsRecord(record, locale));
+    },
+    () =>
+      [...FALLBACK_NEWS_ARTICLES].sort((left, right) => {
+        const leftTime = left.publishedAt ? new Date(left.publishedAt).getTime() : 0;
+        const rightTime = right.publishedAt ? new Date(right.publishedAt).getTime() : 0;
+
+        return rightTime - leftTime || left.sortOrder - right.sortOrder;
+      }),
+  );
+}
+
+export async function listLatestNews(locale: Locale, limit = 6) {
+  return (await listNewsArticles(locale)).slice(0, limit);
+}
+
+export async function getNewsArticleBySlug(locale: Locale, slug: string) {
+  return withPublicFallback(
+    async () => {
+      let record;
+
+      try {
+        record = await db.newsArticle.findUnique({ where: { slug } });
+      } catch (error) {
+        if (isMissingNewsArticleTableError(error)) {
+          return findFallbackNewsArticle(slug);
+        }
+
+        throw error;
+      }
+
+      if (!record || record.status !== ContentStatus.published) {
+        return null;
+      }
+
+      return mapNewsRecord(record, locale);
+    },
+    () => findFallbackNewsArticle(slug),
+  );
+}
+
 export async function listFaqs(locale: Locale) {
   return withPublicFallback(
     async () => {
@@ -866,6 +965,49 @@ export async function listRelatedGuides(
       }
 
       return left.sortOrder - right.sortOrder;
+    })
+    .slice(0, limit);
+}
+
+export async function listRelatedNews(
+  locale: Locale,
+  limit = 3,
+  excludeSlug?: string,
+  referenceText?: string,
+) {
+  const referenceTerms = tokenizeSeoValue(referenceText ?? excludeSlug ?? "");
+
+  return (await listNewsArticles(locale))
+    .filter((article) => article.slug !== excludeSlug)
+    .sort((left, right) => {
+      const leftTerms = new Set([
+        ...tokenizeSeoValue(left.slug),
+        ...tokenizeSeoValue(left.title),
+        ...tokenizeSeoValue(left.summary),
+      ]);
+      const rightTerms = new Set([
+        ...tokenizeSeoValue(right.slug),
+        ...tokenizeSeoValue(right.title),
+        ...tokenizeSeoValue(right.summary),
+      ]);
+
+      const leftScore = referenceTerms.reduce(
+        (score, term) => score + (leftTerms.has(term) ? 3 : 0),
+        left.featured ? 2 : 0,
+      );
+      const rightScore = referenceTerms.reduce(
+        (score, term) => score + (rightTerms.has(term) ? 3 : 0),
+        right.featured ? 2 : 0,
+      );
+
+      if (rightScore !== leftScore) {
+        return rightScore - leftScore;
+      }
+
+      const leftTime = left.publishedAt ? new Date(left.publishedAt).getTime() : 0;
+      const rightTime = right.publishedAt ? new Date(right.publishedAt).getTime() : 0;
+
+      return rightTime - leftTime || left.sortOrder - right.sortOrder;
     })
     .slice(0, limit);
 }

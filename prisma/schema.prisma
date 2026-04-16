@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
@@ -82,30 +82,30 @@ model User {
 }
 
 model GrantType {
-  id                     String                  @id @default(cuid())
-  slug                   String                  @unique
-  name                   String
-  shortName              String?
-  summary                String
-  officialHref           String
-  checks                 Json?
-  documents              Json?
-  showInPaymentTool      Boolean                 @default(false)
-  showInGrantLibrary     Boolean                 @default(true)
-  paymentGroupId         String?
-  sortOrder              Int                     @default(0)
-  status                 ContentStatus           @default(draft)
-  publishedAt            DateTime?
-  translations           Json?
-  createdAt              DateTime                @default(now())
-  updatedAt              DateTime                @updatedAt
-  paymentGroup           GrantType?              @relation("GrantTypePaymentGroup", fields: [paymentGroupId], references: [id], onDelete: SetNull)
-  paymentMembers         GrantType[]             @relation("GrantTypePaymentGroup")
-  preferredByUsers       User[]                  @relation("PreferredGrantType")
-  paymentDateEntries     PaymentDateEntry[]
-  reminderSubscriptions  ReminderSubscription[]
-  reminderJobs           ReminderJob[]
-  monetizationBlocks     MonetizationBlock[]
+  id                    String                 @id @default(cuid())
+  slug                  String                 @unique
+  name                  String
+  shortName             String?
+  summary               String
+  officialHref          String
+  checks                Json?
+  documents             Json?
+  showInPaymentTool     Boolean                @default(false)
+  showInGrantLibrary    Boolean                @default(true)
+  paymentGroupId        String?
+  sortOrder             Int                    @default(0)
+  status                ContentStatus          @default(draft)
+  publishedAt           DateTime?
+  translations          Json?
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  paymentGroup          GrantType?             @relation("GrantTypePaymentGroup", fields: [paymentGroupId], references: [id], onDelete: SetNull)
+  paymentMembers        GrantType[]            @relation("GrantTypePaymentGroup")
+  preferredByUsers      User[]                 @relation("PreferredGrantType")
+  paymentDateEntries    PaymentDateEntry[]
+  reminderSubscriptions ReminderSubscription[]
+  reminderJobs          ReminderJob[]
+  monetizationBlocks    MonetizationBlock[]
 
   @@index([status, sortOrder])
   @@index([showInPaymentTool, status, sortOrder])
@@ -113,33 +113,33 @@ model GrantType {
 }
 
 model PaymentPeriod {
-  id         String             @id @default(cuid())
-  year       Int
-  month      Int
-  published  Boolean            @default(false)
-  createdAt  DateTime           @default(now())
-  updatedAt  DateTime           @updatedAt
-  entries    PaymentDateEntry[]
+  id        String             @id @default(cuid())
+  year      Int
+  month     Int
+  published Boolean            @default(false)
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+  entries   PaymentDateEntry[]
 
   @@unique([year, month])
   @@index([published, year, month])
 }
 
 model PaymentDateEntry {
-  id            String            @id @default(cuid())
-  periodId      String
-  grantTypeId   String
-  state         PaymentDateState  @default(pending)
-  paymentDate   DateTime?
-  note          String?
-  published     Boolean           @default(false)
-  publishedAt   DateTime?
-  translations  Json?
-  createdAt     DateTime          @default(now())
-  updatedAt     DateTime          @updatedAt
-  period        PaymentPeriod     @relation(fields: [periodId], references: [id], onDelete: Cascade)
-  grantType     GrantType         @relation(fields: [grantTypeId], references: [id], onDelete: Cascade)
-  reminderJobs  ReminderJob[]
+  id           String           @id @default(cuid())
+  periodId     String
+  grantTypeId  String
+  state        PaymentDateState @default(pending)
+  paymentDate  DateTime?
+  note         String?
+  published    Boolean          @default(false)
+  publishedAt  DateTime?
+  translations Json?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  period       PaymentPeriod    @relation(fields: [periodId], references: [id], onDelete: Cascade)
+  grantType    GrantType        @relation(fields: [grantTypeId], references: [id], onDelete: Cascade)
+  reminderJobs ReminderJob[]
 
   @@unique([periodId, grantTypeId])
   @@index([published, state])
@@ -165,23 +165,41 @@ model StatusMeaning {
 }
 
 model GuideArticle {
+  id                 String              @id @default(cuid())
+  slug               String              @unique
+  title              String
+  summary            String
+  sections           Json?
+  featured           Boolean             @default(false)
+  sponsored          Boolean             @default(false)
+  sortOrder          Int                 @default(0)
+  status             ContentStatus       @default(draft)
+  publishedAt        DateTime?
+  translations       Json?
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  savedBy            SavedGuide[]
+  monetizationBlocks MonetizationBlock[]
+
+  @@index([status, sortOrder])
+}
+
+model NewsArticle {
   id           String        @id @default(cuid())
   slug         String        @unique
   title        String
   summary      String
   sections     Json?
+  sourceUrls   Json?
   featured     Boolean       @default(false)
-  sponsored    Boolean       @default(false)
   sortOrder    Int           @default(0)
   status       ContentStatus @default(draft)
   publishedAt  DateTime?
   translations Json?
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
-  savedBy      SavedGuide[]
-  monetizationBlocks MonetizationBlock[]
 
-  @@index([status, sortOrder])
+  @@index([status, publishedAt, sortOrder])
 }
 
 model FaqEntry {
@@ -218,11 +236,11 @@ model Notice {
 }
 
 model SavedGuide {
-  id        String      @id @default(cuid())
+  id        String       @id @default(cuid())
   userId    String
   guideId   String
-  createdAt DateTime    @default(now())
-  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime     @default(now())
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   guide     GuideArticle @relation(fields: [guideId], references: [id], onDelete: Cascade)
 
   @@unique([userId, guideId])
@@ -230,50 +248,50 @@ model SavedGuide {
 }
 
 model ReminderSubscription {
-  id            String           @id @default(cuid())
-  userId        String
-  grantTypeId   String
-  channel       ReminderChannel  @default(email)
-  active        Boolean          @default(true)
+  id             String          @id @default(cuid())
+  userId         String
+  grantTypeId    String
+  channel        ReminderChannel @default(email)
+  active         Boolean         @default(true)
   unsubscribedAt DateTime?
-  oneDayBefore  Boolean          @default(false)
-  twoDaysBefore Boolean          @default(false)
-  onPublish     Boolean          @default(false)
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  grantType     GrantType        @relation(fields: [grantTypeId], references: [id], onDelete: Cascade)
-  reminderJobs  ReminderJob[]
+  oneDayBefore   Boolean         @default(false)
+  twoDaysBefore  Boolean         @default(false)
+  onPublish      Boolean         @default(false)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  grantType      GrantType       @relation(fields: [grantTypeId], references: [id], onDelete: Cascade)
+  reminderJobs   ReminderJob[]
 
   @@unique([userId, grantTypeId, channel])
   @@index([active, grantTypeId])
 }
 
 model ReminderJob {
-  id                 String             @id @default(cuid())
-  userId             String
-  subscriptionId     String?
-  grantTypeId        String
-  paymentDateEntryId String?
-  channel            ReminderChannel    @default(email)
-  trigger            ReminderTrigger
-  status             ReminderJobStatus  @default(pending)
-  scheduledFor       DateTime
-  attemptCount       Int                @default(0)
+  id                  String                @id @default(cuid())
+  userId              String
+  subscriptionId      String?
+  grantTypeId         String
+  paymentDateEntryId  String?
+  channel             ReminderChannel       @default(email)
+  trigger             ReminderTrigger
+  status              ReminderJobStatus     @default(pending)
+  scheduledFor        DateTime
+  attemptCount        Int                   @default(0)
   processingStartedAt DateTime?
-  lastAttemptAt      DateTime?
-  sentAt             DateTime?
-  lastError          String?
-  cancelReason       String?
-  providerMessageId  String?
-  payload            Json?
-  createdAt          DateTime           @default(now())
-  updatedAt          DateTime           @updatedAt
-  user               User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-  subscription       ReminderSubscription? @relation(fields: [subscriptionId], references: [id], onDelete: SetNull)
-  grantType          GrantType          @relation(fields: [grantTypeId], references: [id], onDelete: Cascade)
-  paymentDateEntry   PaymentDateEntry?  @relation(fields: [paymentDateEntryId], references: [id], onDelete: SetNull)
-  attempts           ReminderJobAttempt[]
+  lastAttemptAt       DateTime?
+  sentAt              DateTime?
+  lastError           String?
+  cancelReason        String?
+  providerMessageId   String?
+  payload             Json?
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  user                User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscription        ReminderSubscription? @relation(fields: [subscriptionId], references: [id], onDelete: SetNull)
+  grantType           GrantType             @relation(fields: [grantTypeId], references: [id], onDelete: Cascade)
+  paymentDateEntry    PaymentDateEntry?     @relation(fields: [paymentDateEntryId], references: [id], onDelete: SetNull)
+  attempts            ReminderJobAttempt[]
 
   @@index([status, scheduledFor, attemptCount])
   @@index([paymentDateEntryId, trigger])
@@ -294,13 +312,13 @@ model ReminderJobAttempt {
 }
 
 model PasswordResetToken {
-  id        String   @id @default(cuid())
+  id        String    @id @default(cuid())
   userId    String
-  tokenHash String   @unique
+  tokenHash String    @unique
   expiresAt DateTime
   usedAt    DateTime?
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, expiresAt])
   @@index([expiresAt])

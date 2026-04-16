@@ -7,6 +7,7 @@ import { PrismaClient } from "@prisma/client";
 import {
   FALLBACK_FAQS,
   FALLBACK_GUIDES,
+  FALLBACK_NEWS_ARTICLES,
   FALLBACK_GRANT_TYPES,
   FALLBACK_NOTICES,
   FALLBACK_PAYMENT_PERIODS,
@@ -14,6 +15,7 @@ import {
   type PublicFaq,
   type PublicGrantType,
   type PublicGuide,
+  type PublicNewsArticle,
   type PublicNotice,
   type PublicPaymentPeriod,
   type PublicStatusMeaning,
@@ -25,6 +27,7 @@ type SeedBundle = {
   faqs: PublicFaq[];
   grantTypes: PublicGrantType[];
   guides: PublicGuide[];
+  newsArticles: PublicNewsArticle[];
   notices: PublicNotice[];
   paymentPeriods: PublicPaymentPeriod[];
   statuses: PublicStatusMeaning[];
@@ -34,6 +37,7 @@ const DEFAULT_SEED_BUNDLE: SeedBundle = {
   faqs: FALLBACK_FAQS,
   grantTypes: FALLBACK_GRANT_TYPES,
   guides: FALLBACK_GUIDES,
+  newsArticles: FALLBACK_NEWS_ARTICLES,
   notices: FALLBACK_NOTICES,
   paymentPeriods: FALLBACK_PAYMENT_PERIODS,
   statuses: FALLBACK_STATUS_MEANINGS,
@@ -68,9 +72,13 @@ async function loadSeedBundle() {
   const parsed = JSON.parse(raw) as unknown;
 
   assertSeedBundle(parsed);
+  const candidate = parsed as Partial<SeedBundle>;
   console.log(`Using seed content from ${resolvedPath}`);
 
-  return parsed;
+  return {
+    ...candidate,
+    newsArticles: Array.isArray(candidate.newsArticles) ? candidate.newsArticles : [],
+  } as SeedBundle;
 }
 
 async function main() {
@@ -188,6 +196,35 @@ async function main() {
         status: "published",
         publishedAt: new Date(),
         translations: guide.translations ?? undefined,
+      },
+    });
+  }
+
+  for (const article of seedBundle.newsArticles) {
+    await prisma.newsArticle.upsert({
+      where: { slug: article.slug },
+      update: {
+        title: article.title,
+        summary: article.summary,
+        sections: article.sections,
+        sourceUrls: article.sourceUrls,
+        featured: article.featured,
+        sortOrder: article.sortOrder,
+        status: "published",
+        publishedAt: article.publishedAt ? new Date(article.publishedAt) : new Date(),
+        translations: article.translations ?? undefined,
+      },
+      create: {
+        slug: article.slug,
+        title: article.title,
+        summary: article.summary,
+        sections: article.sections,
+        sourceUrls: article.sourceUrls,
+        featured: article.featured,
+        sortOrder: article.sortOrder,
+        status: "published",
+        publishedAt: article.publishedAt ? new Date(article.publishedAt) : new Date(),
+        translations: article.translations ?? undefined,
       },
     });
   }

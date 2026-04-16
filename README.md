@@ -12,6 +12,7 @@ GrantCare is a multilingual, mobile-first Next.js app for South African grant-he
 - Admin-controlled monetization placements for payment-date, guide, and dashboard zones
 - Mobile-first homepage with clear disclaimers and core actions
 - Payment dates tool with month/grant routes and reminder preferences
+- News section for published SASSA updates and announcement coverage
 - Status meaning tool with detailed guidance routes
 - Eligibility checker with step-by-step flow
 - Grant guides, FAQ, dashboard, privacy, and admin CRUD screens
@@ -74,6 +75,8 @@ The previous Docker example connection is:
 - `/[locale]/grants/[grantType]`
 - `/[locale]/guides`
 - `/[locale]/guides/[slug]`
+- `/[locale]/news`
+- `/[locale]/news/[slug]`
 - `/[locale]/faq`
 - `/[locale]/dashboard`
 - `/[locale]/admin`
@@ -84,6 +87,7 @@ The previous Docker example connection is:
 - Payment dates are modeled as `expected`, `pending`, or `portal_only` and should only be published when confirmed.
 - Public pages render from Prisma when the database is configured and fall back to local content in non-production development.
 - Reminder processing runs through `/api/cron/reminders`; in production the included `vercel.json` schedules it hourly.
+- Content publishing helpers live in [docs/sassa-content-automation.md](/Users/maxx/Projects/Grantcare/docs/sassa-content-automation.md).
 - `REMINDER_FROM_EMAIL` must use a sender from a verified Resend domain such as `GrantCare <hello@grantcare.co.za>`. Replies can still go to `hello@symaxx.com`.
 - Analytics events are stored in the database and can be forwarded to an external provider later from the shared analytics service.
 - `npm run db:seed` uses the built-in launch bundle by default and can load a custom JSON bundle when `SEED_CONTENT_FILE` is set.

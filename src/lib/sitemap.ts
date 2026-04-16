@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import {
   listGuides,
+  listNewsArticles,
   listPaymentPeriods,
   listPublicGrantTypes,
   listStatusMeanings,
@@ -19,8 +20,9 @@ function escapeXml(value: string) {
 }
 
 export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
-  const [guides, grants, statuses, paymentPeriods] = await Promise.all([
+  const [guides, newsArticles, grants, statuses, paymentPeriods] = await Promise.all([
     listGuides("en"),
+    listNewsArticles("en"),
     listPublicGrantTypes("en"),
     listStatusMeanings("en"),
     listPaymentPeriods("en"),
@@ -74,6 +76,12 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       path: "/guides",
       changeFrequency: "daily",
       priority: 0.85,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
+      path: "/news",
+      changeFrequency: "daily",
+      priority: 0.84,
     }),
     buildLocalizedSitemapEntry({
       locale: locale.code,
@@ -155,6 +163,18 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
+  const newsRoutes = LOCALES.flatMap((locale) =>
+    newsArticles.map((article) =>
+      buildLocalizedSitemapEntry({
+        locale: locale.code,
+        path: `/news/${article.slug}`,
+        lastModified: article.publishedAt ?? undefined,
+        changeFrequency: "daily",
+        priority: 0.77,
+      }),
+    ),
+  );
+
   const grantRoutes = LOCALES.flatMap((locale) =>
     grants.map((grant) =>
       buildLocalizedSitemapEntry({
@@ -177,7 +197,7 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
-  return [...staticRoutes, ...paymentRoutes, ...guideRoutes, ...grantRoutes, ...statusRoutes];
+  return [...staticRoutes, ...paymentRoutes, ...guideRoutes, ...newsRoutes, ...grantRoutes, ...statusRoutes];
 }
 
 export function buildSitemapXml(entries: MetadataRoute.Sitemap) {

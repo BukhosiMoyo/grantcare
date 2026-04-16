@@ -61,6 +61,7 @@ type HomeCopy = {
   myDashboard: string;
   nameLabel: string;
   nextSteps: string;
+  news: string;
   noPreference: string;
   noSavedGuides: string;
   notice: string;
@@ -205,6 +206,7 @@ const ENGLISH_COPY: HomeCopy = {
   myDashboard: "My dashboard",
   nameLabel: "Name",
   nextSteps: "Next steps",
+  news: "News",
   noPreference: "No preference",
   noSavedGuides: "No saved guides yet.",
   notice: "Notice",
@@ -303,6 +305,7 @@ export const COPY: Record<Locale, Partial<HomeCopy>> = {
     faq: "Imibuzo ejwayelekile",
     grantTypesTitle: "Izinhlobo zezibonelelo",
     guides: "Imihlahlandlela",
+    news: "Izindaba",
     helpfulOffersTitle: "Okuwusizo okukhokhelwe",
     heroBody: "Usizo oluzimele ngemibuzo yezibonelelo zaseNingizimu Afrika.",
     heroTitle: "Izinsuku zokukhokha, usizo lwesimo, nezinyathelo ezilandelayo.",
@@ -358,6 +361,7 @@ export const COPY: Record<Locale, Partial<HomeCopy>> = {
     faq: "Imibuzo eqhelekileyo",
     grantTypesTitle: "Iintlobo zezibonelelo",
     guides: "Izikhokelo",
+    news: "Iindaba",
     helpfulOffersTitle: "Izibonelelo eziluncedo",
     heroBody: "Uncedo oluzimeleyo ngemibuzo yezibonelelo eMzantsi Afrika.",
     heroTitle: "Imihla yokuhlawula, uncedo lwesimo, namanyathelo alandelayo.",
@@ -409,6 +413,7 @@ export const COPY: Record<Locale, Partial<HomeCopy>> = {
     faq: "Vrae",
     grantTypesTitle: "Toelaagtipes",
     guides: "Gidse",
+    news: "Nuus",
     helpfulOffersTitle: "Nuttige aanbiedinge",
     heroBody: "Onafhanklike hulp vir Suid-Afrikaanse toelaevrae.",
     heroTitle: "Betaaldatums, statushulp en volgende stappe.",
@@ -451,6 +456,7 @@ export const COPY: Record<Locale, Partial<HomeCopy>> = {
     dashboard: "Dasheboto",
     eligibility: "Go swanela",
     guides: "Ditaelo",
+    news: "Ditaba",
     heroBody: "Thušo ya boikemelo bakeng sa dipotšišo tša dithušo tša Afrika Borwa.",
     heroTitle: "Matšatšikgwedi a tefo, thušo ya maemo, le dikgato tše di latelago.",
     howItWorks: "E šoma bjang",
@@ -467,6 +473,7 @@ export const COPY: Record<Locale, Partial<HomeCopy>> = {
     dashboard: "Dashboard",
     eligibility: "Tshwanelo",
     guides: "Ditaelo",
+    news: "Ditaba",
     heroBody: "Thuso e e ikemetseng ka dipotso tsa dithuso tsa Aforika Borwa.",
     heroTitle: "Malatsi a tefo, thuso ya maemo, le dikgato tse di latelang.",
     howItWorks: "Go dira jang",

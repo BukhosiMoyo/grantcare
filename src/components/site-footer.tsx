@@ -15,6 +15,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
     { href: buildLocalePath(locale, "/payment-dates"), label: copy.paymentDates },
     { href: buildLocalePath(locale, "/status"), label: copy.statusHelp },
     { href: buildLocalePath(locale, "/eligibility-checker"), label: copy.eligibility },
+    { href: buildLocalePath(locale, "/news"), label: copy.news },
     { href: buildLocalePath(locale, "/guides"), label: copy.guides },
     { href: buildLocalePath(locale, "/grants"), label: copy.grantTypesTitle },
     { href: buildLocalePath(locale, "/faq"), label: copy.faq },

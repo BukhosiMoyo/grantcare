@@ -43,6 +43,16 @@ export function buildGuideMetaTitle(title: string) {
   return /\bsassa\b/i.test(normalized) ? normalized : `${normalized} — SASSA`;
 }
 
+export function buildNewsMetaTitle(title: string) {
+  const normalized = normalizeMetaText(title);
+
+  if (/\bsassa\b/i.test(normalized)) {
+    return normalized;
+  }
+
+  return `${normalized} — SASSA news`;
+}
+
 export function buildGuideMetaDescription(summary: string) {
   const normalized = normalizeMetaText(summary);
 
@@ -54,6 +64,19 @@ export function buildGuideMetaDescription(summary: string) {
   const lowerCasedSummary = `${firstCharacter.toLowerCase()}${normalized.slice(1)}`;
 
   return truncateMetaDescription(`SASSA guide: ${lowerCasedSummary}`);
+}
+
+export function buildNewsMetaDescription(summary: string) {
+  const normalized = normalizeMetaText(summary);
+
+  if (/\b(sassa|srd|grant|payment)\b/i.test(normalized)) {
+    return truncateMetaDescription(normalized);
+  }
+
+  const firstCharacter = normalized.charAt(0);
+  const lowerCasedSummary = `${firstCharacter.toLowerCase()}${normalized.slice(1)}`;
+
+  return truncateMetaDescription(`SASSA news update: ${lowerCasedSummary}`);
 }
 
 export function buildLocalizedMetadata(input: {

@@ -98,6 +98,19 @@ export type PublicGuide = {
   translations?: LocalizedFields;
 };
 
+export type PublicNewsArticle = {
+  id?: string;
+  slug: string;
+  title: string;
+  summary: string;
+  sections: Array<{ title: string; body: string }>;
+  sourceUrls: string[];
+  featured: boolean;
+  sortOrder: number;
+  publishedAt?: string | null;
+  translations?: LocalizedFields;
+};
+
 export type PublicFaq = {
   id: string;
   question: string;
@@ -453,6 +466,8 @@ export const FALLBACK_GUIDES: PublicGuide[] = [
   ...SEO_BATCH_SIXTEEN_GUIDES,
 ];
 
+export const FALLBACK_NEWS_ARTICLES: PublicNewsArticle[] = [];
+
 export const FALLBACK_FAQS: PublicFaq[] = [
   {
     id: "faq-independent",
@@ -608,6 +623,10 @@ export function findFallbackGrantType(slug: string) {
 
 export function findFallbackGuide(slug: string) {
   return FALLBACK_GUIDES.find((entry) => entry.slug === slug) ?? null;
+}
+
+export function findFallbackNewsArticle(slug: string) {
+  return FALLBACK_NEWS_ARTICLES.find((entry) => entry.slug === slug) ?? null;
 }
 
 export function findFallbackStatusMeaning(slug: string) {

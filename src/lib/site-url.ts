@@ -1,5 +1,3 @@
-import "server-only";
-
 function withHttps(value: string) {
   return /^https?:\/\//i.test(value) ? value : `https://${value}`;
 }

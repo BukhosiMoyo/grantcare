@@ -17,6 +17,7 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
     { href: buildLocalePath(locale, "/payment-dates"), label: copy.paymentDates },
     { href: buildLocalePath(locale, "/status"), label: copy.statusHelp },
     { href: buildLocalePath(locale, "/eligibility-checker"), label: copy.eligibilityChecker },
+    { href: buildLocalePath(locale, "/news"), label: copy.news },
     { href: buildLocalePath(locale, "/guides"), label: copy.guides },
   ];
 

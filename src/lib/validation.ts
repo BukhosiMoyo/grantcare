@@ -129,6 +129,16 @@ export const guideSchema = z.object({
   status: contentStatusSchema,
 });
 
+export const newsArticleSchema = z.object({
+  id: z.string().trim().nullable(),
+  slug: z.string().trim().min(2).max(80),
+  title: z.string().trim().min(2).max(160),
+  summary: z.string().trim().min(2).max(240),
+  featured: z.boolean(),
+  sortOrder: z.number().int().min(0).max(999),
+  status: contentStatusSchema,
+});
+
 export const faqSchema = z.object({
   id: z.string().trim().nullable(),
   question: z.string().trim().min(2).max(180),

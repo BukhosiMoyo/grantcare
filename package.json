@@ -15,7 +15,10 @@
     "db:logs": "docker compose logs -f db",
     "db:setup:local": "npm run db:up && npm run db:push && npm run db:seed",
     "db:push": "prisma db push",
-    "db:seed": "prisma db seed"
+    "db:seed": "prisma db seed",
+    "content:publish:guide": "node --import tsx scripts/publish-guide.ts",
+    "content:publish:news": "node --import tsx scripts/publish-news.ts",
+    "content:sync:dates": "node --import tsx scripts/sync-payment-dates.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
@@ -41,6 +44,6 @@
     "typescript": "^5"
   },
   "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "seed": "node --import tsx prisma/seed.ts"
   }
 }
