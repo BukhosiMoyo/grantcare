@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
+import { FaqSchema } from "@/components/faq-schema";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { EligibilityChecker } from "@/components/eligibility-checker";
 import { Card, Section } from "@/components/ui";
-import { FaqSchema } from "@/components/faq-schema";
 import { listPublicGrantTypes, listFaqs } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
@@ -79,6 +80,13 @@ export default async function EligibilityPage({
 
   return (
     <div className="space-y-12">
+      <BreadcrumbSchema
+        locale={locale}
+        items={[
+          { label: "Home", path: "/" },
+          { label: "Eligibility checker", path: "/eligibility-checker" },
+        ]}
+      />
       <PageViewTracker name="page.viewed" locale={locale} />
 
       {/* ── 1. Hero Redesign ── */}

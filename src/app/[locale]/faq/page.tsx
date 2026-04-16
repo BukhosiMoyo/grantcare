@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { Card, Section } from "@/components/ui";
@@ -81,6 +82,13 @@ export default async function FaqPage({
 
   return (
     <>
+      <BreadcrumbSchema
+        locale={locale}
+        items={[
+          { label: "Home", path: "/" },
+          { label: "FAQ", path: "/faq" },
+        ]}
+      />
       <PageViewTracker name="page.viewed" locale={locale} />
       <script
         type="application/ld+json"

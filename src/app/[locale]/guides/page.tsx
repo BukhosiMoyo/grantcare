@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { Card, Section } from "@/components/ui";
@@ -73,6 +74,13 @@ export default async function GuidesPage({
 
   return (
     <div className="space-y-8">
+      <BreadcrumbSchema
+        locale={locale}
+        items={[
+          { label: "Home", path: "/" },
+          { label: "Guides", path: "/guides" },
+        ]}
+      />
       <PageViewTracker name="page.viewed" locale={locale} />
       <Section eyebrow={copy.guides} title={copy.guideLibraryTitle}>
         <div className="grid gap-4 md:grid-cols-2">

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
+import { FaqSchema } from "@/components/faq-schema";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { PaymentDateTool } from "@/components/payment-date-tool";
@@ -20,7 +22,6 @@ import {
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
-import { FaqSchema } from "@/components/faq-schema";
 import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
 
 export async function generateMetadata({
@@ -106,6 +107,13 @@ export default async function PaymentDatesPage({
 
   return (
     <div className="space-y-12">
+      <BreadcrumbSchema
+        locale={locale}
+        items={[
+          { label: "Home", path: "/" },
+          { label: "Payment dates", path: "/payment-dates" },
+        ]}
+      />
       <PageViewTracker name="page.viewed" locale={locale} />
 
       {/* ── 1. Hero Redesign ── */}

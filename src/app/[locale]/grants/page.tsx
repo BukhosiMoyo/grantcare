@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import { GrantAmountDisplay } from "@/components/grant-amount-display";
 import { GrantAmountTable } from "@/components/grant-amount-table";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
@@ -99,6 +100,13 @@ export default async function GrantsPage({
 
   return (
     <>
+      <BreadcrumbSchema
+        locale={locale}
+        items={[
+          { label: "Home", path: "/" },
+          { label: "Grants", path: "/grants" },
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}

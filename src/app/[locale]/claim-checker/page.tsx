@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import { ClaimChecker } from "@/components/claim-checker";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
@@ -63,6 +64,13 @@ export default async function ClaimCheckerPage({
 
   return (
     <div className="space-y-12">
+      <BreadcrumbSchema
+        locale={locale}
+        items={[
+          { label: "Home", path: "/" },
+          { label: "Claim checker", path: "/claim-checker" },
+        ]}
+      />
       <PageViewTracker name="page.viewed" locale={locale} />
 
       <section className="flex flex-col items-center justify-center space-y-8 rounded-[2rem] bg-surface px-4 py-12 text-center shadow-sm sm:px-6 sm:py-20 lg:py-24">
