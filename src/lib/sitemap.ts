@@ -8,7 +8,7 @@ import {
   listStatusMeanings,
 } from "@/lib/content";
 import { buildLocalizedSitemapEntry } from "@/lib/metadata";
-import { LOCALES } from "@/lib/site";
+import { getPublicLocales } from "@/lib/site";
 
 function escapeXml(value: string) {
   return value
@@ -27,8 +27,9 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     listStatusMeanings("en"),
     listPaymentPeriods("en"),
   ]);
+  const publicLocales = getPublicLocales();
 
-  const staticRoutes = LOCALES.flatMap((locale) => [
+  const staticRoutes = publicLocales.flatMap((locale) => [
     buildLocalizedSitemapEntry({
       locale: locale.code,
       path: "/",
@@ -133,7 +134,7 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     }),
   ]);
 
-  const paymentRoutes = LOCALES.flatMap((locale) =>
+  const paymentRoutes = publicLocales.flatMap((locale) =>
     paymentPeriods.flatMap((period) => [
       buildLocalizedSitemapEntry({
         locale: locale.code,
@@ -152,7 +153,7 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     ]),
   );
 
-  const guideRoutes = LOCALES.flatMap((locale) =>
+  const guideRoutes = publicLocales.flatMap((locale) =>
     guides.map((guide) =>
       buildLocalizedSitemapEntry({
         locale: locale.code,
@@ -163,7 +164,7 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
-  const newsRoutes = LOCALES.flatMap((locale) =>
+  const newsRoutes = publicLocales.flatMap((locale) =>
     newsArticles.map((article) =>
       buildLocalizedSitemapEntry({
         locale: locale.code,
@@ -175,7 +176,7 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
-  const grantRoutes = LOCALES.flatMap((locale) =>
+  const grantRoutes = publicLocales.flatMap((locale) =>
     grants.map((grant) =>
       buildLocalizedSitemapEntry({
         locale: locale.code,
@@ -186,7 +187,7 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
-  const statusRoutes = LOCALES.flatMap((locale) =>
+  const statusRoutes = publicLocales.flatMap((locale) =>
     statuses.map((status) =>
       buildLocalizedSitemapEntry({
         locale: locale.code,
@@ -201,10 +202,18 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
 }
 
 export function buildSitemapXml(entries: MetadataRoute.Sitemap) {
+  const hasLanguageAlternates = entries.some((entry) =>
+    entry.alternates?.languages
+      ? Object.values(entry.alternates.languages).some((href) => typeof href === "string")
+      : false,
+  );
+
   const lines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    hasLanguageAlternates
+      ? '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'
+      : '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
   ];
 
   for (const entry of entries) {

@@ -11,7 +11,7 @@ import {
   listStatusMeanings,
 } from "@/lib/content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
-import { buildLocalePath, isLocale } from "@/lib/site";
+import { buildLocalePath, isPublicLocale } from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -20,7 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
-  if (!isLocale(locale)) {
+  if (!isPublicLocale(locale)) {
     return {};
   }
 
@@ -58,7 +58,7 @@ export default async function HtmlSitemapPage({
 }) {
   const { locale } = await params;
 
-  if (!isLocale(locale)) {
+  if (!isPublicLocale(locale)) {
     notFound();
   }
 

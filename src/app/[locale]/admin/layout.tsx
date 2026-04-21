@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { AdminNav } from "@/components/admin-nav";
 import { requireAdmin } from "@/lib/auth-guards";
-import { isLocale, type Locale } from "@/lib/site";
+import { buildLocalePath, isLocale, type Locale } from "@/lib/site";
 
 export const metadata: Metadata = {
   robots: {
@@ -29,7 +29,7 @@ export default async function AdminLayout({
     notFound();
   }
 
-  await requireAdmin(locale as Locale, `/${locale}/admin`);
+  await requireAdmin(locale as Locale, buildLocalePath(locale as Locale, "/admin"));
 
   return (
     <div className="space-y-6">

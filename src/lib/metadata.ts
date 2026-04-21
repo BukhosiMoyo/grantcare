@@ -1,6 +1,6 @@
 import type { Metadata, MetadataRoute } from "next";
 
-import { LOCALES, buildLocalePath, type Locale } from "@/lib/site";
+import { buildLocalePath, getPublicLocales, type Locale } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
 
 const META_DESCRIPTION_MAX_LENGTH = 160;
@@ -9,7 +9,7 @@ function buildLanguageAlternates(path: string) {
   const siteUrl = getSiteUrl();
 
   return Object.fromEntries(
-    LOCALES.map((entry) => [
+    getPublicLocales().map((entry) => [
       entry.code,
       new URL(buildLocalePath(entry.code, path), siteUrl).toString(),
     ]),
@@ -90,14 +90,15 @@ export function buildLocalizedMetadata(input: {
   const siteUrl = getSiteUrl();
   const canonicalPath = buildLocalePath(input.locale, input.path);
   const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
-  const languages = buildLanguageAlternates(input.path);
+  const languages =
+    getPublicLocales().length > 1 ? buildLanguageAlternates(input.path) : undefined;
 
   return {
     title: input.title,
     description: input.description,
     alternates: {
       canonical: canonicalUrl,
-      languages,
+      ...(languages ? { languages } : {}),
     },
     robots: input.noIndex
       ? {
@@ -135,14 +136,20 @@ export function buildLocalizedSitemapEntry(input: {
   const siteUrl = getSiteUrl();
   const canonicalPath = buildLocalePath(input.locale, input.path);
   const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+  const languages =
+    getPublicLocales().length > 1 ? buildLanguageAlternates(input.path) : undefined;
 
   return {
     url: canonicalUrl,
     lastModified: input.lastModified ? new Date(input.lastModified) : new Date(),
     changeFrequency: input.changeFrequency,
     priority: input.priority,
-    alternates: {
-      languages: buildLanguageAlternates(input.path),
-    },
+    ...(languages
+      ? {
+          alternates: {
+            languages,
+          },
+        }
+      : {}),
   } satisfies MetadataRoute.Sitemap[number];
 }

@@ -1,17 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { cookies } from "next/headers";
 import { IBM_Plex_Mono, Noto_Sans } from "next/font/google";
 import "./globals.css";
 
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { SiteSchema } from "@/components/site-schema";
 import { getSiteUrl } from "@/lib/site-url";
-import {
-  DEFAULT_LOCALE,
-  LEGACY_LOCALE_COOKIE_NAME,
-  LOCALE_COOKIE_NAME,
-  isLocale,
-} from "@/lib/site";
+import { DEFAULT_LOCALE } from "@/lib/site";
 
 const bodyFont = Noto_Sans({
   variable: "--font-body",
@@ -50,20 +44,14 @@ export const viewport: Viewport = {
   themeColor: "#174c3c",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const localePreference =
-    cookieStore.get(LOCALE_COOKIE_NAME)?.value ??
-    cookieStore.get(LEGACY_LOCALE_COOKIE_NAME)?.value;
-  const htmlLang = isLocale(localePreference) ? localePreference : DEFAULT_LOCALE;
-
   return (
     <html
-      lang={htmlLang}
+      lang={DEFAULT_LOCALE}
       data-scroll-behavior="smooth"
       className={`${bodyFont.variable} ${monoFont.variable}`}
     >

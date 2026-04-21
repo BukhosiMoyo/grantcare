@@ -2,11 +2,13 @@ import { notFound } from "next/navigation";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { LOCALES, isLocale, type Locale } from "@/lib/site";
+import { getPublicLocales, isPublicLocale, type Locale } from "@/lib/site";
 
 export function generateStaticParams() {
-  return LOCALES.map((locale) => ({ locale: locale.code }));
+  return getPublicLocales().map((locale) => ({ locale: locale.code }));
 }
+
+export const dynamicParams = false;
 
 export default async function LocaleLayout({
   children,
@@ -17,7 +19,7 @@ export default async function LocaleLayout({
 }>) {
   const { locale } = await params;
 
-  if (!isLocale(locale)) {
+  if (!isPublicLocale(locale)) {
     notFound();
   }
 

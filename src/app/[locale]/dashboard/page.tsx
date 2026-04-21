@@ -23,7 +23,7 @@ import { listGrantTypes, listMonetizationBlocks, listPaymentCategories } from "@
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { getDashboardData } from "@/lib/users";
-import { buildLocalePath, isLocale } from "@/lib/site";
+import { DEFAULT_LOCALE, buildLocalePath, isLocale } from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -105,21 +105,13 @@ export default async function DashboardPage({
         <Card className="space-y-5">
           <form action={updateProfileAction} className="space-y-5">
             <input type="hidden" name="locale" value={locale} />
+            <input type="hidden" name="preferredLocale" value={DEFAULT_LOCALE} />
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label={copy.nameLabel}>
                 <Input name="name" defaultValue={dashboardData.user.name ?? ""} required />
               </Field>
               <Field label={copy.emailLabel}>
                 <Input name="email" type="email" defaultValue={dashboardData.user.email} required />
-              </Field>
-              <Field label={copy.language}>
-                <Select name="preferredLocale" defaultValue={dashboardData.user.preferredLocale}>
-                  {["en", "zu", "xh", "af", "nso", "tn"].map((entry) => (
-                    <option key={entry} value={entry}>
-                      {entry}
-                    </option>
-                  ))}
-                </Select>
               </Field>
               <Field label={copy.preferredGrant}>
                 <Select

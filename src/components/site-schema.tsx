@@ -30,7 +30,7 @@ export function SiteSchema() {
           "@type": "ContactPoint",
           email: "hello@symaxx.com",
           contactType: "customer support",
-          availableLanguage: ["English", "Zulu", "Xhosa", "Afrikaans"],
+          availableLanguage: ["English"],
         },
       ],
       sameAs: [],
@@ -44,12 +44,12 @@ export function SiteSchema() {
       publisher: {
         "@id": `${siteUrl}/#organization`,
       },
-      inLanguage: ["en", "zu", "xh", "af", "nso", "tn"],
+      inLanguage: "en",
       potentialAction: {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate: `${siteUrl}/en/guides?q={search_term_string}`,
+          urlTemplate: `${siteUrl}/guides?q={search_term_string}`,
         },
         "query-input": "required name=search_term_string",
       },

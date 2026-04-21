@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { signOutAction } from "@/actions/auth";
 import { BrandLogo } from "@/components/brand-logo";
-import { LanguageSwitcher } from "@/components/language-switcher";
 import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
 import { getSessionUser } from "@/lib/auth-guards";
 import { getCopy } from "@/lib/copy";
@@ -40,7 +39,6 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
             ))}
           </nav>
           <div className="hidden shrink-0 items-center gap-2 lg:flex">
-            <LanguageSwitcher currentLocale={locale} label={copy.language} compact />
             <div className="flex items-center gap-2">
               {sessionUser ? (
                 <>
@@ -88,7 +86,6 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
           </div>
 
           <div className="flex shrink-0 items-center gap-2 lg:hidden">
-            <LanguageSwitcher currentLocale={locale} label={copy.language} compact />
             <details className="relative">
               <summary className="focus-ring flex h-10 list-none items-center rounded-full border border-border bg-surface px-3.5 text-sm font-medium text-foreground hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
                 Menu

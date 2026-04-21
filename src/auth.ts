@@ -4,7 +4,7 @@ import { compare } from "bcryptjs";
 
 import { trackServerEvent } from "@/lib/analytics";
 import { isProductionServer } from "@/lib/server-env";
-import { DEFAULT_LOCALE } from "@/lib/site";
+import { DEFAULT_LOCALE, buildLocalePath } from "@/lib/site";
 import { signInSchema } from "@/lib/validation";
 import { getUserByEmail } from "@/lib/users";
 
@@ -53,7 +53,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         await trackServerEvent({
           name: "account.login",
           locale: user.preferredLocale,
-          path: `/${user.preferredLocale}/sign-in`,
+          path: buildLocalePath(user.preferredLocale, "/sign-in"),
           payload: {
             role: user.role,
           },
