@@ -116,6 +116,11 @@ export async function getDashboardData(userId: string) {
           createdAt: "desc",
         },
       },
+      toolGenerations: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
   });
 

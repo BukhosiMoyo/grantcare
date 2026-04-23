@@ -11,11 +11,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "To understand payment dates, start by checking whether the date is officially published, expected, or still pending. A payment date is useful guidance, but it should not be treated as final unless the official source confirms it.",
+        "Always check if a payment date is marked 'expected' or 'published'. Expected dates are just helpful estimates for your planning — never treat them as a final promise until they are officially confirmed.",
       ),
       section(
         "What this means",
-        "Payment-date pages can be very helpful, but only if you read them carefully. Some dates are clearly published. Others are expected based on the latest available information. At times, the date is not available yet and the safest answer is to wait for official confirmation.",
+        "A payment date page is only useful if you read the label attached to the date. An 'expected' date means 'this is usually when it happens', while a 'published' date means 'the government has officially locked this in'. Knowing the difference stops false hope.",
       ),
       section(
         "Why people get confused by payment dates",
@@ -31,7 +31,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "GrantCare is independent and does not issue official payment schedules. Its role is to organise and explain payment-date information clearly. For final confirmation, always use the relevant official channel.",
+        "GrantCare is an independent platform. We organize and explain payment schedules so they are easy to read, but we don't set the dates or release the money. Always check the official SASSA channels for final confirmation.",
       ),
       section(
         "Date tracking on GrantCare",
@@ -66,11 +66,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "Your payment may be ready when the official system shows the right payment-related wording, the date has arrived or been published, and there is no banking or verification issue blocking the release.",
+        "Your payment is usually ready when you see a confirmed payment date, the word 'approved', and absolutely no warnings about bank verification. If one of those is missing, you likely still need to wait.",
       ),
       section(
         "What this means",
-        "Payment readiness is not based on one signal alone. Approval is positive, but it is not always enough. A payment date, a payment-processing update, and the absence of payment-method problems are usually part of the picture as well.",
+        "Many people see 'approved' and immediately head to the ATM. But approval just means you passed the rules check. The system still has to schedule the payout and verify your bank. You need all three steps to clear before the money is actually ready.",
       ),
       section(
         "Why this can be hard to judge",
@@ -86,7 +86,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Do not assume that approval alone means same-day access to funds. Do not ignore a banking warning just because the application was approved. Official updates still matter most.",
+        "Don't assume that 'approved' means you'll have money the same day. If you see a banking warning, don't ignore it — your money won't flow until that warning is resolved on the official system.",
       ),
       section(
         "Payment readiness tracking",
@@ -115,17 +115,17 @@ export const SEO_BATCH_FIVE_GUIDES = [
   },
   {
     slug: "what-pending-verification-means",
-    title: "What pending verification means",
+    title: "Pending verification meaning on SASSA status checks",
     summary:
-      "Why pending verification appears, what it means for your status, and how to respond without making the process harder by changing the wrong information.",
+      "What pending verification means on a SASSA status check, why it appears, and what to do next without restarting the process by changing the wrong information.",
     sections: [
       section(
         "Quick answer",
-        "Pending verification usually means the official system is still checking a detail linked to your identity, information, or payment method. It is a waiting status, not a final answer.",
+        "Pending verification on a SASSA status check means the system is still double-checking your details, such as your ID, phone number, or bank account. It is a waiting stage, not a rejection.",
       ),
       section(
         "What this means",
-        "Verification is the part of the process where the system tries to match what you submitted with other records. A pending verification message often means that stage has not finished yet. It can relate to identity, phone-number changes, banking details, or another check in the process.",
+        "Before paying you, the government cross-checks your details against other databases (like Home Affairs or your bank). If it says 'pending verification', it just means that background check hasn't finished yet. It's completely normal.",
       ),
       section(
         "Why this happens",
@@ -141,7 +141,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Pending verification does not mean an automatic decline. It also does not mean you should change details every day. GrantCare is independent and can explain the wording, but official verification still rests with the official system.",
+        "Pending verification is not a rejection. Most importantly, do not start changing your details out of panic — every time you change a detail, the verification process starts all over again from the back of the queue.",
       ),
       section(
         "Verification guidance on GrantCare",
@@ -149,7 +149,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Related help",
-        "Useful next pages:\n• /status/identity-verification\n• /guides/identity-verification-required-meaning\n• /guides/why-identity-verification-fails\n• /guides/status-stuck-pending\n• /guides/how-to-check-your-status",
+        "Useful next pages:\n• /status/pending\n• /status/identity-verification\n• /guides/identity-verification-required-meaning\n• /guides/status-stuck-pending\n• /guides/how-to-check-your-status",
       ),
       faq(
         "Does pending verification mean I did something wrong?",
@@ -176,11 +176,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "Declined after reconsideration usually means the official review looked at the case again and still did not approve it. It is a strong signal that the system stands by the decline for that review stage.",
+        "If you are 'declined after reconsideration', it means the official review team looked at your appeal and decided the original rejection was correct. It's a firm no for that specific period.",
       ),
       section(
         "What this means",
-        "A reconsideration step exists to review a previous result. If the outcome is still declined, the review did not find enough reason to change the decision. That does not mean you should panic, but your next step must be based on the exact reason now shown.",
+        "Reconsideration isn't a magic bypass — it's just a second pair of eyes looking at the same evidence. If they still say no, it means they didn't find any proof that the first decision was a mistake. You have to address the exact reason they gave you.",
       ),
       section(
         "Why this happens",
@@ -196,7 +196,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "A second decline feels heavy, but do not hand your case to unofficial fixers or paid shortcuts. GrantCare can help explain the wording, but official reconsideration and official decisions remain outside GrantCare.",
+        "A second decline is incredibly frustrating, but please do not pay scammers who promise to 'fix' your status. Nobody outside the official government system can overturn a reconsideration result.",
       ),
       section(
         "Reconsideration guides on GrantCare",
@@ -231,11 +231,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "To fix a missing payment issue, first confirm whether the payment date has actually passed, then check the latest official wording, your payment method, and any banking or verification problem that may have blocked payment.",
+        "Before panicking over a missing payment, check if the payment date actually passed, or if it was just an 'expected' date. Then, check your status for any hidden banking or verification warnings.",
       ),
       section(
         "What this means",
-        "A missing payment issue is different from a short delay. It usually means the date or expected window has passed and the money still has not arrived. The key question is whether the problem is timing, the payment method, or a change in status that you have not noticed yet.",
+        "There's a difference between a payment that is slightly delayed and one that is truly missing. If the official date has come and gone, the issue is almost always a failed bank verification or a sudden status change you haven't noticed yet.",
       ),
       section(
         "Why this happens",
@@ -251,7 +251,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "GrantCare is independent and does not issue payments. It helps interpret what may be happening before you use the official route. If money is missing, the official system is still the place for final confirmation and action.",
+        "GrantCare is an independent guide to help you figure out exactly why your money is stuck. We don't have access to your bank or the official payment system, so any real fixes must be done through the government channels.",
       ),
       section(
         "Payment tracking on GrantCare",
@@ -286,11 +286,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "If you think you missed a payment, first confirm the date and the status, then check whether the payment was actually released, delayed, or affected by a banking or verification issue.",
+        "If a payment didn't arrive, first make sure the official payment date actually passed. Then, look at your status to see if it was delayed by a system error or a banking problem before you panic.",
       ),
       section(
         "What this means",
-        "A missed payment does not always mean the same thing. Sometimes the date was misunderstood. Sometimes the payment was delayed. Sometimes the money was not released because another issue blocked it. Your next step depends on which of those situations you are actually in.",
+        "A 'missed' payment could mean a few things: the date was just an estimate, your bank rejected the transfer, or the system is running late. Figuring out which one it is will tell you what you need to do next.",
       ),
       section(
         "Why this happens",
@@ -306,7 +306,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Do not rely on panic or rumours when money feels missing. Work from the date status, the payment status, and your payment details in order. GrantCare helps organise the check, but official action belongs on the official system.",
+        "When money is missing, it's easy to panic or trust social media rumors. Stick to the facts: check your date, check your status, and check your banking details. If it's truly stuck, contact the official channel.",
       ),
       section(
         "Missing payment flow on GrantCare",
@@ -341,11 +341,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "Grant reminders can help by reducing repeated checking, keeping payment dates in view, and prompting you when there is a new update or when an expected date is getting close.",
+        "Grant reminders take the stress out of constantly checking for updates. They automatically alert you when a payment date is approaching or when an official update happens.",
       ),
       section(
         "What this means",
-        "Reminders are not only about convenience — they can lower stress. Many users check the same page multiple times because they are worried about missing an update. A reminder moves that work into a simple alert.",
+        "If you find yourself refreshing the status page every day out of anxiety, a reminder system can give you your time back. It does the checking for you, so you only need to log in when there's actual news.",
       ),
       section(
         "Why reminders are useful",
@@ -361,7 +361,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "GrantCare reminders come from an independent platform. They should be used as support, not as the final official confirmation of a payment or decision.",
+        "Our reminders are here to help you stay organized, but remember that GrantCare is an independent platform. Always treat our reminders as helpful alerts, and go to the official system for final confirmation.",
       ),
       section(
         "How reminders work on GrantCare",
@@ -396,11 +396,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "To keep your details updated, regularly check that your phone number, personal details, and payment information match your current situation, and use the official channel when a real change is needed.",
+        "Make sure your phone number, ID details, and banking information are always current. Even a small typo or an outdated number can completely freeze your application.",
       ),
       section(
         "What this means",
-        "Your details do not only matter at application time. A wrong phone number can affect OTPs and updates. Outdated banking details can delay payment. Small mismatches can become larger problems if they are only discovered after a status changes.",
+        "Your details aren't just for the application form — they are how the system verifies you every single month. If you lose access to your phone number or close a bank account without updating your profile, your grant will eventually stop.",
       ),
       section(
         "Why this matters",
@@ -416,7 +416,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Do not make repeated changes out of anxiety. Update details only when something is actually wrong or outdated. GrantCare can explain why the change matters, but the update itself still belongs on the official system.",
+        "Only update your details when something actually changes. Making unnecessary updates out of anxiety will trigger new background checks and delay your payment. When a real change happens, do it immediately on the official system.",
       ),
       section(
         "Details guidance on GrantCare",
@@ -445,17 +445,17 @@ export const SEO_BATCH_FIVE_GUIDES = [
   },
   {
     slug: "what-to-do-if-your-bank-details-changed",
-    title: "What to do if your bank details changed",
+    title: "What to do if your SASSA bank details changed",
     summary:
-      "If your bank account details changed, here is how to update the official record properly without creating extra payment delays.",
+      "If your SASSA bank details changed, here is how to update the official record properly without creating extra payment delays.",
     sections: [
       section(
         "Quick answer",
-        "If your bank details changed, update them through the relevant official route as soon as practical, enter the new information carefully, and avoid repeated changes once the correct details are submitted.",
+        "If you get a new bank account, update it on the official system immediately. Be extremely careful when typing the new details, and don't submit them more than once.",
       ),
       section(
         "What this means",
-        "A bank-detail change affects actual payment, not only profile information. If the old account is closed, inactive, or incorrect, payment can fail or be delayed until the official record reflects the updated account.",
+        "Changing your bank details pauses your payment until the new account is verified. If your old account is closed but you haven't updated the system yet, your money will bounce and you'll face a long delay.",
       ),
       section(
         "Why this happens",
@@ -471,7 +471,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Do not share bank details on unofficial websites. Do not pay someone to change them for you. GrantCare can explain the process, but the change itself must happen through the official system.",
+        "Never give your banking details to unofficial websites or people claiming they can speed up the change for a fee. GrantCare can guide you, but the actual bank update must be done securely on the government portal.",
       ),
       section(
         "Bank updates on GrantCare",
@@ -479,7 +479,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Related help",
-        "Useful next pages:\n• /guides/how-to-update-banking-details\n• /guides/why-bank-verification-fails\n• /guides/why-payment-is-delayed\n• /guides/how-to-fix-missing-payment-issues\n• /status/banking-issue",
+        "Useful next pages:\n• /guides/how-to-update-banking-details\n• /guides/banking-details-pending-meaning\n• /guides/why-bank-verification-fails\n• /guides/how-to-find-official-banking-and-verification-pages-safely\n• /status/banking-issue",
       ),
       faq(
         "Should I update bank details before the next payment cycle?",
@@ -506,11 +506,11 @@ export const SEO_BATCH_FIVE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "To find official updates safely, use known official government channels for official actions and confirmations, and use GrantCare only as an independent guide to help you understand what those updates mean.",
+        "Always go directly to the official government channels for firm updates and status checks. Use an independent guide like GrantCare only to help you understand what those updates mean in plain English.",
       ),
       section(
         "What this means",
-        "People often search for updates when they are anxious or short on time, making it easier for misleading pages, copied posts, and fake helpers to spread confusion. The safest approach is to separate explanation from confirmation: explanation can come from a trusted independent guide, but confirmation must come from the official source.",
+        "When you're stressed and looking for answers quickly, it's easy to be tricked by fake social media posts or scam websites. The safest way to protect yourself is to get explanations from a trusted guide, but rely on the official system for your personal results.",
       ),
       section(
         "Why this matters",
@@ -526,7 +526,7 @@ export const SEO_BATCH_FIVE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "GrantCare is an independent information and reminder platform. It does not replace official government systems. If you need an official application action or official status action, use the relevant official channel.",
+        "GrantCare is an independent platform built to help you navigate a confusing system. We do not issue grants and we cannot fix your application. For any official action, always use the government portal.",
       ),
       section(
         "Safe updates on GrantCare",

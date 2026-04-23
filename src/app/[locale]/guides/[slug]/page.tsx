@@ -6,9 +6,12 @@ import { Fragment } from "react";
 import { toggleSavedGuideAction } from "@/actions/dashboard";
 import { auth } from "@/auth";
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
+import { BookmarkIcon, CalendarIcon, CompassIcon, StatusIcon, UserIcon } from "@/components/icons";
+import { GuideShareActions } from "@/components/guide-share-actions";
+import { GuideTableOfContents } from "@/components/guide-table-of-contents";
 import { MonetizationBlocks } from "@/components/monetization-blocks";
 import { PageViewTracker } from "@/components/page-view-tracker";
-import { ButtonLink, Section } from "@/components/ui";
+import { ButtonLink, Card, Pill, Section } from "@/components/ui";
 import {
   getGuideBySlug,
   listMonetizationBlocks,
@@ -43,6 +46,13 @@ function titleCase(value: string) {
       return `${part.charAt(0).toUpperCase()}${part.slice(1)}`;
     })
     .join(" ");
+}
+
+function getSectionId(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 function getInternalPathLabel(path: string) {
@@ -199,6 +209,23 @@ function renderGuideBlocks(locale: Locale, blocks: GuideBodyBlock[]) {
   });
 }
 
+function formatDisplayDate(locale: Locale, value: string | null | undefined) {
+  if (!value) {
+    return null;
+  }
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return null;
+  }
+
+  return new Intl.DateTimeFormat(locale, {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(date);
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -236,20 +263,28 @@ export default async function GuideDetailPage({
     notFound();
   }
 
-  const [guide, relatedGuides, relatedFaqs, blocks] = await Promise.all([
-    getGuideBySlug(locale, slug),
-    listRelatedGuides(locale, 2, slug, slug),
-    listRelatedFaqs(locale, 2),
+  const guide = await getGuideBySlug(locale, slug);
+
+  if (!guide) {
+    notFound();
+  }
+
+  const guideReferenceText = [
+    guide.slug,
+    guide.title,
+    guide.summary,
+    ...guide.sections.flatMap((section) => [section.title, section.body]),
+  ].join(" ");
+
+  const [relatedGuides, relatedFaqs, blocks] = await Promise.all([
+    listRelatedGuides(locale, 6, slug, guideReferenceText),
+    listRelatedFaqs(locale, 4),
     listMonetizationBlocks(locale, {
       placement: "guide-inline",
       guideSlug: slug,
       limit: 2,
     }),
   ]);
-
-  if (!guide) {
-    notFound();
-  }
 
   const copy = getCopy(locale);
 
@@ -264,19 +299,39 @@ export default async function GuideDetailPage({
         })
       : null;
 
+  const guidePath = buildLocalePath(locale, `/guides/${guide.slug}`);
+  const shareUrl = new URL(guidePath, getSiteUrl()).toString();
+  const authorName = guide.authorName ?? "GrantCare Editorial Team";
+  const lastUpdatedAt = guide.updatedAt ?? guide.publishedAt ?? null;
+  const formattedLastUpdated = formatDisplayDate(locale, lastUpdatedAt);
+  const faqSectionId = "frequently-asked-questions";
+  const relatedGuidesId = "related-guides";
+  const commonQuestionsId = "common-questions";
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: guide.title,
     description: guide.summary,
-    mainEntityOfPage: new URL(
-      buildLocalePath(locale, `/guides/${guide.slug}`),
-      getSiteUrl(),
-    ).toString(),
+    mainEntityOfPage: shareUrl,
     inLanguage: locale,
+    author: {
+      "@type": "Organization",
+      name: authorName,
+    },
+    datePublished: guide.publishedAt ?? undefined,
+    dateModified: lastUpdatedAt ?? undefined,
   };
   const faqSections = guide.sections.filter((section) => section.title.startsWith("FAQ: "));
   const contentSections = guide.sections.filter((section) => !section.title.startsWith("FAQ: "));
+  const tocItems = [
+    ...contentSections.map((section) => ({
+      id: getSectionId(section.title),
+      label: section.title,
+    })),
+    ...(faqSections.length > 0
+      ? [{ id: faqSectionId, label: copy.frequentlyAskedQuestionsTitle }]
+      : []),
+  ];
   const faqSchema =
     faqSections.length > 0
       ? {
@@ -320,106 +375,188 @@ export default async function GuideDetailPage({
           { label: guide.title, path: `/guides/${guide.slug}` },
         ]}
       />
-      <header className="mx-auto max-w-3xl space-y-5">
-        <div className="space-y-2">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">{copy.guideLabel}</p>
-          <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">{guide.title}</h1>
-          <p className="text-lg leading-8 text-muted">{guide.summary}</p>
-        </div>
-        <div className="flex flex-wrap gap-3">
-          <ButtonLink href={buildLocalePath(locale, "/status")} variant="secondary">
-            {copy.statusHelp}
-          </ButtonLink>
-          <ButtonLink href={buildLocalePath(locale, "/payment-dates")}>{copy.paymentDates}</ButtonLink>
-          {session?.user?.id && guide.id ? (
-            <form action={toggleSavedGuideAction}>
-              <input type="hidden" name="locale" value={locale} />
-              <input type="hidden" name="guideId" value={guide.id} />
-              <input type="hidden" name="returnPath" value={buildLocalePath(locale, `/guides/${guide.slug}`)} />
-              <button
-                type="submit"
-                className="focus-ring tap-target rounded-full border border-border bg-surface px-5 text-base font-semibold"
-              >
-                {savedGuide ? copy.removeSavedGuide : copy.saveGuide}
-              </button>
-            </form>
+      <div className="mx-auto grid max-w-6xl items-start gap-8 lg:grid-cols-[minmax(0,1fr)_18rem]">
+        <div className="min-w-0 space-y-8 lg:max-w-3xl">
+          <header className="space-y-5">
+            <div className="space-y-2">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">{copy.guideLabel}</p>
+              <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">{guide.title}</h1>
+              <p className="text-lg leading-8 text-muted">{guide.summary}</p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <ButtonLink href={buildLocalePath(locale, "/status")} variant="secondary">
+                <span className="inline-flex items-center gap-2">
+                  <StatusIcon className="h-4 w-4" aria-hidden="true" />
+                  <span>{copy.checkStatus}</span>
+                </span>
+              </ButtonLink>
+              <ButtonLink href={buildLocalePath(locale, "/payment-dates")}>
+                <span className="inline-flex items-center gap-2">
+                  <CalendarIcon className="h-4 w-4" aria-hidden="true" />
+                  <span>{copy.checkPaymentDates}</span>
+                </span>
+              </ButtonLink>
+              {session?.user?.id && guide.id ? (
+                <form action={toggleSavedGuideAction}>
+                  <input type="hidden" name="locale" value={locale} />
+                  <input type="hidden" name="guideId" value={guide.id} />
+                  <input type="hidden" name="returnPath" value={guidePath} />
+                  <button
+                    type="submit"
+                    className="focus-ring tap-target inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface px-5 text-base font-semibold"
+                  >
+                    <BookmarkIcon className="h-4 w-4" aria-hidden="true" />
+                    {savedGuide ? copy.removeSavedGuide : copy.saveGuide}
+                  </button>
+                </form>
+              ) : null}
+            </div>
+          </header>
+
+          <article className="space-y-14">
+            {contentSections.map((section) => {
+              const sectionBlocks = renderGuideBlocks(locale, parseGuideBody(section.body));
+              const sectionId = getSectionId(section.title);
+
+              if (section.title === "Quick answer") {
+                return (
+                  <section key={section.title} id={sectionId} className="scroll-mt-28">
+                    <h2 className="sr-only">{section.title}</h2>
+                    <Card className="space-y-4 border border-primary/15 bg-primary/[0.04] sm:p-7">
+                      <Pill>
+                        <span className="inline-flex items-center gap-2">
+                          <CompassIcon className="h-4 w-4" aria-hidden="true" />
+                          <span>{section.title}</span>
+                        </span>
+                      </Pill>
+                      <div className="guide-body text-lg leading-8 text-foreground">
+                        {sectionBlocks}
+                      </div>
+                    </Card>
+                  </section>
+                );
+              }
+
+              return (
+                <section key={section.title} id={sectionId} className="scroll-mt-28 space-y-5">
+                  <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                    {section.title}
+                  </h2>
+                  <div className="guide-body">{sectionBlocks}</div>
+                </section>
+              );
+            })}
+
+            {faqSections.length > 0 ? (
+              <section id={faqSectionId} className="scroll-mt-28 space-y-6 pt-2">
+                <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                  {copy.frequentlyAskedQuestionsTitle}
+                </h2>
+                <div className="space-y-6">
+                  {faqSections.map((faqSection, index) => (
+                    <Fragment key={faqSection.title}>
+                      <div className="space-y-3">
+                        <h3 className="text-xl font-semibold text-foreground">
+                          {faqSection.title.replace(/^FAQ:\s*/, "")}
+                        </h3>
+                        <div className="guide-body">
+                          {renderGuideBlocks(locale, parseGuideBody(faqSection.body))}
+                        </div>
+                      </div>
+                      {index < faqSections.length - 1 ? <div className="h-2" /> : null}
+                    </Fragment>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+          </article>
+
+          {blocks.length > 0 ? (
+            <Section title={copy.sponsoredTitle}>
+              <MonetizationBlocks blocks={blocks} locale={locale} placement="guide-inline" />
+            </Section>
           ) : null}
         </div>
-      </header>
 
-      <article className="mx-auto max-w-3xl space-y-14">
-        {contentSections.map((section) => (
-          <section key={section.title} className="space-y-5">
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-              {section.title}
-            </h2>
-            <div className="guide-body">
-              {renderGuideBlocks(locale, parseGuideBody(section.body))}
-            </div>
-          </section>
-        ))}
-
-        {faqSections.length > 0 ? (
-          <section className="space-y-6 pt-2">
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-              {copy.frequentlyAskedQuestionsTitle}
-            </h2>
-            <div className="space-y-6">
-              {faqSections.map((faqSection, index) => (
-                <Fragment key={faqSection.title}>
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-semibold text-foreground">
-                      {faqSection.title.replace(/^FAQ:\s*/, "")}
-                    </h3>
-                    <div className="guide-body">
-                      {renderGuideBlocks(locale, parseGuideBody(faqSection.body))}
-                    </div>
+        <aside className="space-y-4 lg:sticky lg:top-24">
+          <GuideTableOfContents
+            title={copy.tableOfContents}
+            items={tocItems}
+          />
+          <Card className="space-y-4 p-4 text-left sm:p-4">
+            <div className="space-y-3">
+              <div className="flex items-start gap-2.5 text-left">
+                <UserIcon className="mt-0.5 h-4 w-4 text-primary" aria-hidden="true" />
+                <div className="space-y-1 text-left">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/70">
+                    {copy.authorLabel}
+                  </p>
+                  <p className="text-sm font-medium text-foreground">{authorName}</p>
+                </div>
+              </div>
+              {formattedLastUpdated ? (
+                <div className="flex items-start gap-2.5 text-left">
+                  <CalendarIcon className="mt-0.5 h-4 w-4 text-primary" aria-hidden="true" />
+                  <div className="space-y-1 text-left">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/70">
+                      {copy.lastUpdated}
+                    </p>
+                    <p className="text-sm font-medium text-foreground">{formattedLastUpdated}</p>
                   </div>
-                  {index < faqSections.length - 1 ? <div className="h-2" /> : null}
-                </Fragment>
+                </div>
+              ) : null}
+            </div>
+
+            <div className="space-y-2 text-left">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/70">
+                {copy.shareGuide}
+              </p>
+              <GuideShareActions
+                shareLabel={copy.share}
+                copyLabel={copy.copyLink}
+                url={shareUrl}
+                title={guide.title}
+              />
+            </div>
+          </Card>
+        </aside>
+      </div>
+
+      {relatedGuides.length > 0 ? (
+        <section id={relatedGuidesId} className="mx-auto max-w-6xl scroll-mt-28 pt-2">
+          <Section title={copy.relatedGuidesTitle}>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {relatedGuides.map((relatedGuide) => (
+                <Link
+                  key={relatedGuide.slug}
+                  href={buildLocalePath(locale, `/guides/${relatedGuide.slug}`)}
+                >
+                  <Card className="flex h-full flex-col space-y-3 transition-all hover:-translate-y-1 hover:border-primary/20 hover:bg-surface-muted hover:shadow-md">
+                    <Pill>{copy.guideLabel}</Pill>
+                    <h3 className="text-xl font-semibold">{relatedGuide.title}</h3>
+                    <p className="text-sm leading-7 text-muted">{relatedGuide.summary}</p>
+                  </Card>
+                </Link>
               ))}
             </div>
-          </section>
-        ) : null}
-      </article>
-
-      {blocks.length > 0 ? (
-        <Section title={copy.sponsoredTitle}>
-          <MonetizationBlocks blocks={blocks} locale={locale} placement="guide-inline" />
-        </Section>
+          </Section>
+        </section>
       ) : null}
 
-      <section className="mx-auto max-w-3xl space-y-4 pt-4">
-        <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-          {copy.relatedGuidesTitle}
-        </h2>
-        <div className="space-y-5">
-          {relatedGuides.map((relatedGuide) => (
-            <Link
-              key={relatedGuide.slug}
-              href={buildLocalePath(locale, `/guides/${relatedGuide.slug}`)}
-              className="block space-y-2 transition-colors hover:text-primary"
-            >
-              <h3 className="text-xl font-semibold">{relatedGuide.title}</h3>
-              <p className="text-base leading-7 text-muted">{relatedGuide.summary}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-3xl space-y-4 pt-4">
-        <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-          {copy.commonQuestionsTitle}
-        </h2>
-        <div className="space-y-5">
-          {relatedFaqs.map((faq) => (
-            <div key={faq.id} className="space-y-2">
-              <h3 className="text-xl font-semibold text-foreground">{faq.question}</h3>
-              <p className="text-base leading-7 text-muted">{faq.answer}</p>
+      {relatedFaqs.length > 0 ? (
+        <section id={commonQuestionsId} className="mx-auto max-w-6xl scroll-mt-28 pt-2">
+          <Section title={copy.commonQuestionsTitle}>
+            <div className="grid gap-4 md:grid-cols-2">
+              {relatedFaqs.map((faq) => (
+                <Card key={faq.id} className="space-y-2">
+                  <h3 className="text-xl font-semibold text-foreground">{faq.question}</h3>
+                  <p className="text-sm leading-7 text-muted">{faq.answer}</p>
+                </Card>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </Section>
+        </section>
+      ) : null}
     </div>
   );
 }

@@ -52,11 +52,15 @@ export async function generateMetadata({
   const amountLabel = (await import("@/lib/official-resources")).getGrantAmountLabel(grantType);
 
   const seoName = getGrantSeoMetadataName(grant);
+  const metadataTitle =
+    grant.slug === "social-relief"
+      ? `${seoName}: SASSA Application, Status and Payment Help`
+      : `${seoName}: SASSA Eligibility, Amount and How to Apply`;
 
   return buildLocalizedMetadata({
     locale,
     path: `/grants/${grantType}`,
-    title: `${seoName}: SASSA Eligibility, Amount and How to Apply`,
+    title: metadataTitle,
     description: getGrantSeoDescription(grant, amountLabel),
   });
 }
@@ -101,7 +105,14 @@ export default async function GrantDetailPage({
   const amountDetails = getGrantAmountDetails(grant.slug);
   const paymentEntry = paymentGrantSlug ? paymentDefaults.grants[paymentGrantSlug] ?? null : null;
   const displayGrantName = getGrantSeoDisplayName(grant);
-  const hubLinks = statuses.slice(0, 4).map((status) => ({
+  const hubLinks = (grant.slug === "social-relief"
+    ? statuses.filter((status) =>
+        ["pending", "identity-verification", "banking-issue", "reapplication-needed"].includes(
+          status.slug,
+        ),
+      )
+    : statuses.slice(0, 4)
+  ).map((status) => ({
     href: `/status/${status.slug}`,
     title: status.title,
     description: status.meaning,

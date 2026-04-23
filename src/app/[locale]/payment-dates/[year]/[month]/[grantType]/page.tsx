@@ -100,7 +100,7 @@ export default async function PaymentGrantPage({
   const hubLinks = [
     {
       href: `/grants/${paymentEntry.grantSlug}`,
-      title: `${displayGrantName} guide`,
+      title: `Check ${displayGrantName} guide`,
       description: "Open the grant page for checks, documents, and official next-step links tied to this payment category.",
     },
     {
@@ -169,7 +169,10 @@ export default async function PaymentGrantPage({
           year: paymentMonth.year,
         }}
       />
-      <Section eyebrow={copy.paymentDates} title={`${displayGrantName} for ${paymentMonth.label}`}>
+      <Section
+        eyebrow={copy.paymentDates}
+        title={`${displayGrantName} payment dates for ${paymentMonth.label}`}
+      >
         <GrantSummaryCard
           amountDetails={amountDetails}
           amountLabel={copy.summaryAmountLabel}

@@ -195,6 +195,16 @@ textarea {
   text-underline-offset: 0.22em;
 }
 
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 @media (min-width: 640px) {
   .guide-body {
     font-size: 1.09rem;

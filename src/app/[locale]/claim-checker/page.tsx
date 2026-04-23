@@ -22,9 +22,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/claim-checker",
-    title: "SASSA Claim Checker — Is This Grant, Increase or Payment Story Real?",
+    title: "Independent SASSA Claim Checker for Grant, Status and Payment Rumours",
     description:
-      "Use the SASSA claim checker to test grant claims, increase updates, payment stories, and warning messages before you trust them.",
+      "Use GrantCare's independent claim checker to test status updates, payment-date claims, grant increase stories, banking-update rumours, and reapplication warnings before you trust them.",
   });
 }
 
@@ -41,23 +41,28 @@ export default async function ClaimCheckerPage({
 
   const hubLinks = [
     {
-      href: "/grant-amounts",
-      title: "Grant amounts",
-      description: "Open the amount hub if the claim uses a number and you need the current official amount context.",
-    },
-    {
-      href: "/grants",
-      title: "Grant types",
-      description: "Open grant pages if you need the real grant category behind the claim.",
+      href: "/status",
+      title: "Check status meanings",
+      description: "Open status meanings if the claim mixes real status wording with rumours, screenshots, or copied advice.",
     },
     {
       href: "/payment-dates",
-      title: "Payment dates",
-      description: "Open payment dates if the story is really about timing or late payment wording.",
+      title: "Check payment dates",
+      description: "Open payment dates if the claim is really about timing, release windows, or late-payment confusion.",
+    },
+    {
+      href: "/guides/how-to-find-official-banking-and-verification-pages-safely",
+      title: "Find official banking and verification pages",
+      description: "Use the guide if a claim points you toward bank-detail updates or identity verification and you need the right official route.",
+    },
+    {
+      href: "/guides/how-to-find-the-official-reapplication-page-safely",
+      title: "Find the official reapplication page",
+      description: "Use the guide if a claim says you must reapply and you need to separate the official route from unofficial pages.",
     },
     {
       href: "/guides/how-to-know-if-a-sassa-website-is-official",
-      title: "Website safety",
+      title: "Check if a SASSA website is official",
       description: "Open the guide if you need to check whether the page itself looks official.",
     },
   ];
@@ -79,7 +84,7 @@ export default async function ClaimCheckerPage({
             Claim checker
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-8 text-muted sm:text-xl">
-            Check a grant claim, increase update, payment story, or warning message before you trust it.
+            Check a status update, payment-date claim, grant increase story, or warning message before you trust it.
           </p>
         </div>
 

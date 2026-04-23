@@ -63,9 +63,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A clear guide to what usually happens when banking details are updated and why that step can affect payment timing.",
     quickAnswer:
-      "A banking details update usually starts a verification step before the new payment method is fully trusted by the official system. That is why payments can slow down after a change even when the new details are correct.",
+      "Updating your banking details temporarily pauses your payments. The system must verify your new account to prevent fraud before they can send you money again.",
     whatThisMeans:
-      "Changing banking details is not just editing a profile field. It affects how money may be paid. Because of that, the system often needs to check the new information carefully before the payment route is fully settled again.",
+      "You cannot just type in a new account number and expect a payment tomorrow. SASSA has to contact your bank, verify your ID against the account holder, and confirm the account is active. This process takes time.",
     whyThisMatters:
       "Users often expect a banking update to work instantly. When that does not happen, they may think the update failed or try changing the details again. In many cases, the slower movement is simply part of the normal verification stage.",
     steps:
@@ -74,7 +74,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The update changes the payment route, not only the information on file. That is why the important question after submission is not did I type it in. The more useful question is has the system accepted and verified the new payment method yet.",
     important:
-      "GrantCare does not process banking changes and should never be used as the official update route. It can explain what the waiting stage usually means while the official system handles the change.",
+      "Never give anyone your banking details to 'update' them for you. GrantCare can guide you through the process, but you must make the change yourself on the official SASSA portal.",
     help:
       "GrantCare can help you compare banking update wording, payment delays, and verification guides so you can see what stage the update is likely in.",
     related:
@@ -101,9 +101,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A plain-language guide to reading banking-details status wording and understanding what it usually says about the payment method step.",
     quickAnswer:
-      "A banking details status check usually tells you where your payment-method information stands. It often points to checking, pending acceptance, or a problem that still needs attention.",
+      "This status simply tells you if SASSA has finished verifying your bank account yet. If it's pending, they are still checking; if it failed, you need to fix your details.",
     whatThisMeans:
-      "This kind of status is usually about the payment route, not about whether the whole support case exists or not. That distinction matters because a user can have a positive overall outcome and still face a payment-method issue.",
+      "Don't panic—this status has nothing to do with whether your grant was approved or declined. It only means the system is figuring out where to send your money, not if you get money.",
     whyThisMatters:
       "When users see banking-related wording, they often assume the whole application failed. In many cases, the issue is narrower than that. The main question is whether the payment method itself is still being checked, corrected, or accepted.",
     steps:
@@ -111,7 +111,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The useful way to read a banking-details status is to ask what it says about the payment method specifically. That keeps you from overreacting as if the entire support process has collapsed.",
     important:
-      "GrantCare can explain banking status wording, but it cannot confirm whether a bank update has officially passed. Final confirmation still belongs to the official route.",
+      "GrantCare helps you understand what the banking status means, but you must log into the official SASSA portal to see your real, up-to-date verification result.",
     help:
       "GrantCare can help you compare banking status messages with payment delay, missing-payment, and verification pages so the wording becomes easier to interpret.",
     related:
@@ -138,9 +138,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A practical guide for users who moved to a new bank and need to update the payment route carefully without creating extra delays.",
     quickAnswer:
-      "If you changed banks, update your banking details through the official route as carefully as possible and avoid repeated edits once the correct new details have been submitted.",
+      "If you move to a new bank, you must update your details on the official portal immediately. Do it once, do it carefully, and then wait.",
     whatThisMeans:
-      "A bank change affects payment directly. If the old account is no longer right, the official system needs the new details so it can try to pay the correct destination. That usually triggers a verification step.",
+      "If you close your old bank account, any money SASSA sends there will bounce back. You have to tell them about your new bank account so they can reroute your payments.",
     whyThisMatters:
       "Switching banks is a common reason for payment delays because users sometimes keep old details active too long or enter the new ones in a rushed way. A careful update reduces avoidable errors.",
     steps:
@@ -149,7 +149,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The important thing is not only that the new bank exists. The important thing is that the official record now points cleanly to the new account and that the system has had time to verify it.",
     important:
-      "GrantCare does not update banking records. It helps you understand what usually happens after a bank change so you do not mistake normal verification for failure.",
+      "GrantCare cannot change your banking details for you. We explain the correct way to do it so you don't accidentally freeze your own payments.",
     help:
       "GrantCare can help you compare changed-bank situations with banking verification, delayed payment, and missing-payment guides.",
     related:
@@ -176,9 +176,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A troubleshooting guide for banking updates that do not seem to reflect, do not pass, or keep returning to the same issue.",
     quickAnswer:
-      "A banking details update may seem not to work because the new details are still being verified, the account information does not match what the system expects, or the previous issue is still unresolved.",
+      "If your banking update isn't working, you either typed something wrong, your bank account is not in your own name, or the system is just being slow.",
     whatThisMeans:
-      "When a banking update feels stuck, the problem is not always the form itself. It can be the new information, the timing of the update, or a mismatch between the payment record and the account details now on file.",
+      "The most common reason for a failed bank update is using an account that belongs to someone else. SASSA will only pay money into an account that perfectly matches your ID number.",
     whyThisMatters:
       "Users often keep repeating the update when they feel nothing changed. That can make the situation harder to track and may slow things down further if the first update was actually still under review.",
     steps:
@@ -186,7 +186,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "A banking update that looks broken is often either still under review or tied to a detail mismatch. That is why the wording and timing matter more than the feeling that nothing happened.",
     important:
-      "GrantCare cannot diagnose the official payment system from the inside. It can help you narrow the problem down so you stop repeating the same step without understanding it.",
+      "We can help you figure out what went wrong, but we cannot access your SASSA file to fix it. If your details keep failing, you may need to visit a SASSA branch.",
     help:
       "GrantCare can help you compare non-working banking updates with bank verification, pending payment-method messages, and bank-detail acceptance guides.",
     related:
@@ -213,9 +213,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A calm guide to banking-verification delays and the safest way to respond when payment details are still not clearing.",
     quickAnswer:
-      "To fix a banking verification delay, first confirm the details are correct, then give the official system time to verify them before making another change. The exact wording on the official page should guide the next step.",
+      "The best way to fix a verification delay is to stop touching your profile. If you know your details are correct, leave them alone and let the system do its job.",
     whatThisMeans:
-      "A banking verification delay usually means the system has not fully accepted the payment-method information yet. That is frustrating, but it is still different from a final failed outcome.",
+      "Every time you 'update' your details because you are tired of waiting, you get pushed to the back of the queue. A delay is perfectly normal—it means they are checking your account, not that it failed.",
     whyThisMatters:
       "Users often try to solve banking delays by changing details again and again. That can create more uncertainty. In many cases, the key is to confirm the information once and then track the wording carefully.",
     steps:
@@ -224,7 +224,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The delay becomes harder when users stop reading the current wording and start reacting to stress instead. Clear records and fewer repeated edits usually make the next step easier to judge.",
     important:
-      "GrantCare can explain banking verification delays, but the official acceptance of the payment method still happens only on the official system.",
+      "We know waiting for money is stressful. GrantCare helps you understand these normal delays so you don't panic and accidentally sabotage your own verification.",
     help:
       "GrantCare can help you compare banking verification delays with failed bank verification, pending payment method messages, and delayed-payment guides.",
     related:
@@ -251,9 +251,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A straightforward guide to the signs that a banking update has been accepted or is still being processed.",
     quickAnswer:
-      "You can tell your bank details were accepted when the official wording moves away from pending or problem messages and no longer points to a banking issue blocking payment.",
+      "You will know your bank details are accepted when the 'pending verification' message disappears and your grant status returns to a normal 'approved' state.",
     whatThisMeans:
-      "Acceptance is usually visible through the wording, not through a dramatic separate message. Users need to watch for the absence of banking warnings and the presence of more normal payment-related progress.",
+      "SASSA rarely sends a big congratulations message when your bank is verified. You just have to watch your status page—when the warnings disappear, you are good to go.",
     whyThisMatters:
       "People often want a single yes-or-no confirmation. In practice, acceptance may be clearer from what disappears and what replaces it than from one obvious acceptance banner.",
     steps:
@@ -262,7 +262,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The most useful sign is often progress. If the system stops talking about a banking issue and starts moving toward payment or another normal stage, that is usually more meaningful than waiting for a perfect acceptance label.",
     important:
-      "GrantCare cannot confirm acceptance on behalf of the official system. It can help you read the progression in the wording more clearly.",
+      "GrantCare cannot look into your account to confirm if your bank was accepted. If your status stops complaining about banking, that is your official confirmation.",
     help:
       "GrantCare can help you compare accepted-looking updates with bank-verification, payment-processing, and delayed-payment guides so you know what the next stage probably is.",
     related:
@@ -289,9 +289,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A high-intent guide for users searching specifically for bank-detail changes linked to R350-related support, written in a safe and non-official way.",
     quickAnswer:
-      "If you need to change bank details for R350-related support, use the relevant official banking-details route, enter the new details carefully, and then watch for the payment-method wording to update.",
+      "Only change your banking details directly on the SRD portal. Type your new account number slowly, submit it once, and wait for the verification message to appear.",
     whatThisMeans:
-      "Many users search with the R350 term because that is how they remember the support. The safest approach is still to use the correct official payment-details route and not rely only on the search phrase itself.",
+      "Scammers know people search for 'change R350 bank details' on Google. Never click on random links that promise a shortcut. The only real route is through the official gov.za website.",
     whyThisMatters:
       "Bank-detail changes for this kind of support are high-stress because they are directly connected to payment. That makes users more likely to trust wrong links or rush through the update.",
     steps:
@@ -299,7 +299,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The key is to separate the search phrase from the official route. The phrase may help you find the topic, but the official route still decides where the update belongs and how it is confirmed.",
     important:
-      "GrantCare does not change official bank details for you. It helps explain the process and related status wording so you can use the official route more confidently.",
+      "GrantCare will never ask for your bank details. If a site claiming to be GrantCare asks for your account number, close the page immediately.",
     help:
       "GrantCare can help you compare changed bank details, pending payment method wording, and banking verification guidance after the official update is done.",
     related:
@@ -326,9 +326,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A mistake-prevention guide focused on the small banking-update errors that often cause bigger payment problems later.",
     quickAnswer:
-      "Update banking details without mistakes by using the official route, entering the information carefully once, and reading the banking-related wording instead of changing things repeatedly out of stress.",
+      "The secret to a perfect bank update is patience. Open the official portal, type your details very carefully, click submit once, and do not touch it again.",
     whatThisMeans:
-      "Most banking-update mistakes are simple. The problem is that simple mistakes can have large effects when payment depends on the details being correct and verifiable.",
+      "A single typo in your account number will fail the verification check and force you to wait another month for your money. Take an extra 30 seconds to double-check your typing.",
     whyThisMatters:
       "Users often focus on speed because they want the payment issue solved quickly. That can lead to typing errors, repeated updates, or using the wrong route. A slower, cleaner update is usually safer.",
     steps:
@@ -337,7 +337,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The habit that prevents most problems is simple: one careful update is better than several anxious ones. That helps the official system process a clear payment-method change instead of a moving target.",
     important:
-      "GrantCare can explain what common banking-update mistakes look like, but the official update itself must happen on the official system.",
+      "We can teach you how to avoid delays, but you are the only one who can actually type the numbers into the SASSA portal safely.",
     help:
       "GrantCare can help you compare update mistakes with bank-verification delays, failed updates, and payment-delay guidance so you can see where a mistake may actually matter.",
     related:
@@ -364,9 +364,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A plain-language guide to what bank verification is usually trying to confirm and why that step can delay payment even after approval.",
     quickAnswer:
-      "Bank verification is usually checking whether the payment-method information matches what the official system expects. That can include account details, ownership rules, and whether the payment route looks valid.",
+      "Bank verification is SASSA checking with your bank to make sure the account is real, active, and strictly in your own name.",
     whatThisMeans:
-      "Bank verification is not only about whether the account exists. It is about whether the payment method can be trusted for the support record involved. That is why a correct-looking account can still spend time under review.",
+      "Even if you gave them the perfect account number, they still have to run it through Treasury databases to prevent fraud. This is why it takes time, even when you did everything perfectly.",
     whyThisMatters:
       "If users misunderstand verification, they may think the whole application is being rechecked. In many cases, the narrower issue is the payment route itself.",
     steps:
@@ -374,7 +374,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The important point is that verification is about trust in the payment route. That explains why the process can take time even when the rest of the case looks positive.",
     important:
-      "GrantCare cannot see what the official system is checking internally. It can help you understand the purpose of bank verification so the wording feels less mysterious.",
+      "GrantCare cannot speed up bank verification. We are here to reassure you that a delay is completely normal security protocol.",
     help:
       "GrantCare can help you compare bank-verification wording with pending payment method, delayed payment, and bank-details acceptance guidance.",
     related:
@@ -401,9 +401,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A practical guide for users whose payment method still shows a pending state and who need to know whether to wait, check details, or act.",
     quickAnswer:
-      "If your payment method is still pending, start by checking the wording, confirming your latest payment details, and then giving the official system time to finish the payment-method review before making another change.",
+      "If your payment method is pending, just wait. Changing your details again will only reset the clock and make you wait even longer.",
     whatThisMeans:
-      "A pending payment method usually means the payment route is not fully settled yet. It is a waiting message, but one that sits close to money, so it naturally causes stress.",
+      "'Pending' means your file is sitting in a digital queue waiting for a fraud check. It does not mean there is a problem, it just means it is not your turn yet.",
     whyThisMatters:
       "Users often see pending and immediately start editing details. That is not always the right response. Sometimes the better step is to keep the latest details stable and watch for the wording to move.",
     steps:
@@ -411,7 +411,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The payment method is often one of the last practical stages before money can move properly. That is why a pending state here feels serious, but it still needs to be read as a process stage before it is read as a failure.",
     important:
-      "GrantCare can explain pending payment-method wording, but the actual payment-method acceptance still belongs to the official route and official system.",
+      "We know waiting is the hardest part. GrantCare provides this guidance so you know the difference between a normal waiting period and a real failure.",
     help:
       "GrantCare can help you compare pending payment-method wording with bank verification, delayed payment, and missing-payment guidance so you know what to watch next.",
     related:
@@ -434,13 +434,13 @@ export const SEO_BATCH_EIGHT_GUIDES = [
   }),
   guide({
     slug: "how-to-change-your-phone-number-online-safely",
-    title: "How to change your phone number online safely",
+    title: "How to change your SASSA phone number online safely",
     summary:
-      "A safe-step guide to changing a phone number online without losing access or exposing sensitive OTP-related details to the wrong page.",
+      "A safe-step guide to changing your SASSA phone number online without losing access or exposing sensitive OTP-related details to the wrong page.",
     quickAnswer:
-      "To change your phone number online safely, use the correct official route, make sure the new number is under your control, and never share OTPs or account access outside the proper official process.",
+      "Only change your SASSA phone number on the official SRD website. Never use third-party links, and never give a stranger your OTP to do it for you.",
     whatThisMeans:
-      "A phone number is not just a contact detail. It is often tied to logins, one-time codes, updates, and identity checks. Changing it online should be handled carefully because a wrong change can block future access.",
+      "Your phone number is the master key to your grant. If someone else gets control of your number, they can steal your money. Treat it like your ATM PIN.",
     whyThisMatters:
       "Users usually change numbers when they are already under pressure because a SIM was lost, stolen, or replaced. That pressure can make them trust unsafe links or rush through the process.",
     steps:
@@ -449,7 +449,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "A phone-number change affects access, not only communication. That means the quality of the update matters just as much as the fact of the change itself.",
     important:
-      "GrantCare does not change official phone numbers. It helps explain why the number matters and what to watch for after the update is submitted.",
+      "GrantCare will never ask for your phone number or OTP. We cannot change your number for you, and anyone who says they can is trying to scam you.",
     help:
       "GrantCare can help you compare phone-number changes with OTP issues, identity checks, and status delays that appear after details change.",
     related:
@@ -472,13 +472,13 @@ export const SEO_BATCH_EIGHT_GUIDES = [
   }),
   guide({
     slug: "what-to-do-if-you-need-to-change-phone-number-without-otp",
-    title: "What to do if you need to change phone number without OTP",
+    title: "How to change your SASSA phone number without OTP",
     summary:
-      "A cautious guide for users who lost access to the old number and cannot complete a normal OTP-based change in the usual way.",
+      "A cautious guide for users who lost access to the old number and cannot complete a normal OTP-based SASSA phone-number change in the usual way.",
     quickAnswer:
-      "If you need to change your phone number without OTP access, start by using the relevant official recovery or update route rather than trying unofficial shortcuts that promise to bypass the process.",
+      "If you lost your old SIM card and cannot get an OTP, you must use the official SASSA 'Change Phone Number' option which requires your ID number.",
     whatThisMeans:
-      "This problem usually happens when the old number is lost, inactive, or no longer safe to use. That makes the situation more urgent because the normal route may depend on a number you no longer control.",
+      "When you lose your phone, scammers will try to sell you 'shortcuts' to bypass the OTP. Do not fall for it. The official SASSA system is the only way to recover your account safely.",
     whyThisMatters:
       "People in this position are more likely to trust unsafe helpers because they feel blocked. That makes it especially important to stay on the official route and avoid sharing sensitive information in unofficial places.",
     steps:
@@ -486,11 +486,11 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The real issue here is account control. The process is not only about changing a phone number. It is about proving that the record should still be updated even though the old number is not available.",
     important:
-      "GrantCare cannot bypass OTP requirements or official identity steps. It can only help you understand the safe path and avoid risky unofficial shortcuts.",
+      "There is no magic trick to bypass SASSA security. GrantCare helps you find the correct official forms so you can recover your account legally.",
     help:
       "GrantCare can help you compare no-OTP phone-number changes with identity verification, number recovery, and post-update follow-up guides.",
     related:
-      "Useful next pages:\n• /guides/how-to-change-your-phone-number-online-safely\n• /guides/how-to-fix-phone-number-mismatch-problems\n• /guides/how-to-keep-access-after-changing-your-number\n• /guides/how-to-know-if-a-verification-request-is-official\n• /guides/how-to-find-official-banking-and-verification-pages-safely",
+      "Useful next pages:\n• /guides/how-to-change-phone-number\n• /guides/how-to-change-your-phone-number-online-safely\n• /guides/how-to-fix-phone-number-mismatch-problems\n• /guides/how-to-keep-access-after-changing-your-number\n• /guides/how-to-know-if-a-verification-request-is-official",
     faqs: [
       {
         question: "Can GrantCare change my number without OTP?",
@@ -513,9 +513,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A practical guide to the link between phone-number changes, account access, and later status-check confusion.",
     quickAnswer:
-      "A phone-number change can affect status checks because the number may be tied to access, OTPs, and the identity trail linked to the support record. That can temporarily slow or confuse later checks.",
+      "Changing your phone number temporarily freezes your account. The system has to sync your new number before you can check your status or get updates.",
     whatThisMeans:
-      "The phone number is often part of how the system knows which person is completing a step. When that number changes, the official process may need time to catch up, especially if the old number was deeply tied to access or verification.",
+      "SASSA is highly suspicious of phone number changes because it is how scammers operate. They will intentionally slow down your account access to ensure you are the real owner.",
     whyThisMatters:
       "Users often change the number and then panic when the status page looks different or access becomes harder. That does not always mean the case is broken. It may simply mean the update still needs to settle.",
     steps:
@@ -523,7 +523,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The most useful way to think about this is that the number change affects access and identity signals, not only messages. That is why later status checks can feel different right after the update.",
     important:
-      "GrantCare cannot repair access to the official system, but it can help you understand why a phone-number change may temporarily affect status-check behavior.",
+      "Do not panic if you cannot check your status immediately after a number change. GrantCare helps you understand this temporary lockout so you don't keep resetting things.",
     help:
       "GrantCare can help you compare post-number-change confusion with identity verification, pending checks, and number-recovery guides.",
     related:
@@ -550,9 +550,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A practical guide to number mismatches that cause access, OTP, or verification problems and how to think through them calmly.",
     quickAnswer:
-      "Fix a phone-number mismatch by confirming which number is currently on the official record, using the correct official update or recovery route, and avoiding unofficial workarounds.",
+      "If SASSA thinks your number does not match your ID, you must update your details officially. Do not try to trick the system with fake numbers.",
     whatThisMeans:
-      "A number mismatch means the number you are trying to use does not line up with the number linked to the record. That can block updates, OTPs, or later steps even when the rest of the case is still active.",
+      "A mismatch usually means you applied with one phone number but are trying to check your status with a completely different one. The system blocks this automatically to protect you.",
     whyThisMatters:
       "Users often treat the mismatch as a small contact problem, but it can affect access and verification in a much bigger way. That is why the safest route is to correct the mismatch carefully, not casually.",
     steps:
@@ -560,7 +560,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The useful question is not only which number is new. The better question is which number the official record still believes is connected to the case. That helps you fix the mismatch more directly.",
     important:
-      "GrantCare cannot change official phone-number records. It can help you identify the mismatch and the kind of official route that usually matters most.",
+      "GrantCare cannot sync your phone numbers for you. If your numbers are tangled up, you must log in to the official portal to fix the mismatch.",
     help:
       "GrantCare can help you compare number mismatches with no-OTP changes, identity verification issues, and post-update status-check confusion.",
     related:
@@ -587,9 +587,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A practical recovery guide for users who changed numbers and want to reduce the chance of losing access to updates or future steps.",
     quickAnswer:
-      "Keep access after changing your number by making sure the new number is active, completing the official update carefully, and checking later that OTP and status-related access now point to the new number.",
+      "To ensure you don't lose access to your grant, only change your SASSA number to a SIM card you permanently own and keep active.",
     whatThisMeans:
-      "Access problems after a number change usually happen because the old and new numbers overlap in the process for a while. That can confuse later login or verification steps if the update was not completed cleanly.",
+      "Never use a friend's phone number or a temporary SIM. If you lose that SIM card, you will be permanently locked out of your SASSA profile and will stop getting paid.",
     whyThisMatters:
       "Once access is lost, users often have to solve a harder recovery problem instead of a simpler update problem. It is better to think about access protection at the same time as the number change itself.",
     steps:
@@ -597,7 +597,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "Access is something to test after the change, not something to assume. A good number update is not finished until the new number works where it needs to work.",
     important:
-      "GrantCare cannot manage official access or OTP systems. It can help you think about the access side of the change so you catch problems earlier.",
+      "We strongly advise keeping your number permanent. GrantCare cannot help you recover an account if you lose the SIM card you registered with.",
     help:
       "GrantCare can help you compare keeping access with number mismatches, no-OTP changes, and identity-verification issues that often follow number changes.",
     related:
@@ -620,13 +620,13 @@ export const SEO_BATCH_EIGHT_GUIDES = [
   }),
   guide({
     slug: "what-identity-verification-link-means",
-    title: "What identity verification link means",
+    title: "What SASSA identity verification link means",
     summary:
-      "A plain-language explanation of what an identity verification link usually means and why it appears in some support-related processes.",
+      "A plain-language explanation of what a SASSA identity verification link usually means and why it appears in some support-related processes.",
     quickAnswer:
-      "An identity verification link usually means the official system wants you to complete an identity-related step before the process can move forward more confidently.",
+      "An identity verification link means SASSA has paused your application to prove you are who you say you are. You must complete it before your grant can move forward.",
     whatThisMeans:
-      "The link is usually not random. It appears because the process needs more confidence that the person connected to the record is really the correct one. That can happen after mismatches, number changes, or other record checks.",
+      "SASSA sends this link when something looks suspicious on your profile, like a changed bank account or phone number. They want to verify your face matches your ID before they pay you.",
     whyThisMatters:
       "Identity verification links create a lot of stress because users are worried about scams. That is a sensible concern. The safest response is to confirm that the request is official before you follow it.",
     steps:
@@ -634,7 +634,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The link itself is less important than what it is trying to do. It is usually trying to confirm identity, which is why trust and route safety matter so much before you click anything.",
     important:
-      "GrantCare will not pretend to be an identity-verification route. It can explain what the request usually means and how to judge whether the link appears trustworthy.",
+      "GrantCare will never send you a link to verify your identity. Only trust links that come directly from official SASSA SMS numbers.",
     help:
       "GrantCare can help you compare identity verification links with official-request safety guides, failed verification pages, and number-change related guides.",
     related:
@@ -657,13 +657,13 @@ export const SEO_BATCH_EIGHT_GUIDES = [
   }),
   guide({
     slug: "how-to-use-an-identity-verification-link-safely",
-    title: "How to use an identity verification link safely",
+    title: "How to use a SASSA identity verification link safely",
     summary:
-      "A trust-focused guide to handling identity verification links carefully and reducing the risk of following fake or unsafe requests.",
+      "A trust-focused guide to handling SASSA identity verification links carefully and reducing the risk of following fake or unsafe requests.",
     quickAnswer:
-      "Use an identity verification link safely by confirming that it comes from the proper official process before clicking it, and by avoiding copied links or pressure-based messages.",
+      "Never click a verification link sent to you on WhatsApp or Facebook. Only click links that are SMS'd directly from SASSA while you are actively busy with an application.",
     whatThisMeans:
-      "Identity verification requests often look urgent, which makes users more likely to act quickly. That is exactly why safety matters most at this step.",
+      "Scammers love sending fake 'Verify your Identity' links to steal your ID number and hijack your grant. If a message tells you to 'click immediately or lose your grant', it is almost certainly a scam.",
     whyThisMatters:
       "A fake identity-verification link can expose sensitive information or send a user into the wrong process. A real one still needs to be handled carefully so the user stays in the official flow.",
     steps:
@@ -672,7 +672,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "Do not judge the link only by how urgent it sounds. Judge it by whether it clearly belongs to the official process, clearly matches your current situation, and clearly connects to a real verification request you were expecting.",
     important:
-      "GrantCare is not the verification route. It is here to help users think more clearly before acting on identity requests that may affect a sensitive part of the process.",
+      "GrantCare helps you spot fake links. If you are ever unsure, do not click. Log into the official SRD portal instead to see if they really need you to verify.",
     help:
       "GrantCare can help you compare identity-verification links with official-request checks, SMS meaning pages, and failed-verification guides.",
     related:
@@ -699,9 +699,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A plain-language guide to identity-verification SMS messages and how to read them without trusting every text that sounds official.",
     quickAnswer:
-      "An identity verification SMS usually means the official process is asking for an extra identity-related step, but you should still judge the message carefully before acting on it.",
+      "If you receive an SMS asking you to verify your identity, treat it with extreme caution. Check that it matches a recent action you took on your profile.",
     whatThisMeans:
-      "SMS messages often feel more personal and urgent than web pages, which can make them easier to trust too quickly. That is why users need a safe way to think about what the message is actually asking them to do.",
+      "It is incredibly easy for scammers to fake an SMS so it looks like it came from SASSA. Just because an SMS appears on your phone does not mean it is real.",
     whyThisMatters:
       "Text-message requests can be real, but copied or misleading messages can also spread easily. A careful reading protects users from acting on the wrong message.",
     steps:
@@ -709,7 +709,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The key is to match the SMS to your actual situation. If you were already in an identity-check stage, the message may fit. If the message appears out of nowhere and asks for sensitive action, extra caution is sensible.",
     important:
-      "GrantCare cannot verify an SMS from inside the official system. It can help you think clearly about whether the message matches the real process and what a safe next step looks like.",
+      "We cannot verify if your specific SMS is real. But GrantCare strongly advises never clicking SMS links unless you requested them literally 5 minutes ago.",
     help:
       "GrantCare can help you compare SMS requests with verification links, official-request safety checks, and failed-verification explanations.",
     related:
@@ -736,9 +736,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A practical guide to approaching identity verification requests the right way, using the official route and avoiding guesswork.",
     quickAnswer:
-      "Request or complete identity verification properly by following the relevant official route, keeping your records together, and avoiding unofficial pages that promise a shortcut.",
+      "If SASSA tells you to verify your identity, follow their exact instructions on the official portal. Do not use third-party apps to scan your face.",
     whatThisMeans:
-      "Identity verification is sensitive because it deals with who the system believes is connected to the record. That means the request needs to be tied to the correct official process, not to a random link or helper.",
+      "Identity verification is how you prove ownership of your grant. If you do it through an unofficial app or website, you are literally handing your identity over to strangers.",
     whyThisMatters:
       "If users get this step wrong, they may delay the case further or expose personal information. A proper request or response keeps the process connected to the official record instead of sending it sideways.",
     steps:
@@ -746,7 +746,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "A proper identity-verification step starts with clarity about why the system is asking for it. Once that is clear, the safest path is the one that stays entirely within the official process.",
     important:
-      "GrantCare cannot request identity verification on your behalf. It can help you understand whether identity verification seems to be the real issue and which kind of official route should matter next.",
+      "GrantCare cannot manually verify your identity. You must complete the official biometric or ID verification yourself through SASSA.",
     help:
       "GrantCare can help you connect identity verification to failed verification, verification links, and detail-change guides so the process feels less confusing.",
     related:
@@ -773,9 +773,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A cautious explainer for biometric identity verification requests and what users should understand before treating them as normal or fake.",
     quickAnswer:
-      "Biometric identity verification usually means the process is asking for a stronger identity check than normal, and the safest response is to confirm that the request is part of the real official process.",
+      "Biometric verification means SASSA wants to scan your face or fingerprints. This is their highest level of security to stop someone else from claiming your money.",
     whatThisMeans:
-      "Biometric checks often feel more serious because they sound more technical and personal. That is a reasonable reaction. The key is to understand that the step is still about identity confidence and route safety.",
+      "Because biometric data is your most private information, SASSA only asks for it when they suspect fraud or when a high-risk change (like banking details) is made. It is annoying, but it protects you.",
     whyThisMatters:
       "Because the term sounds official and advanced, users may trust it too quickly or fear it too much. A calmer reading helps you focus on whether the request truly belongs to the official process you are in.",
     steps:
@@ -783,7 +783,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The important issue is not only the word biometric. It is whether the official system is genuinely asking for a stronger identity step and whether the request fits the case you are already dealing with.",
     important:
-      "GrantCare cannot run biometric checks and should never look like it can. It can help you understand what the request usually means and how to judge whether it fits your official process.",
+      "GrantCare will never ask to scan your face or take your fingerprints. Biometric checks must only happen on the official government portal.",
     help:
       "GrantCare can help you compare biometric requests with identity links, official-request safety guidance, and failed-verification explanations.",
     related:
@@ -810,9 +810,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A troubleshooting guide for identity-verification links that will not open, fail to load, or seem unusable.",
     quickAnswer:
-      "If your identity verification link does not work, first confirm that the request is real, then treat the problem as a route or access issue before assuming the whole case is broken.",
+      "If your ID verification link is broken or expired, do not panic. It just means the link died, not that your grant was cancelled. You will need to request a new one.",
     whatThisMeans:
-      "A broken link does not automatically mean the verification step itself is invalid. It can point to a technical issue, a copied link problem, a timing problem, or a route problem.",
+      "Verification links usually expire after a few days for security reasons. If you click it too late, or if the SASSA servers are down, the page simply won't load.",
     whyThisMatters:
       "Users often panic when a verification link fails because identity checks already feel stressful. That can lead to rushed clicks on other links that are less trustworthy.",
     steps:
@@ -820,7 +820,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The link failure is often a route problem, not proof that the identity step itself disappeared. That distinction helps you stay focused on safety instead of chasing unsafe substitutes.",
     important:
-      "GrantCare cannot repair an official verification link, but it can help you judge whether the request itself looks real and what a safe next step looks like when the route fails.",
+      "GrantCare cannot generate a new link for you. You must go back to the official SASSA portal and trigger a new identity check.",
     help:
       "GrantCare can help you compare broken verification links with official-request checks, identity verification meaning pages, and post-detail-change verification problems.",
     related:
@@ -847,9 +847,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A trust guide to help users judge whether a banking or identity verification request really belongs to the official process.",
     quickAnswer:
-      "A verification request is more likely to be official if it clearly matches your real case, clearly belongs to the proper route, and does not rely on unclear ownership or suspicious shortcuts.",
+      "An official request will never ask for money, will never promise to 'speed up' your grant, and will only direct you to a website ending in '.gov.za'.",
     whatThisMeans:
-      "Users do not need deep technical knowledge to judge a request. They need a few practical questions: does this match my current case, does it look like the correct route, and is it asking for an appropriate step rather than something strange or unrelated.",
+      "If you did not recently change your bank details or apply for a grant, but suddenly get an SMS to 'verify your ID', it is almost certainly a scammer trying to steal your profile.",
     whyThisMatters:
       "Verification is one of the easiest points for fake requests to spread because users expect urgency and sensitive action. That makes trust checks especially important here.",
     steps:
@@ -857,7 +857,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The safest way to judge a verification request is to compare it with your real situation. A message that appears without context or pushes you into unusual urgency deserves extra caution.",
     important:
-      "GrantCare is independent and does not send official verification requests. That is exactly why it can help users judge these requests more calmly from the outside.",
+      "We will never text you asking for your ID number. Always assume any random SMS is fake until you log into the official portal to check your status.",
     help:
       "GrantCare can help you compare verification requests with identity-link guidance, SMS meaning pages, and official-route safety pages so the difference between real and risky feels clearer.",
     related:
@@ -884,9 +884,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A practical bridge guide for users whose verification problems started after changing phone, banking, or other official details.",
     quickAnswer:
-      "If verification problems started after changing details, first connect the problem to the exact update you made, then check the latest wording before making another change.",
+      "If your verification failed right after you updated your phone or bank details, the system is simply pausing to check the new info. Do not change it back.",
     whatThisMeans:
-      "Updates to phone numbers, banking details, and other personal information can create a new verification stage because the official record needs to trust the new information before moving forward again.",
+      "SASSA treats any change to your profile as a potential security threat. They freeze your account temporarily to make sure a scammer didn't change your details.",
     whyThisMatters:
       "Users often fix one problem and accidentally create another temporary one through the update itself. That is why it helps to treat post-update verification issues as part of the same story, not as a completely separate mystery.",
     steps:
@@ -894,7 +894,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The most useful question is what changed just before verification became a problem. That often gives the clearest clue about whether the issue is still settling or whether another correction is truly needed.",
     important:
-      "GrantCare cannot see the official verification logic, but it can help you connect the timing of the detail change to the kind of wording you now see on the case.",
+      "GrantCare helps you realize that this delay is actually protecting you. Let the system finish its security check.",
     help:
       "GrantCare can help you compare post-update verification problems with number-change guides, bank-verification guidance, and pending-verification explanations.",
     related:
@@ -921,9 +921,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A plain-language explanation of pending bank verification and what users should usually do while the payment route is still being checked.",
     quickAnswer:
-      "Pending bank verification usually means the payment-method details are still being checked. It is a waiting message, not a final rejection of the whole case.",
+      "Pending bank verification means Treasury is currently checking your account against your ID number. It is not a decline—it is just a waiting room.",
     whatThisMeans:
-      "The system is usually still working out whether the bank details fit the payment record properly. That means payment may be delayed, but it does not automatically mean the support record itself disappeared.",
+      "You cannot speed this up. The government has to communicate with your specific bank to confirm the account is active and belongs to you. This takes time.",
     whyThisMatters:
       "Because money is involved, this message feels heavier than many other pending states. That can lead to quick, repeated edits. In many cases, the better response is to read the wording carefully and give the check time to move.",
     steps:
@@ -931,7 +931,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "Pending bank verification is mainly a message about trust in the payment route. That is why it belongs closer to payment timing than to the basic question of whether the case still exists.",
     important:
-      "GrantCare can explain the message, but official bank verification happens only inside the official system and payment process.",
+      "Do not update your bank details again while it says pending. GrantCare reminds you that resetting your details puts you at the back of the queue.",
     help:
       "GrantCare can help you compare pending bank verification with delayed-payment guidance, bank-verification explanations, and bank-details acceptance pages.",
     related:
@@ -958,9 +958,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A simple explanation of pending ID verification and how to read it as a process stage instead of an instant final outcome.",
     quickAnswer:
-      "Pending ID verification usually means the official system is still checking identity-related details. It is a waiting stage, not a final answer.",
+      "Pending ID verification means SASSA is checking your details against the Department of Home Affairs database. Your grant is paused, but not declined.",
     whatThisMeans:
-      "The process still needs enough confidence about the identity connected to the record. That can happen because of mismatches, changed details, or another check that has not fully cleared yet.",
+      "If you recently got a new ID card, or if your name changed, the system needs time to update. It is doing a background check to prevent identity theft.",
     whyThisMatters:
       "Identity-related wording makes many users fear an immediate negative result. In practice, pending ID verification often means more waiting and careful reading are needed before anything final is clear.",
     steps:
@@ -968,7 +968,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The safest way to read pending ID verification is as a signal that identity confidence is still being built. That keeps you focused on the process stage instead of assuming the worst immediately.",
     important:
-      "GrantCare cannot complete identity checks. It can explain the wording and help users think more clearly about what may have triggered the pending state.",
+      "GrantCare cannot contact Home Affairs for you. You must wait for the database sync to finish on the official SASSA portal.",
     help:
       "GrantCare can help you compare pending ID verification with identity links, failed identity checks, and changed-detail guides.",
     related:
@@ -995,9 +995,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A practical follow-up guide for users who changed a phone number and now need to see whether the official record caught up.",
     quickAnswer:
-      "Check whether your number update reflected by looking for the new number to work where it should, and by watching whether related status or verification wording begins to move away from the old-number problem.",
+      "The easiest way to check if your new phone number is active is to log into the SASSA portal. If the OTP goes to your new SIM card, the update was successful.",
     whatThisMeans:
-      "A number update is reflected when the official record behaves as if the new number is now the real one connected to the case. That often shows up through access, OTPs, or later status behavior rather than through one obvious message.",
+      "SASSA does not usually send an SMS saying 'Number Updated'. You just have to test it yourself. If you can access your profile using the new number, the system has fully synced.",
     whyThisMatters:
       "Users often assume the number changed just because they submitted the update. Reflection is the next question. Without it, the process may still act as if the old number is linked to the case.",
     steps:
@@ -1005,7 +1005,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "Reflection is about behavior, not only submission. The change is really reflected when the case responds as if the new number is now the correct one.",
     important:
-      "GrantCare cannot confirm official number records directly. It can help you judge whether the signs now suggest the new number is being recognized properly.",
+      "GrantCare cannot see which number is linked to your ID. You must test the official login portal yourself to see if the OTP arrives.",
     help:
       "GrantCare can help you compare reflected and non-reflected number changes with access problems, OTP issues, and identity-verification messages.",
     related:
@@ -1032,9 +1032,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A simple follow-up guide for users who changed bank details and now need to know whether the official payment route has caught up.",
     quickAnswer:
-      "Check whether your bank update reflected by looking for the banking problem wording to move, the pending payment-method stage to improve, or payment-related progress to become more normal.",
+      "Your bank update is successful when your status changes from 'Pending Bank Verification' back to a normal 'Approved' status with a payment date.",
     whatThisMeans:
-      "A reflected bank update means the official payment record is starting to behave as if the new bank details are now the real payment route. That is usually shown through changed wording rather than one obvious confirmation line.",
+      "Do not expect a direct message confirming your new bank account. The system simply removes the warning message and resumes processing your money.",
     whyThisMatters:
       "Users often think the update is reflected because it was submitted. The more practical question is whether the process now looks different enough to show the new payment route is actually being used.",
     steps:
@@ -1042,7 +1042,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "Reflection is a process signal. It usually appears when the old banking issue stops dominating the wording and the case starts to move into a more normal payment-related stage.",
     important:
-      "GrantCare cannot confirm official banking acceptance. It can help you read the change in the wording so you know whether the update appears to be settling in the right direction.",
+      "We cannot look at your SASSA file to check if your bank account is loaded. The only way to know is by checking your official status page.",
     help:
       "GrantCare can help you compare reflected bank updates with pending bank verification, delayed-payment guides, and bank-acceptance guidance.",
     related:
@@ -1069,9 +1069,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A practical escalation guide for repeated identity or banking verification failures that do not seem to move forward.",
     quickAnswer:
-      "If verification keeps failing, stop guessing, keep a clear record of the failures, and work out whether the repeated problem points to the same unresolved issue each time.",
+      "If your verification keeps failing, stop trying. Every failed attempt locks your account further. Read the exact error message to figure out what is wrong.",
     whatThisMeans:
-      "Repeated verification failure usually means the same mismatch or trust problem keeps returning. That is why doing the exact same thing again without learning from the wording rarely solves it.",
+      "Doing the exact same thing ten times will not magically fix a verification error. If it fails twice, there is a hard mismatch between your application and Home Affairs.",
     whyThisMatters:
       "Users often respond to repeated failures with panic-driven retries. That can make the process feel endless. A better response is to identify whether the repeated failure is tied to identity, number changes, banking details, or route safety.",
     steps:
@@ -1080,7 +1080,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "Repeated failure usually tells you that the process keeps finding the same unresolved issue. Once you treat the failures as a pattern instead of isolated moments, the next step becomes much clearer.",
     important:
-      "GrantCare cannot remove an official verification block, but it can help you identify the repeated pattern so you are not responding blindly to each new failure.",
+      "GrantCare cannot override a failed verification. If your details are hopelessly stuck, your fastest option is physically visiting a SASSA office with your ID book.",
     help:
       "GrantCare can help you compare repeated failures with number mismatches, bank verification, identity-verification requests, and post-detail-change verification problems.",
     related:
@@ -1107,9 +1107,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A guide to reading changed verification wording without assuming that every wording change is either good news or bad news on its own.",
     quickAnswer:
-      "If your verification message changes, save the new wording and compare it with the earlier one. The change often tells you more about the process stage than a simple emotional reaction does.",
+      "If your verification message changes from 'Pending' to 'Failed' or 'Approved', it means SASSA has finished their security check. Read the new status carefully.",
     whatThisMeans:
-      "Verification wording can shift from pending to failed, from one type of check to another, or from identity to payment-method language. Those changes are clues about where the process is now focusing its attention.",
+      "A changed message means progress. Even if it changes to 'Failed', it is better than being stuck on 'Pending' because now you know exactly what to fix.",
     whyThisMatters:
       "Users often see a changed message and assume the process got worse or better immediately. The safer approach is to ask what the new wording is now asking you to understand or do.",
     steps:
@@ -1117,7 +1117,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "A changed message is often a process clue. It can mean the system moved from checking one thing to checking another, or from waiting into a clearer result. That is why comparing old and new wording matters so much.",
     important:
-      "GrantCare can help explain the changed message, but it cannot tell the official system which wording to show next. The role here is interpretation, not control.",
+      "We translate confusing SASSA messages so you understand your next steps, but you are still the only one who can log in and fix your profile.",
     help:
       "GrantCare can help you compare changed verification wording with pending ID checks, pending bank verification, failed verification, and post-detail-change pages.",
     related:
@@ -1144,9 +1144,9 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     summary:
       "A trust-first guide to finding official pages for banking updates and verification steps without being pulled into fake forms or copied portals.",
     quickAnswer:
-      "Find official banking and verification pages safely by starting from known official routes, checking the page carefully before entering details, and treating independent explanation pages as guides only.",
+      "The only safe place to update your banking or verify your ID is srd.sassa.gov.za. Any other website asking for this information is a scam.",
     whatThisMeans:
-      "Banking and verification pages are especially sensitive because they often involve payment details, identity checks, or access-related information. That makes them a common target for unsafe imitation pages.",
+      "Fraudsters build fake websites that look exactly like the SASSA portal to steal your ID and reroute your money to their own bank accounts. Always check the web address.",
     whyThisMatters:
       "If a user enters personal or banking information on the wrong page, the harm can be bigger than simple confusion. That is why this topic needs a clear safety habit rather than guesswork.",
     steps:
@@ -1155,7 +1155,7 @@ export const SEO_BATCH_EIGHT_GUIDES = [
     keyFocus:
       "The safest habit is to separate action from explanation. Use the official route for updating banking details or completing verification. Use GrantCare to understand what the process means before or after that official step.",
     important:
-      "GrantCare is an independent platform and should never be mistaken for an official banking or verification system. That separation is part of keeping the product safe and trustworthy.",
+      "GrantCare is an independent guide. We will NEVER ask for your banking details or ID number. If you are asked for those here, you are on the wrong page.",
     help:
       "GrantCare can help you understand banking and verification wording, compare common problems, and avoid unsafe routes while still pointing you back to the correct official process.",
     related:

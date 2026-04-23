@@ -33,8 +33,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/grants",
-    title: `SASSA Grants and SRD ${currentYear}: Eligibility and Amounts`,
-    description: `Compare SASSA grants, current amounts, eligibility rules, and documents for Older Persons, Disability, Child Support, and SRD.`,
+    title: `SASSA Grants in South Africa ${currentYear}: Types, Amounts and Eligibility`,
+    description:
+      "Compare social grants in South Africa, including SRD, Older Persons, Disability, and Child Support, with current amounts, eligibility rules, and document requirements.",
   });
 }
 
@@ -54,33 +55,33 @@ export default async function GrantsPage({
   const hubLinks = [
     {
       href: "/grants/social-relief",
-      title: "SRD grant",
-      description: "Open Social Relief of Distress if you need SRD, R350, or R370 grant guidance.",
+      title: "Check SRD grant (R370)",
+      description: "Open Social Relief of Distress if you need SRD grant, R370 grant, application, status, or payment guidance.",
     },
     {
       href: "/grants/older-persons",
-      title: "Old age grant",
+      title: "Check old age grant",
       description: "Open the Older Persons Grant page for old age grant eligibility, amounts, and pay date links.",
     },
     {
       href: "/payment-dates",
-      title: copy.paymentDates,
+      title: "Check payment dates",
       description: "Open social grant and grant pay dates after you identify the grant type you need to follow.",
     },
     {
       href: "/eligibility-checker",
-      title: copy.eligibilityChecker,
+      title: "Check grant eligibility",
       description: "Use the checker when you are not sure which grant type to read first.",
     },
     {
       href: "/grant-amounts",
-      title: "Grant amounts",
+      title: "Check grant amounts",
       description: "Open current SASSA grant amounts and increase-focused guides in one place.",
     },
     {
       href: "/claim-checker",
-      title: "Claim checker",
-      description: "Open the checker if you want to test whether a grant, increase, or payment story sounds real.",
+      title: "Check grant rumours",
+      description: "Open the checker if you want to test whether a grant, increase, status, or payment story sounds real.",
     },
   ];
 

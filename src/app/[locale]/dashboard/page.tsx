@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import {
@@ -14,6 +15,7 @@ import {
   Section,
   Select,
   StatusMessage,
+  ButtonLink,
 } from "@/components/ui";
 import { MonetizationBlocks } from "@/components/monetization-blocks";
 import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
@@ -205,6 +207,51 @@ export default async function DashboardPage({
         ) : (
           <Card>
             <p className="text-sm text-muted">{copy.noSavedGuides}</p>
+          </Card>
+        )}
+      </Section>
+
+      <Section title="My Interview Guides">
+        {dashboardData.user.toolGenerations?.length > 0 ? (
+          <div className="grid gap-4 md:grid-cols-2">
+            {dashboardData.user.toolGenerations.map((item) => {
+              const inputData = item.inputData as Record<string, unknown> | null | undefined;
+              const jobTitle =
+                typeof inputData?.jobTitle === "string" && inputData.jobTitle.trim().length > 0
+                  ? inputData.jobTitle
+                  : "Custom Role";
+
+              return (
+                <Link
+                  key={item.id}
+                  href={buildLocalePath(locale, `/tools/interview-guide/result/${item.id}`)}
+                  className="group block"
+                >
+                <Card className="space-y-2 transition-all hover:bg-surface-muted hover:border-primary/30 h-full">
+                  <h3 className="text-xl font-semibold tracking-tight">{item.toolType === "interview_guide" ? "Interview Guide" : "Generated Tool"}</h3>
+                  <p className="text-[16px] text-muted">
+                    {jobTitle}
+                  </p>
+                  <div>
+                    {item.isPaid ? (
+                      <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">Full Access</span>
+                    ) : (
+                      <span className="inline-flex items-center rounded-full bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-600">Free Preview</span>
+                    )}
+                  </div>
+                </Card>
+                </Link>
+              );
+            })}
+          </div>
+        ) : (
+          <Card className="space-y-4">
+            <p className="text-[16px] text-muted">You haven&apos;t generated any customized guides yet.</p>
+            <div>
+               <ButtonLink href={buildLocalePath(locale, "/tools/interview-guide")} variant="secondary">
+                 Create Interview Guide
+               </ButtonLink>
+            </div>
           </Card>
         )}
       </Section>

@@ -172,22 +172,22 @@ function applicationGuide(grant: GrantProfile, sortOrder: number) {
     slug: `${grant.guideSlugBase}-how-to-apply`,
     title: `${grant.name} how to apply`,
     summary:
-      `A simple guide to preparing for a ${grant.name.toLowerCase()} application, using the correct official route, and avoiding mistakes that create early delays.`,
+      `A clear, step-by-step guide on how to apply for the ${grant.name}. We explain how to prepare your documents and avoid the mistakes that cause massive delays.`,
     quickAnswer:
-      `To apply for the ${grant.name.toLowerCase()}, first confirm that this grant fits your situation, gather the likely documents, and then use the correct official application route. GrantCare can help you prepare, but it does not submit the application for you.`,
+      `Before you look for the ${grant.name} application form, you must gather your documents. Once your paperwork is ready, you will submit your application directly through the official SASSA portal or at a local office.`,
     whatThisMeans:
-      `Applying works best when it starts with the right grant category. The ${grant.name.toLowerCase()} is meant for ${grant.audience}. That makes preparation important, because using the wrong route or starting without the right records can create delays before the case really begins.`,
+      `The ${grant.name} is specifically designed for ${grant.audience}. Do not rush to fill out a form if you do not have the supporting evidence ready yet. An incomplete application will instantly be delayed or rejected.`,
     whyThisMatters:
-      `Users often jump straight into an online search for the form and only later realise that they were missing the right documents or were unclear about the grant itself. ${grant.caution}.`,
+      `Many people panic and submit whatever documents they have on hand just to get into the system. ${grant.caution}. Taking an extra week to prepare is better than waiting six months to fix a rejected application.`,
     steps:
-      `1. Confirm that the ${grant.name.toLowerCase()} matches your situation.\n2. Gather the likely documents before starting.\n3. Check your personal details and contact details carefully.\n4. Use the proper official route to begin the application.\n5. Save any official references or confirmations once the application step is done.`,
+      `1. Ensure you actually qualify for the ${grant.name.toLowerCase()}.\n2. Place all your required documents into a single physical folder.\n3. Make sure your phone number is active and registered in your name.\n4. Start the application via the official SASSA portal or visit an office.\n5. Keep your reference number safe—you will need it to check your status later.`,
     keyFocusTitle: "The best way to start the application",
     keyFocus:
-      `The best start is not speed on its own. The better start is clarity: the right grant, the right documents, the right official route. That keeps the process cleaner and reduces avoidable stress later.`,
+      `Speed is not the goal here; accuracy is. An accurate, fully documented application is processed much faster than a rushed one that requires SASSA to ask you for missing files.`,
     important:
-      `GrantCare is an independent information platform. It does not replace the official application route. ${grant.routeNote}.`,
+      `GrantCare is an independent guide to help you prepare. We cannot submit your application for you. ${grant.routeNote}.`,
     help:
-      `GrantCare can help you compare grant types, understand what broad documents may be needed, and move from general application questions into the one guide that fits your case most closely.`,
+      `We break down the overwhelming SASSA application process into simple, manageable steps so you know exactly what to do next.`,
     related:
       `Useful next pages:\n• /grants/${grant.slug}\n• /guides/${grant.guideSlugBase}-who-may-qualify\n• /guides/${grant.guideSlugBase}-documents-you-may-need\n• /eligibility-checker\n• /guides/how-to-prepare-before-applying`,
     faqs: [
@@ -213,20 +213,20 @@ function eligibilityGuide(grant: GrantProfile, sortOrder: number) {
     slug: `${grant.guideSlugBase}-who-may-qualify`,
     title: `${grant.name} who may qualify`,
     summary:
-      `A plain-language guide to the broad signs that may point toward ${grant.name.toLowerCase()} eligibility, without promising an official outcome.`,
+      `A straightforward breakdown of who qualifies for the ${grant.name}. Stop guessing and find out if you meet the core requirements before you apply.`,
     quickAnswer:
-      `You may qualify for the ${grant.name.toLowerCase()} if your situation matches the broad purpose of the grant and the official rules that go with it. The safest way to treat this page is as guidance, not as final approval.`,
+      `You may qualify for the ${grant.name} if you fit the core profile SASSA is looking for. This includes ${grant.fitSignals}.`,
     whatThisMeans:
-      `The ${grant.name.toLowerCase()} is meant for ${grant.audience}. Broadly, people usually start by checking whether the grant’s purpose matches their life situation before they worry about forms or status pages.`,
+      `The ${grant.name} exists specifically for ${grant.audience}. SASSA uses a strict means test and specific life circumstances to filter out applicants who do not fit this exact profile.`,
     whyThisMatters:
-      `A lot of confusion starts when users try to force their situation into the wrong grant type. The more useful question is whether the grant’s purpose really fits your circumstances. For this grant, the broad signs often include ${grant.fitSignals}.`,
+      `Applying for the wrong grant wastes your time and blocks up the SASSA system. It is much better to verify your eligibility now than to wait months only to receive a 'Declined' status.`,
     steps:
-      `1. Compare your situation with the broad purpose of the ${grant.name.toLowerCase()}.\n2. Check whether the main official rule areas seem relevant to you.\n3. Review the likely document categories that support the case.\n4. Use the eligibility checker if you still feel unsure.\n5. Confirm the final rules through the official route before applying.`,
+      `1. Read the strict eligibility rules for the ${grant.name.toLowerCase()}.\n2. Ensure you have the evidence required to prove your situation.\n3. Check if your current income falls below the SASSA means test threshold.\n4. Use our eligibility checker to see if another grant might be a better fit.\n5. Proceed to the official SASSA portal to begin your application.`,
     keyFocusTitle: "How to think about qualification safely",
     keyFocus:
-      `Qualification guidance is most useful when it narrows the direction without pretending to decide the case. That means using the broad signs to guide your next step, while still leaving the final answer to the official process.`,
+      `Use this page to check if you are on the right track. Remember, meeting the basic criteria does not guarantee approval. SASSA will still verify your income, identity, and bank accounts.`,
     important:
-      `GrantCare cannot guarantee approval or tell you the final official outcome. It can only help you understand whether the ${grant.name.toLowerCase()} looks like a reasonable direction to explore next.`,
+      `GrantCare provides independent guidance based on public SASSA rules. Only SASSA can make the final, legally binding decision on whether you qualify.`,
     help:
       `GrantCare can help you compare this grant with other support types, understand the broad rule areas in simple language, and move toward the correct application and document guides.`,
     related:
@@ -254,20 +254,20 @@ function documentsGuide(grant: GrantProfile, sortOrder: number) {
     slug: `${grant.guideSlugBase}-documents-you-may-need`,
     title: `${grant.name} documents you may need`,
     summary:
-      `A practical guide to the likely document categories for the ${grant.name.toLowerCase()} so you can prepare early without guessing.`,
+      `A complete checklist of the documents you need to apply for the ${grant.name}. Prepare your folder correctly to avoid rejection.`,
     quickAnswer:
-      `For the ${grant.name.toLowerCase()}, it helps to prepare the main identity, support, and grant-specific records before you start. The final official checklist still belongs to the official route, but early preparation reduces stress.`,
+      `To apply for the ${grant.name}, you will generally need ${grant.docs}. You must prepare these files before you ever open an application form.`,
     whatThisMeans:
-      `Documents are often where an application becomes easier or harder. For the ${grant.name.toLowerCase()}, users usually need to think about ${grant.docs}. The exact official list can vary, which is why this page should be used as preparation guidance rather than as the last word.`,
+      `Missing documents are the number one reason SASSA applications are delayed. If you submit a blurry photo or an outdated bank statement, the system will pause your application until you fix it.`,
     whyThisMatters:
-      `People often discover document gaps too late, when they are already trying to submit or fix a problem. A better approach is to think in categories first and then confirm the final list on the official route.`,
+      `Every time SASSA has to ask you for a missing document, your payment is delayed by weeks. Getting your paperwork perfect on day one is the fastest way to get your money.`,
     steps:
-      `1. Start with the broad document categories linked to the ${grant.name.toLowerCase()}.\n2. Check that names and personal details match across the records.\n3. Keep the main documents together in one place.\n4. Use the official route to confirm the final checklist.\n5. Save the final checklist for reference before you begin the application.`,
+      `1. Create a physical folder or a clear digital folder on your phone.\n2. Gather the specific identity and supporting documents required.\n3. Ensure that all names match exactly across every single document.\n4. Take clear, bright, easily readable photos of your paperwork if applying online.\n5. Submit your complete file via the official SASSA route.`,
     keyFocusTitle: "What document preparation is really for",
     keyFocus:
-      `Document preparation is not about collecting everything in panic. It is about making sure the grant-specific proof makes sense for your case before you start the official process.`,
+      `Never assume SASSA will 'figure it out.' If your ID name says 'John' but your bank statement says 'Jonathan', your application could be flagged for fraud. Consistency is critical.`,
     important:
-      `GrantCare should not be treated as the final official document list. Sensitive records should only be used through the proper official route when you are ready to submit or confirm the case.`,
+      `GrantCare is an independent platform that helps you organise your paperwork. You must never upload your ID or banking documents to GrantCare—only to the official SASSA portal.`,
     help:
       `GrantCare can help you think about likely document categories, compare grant pages, and move from document questions into the next relevant application or eligibility guide.`,
     related:
@@ -305,22 +305,22 @@ export const SEO_BATCH_TEN_GUIDES = [
     slug: "how-to-apply-online-for-social-relief",
     title: "How to apply online for social relief",
     summary:
-      "A simple guide to preparing for an online social-relief application and using the official route safely without mixing it up with independent guidance.",
+      "A clear, step-by-step guide to applying for the SRD R350/R370 grant online. We show you exactly how to submit your application safely.",
     quickAnswer:
-      "To apply online for social relief, first confirm that social relief looks like the right support type for your situation, gather the likely details you need, and then use the correct official route for the actual application.",
+      "To apply for the SRD grant, you must use the official SRD website (srd.sassa.gov.za) or the official SASSA WhatsApp line. You will need your ID number and an active cell phone number.",
     whatThisMeans:
-      "Online social-relief applications feel urgent because people often search for them when they need support quickly. That makes it even more important to separate preparation from official action. The official route handles the real application. GrantCare helps you prepare for it.",
+      "Applying online is the only way to get the SRD grant. SASSA offices do not process SRD applications in person. This means you must have a working phone number that belongs to you.",
     whyThisMatters:
-      "Rushing into the first page you find can lead to the wrong route, missing details, or confusion about what the online process is really asking you to do. A little preparation makes the online step much easier to handle.",
+      "If you apply using a friend's phone number, you will not be able to access your money or receive OTPs (One Time PINs) later. Your phone number is your digital signature for the SRD grant.",
     steps:
-      "1. Check whether social relief seems like the right support category.\n2. Gather your main personal details and likely supporting information.\n3. Use the correct official online route for the application.\n4. Save any confirmation or reference after the official step.\n5. Use GrantCare afterward if you need help understanding status or payment wording.",
+      "1. Go directly to the official srd.sassa.gov.za portal.\n2. Enter your South African ID number and your active cell phone number.\n3. Wait for the OTP SMS and enter it into the website.\n4. Accept the declaration and consent forms.\n5. Wait for your status to update from 'Pending' to 'Approved'.",
     keyFocusTitle: "The safest online-application habit",
     keyFocus:
-      "The safest habit is to let the official route handle the action while you use GrantCare only for preparation and explanation. That keeps the process clear and protects trust.",
+      "Never pay anyone to apply for the SRD grant on your behalf. The application is completely free. Scammers charging a fee will often steal your details and your eventual payments.",
     important:
-      "GrantCare is not the official online application portal. It should never be treated as one. Official social-relief applications still belong to the official route.",
+      "GrantCare is an independent guide. We do not process SRD applications. You must enter your personal details directly into the official .gov.za website.",
     help:
-      "GrantCare can help you compare social relief with other grant types, check likely document categories, and understand the next steps once the official application has been started.",
+      "We break down the SRD application steps so you know exactly what to click, what to expect, and how to protect your identity from scammers.",
     related:
       "Useful next pages:\n• /guides/social-relief-how-to-apply\n• /guides/social-relief-who-may-qualify\n• /guides/social-relief-documents-you-may-need\n• /eligibility-checker\n• /guides/how-to-find-the-official-application-form-safely",
     faqs: [
@@ -343,22 +343,22 @@ export const SEO_BATCH_TEN_GUIDES = [
     slug: "how-to-prepare-for-an-online-application",
     title: "How to prepare for an online application",
     summary:
-      "A practical checklist guide for getting ready before you start an online grant-related application on the official route.",
+      "A strict preparation checklist for any online SASSA application. Get your documents right before you click submit.",
     quickAnswer:
-      "Prepare for an online application by checking the grant type first, gathering your likely documents, making sure your phone and details are current, and only then moving into the official form.",
+      "Before applying online, you need clear photos of your ID, proof of banking details, and an active phone number. Missing these basics will result in instant rejection.",
     whatThisMeans:
-      "Online application problems often begin before the form opens. Users may not know which grant fits, may not have the right details nearby, or may try to complete the form while missing key information.",
+      "The SASSA online portal does not give you a chance to explain your situation to a human. The system only looks at the exact documents you upload. If a file is blurry, the system rejects it.",
     whyThisMatters:
-      "The better prepared you are, the less likely you are to make avoidable mistakes once you are inside the official route. Preparation also makes it easier to stop and confirm something before it becomes a bigger problem.",
+      "People often start the online application, realise they are missing a document, and abandon the form halfway. Half-finished applications cause massive administrative headaches and delay your eventual approval.",
     steps:
-      "1. Confirm which grant or support type fits your case.\n2. Gather the likely documents and supporting information.\n3. Check your phone number, personal details, and payment details where relevant.\n4. Make sure you are using the right official route.\n5. Start the official application only once the basics are ready.",
+      "1. Identify exactly which grant you are applying for.\n2. Take bright, readable photos of your ID and supporting documents.\n3. Ensure your phone is fully charged and has airtime to receive SMS OTPs.\n4. Open the official SASSA web portal.\n5. Complete the entire form in one sitting to avoid session timeouts.",
     keyFocusTitle: "The real purpose of preparation",
     keyFocus:
-      "Preparation is not delay for the sake of delay. It is the fastest way to avoid avoidable confusion once the online form is open and asking for real answers.",
+      "Preparation is the difference between getting paid next month or waiting six months. Do not open the application portal until every single document is resting on your table.",
     important:
-      "GrantCare can help you prepare, but the official application still belongs to the official route. Preparation should make that step easier, not replace it.",
+      "GrantCare helps you build your application folder mentally and physically. We cannot fix a rejected application once you submit the wrong documents to SASSA.",
     help:
-      "GrantCare can help you choose the right grant type, review likely document categories, and read grant-specific guides before the official online form begins.",
+      "We provide plain-English checklists of the exact documents you need for each specific grant category.",
     related:
       "Useful next pages:\n• /guides/how-to-prepare-before-applying\n• /guides/what-to-check-before-you-start-an-online-application\n• /guides/how-to-know-which-grant-application-fits-you\n• /guides/what-documents-you-may-need\n• /eligibility-checker",
     faqs: [
@@ -381,22 +381,22 @@ export const SEO_BATCH_TEN_GUIDES = [
     slug: "what-to-do-if-an-online-application-form-confuses-you",
     title: "What to do if an online application form confuses you",
     summary:
-      "A low-pressure guide for users who open an official application form and feel lost, overwhelmed, or unsure what the questions are really asking.",
+      "What to do when the SASSA online form becomes confusing. A calming guide to pausing, reading, and answering correctly without panic.",
     quickAnswer:
-      "If an online application form confuses you, slow down, leave the form for a moment if needed, and work out which part is unclear before continuing. Confusion is a sign to clarify, not to guess.",
+      "If you do not understand a question on the SASSA portal, stop typing. Guessing answers on official government forms can lead to fraud flags or application rejection.",
     whatThisMeans:
-      "Many people assume they should keep pushing forward when a form becomes confusing. In reality, a short pause often prevents bigger mistakes. The safest move is to understand the confusing part before continuing with the official form.",
+      "Government forms use strict legal language. When they ask for 'remuneration', they mean your income. If a question feels overwhelming, do not just select 'Yes' to make it go away.",
     whyThisMatters:
-      "Guessing inside an official application form can create the kind of mistake that later turns into a decline, a delay, or a document problem. It is better to stop and clarify one section than to rush through the whole thing.",
+      "Every answer you provide is legally binding. If you accidentally say you have an income when you do not, SASSA will decline your grant based on your own mistake.",
     steps:
-      "1. Pause and identify which part of the form feels confusing.\n2. Check whether the confusion is about the grant type, the wording, or a document request.\n3. Use the matching GrantCare guide to understand that topic.\n4. Return to the official form only once the issue is clearer.\n5. Save any progress if the official route allows it.",
+      "1. Take a breath and do not click submit.\n2. Identify the specific word or question that is confusing you.\n3. Look up the term in our GrantCare guides or ask a trusted family member.\n4. Check if you have the physical document that answers the question.\n5. Return to the form and enter the correct, honest answer.",
     keyFocusTitle: "The safest response to confusion",
     keyFocus:
-      "The safest response is not speed. It is clarity. Once you know whether the confusion comes from wording, documents, or the grant type itself, the form becomes much easier to handle correctly.",
+      "There is no penalty for taking your time. The system may log you out if you take too long, but you can always log back in and start again. Accuracy is more important than speed.",
     important:
-      "GrantCare does not complete official forms for you, but it can explain the surrounding concepts so you are not guessing your way through the official process.",
+      "GrantCare explains complicated SASSA terms in simple English, but we cannot legally advise you on how to answer specific questions about your personal finances.",
     help:
-      "GrantCare can help you clarify grant-type fit, likely documents, and application wording before you return to the official form with more confidence.",
+      "We translate bureaucratic SASSA jargon into normal language so you can fill out your application with absolute confidence.",
     related:
       "Useful next pages:\n• /guides/how-to-prepare-for-an-online-application\n• /guides/how-to-know-which-grant-application-fits-you\n• /guides/what-documents-you-may-need\n• /guides/common-online-application-mistakes\n• /eligibility-checker",
     faqs: [
@@ -419,22 +419,22 @@ export const SEO_BATCH_TEN_GUIDES = [
     slug: "common-online-application-mistakes",
     title: "Common online application mistakes",
     summary:
-      "A practical guide to the avoidable mistakes people make in online grant applications and the habits that reduce them.",
+      "The most common mistakes people make on the SASSA online portal, and exactly how to avoid them to ensure your application gets approved.",
     quickAnswer:
-      "Common online application mistakes usually come from rushing, using the wrong grant route, typing details carelessly, or starting before the necessary documents are ready.",
+      "The most common reasons for rejection are entering the wrong phone number, uploading blurry documents, or misspelling names so they do not match the ID.",
     whatThisMeans:
-      "Most online application problems are not dramatic. They are small mistakes that become bigger later because the form is official and the information matters. That is why prevention matters so much.",
+      "SASSA's automated systems are ruthless. If your ID says 'Sipho' but you type 'Sipo' into the form, the system will flag it as an identity mismatch and halt your application.",
     whyThisMatters:
-      "If users know the usual mistake patterns ahead of time, they can avoid the most common delays before they happen. That is usually easier than fixing the problem after submission.",
+      "A single typo can cost you months of financial support. You will be forced to go through a lengthy appeals or reconsideration process just to fix one spelling mistake.",
     steps:
-      "1. Confirm the correct grant type before opening the form.\n2. Gather your likely documents first.\n3. Enter details slowly and check them once more.\n4. Avoid unofficial routes that only look convenient.\n5. Save confirmation or references after the official step is done.",
+      "1. Type your ID number slowly, checking it against your physical ID book.\n2. Ensure the phone number you enter is yours and currently working.\n3. Verify that your banking details match your name exactly.\n4. Check the lighting on your document photos—can you read every word?\n5. Read through the entire form one last time before clicking 'Submit'.",
     keyFocusTitle: "The mistake behind many other mistakes",
     keyFocus:
-      "The mistake behind many other mistakes is rushing. Once users slow down enough to confirm the route, the grant type, and the key details, many smaller errors disappear on their own.",
+      "Double-check everything. Do not rely on autofill from your browser, as it might insert an old address or a disconnected phone number.",
     important:
-      "GrantCare cannot remove official mistakes after the fact, but it can help users recognise the most common patterns before they create bigger problems.",
+      "GrantCare cannot go into the SASSA system and fix a typo for you. Once you hit submit, only SASSA can amend your details.",
     help:
-      "GrantCare can help you prepare for the form, choose the right grant type, and check likely document needs before the official application starts.",
+      "We highlight exactly where the traps are in the online application process so you can navigate around them safely.",
     related:
       "Useful next pages:\n• /guides/how-to-prepare-for-an-online-application\n• /guides/what-to-check-before-you-start-an-online-application\n• /guides/what-to-do-if-an-online-application-form-confuses-you\n• /guides/how-to-find-the-official-application-form-safely\n• /guides/how-to-apply-without-using-unofficial-websites",
     faqs: [
@@ -457,22 +457,22 @@ export const SEO_BATCH_TEN_GUIDES = [
     slug: "how-to-know-which-grant-application-fits-you",
     title: "How to know which grant application fits you",
     summary:
-      "A decision-focused guide to choosing the right grant direction before starting an official application route.",
+      "Stop guessing and find the exact SASSA grant that fits your life situation before you waste time applying for the wrong one.",
     quickAnswer:
-      "The right grant application fits when the purpose of the grant matches your real situation. Start there first before looking for forms or online portals.",
+      "SASSA offers different grants for older persons, children, people with disabilities, and those needing social relief (SRD). Your age, income, and health determine which one you should apply for.",
     whatThisMeans:
-      "Many users start by searching for any application form they can find. A better start is to ask which grant category actually fits their circumstances. That often prevents the biggest type of application mistake: using the wrong route from the beginning.",
+      "You cannot just apply for 'a grant'. You must apply for a specific category. If you apply for a Disability Grant but only qualify for the SRD grant, SASSA will reject your application entirely.",
     whyThisMatters:
-      "If you choose the wrong grant direction, later document questions, status messages, and delays can all become more confusing. Choosing the right direction first keeps the whole process simpler.",
+      "Applying for the wrong grant wastes your time. You will wait months for an outcome, only to be rejected and told to start all over again in the correct category.",
     steps:
-      "1. Think about who the support is meant for in your situation.\n2. Compare your case with the main grant categories.\n3. Read the broad qualification and document guides for the likely fit.\n4. Use the eligibility checker if you still feel unsure.\n5. Move to the official application route only once the grant direction makes sense.",
+      "1. Look at your current age—if you are 60 or older, look at the Older Persons Grant.\n2. Do you have a child in your care? Look at the Child Support Grant.\n3. Are you unemployed between 18 and 59? Look at the SRD Grant.\n4. Check the strict SASSA means test limits for that specific grant.\n5. Use our GrantCare Eligibility Checker to confirm your choice before applying.",
     keyFocusTitle: "The question that solves most confusion",
     keyFocus:
-      "The most useful question is not where is the form. The better question is which grant is this really for. Once that becomes clear, most of the later application decisions become easier.",
+      "Do not ask 'Where is the application form?' Ask 'Which grant am I actually legally entitled to receive?' Answering the second question saves you from rejection.",
     important:
-      "GrantCare can help narrow the direction, but it cannot make the final official decision about eligibility or approval. The official route still decides that.",
+      "GrantCare helps you navigate the complex SASSA rules to find your best fit. However, only SASSA can legally decide if you meet their criteria.",
     help:
-      "GrantCare can help you compare grants, review broad qualification signs, and move from confusion into the one application path that looks most relevant.",
+      "We break down the legal requirements for every single grant category into plain English so you can choose the right path.",
     related:
       "Useful next pages:\n• /eligibility-checker\n• /grants\n• /guides/who-may-qualify-for-support\n• /guides/how-to-apply-for-support\n• /guides/how-to-prepare-for-an-online-application",
     faqs: [
@@ -495,22 +495,22 @@ export const SEO_BATCH_TEN_GUIDES = [
     slug: "what-to-check-before-you-start-an-online-application",
     title: "What to check before you start an online application",
     summary:
-      "A readiness checklist guide for users who want to avoid obvious problems before they begin an official online application.",
+      "The ultimate pre-application checklist. Make sure you have these five things ready before you open the SASSA online portal.",
     quickAnswer:
-      "Before you start an online application, check the grant type, likely documents, personal details, phone access, and the official route itself. Those checks prevent many avoidable problems.",
+      "Before starting your SASSA application, you must check your ID book, your active phone number, your banking details, your proof of residence, and your internet connection.",
     whatThisMeans:
-      "The easiest time to fix a mistake is before the official form starts. Once you are inside the application flow, the pressure usually increases and clear thinking becomes harder.",
+      "The SASSA online portal is strict and unforgiving. If your internet connection drops halfway through, or if you enter the wrong phone number, your application can get stuck in the system for months.",
     whyThisMatters:
-      "A short readiness check can prevent the biggest types of online-form confusion: wrong grant category, missing records, incorrect details, and unsafe routes.",
+      "Fixing a mistake on an active SASSA application is incredibly difficult. It requires phone calls, office visits, and affidavits. Getting it perfect the first time is the only way to ensure fast payment.",
     steps:
-      "1. Confirm which grant or support type fits you.\n2. Gather the likely documents.\n3. Check your phone number and personal details.\n4. Make sure the route you plan to use is the correct official one.\n5. Only then begin the online application.",
+      "1. Take out your physical green ID book or smart card.\n2. Write down your exact phone number and ensure you have network signal.\n3. Get a recent bank statement to confirm your exact account number.\n4. Ensure you have enough mobile data to complete a 15-minute online form.\n5. Double-check that you are on the official '.gov.za' website.",
     keyFocusTitle: "Why this checklist matters so much",
     keyFocus:
-      "The point of a readiness check is not to slow you down for no reason. It is to stop simple avoidable problems from turning into official delays once the form is underway.",
+      "Do not treat this like signing up for a social media account. This is a legal financial application. One wrong digit in your bank account number means your money will bounce.",
     important:
-      "GrantCare can help you prepare and think clearly, but the official application still needs to happen on the official route. Readiness should make that step easier, not replace it.",
+      "GrantCare cannot retrieve an application once you hit submit. You must review your details meticulously before confirming them on the official portal.",
     help:
-      "GrantCare can help you compare grant categories, likely document needs, and form-preparation pages before you open the official application route.",
+      "We provide detailed guides on exactly what documents SASSA expects for every grant type, so you are never caught off guard.",
     related:
       "Useful next pages:\n• /guides/how-to-prepare-for-an-online-application\n• /guides/common-online-application-mistakes\n• /guides/how-to-find-the-official-application-form-safely\n• /guides/what-documents-you-may-need\n• /eligibility-checker",
     faqs: [
@@ -533,22 +533,22 @@ export const SEO_BATCH_TEN_GUIDES = [
     slug: "what-to-do-if-your-application-form-will-not-open",
     title: "What to do if your application form will not open",
     summary:
-      "A simple troubleshooting guide for official application forms that fail to load or seem unavailable, without turning the issue into more than it is.",
+      "A calm troubleshooting guide for when the official SASSA application website crashes, fails to load, or gives you an error message.",
     quickAnswer:
-      "If your application form will not open, start by checking the route, the connection, and the page itself before assuming the application process is gone or blocked.",
+      "If the SASSA website will not open, it does not mean your application was rejected. It usually means the government servers are overloaded or your internet connection is weak.",
     whatThisMeans:
-      "A form that will not open is usually a technical or route problem first, not a result or eligibility decision. That distinction matters because it changes how you should respond.",
+      "The SASSA portal handles millions of users. During the first week of the month, or when new SRD applications open, the website frequently crashes under the massive traffic.",
     whyThisMatters:
-      "Users often panic when a form fails to open and then jump to copied links or unofficial pages. A slower technical check is safer than a rushed move to the wrong route.",
+      "When the site crashes, desperate applicants often search Google and click on fake, scam websites that look like SASSA. This is how identities and bank details get stolen.",
     steps:
-      "1. Check that you are on the correct official route.\n2. Refresh the page or retry the browser.\n3. Confirm your connection is stable.\n4. Avoid random copied links that promise the same form.\n5. Return to the official route once the access problem is solved.",
+      "1. Check your own internet connection and data balance first.\n2. Close the browser tab and wait for 30 minutes before trying again.\n3. Try accessing the portal very early in the morning or late at night.\n4. Never click on 'Alternative SASSA Links' sent via WhatsApp.\n5. If the site is down for days, listen for official updates on the news or radio.",
     keyFocusTitle: "What this problem usually is",
     keyFocus:
-      "A form that will not open is usually a route, browser, or timing issue. Treating it like a technical access problem first often prevents riskier mistakes later.",
+      "A blank screen is a server error, not a personal rejection. Do not panic and do not hand your ID number over to an unofficial website just because it loads faster.",
     important:
-      "GrantCare cannot repair an official application form. It can help you stay on the right route and avoid turning a temporary access problem into a larger trust problem.",
+      "GrantCare does not host the SASSA application form. We cannot fix the government servers when they go offline.",
     help:
-      "GrantCare can help you confirm which grant route should matter, how to prepare before retrying the form, and how to avoid unsafe alternative pages.",
+      "We explain how to verify if the SASSA system is experiencing a national outage, helping you avoid dangerous scam links.",
     related:
       "Useful next pages:\n• /guides/how-to-find-the-official-application-form-safely\n• /guides/how-to-apply-without-using-unofficial-websites\n• /guides/how-to-prepare-for-an-online-application\n• /guides/what-to-do-if-an-online-application-form-confuses-you\n• /privacy",
     faqs: [
@@ -571,22 +571,22 @@ export const SEO_BATCH_TEN_GUIDES = [
     slug: "how-to-find-the-official-application-form-safely",
     title: "How to find the official application form safely",
     summary:
-      "A trust-focused guide to locating the correct official application form without getting trapped by copied pages or unofficial shortcuts.",
+      "How to avoid scams and safely find the exact, official SASSA application portal you need for your grant.",
     quickAnswer:
-      "Find the official application form safely by starting from a known official route, confirming the page before entering any information, and treating independent guides only as support, not as the form itself.",
+      "The only safe place to apply for a SASSA grant is a website ending in '.gov.za' or at a physical SASSA office. Never apply through a link sent to you on Facebook or WhatsApp.",
     whatThisMeans:
-      "Users often search for a form before they even know which grant fits them. That creates a risk of landing on pages that talk about forms but do not actually belong to the official process.",
+      "Scammers create fake websites that look exactly like the real SASSA portal. If you enter your ID and banking details there, they will steal your grant money.",
     whyThisMatters:
-      "Application forms involve personal details and sometimes sensitive records. Using the wrong route can create confusion or risk before the real application even begins.",
+      "Identity theft is a massive problem in the grant system. If a scammer intercepts your application, it can take years of police affidavits and office visits to clear your name and get your money.",
     steps:
-      "1. Confirm the grant type first.\n2. Start from the correct official route for that grant.\n3. Check the page carefully before entering details.\n4. Avoid copied or unofficial form links.\n5. Use GrantCare only for preparation and explanation around the form.",
+      "1. Open your browser and type 'sassa.gov.za' directly into the address bar.\n2. Look for the padlock icon next to the web address.\n3. Ensure the web address ends strictly in '.gov.za'.\n4. Never pay an 'agent' an upfront fee to give you an application link.\n5. If a site asks you for your banking PIN, close it immediately.",
     keyFocusTitle: "The safest route habit",
     keyFocus:
-      "The safest habit is to find the grant type first and the official form second. That order makes it much easier to judge whether the form really belongs to the process you need.",
+      "Official government websites do not use domains like '.com', '.co.za', or '.net'. They always use '.gov.za'. This is your absolute guarantee that you are on the right site.",
     important:
-      "GrantCare is not the official application form. It is an independent guide that helps users understand where to go and what to prepare before using the official route.",
+      "GrantCare provides independent educational guides. We will never ask for your ID number or banking details, and we do not process applications.",
     help:
-      "GrantCare can help you compare grant pages, application preparation guides, and trust/safety pages so you are more likely to reach the correct official form calmly.",
+      "We teach you how to spot fake SASSA websites and protect your personal information from online predators.",
     related:
       "Useful next pages:\n• /guides/how-to-apply-without-using-unofficial-websites\n• /guides/how-to-prepare-for-an-online-application\n• /guides/how-to-know-which-grant-application-fits-you\n• /grants\n• /eligibility-checker",
     faqs: [
@@ -609,22 +609,22 @@ export const SEO_BATCH_TEN_GUIDES = [
     slug: "how-to-apply-without-using-unofficial-websites",
     title: "How to apply without using unofficial websites",
     summary:
-      "A trust-first guide to staying on the official application route while still using independent help platforms like GrantCare in the right way.",
+      "A guide to maintaining your safety online. Learn how to separate helpful independent guides from dangerous unofficial application portals.",
     quickAnswer:
-      "Apply without using unofficial websites by keeping official actions on the official route and using independent platforms like GrantCare only for preparation, explanation, and reminders.",
+      "Use independent sites like GrantCare to learn the rules, check your eligibility, and prepare your documents. But you must use the official SASSA portal for the actual application.",
     whatThisMeans:
-      "Users can benefit from independent help, but they should not hand the official application over to an unofficial page. The cleanest path is official action plus independent guidance, not a mixture that blurs the two.",
+      "A trustworthy guide will help you understand the confusing SASSA system. But a trustworthy guide will never ask you to upload your ID book or bank statements directly to them.",
     whyThisMatters:
-      "When official and unofficial roles get mixed together, users can share sensitive information in the wrong place or mistake guidance for an actual application step. Clear separation protects trust and safety.",
+      "Blurring the lines between guidance and application is dangerous. If you hand your application over to an unofficial third party, you lose all control over your personal data.",
     steps:
-      "1. Use GrantCare to understand the grant type, likely documents, and next steps.\n2. Move to the correct official route for the actual application.\n3. Confirm the official route before entering personal details.\n4. Keep your official application records and references.\n5. Return to GrantCare later for status or payment guidance if needed.",
+      "1. Read GrantCare to understand exactly what grant you qualify for.\n2. Use our checklists to gather your physical documents.\n3. Leave the GrantCare website when you are ready to apply.\n4. Open the official SASSA '.gov.za' portal.\n5. Complete your application directly with the government.",
     keyFocusTitle: "How independent help is best used",
     keyFocus:
-      "Independent help is strongest when it supports your thinking, not when it pretends to be the official action route. That is how GrantCare is designed to help safely.",
+      "Think of GrantCare as a map. We show you the safest, fastest route to your destination. But you still have to drive the car yourself by visiting the official SASSA office or portal.",
     important:
-      "GrantCare is an independent information and reminder platform. It must stay clearly separate from official government application systems.",
+      "GrantCare is strictly an educational platform. We do not have access to the SASSA database and we do not submit applications on behalf of anyone.",
     help:
-      "GrantCare can help you choose the right grant direction, prepare your documents, and understand later status or payment wording after the official application is complete.",
+      "We provide the clearest, most accurate preparation guides in South Africa, empowering you to handle the official SASSA application confidently and safely.",
     related:
       "Useful next pages:\n• /guides/how-to-find-the-official-application-form-safely\n• /guides/how-to-prepare-for-an-online-application\n• /guides/how-to-know-which-grant-application-fits-you\n• /guides/how-to-apply-for-support\n• /privacy",
     faqs: [

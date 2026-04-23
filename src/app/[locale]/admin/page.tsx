@@ -9,6 +9,7 @@ import { requireAdmin } from "@/lib/auth-guards";
 import { db } from "@/lib/prisma";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { getLaunchReadiness, isDatabaseConfigured } from "@/lib/server-env";
+import { PricingToggle } from "./pricing-toggle";
 
 export const metadata: Metadata = {
   title: "Admin",
@@ -179,6 +180,7 @@ export default async function AdminPage({
     pendingPaymentCount,
     portalOnlyPaymentCount,
     scheduledNoticeCount,
+    dbToolsPricing,
   ] =
     await Promise.all([
       db.grantType.count(),
@@ -203,9 +205,11 @@ export default async function AdminPage({
       db.paymentDateEntry.count({ where: { state: "pending" } }),
       db.paymentDateEntry.count({ where: { state: "portal_only" } }),
       db.notice.count({ where: { status: "published", startsAt: { gt: new Date() } } }),
+      db.siteSetting.findUnique({ where: { key: "tools_pricing_enabled" } }),
     ]);
 
   const [newsCount, newsPublishedCount, newsMissingTranslations] = newsStats;
+  const toolsPricingEnabled = dbToolsPricing?.value === "true";
 
   const window =
     resolvedSearchParams.window === "30d" ? "30d" : "7d";
@@ -276,6 +280,12 @@ export default async function AdminPage({
             </Link>
           ))}
         </div>
+      </Section>
+
+      <Section title="Settings">
+        <Card className="max-w-md">
+          <PricingToggle isEnabled={toolsPricingEnabled} />
+        </Card>
       </Section>
 
       <Section title="Launch status">

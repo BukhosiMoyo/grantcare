@@ -6,58 +6,58 @@ const monthMeta = {
   may: {
     title: "May",
     intro:
-      "May 2026 payment planning is often about checking whether the new month is fully updated yet and whether your grant category is showing a published date or only guidance.",
+      "In May, winter starts setting in and household expenses rise. You need to know exactly when your grant is clearing so you can budget for electricity and warm clothes.",
     planning:
-      "May can feel urgent because users often want certainty early in the month. That makes it even more important to read the payment label and note, not just the date itself.",
+      "It is tempting to believe the first May payment date you see on Facebook. Do not do it. Always check if the date is officially published by SASSA or if it is just an educated guess.",
   },
   june: {
     title: "June",
     intro:
-      "June 2026 payment planning usually sits in a mid-year budgeting period, so users often need a calmer way to separate expected dates from officially published ones.",
+      "June marks the middle of the year, a crucial time for catching up on mid-year bills or school fees. A delayed payment in June hits families particularly hard.",
     planning:
-      "June pages are most useful when they help users plan carefully without pretending that every date is final before the official release confirms it.",
+      "Because money is tight mid-year, fake 'early payment' schedules go viral every June. Protect yourself by only trusting dates that carry a 'published' tag from official sources.",
   },
   july: {
     title: "July",
     intro:
-      "July 2026 payment-date searches usually come from users who want a reliable month view before making travel, household, or collection plans.",
+      "July is deep winter in South Africa. When your grant is your lifeline for paraffin, heaters, or medicine, you cannot afford to guess when your money will clear.",
     planning:
-      "Because July can bring a lot of repeat checking, a good page should focus on the payment label, the grant category, and any note that explains whether the timing is published or still expected.",
+      "Do not let the stress of winter force you into making financial promises before your money arrives. Wait until your status updates to 'approved' with a final, confirmed payment date.",
   },
   august: {
     title: "August",
     intro:
-      "August 2026 payment planning often depends on seeing the month clearly enough to know which grant category applies and whether the visible date is final or still only guidance.",
+      "As we move into August, everyday living costs continue to pressure families. Knowing your exact payment date helps you avoid borrowing money to bridge the gap.",
     planning:
-      "The safest August payment habit is to treat the month page as a structured guide and to return to the official source when the page still shows expected or portal-only wording.",
+      "Scammers take advantage of the long gap between July and August payments. Before you borrow money against your grant, verify that your August date is officially confirmed.",
   },
   september: {
     title: "September",
     intro:
-      "September 2026 payment-date searches are usually driven by users who want to plan early without being misled by copied screenshots or outdated posts.",
+      "September brings spring, but it also brings the reality of the final quarter of the year. Every cent counts as you start looking toward the expensive holiday season.",
     planning:
-      "That makes September pages most useful when they help users compare published, expected, and portal-only wording clearly before any payment plan is treated as final.",
+      "Do not trust a September date sent to you in a WhatsApp group. These are often old schedules from previous years. Always double-check the year and the official SASSA release.",
   },
   october: {
     title: "October",
     intro:
-      "October 2026 payment-date searches often increase because users want timing certainty before the month moves too far, especially when different grant categories update in different ways.",
+      "By October, everyone is feeling the financial exhaustion of the year. Delays in October can completely derail your plans for November and December.",
     planning:
-      "A useful October guide should help people read the note attached to the date, not only the date itself, so they understand whether the month is fully confirmed yet.",
+      "With the holidays approaching, the SASSA system often experiences high traffic. This means your October payment might take an extra day to reflect, even after the official date.",
   },
   november: {
     title: "November",
     intro:
-      "November 2026 payment planning usually depends on reading the month page with care, because users often need a dependable view before year-end pressures start building.",
+      "November is the most critical month for financial planning. You are trying to stretch this grant to cover early December expenses, making payment timing absolutely crucial.",
     planning:
-      "For November, the safest approach is to use the page as a structured guide, watch the payment state carefully, and keep official confirmation separate from independent explanation.",
+      "Because November is the gateway to the holidays, any delay causes massive anxiety. Remember that your grant clears on different days depending on whether it is a child, older person, or SRD grant.",
   },
   december: {
     title: "December",
     intro:
-      "December 2026 payment-date searches are especially sensitive because people want strong timing clarity before the end of the year, but official dates can still need careful confirmation.",
+      "December is the most stressful month of the year for grant recipients. Supermarkets are packed, prices are high, and everyone is desperate to secure their money before the public holidays.",
     planning:
-      "That is why December pages should help users plan responsibly without treating an expected date as if it were already the final official schedule.",
+      "SASSA sometimes shifts December dates earlier to accommodate the holidays, which causes massive confusion. Do not rely on last year's schedule. Check the official confirmation before joining a long ATM queue.",
   },
 } as const;
 
@@ -125,21 +125,21 @@ function monthlyOverviewGuide(month: MonthSlug, sortOrder: number) {
     slug: `payment-dates-${month}-2026`,
     title: `Payment dates ${monthLabel} 2026`,
     summary:
-      `A month-specific ${monthLabel} 2026 payment-date guide that explains how to read the page safely, use expected dates carefully, and know when official confirmation matters most.`,
+      `A clear, no-nonsense guide to ${monthLabel} 2026 payment dates. We explain exactly when each grant pays out and how to verify your date before relying on it.`,
     quickAnswer:
-      `For ${monthLabel} 2026 payment dates, start with the ${monthLabel.toLowerCase()} month page and check the exact grant category first. A date shown as expected is not the same as a date shown as officially published.`,
+      `If you want to know your ${monthLabel} payment date, look up your specific grant category first. Remember: older persons, children's grants, and SRD all pay out on completely different days.`,
     whatThisMeans:
-      `${meta.intro} The safest way to use the ${monthLabel} 2026 payment page is to match the right grant type and read the payment state before building plans around the date.`,
+      `${meta.intro} Do not assume that your money will arrive on the first day of the month. SASSA spaces out payments to prevent ATMs and supermarkets from being overcrowded.`,
     whyThisMatters:
-      `${meta.planning} Confusion usually starts when one visible date is treated as if it applies to every grant category, even though regular grants, grouped children’s grants, and SRD-style support can appear differently.`,
+      `${meta.planning} If you mistake a children's grant payment date for an SRD date, you will end up waiting in line for money that has not even cleared yet.`,
     steps:
-      `1. Open the ${monthLabel.toLowerCase()} 2026 payment page.\n2. Find your grant category or grouped schedule.\n3. Check whether the date is marked published, expected, or portal-only.\n4. Read the note attached to the payment entry, not only the date.\n5. Use the relevant official route if the ${monthLabel.toLowerCase()} wording changes or still needs confirmation.`,
+      `1. Open the ${monthLabel.toLowerCase()} 2026 official SASSA payment schedule.\n2. Scroll down until you find your exact grant type.\n3. Look for the word "Published" next to the date to confirm it is final.\n4. Remember that weekends and public holidays will delay your payment.\n5. If your date has passed and you have no money, log into the official portal to check your status.`,
     keyFocus:
-      `A good ${monthLabel} payment-date page is most useful when you treat it like a guide to the month rather than a promise. The date, the label, and the grant category all need to agree before you treat the schedule as final.`,
+      `Treat this ${monthLabel} schedule as a roadmap, not a legally binding promise. Even when dates are published, technical bank delays can still force you to wait an extra 24 hours.`,
     important:
-      `GrantCare is an independent information platform. It helps organise ${monthLabel} 2026 timing clearly, but final official confirmation still belongs to the relevant government channel when dates are missing, changed, or still marked as expected.`,
+      `GrantCare provides this timeline to help you budget, but we do not distribute the money. If ${monthLabel} payments are delayed nationally, only SASSA can resolve the issue.`,
     help:
-      `GrantCare can help you compare ${monthLabel} 2026 with other months, understand payment states in plain language, and move to the next relevant guide if the page shows portal-only or delayed-payment wording.`,
+      `We break down the ${monthLabel} schedule so you know exactly what to expect. If your payment is late, GrantCare helps you understand whether it is a national delay or a personal account issue.`,
     related:
       `Useful next pages:\n• /payment-dates/2026/${month}\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates`,
     faqs: [
@@ -168,22 +168,22 @@ function srdGuide(month: Exclude<MonthSlug, "may">, sortOrder: number) {
     slug: `srd-payment-dates-${month}-2026`,
     title: `SRD payment dates ${monthLabel} 2026`,
     summary:
-      `A practical ${monthLabel} 2026 SRD payment guide explaining why SRD timing can differ from regular grants and why portal-based checking still matters.`,
+      `An essential guide to ${monthLabel} 2026 SRD payment dates. We explain why your R350/R370 grant does not follow the same schedule as regular grants.`,
     quickAnswer:
-      `For SRD payment dates in ${monthLabel} 2026, the safest approach is to use the ${monthLabel.toLowerCase()} payment page as guidance and then confirm through the official SRD route. SRD timing is often shown differently from regular grants.`,
+      `The SRD grant does not have one massive national payday in ${monthLabel}. Instead, SASSA processes these payments in batches throughout the final week of the month.`,
     whatThisMeans:
-      `${monthLabel} 2026 SRD searches usually come from users who want one simple public date, but SRD timing can depend on portal-based updates and individual results. That is why a careful guide may show portal-only wording instead of pretending one public day fits everyone.`,
+      `If you are searching for a single ${monthLabel} SRD date, you are looking for something that does not exist. Your payment date is unique to your ID number and is only confirmed once your status changes to 'Approved' with a specific pay date.`,
     whyThisMatters:
-      `${meta.planning} For SRD, a single copied date can create false certainty very quickly. The better approach is to treat the month page as a guide to the timing state, then use the official SRD route for the final check.`,
+      `Scammers know people are desperate for SRD dates. They will post fake calendars online to trick you. ${meta.planning} Do not fall for a single "SRD Payday" rumour—check your own portal instead.`,
     steps:
-      `1. Open the ${monthLabel.toLowerCase()} 2026 payment page.\n2. Find the social-relief or SRD category.\n3. Read whether the entry is published, expected, or portal-only.\n4. Use the official SRD route for final confirmation on your own case.\n5. Compare the timing with payment-processing or approved-but-no-payment guidance if the result still feels unclear.`,
+      `1. Open the official SRD status portal for ${monthLabel}.\n2. Enter your ID and phone number.\n3. Look at your ${monthLabel} status. Is it pending or approved?\n4. If approved, read the exact payment date listed below it.\n5. Wait for an SMS from your bank, or give it 2-3 days to reflect.`,
     keyFocusTitle: "Why SRD timing pages need extra caution",
     keyFocus:
-      `SRD timing is often more individual than regular grant payment pages suggest. That is why a portal-based note can be more trustworthy than a bold public date that looks simple but does not safely fit every case.`,
+      `Your SRD payment is tied directly to your monthly verification. If SASSA is still checking your banking details or identity for ${monthLabel}, your payment date will not appear yet.`,
     important:
-      `GrantCare is independent and is not the official SRD system. It can help organise ${monthLabel} timing in plain language, but official final timing still belongs to the proper SRD route.`,
+      `GrantCare cannot speed up your SRD payment. If your ${monthLabel} date says 'Null' or is completely missing, it means SASSA is still processing your file.`,
     help:
-      `GrantCare can help you understand whether the ${monthLabel} SRD page is pointing to guidance, portal-checking, payment processing, or a missing-payment problem, without making the page sound official.`,
+      `We explain the confusing SRD status messages so you know whether your ${monthLabel} payment is coming, delayed, or stuck in a verification loop.`,
     related:
       `Useful next pages:\n• /payment-dates/2026/${month}/social-relief\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /guides/how-to-check-srd-status-online\n• /guides/where-to-find-official-updates-safely`,
     faqs: [
@@ -234,21 +234,21 @@ function grantSpecificGuide({
     slug: `${grantSlug}-payment-dates-${month}-2026`,
     title: `${grantTitle} payment dates ${monthLabel} 2026`,
     summary:
-      `A ${monthLabel} 2026 guide for ${shortLabel.toLowerCase()} payment timing, written to help users read the month page carefully and avoid treating guidance as final too early.`,
+      `A focused guide to ${monthLabel} 2026 payment dates for the ${grantTitle}. We cut through the noise so you know exactly when your money is clearing.`,
     quickAnswer:
-      `For ${grantTitle.toLowerCase()} payment dates in ${monthLabel} 2026, use the ${monthLabel.toLowerCase()} payment page for that grant category and check whether the visible date is published or still expected before planning around it.`,
+      `The ${grantTitle} usually pays out on its own specific day in ${monthLabel}, entirely separate from other grants. You must verify the 'Published' status of this date before going to the ATM.`,
     whatThisMeans:
-      `${summaryAngle} The safest way to use the ${monthLabel} page is to match the exact grant category and read the payment state together with any note attached to it.`,
+      `Even if you see a date online, SASSA may adjust the schedule due to weekends or public holidays. Do not assume ${monthLabel} follows the exact same pattern as last month.`,
     whyThisMatters:
-      `${riskAngle} ${meta.planning} A page that clearly separates published timing from expected timing helps users plan more calmly and reduces the risk of acting on copied or outdated date claims.`,
+      `${meta.planning} Arriving at the ATM a day too early means wasting taxi fare and spending hours in a queue for nothing. Protect your time by double-checking the status.`,
     steps:
-      `1. Open the ${monthLabel.toLowerCase()} 2026 page for ${shortLabel.toLowerCase()} timing.\n2. Check whether the payment entry is published, expected, or still awaiting official confirmation.\n3. Read the attached note for context.\n4. Save the page if you expect to return before the payment window.\n5. Use the relevant official route if the wording changes or the date still needs final confirmation.`,
+      `1. Open the ${monthLabel} payment schedule specifically for the ${grantTitle}.\n2. Look at the payment label—does it say 'Expected' or 'Published'?\n3. Mark the published date on your calendar.\n4. Wait until the afternoon of that date before withdrawing, to ensure bank servers have synced.\n5. If the date passes with no money, check your official SASSA status.`,
     keyFocus:
-      `The most useful habit is to treat the ${grantTitle.toLowerCase()} ${monthLabel.toLowerCase()} page as a structured month guide, not as a promise. The payment state matters as much as the date itself.`,
+      `This page provides the official ${grantTitle} timeline for ${monthLabel}. Treat this as a verified guide, but remember that technical delays between the Treasury and your specific bank can still occur.`,
     important:
-      `GrantCare is an independent information platform. It can help organise ${grantTitle.toLowerCase()} timing for ${monthLabel} 2026, but the final official payment update still belongs to the relevant government channel.`,
+      `GrantCare provides independent scheduling guidance. If your ${grantTitle} is delayed for ${monthLabel}, only the official SASSA portal can tell you why.`,
     help:
-      `GrantCare can help you compare ${monthLabel} timing for ${shortLabel.toLowerCase()} support with related payment, status, and reminder guides so you know what page to read next if something still feels unclear.`,
+      `We keep you updated on ${shortLabel.toLowerCase()} timing for ${monthLabel}. If something goes wrong, use GrantCare to figure out if it is a general bank delay or a personal account issue.`,
     related:
       `Useful next pages:\n• ${routePath}\n• /guides/${relatedGuideSlug}\n• ${relatedStatusPath}\n• /guides/how-to-understand-payment-dates\n• /payment-dates`,
     faqs: [

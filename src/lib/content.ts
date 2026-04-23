@@ -177,6 +177,10 @@ function scoreRelatedGuide(
     ...tokenizeSeoValue(guide.slug),
     ...tokenizeSeoValue(guide.title),
     ...tokenizeSeoValue(guide.summary),
+    ...guide.sections.flatMap((section) => [
+      ...tokenizeSeoValue(section.title),
+      ...tokenizeSeoValue(section.body),
+    ]),
   ]);
 
   let score = guide.featured ? 2 : 0;
@@ -290,6 +294,9 @@ function mapGuideRecord(
     featured: boolean;
     sponsored: boolean;
     sortOrder: number;
+    publishedAt: Date | null;
+    createdAt: Date;
+    updatedAt: Date;
     translations: unknown;
   },
   locale: Locale,
@@ -303,6 +310,9 @@ function mapGuideRecord(
     featured: record.featured,
     sponsored: record.sponsored,
     sortOrder: record.sortOrder,
+    authorName: "GrantCare Editorial Team",
+    publishedAt: record.publishedAt?.toISOString() ?? null,
+    updatedAt: record.updatedAt?.toISOString() ?? record.createdAt.toISOString(),
   };
 }
 
@@ -606,7 +616,17 @@ export async function listGuides(locale: Locale) {
         orderBy: [{ sortOrder: "asc" }, { title: "asc" }],
       });
 
-      return records.map((record) => mapGuideRecord(record, locale));
+      const mappedGuides = records.map((record) => mapGuideRecord(record, locale));
+      const existingSlugs = new Set(mappedGuides.map((guide) => guide.slug));
+      const fallbackOnlyGuides = FALLBACK_GUIDES.filter((guide) => !existingSlugs.has(guide.slug));
+
+      return [...mappedGuides, ...fallbackOnlyGuides].sort((left, right) => {
+        if (left.sortOrder !== right.sortOrder) {
+          return left.sortOrder - right.sortOrder;
+        }
+
+        return left.title.localeCompare(right.title);
+      });
     },
     () => [...FALLBACK_GUIDES],
   );
@@ -632,7 +652,7 @@ export async function getGuideBySlug(locale: Locale, slug: string) {
     async () => {
       const record = await db.guideArticle.findUnique({ where: { slug } });
       if (!record || record.status !== ContentStatus.published) {
-        return null;
+        return findFallbackGuide(slug);
       }
 
       return mapGuideRecord(record, locale);

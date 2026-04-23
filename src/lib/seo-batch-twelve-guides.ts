@@ -897,74 +897,74 @@ export const SEO_BATCH_TWELVE_GUIDES = [
     slug: "how-to-prepare-for-a-sassa-office-visit",
     title: "How to prepare for a SASSA office visit",
     summary:
-      "A practical office-visit checklist guide for users who have decided that in-person help is the next best step.",
+      "A practical preparation guide to ensure you bring the right documents to a SASSA office, preventing you from being turned away after waiting in line all day.",
     quickAnswer:
-      "Prepare for a SASSA office visit by confirming the reason for the trip, gathering the relevant records, and making sure you can explain the issue clearly.",
+      "Before visiting a SASSA office, always bring your original green ID book or smart card, a certified copy of it, and proof of residence. Arrive as early as safely possible, as queues form before the doors open.",
     whatThisMeans:
-      "An office visit works best when the issue is already narrowed down. If you travel without a clear reason or without the records that explain the problem, the visit may become harder than it needs to be.",
+      "A SASSA office visit is not a quick trip. It is a formal government process. If you arrive missing just one piece of paper, the officials cannot help you by law, and you will have to come back another day.",
     whyThisMatters:
-      "Good preparation reduces repeated trips and helps users speak more clearly about the problem they need help with.",
+      "Preparation is your best defense against frustration. Knowing exactly what is required means you only have to stand in that long queue once.",
     steps:
-      "1. Write down the issue in one or two clear sentences.\n2. Bring the records, dates, and wording linked to the issue.\n3. Confirm the office details through official routes.\n4. Keep any ID or supporting documents that may be relevant.\n5. Note any recent official actions or changes before you go.",
-    keyFocusTitle: "Clarity makes the visit more useful",
+      "1. Confirm exactly why you are going. Can it be done online instead?\n2. Gather your original ID and a recently certified copy (less than 3 months old).\n3. Bring a pen, a bottle of water, and any letters or SMS messages SASSA sent you.\n4. Do not pay anyone standing outside offering to 'hold your place in line' or 'speed up your file'.\n5. Once inside, only hand your documents to someone sitting behind an official SASSA desk.",
+    keyFocusTitle: "Beware the outside 'helpers'",
     keyFocus:
-      "The more clearly you can explain the problem, the easier it is for the visit to move beyond confusion and toward the next real step.",
+      "Scammers often hang around outside SASSA offices wearing official-looking lanyards. They will offer to help you skip the queue for a fee. Ignore them. Only speak to officials inside the building.",
     important:
-      "GrantCare can help you prepare for the visit, but it cannot replace the official in-person help itself.",
+      "GrantCare helps you prepare mentally and administratively for your visit. We cannot speed up the queue or book an appointment for you.",
     help:
-      "GrantCare can help you organise the wording, dates, and problem type so your office visit starts from a clearer place.",
+      "We explain the exact requirements for different grants, so you know precisely which documents to put in your folder before you leave the house.",
     related:
       "Useful next pages:\n• /guides/what-to-check-before-visiting-a-sassa-office\n• /guides/how-to-find-a-sassa-office-near-you-safely\n• /guides/how-to-keep-records-of-payment-problems\n• /guides/how-to-find-official-contact-details-safely\n• /guides/when-to-use-a-sassa-office-instead-of-the-portal",
     faqs: [
       {
-        question: "Why should I write the issue down first?",
-        answer: "Because it helps you explain the problem more clearly and keeps the visit focused.",
+        question: "Can someone else go to the office for me?",
+        answer: "Usually not, unless they have a formal, legal Power of Attorney. SASSA needs to verify the identity of the actual applicant.",
       },
       {
-        question: "What records help most?",
-        answer: "The records that show what happened, when it happened, and what wording or updates you saw.",
+        question: "Do I need to print my bank statements?",
+        answer: "If you are applying for a new grant or changing banking details, yes, you usually need 3 months of stamped bank statements.",
       },
       {
-        question: "Should I confirm the office details before travelling?",
-        answer: "Yes. That helps you avoid wasted time and travel.",
+        question: "Is there a fee to enter the SASSA office?",
+        answer: "Never. Access to a government office and government services is 100% free.",
       },
     ],
     sortOrder: 256,
   }),
   guide({
     slug: "what-the-search-for-a-sassa-app-usually-means",
-    title: "What the search for a SASSA app usually means",
+    title: "Why you probably don't need a SASSA app",
     summary:
-      "A guide to why users search for a SASSA app and how to turn that search into a safer route without assuming every app result is official.",
+      "A safety guide explaining why looking for a SASSA app often leads to downloading dangerous scam software, and what to do instead.",
     quickAnswer:
-      "A search for a SASSA app usually means the user wants faster, simpler mobile access. The safest next step is to confirm whether you really need an app or whether the correct official website route already covers the task.",
+      "There is rarely a reason to download a 'SASSA App'. Scammers create fake apps in the Google Play Store to steal your passwords. The safest way to access SASSA on your phone is by typing 'srd.sassa.gov.za' into your internet browser.",
     whatThisMeans:
-      "People often search for an app because a mobile website feels harder or because they want one easy button for status, payment, or applications. That search intent is understandable, but it can bring up pages that are not clearly official.",
+      "It is very easy for a scammer to build an app, call it 'SASSA Status Checker', and put it in the app store. When you download it and type your ID number in, it sends your details directly to the scammer, not the government.",
     whyThisMatters:
-      "If users assume any app result is official, they may trust the wrong route too quickly. App-style convenience should never remove the trust check.",
+      "If you install a malicious app, it might not just steal your SASSA login—it could also steal your banking passwords or read your SMS messages to intercept OTPs.",
     steps:
-      "1. Decide what task you want to complete.\n2. Check whether the official website route already covers that task.\n3. Be cautious with app results that do not clearly show official ownership.\n4. Avoid entering details into an app you have not verified.\n5. Use GrantCare to work out the right route before you install or open anything.",
-    keyFocusTitle: "The app search is really a convenience search",
+      "1. Do not search the Google Play Store or Apple App Store for 'SASSA'.\n2. Open your internet browser (Chrome, Safari) instead.\n3. Type the official address yourself (e.g., srd.sassa.gov.za).\n4. If you really want an app, only download one if there is a direct link to it from the official sassa.gov.za website.\n5. Uninstall any 'Grant Helper' apps you currently have on your phone to protect your privacy.",
+    keyFocusTitle: "Apps have access to your phone",
     keyFocus:
-      "Most users are not looking for an app for its own sake. They are looking for a simpler way to finish a task. The safest move is to keep the task clear before trusting the app result.",
+      "A website can only see what you type into it. An app can often see your files, your location, and your messages. Giving a fake app access to your phone is incredibly dangerous.",
     important:
-      "GrantCare is not a government app and does not pretend to be one. It helps users think more clearly about what route they actually need.",
+      "GrantCare is a website, not an app. You do not need to download anything to read our guides, keeping your phone safe and secure.",
     help:
-      "GrantCare can help you decide whether a task should happen on an official website, official portal, contact route, or office route before you go looking for an app shortcut.",
+      "We teach you how to use the official websites smoothly on your phone so you never feel the need to download a risky app.",
     related:
       "Useful next pages:\n• /guides/what-the-search-for-an-srd-sassa-app-usually-means\n• /guides/how-to-know-if-a-sassa-app-is-official\n• /guides/should-you-use-a-sassa-app-or-the-website\n• /guides/how-to-open-the-sassa-website-on-mobile\n• /guides/how-to-find-the-right-sassa-website-for-your-task",
     faqs: [
       {
-        question: "Why do users search for a SASSA app?",
-        answer: "Usually because they want a simpler mobile route for a grant-related task.",
+        question: "But the app has the SASSA logo. Is it safe?",
+        answer: "No. Scammers copy the logo to trick you. Always use the .gov.za website instead.",
       },
       {
-        question: "Does an app result automatically mean official access?",
-        answer: "No. It still needs the same trust checks as a website result.",
+        question: "What if the app is free?",
+        answer: "Scam apps are always free because they make money by stealing your grant or selling your data.",
       },
       {
-        question: "What should I decide first?",
-        answer: "Decide the task first, then decide whether you truly need an app route.",
+        question: "Can an app check my status faster?",
+        answer: "No. The official website is the direct source of truth. Any app is just pulling from the website anyway, adding an unnecessary middleman.",
       },
     ],
     sortOrder: 257,
@@ -973,36 +973,36 @@ export const SEO_BATCH_TWELVE_GUIDES = [
     slug: "what-the-search-for-an-srd-sassa-app-usually-means",
     title: "What the search for an SRD SASSA app usually means",
     summary:
-      "A practical guide to SRD app-style searches and why users should stay focused on the official task route instead of only the app idea.",
+      "A quick guide explaining why you shouldn't rely on third-party apps to manage your SRD grant, and how to safely access the official SRD portal on your mobile.",
     quickAnswer:
-      "A search for an SRD-style app usually means the user wants quick mobile access to status, application, or payment information. The safest next step is to confirm the official route for the task before trusting any app result.",
+      "Most people search for an SRD app hoping for a faster way to check their status. However, there is no official app for this. The only safe way to handle your R350 grant is via the official srd.sassa.gov.za mobile website.",
     whatThisMeans:
-      "SRD users often search on mobile and under pressure, so app-style queries are common. That does not always mean an app is the correct or safest answer for the task.",
+      "Because the SRD grant is handled entirely online, scammers know millions of people will search for an app. They build fake apps that mimic the SRD portal to harvest ID numbers and cell phone numbers.",
     whyThisMatters:
-      "If convenience becomes the only goal, users may stop checking whether the route is official. That is where confusion and risk start to grow.",
+      "If you download a fake SRD app and enter your details, scammers can immediately log into the real SRD portal and change your banking details. You are handing them the keys to your R350.",
     steps:
-      "1. Decide whether your task is status, payment, appeal, or application related.\n2. Check the official route for that task first.\n3. Be cautious with app-style search results that are not clearly official.\n4. Avoid entering personal details into uncertain tools.\n5. Use GrantCare to compare the official task routes before you continue.",
-    keyFocusTitle: "The task still matters more than the app idea",
+      "1. Delete any 'SRD Check' or 'R350 Status' apps you have downloaded.\n2. Open your phone's web browser.\n3. Type srd.sassa.gov.za into the address bar yourself.\n4. Bookmark the page on your phone's home screen for easy access next time.\n5. Never trust an app that asks for your SRD portal PIN or OTP.",
+    keyFocusTitle: "The website is built for mobile",
     keyFocus:
-      "Most SRD app searches are really searches for speed. The safest answer is still to match the task to the correct official route before you trust the app result.",
+      "The official srd.sassa.gov.za website was specifically designed to work perfectly on cheap smartphones. You do not need an app to get a fast, smooth experience.",
     important:
-      "GrantCare does not operate as an official SRD app. It remains clearly separate from official government systems and actions.",
+      "GrantCare provides educational guides on how to use the SRD system. We do not offer an app to check your status, as that would violate your privacy.",
     help:
-      "GrantCare can help you narrow SRD-related tasks into the right official status, appeal, payment, or application route before you click an app-looking result.",
+      "We show you how to bookmark the official SRD website on your phone, giving you app-like convenience without the security risks.",
     related:
       "Useful next pages:\n• /guides/what-the-srd-portal-is-for\n• /guides/how-to-check-srd-status-online\n• /guides/how-to-use-srd-status-check-safely\n• /guides/how-to-find-official-portal-updates-without-fake-login-pages\n• /guides/how-to-know-if-a-sassa-app-is-official",
     faqs: [
       {
-        question: "Why are SRD app searches so common?",
-        answer: "Because many users want quick mobile access to urgent grant-related tasks.",
+        question: "Why are there so many SRD apps on the Play Store?",
+        answer: "Because Google doesn't immediately catch all the scammers. They upload fake apps faster than they can be removed.",
       },
       {
-        question: "Should I trust an SRD app result without checking the route?",
-        answer: "No. Confirm the official task route first.",
+        question: "Can an app help me appeal my SRD decline?",
+        answer: "No. Appeals must be lodged directly with the Independent Tribunal via their official website.",
       },
       {
-        question: "What should I compare before I proceed?",
-        answer: "Compare the task you need with the official route that actually handles it.",
+        question: "Is there any official SRD app at all?",
+        answer: "Currently, no. The government prefers to use zero-rated websites to save you data.",
       },
     ],
     sortOrder: 258,
@@ -1011,112 +1011,112 @@ export const SEO_BATCH_TWELVE_GUIDES = [
     slug: "how-to-know-if-a-sassa-app-is-official",
     title: "How to know if a SASSA app is official",
     summary:
-      "A trust guide for checking whether an app claiming to help with SASSA-related tasks is truly official or just using familiar grant language.",
+      "A strict verification checklist to help you determine if an app is truly published by the government or if it's a clever scam.",
     quickAnswer:
-      "Know if a SASSA-related app is official by checking whether it clearly matches an official route, avoiding vague app claims, and being cautious before entering any personal details.",
+      "The only way to know if an app is officially from SASSA is to look for a direct download link on the official sassa.gov.za website. Never trust an app just because it appears in an app store.",
     whatThisMeans:
-      "App results can look polished and trustworthy, especially on mobile. That can make users less careful about checking whether the app is really the official route for the task they want.",
+      "App stores (like Google Play or Apple App Store) do not thoroughly verify who owns a government logo. Scammers can easily name their company 'SASSA Official Updates' and upload a fake app.",
     whyThisMatters:
-      "An uncertain app can create the same problems as an uncertain website, and sometimes more, because users may trust it quickly and keep returning to it.",
+      "If you trust the app store search results, you will almost certainly download a scam. This is the fastest way to have your identity stolen and your grant intercepted.",
     steps:
-      "1. Check whether the app clearly matches an official route.\n2. Be cautious with vague promises or copied grant wording.\n3. Avoid entering personal details until the route is confirmed.\n4. Compare the app result with the known official website or portal route.\n5. Use GrantCare if you need help deciding whether the task should happen on an official app or website at all.",
-    keyFocusTitle: "Official-looking design is not proof",
+      "1. Do not search your app store for SASSA tools.\n2. Open your web browser and go directly to sassa.gov.za.\n3. Search the official website for mentions of a mobile app.\n4. If there is no app mentioned on the .gov.za website, then no official app exists.\n5. When in doubt, always use the website instead.",
+    keyFocusTitle: "The source of truth is the .gov.za site",
     keyFocus:
-      "An app can look clean, modern, and convincing without actually being the right official route. Design is not the same thing as official authority.",
+      "The government will always advertise its official tools on its own secure website. If the app isn't linked from a .gov.za address, it is a scam.",
     important:
-      "GrantCare is independent and does not claim to be an official app. It helps users think through app safety without pretending to be the official answer.",
+      "GrantCare is an independent educational platform. We do not have a mobile app that processes grants, and any app claiming to be 'GrantCare Official' for grant processing is fake.",
     help:
-      "GrantCare can help you compare app results with official website and portal routes so you stay focused on the real task instead of the most convenient-looking option.",
+      "We teach you how to spot these fakes instantly, protecting your phone and your money from malicious software.",
     related:
       "Useful next pages:\n• /guides/what-the-search-for-a-sassa-app-usually-means\n• /guides/what-the-search-for-an-srd-sassa-app-usually-means\n• /guides/should-you-use-a-sassa-app-or-the-website\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/how-to-find-the-right-sassa-website-for-your-task",
     faqs: [
       {
         question: "Can a polished app still be unofficial?",
-        answer: "Yes. Good design alone does not prove official ownership or the correct task route.",
+        answer: "Yes. Scammers hire professional developers to make their fake apps look incredibly convincing.",
       },
       {
         question: "Should I enter personal details before I confirm the app?",
-        answer: "No. Confirm the route first.",
+        answer: "Absolutely not. Confirming the app's legitimacy is your first line of defense.",
       },
       {
         question: "What should I compare the app with?",
-        answer: "Compare it with the known official website or portal route for the task.",
+        answer: "Compare it with the announcements on the official sassa.gov.za website. If it's not announced there, ignore it.",
       },
     ],
     sortOrder: 259,
   }),
   guide({
     slug: "should-you-use-a-sassa-app-or-the-website",
-    title: "Should you use a SASSA app or the website",
+    title: "Should you use a SASSA app or the website?",
     summary:
-      "A decision guide to help users choose between app-style access and official website routes without chasing convenience at the cost of trust.",
+      "A simple comparison explaining why the official government website is almost always the safer and smarter choice over downloading an app.",
     quickAnswer:
-      "Use the route that clearly matches the official task. If the website or portal already handles the task safely, that is often the better starting point than guessing with an app result.",
+      "You should almost always use the official SASSA website (ending in .gov.za). Because fake apps are so common and dangerous, relying on your web browser is the safest way to manage your grant.",
     whatThisMeans:
-      "Users often frame the decision as app or website, but the more useful question is which route clearly handles the task safely and officially. That may vary by what you are trying to do.",
+      "While apps feel faster, they require you to install software on your phone that can potentially access your personal files, SMS messages, and location. A website only sees what you explicitly type into it.",
     whyThisMatters:
-      "A website can feel slower but be safer. An app can feel easier but be less clear. The decision should come from the task and trust level, not only convenience.",
+      "Choosing an app over the website often means trading your security for a tiny bit of convenience. When dealing with your income and identity, security must always come first.",
     steps:
-      "1. Define the task first.\n2. Check the known official website or portal route.\n3. Compare whether an app route is clearly official and necessary.\n4. Avoid choosing only on speed or familiarity.\n5. Use GrantCare to clarify the task if you are still unsure.",
-    keyFocusTitle: "Convenience is not the only decision factor",
+      "1. Always start by opening your phone's web browser (Chrome, Safari).\n2. Type the official address (like srd.sassa.gov.za) yourself.\n3. Ignore pop-ups or ads suggesting you download a 'faster app'.\n4. If you really want an app-like experience, tap your browser's menu and select 'Add to Home Screen'.\n5. This creates a safe shortcut directly to the official website.",
+    keyFocusTitle: "Websites are strictly controlled",
     keyFocus:
-      "The safest route is the one that clearly fits the task and clearly belongs to the official system. That matters more than whether it looks like an app or a website.",
+      "The South African government strictly controls who can own a '.gov.za' web address. It is incredibly hard for scammers to fake. App store names are not controlled at all.",
     important:
-      "GrantCare is independent and does not tell users to replace official actions with unofficial app shortcuts.",
+      "GrantCare advises against downloading third-party grant management apps. We strongly believe the official website is the only secure route.",
     help:
-      "GrantCare can help you decide which official route fits the task before you start comparing app convenience with website familiarity.",
+      "We show you how to use the official website effectively, so you never feel frustrated enough to risk downloading a shady app.",
     related:
       "Useful next pages:\n• /guides/how-to-know-if-a-sassa-app-is-official\n• /guides/how-to-open-the-sassa-website-on-mobile\n• /guides/how-to-find-the-right-sassa-website-for-your-task\n• /guides/how-to-use-services-sassa-gov-za-safely\n• /guides/what-the-search-for-a-sassa-app-usually-means",
     faqs: [
       {
         question: "Should I always choose the app because it feels easier?",
-        answer: "No. Choose the route that clearly and safely handles the task.",
+        answer: "No. With SASSA, the website is the intended, official, and most secure method of contact.",
       },
       {
         question: "Is the website often a safer starting point?",
-        answer: "Yes, especially when it is clearly the known official route for the task.",
+        answer: "Yes, it is the only guaranteed safe starting point as long as you verify the .gov.za address.",
       },
       {
         question: "What should guide the decision most?",
-        answer: "The task, the trust level of the route, and whether the route is clearly official.",
+        answer: "Your security. The risk of identity theft from a fake app far outweighs the convenience it offers.",
       },
     ],
     sortOrder: 260,
   }),
   guide({
     slug: "what-moya-app-searches-usually-mean-for-r350",
-    title: "What Moya app searches usually mean for R350",
+    title: "Using data-free apps like Moya for R350",
     summary:
-      "A plain-language guide to why users search for Moya app and R350 together, and how to keep that search safe and realistic.",
+      "A straightforward guide to understanding how data-free apps fit into your SASSA journey, and the risks of relying on them for official actions.",
     quickAnswer:
-      "Moya app and R350 searches usually mean users want a lighter-data or easier mobile route. The safest move is still to confirm the official task route before trusting any app-based path.",
+      "Many people use data-free apps like Moya to access the internet when they have no airtime. While these apps can load the SASSA website, you must still ensure you are navigating to the official srd.sassa.gov.za page within the app.",
     whatThisMeans:
-      "Users often connect R350 help with app searches when they want a simpler mobile experience. That does not automatically mean the app route is the official action route for the task they need.",
+      "Data-free apps act as a window to the internet. However, just because the app itself is legitimate does not mean every link inside it is official. You still need to verify the web address you are looking at.",
     whyThisMatters:
-      "If users assume an app mention equals an official process, they can confuse convenience with authority. That is where misunderstandings start.",
+      "If you click a random link inside a data-free app assuming it is safe just because the app is safe, you might land on a scammer's site. You must maintain your guard.",
     steps:
-      "1. Decide the exact R350-related task.\n2. Check the official route that handles it.\n3. Treat app mentions as possible convenience routes, not automatic proof of official action.\n4. Avoid entering personal details on uncertain pages.\n5. Use GrantCare to compare the task with the right official route before you continue.",
-    keyFocusTitle: "App interest often starts with data and ease",
+      "1. Open your data-free app (like Moya).\n2. Instead of clicking on generalized 'SASSA Help' banners, look for the 'Discover' or web browser section.\n3. Type srd.sassa.gov.za directly into the app's browser bar.\n4. Verify the address before entering your ID.\n5. Never pay a fee to access 'premium' SASSA links inside an app.",
+    keyFocusTitle: "The official site is also data-free",
     keyFocus:
-      "Many users are really searching for a lighter, easier mobile path. That need is valid, but it still should not replace the trust check on the route itself.",
+      "The government has made the official srd.sassa.gov.za website zero-rated. This means you do not need data to access it directly from your phone's normal browser (like Chrome).",
     important:
-      "GrantCare does not present itself as an official app route and does not replace official SRD or R350 systems.",
+      "GrantCare is an independent platform and is not affiliated with the Moya app. We recommend using your phone's built-in browser to directly access the official zero-rated SASSA site.",
     help:
-      "GrantCare can help you keep the focus on the real task, which makes it easier to decide whether the app-related result is even relevant.",
+      "We remind you that the official SASSA site won't cost you data, giving you the confidence to use your standard browser securely.",
     related:
       "Useful next pages:\n• /guides/what-the-search-for-an-srd-sassa-app-usually-means\n• /guides/how-to-use-srd-status-check-safely\n• /guides/how-to-check-r350-status-on-mobile\n• /guides/how-to-know-if-a-sassa-app-is-official\n• /guides/how-to-find-official-portal-updates-without-fake-login-pages",
     faqs: [
       {
         question: "Why do users search Moya app with R350 help?",
-        answer: "Usually because they want a simpler or lighter-data mobile route.",
+        answer: "Because they are out of data and need a free way to check their status.",
       },
       {
         question: "Does app convenience prove official status?",
-        answer: "No. You still need to confirm the route and the task.",
+        answer: "No. The app is just the browser; the website inside it must still be officially verified.",
       },
       {
-        question: "What should I check before using an app-related route?",
-        answer: "Check whether the task is actually handled by an official route you can confirm.",
+        question: "Do I need an app to check my status for free?",
+        answer: "No. The official srd.sassa.gov.za site is zero-rated and won't charge you data on most major networks.",
       },
     ],
     sortOrder: 261,
@@ -1125,36 +1125,36 @@ export const SEO_BATCH_TWELVE_GUIDES = [
     slug: "how-to-use-app-based-r350-information-safely",
     title: "How to use app-based R350 information safely",
     summary:
-      "A safety guide for users who find R350-related information through apps and want to avoid confusing guidance with official action.",
+      "A safety guide for users who read SASSA advice on third-party apps, explaining the vital difference between reading advice and taking official action.",
     quickAnswer:
-      "Use app-based R350 information safely by treating it as guidance unless you can clearly confirm it belongs to an official route for the task you need.",
+      "It is perfectly fine to read news or guides about your R350 grant on an app, but you should never enter your ID number, password, or banking details into that app. Always go to the official website to take action.",
     whatThisMeans:
-      "Some app-based information can help users understand the process, but that is different from handling official status, application, or payment actions. Mixing those roles together creates confusion.",
+      "Apps and independent websites (like GrantCare) are great for learning. But they are not the government. If an app tries to move from 'giving advice' to 'processing your grant', they are crossing a dangerous line.",
     whyThisMatters:
-      "Users who trust app-based information too quickly may treat guidance like confirmation, or treat a simple explainer like the official system itself.",
+      "If you confuse an educational app with an official portal, you will hand your sensitive details over to a third party. This puts your identity and your grant money at severe risk.",
     steps:
-      "1. Check what the app is actually showing you.\n2. Decide whether it is guidance or an official action route.\n3. Confirm any official-looking step before entering personal details.\n4. Use official pages for official actions.\n5. Use GrantCare if you need a clear explanation of the wording before you move on.",
-    keyFocusTitle: "Guidance and official action must stay separate",
+      "1. Use apps or independent sites to read up on how the process works.\n2. When you are ready to apply, appeal, or check your status, close the app.\n3. Open your phone's web browser (Chrome, Safari).\n4. Type srd.sassa.gov.za into the address bar yourself.\n5. Perform the action securely on the official government site.",
+    keyFocusTitle: "Learn anywhere, transact only on .gov.za",
     keyFocus:
-      "The safest habit is to let independent guidance remain guidance and official systems remain official systems. Once those lines blur, users lose trust and clarity.",
+      "Think of independent apps like a library where you read about banking. But when it's time to actually deposit your money, you must walk into the official bank.",
     important:
-      "GrantCare follows that same rule. It is an independent guide and reminder platform, not an official R350 action system.",
+      "GrantCare strictly follows this rule. We provide the library of information, but we never ask for your ID or attempt to process your grant for you.",
     help:
-      "GrantCare can help you interpret app-based information without mistaking it for the official route that handles the real action.",
+      "We keep you safe by clearly marking the boundary between education and official government action.",
     related:
       "Useful next pages:\n• /guides/what-moya-app-searches-usually-mean-for-r350\n• /guides/what-the-search-for-an-srd-sassa-app-usually-means\n• /guides/how-to-check-srd-status-online\n• /guides/official-status-check-vs-independent-guide\n• /guides/how-to-apply-without-using-unofficial-websites",
     faqs: [
       {
         question: "Can app-based information still be useful?",
-        answer: "Yes, if you keep it in the guidance role and do not confuse it with official action.",
+        answer: "Yes, reading advice and guides is very helpful, as long as you don't use the app to submit your actual application.",
       },
       {
         question: "What is the main risk?",
-        answer: "The main risk is treating guidance like official confirmation.",
+        answer: "The main risk is entering your ID number into an app that isn't run by the government.",
       },
       {
         question: "What should I do before entering any details?",
-        answer: "Confirm that the route is truly the official one for the task.",
+        answer: "Close the app and go directly to the official government website.",
       },
     ],
     sortOrder: 262,
@@ -1163,36 +1163,36 @@ export const SEO_BATCH_TWELVE_GUIDES = [
     slug: "when-to-use-contact-details-instead-of-status-check",
     title: "When to use contact details instead of status check",
     summary:
-      "A decision guide for users who are unsure whether their next step is another status check or a move to official contact support.",
+      "A decision guide to help you know when it's time to stop checking your status online and start calling SASSA for direct intervention.",
     quickAnswer:
-      "Use contact details instead of status check when another check is no longer answering the real problem and the issue now needs direct official support or clarification.",
+      "If your status has been stuck on 'Pending' for over 90 days, or if your banking details have been changed without your permission, stop checking your status and immediately call the official SASSA toll-free number (0800 60 10 11).",
     whatThisMeans:
-      "Status checking is useful when the issue is mainly about reading the latest result. Contact support becomes more useful when the issue clearly needs a human response, a correction route, or a more direct follow-up.",
+      "The status check portal only tells you what the computer currently thinks. It cannot fix errors. If there is a massive delay or a fraud issue, repeatedly refreshing the page won't help. You need a human to intervene.",
     whyThisMatters:
-      "Users often keep checking status because it feels simpler than making contact. Sometimes that helps. Other times it only repeats the same uncertainty and delays the next real step.",
+      "Many people waste months simply checking their status every day, hoping it will change. Recognizing when the automated system has failed saves you time and gets your issue escalated to someone who can actually help.",
     steps:
-      "1. Decide whether a new status check is likely to tell you something new.\n2. Check whether the issue now needs direct clarification or action.\n3. Gather the wording, dates, and records first.\n4. Move to official contact routes if status checking is no longer enough.\n5. Use GrantCare afterward to understand any new wording you receive.",
-    keyFocusTitle: "Repeated checking is not always progress",
+      "1. Has your status been pending for more than 3 months? If yes, call.\n2. Does your status say 'Approved' but you haven't been paid for 2 months? If yes, call.\n3. Do you suspect someone else is receiving your money? If yes, call immediately.\n4. When you call 0800 60 10 11, have your ID number ready.\n5. Write down the reference number the agent gives you before you hang up.",
+    keyFocusTitle: "Computers report, humans resolve",
     keyFocus:
-      "The best question is not can I check again. The better question is will another check solve this, or does the problem now need direct official follow-up.",
+      "The website is an automated reporter. It cannot fix a broken file. When the file is stuck, you must contact a human official to manually push it forward.",
     important:
-      "GrantCare can help you decide between another check and official contact, but it does not replace the official support route once direct action is needed.",
+      "GrantCare cannot contact SASSA on your behalf. Privacy laws dictate that you, the applicant, must make the call yourself.",
     help:
-      "GrantCare can help you tell the difference between a case that still needs interpretation and one that now needs direct contact, which saves time and frustration.",
+      "We explain the typical timelines for status changes so you know exactly when a delay has become abnormal enough to warrant a phone call.",
     related:
       "Useful next pages:\n• /guides/how-to-find-official-contact-details-safely\n• /guides/how-to-use-sassa-contact-numbers-safely\n• /guides/how-to-check-your-status-without-making-mistakes\n• /guides/how-to-save-your-status-results-for-reference\n• /guides/where-to-confirm-payment-problems-officially",
     faqs: [
       {
         question: "How do I know when status checks are no longer enough?",
-        answer: "When repeated checks do not change the picture and the issue clearly needs direct clarification or action.",
+        answer: "When your status remains unchanged far beyond the normal processing time, or if you spot obvious fraud like changed banking details.",
       },
       {
         question: "What should I gather before I make contact?",
-        answer: "Gather the wording, dates, and any records that explain what has already happened.",
+        answer: "Your ID number, the phone number you registered with, and the exact wording of the status you are stuck on.",
       },
       {
         question: "Can GrantCare still help after I make contact?",
-        answer: "Yes. It can help you understand the new wording or next-step message you receive afterward.",
+        answer: "Yes. After speaking to an agent, you can use our guides to understand the technical terms they used or the next steps they recommended.",
       },
     ],
     sortOrder: 263,

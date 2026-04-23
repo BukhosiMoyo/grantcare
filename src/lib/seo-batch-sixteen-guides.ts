@@ -690,19 +690,25 @@ const paymentPhraseVariants: PaymentPhraseVariant[] = [
   },
   {
     slug: "sassa-350-payment-date",
-    title: "SASSA 350 payment date",
+    title: "SASSA 350 payment date for the current month",
     searchAngle:
-      "A shorthand 350 payment-date search usually means the user wants the simplest possible wording for the current cycle.",
-    subjectLabel: "350 payment date wording",
-    timingFocus: "the current social-relief payment page",
+      "A shorthand 350 payment-date search usually means the user wants the current month's R350 or SRD timing in the simplest possible wording.",
+    subjectLabel: "R350 or 350 payment date wording",
+    timingFocus: "the current SRD payment page and matching month guide",
     caution:
       "Shorter wording can make users trust whichever date they see first, even when the page still needs context.",
     relatedLinks: [
+      "/payment-dates",
+      "/guides/payment-dates-2026",
       "/guides/how-to-understand-payment-dates",
       "/guides/approved-but-no-payment",
       "/guides/how-to-check-payment-readiness-for-r350-support",
-      "/payment-dates",
     ],
+    keyFocusTitle: "Current-month context matters more than the short search phrase",
+    keyFocus:
+      "A short 350 payment-date search can sound like there should be one simple answer, but the safest reading still depends on the current month, the payment state, and whether the timing is already published.",
+    steps:
+      "1. Start with the current SRD payment page instead of a copied screenshot.\n2. Match the timing to the current month.\n3. Read the payment state and note, not only the visible date.\n4. Use the matching status guide if approval or verification wording is still affecting payment.\n5. Use official channels when your own case still needs direct confirmation.",
     sortOrder: 379,
   },
   {

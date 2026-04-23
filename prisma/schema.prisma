@@ -79,6 +79,8 @@ model User {
   savedGuides           SavedGuide[]
   analyticsEvents       AnalyticsEvent[]
   passwordResetTokens   PasswordResetToken[]
+  toolGenerations       ToolGeneration[]
+  purchases             Purchase[]
 }
 
 model GrantType {
@@ -364,4 +366,43 @@ model MonetizationBlock {
   @@index([placement, status, sortOrder])
   @@index([grantTypeId, placement])
   @@index([guideId, placement])
+}
+
+model ToolGeneration {
+  id         String   @id @default(cuid())
+  userId     String?
+  toolType   String
+  inputData  Json
+  outputData Json?
+  isPaid     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user     User?     @relation(fields: [userId], references: [id])
+  purchase Purchase?
+
+  @@index([userId, toolType])
+}
+
+model Purchase {
+  id               String   @id @default(cuid())
+  userId           String
+  toolGenerationId String?  @unique
+  stripeSessionId  String   @unique
+  amount           Int
+  status           String
+  createdAt        DateTime @default(now())
+
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  toolGeneration ToolGeneration? @relation(fields: [toolGenerationId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+}
+
+model SiteSetting {
+  id        String   @id @default("global")
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

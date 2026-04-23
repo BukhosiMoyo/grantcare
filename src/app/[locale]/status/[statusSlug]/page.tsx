@@ -36,6 +36,26 @@ function getStatusGuidePath(statusSlug: string) {
   }
 }
 
+function getStatusGuideSupportTerms(statusSlug: string) {
+  const sharedTerms = [
+    "how to check your sassa status safely",
+    "how to read your status check result",
+    "how to check your status without making mistakes",
+    "how to know if a sassa status check page is official",
+  ];
+
+  switch (statusSlug) {
+    case "declined":
+      return [...sharedTerms, "how to use status check before appealing"].join(" ");
+    case "approved":
+      return [...sharedTerms, "status check vs payment date guide"].join(" ");
+    case "payment-failed":
+      return [...sharedTerms, "how to check payment status safely"].join(" ");
+    default:
+      return sharedTerms.join(" ");
+  }
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -73,15 +93,29 @@ export default async function StatusDetailPage({
   }
 
   const copy = getCopy(locale);
-  const [status, relatedGuides, relatedStatuses] = await Promise.all([
-    getStatusMeaningBySlug(locale, statusSlug),
-    listRelatedGuides(locale, 2, undefined, statusSlug),
-    listRelatedStatuses(locale, statusSlug, 3),
-  ]);
+  const status = await getStatusMeaningBySlug(locale, statusSlug);
 
   if (!status) {
     notFound();
   }
+
+  const statusReferenceText = [
+    status.slug,
+    status.title,
+    status.meaning,
+    ...status.causes,
+    ...status.fixes,
+    ...status.nextSteps,
+  ].join(" ");
+  const relatedGuideReferenceText = [
+    statusReferenceText,
+    getStatusGuideSupportTerms(statusSlug),
+  ].join(" ");
+
+  const [relatedGuides, relatedStatuses] = await Promise.all([
+    listRelatedGuides(locale, 2, undefined, relatedGuideReferenceText),
+    listRelatedStatuses(locale, statusSlug, 3),
+  ]);
 
   const howToSteps = [
     ...status.fixes.map((fix, i) => ({

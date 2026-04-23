@@ -11,23 +11,23 @@ export const SEO_BATCH_ONE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "A pending status usually means the official review is not finished yet. It does not mean you have been declined — it means the final outcome is still outstanding.",
+        "Pending just means the system hasn't finished checking things yet. You haven't been declined — you're still in the queue waiting for a final answer. It's frustrating, but it's not the end of the road.",
       ),
       section(
         "What this means",
-        "When a status shows pending, the official system is still checking records or waiting for a process to clear. Often, nothing is wrong on your side. The application simply has not reached a final approved or declined result for that cycle.",
+        "When your status says pending, SASSA is still working through the checks on their side. Most of the time nothing is actually wrong with your application — it just hasn't reached a decision yet for this cycle. Think of it as being in a queue: you're still in it, which is better than being out.",
       ),
       section(
         "Why this happens",
-        "Pending can happen when records still need to match, when updates are moving through the system, or when there is a high volume of applications under review. It can also appear after a recent change to your phone number, banking details, or personal information, because the system may need time to process the update.",
+        "A few things can keep a status on pending. The system might still be cross-checking your ID or income details against other government records. Sometimes it's just volume — thousands of applications are reviewed at the same time and the queue takes time to move. If you recently changed your phone number, bank details, or any personal info, that can also trigger a temporary pending state while the system processes the update.",
       ),
       section(
         "What you can do next",
-        "1. Check the exact wording on the official status page.\n2. Make sure your contact and banking details are still correct.\n3. Avoid resubmitting the same information unless the official system asks you to.\n4. Check again after the next normal update cycle.\n5. If the status stays pending for a long time, use the official channel to see whether another step is required.",
+        "1. Open the official status page and read the exact wording carefully — sometimes there's more detail there than just the word pending.\n2. Double-check that your banking and contact details are still correct and haven't changed.\n3. Don't resubmit anything unless the system tells you to — sending duplicate information can create more confusion.\n4. Give it time and check again after the next official update cycle.\n5. If nothing has moved for an unusually long time, that's when it makes sense to reach out through the official SASSA contact route.",
       ),
       section(
         "Important things to remember",
-        "Pending is a waiting status, not a final answer. Rechecking the page many times in one day will not change the result. Be careful of anyone who promises to speed up a pending application for money — official decisions only happen on the official system.",
+        "Checking the status ten times a day won't make it update faster — SASSA runs updates on their own schedule, not yours. Be careful of anyone who promises to fix or speed up your application, especially if they're asking for money. No one outside the official system can change what SASSA decides.",
       ),
       section(
         "Where GrantCare fits in",
@@ -62,23 +62,23 @@ export const SEO_BATCH_ONE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "A declined status means the official system decided that the application did not pass one or more rules for that period or review. It is a final result for that check, but it is not always the end of the road.",
+        "Declined means your application didn't pass one or more of the official checks for that review period. It's a final answer for that round — but it doesn't automatically mean there's nothing you can do about it.",
       ),
       section(
         "What this means",
-        "Declined usually means the official review found a reason not to approve the application at that stage. The key question is the exact decline reason shown on the official system — that reason tells you whether the issue is about income, identity, duplication, another form of support, or missing information.",
+        "When a status shows declined, SASSA found a reason not to approve the application at that stage. The most useful thing you can do right now is look at the exact decline reason on the official system — not just the word declined, but the reason shown next to it. That tells you whether it's about income, identity, a duplicate record, another form of support, or missing information.",
       ),
       section(
         "Why this happens",
-        "A decline can happen because the system found income or support that affects eligibility, because records did not match, because a previous application already exists, or because a rule was not met for that period. Some users are declined because details on the application do not line up with official records, even when they believe they should qualify.",
+        "A decline can happen for a few different reasons. The system might have picked up income or support from another source that affects your eligibility. Your records might not have matched what was on the application. There could already be a previous application on the system. Or a specific rule wasn't met for that period. Sometimes people are declined even when they genuinely believe they should qualify — often because a detail on the form didn't line up exactly with official records.",
       ),
       section(
         "What you can do next",
-        "1. Read the exact decline reason on the official system.\n2. Compare that reason with your ID, phone, banking, and support details.\n3. Gather any documents you may need before taking the next step.\n4. Use the official appeal or reconsideration route if you believe the decline is wrong.\n5. Keep screenshots or notes of dates and status changes for your own record.",
+        "1. Read the exact decline reason on the official system — don't guess.\n2. Compare that reason with your ID number, phone number, bank details, and any other support you might be receiving.\n3. Gather any documents that might help before you take the next step.\n4. If you genuinely believe the decision is wrong, use the official appeal or reconsideration route.\n5. Write down the dates and take screenshots of any status changes — you may need them later.",
       ),
       section(
         "Important things to remember",
-        "Do not guess the reason for a decline if the official system already gives one. Do not pay anyone to fix a decline outside the official route. A decline is serious, but there is often a next step available — in some cases it is an appeal, in others it may be correcting information or waiting for a new application window.",
+        "Don't try to guess the reason if the system already shows you one — read that first. And don't pay anyone outside the official channels to fix your decline — it won't work and it'll cost you money for nothing. A decline is serious, but there's almost always a next step available. Sometimes it's an appeal. Sometimes it means correcting information. Sometimes it's waiting for a new application window.",
       ),
       section(
         "What you can use GrantCare for",
@@ -113,23 +113,23 @@ export const SEO_BATCH_ONE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "Approved usually means the official checks for that application or period were passed. It is good news, but it does not always mean the money has already been sent.",
+        "Approved means your application passed the official checks for that period. It's genuinely good news — but it doesn't always mean the money has been sent yet.",
       ),
       section(
         "What this means",
-        "When a status shows approved, the system has accepted the application for that stage. The next part is often payment scheduling, payment method confirmation, or waiting for the correct payment cycle. Many users feel relief when they see approved, but there may still be one more practical step before funds are available.",
+        "When your status shows approved, the system has accepted your application for this stage. But there's usually still one more practical step before money actually reaches you — payment scheduling, confirming your payment method, or waiting for the next payout cycle to run. The relief is real when you see that word, but don't assume the money is already on its way that same day.",
       ),
       section(
         "Why this happens",
-        "Approved appears when the available records matched the rules closely enough for the application to pass. It may show before a payment date is published, before the bank or collection method is confirmed, or before the next payout run happens. So approved can exist for a while before a payment actually reflects.",
+        "Approval can show up before a payment date has even been published. It can appear before your bank account or collection method has been confirmed. And it can sit there for a little while the next payout run is being prepared. That's completely normal — approved and paid are two separate things in this process, and they don't always happen at the same time.",
       ),
       section(
         "What you can do next",
-        "1. Check whether there is already a payment date linked to the approved result.\n2. Make sure your banking or collection details are still correct.\n3. Keep your phone available in case the official system needs confirmation.\n4. Watch for new wording if the status changes from approved to a payment-related message.\n5. If the approval stays without payment for too long, check the official system again before assuming something is wrong.",
+        "1. Check whether there's already a payment date linked to your approved result.\n2. Make sure your banking or collection details are still correct and current.\n3. Keep your phone nearby in case the system needs to verify something.\n4. Watch your status — if it changes from approved to a payment-related message, that's the system moving to the next step.\n5. If you've been approved for a while with no payment update, go back to the official system before assuming something has gone wrong.",
       ),
       section(
         "Important things to remember",
-        "Approved does not always mean paid. The official payment date can still be pending, and different payment methods can move at different speeds. Always use the official system for confirmation if the payment does not arrive when expected.",
+        "Approved doesn't mean paid — those are two separate stages. Payment timing can also vary depending on whether you bank with certain providers or collect at a specific location. If the money doesn't arrive when you expected, go back to the official SASSA system for confirmation rather than assuming the worst.",
       ),
       section(
         "Using GrantCare after approval",
@@ -164,23 +164,23 @@ export const SEO_BATCH_ONE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "If your status says approved but no payment has arrived, the most common reason is that the payment step is still catching up. Approval and payment do not always happen at the same time.",
+        "If your status says approved but no money has come through, the most likely reason is that the payment step is still catching up. Approval and payment happen at different points in the process — and the gap between them can feel longer than expected.",
       ),
       section(
         "What this means",
-        "Approved without payment usually means the application passed review, but the payment date, payment batch, or payment method is still not complete. Sometimes the delay is short. Other times, the official system may show a new message later that points to banking, verification, or processing.",
+        "Approved without payment usually means your application passed the review, but the actual payout hasn't happened yet. This might be a short wait. But sometimes the official system will show a new message later — something about banking details, verification, or processing — that gives a clearer picture of what's holding things up.",
       ),
       section(
         "Why this happens",
-        "This gap can happen when the payment date has not been published yet, when bank or collection details still need to clear, when a payment batch is delayed, or when the money was sent back because the payment method failed. It also happens around weekends, public holidays, or heavy update periods.",
+        "This gap is more common than people expect. It can happen because a payment date hasn't been published yet, because your bank or collection details still need to clear, because a payment batch got delayed, or because a previous payment attempt failed and the money was sent back. Weekends, public holidays, and busy update periods on SASSA's side can also slow things down.",
       ),
       section(
         "What you can do next",
-        "1. Check whether the official system shows a payment date or only an approval result.\n2. Review your banking or collection details and make sure nothing changed.\n3. Look for any new wording such as payment processing or banking issue.\n4. Give the system a little time if the approval is very recent.\n5. Use the official channel if approval remains in place but payment still does not arrive after the next reasonable update.",
+        "1. Check whether the official system shows a payment date — or only the approval result.\n2. Review your banking or collection details and confirm nothing has changed.\n3. Look for any new wording like 'payment processing' or 'banking issue' — those are signs the system is moving.\n4. Give it a bit of time if your approval is very recent.\n5. If approval has been sitting there for a while with no payment and no new update, that's when it's worth contacting the official SASSA channel.",
       ),
       section(
         "Important things to remember",
-        "Do not assume approved means same-day payment. Avoid changing your details repeatedly unless something is actually wrong — a rushed change can create a new delay. For official confirmation, always go back to the relevant government channel.",
+        "Try not to change your banking details every time you get worried — one unnecessary change can create a fresh delay of its own. If you genuinely can't figure out what's happening from the status page, go to the official SASSA channel for confirmation. Don't assume approved means same-day payment.",
       ),
       section(
         "How GrantCare helps with this",
@@ -209,29 +209,29 @@ export const SEO_BATCH_ONE_GUIDES = [
   },
   {
     slug: "banking-details-pending-meaning",
-    title: "Banking details pending meaning",
+    title: "SASSA banking details pending meaning",
     summary:
-      "What banking details pending usually means, why it happens, and how to avoid common mistakes when fixing it.",
+      "What SASSA banking details pending usually means, why it happens, and what to check before you update anything again.",
     sections: [
       section(
         "Quick answer",
-        "Banking details pending usually means the payment method information has not been fully accepted or verified yet. The application may still move forward, but payment can be delayed until that step is cleared.",
+        "Banking details pending means your payment method information hasn't fully cleared yet. Your application can still move forward — but payment will be on hold until that part is sorted out.",
       ),
       section(
         "What this means",
-        "This status points to the payment side of the process, not always the approval side. The official system may still be checking whether the banking details belong to you, whether the account format is correct, or whether a chosen payment method is ready to use.",
+        "This is a payment-side issue, not necessarily an approval issue. SASSA's system is still checking whether the banking details you submitted are correct, whether the account belongs to you, or whether the payment method you selected is ready to use. It's a verification step, not a final rejection.",
       ),
       section(
         "Why this happens",
-        "Common reasons include using an account that is not in your own name, entering details incorrectly, changing bank details recently, selecting a payment method that still needs approval, or waiting for a verification step between the official system and the bank.",
+        "The most common causes are: the account isn't registered in your own name, an account number was entered with a typo, you changed your bank details recently, you chose a payment option that still needs to be approved, or there's a verification check running between SASSA and your bank. Even one wrong digit in an account number can trigger this status.",
       ),
       section(
         "What you can do next",
-        "1. Recheck the official payment details page carefully.\n2. Make sure the account is active and in your own name.\n3. Correct any small typing errors in account information.\n4. Avoid changing the details again and again after you submit the correct version.\n5. Watch for a new official update before assuming the change failed.",
+        "1. Go back to the official payment details page and go through everything carefully.\n2. Make sure the account is active and registered specifically in your name.\n3. Fix any typos or errors in the account information.\n4. Once you've corrected it, leave it — don't keep changing things again and again.\n5. Wait for the next official update before assuming the correction didn't go through.",
       ),
       section(
         "Important things to remember",
-        "Using someone else's account can cause problems. A pending banking status does not mean the whole application failed — it often means the payment route is still being settled. Only update banking details through the official system.",
+        "Using someone else's account — even a family member's — can cause delays and create problems that are hard to undo. A banking pending status doesn't mean your whole application has failed. It usually just means the payment route hasn't settled yet. And always update banking details through the official SASSA system only — not through WhatsApp groups, unofficial websites, or anyone claiming they can help you for a fee.",
       ),
       section(
         "GrantCare resources for banking issues",
@@ -239,7 +239,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "Related help",
-        "Useful next pages:\n• /status/banking-issue\n• /guides/fix-banking-details\n• /guides/what-to-do-if-your-bank-details-changed\n• /guides/how-to-keep-your-details-updated\n• /payment-dates",
+        "Useful next pages:\n• /status/banking-issue\n• /guides/how-to-update-banking-details\n• /guides/what-to-do-if-your-bank-details-changed\n• /guides/why-bank-verification-fails\n• /guides/how-to-find-official-banking-and-verification-pages-safely",
       ),
       faq(
         "Does banking details pending mean I am declined?",
@@ -260,29 +260,29 @@ export const SEO_BATCH_ONE_GUIDES = [
   },
   {
     slug: "identity-verification-required-meaning",
-    title: "Identity verification required meaning",
+    title: "SASSA identity verification required meaning",
     summary:
-      "What identity verification required usually means, why the step appears, and how to handle it safely through official channels.",
+      "What SASSA identity verification required usually means, why the step appears, and how to handle it safely through official channels.",
     sections: [
       section(
         "Quick answer",
-        "Identity verification required means the official system still needs to confirm who you are before the process can move on. It is a verification step, not a rejection.",
+        "Identity verification required means the system still needs to confirm who you are before things can move forward. It's a security step, not a rejection.",
       ),
       section(
         "What this means",
-        "This status usually appears when the system cannot complete the ID check with enough confidence. The record may need another confirmation step before approval or payment can continue. The exact process depends on the official route being used, so always follow the official instruction shown with that status.",
+        "This status comes up when SASSA's system couldn't complete the ID check with enough confidence. It needs another confirmation before it can approve or continue paying you. The exact steps depend on which official route triggered it, so always follow the instruction shown alongside that status — don't guess or try a different route.",
       ),
       section(
         "Why this happens",
-        "The most common reasons are mismatched identity details, a record that does not match what was entered on the application, a phone number linked to another record, or an official request for an extra verification step. Sometimes it is a small data problem. Sometimes it is a deliberate security check.",
+        "The most common reasons are mismatched details — your name, ID number, or date of birth might not match what's on the application exactly. A phone number linked to a different record can also cause this. Sometimes it's triggered by a routine security check rather than anything you did wrong. Either way, it needs to be resolved before the process can move forward.",
       ),
       section(
         "What you can do next",
-        "1. Read the exact identity verification message on the official system.\n2. Check your ID number, names, and other basic details carefully.\n3. Complete the official verification step only through the official link or process.\n4. Keep screenshots or notes of what you completed.\n5. Check again after the verification has had time to reflect on the system.",
+        "1. Read the exact verification message on the official system — the wording matters.\n2. Check your ID number, full names, and date of birth carefully.\n3. Complete the verification step only through the official link or process — not through a WhatsApp link or third-party site.\n4. Screenshot or write down what you completed and when.\n5. Give it time to reflect on the system before assuming it didn't work.",
       ),
       section(
         "Important things to remember",
-        "Do not use third-party websites or pay someone to complete identity verification for you. Verification is sensitive, and official channels matter. A verification status is usually something to resolve, not something to panic about.",
+        "Don't pay anyone to handle your identity verification for you — it won't work, and you'll be handing over sensitive personal information to someone who can misuse it. Verification is fixable in most cases. It feels stressful, but it's usually something the official process can sort out.",
       ),
       section(
         "What GrantCare covers on this topic",
@@ -290,7 +290,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "Related help",
-        "Useful next pages:\n• /status/identity-verification\n• /guides/why-identity-verification-fails\n• /guides/how-to-check-your-status\n• /guides/status-stuck-pending\n• /eligibility-checker",
+        "Useful next pages:\n• /status/identity-verification\n• /guides/why-identity-verification-fails\n• /guides/what-identity-verification-link-means\n• /guides/how-to-use-an-identity-verification-link-safely\n• /guides/how-to-know-if-a-verification-request-is-official",
       ),
       faq(
         "Does identity verification required mean I will be declined?",
@@ -317,23 +317,23 @@ export const SEO_BATCH_ONE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "A failed status usually means one part of the process did not complete successfully. The important thing is to check what failed, because a failed payment is different from a failed identity or bank verification.",
+        "A failed status usually means one part of the process broke down — not necessarily everything. The key is figuring out what exactly failed, because a failed payment is a very different problem from a failed identity check or bank verification.",
       ),
       section(
         "What this means",
-        "Failed is a broad warning word. It often points to a broken step rather than a full explanation by itself. On some records, the failure is about payment. On others, it may be tied to banking details, verification, or a technical problem. The exact wording around the failed message matters the most.",
+        "Failed is a broad word on its own. It tells you something went wrong, but not what. On some records the failure is about a payment that didn't go through. On others it's about banking details that couldn't be verified, an identity check that didn't clear, or a technical problem in the system. You need to look at all the wording around it — not just the word failed in isolation.",
       ),
       section(
         "Why this happens",
-        "The process can fail because banking details did not validate, because identity checks did not complete, because a payment attempt was rejected, or because the system needs a fresh action before moving forward. A failed step can also appear after details were changed recently and have not yet cleared properly.",
+        "A failed result can appear because banking details didn't validate, because an identity check didn't complete, because a payment attempt was rejected, or because the system needs a fresh action to continue. It can also come up after someone changed their details recently and those changes haven't fully processed yet.",
       ),
       section(
         "What you can do next",
-        "1. Read the full status wording, not just the word failed.\n2. Check whether the failed step is linked to payment, bank details, or identity verification.\n3. Correct the specific issue only if the official system shows what needs to be fixed.\n4. Keep a note of the date the failed status appeared.\n5. Use the official channel if the same failure keeps returning with no clear reason.",
+        "1. Read the full status wording, not just the word failed — there's usually more context around it.\n2. Work out whether the failure is linked to payment, banking, or identity.\n3. Only fix what the official system is pointing to — don't make changes blindly.\n4. Note the date the failed status appeared.\n5. If the same failure keeps coming back with no explanation, contact the official SASSA channel.",
       ),
       section(
         "Important things to remember",
-        "Failed does not tell the whole story on its own. Treat it as a signal to look more closely, not as a final explanation. Do not share sensitive information with unofficial helpers who claim they can repair a failed record for a fee.",
+        "Failed on its own doesn't tell the whole story. Think of it as a signal to look more closely, not as a complete explanation. And don't share personal information with anyone who claims they can repair a failed record for a fee — that's not how any of this works.",
       ),
       section(
         "How GrantCare breaks this down",
@@ -368,23 +368,23 @@ export const SEO_BATCH_ONE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "If your status seems stuck on pending, it usually means the review has not cleared yet or another hidden step has not moved forward. It does not mean there is a permanent problem, but you should check carefully instead of only refreshing the page.",
+        "If your status has been stuck on pending for a while, it usually means the review hasn't cleared yet — or there's another step sitting behind it that hasn't become visible. It's not necessarily a permanent problem, but it's worth looking into rather than just refreshing the page every day.",
       ),
       section(
         "What this means",
-        "A long pending period is different from a fresh pending status. When it stays the same for an unusual amount of time, you might wonder whether the system missed something, whether details are holding it up, or whether you need to act. The reality is usually less dramatic than it feels — the status simply has not resolved yet, and the next helpful step is to look for signals around it.",
+        "A status that stays on pending for a long time feels different from one that just appeared. At some point you start wondering if the system missed something, if your details are holding it back, or if you need to take action. The truth is usually less dramatic — the review just hasn't resolved yet. But it's worth checking for clues around the status rather than staring at the same word.",
       ),
       section(
         "Why this happens",
-        "A status can stay pending because there is a backlog, because records still need to match, because an earlier update has not fully reflected, or because another issue such as identity or banking verification has not become visible yet. Some users keep seeing pending because they check before the next official update cycle has actually run.",
+        "A status can stay on pending because there's a backlog, because records still need to be matched, because an earlier update hasn't fully reflected yet, or because an identity or banking issue is sitting quietly behind it and hasn't surfaced as its own status yet. Some people see pending for longer than expected simply because they're checking before the next official update cycle has actually run.",
       ),
       section(
         "What you can do next",
-        "1. Note how long the status has remained unchanged.\n2. Check whether you recently changed any important details.\n3. Compare the current wording with related statuses such as identity verification or banking issue.\n4. Watch for the next official update instead of checking constantly.\n5. Use the official contact route if the delay is clearly beyond a normal waiting period and no new instruction appears.",
+        "1. Take note of how long the status has stayed the same.\n2. Check whether you recently made any changes to important details.\n3. Look at related statuses like identity verification or banking issue — sometimes the real issue is hiding there.\n4. Wait for the next official update rather than checking multiple times a day.\n5. If it's been well beyond a normal waiting period and there's still no new instruction, use the official SASSA contact route.",
       ),
       section(
         "Important things to remember",
-        "A stuck pending status feels stressful, but repeated applications or repeated changes can make things messier. The safest approach is a calm review of your details, the wording, and the available official next steps.",
+        "A stuck pending feels awful, especially when you're waiting on money you need. But submitting again or changing details repeatedly usually makes it worse, not better. The safer move is to calmly check your details, read the wording carefully, and then decide on the next official step.",
       ),
       section(
         "Useful GrantCare pages for this situation",
@@ -413,29 +413,29 @@ export const SEO_BATCH_ONE_GUIDES = [
   },
   {
     slug: "reapplication-needed-meaning",
-    title: "Reapplication needed meaning",
+    title: "SASSA reapplication needed meaning",
     summary:
-      "What reapplication needed usually means, when a fresh application is the right move, and when you should first check for another official option.",
+      "What SASSA reapplication needed usually means, when a fresh application is the right move, and when you should first check for another official option.",
     sections: [
       section(
         "Quick answer",
-        "Reapplication needed usually means the official system wants a new application instead of continuing with the old one. It is a clear signal that waiting on the previous record is probably not enough on its own.",
+        "Reapplication needed means the system wants a fresh application from you, not a continuation of the old one. Sitting and waiting on the previous record probably won't get things moving.",
       ),
       section(
         "What this means",
-        "This wording usually appears when an earlier application cannot keep moving forward under the current cycle or process. The system may require a fresh submission with current details. This does not always mean something went badly wrong — in many situations, it simply means a new application step is now required.",
+        "This wording usually shows up when an earlier application can't continue under the current process or cycle. The system is asking you to start fresh with your current details. It doesn't always mean something went badly wrong — in many cases it just means a new submission is required to keep things moving.",
       ),
       section(
         "Why this happens",
-        "Reapplication wording can appear when a support cycle has ended, when an earlier record is no longer active, when the official system has moved to a new application flow, or when a previous incomplete record cannot be revived. It can also appear after a long break in activity.",
+        "This can come up when a previous support cycle has ended, when your earlier record is no longer active, when the official system has moved to a new application flow, or when a previous incomplete record can't be revived. It can also appear after a long gap in activity on your account.",
       ),
       section(
         "What you can do next",
-        "1. Confirm the reapplication message on the official system.\n2. Check whether there is an official deadline or application window linked to it.\n3. Gather your current documents and details before you start.\n4. Use the official route for the fresh application.\n5. Keep your phone number active so you do not miss OTPs or updates.",
+        "1. Confirm the reapplication message on the official system before doing anything else.\n2. Check if there's a deadline or application window attached to it.\n3. Get your documents and details together before you start the new application.\n4. Apply through the official route only.\n5. Keep your phone number active — you'll need it for OTPs and status updates.",
       ),
       section(
         "Important things to remember",
-        "Do not assume reapplication needed is the same as declined — it is a process instruction. At the same time, do not ignore it and keep waiting on the old application if the official system clearly says a new one is required.",
+        "Reapplication needed is not the same as declined — it's an instruction, not a rejection. At the same time, don't ignore it and keep hoping the old application resolves itself. If the official system says you need to apply again, that's the step you need to take.",
       ),
       section(
         "Preparing with GrantCare",
@@ -443,7 +443,7 @@ export const SEO_BATCH_ONE_GUIDES = [
       ),
       section(
         "Related help",
-        "Useful next pages:\n• /status/reapplication-needed\n• /guides/how-to-prepare-before-applying\n• /guides/what-documents-you-may-need\n• /guides/how-to-apply-for-support\n• /eligibility-checker",
+        "Useful next pages:\n• /status/reapplication-needed\n• /guides/how-to-know-if-reapplication-is-the-right-step\n• /guides/how-to-prepare-before-reapplying\n• /guides/how-to-find-the-official-reapplication-page-safely\n• /guides/appeal-vs-reapplication-guide",
       ),
       faq(
         "Does reapplication needed mean I was declined?",
@@ -470,23 +470,23 @@ export const SEO_BATCH_ONE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "Payment processing usually means the case has moved into the payout stage, but the money is not necessarily available yet. It is a positive sign, not final proof that payment has landed.",
+        "Payment processing means your case has moved into the payout stage — which is a positive sign. But it doesn't mean the money is already in your account. It's the in-between moment: after approval, before the payment actually lands.",
       ),
       section(
         "What this means",
-        "This wording usually appears after approval and before successful payment completion. It suggests the system is preparing, scheduling, or handing over the payment. Many users read payment processing as if the money is already in the account, but that is not always correct — it often means the transfer is in motion, not finished.",
+        "Payment processing usually appears after approval and before the money actually lands. It means the system is preparing, scheduling, or handing over the payment. A lot of people read this as confirmation that the money is already there — but that's not quite right. It means the transfer is in motion, not that it's finished.",
       ),
       section(
         "Why this happens",
-        "Payment processing can remain visible while the payment date is being finalised, while a payment batch is being run, while the chosen payment method is being used, or while the system works through weekends, public holidays, or other timing delays. It sometimes appears after a previous failed payment is being retried.",
+        "Processing can stick around while the payment date is being finalised, while a payment batch is being run, while the chosen payment method is being used, or while the system works around weekends and public holidays. Sometimes it shows up again after a failed payment that's being retried.",
       ),
       section(
         "What you can do next",
-        "1. Check for a payment date or latest payment update.\n2. Confirm your payment method details are still correct.\n3. Give the status some time if it changed very recently.\n4. Watch for any move from processing to paid, failed, or a banking-related message.\n5. Use the official channel if processing remains in place for too long with no payment result.",
+        "1. Look for a payment date or any recent payment update.\n2. Confirm your payment method details are still correct.\n3. Give it time if this status changed very recently.\n4. Watch for the next move — processing should eventually change to paid, failed, or a banking-related message.\n5. If it stays on processing for too long with no result, use the official SASSA channel to check what's happening.",
       ),
       section(
         "Important things to remember",
-        "Processing is not the same as paid. It is also not the same as approved. It sits between those two stages. Treat payment processing as a good sign that still needs final confirmation.",
+        "Processing is not the same as paid. It's also not the same as approved. It sits in the middle of those two stages. Treat it as a genuinely good sign that still needs the final step to complete.",
       ),
       section(
         "GrantCare's payment guides",

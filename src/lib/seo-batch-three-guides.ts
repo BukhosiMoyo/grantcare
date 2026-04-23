@@ -11,11 +11,11 @@ export const SEO_BATCH_THREE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "To fix a declined status, start by reading the exact official decline reason. The right fix depends on whether the problem is income, identity, duplication, banking, or another rule. Guessing usually wastes time.",
+        "Start by reading the exact official decline reason before you do anything else. The right fix depends entirely on why you were declined — whether it's income, identity, a duplicate record, banking, or a rule that wasn't met. Guessing without reading the reason first usually wastes time and can make things worse.",
       ),
       section(
         "What this means",
-        "A declined status is not one single problem. It is a result with a reason behind it. Some users need to appeal. Others need to correct details or wait for a new application cycle. Match your next step to the actual official reason, not just the word declined.",
+        "A declined status is not one single problem with one single fix. It's a result with a specific reason attached to it. Some people need to appeal. Others need to correct details or wait for a new application window. The key is matching your next step to the actual official reason — not just reacting to the word declined.",
       ),
       section(
         "Why this happens",
@@ -27,11 +27,11 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "Common mistakes to avoid",
-        "Do not appeal before you understand the decline reason. Do not submit random changes that do not match the official problem. Do not pay someone who claims they can remove a decline outside the official process. If the official reason is clear, work from that first.",
+        "Don't appeal before you've actually understood why you were declined. Don't submit random changes hoping something sticks — if the official system has given you a reason, work from that. And don't pay anyone who claims they can remove a decline outside the official process — they can't, and you'll lose money on top of the situation you're already in.",
       ),
       section(
         "Important things to remember",
-        "Declined does not always mean the same next step for every user. Some people need to appeal. Some need to reapply later. Some need to resolve a record issue. GrantCare is an independent platform, so official actions must still happen on the relevant government system.",
+        "Declined doesn't mean the same next step for everyone. Some people need to appeal. Some need to reapply later. Some have a record issue that needs to be resolved first. GrantCare is an independent platform — whatever action you take has to happen on the relevant official government system.",
       ),
       section(
         "Decline guides on GrantCare",
@@ -66,7 +66,7 @@ export const SEO_BATCH_THREE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "A delayed payment usually means the payment step has not finished yet, the payment method still has an issue, or the official timing has shifted. It does not always mean the application is gone or permanently lost.",
+        "A delayed payment usually means the payment process hasn't finished yet, your payment method still has an issue, or the official timing shifted. It doesn't always mean your money is gone or permanently lost.",
       ),
       section(
         "What this means",
@@ -82,11 +82,11 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "How to tell normal waiting from a real problem",
-        "A short delay after an update can be normal. A long delay with no new wording, or a delay after a published date has clearly passed, is more likely to need attention. If the status changes again while you wait, follow the latest official wording rather than older assumptions.",
+        "A short delay right after an update can be completely normal — the system is still catching up. A longer delay with no new wording, or one that stretches well past a clearly published date, is worth looking into more carefully. If the status does change while you're waiting, follow the new wording rather than sticking to assumptions you made before.",
       ),
       section(
         "Important things to remember",
-        "Do not keep changing your details without a clear reason. Do not trust social media claims that every delayed payment is proof of a hidden rejection. The official wording still matters most.",
+        "Don't keep changing your details without a clear reason — each unnecessary change can create a new delay of its own. And don't trust social media posts claiming that every delayed payment is proof of a hidden rejection. The official wording still matters more than anything else.",
       ),
       section(
         "Delayed payment pages on GrantCare",
@@ -115,13 +115,13 @@ export const SEO_BATCH_THREE_GUIDES = [
   },
   {
     slug: "how-to-update-banking-details",
-    title: "How to update banking details",
+    title: "How to update SASSA banking details safely",
     summary:
-      "How to update banking details through the correct official route, avoid common errors, and understand what to expect after you submit the change.",
+      "How to update SASSA banking details through the correct official route, avoid common errors, and understand what to expect after you submit the change.",
     sections: [
       section(
         "Quick answer",
-        "To update banking details, use the official system for your grant or support category and enter the information carefully. The most important rule: use the correct official channel and avoid repeated unnecessary changes.",
+        "Use the official system for your grant or support category and take your time entering the information correctly. The most important rule: use the right official channel and avoid making repeated changes just because you're anxious about whether it went through.",
       ),
       section(
         "What this means",
@@ -141,7 +141,7 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Do not share your banking details on unofficial websites. Do not pay anyone to change your banking information for you. Do not keep resubmitting different details because you are anxious — that can create more confusion instead of less.",
+        "Don't enter banking details on unofficial websites. Don't pay anyone to change your banking information for you — that's a common scam targeting grant recipients. And don't keep resubmitting different details out of anxiety — each new change creates another verification step and usually makes things take longer.",
       ),
       section(
         "Banking guides on GrantCare",
@@ -149,7 +149,7 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "Related help",
-        "Useful next pages:\n• /guides/fix-banking-details\n• /status/banking-issue\n• /guides/why-bank-verification-fails\n• /guides/what-to-do-if-your-bank-details-changed\n• /guides/why-payment-is-delayed",
+        "Useful next pages:\n• /status/banking-issue\n• /guides/banking-details-pending-meaning\n• /guides/what-to-do-if-your-bank-details-changed\n• /guides/why-bank-verification-fails\n• /guides/how-to-find-official-banking-and-verification-pages-safely",
       ),
       faq(
         "How long does a banking update take to reflect?",
@@ -170,9 +170,9 @@ export const SEO_BATCH_THREE_GUIDES = [
   },
   {
     slug: "how-to-change-phone-number",
-    title: "How to change your phone number",
+    title: "How to change your SASSA phone number",
     summary:
-      "How to change the phone number linked to your support record, why the number matters, and how to avoid creating verification or OTP problems.",
+      "How to change the phone number linked to your SASSA or SRD record, why the number matters, and how to avoid creating verification or OTP problems.",
     sections: [
       section(
         "Quick answer",
@@ -204,7 +204,7 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "Related help",
-        "Useful next pages:\n• /guides/how-to-keep-your-details-updated\n• /guides/why-identity-verification-fails\n• /guides/what-to-do-if-your-status-does-not-change\n• /guides/how-to-check-your-status\n• /status/identity-verification",
+        "Useful next pages:\n• /guides/how-to-change-your-phone-number-online-safely\n• /guides/what-to-do-if-you-need-to-change-phone-number-without-otp\n• /guides/how-phone-number-changes-affect-status-checks\n• /guides/why-identity-verification-fails\n• /status/identity-verification",
       ),
       faq(
         "Can changing my phone number delay my status?",
@@ -231,7 +231,7 @@ export const SEO_BATCH_THREE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "After approval, your next focus should be payment timing and payment method details. Approval is a strong step forward, but it is not always the final step before money is available.",
+        "After approval, shift your focus to payment timing and your payment method. Approval is a genuine step forward — but it's not always the last step before money is available.",
       ),
       section(
         "What this means",
@@ -239,7 +239,7 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "Why this matters",
-        "Many users stop checking carefully once they see approved because it feels like the hard part is over. Sometimes that is true. But sometimes the next issue appears only after approval, especially if the payment method still needs attention or if the payment date has not yet been finalised.",
+        "A lot of people stop checking carefully once they see approved because it feels like the hard part is done. Sometimes that's true. But sometimes the next complication only shows up after approval — especially if the payment method still needs attention or the payment date hasn't been confirmed yet.",
       ),
       section(
         "What you can do next",
@@ -247,11 +247,11 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "What not to do",
-        "Do not make random profile changes just because you feel nervous after approval. Do not assume one approval message means payment is already in your account. Do not rely on hearsay when the official system can still show the next real status.",
+        "Don't make random profile changes just because you feel nervous after approval. Don't assume the money is already in your account just because the status says approved. And don't rely on what someone told you in a WhatsApp group when the official system can still show you what's actually happening.",
       ),
       section(
         "Important things to remember",
-        "Approval is encouraging, but there is still value in checking the next stages carefully. GrantCare is an independent platform — for official confirmation of payment outcomes, use the relevant government channel.",
+        "Approval is encouraging, but it's worth staying engaged with the next stages rather than switching off completely. GrantCare is an independent platform — for official payment confirmation, always go back to the relevant government channel.",
       ),
       section(
         "Post-approval pages on GrantCare",
@@ -286,7 +286,7 @@ export const SEO_BATCH_THREE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "To appeal a rejection, first read the exact official reason, gather the documents or facts that support your case, and then use only the official appeal route. A good appeal starts with the reason for the rejection, not with emotion alone.",
+        "Read the exact official rejection reason first, then gather documents or facts that support your case, and submit through the official appeal route only. A good appeal is built around the actual reason for the rejection — not just the feeling that the decision was wrong.",
       ),
       section(
         "What this means",
@@ -294,7 +294,7 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "Why appeals fail",
-        "Appeals often go badly when users do not understand the original reason, when they submit without supporting information, or when they use unofficial advice instead of the official route. Another common problem is appealing the wrong issue because the wording was misunderstood.",
+        "Appeals often go wrong when people don't understand the original reason, submit without any supporting information, or follow unofficial advice instead of the official process. Another very common problem is challenging the wrong thing entirely because the wording was misread. Understanding what you're actually appealing is half the work.",
       ),
       section(
         "What you can do next",
@@ -302,11 +302,11 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "How to prepare a stronger appeal",
-        "Be specific. Match your supporting information to the reason that was given. If the issue is income, focus on income records. If the issue is identity, focus on identity details. A focused appeal is usually more useful than a broad complaint.",
+        "Be specific — match your supporting information directly to the reason given. If it's an income issue, focus on income records. If it's an identity issue, focus on identity details. A focused, evidence-based appeal almost always goes better than a general complaint that doesn't address the actual reason.",
       ),
       section(
         "Important things to remember",
-        "An appeal does not guarantee a different outcome — it is an official review step, not a promise. GrantCare is independent and can help you prepare, but the actual appeal must stay on the official system.",
+        "An appeal doesn't guarantee a different outcome — it's an official review step, not a promise of reversal. GrantCare is independent and can help you prepare and understand what you're dealing with, but the actual appeal submission has to happen on the official system.",
       ),
       section(
         "Appeal preparation on GrantCare",
@@ -341,7 +341,7 @@ export const SEO_BATCH_THREE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "There is no single fixed timeline for every appeal. Some move faster than others, and the most realistic approach is to treat appeal timing as a waiting process that depends on official review and the details of your case.",
+        "There's no single fixed timeline that applies to every appeal. Some move faster than others depending on the case, the backlog, and the reason behind the original decision. The most realistic approach is to treat appeal timing as a genuine waiting process rather than counting down to a specific date.",
       ),
       section(
         "What this means",
@@ -357,11 +357,11 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "How to tell whether the wait is still normal",
-        "A short wait after appeal submission is expected. A much longer wait with no movement may feel worrying, but it does not mean the appeal has failed. Follow the latest official status wording rather than how anxious the wait feels.",
+        "A short wait after submitting is completely expected. A longer wait with no movement can feel worrying, but it doesn't automatically mean the appeal has failed. The safest thing to do is follow the latest official status wording rather than measuring the wait against how anxious it feels.",
       ),
       section(
         "Important things to remember",
-        "No independent site can guarantee appeal timing. Be cautious of anyone who promises to speed up an appeal for money. Official systems and official review paths remain the only legitimate route for the decision itself.",
+        "No independent site can tell you exactly when your appeal will be decided. Be cautious of anyone who claims they can speed up an appeal for a fee — that's not how the official review process works, and it's a common way people lose money while already in a difficult situation.",
       ),
       section(
         "Staying organised with GrantCare",
@@ -390,17 +390,17 @@ export const SEO_BATCH_THREE_GUIDES = [
   },
   {
     slug: "why-bank-verification-fails",
-    title: "Why bank verification fails",
+    title: "Why SASSA bank verification fails",
     summary:
-      "Why bank verification fails, what usually causes the mismatch, and how to correct the issue without creating extra payment delays.",
+      "Why SASSA bank verification fails, what usually causes the mismatch, and how to correct the issue without creating extra payment delays.",
     sections: [
       section(
         "Quick answer",
-        "Bank verification usually fails when the account details do not match the official record closely enough. The most common causes are name mismatches, wrong account details, or using an account that does not meet the official requirements.",
+        "Bank verification usually fails when the account details you submitted don't match the official record closely enough. The most common causes are name mismatches, wrong account numbers, or using an account that doesn't meet the official requirements for that grant.",
       ),
       section(
         "What this means",
-        "Bank verification is the system checking whether the payment details can be trusted for the intended payout. A failed verification does not always mean fraud or rejection — often it just means the payment details and the person's official record are not lining up cleanly enough yet.",
+        "Bank verification is the system checking whether the payment details can actually be trusted for that payout. A failed verification doesn't always mean fraud or a permanent rejection — it usually just means the payment details and the person's official record aren't lining up cleanly enough yet for the system to proceed.",
       ),
       section(
         "Why this happens",
@@ -412,11 +412,11 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "How to avoid making it worse",
-        "Avoid changing details repeatedly when you are unsure. Avoid trying multiple unrelated accounts just to test what works. A clean correction based on the real issue is better than a series of guesses.",
+        "Don't change details repeatedly when you're not sure what the problem is. And don't try submitting completely different accounts just to see what works — a clean correction based on the actual issue is far better than a series of guesses that each trigger a new verification step.",
       ),
       section(
         "Important things to remember",
-        "Bank verification failure is usually a payment-detail problem, not a full decision problem. GrantCare is independent, so for any official correction you must still use the official channel.",
+        "Bank verification failure is almost always a payment-detail problem, not a full decision on your eligibility. For any official correction you must use the official SASSA channel — GrantCare can help you understand what went wrong, but the fix itself happens there.",
       ),
       section(
         "Banking verification on GrantCare",
@@ -424,7 +424,7 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "Related help",
-        "Useful next pages:\n• /guides/how-to-update-banking-details\n• /status/banking-issue\n• /guides/what-to-do-if-your-bank-details-changed\n• /guides/why-payment-is-delayed\n• /guides/fix-banking-details",
+        "Useful next pages:\n• /guides/how-to-update-banking-details\n• /guides/banking-details-pending-meaning\n• /guides/what-to-do-if-your-bank-details-changed\n• /guides/how-to-find-official-banking-and-verification-pages-safely\n• /status/banking-issue",
       ),
       faq(
         "Can bank verification fail even if I am approved?",
@@ -445,17 +445,17 @@ export const SEO_BATCH_THREE_GUIDES = [
   },
   {
     slug: "why-identity-verification-fails",
-    title: "Why identity verification fails",
+    title: "Why SASSA identity verification fails",
     summary:
-      "Why identity verification can fail, the common record mismatches behind it, and how to approach the official fix without panic.",
+      "Why SASSA identity verification can fail, the common record mismatches behind it, and how to approach the official fix without panic.",
     sections: [
       section(
         "Quick answer",
-        "Identity verification usually fails when the details on the application do not match official records closely enough or when the system needs another identity check before it can continue.",
+        "Identity verification usually fails when the details on your application don't match official records closely enough, or when the system needs another identity check before it can carry on.",
       ),
       section(
         "What this means",
-        "Identity verification failure is not always an accusation of fraud. It is usually a sign that the system could not confirm the identity step confidently enough — because of small detail mismatches, linked records, or an extra official check that still needs to happen.",
+        "An identity verification failure isn't always an accusation of fraud. It usually means the system couldn't confirm your identity with enough confidence — because of small detail mismatches, a linked record problem, or an extra check that still needs to happen. In most cases it's fixable.",
       ),
       section(
         "Why this happens",
@@ -471,7 +471,7 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Identity verification failure can be stressful because it sounds serious. In many cases it is still a fixable record problem. The most useful response is calm accuracy, not rushed changes.",
+        "Identity verification failure is stressful because it sounds serious. But in most cases it's a record problem that can be resolved through the official process. The most useful response is calm accuracy — double-check the actual details, make the right correction, and give the system time to update.",
       ),
       section(
         "Identity guides on GrantCare",
@@ -479,7 +479,7 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "Related help",
-        "Useful next pages:\n• /status/identity-verification\n• /guides/identity-verification-required-meaning\n• /guides/how-to-change-phone-number\n• /guides/how-to-check-your-status\n• /guides/what-to-do-if-your-status-does-not-change",
+        "Useful next pages:\n• /status/identity-verification\n• /guides/identity-verification-required-meaning\n• /guides/what-identity-verification-link-means\n• /guides/how-to-use-an-identity-verification-link-safely\n• /guides/how-to-change-phone-number",
       ),
       faq(
         "Can identity verification fail because of a phone number issue?",
@@ -506,7 +506,7 @@ export const SEO_BATCH_THREE_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "If your status does not change, start by checking how long it has been the same and what the exact wording is. A slow update is not always a problem, but a long frozen status needs a more careful check.",
+        "If your status hasn't changed, the first thing to check is how long it's actually been the same and exactly what the wording says. A slow update isn't always a problem — but a status that's been frozen for a long time deserves a more careful look.",
       ),
       section(
         "What this means",
@@ -522,7 +522,7 @@ export const SEO_BATCH_THREE_GUIDES = [
       ),
       section(
         "How to stay organised while waiting",
-        "Keep a simple timeline of status checks, updates, and changes you submitted. That makes it easier to see whether anything actually moved and helps you explain the situation clearly if you need official support later.",
+        "Keep a simple running note of when you checked, what the status said, and what changes you submitted. It's easy to lose track when you're checking frequently and anxious about the result. That record also makes it easier to explain the situation clearly if you need to contact the official channel.",
       ),
       section(
         "Important things to remember",

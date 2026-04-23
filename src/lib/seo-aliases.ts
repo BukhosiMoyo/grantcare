@@ -20,12 +20,18 @@ type GrantSeoAliasConfig = {
 const GRANT_SEO_ALIAS_MAP: Record<string, GrantSeoAliasConfig> = {
   "social-relief": {
     displayName: "Social Relief of Distress (SRD Grant)",
-    metadataName: "SRD Grant",
+    metadataName: "SRD Grant (R370)",
     metadataDescriptionSuffix:
-      "This page also covers SRD grant, R350 grant, R370 grant, Social Relief of Distress, and historical COVID-19 Social Relief of Distress grant search intent.",
-    paymentDisplayName: "SRD Grant (R350 / R370)",
+      "This page also covers SRD SASSA Gov.za search intent, SRD application help, SRD status-check guidance, payment dates, reapplication help, and historical R350 grant searches.",
+    paymentDisplayName: "SRD Grant (R370)",
     referenceTerms: [
       "srd",
+      "srd sassa gov za",
+      "srd sassa gov za application",
+      "srd sassa gov za status check",
+      "srd sassa gov za status check online",
+      "www srd sassa gov za status",
+      "srd sassa",
       "srd grant",
       "srd grant increase",
       "social relief grant",
@@ -40,11 +46,51 @@ const GRANT_SEO_ALIAS_MAP: Record<string, GrantSeoAliasConfig> = {
       "r350 grant",
       "r370",
       "r370 grant",
+      "online application",
+      "application form",
       "grant increase",
       "payment increase",
       "reapplication",
+      "banking details",
+      "bank verification",
+      "identity verification",
+      "phone number change",
+      "change number",
       "status check",
       "payment date",
+    ],
+  },
+  disability: {
+    displayName: "Disability Grant",
+    metadataName: "Disability Grant",
+    metadataDescriptionSuffix:
+      "This page also covers disability payment-date and disability pay-date search intent.",
+    paymentDisplayName: "Disability Grant",
+    referenceTerms: [
+      "disability grant",
+      "disability payment date",
+      "disability pay date",
+      "disability payment",
+      "disabled adult grant",
+    ],
+  },
+  children: {
+    displayName: "Children's Grants",
+    metadataName: "Children's Grants",
+    metadataDescriptionSuffix:
+      "This page also covers child grant, child support grant payment date, children's grant pay date, foster child, and care dependency payment-date search intent.",
+    paymentDisplayName: "Children's Grants",
+    referenceTerms: [
+      "children's grants",
+      "children grant",
+      "child grant",
+      "child grant date",
+      "child grant pay date",
+      "children payment date",
+      "child support grant",
+      "child support grant payment date",
+      "foster child grant",
+      "care dependency grant",
     ],
   },
   "older-persons": {
@@ -113,13 +159,13 @@ export function getPaymentGrantSeoDisplayName(entry: PaymentEntryLike) {
 export function getPaymentGrantSeoTitle(entry: PaymentEntryLike, paymentMonthLabel: string) {
   const metadataName = getGrantSeoAliasConfig(entry.grantSlug)?.metadataName ?? entry.grantName;
 
-  return `SASSA ${metadataName} Payment Date for ${paymentMonthLabel}`;
+  return `SASSA ${metadataName} Payment Dates for ${paymentMonthLabel}`;
 }
 
 export function getPaymentGrantSeoDescription(entry: PaymentEntryLike, paymentMonthLabel: string) {
   const metadataName = getGrantSeoAliasConfig(entry.grantSlug)?.metadataName ?? entry.grantName;
 
-  return `Check the ${metadataName} payment date for ${paymentMonthLabel}, see the current amount, and open the official SASSA link if you need confirmation.`;
+  return `Check ${metadataName} payment dates for ${paymentMonthLabel}, read the current pay-date note, see the current amount, and open the official SASSA link if you need confirmation.`;
 }
 
 export function getPaymentGrantSeoReferenceText(
@@ -135,6 +181,10 @@ export function getPaymentGrantSeoReferenceText(
     "grant pay date",
     "payment date",
     "payment dates",
+    "pay date",
+    "pay dates",
+    "pay day",
+    "grant date",
     ...(aliasConfig?.referenceTerms ?? []),
   ]);
 }

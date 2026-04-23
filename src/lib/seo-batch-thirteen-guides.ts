@@ -743,9 +743,9 @@ export const SEO_BATCH_THIRTEEN_GUIDES = [
   }),
   guide({
     slug: "how-to-know-if-reapplication-is-the-right-step",
-    title: "How to know if reapplication is the right step",
+    title: "How to know if SASSA reapplication is the right step",
     summary:
-      "A decision guide for users who are unsure whether they should wait, appeal, or use a reapplication route.",
+      "A decision guide for users who are unsure whether they should wait, appeal, or use a SASSA reapplication route.",
     quickAnswer:
       "Reapplication is the right step only when the latest official wording clearly points toward a fresh application route rather than ordinary waiting or appeal.",
     whatThisMeans:
@@ -762,7 +762,7 @@ export const SEO_BATCH_THIRTEEN_GUIDES = [
     help:
       "GrantCare can help you sort the difference between appeal, waiting, and reapplication so the choice feels less like a guess.",
     related:
-      "Useful next pages:\n• /guides/reapplication-needed-meaning\n• /guides/appeal-vs-reapplication-guide\n• /guides/how-reapplication-pages-usually-work\n• /guides/what-to-check-before-you-reapply\n• /status/reapplication-needed",
+      "Useful next pages:\n• /guides/reapplication-needed-meaning\n• /guides/appeal-vs-reapplication-guide\n• /guides/how-reapplication-pages-usually-work\n• /guides/how-to-prepare-before-reapplying\n• /guides/how-to-find-the-official-reapplication-page-safely",
     faqs: [
       {
         question: "Should I reapply just because the process feels slow?",
@@ -781,9 +781,9 @@ export const SEO_BATCH_THIRTEEN_GUIDES = [
   }),
   guide({
     slug: "how-to-prepare-before-reapplying",
-    title: "How to prepare before reapplying",
+    title: "How to prepare before SASSA reapplication",
     summary:
-      "A preparation guide for users who have confirmed that reapplication is needed and want to avoid repeating earlier confusion.",
+      "A preparation guide for users who have confirmed that SASSA reapplication is needed and want to avoid repeating earlier confusion.",
     quickAnswer:
       "Prepare before reapplying by checking why reapplication is needed, gathering your records, and making sure you understand the official route you are about to use.",
     whatThisMeans:
@@ -800,7 +800,7 @@ export const SEO_BATCH_THIRTEEN_GUIDES = [
     help:
       "GrantCare can help you organise earlier records, compare reapplication with appeal, and prepare for the status stage that follows afterward.",
     related:
-      "Useful next pages:\n• /guides/how-to-check-reapplication-status-safely\n• /guides/how-to-keep-records-after-reapplying\n• /guides/how-to-find-the-official-reapplication-page-safely\n• /guides/how-reapplication-pages-usually-work\n• /guides/how-to-check-if-your-online-application-was-submitted",
+      "Useful next pages:\n• /guides/reapplication-needed-meaning\n• /guides/how-to-check-reapplication-status-safely\n• /guides/how-to-keep-records-after-reapplying\n• /guides/how-to-find-the-official-reapplication-page-safely\n• /guides/how-reapplication-pages-usually-work",
     faqs: [
       {
         question: "Why save the earlier wording before reapplying?",
@@ -857,9 +857,9 @@ export const SEO_BATCH_THIRTEEN_GUIDES = [
   }),
   guide({
     slug: "how-to-find-the-official-reapplication-page-safely",
-    title: "How to find the official reapplication page safely",
+    title: "How to find the official SASSA reapplication page safely",
     summary:
-      "A trust-focused guide for users who need the reapplication route and want to avoid copied or misleading pages.",
+      "A trust-focused guide for users who need the SASSA reapplication route and want to avoid copied or misleading pages.",
     quickAnswer:
       "Find the official reapplication page safely by confirming that reapplication is truly needed, then checking the route carefully before you enter any details.",
     whatThisMeans:
@@ -876,7 +876,7 @@ export const SEO_BATCH_THIRTEEN_GUIDES = [
     help:
       "GrantCare can help you decide whether you need reapplication at all, then help you recognise the kind of official page you should be looking for.",
     related:
-      "Useful next pages:\n• /guides/how-to-know-if-reapplication-is-the-right-step\n• /guides/how-to-use-reapplication-pages-without-unofficial-sites\n• /guides/appeal-vs-reapplication-guide\n• /guides/how-to-check-if-an-online-application-link-is-official\n• /guides/where-to-find-official-updates-safely",
+      "Useful next pages:\n• /guides/how-to-know-if-reapplication-is-the-right-step\n• /guides/reapplication-needed-meaning\n• /guides/how-to-prepare-before-reapplying\n• /guides/appeal-vs-reapplication-guide\n• /guides/how-to-use-reapplication-pages-without-unofficial-sites",
     faqs: [
       {
         question: "Why should I confirm reapplication first?",
@@ -1123,11 +1123,11 @@ export const SEO_BATCH_THIRTEEN_GUIDES = [
   }),
   guide({
     slug: "what-sc19-searches-usually-mean",
-    title: "What SC19 searches usually mean",
+    title: "What SC19 means on SRD pages",
     summary:
-      "A plain-language guide to SC19-style searches and why users should focus on the official task behind the term rather than the code alone.",
+      "A plain-language guide to what SC19 means on SRD status or application pages, and why users should focus on the official task behind the term rather than the code alone.",
     quickAnswer:
-      "SC19 searches usually mean users are trying to reach a specific SRD-related application or status route. The safest move is to identify the task behind the search before you trust the page.",
+      "If you searched SC19, you are usually trying to reach a specific SRD-related application or status route. The safest move is to identify the task behind the code before you trust the page.",
     whatThisMeans:
       "Codes like SC19 can look very specific and therefore very trustworthy. The problem is that users may focus on the code itself and forget to check whether the page still matches the official task they need.",
     whyThisMatters:

@@ -13,7 +13,7 @@ function getPathSegments(pathname: string) {
   return pathname.split("/").filter(Boolean);
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (PUBLIC_LOCALE_PREFIX_ENABLED) {
     return NextResponse.next();
   }

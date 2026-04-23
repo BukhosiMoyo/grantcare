@@ -95,6 +95,9 @@ export type PublicGuide = {
   featured: boolean;
   sponsored: boolean;
   sortOrder: number;
+  authorName?: string;
+  publishedAt?: string | null;
+  updatedAt?: string | null;
   translations?: LocalizedFields;
 };
 
@@ -446,27 +449,66 @@ const CORE_FALLBACK_GUIDES: PublicGuide[] = [
   },
 ];
 
+const FALLBACK_GUIDE_AUTHOR = "GrantCare Editorial Team";
+const FALLBACK_GUIDE_UPDATED_AT = "2026-04-23";
+
+function withGuideMetadata(guides: PublicGuide[]) {
+  return guides.map((guide) => ({
+    ...guide,
+    authorName: guide.authorName ?? FALLBACK_GUIDE_AUTHOR,
+    updatedAt: guide.updatedAt ?? FALLBACK_GUIDE_UPDATED_AT,
+  }));
+}
+
 export const FALLBACK_GUIDES: PublicGuide[] = [
-  ...CORE_FALLBACK_GUIDES,
-  ...SEO_BATCH_ONE_GUIDES,
-  ...SEO_BATCH_TWO_GUIDES,
-  ...SEO_BATCH_THREE_GUIDES,
-  ...SEO_BATCH_FOUR_GUIDES,
-  ...SEO_BATCH_FIVE_GUIDES,
-  ...SEO_BATCH_SIX_GUIDES,
-  ...SEO_BATCH_SEVEN_GUIDES,
-  ...SEO_BATCH_EIGHT_GUIDES,
-  ...SEO_BATCH_NINE_GUIDES,
-  ...SEO_BATCH_TEN_GUIDES,
-  ...SEO_BATCH_ELEVEN_GUIDES,
-  ...SEO_BATCH_TWELVE_GUIDES,
-  ...SEO_BATCH_THIRTEEN_GUIDES,
-  ...SEO_BATCH_FOURTEEN_GUIDES,
-  ...SEO_BATCH_FIFTEEN_GUIDES,
-  ...SEO_BATCH_SIXTEEN_GUIDES,
+  ...withGuideMetadata(CORE_FALLBACK_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_ONE_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_TWO_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_THREE_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_FOUR_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_FIVE_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_SIX_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_SEVEN_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_EIGHT_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_NINE_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_TEN_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_ELEVEN_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_TWELVE_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_THIRTEEN_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_FOURTEEN_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_FIFTEEN_GUIDES),
+  ...withGuideMetadata(SEO_BATCH_SIXTEEN_GUIDES),
 ];
 
-export const FALLBACK_NEWS_ARTICLES: PublicNewsArticle[] = [];
+export const FALLBACK_NEWS_ARTICLES: PublicNewsArticle[] = [
+  {
+    slug: "sassa-payment-schedule-2026-2027",
+    title: "SASSA confirms social grant payment dates for 2026/2027",
+    summary: "The official schedule sets dates from April 2026 to March 2027 and includes April grant increases.",
+    sections: [
+      {
+        title: "What changed",
+        body: "Payment dates are confirmed for April 2026 through March 2027, including months affected by public holidays.",
+      },
+      {
+        title: "Grant increases (from April 2026)",
+        body: "Older persons, disability, and care dependency: R2,400. War veterans: R2,420. Foster child: R1,295. Child support and grant-in-aid: R580. SRD remains R370.",
+      },
+      {
+        title: "Related pages",
+        body: "• /payment-dates\n• /guides/payment-dates-by-month\n• /grants",
+      },
+    ],
+    sourceUrls: [
+      "https://www.dsd.gov.za/index.php/latest-news/21-latest-news/680-sassa-confirms-2026-2027-social-grant-payment-schedule-and-increases",
+      "https://www.sanews.gov.za/south-africa/sassa-announces-202627-social-grant-payment-dates",
+      "https://www.treasury.gov.za/documents/National%20Budget/2026/review/FullBR.pdf",
+    ],
+    featured: true,
+    sortOrder: 0,
+    publishedAt: "2026-03-20",
+  },
+];
 
 export const FALLBACK_FAQS: PublicFaq[] = [
   {
@@ -516,6 +558,29 @@ function getFirstBusinessDays(year: number, monthIndex: number, count: number) {
   return dates;
 }
 
+const OFFICIAL_PAYMENT_SCHEDULE_2026_2027: Record<
+  string,
+  { olderPersons: string; disability: string; children: string }
+> = {
+  "2026-04": { olderPersons: "2026-04-02", disability: "2026-04-07", children: "2026-04-08" },
+  "2026-05": { olderPersons: "2026-05-05", disability: "2026-05-06", children: "2026-05-07" },
+  "2026-06": { olderPersons: "2026-06-02", disability: "2026-06-03", children: "2026-06-04" },
+  "2026-07": { olderPersons: "2026-07-02", disability: "2026-07-03", children: "2026-07-06" },
+  "2026-08": { olderPersons: "2026-08-04", disability: "2026-08-05", children: "2026-08-06" },
+  "2026-09": { olderPersons: "2026-09-02", disability: "2026-09-03", children: "2026-09-04" },
+  "2026-10": { olderPersons: "2026-10-02", disability: "2026-10-05", children: "2026-10-06" },
+  "2026-11": { olderPersons: "2026-11-03", disability: "2026-11-04", children: "2026-11-05" },
+  "2026-12": { olderPersons: "2026-12-02", disability: "2026-12-03", children: "2026-12-04" },
+  "2027-01": { olderPersons: "2027-01-05", disability: "2027-01-06", children: "2027-01-07" },
+  "2027-02": { olderPersons: "2027-02-02", disability: "2027-02-03", children: "2027-02-04" },
+  "2027-03": { olderPersons: "2027-03-02", disability: "2027-03-03", children: "2027-03-04" },
+};
+
+function getOfficialPaymentScheduleOverride(year: number, month: number) {
+  const key = `${year}-${String(month).padStart(2, "0")}`;
+  return OFFICIAL_PAYMENT_SCHEDULE_2026_2027[key] ?? null;
+}
+
 function getRelativeMonthState(year: number, monthIndex: number): PublicPaymentDateState {
   const now = new Date();
   const currentMonth = now.getUTCMonth();
@@ -541,17 +606,17 @@ export function getMonthLabel(year: number, month: number) {
 
 function buildFallbackPaymentPeriod(year: number, month: number): PublicPaymentPeriod {
   const monthIndex = month - 1;
-  const [olderPersonsDate, disabilityDate, childrenDate] = getFirstBusinessDays(
-    year,
-    monthIndex,
-    3,
-  );
+  const officialOverride = getOfficialPaymentScheduleOverride(year, month);
+  const [olderPersonsDate, disabilityDate, childrenDate] = officialOverride
+    ? [officialOverride.olderPersons, officialOverride.disability, officialOverride.children]
+    : getFirstBusinessDays(year, monthIndex, 3);
   const monthSlug = getMonthSlugFromNumber(month);
-  const state = getRelativeMonthState(year, monthIndex);
+  const state: PublicPaymentDateState = officialOverride ? "expected" : getRelativeMonthState(year, monthIndex);
   const olderPersons = FALLBACK_GRANT_TYPES.find((entry) => entry.slug === "older-persons");
   const disability = FALLBACK_GRANT_TYPES.find((entry) => entry.slug === "disability");
   const children = FALLBACK_GRANT_TYPES.find((entry) => entry.slug === "children");
   const socialRelief = FALLBACK_GRANT_TYPES.find((entry) => entry.slug === "social-relief");
+  const officialNote = "Official schedule for the 2026/2027 financial year.";
 
   const entries: PublicPaymentEntry[] = [
     {
@@ -561,7 +626,7 @@ function buildFallbackPaymentPeriod(year: number, month: number): PublicPaymentP
       officialHref: olderPersons?.officialHref ?? OFFICIAL_LINKS[2].href,
       state,
       date: olderPersonsDate,
-      note: "Regular grant sequence only. Confirm with official published dates.",
+      note: officialOverride ? officialNote : "Regular grant sequence only. Confirm with official published dates.",
       published: true,
     },
     {
@@ -571,7 +636,7 @@ function buildFallbackPaymentPeriod(year: number, month: number): PublicPaymentP
       officialHref: disability?.officialHref ?? OFFICIAL_LINKS[2].href,
       state,
       date: disabilityDate,
-      note: "Regular grant sequence only. Confirm with official published dates.",
+      note: officialOverride ? officialNote : "Regular grant sequence only. Confirm with official published dates.",
       published: true,
     },
     {
@@ -581,7 +646,9 @@ function buildFallbackPaymentPeriod(year: number, month: number): PublicPaymentP
       officialHref: children?.officialHref ?? OFFICIAL_LINKS[2].href,
       state,
       date: childrenDate,
-      note: "Child Support, Foster Child, and Care Dependency grants usually follow together.",
+      note: officialOverride
+        ? officialNote
+        : "Child Support, Foster Child, and Care Dependency grants usually follow together.",
       published: true,
     },
     {

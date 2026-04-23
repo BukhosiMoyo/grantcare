@@ -40,8 +40,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/payment-dates",
-    title: `SASSA Payment Dates ${currentYear} by Month`,
-    description: `See SASSA payment dates for ${currentYear} by month, including SRD, Older Persons, Disability, and Children's grants.`,
+    title: `SASSA Grant Pay Dates ${currentYear} | SRD, R350 and R370 Payment Dates`,
+    description: `Check SASSA grant pay dates for ${currentYear} by month, including SRD payment dates, R350 and R370 search intent, old age grant pay dates, and other main grant categories.`,
   });
 }
 
@@ -73,33 +73,33 @@ export default async function PaymentDatesPage({
   const hubLinks = [
     {
       href: `/payment-dates/${defaults.year}/${defaults.monthSlug}/older-persons`,
-      title: "Old age grant pay dates",
+      title: "Check old age grant pay dates",
       description: `Open ${defaults.label} Older Persons Grant payment dates when you need the old age grant pay day first.`,
     },
     {
       href: `/payment-dates/${defaults.year}/${defaults.monthSlug}/social-relief`,
-      title: "SRD payment dates",
-      description: `Open ${defaults.label} SRD payment dates for Social Relief of Distress, R350, and R370 timing.`,
+      title: "Check SRD payment dates",
+      description: `Open ${defaults.label} SRD payment dates for Social Relief of Distress and R370 timing.`,
     },
     {
-      href: "/guides/how-to-understand-payment-dates",
-      title: "How to understand payment dates",
-      description: "Use the guide when you need help reading expected, pending, or portal-only timing.",
+      href: "/status",
+      title: "Check status meanings",
+      description: "Open status meanings when payment timing depends on approved, pending, banking, or reapplication wording.",
+    },
+    {
+      href: "/guides/how-to-update-banking-details",
+      title: "Fix banking-related payment delays",
+      description: "Use the banking guide when payment timing may be delayed by bank details, verification, or a changed payment method.",
+    },
+    {
+      href: "/grant-amounts",
+      title: "Check grant amounts",
+      description: "Open current SASSA grant amounts if you need the amount beside the pay date.",
     },
     {
       href: "/guides/why-payment-is-delayed",
       title: "Why payment is delayed",
       description: "Open the delay guide if the date has passed or the wording still does not make sense.",
-    },
-    {
-      href: "/grant-amounts",
-      title: "Grant amounts",
-      description: "Open current SASSA grant amounts if you need the amount beside the pay date.",
-    },
-    {
-      href: "/claim-checker",
-      title: "Claim checker",
-      description: "Open the checker if a payment story or delay claim sounds doubtful and you want the right next guide first.",
     },
   ];
 
@@ -123,7 +123,7 @@ export default async function PaymentDatesPage({
             SASSA grant pay dates {defaults.year}
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-8 text-muted sm:text-xl">
-            Check social grant dates, old age grant pay dates, SRD payment dates, and the monthly schedule for every main grant category.
+            Check SRD payment dates, R370 payment dates, old age grant pay dates, and the monthly schedule for every main grant category.
           </p>
         </div>
 

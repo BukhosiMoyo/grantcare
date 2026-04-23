@@ -89,7 +89,7 @@ export default async function GrantAmountsPage({
     {
       href: "/grants/social-relief",
       title: "SRD grant",
-      description: "Open the SRD page for Social Relief of Distress, R350, and R370 guidance alongside the current amount.",
+      description: "Open the SRD page for Social Relief of Distress and R370 guidance alongside the current amount.",
     },
     {
       href: "/claim-checker",

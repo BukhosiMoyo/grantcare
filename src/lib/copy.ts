@@ -6,11 +6,15 @@ type HomeCopy = {
   admin: string;
   archiveCardText: string;
   archiveTitle: string;
+  authorLabel: string;
   checkDates: string;
+  checkPaymentDates: string;
+  checkStatus: string;
   chooseStatus: string;
   commonFixes: string;
   commonQuestionsTitle: string;
   commonStatusMeaningsTitle: string;
+  copyLink: string;
   createAccount: string;
   dashboard: string;
   disclaimer: string;
@@ -47,6 +51,7 @@ type HomeCopy = {
   homepageStatusText: string;
   howItWorks: string;
   language: string;
+  lastUpdated: string;
   latestDates: string;
   latestPublishedPaymentDate: string;
   latestScheduleSlots: string;
@@ -105,6 +110,8 @@ type HomeCopy = {
   saveProfile: string;
   saveReminders: string;
   saveResult: string;
+  share: string;
+  shareGuide: string;
   setPreferredGrantPrompt: string;
   showLabel: string;
   signIn: string;
@@ -130,6 +137,7 @@ type HomeCopy = {
   statusListTitle: string;
   statusMeanings: string;
   statusToolIntro: string;
+  tableOfContents: string;
   thisGrant: string;
   twoDaysBefore: string;
   unsubscribeEyebrow: string;
@@ -148,11 +156,15 @@ const ENGLISH_COPY: HomeCopy = {
   admin: "Admin",
   archiveCardText: "Open the month view and choose a grant category.",
   archiveTitle: "Archive",
+  authorLabel: "Author",
   checkDates: "Check dates",
+  checkPaymentDates: "Check payment dates",
+  checkStatus: "Check status meanings",
   chooseStatus: "Choose a status",
   commonFixes: "Common fixes",
   commonQuestionsTitle: "Common questions",
   commonStatusMeaningsTitle: "Common status meanings",
+  copyLink: "Copy link",
   createAccount: "Create account",
   dashboard: "Dashboard",
   disclaimer:
@@ -192,6 +204,7 @@ const ENGLISH_COPY: HomeCopy = {
   homepageStatusText: "Match the wording and see the next step.",
   howItWorks: "How it works",
   language: "Language",
+  lastUpdated: "Last updated",
   latestDates: "Latest payment dates",
   latestPublishedPaymentDate: "Latest published payment date for your preferred grant type.",
   latestScheduleSlots: "Latest schedule slots",
@@ -252,6 +265,8 @@ const ENGLISH_COPY: HomeCopy = {
   saveProfile: "Save profile",
   saveReminders: "Save reminders",
   saveResult: "Save result",
+  share: "Share",
+  shareGuide: "Share guide",
   setPreferredGrantPrompt: "Set a preferred grant to see the latest matching payment dates.",
   showLabel: "Show",
   signIn: "Sign in",
@@ -278,6 +293,7 @@ const ENGLISH_COPY: HomeCopy = {
   statusMeanings: "Status meanings",
   statusToolIntro:
     "This tool explains common wording and possible next steps. It is not an official status checker.",
+  tableOfContents: "Table of contents",
   thisGrant: "This grant",
   twoDaysBefore: "2 days before payment",
   unsubscribeEyebrow: "Reminders",

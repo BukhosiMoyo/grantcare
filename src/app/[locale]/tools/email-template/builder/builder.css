@@ -1,0 +1,434 @@
+/* ── Builder Immersive Shell ── */
+
+.builder-shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(201, 138, 44, 0.10), transparent 40%),
+    linear-gradient(180deg, #fbf7ef 0%, #f6f0e2 50%, #efe6d3 100%);
+}
+
+.builder-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+}
+
+.builder-logo {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.builder-logo:hover {
+  opacity: 0.8;
+}
+
+.builder-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Progress Bar ── */
+
+.flow-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 3px;
+  background: var(--border);
+}
+
+.flow-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 0 2px 2px 0;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Flow Screen Container ── */
+
+.flow-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem 2rem;
+  min-height: 100dvh;
+  animation: flowScreenIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes flowScreenIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flow-screen-inner {
+  width: 100%;
+  max-width: 32rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.flow-question {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.flow-question h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--foreground);
+}
+
+@media (min-width: 640px) {
+  .flow-question h2 {
+    font-size: 2.125rem;
+  }
+}
+
+.flow-question p {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── Option Cards ── */
+
+.flow-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  border: 1.5px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 92%, white);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: var(--foreground);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 3.5rem;
+  box-shadow: 0 2px 8px -4px var(--shadow);
+}
+
+.option-card:hover {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--surface) 96%, white);
+  box-shadow: 0 4px 16px -6px rgba(23, 76, 60, 0.12);
+  transform: translateY(-1px);
+}
+
+.option-card:active {
+  transform: translateY(0);
+}
+
+.option-card[data-selected="true"] {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+  box-shadow: 0 0 0 2px var(--primary), 0 4px 16px -6px rgba(23, 76, 60, 0.15);
+}
+
+.option-card-key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.option-card[data-selected="true"] .option-card-key {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: white;
+}
+
+.option-card-label {
+  flex: 1;
+}
+
+/* ── Flow Buttons ── */
+
+.flow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.875rem 2rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  min-height: 3.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.flow-btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 12px -4px rgba(23, 76, 60, 0.3);
+}
+
+.flow-btn-primary:hover {
+  background: var(--primary-strong);
+  box-shadow: 0 6px 20px -6px rgba(23, 76, 60, 0.4);
+  transform: translateY(-1px);
+}
+
+.flow-btn-primary:active {
+  transform: translateY(0);
+}
+
+.flow-btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.flow-btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  min-height: 2.5rem;
+  width: auto;
+}
+
+.flow-btn-ghost:hover {
+  color: var(--foreground);
+}
+
+/* ── Text Input in Flow ── */
+
+.flow-input {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border-radius: 1rem;
+  border: 1.5px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 92%, white);
+  font-size: 1.0625rem;
+  color: var(--foreground);
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px -4px var(--shadow);
+}
+
+.flow-input::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.flow-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(23, 76, 60, 0.12), 0 4px 16px -6px var(--shadow);
+}
+
+/* ── Suggestion Chips ── */
+
+.flow-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.flow-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.flow-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 5%, var(--surface));
+}
+
+/* ── Loading Sequence ── */
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  text-align: center;
+  min-height: 100dvh;
+  padding: 2rem 1.5rem;
+}
+
+.loading-spinner {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  animation: loadingSpin 0.8s linear infinite;
+}
+
+@keyframes loadingSpin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 6rem;
+}
+
+.loading-msg {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 1rem;
+  color: var(--muted);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.loading-msg[data-state="active"] {
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.loading-msg[data-state="done"] {
+  color: var(--primary);
+}
+
+.loading-msg-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.loading-msg-check {
+  animation: checkPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes checkPop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Flow Navigation ── */
+
+.flow-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+/* ── Back Arrow ── */
+
+.flow-back {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px -4px var(--shadow);
+}
+
+.flow-back:hover {
+  border-color: var(--primary);
+  color: var(--foreground);
+}
+
+.flow-back svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+/* ── Error State ── */
+
+.flow-error {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.flow-error-icon {
+  font-size: 2rem;
+}
+
+.flow-error p {
+  color: var(--muted);
+  max-width: 24rem;
+}

@@ -11,7 +11,7 @@ export const SEO_BATCH_TWO_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "If you need payment dates for 2026, start with the current month page and check whether the dates are marked as published or expected. Official dates can change, so the label matters.",
+        "Start with the current month page and look at whether the dates are marked as published or expected — that label tells you how much weight to put on it. Dates can still change, so the label is always the first thing to check.",
       ),
       section(
         "What this means",
@@ -19,7 +19,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Why this matters in 2026",
-        "Many users return every month to check grant timing. The problem is that payment information gets confusing when one page mixes confirmed dates, expected dates, and SRD-style payment wording. A clear 2026 overview helps you know what kind of date you are looking at before you make travel, cash-out, or household plans.",
+        "Many users come back every month to check grant timing, which is completely understandable. The problem is that payment information gets muddled when someone mixes confirmed dates, estimated dates, and SRD-specific wording all on one page. A clear 2026 overview helps you understand what kind of date you're actually looking at before you make transport, cash-out, or household plans.",
       ),
       section(
         "What you can do next",
@@ -27,7 +27,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Regular grants and SRD-style support do not always work in exactly the same way. Some months may show a clear date for one grant type and a portal-only message for another. GrantCare is an independent information platform, so official confirmation must still come from the relevant government channel.",
+        "Regular grants and SRD don't always follow the same schedule or update at the same time. Some months will show a clear date for one grant and a portal-only message for another — both of those are valid answers for different reasons. GrantCare is an independent platform, so official confirmation always needs to come from the relevant government channel.",
       ),
       section(
         "Using GrantCare for 2026 planning",
@@ -62,11 +62,11 @@ export const SEO_BATCH_TWO_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "For April 2026 payment dates, use the April month page and check the exact grant category first. A date shown as expected is not the same as one that has been officially published.",
+        "Find the April month page, then check your specific grant category before relying on any date. A date marked expected is just a guide — it's not the same as one that's been officially published.",
       ),
       section(
         "What this means",
-        "April is often a month where users look for certainty quickly because household planning is time-sensitive. Match the correct grant category and read the payment label before acting on the date.",
+        "April is often a month where people need certainty quickly because household plans are already in motion. Match your grant category on the page and read the payment label — both matter just as much as the date itself.",
       ),
       section(
         "Why this happens",
@@ -78,7 +78,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Do not rely on screenshots from unknown social posts when the current page shows a different update. April 2026 information can still change if the official source publishes a correction. Treat the latest official release as the final authority.",
+        "Don't rely on screenshots from WhatsApp or social media if the current page is showing a different or newer update. April 2026 information can still change if the official source publishes a correction — always treat the latest official release as the final word.",
       ),
       section(
         "April 2026 on GrantCare",
@@ -113,11 +113,11 @@ export const SEO_BATCH_TWO_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "For May 2026 payment dates, check the May month page and match the correct grant type before using any date. If the date is still marked expected, wait for the official published update before treating it as final.",
+        "Use the May payment page and find your specific grant type before acting on any date. If the date still shows expected, treat it as a planning guide only — wait for the published update before making firm plans around it.",
       ),
       section(
         "What this means",
-        "May payment-date searches are often driven by practical planning — when to travel, when to budget, when to expect a payout. The page is most useful when you read it as a category-by-category schedule instead of assuming one May date covers every grant.",
+        "May payment date searches are usually driven by real, practical planning — when to travel, when to budget, when to expect money. This page works best when you read it grant-by-grant rather than assuming a single May date applies to everything.",
       ),
       section(
         "Why this happens",
@@ -129,7 +129,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Expected dates are useful for planning, but they are not the same as final official dates. The closer you are to the payment window, the more important it is to check for the latest published update.",
+        "An expected date is genuinely useful for planning, but it's not the same as a final confirmed date. The closer you get to the payment window, the more important it becomes to check for the latest published update.",
       ),
       section(
         "May 2026 on GrantCare",
@@ -164,11 +164,11 @@ export const SEO_BATCH_TWO_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "For SRD payment dates in April 2026, use the April payment page and then confirm through the official SRD portal. SRD timing is often shown differently from regular grant dates.",
+        "For SRD payment dates in April 2026, check the April payment page and then confirm through the official SRD portal. SRD timing is handled differently from regular grant dates — one public date doesn't always apply to everyone.",
       ),
       section(
         "What this means",
-        "SRD users often search for one simple April date, but SRD timing can depend on individual outcomes or portal-based updates. GrantCare may show portal-only wording instead of a single final public date because one date does not always apply to everyone.",
+        "SRD users often come looking for one simple April date, but SRD timing can depend on your individual outcome or what the portal is showing for your specific case. GrantCare may show portal-only wording instead of a fixed public date because that's actually the more honest and accurate answer — one date doesn't always fit every SRD applicant.",
       ),
       section(
         "Why this happens",
@@ -180,7 +180,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Be careful with social posts that claim one April SRD date fits everyone. Portal-based wording is there for a reason. GrantCare is an independent guide, not the official SRD system.",
+        "Be careful with social media posts claiming one fixed April SRD date applies to everyone — that's rarely true for SRD. Portal-based wording exists because individual cases move differently. GrantCare is an independent guide, not the official SRD system.",
       ),
       section(
         "SRD on GrantCare",
@@ -215,7 +215,7 @@ export const SEO_BATCH_TWO_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "For May 2026 SRD payment dates, use the May payment page as a guide and rely on the official SRD portal for final confirmation. SRD timing often needs portal-based checking.",
+        "For May 2026 SRD payment dates, use the May page as context and check the official SRD portal for your own confirmed timing. SRD often needs portal-based checking because individual cases don't all move the same way.",
       ),
       section(
         "What this means",
@@ -231,7 +231,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Unofficial SRD date claims spread quickly when people are stressed. Always separate a helpful guide from final official confirmation — it protects you from acting on the wrong update.",
+        "Unofficial SRD date claims spread fast when people are stressed and need answers. The problem is they're often based on one person's experience or an old screenshot. Always separate useful guidance from official confirmation — it protects you from acting on the wrong information.",
       ),
       section(
         "SRD pages on GrantCare",
@@ -266,11 +266,11 @@ export const SEO_BATCH_TWO_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "For Child Support Grant payment dates in April 2026, start with the April payment page and the children's grant schedule. Child Support Grant timing is often grouped with other children's grants.",
+        "For Child Support Grant payment dates in April 2026, use the April payment page and look at the children's grant schedule. Child Support timing is often grouped with other children's grants rather than listed on its own — check for that grouping first.",
       ),
       section(
         "What this means",
-        "Users often search for Child Support Grant by name, but payment-date tools sometimes group child-related grants together under one children's category. That does not make the information less useful — it simply means you check the grouped schedule and then confirm the grant type that applies to you.",
+        "People often search for Child Support Grant by name, but payment pages sometimes group child-related grants under one children's category. That doesn't make the information less useful — it just means you check the grouped schedule and confirm that it covers your grant type.",
       ),
       section(
         "Why this happens",
@@ -282,7 +282,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "A grouped children's date should not be treated as official final confirmation until the official release is clear. It is still a useful planning guide, but accuracy matters most close to payout time.",
+        "A grouped children's date is a helpful planning guide, but it's not the same as a confirmed official release. That distinction matters most close to the actual payment day — that's when accuracy counts.",
       ),
       section(
         "Children's grants on GrantCare",
@@ -311,17 +311,17 @@ export const SEO_BATCH_TWO_GUIDES = [
   },
   {
     slug: "child-support-grant-payment-dates-may-2026",
-    title: "Child Support Grant payment dates May 2026",
+    title: "Child Support Grant payment dates for May 2026",
     summary:
-      "May 2026 Child Support Grant guide explaining grouped children's payment schedules and how to check for the latest trustworthy update.",
+      "A clear guide to the child grant date for May 2026, explaining how Child Support Grant timing fits into the grouped children's payment schedule and where to confirm the latest trustworthy update.",
     sections: [
       section(
         "Quick answer",
-        "For Child Support Grant payment dates in May 2026, use the May month page and look at the children's grant schedule first. Then confirm any final update through the relevant official channel if needed.",
+        "If you are looking for the child grant date for May 2026, start with the children's grant schedule on the May payment page. Then read the payment note carefully and confirm any final date through the official channel before you build firm plans around it.",
       ),
       section(
         "What this means",
-        "Child Support Grant searches are often urgent because families are budgeting around school, food, and transport needs. A clear May page helps most when it explains that the children's schedule may be grouped and that the label on the date still matters.",
+        "Child Support Grant searches are often urgent — families are budgeting around school fees, food, and transport and can't afford to get the date wrong. A clear May page helps most when it explains that the children's schedule may be grouped and that the label on the date still matters as much as the number itself.",
       ),
       section(
         "Why this happens",
@@ -333,7 +333,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Do not assume a single screenshot covers every children's grant update. A live page with a current label is more trustworthy than an old shared image. GrantCare remains an independent guide, not the official source.",
+        "A live page with a current label is more trustworthy than an old screenshot that's been shared around. Don't assume a single image covers every children's grant update. GrantCare is an independent guide — official confirmation still comes from the relevant SASSA channel.",
       ),
       section(
         "Children's grants on GrantCare",
@@ -341,7 +341,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Related help",
-        "Useful next pages:\n• /payment-dates/2026/may\n• /grants/child-support\n• /guides/payment-dates-may-2026\n• /guides/how-to-know-if-your-payment-is-ready\n• /guides/how-to-fix-missing-payment-issues",
+        "Useful next pages:\n• /payment-dates/2026/may/children\n• /payment-dates/2026/may\n• /grants/child-support\n• /guides/how-to-know-if-your-payment-is-ready\n• /guides/how-to-fix-missing-payment-issues",
       ),
       faq(
         "Is the children's schedule the same as Child Support Grant?",
@@ -368,11 +368,11 @@ export const SEO_BATCH_TWO_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "For Older Persons Grant payment dates in April 2026, use the April payment page and check the Older Persons Grant entry directly. Read whether the date is published or expected before relying on it fully.",
+        "For Older Persons Grant payment dates in April 2026, go straight to the April payment page and find the Older Persons Grant entry. Check whether the date shown is published or expected — that label changes how much you should rely on it.",
       ),
       section(
         "What this means",
-        "Older Persons Grant is usually one of the clearest categories on the monthly payment page, which makes it useful for users who want a straightforward answer quickly. Even so, the note beside the date still matters because an expected date is different from one that has been officially published.",
+        "Older Persons Grant is usually one of the cleaner, more straightforward entries on the monthly page — which makes it quicker to find an answer. But the note beside the date still matters. An expected date and a published date carry very different levels of certainty.",
       ),
       section(
         "Why this happens",
@@ -384,7 +384,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "Do not plan around an estimate as if it were final. Official updates still matter. If the payment does not arrive near the expected time, compare the result with the missing-payment and approved-but-no-payment guidance before assuming the worst.",
+        "Don't build firm plans around an estimate as if it were final — especially for something like transport or queuing at a collection point. If the payment doesn't arrive near the expected time, check whether there's a newer update before assuming something went wrong.",
       ),
       section(
         "Older Persons Grant on GrantCare",
@@ -419,11 +419,11 @@ export const SEO_BATCH_TWO_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "For Older Persons Grant payment dates in May 2026, use the May payment page and read the Older Persons entry carefully. Treat expected dates as planning guidance until they are officially confirmed.",
+        "For Older Persons Grant payment dates in May 2026, open the May payment page and read the Older Persons Grant entry carefully. If the date is still marked expected, use it for planning only — wait for the published update before making any firm decisions.",
       ),
       section(
         "What this means",
-        "A May payment page is most useful when it answers two questions at once: what date is shown, and how certain is that date? That second part matters just as much as the first.",
+        "A useful payment page doesn't just show you a date — it tells you how certain that date is. That second part matters just as much as the number itself, especially when you're planning around a grant you depend on.",
       ),
       section(
         "Why this happens",
@@ -435,7 +435,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "The most useful payment-date page is not the one with the strongest claim — it is the one that tells you clearly how certain the information is. That is how you avoid false confidence.",
+        "The most trustworthy payment date page isn't the one that sounds most confident — it's the one that tells you clearly how certain the information actually is. That's how you avoid false confidence and making plans around a date that hasn't been confirmed yet.",
       ),
       section(
         "Older Persons Grant on GrantCare",
@@ -470,11 +470,11 @@ export const SEO_BATCH_TWO_GUIDES = [
     sections: [
       section(
         "Quick answer",
-        "For Disability Grant payment dates in April 2026, use the April payment page and check the Disability Grant entry directly. The label on the date is important because expected timing is not the same as final official timing.",
+        "For Disability Grant payment dates in April 2026, open the April payment page and look for the Disability Grant entry directly. Read the label on the date — expected and officially published are not the same thing, and that difference matters when you're making plans around a payment.",
       ),
       section(
         "What this means",
-        "The Disability Grant entry on the month page is designed to help users find the likely payment timing quickly, but it still needs to be read carefully. The date, the note, and the page state all work together.",
+        "The Disability Grant entry is there to help you find likely payment timing quickly. But the date, the note beside it, and the current page state all need to be read together — the note often carries the most important part of the message.",
       ),
       section(
         "Why this happens",
@@ -486,7 +486,7 @@ export const SEO_BATCH_TWO_GUIDES = [
       ),
       section(
         "Important things to remember",
-        "A payment-date guide should help you plan, not mislead you — that is why published and expected dates are shown differently. GrantCare is independent, so official updates still come first when there is any conflict.",
+        "A payment date guide should help you plan, not mislead you — that's why published and expected dates are shown differently on this page. If there's any conflict between what GrantCare shows and an official update, the official update wins.",
       ),
       section(
         "Disability Grant on GrantCare",

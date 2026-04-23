@@ -29,9 +29,9 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/status",
-    title: "SASSA Status Check Meanings and Next Steps",
+    title: "SASSA Status Check Meanings for SRD, R350 and R370 Results",
     description:
-      "Find out what Approved, Pending, Declined, Banking Issue, and other SASSA status messages usually mean, plus what to check next.",
+      "Understand SASSA status check wording for SRD, R350, and R370 results, including Approved, Pending, Declined, Banking Issue, Identity Verification, and Reapplication Needed after an official status check.",
   });
 }
 
@@ -54,29 +54,29 @@ export default async function StatusPage({
   const statusFaqs = faqs.slice(0, 5);
   const hubLinks = [
     {
-      href: "/payment-dates",
-      title: copy.paymentDates,
-      description: "Open payment dates when your status moved forward and you need the next timing check.",
+      href: "/status/identity-verification",
+      title: "Check identity verification meaning",
+      description: "Open the identity verification status guide when the official wording says another identity check is still blocking progress.",
     },
     {
-      href: "/guides/how-to-fix-declined-status",
-      title: "Fix declined status",
-      description: "Read the decline guide if your result points to a rejection or reconsideration issue.",
+      href: "/status/banking-issue",
+      title: "Check banking issue meaning",
+      description: "Open the banking issue status guide when payment release depends on bank verification or a payment-method problem.",
     },
     {
-      href: "/guides/what-to-do-if-your-status-does-not-change",
-      title: "Status not changing",
-      description: "Use the stuck-status guide when the wording stays the same for too long.",
+      href: "/status/reapplication-needed",
+      title: "Check reapplication needed meaning",
+      description: "Open the reapplication-needed guide if the official wording points to a fresh application route instead of ordinary waiting.",
     },
     {
-      href: "/eligibility-checker",
-      title: copy.eligibilityChecker,
-      description: "Return to general guidance if you need to reassess which grant path fits best.",
+      href: "/guides/how-to-change-phone-number",
+      title: "Change your phone number safely",
+      description: "Read the phone-number guide if OTP, mismatch, or number-change issues are affecting your status.",
     },
     {
-      href: "/claim-checker",
-      title: "Claim checker",
-      description: "Open the checker if the status story is mixed with rumours, warning messages, or doubtful payment claims.",
+      href: "/guides/how-to-know-if-a-sassa-website-is-official",
+      title: "Check if a SASSA website is official",
+      description: "Use the website-safety guide before entering details on a copied status-check, verification, or reapplication link.",
     },
   ];
 
@@ -116,7 +116,7 @@ export default async function StatusPage({
             {copy.statusHelp}
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-8 text-muted sm:text-xl">
-             {copy.statusToolIntro}
+             Understand common official SASSA status-check wording for SRD, R350, and R370 searches. This page is not an official status checker.
           </p>
         </div>
 
