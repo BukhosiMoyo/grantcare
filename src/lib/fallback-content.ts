@@ -658,7 +658,7 @@ function buildFallbackPaymentPeriod(year: number, month: number): PublicPaymentP
       officialHref: socialRelief?.officialHref ?? OFFICIAL_LINKS[3].href,
       state: "portal-only",
       date: null,
-      note: "SRD payment timing varies by application outcome. Use the official SRD portal.",
+      note: "SRD paydays are assigned per approved applicant during the monthly payment window.",
       published: true,
     },
   ];

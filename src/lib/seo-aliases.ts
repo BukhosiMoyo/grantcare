@@ -156,16 +156,34 @@ export function getPaymentGrantSeoDisplayName(entry: PaymentEntryLike) {
   return getGrantSeoAliasConfig(entry.grantSlug)?.paymentDisplayName ?? entry.grantName;
 }
 
-export function getPaymentGrantSeoTitle(entry: PaymentEntryLike, paymentMonthLabel: string) {
+export function getPaymentGrantSeoTitle(
+  entry: PaymentEntryLike,
+  paymentMonthLabel: string,
+  paymentDateText?: string | null,
+) {
   const metadataName = getGrantSeoAliasConfig(entry.grantSlug)?.metadataName ?? entry.grantName;
+
+  if (paymentDateText) {
+    const dateType = entry.grantSlug === "social-relief" ? "Window" : "Date";
+    return `SASSA ${metadataName} Payment ${dateType}: ${paymentDateText}`;
+  }
 
   return `SASSA ${metadataName} Payment Dates for ${paymentMonthLabel}`;
 }
 
-export function getPaymentGrantSeoDescription(entry: PaymentEntryLike, paymentMonthLabel: string) {
+export function getPaymentGrantSeoDescription(
+  entry: PaymentEntryLike,
+  paymentMonthLabel: string,
+  paymentDateText?: string | null,
+) {
   const metadataName = getGrantSeoAliasConfig(entry.grantSlug)?.metadataName ?? entry.grantName;
 
-  return `Check ${metadataName} payment dates for ${paymentMonthLabel}, read the current pay-date note, see the current amount, and open the official SASSA link if you need confirmation.`;
+  if (paymentDateText) {
+    const dateType = entry.grantSlug === "social-relief" ? "window" : "date";
+    return `Check the ${metadataName} payment ${dateType} for ${paymentMonthLabel}: ${paymentDateText}. See the current amount and pay-date note.`;
+  }
+
+  return `Check ${metadataName} payment dates for ${paymentMonthLabel}, read the current pay-date note, and see the current amount.`;
 }
 
 export function getPaymentGrantSeoReferenceText(

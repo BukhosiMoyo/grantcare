@@ -20,11 +20,7 @@ export function GrantAmountDisplay({
     if (details.length === 1) {
       return (
         <div className={cn("space-y-2", className)}>
-          <div className="rounded-2xl border border-border bg-surface-muted px-4 py-3">
-            <span className="inline-flex max-w-full rounded-full bg-surface-strong px-4 py-2 text-lg font-semibold text-primary sm:text-xl">
-              {details[0].amount}
-            </span>
-          </div>
+          <p className="text-xl font-semibold text-primary sm:text-[1.45rem]">{details[0].amount}</p>
         </div>
       );
     }

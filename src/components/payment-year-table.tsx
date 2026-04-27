@@ -67,7 +67,10 @@ export function PaymentYearTable({
                     <td className="px-4 py-4 align-top text-base font-semibold text-primary sm:text-lg">
                       {getPaymentSummaryDayText(copy, {
                         date: entry.date ? formatDateLabel(entry.date) : null,
+                        grantSlug: entry.grantSlug,
+                        month: period.month,
                         state: entry.state,
+                        year: period.year,
                       })}
                     </td>
                     <td className="px-4 py-4 align-top text-base text-muted sm:text-lg">

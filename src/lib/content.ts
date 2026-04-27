@@ -41,6 +41,8 @@ import {
   type PublicStatusMeaning,
 } from "@/lib/fallback-content";
 import type { Locale } from "@/lib/site";
+import { filterIndexableGuides } from "@/lib/guide-seo";
+import { filterIndexablePaymentPeriods } from "@/lib/payment-seo";
 import { isDatabaseConfigured, isProductionServer } from "@/lib/server-env";
 
 export {
@@ -459,7 +461,7 @@ function createDefaultPaymentEntry(grant: PublicGrantType, fallback?: PublicPaym
       date: null,
       note:
         grant.slug === "social-relief"
-          ? "SRD payment timing varies by application outcome. Use the official SRD portal."
+          ? "SRD paydays are assigned per approved applicant during the monthly payment window."
           : "Awaiting an official update for this period.",
       published: false,
     }
@@ -513,12 +515,15 @@ async function mapPaymentPeriodRecord(
       officialHref: grantType.officialHref,
       state: mapPaymentState(entry.state),
       date: entry.paymentDate ? entry.paymentDate.toISOString().slice(0, 10) : null,
-      note: getLocalizedString(
-        entry.note ?? fallbackEntries[grantType.slug]?.note ?? "",
-        entry.translations,
-        locale,
-        "note",
-      ),
+      note:
+        grantType.slug === "social-relief" && entry.note?.includes("Use the official SRD portal")
+          ? "SRD paydays are assigned per approved applicant during the monthly payment window."
+          : getLocalizedString(
+              entry.note ?? fallbackEntries[grantType.slug]?.note ?? "",
+              entry.translations,
+              locale,
+              "note",
+            ),
       published: entry.published,
     });
   }
@@ -641,9 +646,12 @@ export async function listLatestGuides(locale: Locale, limit = 6) {
         take: limit,
       });
 
-      return records.map((record) => mapGuideRecord(record, locale));
+      return filterIndexableGuides(records.map((record) => mapGuideRecord(record, locale))).slice(
+        0,
+        limit,
+      );
     },
-    () => [...FALLBACK_GUIDES].slice(-limit).reverse(),
+    () => filterIndexableGuides([...FALLBACK_GUIDES]).slice(-limit).reverse(),
   );
 }
 
@@ -948,7 +956,9 @@ export async function listRecentPaymentPeriods(
   locale: Locale,
   input?: { excludeMonth?: number; excludeYear?: number; limit?: number },
 ) {
-  return (await listPaymentPeriods(locale))
+  const indexablePeriods = filterIndexablePaymentPeriods(await listPaymentPeriods(locale));
+
+  return indexablePeriods
     .filter((period) => {
       if (input?.excludeYear === undefined || input?.excludeMonth === undefined) {
         return true;
@@ -957,6 +967,19 @@ export async function listRecentPaymentPeriods(
       return !(period.year === input.excludeYear && period.month === input.excludeMonth);
     })
     .sort((left, right) => {
+      if (input?.excludeYear !== undefined && input?.excludeMonth !== undefined) {
+        const leftDistance = Math.abs(
+          (left.year - input.excludeYear) * 12 + (left.month - input.excludeMonth),
+        );
+        const rightDistance = Math.abs(
+          (right.year - input.excludeYear) * 12 + (right.month - input.excludeMonth),
+        );
+
+        if (leftDistance !== rightDistance) {
+          return leftDistance - rightDistance;
+        }
+      }
+
       if (left.year !== right.year) {
         return right.year - left.year;
       }
@@ -974,7 +997,7 @@ export async function listRelatedGuides(
 ) {
   const referenceTerms = tokenizeSeoValue(referenceText ?? excludeSlug ?? "");
 
-  return (await listGuides(locale))
+  return filterIndexableGuides(await listGuides(locale))
     .filter((guide) => guide.slug !== excludeSlug)
     .sort((left, right) => {
       const scoreDiff =

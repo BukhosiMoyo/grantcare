@@ -165,7 +165,10 @@ export default async function HomePage({
             const amountDetails = getGrantAmountDetails(entry.grantSlug);
             const payDayText = getPaymentSummaryDayText(copy, {
               date: entry.date ? formatDateLabel(entry.date) : null,
+              grantSlug: entry.grantSlug,
+              month: defaults.month,
               state: entry.state,
+              year: defaults.year,
             });
             const statusText = getPaymentSummaryStatusText(copy, entry.state);
 
@@ -371,7 +374,10 @@ export default async function HomePage({
                   const amountDetails = getGrantAmountDetails(entry.grantSlug);
                   const payDayText = getPaymentSummaryDayText(copy, {
                     date: entry.date ? formatDateLabel(entry.date) : null,
+                    grantSlug: entry.grantSlug,
+                    month: nextPeriod.month,
                     state: entry.state,
+                    year: nextPeriod.year,
                   });
                   const statusText = getPaymentSummaryStatusText(copy, entry.state);
 

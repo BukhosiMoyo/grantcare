@@ -43,11 +43,18 @@ export function getPaymentSummaryDayText(
   copy: PaymentSummaryCopy,
   input: {
     date: string | null;
+    grantSlug?: string;
+    month?: number;
     state: PaymentSummaryState;
+    year?: number;
   },
 ) {
   if (input.date) {
     return input.date;
+  }
+
+  if (input.grantSlug === "social-relief" && input.month && input.year) {
+    return getSrdPaymentWindowText(input.year, input.month);
   }
 
   if (input.state === "pending") {
@@ -55,6 +62,15 @@ export function getPaymentSummaryDayText(
   }
 
   return copy.paymentPortalOnly;
+}
+
+export function getSrdPaymentWindowText(year: number, month: number) {
+  const monthLabel = new Intl.DateTimeFormat("en-ZA", {
+    month: "long",
+    year: "numeric",
+  }).format(new Date(Date.UTC(year, month - 1, 1)));
+
+  return `24-31 ${monthLabel}`;
 }
 
 export function GrantSummaryCard({
@@ -74,7 +90,14 @@ export function GrantSummaryCard({
         <p className="text-base text-muted">{statusText}</p>
       </div>
 
-      <div className="grid gap-3 lg:grid-cols-[minmax(0,1.45fr)_minmax(0,0.85fr)]">
+      <div className="grid gap-3 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.75fr)]">
+        <div className="rounded-3xl border border-border bg-surface px-4 py-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
+            {payDayLabel}
+          </p>
+          <p className="mt-3 break-words text-2xl font-semibold text-primary sm:text-[2rem]">{payDayText}</p>
+        </div>
+
         <div className="rounded-3xl border border-border bg-surface px-4 py-4">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
             {amountLabel}
@@ -82,15 +105,8 @@ export function GrantSummaryCard({
           {amountDetails ? (
             <GrantAmountDisplay details={amountDetails} variant="summary" className="mt-3" />
           ) : (
-            <p className="mt-3 text-lg font-semibold text-primary">Check official update</p>
+            <p className="mt-3 text-lg font-semibold text-primary">Amount pending</p>
           )}
-        </div>
-
-        <div className="rounded-3xl border border-border bg-surface px-4 py-4">
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
-            {payDayLabel}
-          </p>
-          <p className="mt-3 text-xl font-semibold text-primary sm:text-[1.7rem]">{payDayText}</p>
         </div>
       </div>
 

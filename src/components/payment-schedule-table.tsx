@@ -20,13 +20,17 @@ type PaymentScheduleEntry = {
 export function PaymentScheduleTable({
   entries,
   locale,
+  month,
   monthLabel,
   monthPath,
+  year,
 }: {
   entries: PaymentScheduleEntry[];
   locale: Locale;
+  month: number;
   monthLabel: string;
   monthPath: string;
+  year: number;
 }) {
   const copy = getCopy(locale);
 
@@ -68,7 +72,10 @@ export function PaymentScheduleTable({
                   <td className="px-4 py-4 align-top text-base font-semibold text-primary sm:text-lg">
                     {getPaymentSummaryDayText(copy, {
                       date: entry.date ? formatDateLabel(entry.date) : null,
+                      grantSlug: entry.grantSlug,
+                      month,
                       state: entry.state,
+                      year,
                     })}
                   </td>
                   <td className="px-4 py-4 align-top text-base text-muted sm:text-lg">

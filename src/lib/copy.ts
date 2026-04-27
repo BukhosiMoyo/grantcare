@@ -237,7 +237,7 @@ const ENGLISH_COPY: HomeCopy = {
   paymentDates: "Payment dates",
   paymentEstimate: "Date expected",
   paymentPending: "Date not out yet",
-  paymentPortalOnly: "Check the official SRD site",
+  paymentPortalOnly: "SRD date varies by person",
   paymentScheduleIntro:
     "Choose a month and a grant. If the pay day is not out yet, it will say so clearly.",
   summaryAmountLabel: "How much you get",

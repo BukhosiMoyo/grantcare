@@ -21,9 +21,10 @@ import {
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { getGrantAmountDetails } from "@/lib/official-resources";
+import { formatPaymentPageLastUpdated, isPaymentYearIndexable } from "@/lib/payment-seo";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
-import { formatDateLabel, sentenceCase } from "@/lib/utils";
+import { formatDateLabel } from "@/lib/utils";
 
 export async function generateMetadata({
   params,
@@ -47,6 +48,7 @@ export async function generateMetadata({
     path: `/payment-dates/${year}/${month}`,
     title: `SASSA Payment Dates ${paymentMonth.label}`,
     description: `See SASSA payment dates for ${paymentMonth.label} across Older Persons, Disability, Children's, and SRD grants, with direct grant pages for details.`,
+    noIndex: !isPaymentYearIndexable(paymentMonth.year),
   });
 }
 
@@ -80,6 +82,7 @@ export default async function PaymentMonthPage({
       limit: 2,
     }),
   ]);
+  const lastUpdated = formatPaymentPageLastUpdated();
   const hubLinks = [
     {
       href: "/payment-dates",
@@ -112,7 +115,13 @@ export default async function PaymentMonthPage({
     itemListElement: paymentMonth.entries.map((entry, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: `${entry.grantName} — ${entry.date ? formatDateLabel(entry.date) : sentenceCase(entry.state)}`,
+      name: `${entry.grantName} — ${getPaymentSummaryDayText(copy, {
+        date: entry.date ? formatDateLabel(entry.date) : null,
+        grantSlug: entry.grantSlug,
+        month: paymentMonth.month,
+        state: entry.state,
+        year: paymentMonth.year,
+      })}`,
       url: new URL(
         buildLocalePath(locale, `/payment-dates/${year}/${month}/${entry.grantSlug}`),
         siteUrl,
@@ -144,6 +153,7 @@ export default async function PaymentMonthPage({
         }}
       />
       <Section eyebrow={copy.paymentDates} title={paymentMonth.label}>
+        <p className="text-sm text-muted">Updated {lastUpdated}</p>
         <div className="grid gap-4">
           {paymentMonth.entries.map((entry) => {
             const amountDetails = getGrantAmountDetails(entry.grantSlug);
@@ -162,7 +172,10 @@ export default async function PaymentMonthPage({
                   payDayLabel={copy.summaryPayDayLabel}
                   payDayText={getPaymentSummaryDayText(copy, {
                     date: entry.date ? formatDateLabel(entry.date) : null,
+                    grantSlug: entry.grantSlug,
+                    month: paymentMonth.month,
                     state: entry.state,
+                    year: paymentMonth.year,
                   })}
                   statusText={getPaymentSummaryStatusText(copy, entry.state)}
                   title={entry.grantName}

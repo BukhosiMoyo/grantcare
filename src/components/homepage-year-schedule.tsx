@@ -87,7 +87,7 @@ export function HomepageYearSchedule({
                         >
                           {entry?.state === "pending"
                             ? "Not confirmed"
-                            : "Check official site"}
+                            : "Date varies"}
                         </td>
                       );
                     }

@@ -8,6 +8,7 @@ import { PageViewTracker } from "@/components/page-view-tracker";
 import { Card, Section } from "@/components/ui";
 import { listGuides } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { filterIndexableGuides } from "@/lib/guide-seo";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
@@ -43,7 +44,7 @@ export default async function GuidesPage({
   }
 
   const copy = getCopy(locale);
-  const guides = await listGuides(locale);
+  const guides = filterIndexableGuides(await listGuides(locale));
   const hubLinks = [
     {
       href: "/payment-dates",

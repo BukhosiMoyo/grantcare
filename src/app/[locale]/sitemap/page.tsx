@@ -10,6 +10,8 @@ import {
   listPublicGrantTypes,
   listStatusMeanings,
 } from "@/lib/content";
+import { filterIndexableGuides } from "@/lib/guide-seo";
+import { filterIndexablePaymentPeriods } from "@/lib/payment-seo";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isPublicLocale } from "@/lib/site";
 
@@ -90,7 +92,7 @@ export default async function HtmlSitemapPage({
     { href: "/sitemap.xml", label: "XML sitemap" },
   ];
 
-  const paymentPages = periods.flatMap((period) => [
+  const paymentPages = filterIndexablePaymentPeriods(periods).flatMap((period) => [
     {
       href: buildLocalePath(locale, `/payment-dates/${period.year}/${period.monthSlug}`),
       label: `${period.label} payment dates`,
@@ -114,7 +116,7 @@ export default async function HtmlSitemapPage({
     label: status.title,
   }));
 
-  const guidePages = guides.map((guide) => ({
+  const guidePages = filterIndexableGuides(guides).map((guide) => ({
     href: buildLocalePath(locale, `/guides/${guide.slug}`),
     label: guide.title,
   }));

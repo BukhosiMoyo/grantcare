@@ -14,11 +14,13 @@ import { PageViewTracker } from "@/components/page-view-tracker";
 import { ButtonLink, Card, Pill, Section } from "@/components/ui";
 import {
   getGuideBySlug,
+  getPaymentRouteDefaults,
   listMonetizationBlocks,
   listRelatedFaqs,
   listRelatedGuides,
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { isGuideIndexable } from "@/lib/guide-seo";
 import {
   buildGuideMetaDescription,
   buildGuideMetaTitle,
@@ -248,6 +250,7 @@ export async function generateMetadata({
     path: `/guides/${slug}`,
     title: buildGuideMetaTitle(guide.title),
     description: buildGuideMetaDescription(guide.summary),
+    noIndex: !isGuideIndexable(guide),
     openGraphType: "article",
   });
 }
@@ -276,7 +279,7 @@ export default async function GuideDetailPage({
     ...guide.sections.flatMap((section) => [section.title, section.body]),
   ].join(" ");
 
-  const [relatedGuides, relatedFaqs, blocks] = await Promise.all([
+  const [relatedGuides, relatedFaqs, blocks, paymentDefaults] = await Promise.all([
     listRelatedGuides(locale, 6, slug, guideReferenceText),
     listRelatedFaqs(locale, 4),
     listMonetizationBlocks(locale, {
@@ -284,6 +287,7 @@ export default async function GuideDetailPage({
       guideSlug: slug,
       limit: 2,
     }),
+    getPaymentRouteDefaults(locale),
   ]);
 
   const copy = getCopy(locale);
@@ -300,6 +304,10 @@ export default async function GuideDetailPage({
       : null;
 
   const guidePath = buildLocalePath(locale, `/guides/${guide.slug}`);
+  const currentPaymentPath = buildLocalePath(
+    locale,
+    `/payment-dates/${paymentDefaults.year}/${paymentDefaults.monthSlug}`,
+  );
   const shareUrl = new URL(guidePath, getSiteUrl()).toString();
   const authorName = guide.authorName ?? "GrantCare Editorial Team";
   const lastUpdatedAt = guide.updatedAt ?? guide.publishedAt ?? null;
@@ -390,7 +398,7 @@ export default async function GuideDetailPage({
                   <span>{copy.checkStatus}</span>
                 </span>
               </ButtonLink>
-              <ButtonLink href={buildLocalePath(locale, "/payment-dates")}>
+              <ButtonLink href={currentPaymentPath}>
                 <span className="inline-flex items-center gap-2">
                   <CalendarIcon className="h-4 w-4" aria-hidden="true" />
                   <span>{copy.checkPaymentDates}</span>

@@ -212,7 +212,10 @@ export default async function GrantDetailPage({
             paymentEntry
               ? getPaymentSummaryDayText(copy, {
                   date: paymentEntry.date ? formatDateLabel(paymentEntry.date) : null,
+                  grantSlug: paymentEntry.grantSlug,
+                  month: paymentDefaults.month,
                   state: paymentEntry.state,
+                  year: paymentDefaults.year,
                 })
               : copy.summarySeePaymentDates
           }

@@ -4,7 +4,7 @@ import { REPORTED_CHECK_METHODS } from "@/lib/official-resources";
 export function QuickCheckOptions() {
   return (
     <div className="space-y-4">
-      <p className="text-sm text-muted">Quick routes published by other SASSA information sites.</p>
+      <p className="text-sm text-muted">Quick check routes.</p>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {REPORTED_CHECK_METHODS.map((item) => {
           const content = (

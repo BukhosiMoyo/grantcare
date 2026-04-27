@@ -7,12 +7,12 @@ import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import {
   getPaymentSummaryDayText,
   getPaymentSummaryStatusText,
+  getSrdPaymentWindowText,
   GrantSummaryCard,
 } from "@/components/grant-summary-card";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { MonetizationBlocks } from "@/components/monetization-blocks";
 import { PageViewTracker } from "@/components/page-view-tracker";
-import { TrackedExternalLink } from "@/components/tracked-external-link";
 import { ButtonLink, Card, Section } from "@/components/ui";
 import {
   getPaymentEntry,
@@ -24,6 +24,7 @@ import {
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { GRANT_AMOUNT_SOURCE, getGrantAmountDetails } from "@/lib/official-resources";
+import { formatPaymentPageLastUpdated, isPaymentYearIndexable } from "@/lib/payment-seo";
 import {
   getPaymentGrantSeoDescription,
   getPaymentGrantSeoDisplayName,
@@ -53,11 +54,18 @@ export async function generateMetadata({
     return {};
   }
 
+  const paymentDateText = paymentEntry.date
+    ? formatDateLabel(paymentEntry.date)
+    : paymentEntry.grantSlug === "social-relief"
+      ? getSrdPaymentWindowText(paymentMonth.year, paymentMonth.month)
+      : null;
+
   return buildLocalizedMetadata({
     locale,
     path: `/payment-dates/${year}/${month}/${grantType}`,
-    title: getPaymentGrantSeoTitle(paymentEntry, paymentMonth.label),
-    description: getPaymentGrantSeoDescription(paymentEntry, paymentMonth.label),
+    title: getPaymentGrantSeoTitle(paymentEntry, paymentMonth.label, paymentDateText),
+    description: getPaymentGrantSeoDescription(paymentEntry, paymentMonth.label, paymentDateText),
+    noIndex: !isPaymentYearIndexable(paymentMonth.year),
   });
 }
 
@@ -120,6 +128,18 @@ export default async function PaymentGrantPage({
     },
   ];
   const amountDetails = getGrantAmountDetails(paymentEntry.grantSlug);
+  const payDayText = getPaymentSummaryDayText(copy, {
+    date: paymentEntry.date ? formatDateLabel(paymentEntry.date) : null,
+    grantSlug: paymentEntry.grantSlug,
+    month: paymentMonth.month,
+    state: paymentEntry.state,
+    year: paymentMonth.year,
+  });
+  const resultTitle =
+    paymentEntry.date || paymentEntry.grantSlug === "social-relief"
+      ? `${displayGrantName} payment ${paymentEntry.grantSlug === "social-relief" ? "window" : "date"}: ${payDayText}`
+      : `${displayGrantName} payment dates for ${paymentMonth.label}`;
+  const lastUpdated = formatPaymentPageLastUpdated();
 
   const eventSchema = paymentEntry.date
     ? {
@@ -171,7 +191,7 @@ export default async function PaymentGrantPage({
       />
       <Section
         eyebrow={copy.paymentDates}
-        title={`${displayGrantName} payment dates for ${paymentMonth.label}`}
+        title={resultTitle}
       >
         <GrantSummaryCard
           amountDetails={amountDetails}
@@ -188,34 +208,24 @@ export default async function PaymentGrantPage({
                   Official amount source
                 </a>
               ) : null}
+              <p className="text-sm text-muted">Updated {lastUpdated}</p>
               <p className="max-w-2xl text-base text-muted">{paymentEntry.note}</p>
-              <div className="flex flex-wrap gap-3">
-                <ButtonLink href={buildLocalePath(locale, "/dashboard")}>{copy.saveDate}</ButtonLink>
-                <ButtonLink href={buildLocalePath(locale, "/dashboard")} variant="secondary">
-                  {copy.notifyMe}
-                </ButtonLink>
-                <TrackedExternalLink
-                  href={paymentEntry.officialHref}
-                  locale={locale}
-                  eventName="official_resource.clicked"
-                  eventPayload={{
-                    destination: "payment-date",
-                    grantSlug: paymentEntry.grantSlug,
-                  }}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-5 text-base font-semibold hover:bg-surface-muted"
-                >
-                  {copy.officialLink}
-                </TrackedExternalLink>
-              </div>
+              {paymentEntry.date ? (
+                <div className="flex flex-wrap gap-3">
+                  <ButtonLink href={buildLocalePath(locale, "/dashboard")}>{copy.saveDate}</ButtonLink>
+                  <ButtonLink href={buildLocalePath(locale, "/dashboard")} variant="secondary">
+                    {copy.notifyMe}
+                  </ButtonLink>
+                </div>
+              ) : null}
             </>
           }
-          payDayLabel={copy.summaryPayDayLabel}
-          payDayText={getPaymentSummaryDayText(copy, {
-            date: paymentEntry.date ? formatDateLabel(paymentEntry.date) : null,
-            state: paymentEntry.state,
-          })}
+          payDayLabel={
+            paymentEntry.grantSlug === "social-relief" && !paymentEntry.date
+              ? "Payment window"
+              : copy.summaryPayDayLabel
+          }
+          payDayText={payDayText}
           statusText={getPaymentSummaryStatusText(copy, paymentEntry.state)}
           title={displayGrantName}
         />

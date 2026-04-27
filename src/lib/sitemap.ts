@@ -7,7 +7,9 @@ import {
   listPublicGrantTypes,
   listStatusMeanings,
 } from "@/lib/content";
+import { filterIndexableGuides } from "@/lib/guide-seo";
 import { buildLocalizedSitemapEntry } from "@/lib/metadata";
+import { filterIndexablePaymentPeriods } from "@/lib/payment-seo";
 import { getPublicLocales } from "@/lib/site";
 
 function escapeXml(value: string) {
@@ -135,7 +137,7 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
   ]);
 
   const paymentRoutes = publicLocales.flatMap((locale) =>
-    paymentPeriods.flatMap((period) => [
+    filterIndexablePaymentPeriods(paymentPeriods).flatMap((period) => [
       buildLocalizedSitemapEntry({
         locale: locale.code,
         path: `/payment-dates/${period.year}/${period.monthSlug}`,
@@ -154,7 +156,7 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
   );
 
   const guideRoutes = publicLocales.flatMap((locale) =>
-    guides.map((guide) =>
+    filterIndexableGuides(guides).map((guide) =>
       buildLocalizedSitemapEntry({
         locale: locale.code,
         path: `/guides/${guide.slug}`,

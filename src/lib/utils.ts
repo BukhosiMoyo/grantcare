@@ -4,7 +4,7 @@ export function cn(...values: Array<string | false | null | undefined>) {
 
 export function formatDateLabel(date: string) {
   return new Intl.DateTimeFormat("en-ZA", {
-    weekday: "short",
+    weekday: "long",
     day: "numeric",
     month: "long",
     year: "numeric",

@@ -21,6 +21,11 @@ import {
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
+import {
+  filterIndexablePaymentPeriods,
+  formatPaymentPageLastUpdated,
+  getPaymentIndexYear,
+} from "@/lib/payment-seo";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
 
@@ -65,8 +70,10 @@ export default async function PaymentDatesPage({
     listFaqs(locale),
   ]);
 
-  const archive = periods.filter((entry) => entry.year >= new Date().getFullYear()).slice(0, 12);
-  const annualPeriods = periods.filter((entry) => entry.year === 2026);
+  const currentYear = getPaymentIndexYear();
+  const lastUpdated = formatPaymentPageLastUpdated();
+  const archive = filterIndexablePaymentPeriods(periods).slice(0, 12);
+  const annualPeriods = periods.filter((entry) => entry.year === currentYear);
   const annualCategories = paymentCategories.filter((category) =>
     annualPeriods.some((period) => Boolean(period.grants[category.slug])),
   );
@@ -161,12 +168,15 @@ export default async function PaymentDatesPage({
           <div className="space-y-2 text-center lg:text-left">
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Upcoming Payments</h2>
             <p className="text-muted">{defaults.label}</p>
+            <p className="text-sm text-muted">Updated {lastUpdated}</p>
           </div>
           <PaymentScheduleTable
             entries={defaults.entries}
             locale={locale}
+            month={defaults.month}
             monthLabel={defaults.label}
             monthPath={`/payment-dates/${defaults.year}/${defaults.monthSlug}`}
+            year={defaults.year}
           />
         </section>
 
@@ -174,19 +184,19 @@ export default async function PaymentDatesPage({
         <section className="space-y-6 rounded-[2rem] border border-border bg-surface p-6 shadow-sm sm:p-8">
           <div className="space-y-2 text-center lg:text-left">
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Current grant amounts</h2>
-            <p className="text-muted">Standard baseline 2026 amounts.</p>
+            <p className="text-muted">Standard baseline {currentYear} amounts.</p>
           </div>
           <GrantAmountTable />
         </section>
       </div>
 
       {annualCategories.length > 0 ? (
-        <Section title="2026 Payment Tables">
+        <Section title={`${currentYear} Payment Tables`}>
           <div className="mb-8 flex flex-wrap justify-center gap-3">
              {annualCategories.map((category) => (
                 <a
                   key={category.slug}
-                  href={`#${category.slug}-2026`}
+                  href={`#${category.slug}-${currentYear}`}
                   className="focus-ring tap-target inline-flex items-center justify-center rounded-2xl border border-border bg-surface px-6 py-2.5 text-sm font-bold tracking-wide transition-colors hover:bg-primary hover:text-white"
                 >
                   {category.name}
@@ -197,7 +207,7 @@ export default async function PaymentDatesPage({
             {annualCategories.map((category) => (
               <PaymentYearTable
                 key={category.slug}
-                anchorId={`${category.slug}-2026`}
+                anchorId={`${category.slug}-${currentYear}`}
                 grantSlug={category.slug}
                 locale={locale}
                 periods={annualPeriods}
