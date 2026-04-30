@@ -2,7 +2,7 @@ export function getPaymentIndexYear() {
   return new Date().getUTCFullYear();
 }
 
-export const PAYMENT_PAGE_LAST_UPDATED = "2026-04-27";
+export const PAYMENT_PAGE_LAST_UPDATED = "2026-04-30";
 
 export function isPaymentYearIndexable(year: number) {
   return year === getPaymentIndexYear();

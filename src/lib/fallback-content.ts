@@ -558,10 +558,22 @@ function getFirstBusinessDays(year: number, monthIndex: number, count: number) {
   return dates;
 }
 
-const OFFICIAL_PAYMENT_SCHEDULE_2026_2027: Record<
+const OFFICIAL_PAYMENT_SCHEDULE: Record<
   string,
   { olderPersons: string; disability: string; children: string }
 > = {
+  "2025-04": { olderPersons: "2025-04-02", disability: "2025-04-03", children: "2025-04-04" },
+  "2025-05": { olderPersons: "2025-05-06", disability: "2025-05-07", children: "2025-05-08" },
+  "2025-06": { olderPersons: "2025-06-03", disability: "2025-06-04", children: "2025-06-05" },
+  "2025-07": { olderPersons: "2025-07-02", disability: "2025-07-03", children: "2025-07-04" },
+  "2025-08": { olderPersons: "2025-08-05", disability: "2025-08-06", children: "2025-08-07" },
+  "2025-09": { olderPersons: "2025-09-02", disability: "2025-09-03", children: "2025-09-04" },
+  "2025-10": { olderPersons: "2025-10-02", disability: "2025-10-03", children: "2025-10-06" },
+  "2025-11": { olderPersons: "2025-11-04", disability: "2025-11-05", children: "2025-11-06" },
+  "2025-12": { olderPersons: "2025-12-02", disability: "2025-12-03", children: "2025-12-04" },
+  "2026-01": { olderPersons: "2026-01-06", disability: "2026-01-07", children: "2026-01-08" },
+  "2026-02": { olderPersons: "2026-02-03", disability: "2026-02-04", children: "2026-02-05" },
+  "2026-03": { olderPersons: "2026-03-03", disability: "2026-03-04", children: "2026-03-05" },
   "2026-04": { olderPersons: "2026-04-02", disability: "2026-04-07", children: "2026-04-08" },
   "2026-05": { olderPersons: "2026-05-05", disability: "2026-05-06", children: "2026-05-07" },
   "2026-06": { olderPersons: "2026-06-02", disability: "2026-06-03", children: "2026-06-04" },
@@ -578,7 +590,7 @@ const OFFICIAL_PAYMENT_SCHEDULE_2026_2027: Record<
 
 function getOfficialPaymentScheduleOverride(year: number, month: number) {
   const key = `${year}-${String(month).padStart(2, "0")}`;
-  return OFFICIAL_PAYMENT_SCHEDULE_2026_2027[key] ?? null;
+  return OFFICIAL_PAYMENT_SCHEDULE[key] ?? null;
 }
 
 function getRelativeMonthState(year: number, monthIndex: number): PublicPaymentDateState {
@@ -616,7 +628,10 @@ function buildFallbackPaymentPeriod(year: number, month: number): PublicPaymentP
   const disability = FALLBACK_GRANT_TYPES.find((entry) => entry.slug === "disability");
   const children = FALLBACK_GRANT_TYPES.find((entry) => entry.slug === "children");
   const socialRelief = FALLBACK_GRANT_TYPES.find((entry) => entry.slug === "social-relief");
-  const officialNote = "Official schedule for the 2026/2027 financial year.";
+  const officialNote =
+    year < 2026 || (year === 2026 && month <= 3)
+      ? "Official schedule for the 2025/2026 financial year."
+      : "Official schedule for the 2026/2027 financial year.";
 
   const entries: PublicPaymentEntry[] = [
     {

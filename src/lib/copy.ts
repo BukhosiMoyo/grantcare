@@ -235,7 +235,7 @@ const ENGLISH_COPY: HomeCopy = {
   openDashboard: "Open dashboard",
   otherGrantsTitle: "Other grants",
   paymentDates: "Payment dates",
-  paymentEstimate: "Date expected",
+  paymentEstimate: "Date confirmed",
   paymentPending: "Date not out yet",
   paymentPortalOnly: "SRD date varies by person",
   paymentScheduleIntro:
