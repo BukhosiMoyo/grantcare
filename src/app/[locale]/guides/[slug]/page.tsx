@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Fragment } from "react";
 
 import { toggleSavedGuideAction } from "@/actions/dashboard";
@@ -27,6 +27,7 @@ import {
   buildLocalizedMetadata,
 } from "@/lib/metadata";
 import { db } from "@/lib/prisma";
+import { getDuplicateGuideRedirectPath } from "@/lib/seo-redirects";
 import { type Locale, buildLocalePath, isLocale } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
 import { isDatabaseConfigured } from "@/lib/server-env";
@@ -251,6 +252,7 @@ export async function generateMetadata({
     title: buildGuideMetaTitle(guide.title),
     description: buildGuideMetaDescription(guide.summary),
     noIndex: !isGuideIndexable(guide),
+    noIndexFollow: true,
     openGraphType: "article",
   });
 }
@@ -264,6 +266,12 @@ export default async function GuideDetailPage({
 
   if (!isLocale(locale)) {
     notFound();
+  }
+
+  const redirectPath = getDuplicateGuideRedirectPath(slug);
+
+  if (redirectPath) {
+    redirect(buildLocalePath(locale, redirectPath));
   }
 
   const guide = await getGuideBySlug(locale, slug);

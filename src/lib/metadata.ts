@@ -83,6 +83,7 @@ export function buildLocalizedMetadata(input: {
   description: string;
   locale: Locale;
   noIndex?: boolean;
+  noIndexFollow?: boolean;
   openGraphType?: "article" | "website";
   path: string;
   title: string;
@@ -103,10 +104,10 @@ export function buildLocalizedMetadata(input: {
     robots: input.noIndex
       ? {
           index: false,
-          follow: false,
+          follow: input.noIndexFollow ?? false,
           googleBot: {
             index: false,
-            follow: false,
+            follow: input.noIndexFollow ?? false,
           },
         }
       : undefined,

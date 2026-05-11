@@ -46,9 +46,10 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: `/payment-dates/${year}/${month}`,
-    title: `SASSA Payment Dates ${paymentMonth.label}`,
-    description: `See SASSA payment dates for ${paymentMonth.label} across Older Persons, Disability, Children's, and SRD grants, with direct grant pages for details.`,
+    title: `SASSA Grant Pay Dates ${paymentMonth.label}`,
+    description: `Check SASSA grant pay dates for ${paymentMonth.label}, including child grant, Disability Grant, Old Age Grant, and SRD payment timing.`,
     noIndex: !isPaymentYearIndexable(paymentMonth.year),
+    noIndexFollow: true,
   });
 }
 

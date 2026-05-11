@@ -66,6 +66,7 @@ export async function generateMetadata({
     title: getPaymentGrantSeoTitle(paymentEntry, paymentMonth.label, paymentDateText),
     description: getPaymentGrantSeoDescription(paymentEntry, paymentMonth.label, paymentDateText),
     noIndex: !isPaymentYearIndexable(paymentMonth.year),
+    noIndexFollow: true,
   });
 }
 

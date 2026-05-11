@@ -76,7 +76,7 @@ const GRANT_SEO_ALIAS_MAP: Record<string, GrantSeoAliasConfig> = {
   },
   children: {
     displayName: "Children's Grants",
-    metadataName: "Children's Grants",
+    metadataName: "Child Grant",
     metadataDescriptionSuffix:
       "This page also covers child grant, child support grant payment date, children's grant pay date, foster child, and care dependency payment-date search intent.",
     paymentDisplayName: "Children's Grants",
@@ -180,7 +180,16 @@ export function getPaymentGrantSeoDescription(
 
   if (paymentDateText) {
     const dateType = entry.grantSlug === "social-relief" ? "window" : "date";
+
+    if (entry.grantSlug === "children") {
+      return `Check the ${metadataName} payment ${dateType} for ${paymentMonthLabel}: ${paymentDateText}. Includes Child Support Grant and children's grant pay-date searches.`;
+    }
+
     return `Check the ${metadataName} payment ${dateType} for ${paymentMonthLabel}: ${paymentDateText}. See the current amount and pay-date note.`;
+  }
+
+  if (entry.grantSlug === "children") {
+    return `Check ${metadataName} payment dates for ${paymentMonthLabel}, including Child Support Grant and children's grant pay-date searches.`;
   }
 
   return `Check ${metadataName} payment dates for ${paymentMonthLabel}, read the current pay-date note, and see the current amount.`;
