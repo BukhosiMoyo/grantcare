@@ -16,6 +16,7 @@ const ADMIN_ITEMS = [
   { href: "/admin/faqs", label: "FAQ" },
   { href: "/admin/notices", label: "Notices" },
   { href: "/admin/placements", label: "Placements" },
+  { href: "/admin/seo", label: "SEO & Search Console" },
 ];
 
 export function AdminNav({

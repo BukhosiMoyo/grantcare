@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { signOutAction } from "@/actions/auth";
 import { BrandLogo } from "@/components/brand-logo";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
 import { getSessionUser } from "@/lib/auth-guards";
 import { getCopy } from "@/lib/copy";
@@ -38,7 +39,8 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
               </Link>
             ))}
           </nav>
-          <div className="hidden shrink-0 items-center gap-2 lg:flex">
+          <div className="hidden shrink-0 items-center gap-3 lg:flex">
+            <LanguageSwitcher currentLocale={locale} label={copy.language} />
             <div className="flex items-center gap-2">
               {sessionUser ? (
                 <>
@@ -106,6 +108,12 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
                   <WhatsAppChannelBanner compact />
                 </div>
                 <div className="mt-4 border-t border-border/80 pt-4">
+                  <div className="mb-4 flex items-center justify-between gap-2 px-1">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">
+                      {copy.language}
+                    </span>
+                    <LanguageSwitcher currentLocale={locale} label={copy.language} compact />
+                  </div>
                   <div className="grid gap-2">
                     {sessionUser ? (
                       <>

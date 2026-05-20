@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { Fragment } from "react";
 
 import { toggleSavedGuideAction } from "@/actions/dashboard";
@@ -271,7 +271,7 @@ export default async function GuideDetailPage({
   const redirectPath = getDuplicateGuideRedirectPath(slug);
 
   if (redirectPath) {
-    redirect(buildLocalePath(locale, redirectPath));
+    permanentRedirect(buildLocalePath(locale, redirectPath));
   }
 
   const guide = await getGuideBySlug(locale, slug);

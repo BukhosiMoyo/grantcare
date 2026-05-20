@@ -6,10 +6,10 @@ import { startTransition } from "react";
 import { trackClientEvent } from "@/lib/analytics-client";
 import {
   LEGACY_LOCALE_COOKIE_NAME,
-  LOCALES,
   LOCALE_COOKIE_NAME,
   type Locale,
   buildLocalePath,
+  getPublicLocales,
 } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +24,11 @@ export function LanguageSwitcher({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+
+  const publicLocales = getPublicLocales();
+  if (publicLocales.length <= 1) {
+    return null;
+  }
 
   return (
     <div className="relative">
@@ -52,7 +57,7 @@ export function LanguageSwitcher({
           compact ? "w-[4.5rem] px-3 pr-8 text-center" : "px-3 pr-9",
         )}
       >
-        {LOCALES.map((locale) => (
+        {publicLocales.map((locale) => (
           <option key={locale.code} value={locale.code}>
             {compact ? locale.code.toUpperCase() : locale.label}
           </option>

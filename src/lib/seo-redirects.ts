@@ -1,3 +1,5 @@
+import { FALLBACK_GUIDES } from "./fallback-content";
+
 const MONTH_SLUG_PATTERN =
   "january|february|march|april|may|june|july|august|september|october|november|december";
 const PAYMENT_YEAR_PATTERN = "2025|2026|2027";
@@ -104,7 +106,7 @@ export function getSeoRedirects() {
     },
     {
       source: withLocaleSource(source),
-      destination,
+      destination: `/:locale${destination}`,
       permanent: true,
     },
   ]);
@@ -118,11 +120,31 @@ export function getSeoRedirects() {
       },
       {
         source: withLocaleSource(`/guides/${slug}`),
-        destination,
+        destination: `/:locale${destination}`,
         permanent: true,
       },
     ],
   );
 
-  return [...dynamicRedirects, ...explicitRedirects];
+  const duplicateRedirects = FALLBACK_GUIDES.flatMap((guide) => {
+    const destination = getDuplicateGuideRedirectPath(guide.slug);
+    if (!destination) {
+      return [];
+    }
+
+    return [
+      {
+        source: `/guides/${guide.slug}`,
+        destination,
+        permanent: true,
+      },
+      {
+        source: withLocaleSource(`/guides/${guide.slug}`),
+        destination: `/:locale${destination}`,
+        permanent: true,
+      },
+    ];
+  });
+
+  return [...dynamicRedirects, ...explicitRedirects, ...duplicateRedirects];
 }

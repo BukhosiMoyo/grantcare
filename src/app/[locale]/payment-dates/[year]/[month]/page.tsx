@@ -46,8 +46,8 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: `/payment-dates/${year}/${month}`,
-    title: `SASSA Grant Pay Dates ${paymentMonth.label}`,
-    description: `Check SASSA grant pay dates for ${paymentMonth.label}, including child grant, Disability Grant, Old Age Grant, and SRD payment timing.`,
+    title: `SASSA Grant Payout Dates for ${paymentMonth.label} (Official Calendar)`,
+    description: `Looking for the official SASSA grant payout dates for ${paymentMonth.label}? View the confirmed payment schedule, see status definitions, and calculate when child, old age, and disability payments release.`,
     noIndex: !isPaymentYearIndexable(paymentMonth.year),
     noIndexFollow: true,
   });
@@ -84,6 +84,34 @@ export default async function PaymentMonthPage({
     }),
   ]);
   const lastUpdated = formatPaymentPageLastUpdated();
+  const scheduleFaqs = [
+    {
+      question: `When do SASSA payment dates usually clear for ${paymentMonth.label}?`,
+      answer: `SASSA payments are typically cleared on the morning of the published payment date. Bank processing times can vary, so funds may reflect later in the day depending on your commercial bank (such as Capitec, FNB, Nedbank, Standard Bank, or TymeBank).`,
+    },
+    {
+      question: "What happens if a payment day falls on a weekend or public holiday?",
+      answer: "SASSA payments are never released on weekends or national public holidays. If a scheduled date falls on a Saturday, Sunday, or public holiday, the release is usually shifted to the next standard business day.",
+    },
+    {
+      question: "How do I check if my payment is ready or verify banking details?",
+      answer: "You can check your payment status and banking details verification state by logging in securely to the official SASSA Services Portal. If your status shows 'Approved', your funds will be released during the designated payment window.",
+    },
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": scheduleFaqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+
   const hubLinks = [
     {
       href: "/payment-dates",
@@ -212,6 +240,33 @@ export default async function PaymentMonthPage({
                 <p className="text-sm leading-7 text-muted">{guide.summary}</p>
               </Card>
             </Link>
+          ))}
+        </div>
+      </Section>
+
+      {/* ── Schedules FAQ Section ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      <Section title={`${paymentMonth.label} Payout FAQs`}>
+        <div className="space-y-4">
+          {scheduleFaqs.map((faq) => (
+            <details
+              key={faq.question}
+              className="group rounded-[1.5rem] border border-border bg-surface p-6 transition-all hover:border-primary/20 hover:bg-surface-muted hover:shadow-sm"
+            >
+              <summary className="flex cursor-pointer items-center justify-between font-semibold tracking-tight text-foreground sm:text-lg">
+                {faq.question}
+                <span className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface-strong transition-transform group-open:rotate-180">
+                  ↓
+                </span>
+              </summary>
+              <p className="mt-4 text-sm leading-7 text-muted">
+                {faq.answer}
+              </p>
+            </details>
           ))}
         </div>
       </Section>

@@ -7,7 +7,11 @@ import { getSiteUrl } from "@/lib/site-url";
  * - Organization: Powers Google Knowledge Panel
  * - WebSite: Enables sitelinks search box in SERPs
  */
-export function SiteSchema() {
+interface SiteSchemaProps {
+  locale?: string;
+}
+
+export function SiteSchema({ locale = "en" }: SiteSchemaProps) {
   const siteUrl = getSiteUrl();
 
   const schema = [
@@ -44,7 +48,7 @@ export function SiteSchema() {
       publisher: {
         "@id": `${siteUrl}/#organization`,
       },
-      inLanguage: "en",
+      inLanguage: locale,
       potentialAction: {
         "@type": "SearchAction",
         target: {

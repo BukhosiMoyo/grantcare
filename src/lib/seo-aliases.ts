@@ -165,10 +165,10 @@ export function getPaymentGrantSeoTitle(
 
   if (paymentDateText) {
     const dateType = entry.grantSlug === "social-relief" ? "Window" : "Date";
-    return `SASSA ${metadataName} Payment ${dateType}: ${paymentDateText}`;
+    return `SASSA ${metadataName} Payment ${dateType} for ${paymentMonthLabel}: ${paymentDateText} (Confirmed)`;
   }
 
-  return `SASSA ${metadataName} Payment Dates for ${paymentMonthLabel}`;
+  return `SASSA ${metadataName} Payment Dates for ${paymentMonthLabel} (Expected Schedule)`;
 }
 
 export function getPaymentGrantSeoDescription(
@@ -179,20 +179,18 @@ export function getPaymentGrantSeoDescription(
   const metadataName = getGrantSeoAliasConfig(entry.grantSlug)?.metadataName ?? entry.grantName;
 
   if (paymentDateText) {
-    const dateType = entry.grantSlug === "social-relief" ? "window" : "date";
-
     if (entry.grantSlug === "children") {
-      return `Check the ${metadataName} payment ${dateType} for ${paymentMonthLabel}: ${paymentDateText}. Includes Child Support Grant and children's grant pay-date searches.`;
+      return `Looking for the official SASSA child grant payment date for ${paymentMonthLabel}? The payout date is confirmed as ${paymentDateText}. Calculate your schedule, view banking detail fixes, and read status answers.`;
     }
 
-    return `Check the ${metadataName} payment ${dateType} for ${paymentMonthLabel}: ${paymentDateText}. See the current amount and pay-date note.`;
+    return `Looking for the official SASSA ${metadataName.toLowerCase()} payment date for ${paymentMonthLabel}? The payout date is confirmed as ${paymentDateText}. View the full payment schedule, check baseline grant amounts, and learn what to do if your grant is delayed.`;
   }
 
   if (entry.grantSlug === "children") {
-    return `Check ${metadataName} payment dates for ${paymentMonthLabel}, including Child Support Grant and children's grant pay-date searches.`;
+    return `Check expected SASSA child grant payment dates for ${paymentMonthLabel}. View the estimated payout calendar, see status meanings, and learn how to resolve missing payments.`;
   }
 
-  return `Check ${metadataName} payment dates for ${paymentMonthLabel}, read the current pay-date note, and see the current amount.`;
+  return `Check expected SASSA ${metadataName.toLowerCase()} payment dates for ${paymentMonthLabel}. View the estimated payout calendar, see status meanings, and learn how to resolve missing payments.`;
 }
 
 export function getPaymentGrantSeoReferenceText(

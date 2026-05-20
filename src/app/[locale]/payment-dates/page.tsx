@@ -163,6 +163,38 @@ export default async function PaymentDatesPage({
       </section>
 
       <div className="space-y-8 lg:space-y-12">
+        {/* ── Contextual Payout Links Grid ── */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+            Quick Payout Calendars ({defaults.label})
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {defaults.entries.map((entry) => {
+              const isSrd = entry.grantSlug === "social-relief";
+              const titleText = isSrd
+                ? `SASSA SRD Dates (${defaults.label})`
+                : `${entry.grantName} (${defaults.label})`;
+              const descText = isSrd
+                ? `Check SRD R370 status, banking updates, and payment windows.`
+                : `View official and estimated ${entry.grantName.toLowerCase()} payout schedules.`;
+              return (
+                <Link
+                  key={entry.grantSlug}
+                  href={buildLocalePath(locale, `/payment-dates/${defaults.year}/${defaults.monthSlug}/${entry.grantSlug}`)}
+                  className="focus-ring group rounded-[1.5rem] border border-border bg-surface p-5 transition-all hover:border-primary/20 hover:bg-surface-muted hover:shadow-sm"
+                >
+                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {titleText}
+                  </h3>
+                  <p className="mt-2 text-xs leading-5 text-muted">
+                    {descText}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+
         {/* ── 2. Current Month Schedule ── */}
         <section className="space-y-6 rounded-[2rem] border border-border bg-surface p-6 shadow-sm sm:p-8">
           <div className="space-y-2 text-center lg:text-left">

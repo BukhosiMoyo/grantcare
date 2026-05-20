@@ -447,6 +447,66 @@ const CORE_FALLBACK_GUIDES: PublicGuide[] = [
     sponsored: false,
     sortOrder: 3,
   },
+  {
+    slug: "sassa-office-visit-survival-guide",
+    title: "How to Survive Your Physical SASSA Office Visit (Certified Documents Checklist & Queue Tips)",
+    summary: "A highly practical, step-by-step guide to visiting a physical SASSA office, including queue-survival timing strategies, Commissioner of Oaths certified document checklists, and crucial tips for a successful application.",
+    sections: [
+      {
+        title: "The Queue Challenge: Timing Your Visit",
+        body: "Physical SASSA offices are notorious for long queues, often starting before dawn. To minimize waiting times, we recommend arriving between 06:00 AM and 07:00 AM. Tuesdays and Thursdays are generally less congested than Mondays or Fridays. Avoid visiting during the first week of the month when payment date collections cause peak crowding.",
+      },
+      {
+        title: "MANDATORY: Certified Documents Checklist",
+        body: "Never arrive empty-handed. You must bring the following documents, certified within the last 3 months by a Commissioner of Oaths (at a police station or post office):\n• Your original green barcoded ID book or smart ID card (plus 2 clear copies).\n• Proof of residence (utility bill or letter from a local ward councillor).\n• Three months of bank statements showing all transactions (no older than 3 months).\n• Proof of income or an affidavit confirming unemployment/no income.\n• If applying for child support: original birth certificate(s) of the child(ren) and proof of school attendance.",
+      },
+      {
+        title: "Survival Tips for the Day",
+        body: "Prepare for a long day: bring a bottle of water, a pen, and a light snack. Confirm with the queue marshal that you are in the correct line for your specific inquiry (applications vs status queries vs appeals). Always request a receipt or reference number from the agent who assists you—this is your only proof of application.",
+      },
+    ],
+    featured: true,
+    sponsored: false,
+    sortOrder: 4,
+    translations: {
+      zu: {
+        title: "Uyisinda kanjani i-SASSA Office Visit (Uhlu Lwemibhalo Egunyaziwe & Amathiphu Womugqa)",
+        summary: "Umhlahlandlela osebenzayo wokuvakashela ihhovisi le-SASSA, okuhlanganisa imibhalo edingekayo kanye namathiphu okubekezela emugqeni.",
+        sections: [
+          {
+            title: "Inselelo Yomugqa: Ukuhlela Isikhathi Sakho",
+            body: "Amahhovisi e-SASSA adume ngemigqa emide, evame ukuqala ngaphambi kokusa. Ukuze unciphise isikhathi sokulinda, sincoma ukuthi ufike phakathi kuka-06:00 AM no-07:00 AM. Izinsuku zangoLwesibili nangoLwesine zivame ukuba nengcindezi encane kunoMsombuluko noLwesihlanu. Gwema ukuvakashela phakathi nesonto lokuqala lenyanga lapho kukhokhwa khona izibonelelo.",
+          },
+          {
+            title: "OKUBALULEKILE: Uhlu Lwemibhalo Egunyaziwe",
+            body: "Ungalokothi ufike ungenalutho. Kumele ulethe le mibhalo elandelayo, egunyazwe phakathi kwezinyanga ezi-3 ezidlule:\n• Umazisi wakho wokuqala (green ID book noma smart card) namakhophi a-2 acacile.\n• Ubufakazi bendawo yokuhlala.\n• Izitatimende zebhange zezinyanga ezintathu ezigunyaziwe.\n• Ubufakazi bokungeniswa kwemali noma i-affidavit eqinisekisa ukungasebenzi.\n• Uma ufakele ingane: isitifiketi sokuzalwa sengane kanye nobufakazi besikole.",
+          },
+          {
+            title: "Amathiphu Okusinda Wosuku",
+            body: "Lungiselela usuku olude: phatha amanzi okukuphuza, ipeni, kanye nokudla okulula. Qinisekisa nomphathi womugqa ukuthi ukumugqa ofanele. Hlala ucela irisidi noma inombolo yereferensi ku-agent ekusizayo.",
+          },
+        ],
+      },
+      xh: {
+        title: "Uyisinda njani i-SASSA Office Visit (Uluhlu Lwamaxwebhu Aqinisekisiweyo kunye neeNcebiso zeLayini)",
+        summary: "Isikhokelo esisebenzayo sokundwendwela i-ofisi ye-SASSA, kubandakanywa amaxwebhu afunekayo kunye neengcebiso zokulinda emgceni.",
+        sections: [
+          {
+            title: "Umngeni We-Queue: Ixesha Lokundwendwela",
+            body: "Ii-ofisi ze-SASSA ziyaziwa ngemigca emide, eqala phambi kokuba kuse. Ukuze unciphise ixesha lokulinda, sicebisa ukuba ufike phakathi kwentsimbi yesi-06:00 AM neye-07:00 AM. OoLwesibini nooLwesine bafumana abantu abambalwa kunooLwesithathu nooLwesihlanu. Kuphephe ukutyelela kwiveki yokuqala yenyanga xa abantu abaninzi bephuthuma iimali zabo.",
+          },
+          {
+            title: "OKUNYANZELISIWEYO: Uluhlu Lwamaxwebhu Aqinisekisiweyo",
+            body: "Ungaze ufike ungenanto. Kufuneka uze nala maxwebhu alandelayo, aqinisekisiweyo kwiinyanga ezi-3 ezidlulileyo:\n• Isazisi sakho sokuqala (green ID book okanye smart card) kunye neekopi ezi-2 ezicacileyo.\n• Ubungqina bendawo yokuhlala.\n• Izitatimende zebhange zeenyanga ezintathu ezigunyazisiweyo.\n• Ubungqina bangeniso okanye iaffidavit eqinisekisa ukungaphangeli.\n• Ukuba ufakele umntwana: isatifikethi sokuzalwa sokuqala somntwana kunye nobungqina besikolo.",
+          },
+          {
+            title: "Iingcebiso zokulinda emgceni",
+            body: "Lungiselela usuku olude: phatha amanzi, usiba (ipeni), kunye nesikhwanyana sokutya. Qinisekisa nomphathi womgca ukuba ukulayini ochanekileyo. Soloko ucela irisithi okanye inombolo yereferensi kwi-ofisi ekuncedayo.",
+          },
+        ],
+      },
+    },
+  },
 ];
 
 const FALLBACK_GUIDE_AUTHOR = "GrantCare Editorial Team";
@@ -482,6 +542,32 @@ export const FALLBACK_GUIDES: PublicGuide[] = [
 
 export const FALLBACK_NEWS_ARTICLES: PublicNewsArticle[] = [
   {
+    slug: "sassa-new-biometric-verification-rules",
+    title: "SASSA Introduces Strict New Biometric Verification Rules to Curb Grant Fraud",
+    summary: "In a major move to fight identity theft and systemic fraud, SASSA has rolled out compulsory biometric facial recognition rules for high-risk profiles and electronic banking payment changes.",
+    sections: [
+      {
+        title: "The Reason Behind Biometrics",
+        body: "To safeguard billions of Rands in social assistance, the South African Social Security Agency (SASSA) has instituted a strict biometric facial verification process. This decision follows a surge in syndicate-driven grant hijacking and identity theft, particularly targeting the Social Relief of Distress (SRD) R370 grant.",
+      },
+      {
+        title: "Who Must Complete Biometric Verification",
+        body: "Biometric facial recognition is triggered under specific conditions:\n• When a user attempts to change their registered mobile phone number.\n• When bank payment details are updated on the SASSA portal.\n• For applications flagged by SASSA's internal risk engines (e.g. system audits showing multiple accounts on one device).",
+      },
+      {
+        title: "Step-by-Step Verification Guide",
+        body: "If your status is flagged, you will receive an SMS containing a secure, personalized verification link. Click this link on a smartphone with a working front camera. Position your face inside the on-screen oval in a well-lit room, and follow the prompts. The verification takes less than 2 minutes and is processed securely in real-time.",
+      },
+    ],
+    sourceUrls: [
+      "https://srd.sassa.gov.za/news/biometric-facial-recognition-system",
+      "https://www.gov.za/speeches/sassa-implements-biometric-facial-recognition-curb-srd-fraud-21-jun-2026",
+    ],
+    featured: true,
+    sortOrder: 0,
+    publishedAt: "2026-05-18",
+  },
+  {
     slug: "sassa-payment-schedule-2026-2027",
     title: "SASSA confirms social grant payment dates for 2026/2027",
     summary: "The official schedule sets dates from April 2026 to March 2027 and includes April grant increases.",
@@ -505,7 +591,7 @@ export const FALLBACK_NEWS_ARTICLES: PublicNewsArticle[] = [
       "https://www.treasury.gov.za/documents/National%20Budget/2026/review/FullBR.pdf",
     ],
     featured: true,
-    sortOrder: 0,
+    sortOrder: 1,
     publishedAt: "2026-03-20",
   },
 ];

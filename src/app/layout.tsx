@@ -1,22 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Noto_Sans } from "next/font/google";
-import "./globals.css";
-
-import { GoogleAnalytics } from "@/components/google-analytics";
-import { SiteSchema } from "@/components/site-schema";
 import { getSiteUrl } from "@/lib/site-url";
-import { DEFAULT_LOCALE } from "@/lib/site";
-
-const bodyFont = Noto_Sans({
-  variable: "--font-body",
-  subsets: ["latin"],
-});
-
-const monoFont = IBM_Plex_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -49,17 +32,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html
-      lang={DEFAULT_LOCALE}
-      data-scroll-behavior="smooth"
-      className={`${bodyFont.variable} ${monoFont.variable}`}
-    >
-      <body suppressHydrationWarning>
-        <SiteSchema />
-        <GoogleAnalytics />
-        {children}
-      </body>
-    </html>
-  );
+  return children;
 }
