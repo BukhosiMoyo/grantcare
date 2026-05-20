@@ -1,20 +1,20 @@
-import type { Locale } from "@/lib/site";
-import { SEO_BATCH_ELEVEN_GUIDES } from "@/lib/seo-batch-eleven-guides";
-import { SEO_BATCH_THIRTEEN_GUIDES } from "@/lib/seo-batch-thirteen-guides";
-import { SEO_BATCH_FOURTEEN_GUIDES } from "@/lib/seo-batch-fourteen-guides";
-import { SEO_BATCH_FIFTEEN_GUIDES } from "@/lib/seo-batch-fifteen-guides";
-import { SEO_BATCH_SIXTEEN_GUIDES } from "@/lib/seo-batch-sixteen-guides";
-import { SEO_BATCH_TWELVE_GUIDES } from "@/lib/seo-batch-twelve-guides";
-import { SEO_BATCH_ONE_GUIDES } from "@/lib/seo-batch-one-guides";
-import { SEO_BATCH_NINE_GUIDES } from "@/lib/seo-batch-nine-guides";
-import { SEO_BATCH_EIGHT_GUIDES } from "@/lib/seo-batch-eight-guides";
-import { SEO_BATCH_SEVEN_GUIDES } from "@/lib/seo-batch-seven-guides";
-import { SEO_BATCH_SIX_GUIDES } from "@/lib/seo-batch-six-guides";
-import { SEO_BATCH_TEN_GUIDES } from "@/lib/seo-batch-ten-guides";
-import { SEO_BATCH_FIVE_GUIDES } from "@/lib/seo-batch-five-guides";
-import { SEO_BATCH_FOUR_GUIDES } from "@/lib/seo-batch-four-guides";
-import { SEO_BATCH_THREE_GUIDES } from "@/lib/seo-batch-three-guides";
-import { SEO_BATCH_TWO_GUIDES } from "@/lib/seo-batch-two-guides";
+import type { Locale } from "./site";
+import { SEO_BATCH_ELEVEN_GUIDES } from "./seo-batch-eleven-guides";
+import { SEO_BATCH_THIRTEEN_GUIDES } from "./seo-batch-thirteen-guides";
+import { SEO_BATCH_FOURTEEN_GUIDES } from "./seo-batch-fourteen-guides";
+import { SEO_BATCH_FIFTEEN_GUIDES } from "./seo-batch-fifteen-guides";
+import { SEO_BATCH_SIXTEEN_GUIDES } from "./seo-batch-sixteen-guides";
+import { SEO_BATCH_TWELVE_GUIDES } from "./seo-batch-twelve-guides";
+import { SEO_BATCH_ONE_GUIDES } from "./seo-batch-one-guides";
+import { SEO_BATCH_NINE_GUIDES } from "./seo-batch-nine-guides";
+import { SEO_BATCH_EIGHT_GUIDES } from "./seo-batch-eight-guides";
+import { SEO_BATCH_SEVEN_GUIDES } from "./seo-batch-seven-guides";
+import { SEO_BATCH_SIX_GUIDES } from "./seo-batch-six-guides";
+import { SEO_BATCH_TEN_GUIDES } from "./seo-batch-ten-guides";
+import { SEO_BATCH_FIVE_GUIDES } from "./seo-batch-five-guides";
+import { SEO_BATCH_FOUR_GUIDES } from "./seo-batch-four-guides";
+import { SEO_BATCH_THREE_GUIDES } from "./seo-batch-three-guides";
+import { SEO_BATCH_TWO_GUIDES } from "./seo-batch-two-guides";
 
 export const MONTHS = [
   "january",
