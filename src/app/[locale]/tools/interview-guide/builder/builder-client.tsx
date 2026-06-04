@@ -8,39 +8,9 @@ import { FlowScreen } from "@/components/interview-guide/flow-screen";
 import { OptionGroup } from "@/components/interview-guide/option-card";
 import { LoadingSequence } from "@/components/interview-guide/loading-sequence";
 import { buildLocalePath, type Locale } from "@/lib/site";
+import { getInterviewGuideCopy } from "../copy";
 
 import "./builder.css";
-
-/* ── Flow Data ── */
-
-const INDUSTRY_OPTIONS = [
-  { label: "Retail", value: "Retail" },
-  { label: "Customer Service", value: "Customer Service" },
-  { label: "Government", value: "Government" },
-  { label: "Healthcare", value: "Healthcare" },
-  { label: "Other", value: "Other" },
-];
-
-const EXPERIENCE_OPTIONS = [
-  { label: "No experience", value: "none" },
-  { label: "Less than 1 year", value: "less-than-1" },
-  { label: "1–3 years", value: "1-3" },
-  { label: "3+ years", value: "3-plus" },
-];
-
-const CONCERN_OPTIONS = [
-  { label: "I don\u2019t know what to say", value: "dont-know-what-to-say" },
-  { label: "I get nervous", value: "get-nervous" },
-  { label: "I don\u2019t have experience", value: "no-experience" },
-  { label: "I don\u2019t know what questions they\u2019ll ask", value: "unknown-questions" },
-];
-
-const JOB_SUGGESTIONS = [
-  "Retail Assistant",
-  "Call Centre Agent",
-  "Admin Clerk",
-  "General Worker",
-];
 
 const TOTAL_STEPS = 5; // Job + Industry + Experience + Concern + CV(skip)
 
@@ -60,6 +30,7 @@ type Screen = "job" | "industry" | "experience" | "concern" | "cv" | "loading";
 export function BuilderClient({ locale }: { locale: Locale }) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
+  const copy = getInterviewGuideCopy(locale);
 
   const [screen, setScreen] = useState<Screen>("job");
   const [formData, setFormData] = useState<FlowData>({
@@ -102,22 +73,22 @@ export function BuilderClient({ locale }: { locale: Locale }) {
     try {
       const res = await fetch("/api/tools/interview-guide/generate", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "x-grantcare-locale": locale },
         body: JSON.stringify(formData),
       });
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(body.error || "Failed to generate guide");
+        throw new Error(body.error || copy.failedGenerate);
       }
 
       const data = await res.json();
       router.push(buildLocalePath(locale, `/tools/interview-guide/result/${data.id}`));
     } catch (err: unknown) {
       console.error("[builder]", err);
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setError(err instanceof Error ? err.message : copy.genericError);
     }
-  }, [formData, locale, router]);
+  }, [copy.failedGenerate, copy.genericError, formData, locale, router]);
 
   /* ── Render ── */
   return (
@@ -129,21 +100,21 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 1: Job Role ── */}
       {screen === "job" && (
         <FlowScreen
-          question="What job are you preparing for?"
-          subtitle="Type below or pick a suggestion"
+          question={copy.jobQuestion}
+          subtitle={copy.jobSubtitle}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             <input
               ref={inputRef}
               type="text"
               className="flow-input"
-              placeholder="e.g. Sales Assistant"
+              placeholder={copy.jobPlaceholder}
               value={formData.jobTitle}
               onChange={(e) => setFormData((prev) => ({ ...prev, jobTitle: e.target.value }))}
               autoFocus
             />
             <div className="flow-chips">
-              {JOB_SUGGESTIONS.map((job) => (
+              {copy.jobSuggestions.map((job) => (
                 <button
                   key={job}
                   type="button"
@@ -163,7 +134,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               disabled={formData.jobTitle.trim().length < 2}
               onClick={() => goTo("industry")}
             >
-              Continue
+              {copy.continue}
             </button>
           </div>
         </FlowScreen>
@@ -172,11 +143,11 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 2: Industry ── */}
       {screen === "industry" && (
         <FlowScreen
-          question="Which industry is this job in?"
+          question={copy.industryQuestion}
           onBack={() => goTo("job")}
         >
           <OptionGroup
-            options={INDUSTRY_OPTIONS}
+            options={copy.industryOptions}
             value={formData.industry}
             onChange={(v) => selectAndAdvance("industry", v, "experience")}
           />
@@ -186,11 +157,11 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 3: Experience Level ── */}
       {screen === "experience" && (
         <FlowScreen
-          question="How much experience do you have?"
+          question={copy.experienceQuestion}
           onBack={() => goTo("industry")}
         >
           <OptionGroup
-            options={EXPERIENCE_OPTIONS}
+            options={copy.experienceOptions}
             value={formData.experienceLevel}
             onChange={(v) => selectAndAdvance("experienceLevel", v, "concern")}
           />
@@ -200,12 +171,12 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 4: Biggest Concern ── */}
       {screen === "concern" && (
         <FlowScreen
-          question="What worries you most about interviews?"
-          subtitle="This helps us personalise your answers"
+          question={copy.concernQuestion}
+          subtitle={copy.concernSubtitle}
           onBack={() => goTo("experience")}
         >
           <OptionGroup
-            options={CONCERN_OPTIONS}
+            options={copy.concernOptions}
             value={formData.concern}
             onChange={(v) => selectAndAdvance("concern", v, "cv")}
           />
@@ -215,8 +186,8 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 5: CV Upload (MVP: Skip) ── */}
       {screen === "cv" && (
         <FlowScreen
-          question="Want better, personalised answers?"
-          subtitle="Upload your CV for more tailored responses"
+          question={copy.cvQuestion}
+          subtitle={copy.cvSubtitle}
           onBack={() => goTo("concern")}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem", alignItems: "center" }}>
@@ -232,14 +203,14 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               }}
             >
               <p style={{ marginBottom: "0.5rem", fontSize: "1.5rem" }}>📄</p>
-              <p>CV upload coming soon</p>
+              <p>{copy.cvUploadComingSoon}</p>
             </div>
             <button
               type="button"
               className="flow-btn flow-btn-primary"
               onClick={generate}
             >
-              Skip & Generate My Guide
+              {copy.generateButton}
             </button>
           </div>
         </FlowScreen>

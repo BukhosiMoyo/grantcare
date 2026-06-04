@@ -1,3 +1,5 @@
+import { addSetswanaTranslations } from "./generated-guide-translations";
+
 const section = (title: string, body: string) => ({ title, body });
 const faq = (question: string, answer: string) =>
   section(`FAQ: ${question}`, answer);
@@ -781,8 +783,1539 @@ const oldAgeVariants: OldAgeVariant[] = [
   },
 ];
 
-export const SEO_BATCH_SIXTEEN_GUIDES = [
+const SEO_BATCH_SIXTEEN_GUIDES_SOURCE = [
   ...statusTimingVariants.map(statusTimingGuide),
   ...paymentPhraseVariants.map(paymentPhraseGuide),
   ...oldAgeVariants.map(oldAgeGuide),
 ];
+
+type GuideTranslation = {
+  title: string;
+  summary: string;
+  sections: Array<{ title: string; body: string }>;
+};
+
+const ZU_TRANSLATIONS: Record<string, GuideTranslation> = {
+  "sassa-status-check-for-r350-payment-dates": {
+    "title": "Isheke lesimo le-SASSA lezinsuku zokukhokha ze-R350",
+    "summary": "Umhlahlandlela wokuhlola isimo sakwa-sassa sezinsuku zokukhokha zika-r350 uyaseshwa, uchaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ndawonye ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha isheke lesimo se-SASSA sezinsuku zokukhokha ze-R350 ngokuvamile kusho ukuthi othile ufuna kokubili umphumela wamanje kanye nempendulo yesikhathi ngesikhathi esisodwa. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa i-SRD yamanje noma ikhasi lokukhokha le-social-relief ukuze uthole umongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kosekelo lwe-R350 kuvame ukuhlanganisa imibuzo emibili ehlukene ibe umugqa owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ingxenye eyingozi ukuthatha ithuluzi lesimo futhi ikhasi ledethi yokukhokha liyinto efanayo. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila ofanele wesimo ukuze uthole ukwesekwa kwe-r350.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokho okudingayo, vula i-SRD yamanje noma ikhasi lokukhokha lokusiza umphakathi.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-use-sassa-status-check-for-r350\n• /guides/how-to-read-r350-status-check-and-payment-pages-together\n• /guides/payment-dates-2026\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe umphumela wesimo sokusekela i-r350 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-for-r350-payment-date": {
+    "title": "Isheke lesimo le-SASSA ledethi yokukhokha ye-R350",
+    "summary": "Umhlahlandlela wesheke lesimo sakwa-sassa sosesho lwezinsuku zokukhokha zika-r350, ochaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ndawonye ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha idethi yokukhokha ye-R350 ngokuvamile kusho ukuthi umsebenzisi uthemba ukuthi umphumela wesimo uzoholela osukwini olulodwa ngqo. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa ikhasi lenyanga elifanayo losekelo lwesitayela se-SRD ukuze uthole umongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "R350 usesho lwesikhathi sokukhokha ngokuvamile luhlanganisa imibuzo emibili ehlukene emugqeni owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Usuku olulodwa oluqondile lungabukeka lulula kunesimo sangempela, ikakhulukazi uma isikhathi sisasekelwe enyangeni noma ingosi. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila wesimo olungile wesikhathi sokukhokha sika-r350.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokhu okudingayo, vula ikhasi lenyanga elifanayo ukuze uthole ukwesekwa kwesitayela se-SRD.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-read-r350-payment-status-safely\n• /guides/payment-processing-meaning\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe umphumela wesimo sesikhathi sokukhokha sika-r350 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-for-r350-payment-dates-2025": {
+    "title": "I-SASSA isheke isimo sezinsuku zokukhokha ze-R350 zika-2025",
+    "summary": "Umhlahlandlela wokuhlola isimo sakwa-sassa wezinsuku zokukhokha u-r350 zosesho lwango-2025, ochaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ndawonye ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Lolu hlobo lokusesha luvamise ukukhomba ekuhlolweni konyaka wengobo yomlando, hhayi ukuhlela kwamanje kuphela. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa amakhasi engobo yomlando ka-2025 ukuze uthole isikhathi sokusiza umphakathi somongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwesikhathi se-R350 2025 kuvame ukuhlanganisa imibuzo emibili ehlukene emugqeni owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngaphandle kwelensi yengobo yomlando, izithombe-skrini zokukhokha ezindala zingaphambanisa namashejuli amanje. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila wesimo olungile wesikhathi se-r350 2025 sengobo yomlando.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokhu okudingayo, vula amakhasi engobo yomlando ka-2025 ukuze uthole isikhathi sokusiza umphakathi.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/srd-payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-know-if-a-payment-date-is-still-current\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe umphumela wesimo sesikhathi sengobo yomlando ka-r350 2025 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-for-r350-payments": {
+    "title": "Isheke lesimo le-SASSA lezinkokhelo ze-R350",
+    "summary": "Umhlahlandlela wokuhlola isimo sakwa-sassa sokuseshwa kwezinkokhelo zika-r350, ochaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ndawonye ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha izinkokhelo ze-R350 kuvame ukuba banzi kunosesho lwedethi futhi kungabandakanya ukugunyazwa, ukucutshungulwa kwenkokhelo, noma ukukhathazeka ngokukhokha. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa inkomba yamanje yokukhokha kanye namakhasi encazelo yesimo ndawonye ukuze uthole umongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwezinkokhelo ze-R350 kuvame ukuhlanganisa imibuzo emibili ehlukene emugqeni owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi basesha kabanzi izinkokhelo, kuba lula ukuphuthelwa ukuthi inkinga ingumphumela wesimo noma isikhathi ngokwaso. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila ofanele wesimo sokukhokha u-r350.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokho okudingayo, vula inkomba yamanje yokukhokha kanye namakhasi encazelo yesimo ndawonye.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/approved-but-no-payment\n• /guides/why-payment-is-delayed\n• /guides/how-to-fix-missing-payment-issues\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe umphumela wesimo sokukhokha sika-r350 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-for-r350-payment": {
+    "title": "Isheke lesimo le-SASSA lenkokhelo ye-R350",
+    "summary": "Umhlahlandlela wokuhlola isimo sakwa-sassa sokuseshwa kwenkokhelo ka-r350, ochaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ndawonye ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Lokhu sesho ngokuvamile kusho ukuthi umsebenzisi ufuna ukwazi ukuthi inkokhelo kufanele ngabe isivele yenzeka yini ngemuva komphumela wesimo. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa imihlahlandlela yokulungela ukukhokha kanye nokucubungula inkokhelo ukuze uthole umongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwenqubekelaphambili yenkokhelo ye-R350 kuvame ukuhlanganisa imibuzo emibili ehlukene emugqeni owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Isimo esihle asisho njalo ukuthi imali isikhishiwe, ngakho amagama enqubekelaphambili yokukhokha adinga ukufundwa ngokucophelela. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila ofanele wesimo senqubekelaphambili yokukhokha u-r350.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokho okudingayo, vula iziqondiso zokulungela ukukhokha kanye nokucubungula inkokhelo.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-payment-status-check-means\n• /guides/what-payment-pending-means\n• /guides/how-to-read-payment-status-after-approval\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe umphumela wenqubekelaphambili yenkokhelo ka-r350 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-for-r370-payment": {
+    "title": "Isheke lesimo le-SASSA lenkokhelo ye-R370",
+    "summary": "Umhlahlandlela wokuhlola isimo sakwa-sassa sokuseshwa kwenkokhelo ka-r370, ochaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ndawonye ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha inkokhelo ye-R370 ngokuvamile kubonisa inani elisha lamagama, kodwa ukuhlukana okufanayo kusabalulekile phakathi kwesimo nesikhathi. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa amakhasi okukhokha okusiza umphakathi enyanga efanele ukuze uthole umongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "R370 usesho lwesikhathi sokukhokha ngokuvamile luhlanganisa imibuzo emibili ehlukene emugqeni owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukushintsha inani lamagama kungenza abantu bacabange ukuthi badinga isistimu ehlukile kuyilapho ngokuvamile bedinga inqubo efanayo ifundwe ngokucophelela. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila wesimo olungile wesikhathi sokukhokha sika-r370.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokho okudingayo, vula amakhasi okukhokha okusiza umphakathi enyanga efanele.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-r370-status-safely\n• /guides/srd-payment-dates-april-2026\n• /guides/srd-payment-dates-may-2026\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe umphumela wesimo sesikhathi sokukhokha sika-r370 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-for-r350-pay-day": {
+    "title": "I-SASSA isheke isimo sosuku lokukhokha lwe-R350",
+    "summary": "Umhlahlandlela wesheke lesimo sakwa-sassa sosesho lwezinsuku zokuhola lika-r350, ochaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ndawonye ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha kosuku olukhokha ngokuvamile kusho ukuthi umsebenzisi ufuna idethi yokukhokha yolimi olulula, hhayi incazelo yesimo sobuchwepheshe. Indlela ephephile iwukufunda umphumela wesimo kuqala bese usebenzisa ikhasi lenyanga elifana nomjikelezo wokukhokha wamanje womongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "R350 usesho lwesikhathi sosuku lokukhokha luvamise ukuhlanganisa imibuzo emibili ehlukene ibe umugqa owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amagama angajwayelekile afana nosuku lomholo angenza idethi esuselwe kuphothali noma elindelwe ibukeke ingeyokugcina kunokuba injalo ngempela. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila ofanele wesimo ngo-r350 wosuku lokukhokha.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokho okudingayo, vula ikhasi lenyanga elihambisana nomjikelezo wokukhokha wamanje.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-check-payment-readiness-for-r350-support\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe umphumela wesimo sesikhathi sosuku lokukhokha sika-r350 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-for-r350-payment-dates-2024": {
+    "title": "I-SASSA isheke isimo sezinsuku zokukhokha ze-R350 zika-2024",
+    "summary": "Umhlahlandlela wokuhlola isimo sakwa-sassa wezinsuku zokukhokha u-r350 zosesho lwango-2024, ochaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ndawonye ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Lokhu kusesha ngokuvamile kumayelana nokuhlola ingobo yomlando futhi kufanele kuthathwe njengomongo womlando kuneshejuli ebukhoma. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa amakhasi engobo yomlando nemihlahlandlela yokuqhathanisa unyaka ukuze uthole umongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwesikhathi se-R350 2024 kuvame ukuhlanganisa imibuzo emibili ehlukene emugqeni owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukusesha konyaka omdala kudala ukudideka ngokushesha uma izithombe-skrini zabiwa ngaphandle kokuthi unyaka ubonakale. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila olungile wesimo sesikhathi se-r350 2024 sengobo yomlando.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokho okudingayo, vula amakhasi engobo yomlando kanye nemihlahlandlela yokuqhathanisa yonyaka.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-know-if-a-payment-date-is-still-current\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe umphumela wesimo sesikhathi sengobo yomlando ka-r350 2024 ungabonisa idethi yokugcina yokukhokha iyodwa?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-payment-dates-2025": {
+    "title": "Izinsuku zokukhokha zesheke lesimo se-SASSA zika-2025",
+    "summary": "Umhlahlandlela wezinsuku zokukhokha isheke lesimo se-sassa osesho lwango-2025, ochaza ukuthi imiphumela yesimo namakhasi edethi yokukhokha asebenza kanjani ngaphandle kokuwaphatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha okuvamile kwango-2025 ngokuvamile kusho ukuthi abasebenzisi bafuna umongo wenkokhelo ongobo yomlando kodwa bawubeka ngolimi lokuhlola isimo. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa imihlahlandlela yengobo yomlando yango-2025 namakhasi okukhokha anyanga zonke ukuze uthole umongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwesikhathi sokukhokha kwesibonelelo sikahulumeni kwango-2025 kuvame ukuhlanganisa imibuzo emibili ehlukene emugqeni owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma unyaka wonke useshwa ngamagama okuhlola isimo, abasebenzisi bangakwazi ukunaka ukuthi empeleni bafuna ikhalenda yengobo yomlando. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila wesimo olungile wesikhathi sokukhokha isibonelelo sika-2025.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi sikudinga, vula imihlahlandlela yengobo yomlando yango-2025 namakhasi okukhokha nyanga zonke.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe umphumela wesimo sesikhathi sokukhokha isibonelelo sikahulumeni sika-2025 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-payment-dates-2026": {
+    "title": "Izinsuku zokukhokha zesheke lesimo se-SASSA zango-2026",
+    "summary": "Umhlahlandlela wezinsuku zokukhokha isheke lesimo se-sassa osesho lwango-2026, ochaza ukuthi imiphumela yesimo namakhasi edethi yokukhokha asebenza kanjani ngaphandle kokuwaphatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho lwango-2026 ngokuvamile lusho ukuthi abasebenzisi bafuna ukubuka konyaka wamanje kodwa basahlanganisa ulimi lwesimo nokuhlela usuku lokukhokha. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa amakhasi okukhokha onyaka wamanje wenyanga elungile kanye nohlobo lwesibonelelo somongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwesikhathi sokukhokha kwesibonelelo sikahulumeni kwango-2026 kuvame ukuhlanganisa imibuzo emibili ehlukene ibe umugqa owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi onyaka wamanje awusizo kuphela lapho abasebenzisi befunda inyanga, isigaba sesibonelelo, kanye nesimo sokukhokha ndawonye. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila wesimo olungile wesikhathi sokukhokha isibonelelo sika-2026.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokho okudingayo, vula amakhasi okukhokha onyaka wamanje wenyanga efanele kanye nohlobo lwesibonelelo.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/payment-dates-2026\n• /guides/how-to-know-if-your-payment-is-ready\n• /guides/what-payment-released-means\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe umphumela wesimo sesikhathi sokukhokha isibonelelo sikahulumeni sika-2026 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-for-r350-payment-dates-june": {
+    "title": "Isheke lesimo le-SASSA lezinsuku zokukhokha ze-R350 zangoJuni",
+    "summary": "Umhlahlandlela wesheke lesimo sakwa-sassa wezinsuku zokukhokha zika-r350 zosesho lwangoJuni, ochaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ndawonye ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho oluqondile lukaJuni ngokuvamile lusho ukuthi othile uzama ukufanisa umphumela wesimo nenyanga eyodwa yesikhathi se-SRD. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa ikhasi likaJuni lokukhokha impumuzo yomphakathi ukuze uthole umongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwesikhathi kukaJuni R350 kuvame ukuhlanganisa imibuzo emibili ehlukene emugqeni owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukusesha kwenyanga kuphela kulula ukufundwa kabi uma isithombe-skrini esidala sishoda unyaka noma inothi lokukhokha. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila ofanele wesimo sikaJuni R350 isikhathi.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokho okudingayo, vula ikhasi lokukhokha likaJuni lokusiza umphakathi.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/payment-dates-june-2026\n• /guides/srd-payment-dates-june-2026\n• /guides/how-to-know-if-a-payment-date-is-still-current\n• /payment-dates/2026/june/social-relief"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe umphumela wesimo sesikhathi sikaJuni r350 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-for-r350-payment-dates-july": {
+    "title": "Isheke lesimo le-SASSA lezinsuku zokukhokha ze-R350 zangoJulayi",
+    "summary": "Umhlahlandlela wesheke lesimo sakwa-sassa wezinsuku zokukhokha zika-r350 zosesho lwangoJulayi, ochaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ndawonye ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho oluqondile lukaJulayi ngokuvamile lusho ukuthi umsebenzisi ufuna ukuxhuma isikhathi sokukhokha senyanga eyodwa namagama akamuva esimo. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa ikhasi likaJulayi lokukhokha impumuzo yomphakathi ukuze uthole umongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwesikhathi kwe-R350 kaJulayi kuvame ukuhlanganisa imibuzo emibili ehlukene emugqeni owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Igama lenyanga ngokwalo lingafihla ukuthi ingabe ukusesha kumayelana nomjikelezo wamanje noma inyanga endala yengobo yomlando. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila ofanele wesimo wangoJulayi R350 wesikhathi.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokho okudingayo, vula ikhasi likaJulayi lokukhokha impumuzo yomphakathi.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/payment-dates-july-2026\n• /guides/srd-payment-dates-july-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates/2026/july/social-relief"
+      },
+      {
+        "title": "I-FAQ: Ingabe umphumela wesimo sesikhathi sikaJulayi ka-r350 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-for-srd-r370": {
+    "title": "I-SASSA isheke isimo se-SRD R370",
+    "summary": "Umhlahlandlela wokuhlola isimo sakwa-sassa wokusesha kwe-srd r370, ochaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ndawonye ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha i-SRD R370 ngokuvamile kusho ukuthi abasebenzisi bafuna impendulo yesimo samanje kodwa futhi babheke isikhathi sokukhokha ngokuvakasha okufanayo. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa umhlahlandlela wamanje wenyanga we-SRD ngemva kokuba umphumela wesimo ufundwe ukuze uthole umongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "SRD R370 ukusesha isimo kuvame ukuhlanganisa imibuzo emibili ehlukene ibe umugqa owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Inani lamagama lingenza ukusesha kubukeke kukusha ngisho nalapho imikhuba yokufunda ephephe kakhulu isafana namanye amakhasi we-SRD. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila wesimo olungile wesimo se-srd r370.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokho okudingayo, vula inkomba yenyanga ye-SRD yamanje ngemva kokuba umphumela wesimo usufundiwe.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-r370-status-safely\n• /guides/how-to-check-srd-status-online\n• /guides/what-pending-verification-means\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe umphumela wesimo se-srd r370 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-status-check-for-r370-payment-dates": {
+    "title": "Isheke lesimo le-SASSA lezinsuku zokukhokha ze-R370",
+    "summary": "Umhlahlandlela wokuhlola isimo sakwa-sassa sezinsuku zokukhokha zika-r370 uyaseshwa, uchaza ukuthi imiphumela yesimo namakhasi osuku lokukhokha asebenza kanjani ngaphandle kokuwathatha njengento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha izinsuku zokukhokha ze-R370 ngokuvamile kusho ukuthi abasebenzisi bafuna isikhathi esiboshelwe enanini elisha lamagama, hhayi nje incazelo yesimo. Indlela ephephile ukufunda umphumela wesimo kuqala bese usebenzisa ikhasi lenyanga elifanele ukuze uthole isikhathi sokusiza umphakathi somongo wesikhathi. Umphumela wesimo awusebenzi ngokuzenzakalelayo njengekhalenda lokugcina lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "R370 ukusesha izinsuku zokukhokha kuvame ukuhlanganisa imibuzo emibili ehlukene emugqeni owodwa: ukuthi uthini umphumela wamanje nokuthi inkokhelo ingase isilungile nini. Empeleni, amakhasi ezimo achaza ukuqhubeka kwecala, kuyilapho amakhasi edethi yokukhokha asiza abasebenzisi ukuthi bafunde isikhathi senyanga nezimo zokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma inani lamagama lishintsha, abasebenzisi bangaqala ukwethemba uhlu lwezinsuku ezikopishiwe olungachazi inyanga noma isimo sokukhokha ngokucacile ngokwanele. Ukudideka kuvame ukuqala lapho umlayezo wesimo owodwa uthathwa njengempendulo yokukhokha egcwele nakuba isikhathi singase sincike ekhasini lenyanga, inothi lokukhokha, noma ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngomzila ofanele wesimo ngezinsuku zokukhokha zika-r370.\n2. Funda umphumela wamanje ngokucophelela esikhundleni sokugxumela usuku oluthile.\n3. Uma isikhathi siyilokho okudingayo, vula ikhasi lenyanga elifanele ukuze uthole isikhathi sokusiza umphakathi.\n4. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela.\n5. Sebenzisa umzila osemthethweni ofanele lapho ukuqinisekiswa kokugcina kusancike endabeni yakho."
+      },
+      {
+        "title": "Indlela yokufunda kahle usesho",
+        "body": "Umkhuba ophephe kakhulu ukuhlukanisa ukufunda isimo nokufunda ngedethi yokukhokha. Ziyasekelana, kodwa azilona ithuluzi elifanayo futhi akufanele kuthathwe sengathi ziphendula umbuzo ofanayo ncamashi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ichaza isimo namagama osuku lokukhokha ngolimi olulula, kodwa akusona isimo esisemthethweni noma uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emshweni wokusesha oxubile uye ekhasini elilandelayo elingakwesokudla, noma ngabe lokho kuyincazelo yesimo, inkomba yedethi yokukhokha, noma inketho yesikhumbuzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/srd-payment-dates-2025\n• /guides/payment-dates-2026\n• /guides/how-to-read-r350-payment-status-safely\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe umphumela wesimo sezinsuku zokukhokha ezingu-r370 ungabonisa usuku lokugcina lokukhokha ngokwakho?",
+        "body": "Hhayi njalo. Umphumela wesimo ungase udinge ukufundwa kanye nekhasi lenyanga elilungile noma umzila osemthethweni ngaphambi kokuthi kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwesimo nosuku lokukhokha kuxutshwa ndawonye kaningi?",
+        "body": "Ngoba abasebenzisi ngokuvamile bafuna impendulo eyodwa elula, nakuba ukuqhubeka kwecala nesikhathi sokukhokha kuyizingxenye ezihlukene zenqubo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma amagama asabukeka engaqinisekile noma icala lakho lidinga ukuqinisekiswa okuqondile."
+      }
+    ]
+  },
+  "sassa-srd-status-check-dates": {
+    "title": "SASSA SRD izinsuku zokuhlola isimo",
+    "summary": "Umhlahlandlela wokusesha amadethi okuhlola isimo se-sassa srd, obhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha nakakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha izinsuku zokuhlola isimo se-SRD ngokuvamile kusho ukuthi abasebenzisi bafuna isikhathi ngelensi yesimo. Indlela ephephe kunazo zonke ukufanisa amagama nekhasi lenyanga le-SRD lamanje kanye negayidi yesimo ndawonye bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "SRD amadethi okuhlola isimo ngokuvamile azwakala sengathi kufanele kube nedethi eyodwa elula yomphakathi yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma ukusesha kuthathwa njengesicelo sosuku olulodwa, kungafihla umehluko phakathi kwamagama esimo nesikhathi sokukhokha. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usesho lukhomba luphi uhlobo lwamagama.\n2. Qondanisa nekhasi lenyanga le-SRD lamanje kanye negayidi yesimo ndawonye.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Phatha iminyaka yengobo yomlando njengomongo wengobo yomlando kunesithembiso sokukhokha bukhoma.\n5. Sebenzisa iziteshi ezisemthethweni uma udinga isiqinisekiso sokugcina esiqondene ngqo necala."
+      },
+      {
+        "title": "Ungacabanga kanjani ngamagama",
+        "body": "Umkhuba ophephile ukufunda amagama osuku lokukhokha njengomhlahlandlela, hhayi njengesiqinisekiso. Idethi ngokwayo ayiyona incazelo ephelele yekhasi lokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-srd-status-online\n• /guides/payment-processing-meaning\n• /guides/srd-payment-dates-2025\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe izinsuku zokuhlola isimo se-srd zihlala zikhomba usuku olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-srd-status-check-dates-370": {
+    "title": "SASSA SRD izinsuku zokuhlola isimo 370",
+    "summary": "Umhlahlandlela wokuhlola isimo se-sassa srd izinsuku zokuseshwa okungama-370, ezibhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha kakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho lwezinsuku zokuhlola isimo ezingu-SRD 370 ngokuvamile kusho ukuthi umsebenzisi uhlanganisa amagama amasha yenani kanye nedethi elindelwe. Indlela ephephe kunazo zonke ukufanisa amagama nekhasi lenyanga le-SRD elimeshayo lomjikelezo wamanje bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "SRD 370 ukusesha kwezinsuku zokuhlola isimo kuvame ukuzwakala sengathi kufanele kube nedethi eyodwa elula yomphakathi yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Inombolo embuzweni ingenza ikhasi lizizwe linembe kakhulu kunalokho eliyikho ngempela uma inyanga nenothi lokukhokha lingekho. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usesho lukhomba luphi uhlobo lwamagama.\n2. Qondanisa nekhasi lenyanga le-SRD elifanayo lomjikelezo wamanje.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Phatha iminyaka yengobo yomlando njengomongo wengobo yomlando kunesithembiso sokukhokha bukhoma.\n5. Sebenzisa iziteshi ezisemthethweni uma udinga isiqinisekiso sokugcina esiqondene ngqo necala."
+      },
+      {
+        "title": "Ungacabanga kanjani ngamagama",
+        "body": "Umkhuba ophephile ukufunda amagama osuku lokukhokha njengomhlahlandlela, hhayi njengesiqinisekiso. Idethi ngokwayo ayiyona incazelo ephelele yekhasi lokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-r370-status-safely\n• /guides/srd-payment-dates-january-2026\n• /guides/srd-payment-dates-february-2026\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe izinsuku zokuhlolwa kwesimo se-srd 370 zihlala zikhomba usuku olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-srd-payment-date": {
+    "title": "SASSA SRD usuku lokukhokha",
+    "summary": "Umhlahlandlela osesho lwedethi yokukhokha ye-sassa srd, ebhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha nakakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha idethi yokukhokha ye-SRD ngokuvamile kusho ukuthi umsebenzisi ufuna impendulo elula yomjikelezo wamanje. Indlela ephephe kunazo zonke ukufanisa amagama nekhasi lenyanga elifanele le-SRD bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "SRD usesho lwamagama lwedethi yokukhokha ngokuvamile luzwakala sengathi kufanele kube nedethi yomphakathi eyodwa elula yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Isikhathi se-SRD sivamise ukuphepheka kakhulu uma kufundwa nekhasi lenyanga kanye nomzila osemthethweni ndawonye kunokuba kube njengedethi eyodwa entantayo. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usesho lukhomba luphi uhlobo lwamagama.\n2. Qondanisa nekhasi lenyanga elilungile le-SRD lesikhathi.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Phatha iminyaka yengobo yomlando njengomongo wengobo yomlando kunesithembiso sokukhokha bukhoma.\n5. Sebenzisa iziteshi ezisemthethweni uma udinga isiqinisekiso sokugcina esiqondene ngqo necala."
+      },
+      {
+        "title": "Ungacabanga kanjani ngamagama",
+        "body": "Umkhuba ophephile ukufunda amagama osuku lokukhokha njengomhlahlandlela, hhayi njengesiqinisekiso. Idethi ngokwayo ayiyona incazelo ephelele yekhasi lokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/payment-processing-meaning\n• /guides/how-to-know-if-your-payment-is-ready\n• /guides/srd-payment-dates-march-2026\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe amagama edethi yokukhokha ye-srd ahlala ekhomba usuku olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-srd-pay-date": {
+    "title": "SASSA SRD idethi yokukhokha",
+    "summary": "Umhlahlandlela osesho lwedethi yokukhokha ye-sassa srd, ebhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha nakakhulu futhi bagweme ukuphatha amadethi akopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha kwedethi yokukhokha ngokuvamile kusho ukuthi umsebenzisi ufuna isikhathi solimi olulula ngaphandle kwamagama obuchwepheshe. Indlela ephephe kunazo zonke iwukufanisa amagama nenkomba yedethi yokukhokha ye-SRD yamanje bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "SRD ukusesha amagama osuku lokukhokha kuvame ukuzwakala sengathi kufanele kube nedethi eyodwa elula yomphakathi yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amagama alula wedethi yokukhokha angafihla ukuthi idethi eyokugcina, ilindelekile, noma isasekelwe kuphothali. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usesho lukhomba luphi uhlobo lwamagama.\n2. Ifanise nomhlahlandlela wamanje wosuku lokukhokha we-SRD.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Phatha iminyaka yengobo yomlando njengomongo wengobo yomlando kunesithembiso sokukhokha bukhoma.\n5. Sebenzisa iziteshi ezisemthethweni uma udinga isiqinisekiso sokugcina esiqondene ngqo necala."
+      },
+      {
+        "title": "Ungacabanga kanjani ngamagama",
+        "body": "Umkhuba ophephile ukufunda amagama osuku lokukhokha njengomhlahlandlela, hhayi njengesiqinisekiso. Idethi ngokwayo ayiyona incazelo ephelele yekhasi lokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-track-payment-dates-without-rumours\n• /guides/what-payment-pending-means\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe amagama osuku lokukhokha lwe-srd ahlala ekhomba usuku olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-srd-grant-payment-date": {
+    "title": "SASSA SRD usuku lokukhokha lwesibonelelo",
+    "summary": "Umhlahlandlela osesho lwedethi yokukhokha ye-sassa srd, ebhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha nakakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho lwedethi yokukhokha yesibonelelo sikahulumeni ngokuvamile lusho ukuthi umsebenzisi ufuna ukusuka emazwini abanzi angu-SRD aye empendulweni eyodwa yesikhathi ecacile. Indlela ephephe kunazo zonke ukufanisa amagama nenyanga ye-SRD efanele noma ikhasi lengobo yomlando bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "SRD usesho lwamagama lwedethi yokukhokha yesibonelelo sikahulumeni ngokuvamile luzwakala sengathi kufanele kube nedethi yomphakathi eyodwa elula yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngaphandle kwenyanga nonyaka, ngisho nedethi yokukhokha yesibonelelo sikahulumeni ebukeka njengeqiniso ingadukisa. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usesho lukhomba luphi uhlobo lwamagama.\n2. Qondanisa nenyanga eyi-SRD noma ikhasi lengobo yomlando.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Phatha iminyaka yengobo yomlando njengomongo wengobo yomlando kunesithembiso sokukhokha bukhoma.\n5. Sebenzisa iziteshi ezisemthethweni uma udinga isiqinisekiso sokugcina esiqondene ngqo necala."
+      },
+      {
+        "title": "Ungacabanga kanjani ngamagama",
+        "body": "Umkhuba ophephile ukufunda amagama osuku lokukhokha njengomhlahlandlela, hhayi njengesiqinisekiso. Idethi ngokwayo ayiyona incazelo ephelele yekhasi lokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/srd-payment-dates-2025\n• /guides/payment-dates-2026\n• /guides/how-to-know-if-a-payment-date-is-still-current\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe amagama osuku lokukhokha lwesibonelelo se-srd ahlala ekhomba osukwini olulodwa lwasesidlangalaleni?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-srd-grant-payment-dates": {
+    "title": "SASSA SRD izinsuku zokukhokha kwesibonelelo",
+    "summary": "Umhlahlandlela osesho lwezinsuku zokukhokha zesibonelelo se-sassa srd, obhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha nakakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha ngobuningi bezinsuku zokukhokha zegranti ye-SRD ngokuvamile kusho ukuthi umsebenzisi ufuna ikhasi elingakwazi ukufaka ngaphezu kwenyanga eyodwa noma umjikelezo. Indlela ephephe kunazo zonke ukufanisa amagama negayidi yonyaka kuqala bese kuba ikhasi lenyanga eliqondile bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "SRD ukusesha izinsuku zokukhokha kwesibonelelo sikahulumeni kuvame ukuzwakala sengathi kufanele kube nedethi yomphakathi eyodwa elula yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukusesha kwedethi yobuningi kungafiphalisa kalula isikhathi samanje nesikhathi esigcina kungobo yomlando ngaphandle kwalapho unyaka uhlolwa kuqala. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usesho lukhomba luphi uhlobo lwamagama.\n2. Qondanisa nomhlahlandlela wonyaka kuqala bese emva kwalokho ikhasi lenyanga ngqo.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Phatha iminyaka yengobo yomlando njengomongo wengobo yomlando kunesithembiso sokukhokha bukhoma.\n5. Sebenzisa iziteshi ezisemthethweni uma udinga isiqinisekiso sokugcina esiqondene ngqo necala."
+      },
+      {
+        "title": "Ungacabanga kanjani ngamagama",
+        "body": "Umkhuba ophephile ukufunda amagama osuku lokukhokha njengomhlahlandlela, hhayi njengesiqinisekiso. Idethi ngokwayo ayiyona incazelo ephelele yekhasi lokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/srd-payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/payment-dates-2026\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe izinsuku zokukhokha zesibonelelo se-srd zihlala zikhomba usuku olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-r350-grant-payment-date-according-to-id-number": {
+    "title": "SASSA R350 idethi yokukhokha yesibonelelo sikahulumeni ngokwenombolo kamazisi",
+    "summary": "Umhlahlandlela wedethi yokukhokha yesibonelelo sikahulumeni sika-sassa u-r350 ngokosesho lwezinombolo zikamazisi, obhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha kakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha idethi yokukhokha ye-R350 ngokwenombolo kamazisi ngokuvamile kusho ukuthi umsebenzisi uthemba ukuthi kukhona ikhalenda lokukhokha elisekelwe ku-ID. Indlela ephephe kunazo zonke iwukufanisa amagama nomzila wemiphumela osemthethweni kanye negayidi efanele yenyanga bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Idethi yokukhokha ye-R350 ngokuya ngokuseshwa kwenombolo kamazisi kuvame ukuzwakala sengathi kufanele kube nedethi yomphakathi eyodwa elula yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Lawa magama avame ukukhomba inganekwane yokuthi inombolo kamazisi iyodwa engabikezela ngokuphephile usuku lokugcina lokukhokha. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ungawathembi amakhasi athembisa usuku lokukhokha lwe-R350 oluqinisekisiwe ukusuka enombolweni kamazisi iyodwa.\n2. Funda isimo sakho noma umphumela osemthethweni kuqala.\n3. Sebenzisa umhlahlandlela wenyanga ofanayo ukuze uthole umongo wesikhathi.\n4. Hlola isimo sokukhokha futhi uqaphele ngokucophelela.\n5. Sebenzisa iziteshi ezisemthethweni lapho icala lakho lisadinga impendulo eqondile."
+      },
+      {
+        "title": "Inombolo ye-ID ayilona ikhalenda lokukhokha",
+        "body": "Inombolo kamazisi ingaba nendaba umazisi osemthethweni kanye nokuhlolwa kwamacala, kodwa akufanele ithathwe njengekhalenda elilula elibikezela isikhathi sokukhokha ngokwalo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-avoid-fake-status-check-sites\n• /guides/how-to-read-r350-status-check-and-payment-pages-together\n• /guides/where-to-find-official-updates-safely\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe usuku lokukhokha luka-r350 ngokwenombolo kamazisi luhlala lukhomba usuku olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "check-sassa-r350-grant-payment-date": {
+    "title": "Hlola idethi yokukhokha ye-SASSA R350",
+    "summary": "Umhlahlandlela wokuhlola ukusesha kwedethi yokukhokha kwesibonelelo sikahulumeni sika-sassa u-r350, obhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha nakakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha okufana nalokhu ngokuvamile kusho ukuthi umsebenzisi ufuna indlela ephephile esheshayo eya kusikhathi samanje. Indlela ephephe kunazo zonke ukufanisa amagama nekhasi lamanje ledethi yokukhokha ukuze uthole usizo lokusiza umphakathi bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "ukuhlola idethi yokukhokha yesibonelelo se-R350 ukusesha ngokuvamile kuzwakala sengathi kufanele kube nedethi eyodwa elula yomphakathi yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Indlela esheshayo ihlala iphephile kuphela uma inyanga, isimo sokukhokha, nokuqinisekiswa okusemthethweni kufundwa ndawonye. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usesho lukhomba luphi uhlobo lwamagama.\n2. Qondanisa nekhasi lamanje ledethi yokukhokha ukuze uthole ukwesekwa komphakathi.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Phatha iminyaka yengobo yomlando njengomongo wengobo yomlando kunesithembiso sokukhokha bukhoma.\n5. Sebenzisa iziteshi ezisemthethweni uma udinga isiqinisekiso sokugcina esiqondene ngqo necala."
+      },
+      {
+        "title": "Ungacabanga kanjani ngamagama",
+        "body": "Umkhuba ophephile ukufunda amagama osuku lokukhokha njengomhlahlandlela, hhayi njengesiqinisekiso. Idethi ngokwayo ayiyona incazelo ephelele yekhasi lokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-payment-readiness-for-r350-support\n• /guides/how-to-check-srd-status-online\n• /guides/payment-processing-meaning\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ukuhlola usuku lokukhokha isibonelelo sikahulumeni sika-r350 kuhlale kukhomba osukwini olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-payment-dates-2025-r350": {
+    "title": "Izinsuku zokukhokha ze-SASSA zika-2025 R350",
+    "summary": "Umhlahlandlela wezinsuku zokukhokha zakwa-sassa zosesho luka-2025 r350, obhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha nakakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho lwe-R350 lwango-2025 ngokuvamile lusho ukuqhathanisa konyaka wengobo yomlando kunokuhlela kwenyanga yamanje. Indlela ephephe kunazo zonke ukufanisa amagama namakhasi wengobo yomlando we-2025 SRD bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuthi uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwezinsuku zokukhokha zika-2025 R350 kuvame ukuzwakala sengathi kufanele kube nedethi yomphakathi eyodwa elula yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uhlu lwedethi yengobo yomlando luwusizo kuphela uma luhlala luhluke ngokusobala ezinhlelweni zamanje zokukhokha. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usesho lukhomba luphi uhlobo lwamagama.\n2. Ifanise namakhasi engobo yomlando we-SRD ka-2025.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Phatha iminyaka yengobo yomlando njengomongo wengobo yomlando kunesithembiso sokukhokha bukhoma.\n5. Sebenzisa iziteshi ezisemthethweni uma udinga isiqinisekiso sokugcina esiqondene ngqo necala."
+      },
+      {
+        "title": "Ungacabanga kanjani ngamagama",
+        "body": "Umkhuba ophephile ukufunda amagama osuku lokukhokha njengomhlahlandlela, hhayi njengesiqinisekiso. Idethi ngokwayo ayiyona incazelo ephelele yekhasi lokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/srd-payment-dates-2025\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe izinsuku zokukhokha zika-2025 r350 zihlala zikhomba usuku olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-payment-dates-r350": {
+    "title": "SASSA izinsuku zokukhokha R350",
+    "summary": "Umhlahlandlela wezinsuku zokukhokha zakwa-sassa usesho lwe-r350, obhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha kakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho olubanzi lwezinsuku zokukhokha lwe-R350 ngokuvamile lusho ukuthi umsebenzisi ufuna ihabhu lesikhathi lamanje kunenyanga eyodwa kuphela. Indlela ephephe kunazo zonke ukufanisa amagama nekhasi lonyaka wamanje kuqala bese kuthi ikhasi lenyanga elifanele bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "R350 ukusesha izinsuku zokukhokha kuvame ukuzwakala sengathi kufanele kube nedethi yomphakathi eyodwa elula yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukusesha okubanzi kuzwakala kulula, kodwa kuba yingozi uma abasebenzisi bethemba usuku olulodwa olugaywe kabusha ngaphandle kokuhlola isimo sokukhokha. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usesho lukhomba luphi uhlobo lwamagama.\n2. Qondanisa nekhasi lonyaka wamanje kuqala bese emva kwalokho ikhasi lenyanga elifanele.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Phatha iminyaka yengobo yomlando njengomongo wengobo yomlando kunesithembiso sokukhokha bukhoma.\n5. Sebenzisa iziteshi ezisemthethweni uma udinga isiqinisekiso sokugcina esiqondene ngqo necala."
+      },
+      {
+        "title": "Ungacabanga kanjani ngamagama",
+        "body": "Umkhuba ophephile ukufunda amagama osuku lokukhokha njengomhlahlandlela, hhayi njengesiqinisekiso. Idethi ngokwayo ayiyona incazelo ephelele yekhasi lokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/payment-dates-2026\n• /guides/srd-payment-dates-june-2026\n• /guides/srd-payment-dates-july-2026\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe izinsuku zokukhokha zika-r350 zihlala zikhomba usuku olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-r370-payment-dates": {
+    "title": "SASSA R370 izinsuku zokukhokha",
+    "summary": "Umhlahlandlela osesho lwezinsuku zokukhokha ze-sassa r370, obhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha nakakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha izinsuku zokukhokha ze-R370 ngokuvamile kusho ukuthi umsebenzisi ulandela amagama amanani amasha futhi ufuna isikhathi samanje. Indlela ephephe kunazo zonke iwukufanisa amagama negayidi efanele yenyanga ye-SRD yomjikelezo wamanje bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "R370 ukusesha izinsuku zokukhokha kuvame ukuzwakala sengathi kufanele kube nedethi yomphakathi eyodwa elula yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngisho noma inani lamagama lishintsha, umkhuba wokufunda ophephe kakhulu usancike enyangeni, inothi, kanye nesimo sokukhokha. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usesho lukhomba luphi uhlobo lwamagama.\n2. Qondanisa negayidi efanele yenyanga ye-SRD yomjikelezo wamanje.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Phatha iminyaka yengobo yomlando njengomongo wengobo yomlando kunesithembiso sokukhokha bukhoma.\n5. Sebenzisa iziteshi ezisemthethweni uma udinga isiqinisekiso sokugcina esiqondene ngqo necala."
+      },
+      {
+        "title": "Ungacabanga kanjani ngamagama",
+        "body": "Umkhuba ophephile ukufunda amagama osuku lokukhokha njengomhlahlandlela, hhayi njengesiqinisekiso. Idethi ngokwayo ayiyona incazelo ephelele yekhasi lokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-r370-status-safely\n• /guides/srd-payment-dates-2025\n• /guides/payment-dates-2026\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe izinsuku zokukhokha zika-r370 zihlala zikhomba usuku olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-350-payment-date": {
+    "title": "Idethi yokukhokha ye-SASSA 350 yenyanga yamanje",
+    "summary": "Umhlahlandlela wedethi yokukhokha ye-sassa 350 yokusesha kwenyanga yamanje, ebhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha nakakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho lwedethi yokukhokha ye-shorthand 350 ngokuvamile lusho ukuthi umsebenzisi ufuna isikhathi senyanga yamanje R350 noma SRD ngamagama alula ngangokunokwenzeka. Indlela ephephe kunazo zonke ukufanisa amagama nekhasi lamanje lokukhokha le-SRD kanye negayidi yenyanga efanayo bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "I-R350 noma ukusesha amagama edethi yokukhokha engu-350 kuvame ukuzwakala sengathi kufanele kube nedethi yomphakathi eyodwa elula yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amagama amafushane angenza abasebenzisi bathembe noma iyiphi idethi abayibona kuqala, nanoma ikhasi lisadinga umongo. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ngekhasi lamanje lokukhokha le-SRD esikhundleni sesithombe-skrini esikopishiwe.\n2. Qondanisa isikhathi nenyanga yamanje.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Sebenzisa inkomba yesimo esifanayo uma ukugunyazwa noma amagama okuqinisekisa kusathinta inkokhelo.\n5. Sebenzisa iziteshi ezisemthethweni lapho icala lakho lisadinga ukuqinisekiswa okuqondile."
+      },
+      {
+        "title": "Umongo wenyanga yamanje ubaluleke kakhulu kunomusho omfushane wokusesha",
+        "body": "Usesho olufushane lwedethi yokukhokha engu-350 lungazwakala sengathi kufanele kube nempendulo eyodwa elula, kodwa ukufunda okuphephe kakhulu kusancike enyangeni yamanje, isimo sokukhokha, kanye nokuthi isikhathi sesishicilelwe yini."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/approved-but-no-payment\n• /guides/how-to-check-payment-readiness-for-r350-support"
+      },
+      {
+        "title": "I-FAQ: Ingabe amagama edethi yokukhokha angu-r350 noma angu-350 ahlala ekhomba usuku olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-370-payment-date": {
+    "title": "Idethi yokukhokha ye-SASSA 370",
+    "summary": "Umhlahlandlela osesho lwedethi yokukhokha ye-sassa 370, ebhalelwe ukusiza abasebenzisi ukuthi bafunde isikhathi esisekelwe enyangeni ngokuphepha nakakhulu futhi bagweme ukuphatha izinsuku ezikopishiwe njengezimpendulo ezisemthethweni zokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho lwedethi yokukhokha ye-shorthand 370 ngokuvamile lusho ukuthi umsebenzisi usebenzisa igama lenani lamanje kodwa usafuna impendulo eyodwa ecacile yesikhathi. Indlela ephephe kunazo zonke ukufanisa amagama nekhasi lenyanga le-SRD elifanele kanye negayidi yesimo sokukhokha bese uhlola ukuthi isikhathi sishicilelwe, silindelwe, noma ingosi kuphela ngaphambi kokuba uthembele kuyo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lwamagama lwedethi yokukhokha engu-370 ngokuvamile luzwakala sengathi kufanele kube nedethi eyodwa elula yomphakathi yawo wonke umuntu. Empeleni, inyanga, unyaka, ukunikezwa kwamagama, kanye nokuqinisekiswa okusemthethweni konke kunendaba, ikakhulukazi uma abantu bekopisha izinsuku kokuthunyelwe amadala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Umbuzo omfushane usengafihla imininingwane ebalulekile njengenyanga, unyaka, nokuthi isikhathi sesivele siwujuqu yini. Yingakho ikhasi lomhlahlandlela kufanele lehlise ukusesha kancane futhi lisize abasebenzisi baqinisekise ukuthi hlobo luni lolwazi lokukhokha abalubhekayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usesho lukhomba luphi uhlobo lwamagama.\n2. Qondanisa nekhasi elilungile lenyanga ye-SRD kanye nomhlahlandlela wesimo sokukhokha.\n3. Funda isimo sokukhokha futhi uqaphele, hhayi kuphela usuku olubonakalayo.\n4. Phatha iminyaka yengobo yomlando njengomongo wengobo yomlando kunesithembiso sokukhokha bukhoma.\n5. Sebenzisa iziteshi ezisemthethweni uma udinga isiqinisekiso sokugcina esiqondene ngqo necala."
+      },
+      {
+        "title": "Ungacabanga kanjani ngamagama",
+        "body": "Umkhuba ophephile ukufunda amagama osuku lokukhokha njengomhlahlandlela, hhayi njengesiqinisekiso. Idethi ngokwayo ayiyona incazelo ephelele yekhasi lokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nekhasi lokukhokha elisemthethweni. Kuyasiza ukuchaza amagama nesikhathi ngokuphepha kuyilapho ushiyela izenzo ezisemthethweni eziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi kwedethi yokukhokha ungene enyangeni ngqo, uhlobo lwesibonelelo, noma umhlahlandlela wesimo owenza amagama aqondeke kalula."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-r370-status-safely\n• /guides/what-payment-released-means\n• /guides/what-payment-pending-means\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe amagama edethi yokukhokha engu-370 ahlala ekhomba usuku olulodwa lomphakathi?",
+        "body": "Cha. Impendulo efanele isengancika enyangeni, emazwini esibonelelo, kanye nokuthi isikhathi sesivele siqinisekisiwe ngokusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Kungani okuthunyelwe ngedethi yokukhokha okukopishiwe kudala ukudideka okungaka?",
+        "body": "Ngoba idethi ingabonakala ikholeka ngisho nalapho inyanga, unyaka, noma inothi lokukhokha lingekho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokwethemba ikhasi ledethi yokukhokha?",
+        "body": "Hlola inyanga, unyaka, isigaba sesibonelelo, nesimo sokukhokha ndawonye ngaphambi kokuthi uphathe isikhathi njengokugcina."
+      }
+    ]
+  },
+  "sassa-old-age-grant-pay-date": {
+    "title": "SASSA usuku lokukhokhela isibonelelo sikahulumeni sabadala",
+    "summary": "Umhlahlandlela wokuseshwa kwezinsuku zokukhokhelwa kwesibonelelo sikahulumeni kwa-sassa, ochaza ukuthi amagama abantu abadala ngokuvamile adweba kanjani isibonelelo sikahulumeni kanye nendlela yokufunda isikhathi sokukhokha ngokuphepha.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukuseshwa kwedethi yokukhokha yesibonelelo sikahulumeni sabadala ngokuvamile kusho ukuthi umsebenzisi ufuna ukunikeza abantu abadala isikhathi ngamagama ajwayelekile. Ezimweni eziningi, ukusesha kukhomba isikhathi sokunikezwa kwabantu abadala, ngakho-ke isinyathelo esilandelayo esiphephe kakhulu ukufanisa amagama namakhasi okukhokha ezibonelelo zabantu abadala bese ufunda inothi lokukhokha ngokucophelela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi basasesha ngamagama asebekhulile noma empesheni ngisho nalapho amakhasi amasha esebenzisa amagama anikezwa abantu abadala. Lokho akusho ngokuvamile isibonelelo esihlukile. Ngokuvamile kusho ukuthi isigaba esifanayo sesibonelelo sichazwa ngamagama ajwayelekile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma amagama abantu abadala athathwa njengesibonelelo esihlukile, abasebenzisi bangaphuthelwa yikhasi langempela abalidingayo. Uma amagama esefaniswe kahle, abasebenzisi ngokuvamile bangasuka ekusesheni kwabadala baye enyangeni elungile noma ikhasi lengobo yomlando elinokudideka okuncane kakhulu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha amagama abantu abadala noma impesheni njengokusesha isikhathi sezibonelelo zabantu abadala.\n2. Vula amakhasi okukhokha ezibonelelo zabantu abadala.\n3. Hlolani inyanga, unyaka, nesimo sokukhokha ndawonye.\n4. Funda inothi eceleni kosuku, hhayi usuku uqobo lwalo kuphela.\n5. Sebenzisa umzila osemthethweni lapho icala lakho lisadinga ukuqinisekiswa kokugcina."
+      },
+      {
+        "title": "Amagama abantu abadala kanye namagama abantu abadala ngokuvamile ahlangana ekhasini elifanayo",
+        "body": "Amagama okusesha angashintsha ukusuka kumuntu kuye komunye, kodwa umkhuba wokufunda ophephe kakhulu uhlala unjalo: qinisekisa isigaba sesibonelelo, bese uqinisekisa inyanga, bese uqinisekisa isimo sokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Kuyasiza ukuhumusha amagama abantu abadala abe yindlela efanele yosizo lwesibonelelo, kodwa akuyona isevisi yokukhokha yesibonelelo sikahulumeni esemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emazwini okusesha ajwayelekile uye kumhlahlandlela ofanele wedethi yokukhokha, ikhasi lesibonelelo, noma inketho yesikhumbuzi ngaphandle kokwenza ikhasi lizwakale ngokusemthethweni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grants/older-persons\n• /guides/older-persons-grant-payment-dates-2025\n• /guides/older-persons-grant-payment-dates-january-2026\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe amagama emali yesibonelelo sabadala ahlukile kwabadala anikeza amagama?",
+        "body": "Abantu bavame ukusebenzisa amagama ngendlela ehlukile, kodwa ngokuvamile asho isigaba sesibonelelo esifanayo ekusesheni."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembele ezithombeni-skrini ezindala zezinsuku zokukhokha zabantu abadala?",
+        "body": "Cha. Kuphephe kakhudlwana ukuphatha izithombe ezindala njengomongo wengobo yomlando futhi uqinisekise inyanga yamanje ngokuhlukene."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingaqinisekisa usuku lwami lokukhokha olusemthethweni?",
+        "body": "Cha. I-GrantCare ichaza amagama nesikhathi, kodwa ukuqinisekiswa okusemthethweni kusesesiteshini sikahulumeni esifanele."
+      }
+    ]
+  },
+  "sassa-payment-date-for-old-age": {
+    "title": "SASSA usuku lokukhokha lokuguga",
+    "summary": "Umhlahlandlela wedethi yokukhokha yakwa-sassa yokusesha kwabadala, echaza ukuthi amagama abantu abadala ngokuvamile adweba kanjani imali yesibonelelo sikahulumeni kanye nendlela yokufunda isikhathi sokukhokha ngokuphepha.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukuseshwa kwedethi yokukhokha yabantu abadala ngokuvamile kusho ukuthi umsebenzisi ufuna isinyathelo esilandelayo esicacile sabantu abadala abanikeza isikhathi. Ezimweni eziningi, ukusesha kukhomba isikhathi sokunikezwa kwabantu abadala, ngakho isinyathelo esilandelayo esiphephe kakhulu ukufanisa amagama nekhasi lenyanga yamanje ukuze uthole ukwesekwa kwabantu asebekhulile bese ufunda inothi lokukhokha ngokucophelela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi basasesha ngamagama asebekhulile noma empesheni ngisho nalapho amakhasi amasha esebenzisa amagama anikezwa abantu abadala. Lokho akusho ngokuvamile isibonelelo esihlukile. Ngokuvamile kusho ukuthi isigaba esifanayo sesibonelelo sichazwa ngamagama ajwayelekile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Usesho olulodwa olubanzi lwabadala lusengakhomba ezinyangeni ezihlukene, ngakho unyaka nenyanga kufanele zihlale zihlolwa ngaphambi kokuthi idethi ithenjwe. Uma amagama esefaniswe kahle, abasebenzisi ngokuvamile bangasuka ekusesheni kwabadala baye enyangeni elungile noma ikhasi lengobo yomlando elinokudideka okuncane kakhulu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha amagama abantu abadala noma impesheni njengokusesha isikhathi sezibonelelo zabantu abadala.\n2. Vula ikhasi lenyanga yamanje ukuze uthole ukwesekwa kwabantu abadala.\n3. Hlolani inyanga, unyaka, nesimo sokukhokha ndawonye.\n4. Funda inothi eceleni kosuku, hhayi usuku uqobo lwalo kuphela.\n5. Sebenzisa umzila osemthethweni lapho icala lakho lisadinga ukuqinisekiswa kokugcina."
+      },
+      {
+        "title": "Amagama abantu abadala kanye namagama abantu abadala ngokuvamile ahlangana ekhasini elifanayo",
+        "body": "Amagama okusesha angashintsha ukusuka kumuntu kuye komunye, kodwa umkhuba wokufunda ophephe kakhulu uhlala unjalo: qinisekisa isigaba sesibonelelo, bese uqinisekisa inyanga, bese uqinisekisa isimo sokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Kuyasiza ukuhumusha amagama abantu abadala abe yindlela efanele yosizo lwesibonelelo, kodwa akuyona isevisi yokukhokha yesibonelelo sikahulumeni esemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emazwini okusesha ajwayelekile uye kumhlahlandlela ofanele wedethi yokukhokha, ikhasi lesibonelelo, noma inketho yesikhumbuzi ngaphandle kokwenza ikhasi lizwakale ngokusemthethweni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/payment-dates-2026\n• /guides/older-persons-grant-payment-dates-february-2026\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe amagama emali yesibonelelo sabadala ahlukile kwabadala anikeza amagama?",
+        "body": "Abantu bavame ukusebenzisa amagama ngendlela ehlukile, kodwa ngokuvamile asho isigaba sesibonelelo esifanayo ekusesheni."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembele ezithombeni-skrini ezindala zezinsuku zokukhokha zabantu abadala?",
+        "body": "Cha. Kuphephe kakhudlwana ukuphatha izithombe ezindala njengomongo wengobo yomlando futhi uqinisekise inyanga yamanje ngokuhlukene."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingaqinisekisa usuku lwami lokukhokha olusemthethweni?",
+        "body": "Cha. I-GrantCare ichaza amagama nesikhathi, kodwa ukuqinisekiswa okusemthethweni kusesesiteshini sikahulumeni esifanele."
+      }
+    ]
+  },
+  "sassa-old-age-pension-2025": {
+    "title": "SASSA impesheni yabadala 2025",
+    "summary": "Umhlahlandlela wokuseshwa kwempesheni yabadala kwa-sassa ka-2025, echaza ukuthi amagama abantu abadala ajwayele ukumela isibonelelo sabadala kanye nendlela yokufunda isikhathi sokukhokha ngokuphepha.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukuseshwa kwempesheni yabadala ka-2025 kuvame ukukhomba ekuhloleni ukugcinwa kwengobo yomlando isikhathi sezibonelelo zabantu abadala. Ezimweni eziningi, ukusesha kukhomba isikhathi sokunikezwa kwabantu abadala, ngakho-ke isinyathelo esilandelayo esiphephe kakhulu ukufanisa amagama neziqondiso zengobo yomlando zika-2025 zezikhathi zezibonelelo zabantu abadala bese ufunda inothi lokukhokha ngokucophelela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi basasesha ngamagama asebekhulile noma empesheni ngisho nalapho amakhasi amasha esebenzisa amagama anikezwa abantu abadala. Lokho akusho ngokuvamile isibonelelo esihlukile. Ngokuvamile kusho ukuthi isigaba esifanayo sesibonelelo sichazwa ngamagama ajwayelekile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Usesho lonyaka wengobo yomlando luwusizo kuphela uma abasebenzisi baqonda ukuthi amadethi ka-2025 awafani nokuhlela ukukhokha kwamanje. Uma amagama esefaniswe kahle, abasebenzisi ngokuvamile bangasuka ekusesheni kwabadala baye enyangeni elungile noma ikhasi lengobo yomlando elinokudideka okuncane kakhulu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha amagama abantu abadala noma impesheni njengokusesha isikhathi sezibonelelo zabantu abadala.\n2. Vula imihlahlandlela yengobo yomlando yango-2025 yabantu abadala abanikeza isikhathi.\n3. Hlolani inyanga, unyaka, nesimo sokukhokha ndawonye.\n4. Funda inothi eceleni kosuku, hhayi usuku uqobo lwalo kuphela.\n5. Sebenzisa umzila osemthethweni lapho icala lakho lisadinga ukuqinisekiswa kokugcina."
+      },
+      {
+        "title": "Amagama abantu abadala kanye namagama abantu abadala ngokuvamile ahlangana ekhasini elifanayo",
+        "body": "Amagama okusesha angashintsha ukusuka kumuntu kuye komunye, kodwa umkhuba wokufunda ophephe kakhulu uhlala unjalo: qinisekisa isigaba sesibonelelo, bese uqinisekisa inyanga, bese uqinisekisa isimo sokukhokha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Kuyasiza ukuhumusha amagama abantu abadala abe yindlela efanele yosizo lwesibonelelo, kodwa akuyona isevisi yokukhokha yesibonelelo sikahulumeni esemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke emazwini okusesha ajwayelekile uye kumhlahlandlela ofanele wedethi yokukhokha, ikhasi lesibonelelo, noma inketho yesikhumbuzi ngaphandle kokwenza ikhasi lizwakale ngokusemthethweni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/older-persons-grant-payment-dates-2025\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe amagama emali yesibonelelo sabadala ahlukile kwabadala anikeza amagama?",
+        "body": "Abantu bavame ukusebenzisa amagama ngendlela ehlukile, kodwa ngokuvamile asho isigaba sesibonelelo esifanayo ekusesheni."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembele ezithombeni-skrini ezindala zezinsuku zokukhokha zabantu abadala?",
+        "body": "Cha. Kuphephe kakhudlwana ukuphatha izithombe ezindala njengomongo wengobo yomlando futhi uqinisekise inyanga yamanje ngokuhlukene."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingaqinisekisa usuku lwami lokukhokha olusemthethweni?",
+        "body": "Cha. I-GrantCare ichaza amagama nesikhathi, kodwa ukuqinisekiswa okusemthethweni kusesesiteshini sikahulumeni esifanele."
+      }
+    ]
+  }
+};
+
+function withZuTranslations<
+  T extends {
+    slug: string;
+    title: string;
+    summary: string;
+    sections: Array<{ title: string; body: string }>;
+    translations?: Record<string, unknown>;
+  },
+>(guide: T, translation: GuideTranslation) {
+  return {
+    ...guide,
+    translations: {
+      ...(guide.translations ?? {}),
+      zu: translation,
+    },
+  };
+}
+
+export const SEO_BATCH_SIXTEEN_GUIDES = SEO_BATCH_SIXTEEN_GUIDES_SOURCE.map((guide) =>
+  addSetswanaTranslations(withZuTranslations(guide, ZU_TRANSLATIONS[guide.slug])),
+);

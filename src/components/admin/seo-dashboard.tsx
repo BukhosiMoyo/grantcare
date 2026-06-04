@@ -3,15 +3,95 @@
 import React, { useState, useTransition, useEffect, useCallback } from "react";
 import { saveGscCredentials, disconnectGsc, getGscDashboardReport } from "@/actions/gsc-actions";
 import { type GscPerformanceSummary } from "@/lib/google-gsc";
+import type { Locale } from "@/lib/site";
 
 interface SeoDashboardProps {
   initialConfig: {
     propertyUrl: string;
     isConnected: boolean;
   };
+  locale: Locale;
 }
 
-export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
+const ZU_SEO_COPY: Record<string, string> = {
+  "Failed to retrieve Search Console data.": "Kuhlulekile ukulanda idatha ye-Search Console.",
+  "An unexpected error occurred.": "Kuvele iphutha elingalindelekile.",
+  "Please complete both Property URL and Service Account JSON credentials.":
+    "Gcwalisa kokubili i-Property URL nemininingwane ye-Service Account JSON.",
+  "Connection failed. Please verify credentials format.": "Ukuxhuma kuhlulekile. Sicela uqinisekise ifomethi yemininingwane.",
+  "Are you sure you want to disconnect Google Search Console?": "Uqinisekile ukuthi ufuna ukunqamula i-Google Search Console?",
+  "Failed to disconnect.": "Kuhlulekile ukunqamula.",
+  Unauthorized: "Awugunyaziwe.",
+  "Property URL is required.": "I-Property URL iyadingeka.",
+  "Invalid Service Account JSON credentials (JSON parse error).":
+    "Imininingwane ye-Service Account JSON ayivumelekile (iphutha lokufunda i-JSON).",
+  "Google Search Console is not connected yet.": "I-Google Search Console ayikaxhunywa.",
+  "Failed to query Google Search Console API.": "Kuhlulekile ukubuza i-Google Search Console API.",
+  "Connect Google Search Console": "Xhuma i-Google Search Console",
+  "Analyze keyword impressions, Google rankings, organic click-through rates (CTR), and average positions. GrantCare uses secure Google Cloud Service Accounts to retrieve data without requiring manual login.":
+    "Hlaziya ukuvela kwamagama okusesha, ukukleliswa ku-Google, amazinga okuchofoza kwe-organic (CTR), nezindawo ezimaphakathi. I-GrantCare isebenzisa ama-Google Cloud Service Accounts avikelekile ukuze ilande idatha ngaphandle kokudinga ukungena mathupha.",
+  "Quick Setup Instructions:": "Izinyathelo ezisheshayo zokumisa:",
+  "Go to the Google Cloud Console and create a Service Account.": "Iya ku-Google Cloud Console bese udala i-Service Account.",
+  "Download the Service Account key in JSON format.": "Landa ukhiye we-Service Account ngefomethi ye-JSON.",
+  "Go to your Google Search Console property and add the Service Account email (e.g.": "Iya ku-property yakho ye-Google Search Console bese ungeza i-imeyili ye-Service Account (isb.",
+  ") as a": ") njengomsebenzisi",
+  Full: "ogcwele",
+  or: "noma",
+  Restricted: "okhawulelwe",
+  "user.": ".",
+  "Enter your Search Console Property URL (e.g.,": "Faka i-Search Console Property URL yakho (isb.,",
+  ") below and upload the JSON key file.": ") ngezansi bese ulayisha ifayela lokhiye le-JSON.",
+  "Google Search Console Property URL": "I-Google Search Console Property URL",
+  "e.g. sc-domain:grantcare.co.za or https://www.grantcare.co.za/": "isb. sc-domain:grantcare.co.za noma https://www.grantcare.co.za/",
+  "Service Account JSON Key File": "Ifayela likakhiye we-Service Account JSON",
+  "or paste raw JSON below": "noma namathisela i-JSON eluhlaza ngezansi",
+  "Connecting...": "Kuyaxhunywa...",
+  "Connect Credentials": "Xhuma imininingwane",
+  "Click & Impression Trend": "Umkhuba wokuchofoza nokuvela",
+  Clicks: "Ukuchofoza",
+  Impressions: "Ukuvela",
+  Max: "Okukhulu",
+  "Connected Property": "I-property exhunyiwe",
+  "7 days": "Izinsuku ezi-7",
+  "30 days": "Izinsuku ezingama-30",
+  "90 days": "Izinsuku ezingama-90",
+  "Disconnecting...": "Kuyanqanyulwa...",
+  Disconnect: "Nqamula",
+  "Organic Clicks": "Ukuchofoza kwe-organic",
+  "Total user visits via Google Search": "Ukuvakasha okuphelele okuvela ku-Google Search",
+  "How often site link appeared in search": "Ukuthi isixhumanisi sesayithi sivele kangaki ekusesheni",
+  "Average CTR": "I-CTR emaphakathi",
+  "Ratio of impressions that resulted in clicks": "Isilinganiso sokuvela okuholele ekuchofozeni",
+  "Average Position": "Indawo emaphakathi",
+  "Average search result ranking of site": "Ukukleliswa okumaphakathi kwesayithi emiphumeleni yokusesha",
+  "Top Search Queries": "Imibuzo yokusesha ephezulu",
+  Query: "Umbuzo",
+  Imps: "Ukuv.",
+  Pos: "Ind.",
+  "No query data available yet.": "Ayikho idatha yemibuzo okwamanje.",
+  "Top Target Pages": "Amakhasi aqondiwe aphezulu",
+  "Page Path": "Indlela yekhasi",
+  "No page performance data available yet.": "Ayikho idatha yokusebenza kwamakhasi okwamanje.",
+  "No organic keyword stats returned. Please verify that this property url possesses search traffic.":
+    "Azikho izibalo zamagama okusesha e-organic ezibuyile. Sicela uqinisekise ukuthi le property url inethrafikhi yokusesha.",
+  "Retry Fetching Data": "Zama ukulanda idatha futhi",
+};
+
+function seoCopy(locale: Locale, text: string) {
+  return locale === "zu" ? (ZU_SEO_COPY[text] ?? text) : text;
+}
+
+function seoDays(locale: Locale, days: number) {
+  return seoCopy(locale, `${days} days`);
+}
+
+function seoMaxCopy(locale: Locale, label: "Clicks" | "Impressions", max: number) {
+  return locale === "zu"
+    ? `${seoCopy(locale, label)} (${seoCopy(locale, "Max")}: ${max})`
+    : `${label} (Max: ${max})`;
+}
+
+export function SeoDashboard({ initialConfig, locale }: SeoDashboardProps) {
   const [config, setConfig] = useState(initialConfig);
   const [days, setDays] = useState(30);
   const [report, setReport] = useState<GscPerformanceSummary | null>(null);
@@ -74,7 +154,7 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
   };
 
   const handleDisconnect = () => {
-    if (!confirm("Are you sure you want to disconnect Google Search Console?")) return;
+    if (!confirm(seoCopy(locale, "Are you sure you want to disconnect Google Search Console?"))) return;
     setError(null);
 
     startDisconnectTransition(async () => {
@@ -111,34 +191,42 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
       <div className="space-y-6">
         <div className="rounded-[var(--radius-card)] border border-border bg-surface p-6 sm:p-8">
           <div className="max-w-2xl space-y-4">
-            <h3 className="text-xl font-bold tracking-tight text-foreground">Connect Google Search Console</h3>
+            <h3 className="text-xl font-bold tracking-tight text-foreground">{seoCopy(locale, "Connect Google Search Console")}</h3>
             <p className="text-sm leading-relaxed text-muted">
-              Analyze keyword impressions, Google rankings, organic click-through rates (CTR), and average positions.
-              GrantCare uses secure Google Cloud Service Accounts to retrieve data without requiring manual login.
+              {seoCopy(locale, "Analyze keyword impressions, Google rankings, organic click-through rates (CTR), and average positions. GrantCare uses secure Google Cloud Service Accounts to retrieve data without requiring manual login.")}
             </p>
 
             <div className="rounded-2xl border border-primary/10 bg-primary/5 p-4 text-xs text-primary leading-relaxed">
-              <span className="font-bold uppercase tracking-wider block mb-1">Quick Setup Instructions:</span>
+              <span className="font-bold uppercase tracking-wider block mb-1">{seoCopy(locale, "Quick Setup Instructions:")}</span>
               <ol className="list-decimal pl-4 space-y-1">
-                <li>Go to the Google Cloud Console and create a Service Account.</li>
-                <li>Download the Service Account key in JSON format.</li>
-                <li>Go to your Google Search Console property and add the Service Account email (e.g. <code>my-service-account@project.iam.gserviceaccount.com</code>) as a <strong>Full</strong> or <strong>Restricted</strong> user.</li>
-                <li>Enter your Search Console Property URL (e.g., <code>sc-domain:grantcare.co.za</code> or <code>https://www.grantcare.co.za/</code>) below and upload the JSON key file.</li>
+                <li>{seoCopy(locale, "Go to the Google Cloud Console and create a Service Account.")}</li>
+                <li>{seoCopy(locale, "Download the Service Account key in JSON format.")}</li>
+                <li>
+                  {seoCopy(locale, "Go to your Google Search Console property and add the Service Account email (e.g.")}{" "}
+                  <code>my-service-account@project.iam.gserviceaccount.com</code>
+                  {seoCopy(locale, ") as a")} <strong>{seoCopy(locale, "Full")}</strong> {seoCopy(locale, "or")}{" "}
+                  <strong>{seoCopy(locale, "Restricted")}</strong> {seoCopy(locale, "user.")}
+                </li>
+                <li>
+                  {seoCopy(locale, "Enter your Search Console Property URL (e.g.,")} <code>sc-domain:grantcare.co.za</code>{" "}
+                  {seoCopy(locale, "or")} <code>https://www.grantcare.co.za/</code>
+                  {seoCopy(locale, ") below and upload the JSON key file.")}
+                </li>
               </ol>
             </div>
 
             {error && (
               <div className="rounded-2xl border border-danger/20 bg-danger/5 p-4 text-sm text-danger">
-                {error}
+                {seoCopy(locale, error)}
               </div>
             )}
 
             <form onSubmit={handleConnect} className="space-y-4 pt-2">
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-foreground block">Google Search Console Property URL</label>
+                <label className="text-sm font-semibold text-foreground block">{seoCopy(locale, "Google Search Console Property URL")}</label>
                 <input
                   type="text"
-                  placeholder="e.g. sc-domain:grantcare.co.za or https://www.grantcare.co.za/"
+                  placeholder={seoCopy(locale, "e.g. sc-domain:grantcare.co.za or https://www.grantcare.co.za/")}
                   value={propertyUrl}
                   onChange={(e) => setPropertyUrl(e.target.value)}
                   className="focus-ring tap-target w-full rounded-2xl border border-border bg-surface px-4 py-2.5 text-sm"
@@ -147,7 +235,7 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-foreground block">Service Account JSON Key File</label>
+                <label className="text-sm font-semibold text-foreground block">{seoCopy(locale, "Service Account JSON Key File")}</label>
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                   <input
                     type="file"
@@ -156,7 +244,7 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
                     className="focus-ring w-full text-sm text-muted file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer"
                     disabled={isPending}
                   />
-                  <span className="text-xs text-muted text-center sm:text-left">or paste raw JSON below</span>
+                  <span className="text-xs text-muted text-center sm:text-left">{seoCopy(locale, "or paste raw JSON below")}</span>
                 </div>
                 <textarea
                   placeholder='{"type": "service_account", "project_id": ...}'
@@ -172,7 +260,7 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
                 disabled={isPending}
                 className="focus-ring tap-target inline-flex items-center justify-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white hover:bg-primary-strong transition-colors cursor-pointer"
               >
-                {isPending ? "Connecting..." : "Connect Credentials"}
+                {isPending ? seoCopy(locale, "Connecting...") : seoCopy(locale, "Connect Credentials")}
               </button>
             </form>
           </div>
@@ -216,15 +304,15 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
       <div className="w-full overflow-x-auto rounded-[var(--radius-card)] border border-border bg-surface p-5">
         <div className="min-w-[650px] space-y-4">
           <div className="flex items-center justify-between text-sm">
-            <span className="font-semibold text-foreground">Click & Impression Trend</span>
+            <span className="font-semibold text-foreground">{seoCopy(locale, "Click & Impression Trend")}</span>
             <div className="flex gap-4 text-xs font-semibold">
               <span className="flex items-center gap-1.5 text-primary">
                 <span className="inline-block h-3 w-3 rounded-full bg-primary" />
-                Clicks (Max: {maxClicks})
+                {seoMaxCopy(locale, "Clicks", maxClicks)}
               </span>
               <span className="flex items-center gap-1.5 text-amber-500">
                 <span className="inline-block h-3 w-3 rounded-full bg-amber-500" />
-                Impressions (Max: {maxImps})
+                {seoMaxCopy(locale, "Impressions", maxImps)}
               </span>
             </div>
           </div>
@@ -296,7 +384,7 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
       {/* Property and Disconnect status header */}
       <div className="flex flex-col gap-4 justify-between sm:flex-row sm:items-center rounded-[var(--radius-card)] border border-border bg-surface p-5">
         <div className="space-y-1">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">Connected Property</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">{seoCopy(locale, "Connected Property")}</p>
           <p className="text-lg font-bold tracking-tight text-foreground break-all">{config.propertyUrl}</p>
         </div>
         <div className="flex items-center gap-3">
@@ -311,7 +399,7 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
                     : "border-border bg-surface text-foreground hover:bg-surface-muted"
                 }`}
               >
-                {d} days
+                {seoDays(locale, d)}
               </button>
             ))}
           </div>
@@ -320,14 +408,14 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
             disabled={isDisconnectPending}
             className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-danger/30 bg-danger/5 px-4 py-1.5 text-xs font-semibold text-danger hover:bg-danger/10 transition-colors cursor-pointer"
           >
-            {isDisconnectPending ? "Disconnecting..." : "Disconnect"}
+            {isDisconnectPending ? seoCopy(locale, "Disconnecting...") : seoCopy(locale, "Disconnect")}
           </button>
         </div>
       </div>
 
       {error && (
         <div className="rounded-2xl border border-danger/20 bg-danger/5 p-4 text-sm text-danger">
-          {error}
+          {seoCopy(locale, error)}
         </div>
       )}
 
@@ -345,24 +433,24 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
           {/* Key Analytics Cards */}
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <div className="rounded-[var(--radius-card)] border border-border bg-surface p-6 space-y-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">Organic Clicks</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">{seoCopy(locale, "Organic Clicks")}</p>
               <p className="text-3xl font-black text-foreground">{report.totals.clicks.toLocaleString()}</p>
-              <p className="text-xs text-muted">Total user visits via Google Search</p>
+              <p className="text-xs text-muted">{seoCopy(locale, "Total user visits via Google Search")}</p>
             </div>
             <div className="rounded-[var(--radius-card)] border border-border bg-surface p-6 space-y-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">Impressions</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">{seoCopy(locale, "Impressions")}</p>
               <p className="text-3xl font-black text-foreground">{report.totals.impressions.toLocaleString()}</p>
-              <p className="text-xs text-muted">How often site link appeared in search</p>
+              <p className="text-xs text-muted">{seoCopy(locale, "How often site link appeared in search")}</p>
             </div>
             <div className="rounded-[var(--radius-card)] border border-border bg-surface p-6 space-y-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">Average CTR</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">{seoCopy(locale, "Average CTR")}</p>
               <p className="text-3xl font-black text-foreground">{(report.totals.ctr * 100).toFixed(2)}%</p>
-              <p className="text-xs text-muted">Ratio of impressions that resulted in clicks</p>
+              <p className="text-xs text-muted">{seoCopy(locale, "Ratio of impressions that resulted in clicks")}</p>
             </div>
             <div className="rounded-[var(--radius-card)] border border-border bg-surface p-6 space-y-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">Average Position</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">{seoCopy(locale, "Average Position")}</p>
               <p className="text-3xl font-black text-foreground">{report.totals.position.toFixed(1)}</p>
-              <p className="text-xs text-muted">Average search result ranking of site</p>
+              <p className="text-xs text-muted">{seoCopy(locale, "Average search result ranking of site")}</p>
             </div>
           </div>
 
@@ -373,15 +461,15 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
           <div className="grid gap-6 lg:grid-cols-2">
             {/* Top Keywords Table */}
             <div className="rounded-[var(--radius-card)] border border-border bg-surface p-6 space-y-4">
-              <h3 className="text-base font-bold tracking-tight text-foreground uppercase tracking-widest">Top Search Queries</h3>
+              <h3 className="text-base font-bold tracking-tight text-foreground uppercase tracking-widest">{seoCopy(locale, "Top Search Queries")}</h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm border-collapse">
                   <thead>
                     <tr className="border-b border-border text-xs text-muted uppercase font-semibold">
-                      <th className="py-2.5 pr-4 font-semibold">Query</th>
-                      <th className="py-2.5 px-3 text-right font-semibold">Clicks</th>
-                      <th className="py-2.5 px-3 text-right font-semibold">Imps</th>
-                      <th className="py-2.5 pl-4 text-right font-semibold">Pos</th>
+                      <th className="py-2.5 pr-4 font-semibold">{seoCopy(locale, "Query")}</th>
+                      <th className="py-2.5 px-3 text-right font-semibold">{seoCopy(locale, "Clicks")}</th>
+                      <th className="py-2.5 px-3 text-right font-semibold">{seoCopy(locale, "Imps")}</th>
+                      <th className="py-2.5 pl-4 text-right font-semibold">{seoCopy(locale, "Pos")}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -395,7 +483,7 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
                     ))}
                     {report.queries.length === 0 && (
                       <tr>
-                        <td colSpan={4} className="py-8 text-center text-muted">No query data available yet.</td>
+                        <td colSpan={4} className="py-8 text-center text-muted">{seoCopy(locale, "No query data available yet.")}</td>
                       </tr>
                     )}
                   </tbody>
@@ -405,15 +493,15 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
 
             {/* Top Performing Pages Table */}
             <div className="rounded-[var(--radius-card)] border border-border bg-surface p-6 space-y-4">
-              <h3 className="text-base font-bold tracking-tight text-foreground uppercase tracking-widest">Top Target Pages</h3>
+              <h3 className="text-base font-bold tracking-tight text-foreground uppercase tracking-widest">{seoCopy(locale, "Top Target Pages")}</h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm border-collapse">
                   <thead>
                     <tr className="border-b border-border text-xs text-muted uppercase font-semibold">
-                      <th className="py-2.5 pr-4 font-semibold">Page Path</th>
-                      <th className="py-2.5 px-3 text-right font-semibold">Clicks</th>
-                      <th className="py-2.5 px-3 text-right font-semibold">Imps</th>
-                      <th className="py-2.5 pl-4 text-right font-semibold">Pos</th>
+                      <th className="py-2.5 pr-4 font-semibold">{seoCopy(locale, "Page Path")}</th>
+                      <th className="py-2.5 px-3 text-right font-semibold">{seoCopy(locale, "Clicks")}</th>
+                      <th className="py-2.5 px-3 text-right font-semibold">{seoCopy(locale, "Imps")}</th>
+                      <th className="py-2.5 pl-4 text-right font-semibold">{seoCopy(locale, "Pos")}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -432,7 +520,7 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
                     })}
                     {report.pages.length === 0 && (
                       <tr>
-                        <td colSpan={4} className="py-8 text-center text-muted">No page performance data available yet.</td>
+                        <td colSpan={4} className="py-8 text-center text-muted">{seoCopy(locale, "No page performance data available yet.")}</td>
                       </tr>
                     )}
                   </tbody>
@@ -443,12 +531,12 @@ export function SeoDashboard({ initialConfig }: SeoDashboardProps) {
         </>
       ) : (
         <div className="rounded-[var(--radius-card)] border border-border bg-surface p-8 text-center space-y-2">
-          <p className="text-muted">No organic keyword stats returned. Please verify that this property url possesses search traffic.</p>
+          <p className="text-muted">{seoCopy(locale, "No organic keyword stats returned. Please verify that this property url possesses search traffic.")}</p>
           <button
             onClick={() => loadReport(days)}
             className="focus-ring tap-target inline-flex items-center justify-center rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold text-primary hover:bg-primary/20 transition-all cursor-pointer"
           >
-            Retry Fetching Data
+            {seoCopy(locale, "Retry Fetching Data")}
           </button>
         </div>
       )}

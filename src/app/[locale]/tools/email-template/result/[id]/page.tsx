@@ -4,11 +4,23 @@ import { buildLocalePath, isLocale } from "@/lib/site";
 import { Card, StatusMessage, ButtonLink } from "@/components/ui";
 import { auth } from "@/auth";
 import { UnlockButton } from "./unlock-button";
+import { getEmailTemplateCopy } from "../../copy";
 
-export const metadata = {
-  title: "Your Email Templates",
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; id: string }>;
+}) {
+  const { locale } = await params;
+
+  if (!isLocale(locale)) return {};
+  const copy = getEmailTemplateCopy(locale);
+
+  return {
+    title: copy.resultMetadataTitle,
+    robots: { index: false, follow: false },
+  };
+}
 
 /* ── Types ── */
 
@@ -46,6 +58,7 @@ export default async function ResultPage({
   const { locale, id } = await params;
 
   if (!isLocale(locale)) notFound();
+  const copy = getEmailTemplateCopy(locale);
 
   const generation = await db.toolGeneration.findUnique({
     where: { id },
@@ -65,7 +78,7 @@ export default async function ResultPage({
   if (!output || !output.shortEmail) {
     return (
       <div className="max-w-3xl mx-auto py-12">
-        <StatusMessage tone="error">Generation missing or corrupted.</StatusMessage>
+        <StatusMessage tone="error">{copy.missingGeneration}</StatusMessage>
       </div>
     );
   }
@@ -81,20 +94,20 @@ export default async function ResultPage({
       {/* ── Header ── */}
       <div className="space-y-4">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/70 sm:text-sm">
-          {isPaid ? "Your Email Pack" : "Free Preview"}
+          {isPaid ? copy.packEyebrow : copy.freePreviewEyebrow}
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
           {input?.jobTitle && input?.companyName
-            ? `Your email for: ${input.jobTitle} at ${input.companyName}`
-            : "Your Personalised Job Email"}
+            ? `${copy.resultTitlePrefix} ${input.jobTitle} ${copy.resultTitleCompanyConnector} ${input.companyName}`
+            : copy.resultTitle}
         </h1>
         {isPaid ? (
           <StatusMessage tone="info">
-            Your full email pack is ready. Copy the version that best fits your style.
+            {copy.paidStatus}
           </StatusMessage>
         ) : (
           <StatusMessage tone="info">
-            Ready in seconds. No editing needed. Let&apos;s make a strong first impression.
+            {copy.previewStatus}
           </StatusMessage>
         )}
       </div>
@@ -104,7 +117,7 @@ export default async function ResultPage({
         <>
           <section className="space-y-4">
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              Subject Lines
+              {copy.subjectLinesTitle}
             </h2>
             <Card className="space-y-2">
               {output.subjectOptions.map((subj, i) => (
@@ -118,7 +131,7 @@ export default async function ResultPage({
 
           <section className="space-y-4">
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              Short & Simple Version
+              {copy.shortVersionTitle}
             </h2>
             <Card className="border-l-4 border-l-primary">
               <div className="text-foreground text-[15px] leading-[1.75] whitespace-pre-wrap font-mono text-sm bg-surface-strong p-5 rounded-xl">
@@ -129,7 +142,7 @@ export default async function ResultPage({
 
           <section className="space-y-4">
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              Detailed Version
+              {copy.detailedVersionTitle}
             </h2>
             <Card className="border-l-4 border-l-accent">
               <div className="text-foreground text-[15px] leading-[1.75] whitespace-pre-wrap font-mono text-sm bg-surface-strong p-5 rounded-xl">
@@ -141,7 +154,7 @@ export default async function ResultPage({
           {output.tips && output.tips.length > 0 && (
             <section className="space-y-4">
               <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                💡 Quick Sending Tips
+                {copy.tipsTitle}
               </h2>
               <Card className="space-y-3">
                 {output.tips.map((tip, i) => (
@@ -157,10 +170,10 @@ export default async function ResultPage({
           <section className="text-center py-4">
             <Card className="space-y-4 py-6">
               <p className="text-2xl">🎉</p>
-              <h3 className="text-lg font-semibold text-foreground">You&apos;re ready to hit send!</h3>
+              <h3 className="text-lg font-semibold text-foreground">{copy.readyTitle}</h3>
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
                 <ButtonLink href={toolPath} variant="secondary">
-                  Create Another Email
+                  {copy.createAnother}
                 </ButtonLink>
               </div>
             </Card>
@@ -173,17 +186,17 @@ export default async function ResultPage({
           {/* Partial Free Preview (the "cut off mid-way" hook) */}
           <div className="space-y-4">
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              Preview
+              {copy.previewTitle}
             </h2>
             <Card className="border-l-4 border-l-primary relative overflow-hidden">
               <div className="space-y-4 relative z-10">
                 <div className="space-y-1">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">Subject:</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">{copy.subjectLabel}</p>
                   <p className="text-foreground font-medium text-[16px]">{primarySubject}</p>
                 </div>
                 <hr className="border-border/50" />
                 <div className="space-y-1">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">Body:</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">{copy.bodyLabel}</p>
                   <div className="text-foreground text-[15px] leading-[1.75] whitespace-pre-wrap font-mono text-sm bg-surface-strong p-4 rounded-xl rounded-b-none border-b-0 pb-0">
                     {partialShortEmail}
                     <div className="h-10 bg-gradient-to-t from-surface-strong to-transparent w-full mt-2" />
@@ -221,22 +234,16 @@ export default async function ResultPage({
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold text-foreground">
-                    Get your complete, ready-to-send email
+                    {copy.paywallTitle}
                   </h3>
                   <p className="text-primary font-medium text-[15px] leading-relaxed max-w-sm mx-auto">
-                    Your email is almost ready. Unlock it and send it with confidence.
+                    {copy.paywallBody}
                   </p>
                 </div>
 
                 {/* Benefits list */}
                 <div className="text-left space-y-2.5 px-4 pt-2">
-                  {[
-                    `✔ Full professional email`,
-                    `✔ 3 subject line options`,
-                    `✔ Short + detailed versions`,
-                    `✔ Proper formatting`,
-                    `✔ Copy & send instantly`,
-                  ].map((benefit) => (
+                  {copy.paywallBenefits.map((benefit) => (
                     <div key={benefit} className="flex gap-2.5 items-center">
                       <span className="text-foreground text-[15px] font-medium">{benefit}</span>
                     </div>
@@ -254,10 +261,10 @@ export default async function ResultPage({
                       href={signInPath}
                       className="w-full h-12 text-[17px]"
                     >
-                      Unlock Now — R19
+                      {copy.unlock}
                     </ButtonLink>
                     <p className="text-xs text-muted">
-                      You&apos;ll need a free account to save your emails
+                      {copy.accountRequired}
                     </p>
                   </div>
                 )}

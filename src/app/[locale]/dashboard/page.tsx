@@ -26,6 +26,23 @@ import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { getDashboardData } from "@/lib/users";
 import { DEFAULT_LOCALE, buildLocalePath, isLocale } from "@/lib/site";
+import type { Locale } from "@/lib/site";
+
+const ZU_DASHBOARD_COPY: Record<string, string> = {
+  "Manage your GrantCare preferences, reminders, and saved pages.":
+    "Phatha izinketho zakho ze-GrantCare, izikhumbuzi, namakhasi agciniwe.",
+  Saving: "Kuyalondolozwa",
+  "WhatsApp updates": "Izibuyekezo ze-WhatsApp",
+  "Get payment date reminders and grant updates directly on WhatsApp. Join our channel to stay informed.":
+    "Thola izikhumbuzi zezinsuku zokukhokha nezibuyekezo zezibonelelo ngqo ku-WhatsApp. Joyina isiteshi sethu ukuze uhlale wazi.",
+  "WhatsApp notifications coming soon": "Izaziso ze-WhatsApp ziyeza maduze",
+  "My Interview Guides": "Imihlahlandlela yami yenhlolokhono",
+  "Custom Role": "Indima eyenziwe ngokwezifiso",
+};
+
+function dashboardCopy(locale: Locale, text: string) {
+  return locale === "zu" ? (ZU_DASHBOARD_COPY[text] ?? text) : text;
+}
 
 export async function generateMetadata({
   params,
@@ -44,7 +61,7 @@ export async function generateMetadata({
     locale,
     path: "/dashboard",
     title: copy.dashboard,
-    description: "Manage your GrantCare preferences, reminders, and saved pages.",
+    description: dashboardCopy(locale, "Manage your GrantCare preferences, reminders, and saved pages."),
     noIndex: true,
   });
 }
@@ -129,7 +146,7 @@ export default async function DashboardPage({
                 </Select>
               </Field>
             </div>
-            <SubmitButton pendingLabel="Saving">{copy.saveProfile}</SubmitButton>
+            <SubmitButton pendingLabel={dashboardCopy(locale, "Saving")}>{copy.saveProfile}</SubmitButton>
           </form>
         </Card>
       </Section>
@@ -170,7 +187,7 @@ export default async function DashboardPage({
                       defaultChecked={subscription?.onPublish ?? false}
                     />
                   </div>
-                  <SubmitButton pendingLabel="Saving">{copy.saveReminders}</SubmitButton>
+                  <SubmitButton pendingLabel={dashboardCopy(locale, "Saving")}>{copy.saveReminders}</SubmitButton>
                 </form>
               </Card>
             );
@@ -179,18 +196,21 @@ export default async function DashboardPage({
       </Section>
 
       {/* ── WhatsApp Channel ── */}
-      <Section title="WhatsApp updates">
+      <Section title={dashboardCopy(locale, "WhatsApp updates")}>
         <Card className="space-y-4">
           <div className="space-y-2">
             <p className="text-sm text-muted">
-              Get payment date reminders and grant updates directly on WhatsApp. Join our channel to stay informed.
+              {dashboardCopy(
+                locale,
+                "Get payment date reminders and grant updates directly on WhatsApp. Join our channel to stay informed.",
+              )}
             </p>
             <p className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
-              WhatsApp notifications coming soon
+              {dashboardCopy(locale, "WhatsApp notifications coming soon")}
             </p>
           </div>
-          <WhatsAppChannelBanner />
+          <WhatsAppChannelBanner locale={locale} />
         </Card>
       </Section>
 
@@ -211,7 +231,7 @@ export default async function DashboardPage({
         )}
       </Section>
 
-      <Section title="My Interview Guides">
+      <Section title={dashboardCopy(locale, "My Interview Guides")}>
         {dashboardData.user.toolGenerations?.length > 0 ? (
           <div className="grid gap-4 md:grid-cols-2">
             {dashboardData.user.toolGenerations.map((item) => {
@@ -219,7 +239,7 @@ export default async function DashboardPage({
               const jobTitle =
                 typeof inputData?.jobTitle === "string" && inputData.jobTitle.trim().length > 0
                   ? inputData.jobTitle
-                  : "Custom Role";
+                  : dashboardCopy(locale, "Custom Role");
 
               return (
                 <Link
@@ -266,7 +286,7 @@ export default async function DashboardPage({
                 </h3>
                 <p className="text-sm text-muted">
                   {entry.paymentDate
-                    ? formatDateLabel(entry.paymentDate.toISOString().slice(0, 10))
+                    ? formatDateLabel(entry.paymentDate.toISOString().slice(0, 10), locale)
                     : copy.paymentPortalOnly}
                 </p>
                 <p className="text-sm text-muted">

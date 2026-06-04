@@ -4,11 +4,23 @@ import { buildLocalePath, isLocale } from "@/lib/site";
 import { Card, StatusMessage, ButtonLink } from "@/components/ui";
 import { auth } from "@/auth";
 import { UnlockButton } from "./unlock-button";
+import { getSassaAppealCopy } from "../../copy";
 
-export const metadata = {
-  title: "Your SASSA Appeal Draft",
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; id: string }>;
+}) {
+  const { locale } = await params;
+
+  if (!isLocale(locale)) return {};
+  const copy = getSassaAppealCopy(locale);
+
+  return {
+    title: copy.resultMetadataTitle,
+    robots: { index: false, follow: false },
+  };
+}
 
 /* ── Types ── */
 
@@ -33,16 +45,6 @@ function getPartialLetter(fullLetter: string): string {
   return previewLines.join("\n");
 }
 
-/* ── Mappings ── */
-const REASON_LABELS: Record<string, string> = {
-  "alternative_income": "Alternative Income",
-  "uif_registered": "UIF Registration",
-  "nsfas_registered": "NSFAS Registration",
-  "identity_failed": "Failed Identity Verification",
-  "medical_failed": "Medical Assessment",
-  "other": "General Rejection",
-};
-
 /* ── Page ── */
 
 export default async function ResultPage({
@@ -53,6 +55,7 @@ export default async function ResultPage({
   const { locale, id } = await params;
 
   if (!isLocale(locale)) notFound();
+  const copy = getSassaAppealCopy(locale);
 
   const generation = await db.toolGeneration.findUnique({
     where: { id },
@@ -72,13 +75,14 @@ export default async function ResultPage({
   if (!output || !output.appealLetter) {
     return (
       <div className="max-w-3xl mx-auto py-12">
-        <StatusMessage tone="error">Generation missing or corrupted.</StatusMessage>
+        <StatusMessage tone="error">{copy.missingGeneration}</StatusMessage>
       </div>
     );
   }
 
   const partialLetter = getPartialLetter(output.appealLetter);
-  const reasonLabel = REASON_LABELS[input?.rejectionReason || "other"];
+  const reasonLabels = copy.reasonLabels as Record<string, string>;
+  const reasonLabel = reasonLabels[input?.rejectionReason || "other"] ?? reasonLabels.other;
   const toolPath = buildLocalePath(locale, "/tools/sassa-appeal");
   const resultPath = buildLocalePath(locale, `/tools/sassa-appeal/result/${id}`);
   const signInPath = `${buildLocalePath(locale, "/sign-in")}?callbackUrl=${encodeURIComponent(resultPath)}`;
@@ -88,18 +92,18 @@ export default async function ResultPage({
       {/* ── Header ── */}
       <div className="space-y-4">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/70 sm:text-sm">
-          {isPaid ? "Your Appeal Pack" : "Your Appeal Draft"}
+          {isPaid ? copy.packEyebrow : copy.draftEyebrow}
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-          Appeal for {reasonLabel}
+          {copy.appealTitlePrefix} {reasonLabel}
         </h1>
         {isPaid ? (
           <StatusMessage tone="info">
-            Your appeal letter draft and required document checklist are ready.
+            {copy.paidStatus}
           </StatusMessage>
         ) : (
           <StatusMessage tone="info">
-            Your formal defense has been drafted according to ITSAA guidelines. Unlock it to submit your appeal today.
+            {copy.previewStatus}
           </StatusMessage>
         )}
       </div>
@@ -109,7 +113,7 @@ export default async function ResultPage({
         <>
           <section className="space-y-4">
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              Appeal Letter Draft
+              {copy.letterDraftTitle}
             </h2>
             <Card className="border-l-4 border-l-primary">
               <div className="text-foreground text-[15px] leading-[1.75] whitespace-pre-wrap font-mono text-sm bg-surface-strong p-6 rounded-xl">
@@ -120,7 +124,7 @@ export default async function ResultPage({
 
           <section className="space-y-4">
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              📎 Required Documents to Attach
+              {copy.requiredDocsTitle}
             </h2>
             <Card className="space-y-3">
               {output.requiredDocuments.map((doc, i) => (
@@ -135,7 +139,7 @@ export default async function ResultPage({
           {output.warnings && output.warnings.length > 0 && (
             <section className="space-y-4">
               <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                ⚠️ Critical Warnings
+                {copy.warningsTitle}
               </h2>
               <Card className="space-y-3 border-danger/30 bg-danger/5">
                 {output.warnings.map((warn, i) => (
@@ -151,11 +155,11 @@ export default async function ResultPage({
           <section className="text-center py-4">
             <Card className="space-y-4 py-6">
               <p className="text-2xl">🏛️</p>
-              <h3 className="text-lg font-semibold text-foreground">You&apos;re ready to appeal.</h3>
-              <p className="text-muted text-sm max-w-sm mx-auto">Make sure you print and sign the letter before uploading it to the SASSA portal or delivering it to the DSD office.</p>
+              <h3 className="text-lg font-semibold text-foreground">{copy.readyTitle}</h3>
+              <p className="text-muted text-sm max-w-sm mx-auto">{copy.readyBody}</p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
                 <ButtonLink href={toolPath} variant="secondary">
-                  Draft Another Appeal
+                  {copy.draftAnother}
                 </ButtonLink>
               </div>
             </Card>
@@ -167,7 +171,7 @@ export default async function ResultPage({
           
           <div className="space-y-4">
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              Letter Preview
+              {copy.letterPreviewTitle}
             </h2>
             <Card className="border-l-4 border-l-primary relative overflow-hidden">
               <div className="space-y-4 relative z-10">
@@ -207,21 +211,16 @@ export default async function ResultPage({
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold text-foreground">
-                    Unlock full appeal pack
+                    {copy.paywallTitle}
                   </h3>
                   <p className="text-primary font-medium text-[15px] leading-relaxed max-w-sm mx-auto">
-                    A strong, legal defense is the only way to overturn a rejected grant.
+                    {copy.paywallBody}
                   </p>
                 </div>
 
                 {/* Benefits list */}
                 <div className="text-left space-y-2.5 px-4 pt-2">
-                  {[
-                    `✔ Full formal appeal letter`,
-                    `✔ Required document checklist`,
-                    `✔ Critical SASSA timeline warnings`,
-                    `✔ Copy & paste ready`,
-                  ].map((benefit) => (
+                  {copy.paywallBenefits.map((benefit) => (
                     <div key={benefit} className="flex gap-2.5 items-center">
                       <span className="text-foreground text-[15px] font-medium">{benefit}</span>
                     </div>
@@ -239,10 +238,10 @@ export default async function ResultPage({
                       href={signInPath}
                       className="w-full h-12 text-[17px]"
                     >
-                      Unlock Now — R19
+                      {copy.unlock}
                     </ButtonLink>
                     <p className="text-xs text-muted">
-                      You&apos;ll need a free account to save your letters
+                      {copy.accountRequired}
                     </p>
                   </div>
                 )}

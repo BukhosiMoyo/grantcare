@@ -11,6 +11,17 @@ export const metadata: Metadata = {
   title: "SEO & Search Console Admin",
 };
 
+const ZU_SEO_PAGE_COPY: Record<string, string> = {
+  "Google Analytics & Performance": "Google Analytics nokusebenza",
+  "SEO & Google Search Console": "SEO ne-Google Search Console",
+  "Monitor your South African SASSA grant organic search performance directly from the admin dashboard. Analyze keyword visibility, click-through rates, and average rank positions for target audiences.":
+    "Qapha ukusebenza kokusesha kwe-organic kwezibonelelo ze-SASSA zaseNingizimu Afrika ngqo kudeshibhodi ye-admin. Hlaziya ukubonakala kwamagama okusesha, amazinga okuchofoza, nezindawo ezimaphakathi zokukleliswa zezethameli eziqondiwe.",
+};
+
+function seoPageCopy(locale: Locale, text: string) {
+  return locale === "zu" ? (ZU_SEO_PAGE_COPY[text] ?? text) : text;
+}
+
 interface AdminSeoPageProps {
   params: Promise<{ locale: string }>;
 }
@@ -31,16 +42,15 @@ export default async function AdminSeoPage({ params }: AdminSeoPageProps) {
   return (
     <div className="space-y-6">
       <Section
-        eyebrow="Google Analytics & Performance"
-        title="SEO & Google Search Console"
+        eyebrow={seoPageCopy(locale, "Google Analytics & Performance")}
+        title={seoPageCopy(locale, "SEO & Google Search Console")}
       >
         <p className="max-w-3xl text-sm leading-relaxed text-muted">
-          Monitor your South African SASSA grant organic search performance directly from the admin dashboard. 
-          Analyze keyword visibility, click-through rates, and average rank positions for target audiences.
+          {seoPageCopy(locale, "Monitor your South African SASSA grant organic search performance directly from the admin dashboard. Analyze keyword visibility, click-through rates, and average rank positions for target audiences.")}
         </p>
       </Section>
 
-      <SeoDashboard initialConfig={config} />
+      <SeoDashboard initialConfig={config} locale={locale} />
     </div>
   );
 }

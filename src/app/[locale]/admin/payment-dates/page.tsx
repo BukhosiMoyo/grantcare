@@ -21,6 +21,44 @@ import { LOCALES, isLocale, type Locale } from "@/lib/site";
 import { isDatabaseConfigured } from "@/lib/server-env";
 import { getTranslationText } from "@/lib/translation-utils";
 
+const ZU_PAYMENT_COPY: Record<string, string> = {
+  "Payment dates": "Izinsuku zokukhokha",
+  "Database not configured.": "Idathabheyisi ayilungisiwe.",
+  "Payment date saved.": "Usuku lokukhokha lulondoloziwe.",
+  "Payment date deleted.": "Usuku lokukhokha lususiwe.",
+  "Check the payment date form and try again.": "Hlola ifomu losuku lokukhokha bese uzama futhi.",
+  "Payment entry not found.": "Okufakiwe kosuku lokukhokha akutholakalanga.",
+  "Edit payment date": "Hlela usuku lokukhokha",
+  "New payment date": "Usuku lokukhokha olusha",
+  Year: "Unyaka",
+  Month: "Inyanga",
+  "Grant type": "Uhlobo lwesibonelelo",
+  "Select a grant type": "Khetha uhlobo lwesibonelelo",
+  State: "Isimo",
+  Expected: "Kulindelwe",
+  Pending: "Kusalindile",
+  "Portal only": "Kuphothali kuphela",
+  expected: "kulindelwe",
+  pending: "kusalindile",
+  portal_only: "kuphothali kuphela",
+  "Payment date": "Usuku lokukhokha",
+  Note: "Inothi",
+  Published: "Kushicilelwe",
+  Draft: "Okusalungiswa",
+  "Translated note": "Inothi elihunyushiwe",
+  Saving: "Kuyalondolozwa",
+  "Save payment date": "Londoloza usuku lokukhokha",
+  "All payment dates": "Zonke izinsuku zokukhokha",
+  "No date": "Alukho usuku",
+  Edit: "Hlela",
+  "Delete this payment date?": "Susa lolu suku lokukhokha?",
+  Delete: "Susa",
+};
+
+function paymentCopy(locale: Locale, text: string) {
+  return locale === "zu" ? (ZU_PAYMENT_COPY[text] ?? text) : text;
+}
+
 export default async function AdminPaymentDatesPage({
   params,
   searchParams,
@@ -37,9 +75,9 @@ export default async function AdminPaymentDatesPage({
 
   if (!isDatabaseConfigured()) {
     return (
-      <Section eyebrow="Admin" title="Payment dates">
+      <Section eyebrow="Admin" title={paymentCopy(locale, "Payment dates")}>
         <Card>
-          <p className="text-sm text-muted">Database not configured.</p>
+          <p className="text-sm text-muted">{paymentCopy(locale, "Database not configured.")}</p>
         </Card>
       </Section>
     );
@@ -64,25 +102,25 @@ export default async function AdminPaymentDatesPage({
 
   return (
     <div className="space-y-8">
-      <Section eyebrow="Admin" title="Payment dates">
+      <Section eyebrow="Admin" title={paymentCopy(locale, "Payment dates")}>
         <div className="space-y-4">
           {resolvedSearchParams.message ? (
-            <StatusMessage>{resolvedSearchParams.message}</StatusMessage>
+            <StatusMessage>{paymentCopy(locale, resolvedSearchParams.message)}</StatusMessage>
           ) : null}
           {resolvedSearchParams.error ? (
-            <StatusMessage tone="error">{resolvedSearchParams.error}</StatusMessage>
+            <StatusMessage tone="error">{paymentCopy(locale, resolvedSearchParams.error)}</StatusMessage>
           ) : null}
         </div>
       </Section>
 
-      <Section title={selectedEntry ? "Edit payment date" : "New payment date"}>
+      <Section title={paymentCopy(locale, selectedEntry ? "Edit payment date" : "New payment date")}>
         <Card className="space-y-5">
           <form action={upsertPaymentDateAction} className="space-y-5">
             <input type="hidden" name="locale" value={locale} />
             <input type="hidden" name="entryId" value={selectedEntry?.id ?? ""} />
             <input type="hidden" name="periodId" value={selectedEntry?.periodId ?? ""} />
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Year">
+              <Field label={paymentCopy(locale, "Year")}>
                 <Input
                   name="year"
                   type="number"
@@ -91,7 +129,7 @@ export default async function AdminPaymentDatesPage({
                   required
                 />
               </Field>
-              <Field label="Month">
+              <Field label={paymentCopy(locale, "Month")}>
                 <Input
                   name="month"
                   type="number"
@@ -101,9 +139,9 @@ export default async function AdminPaymentDatesPage({
                   required
                 />
               </Field>
-              <Field label="Grant type">
+              <Field label={paymentCopy(locale, "Grant type")}>
                 <Select name="grantTypeId" defaultValue={selectedEntry?.grantTypeId ?? ""}>
-                  <option value="">Select a grant type</option>
+                  <option value="">{paymentCopy(locale, "Select a grant type")}</option>
                   {grantTypes.map((grant) => (
                     <option key={grant.id} value={grant.id}>
                       {grant.name}
@@ -111,14 +149,14 @@ export default async function AdminPaymentDatesPage({
                   ))}
                 </Select>
               </Field>
-              <Field label="State">
+              <Field label={paymentCopy(locale, "State")}>
                 <Select name="state" defaultValue={selectedEntry?.state ?? "pending"}>
-                  <option value="expected">Expected</option>
-                  <option value="pending">Pending</option>
-                  <option value="portal_only">Portal only</option>
+                  <option value="expected">{paymentCopy(locale, "Expected")}</option>
+                  <option value="pending">{paymentCopy(locale, "Pending")}</option>
+                  <option value="portal_only">{paymentCopy(locale, "Portal only")}</option>
                 </Select>
               </Field>
-              <Field label="Payment date">
+              <Field label={paymentCopy(locale, "Payment date")}>
                 <Input
                   name="paymentDate"
                   type="date"
@@ -126,18 +164,18 @@ export default async function AdminPaymentDatesPage({
                 />
               </Field>
             </div>
-            <Field label="Note">
+            <Field label={paymentCopy(locale, "Note")}>
               <Textarea name="note" defaultValue={selectedEntry?.note ?? ""} />
             </Field>
             <CheckboxRow
               name="published"
-              label="Published"
+              label={paymentCopy(locale, "Published")}
               defaultChecked={selectedEntry?.published ?? false}
             />
             <div className="space-y-4 rounded-3xl border border-border bg-surface-muted p-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">Translated note</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{paymentCopy(locale, "Translated note")}</p>
               {LOCALES.filter((entry) => entry.code !== "en").map((entry) => (
-                <Field key={entry.code} label={`Note (${entry.label})`}>
+                <Field key={entry.code} label={`${paymentCopy(locale, "Note")} (${entry.label})`}>
                   <Textarea
                     name={`translation_note_${entry.code}`}
                     defaultValue={getTranslationText(selectedEntry?.translations, entry.code as Locale, "note")}
@@ -145,12 +183,12 @@ export default async function AdminPaymentDatesPage({
                 </Field>
               ))}
             </div>
-            <SubmitButton pendingLabel="Saving">Save payment date</SubmitButton>
+            <SubmitButton pendingLabel={paymentCopy(locale, "Saving")}>{paymentCopy(locale, "Save payment date")}</SubmitButton>
           </form>
         </Card>
       </Section>
 
-      <Section title="All payment dates">
+      <Section title={paymentCopy(locale, "All payment dates")}>
         <div className="grid gap-4">
           {entries.map((entry) => (
             <Card key={entry.id} className="space-y-4">
@@ -159,7 +197,7 @@ export default async function AdminPaymentDatesPage({
                   {entry.grantType.name} · {entry.period.month}/{entry.period.year}
                 </h3>
                 <p className="text-sm text-muted">
-                  {entry.paymentDate ? entry.paymentDate.toISOString().slice(0, 10) : "No date"} · {entry.state} · {entry.published ? "Published" : "Draft"}
+                  {entry.paymentDate ? entry.paymentDate.toISOString().slice(0, 10) : paymentCopy(locale, "No date")} · {paymentCopy(locale, entry.state)} · {paymentCopy(locale, entry.published ? "Published" : "Draft")}
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
@@ -167,13 +205,13 @@ export default async function AdminPaymentDatesPage({
                   href={`?edit=${entry.id}`}
                   className="focus-ring tap-target inline-flex items-center rounded-full border border-border bg-surface px-4 text-sm font-semibold"
                 >
-                  Edit
+                  {paymentCopy(locale, "Edit")}
                 </a>
                 <form action={deletePaymentDateAction}>
                   <input type="hidden" name="locale" value={locale} />
                   <input type="hidden" name="id" value={entry.id} />
-                  <ConfirmSubmitButton confirmText="Delete this payment date?">
-                    Delete
+                  <ConfirmSubmitButton confirmText={paymentCopy(locale, "Delete this payment date?")}>
+                    {paymentCopy(locale, "Delete")}
                   </ConfirmSubmitButton>
                 </form>
               </div>

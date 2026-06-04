@@ -1,3 +1,5 @@
+import { addSetswanaTranslations } from "./generated-guide-translations";
+
 const section = (title: string, body: string) => ({ title, body });
 const faq = (question: string, answer: string) =>
   section(`FAQ: ${question}`, answer);
@@ -160,7 +162,7 @@ function claimedAmountGuide({
   });
 }
 
-export const SEO_BATCH_FOURTEEN_GUIDES = [
+const SEO_BATCH_FOURTEEN_GUIDES_SOURCE = [
   guide({
     slug: "what-grant-increase-searches-usually-mean",
     title: "What grant increase searches usually mean",
@@ -1853,3 +1855,2634 @@ export const SEO_BATCH_FOURTEEN_GUIDES = [
     sortOrder: 323,
   }),
 ];
+
+type GuideTranslation = {
+  title: string;
+  summary: string;
+  sections: Array<{ title: string; body: string }>;
+};
+
+const ZU_TRANSLATIONS: Record<string, GuideTranslation> = {
+  "what-grant-increase-searches-usually-mean": {
+    "title": "Ukuthi ukusesha kwesibonelelo sikahulumeni ngokuvamile kusho ukuthini",
+    "summary": "Umhlahlandlela ocacile wokunikeza ukusesha okukhulayo kanye nendlela yokuyifunda ngokuphephile ngaphandle kwamahemuhemu adidayo, okuthunyelwe kwakudala, nezibuyekezo ezisemthethweni.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Nikeza usesho olukhuphukile ngokuvamile lusho ukuthi abasebenzisi bafuna ukwazi ukuthi amanani esibonelelo ashintshile yini. Indlela ephephe kunazo zonke yokufunda lokho kusesha iwukuhlukanisa amahlebezi avamile kusukela kusibuyekezo sakamuva esisemthethweni esishicilelwe."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abantu bavame ukucinga ukwanda uma befuna impendulo eyodwa eqondile ngemali. Empeleni, impendulo ewusizo ngokuvamile incike osukwini lokubuyekezwa, uhlobo lwesibonelelo, kanye nokuthi umthombo usemthethweni ngokusobala yini."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma umsebenzisi ethemba okuthunyelwe okukhushulwayo okudala noma okungacacile, umphumela ungase ube ukulindela okungamanga mayelana namanani esibonelelo, isikhathi sokukhokha, noma ukufaneleka."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi isimangalo sokwenyuka sixhumene yini nesibuyekezo esisemthethweni esicacile.\n2. Qondanisa isibuyekezo nohlobo oluqondile lwesibonelelo.\n3. Qaphela amalebula onyaka asuka kokuthunyelwe amadala.\n4. Gwema ukwethemba izithombe-skrini ezingenamthombo.\n5. Sebenzisa i-GrantCare ukuze uhumushe isimangalo ngaphandle kokusithatha njengesiqiniseko esisemthethweni."
+      },
+      {
+        "title": "Umbuzo ophephile kakhulu awuzange ukhule, kodwa ngokusho kwamuphi umthombo",
+        "body": "Ukwanda kwamahemuhemu kuvame ukuzwakala kukholakala ngoba kwabiwa njengamaqiniso alula. Ukuhlola okuqinile ukuthi isimangalo sivela ngokusobala yini esibuyekezweni esisemthethweni esishicilelwe nokuthi siyahambisana yini nesigaba sesibonelelo osikhathalelayo ngempela."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingachaza izimangalo ezikhuphukayo, kodwa amanani ezibonelelo ezisemthethweni nezinguquko ezisemthethweni kusengezaseziteshini zikahulumeni ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uqhathanise izigaba zesibonelelo, umongo wedethi yokukhokha, nemihlahlandlela yokuhlola isibuyekezo ukuze ukhulise ukusesha kube lula ukufundeka ngokuphephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-if-a-grant-increase-update-is-official\n• /guides/how-to-read-grant-increase-news-safely\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/where-to-find-official-updates-safely\n• /grants"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani ukusesha kwesibonelelo sikahulumeni kuzwakala kuphuthumayo?",
+        "body": "Ngoba zithinta okulindelwe ngemali futhi abasebenzisi bavame ukufuna impendulo esheshayo, elula."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole kuqala?",
+        "body": "Hlola umthombo, idethi, kanye nesigaba esiqondile sesibonelelo esihilelekile."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingakuqinisekisa ukwenyuka okusemthethweni?",
+        "body": "Cha. Kungasiza ukuchaza isimangalo, kodwa ukuqinisekiswa okusemthethweni kuseseziteshini ezisemthethweni."
+      }
+    ]
+  },
+  "how-to-check-if-a-grant-increase-update-is-official": {
+    "title": "Ungahlola kanjani ukuthi isibuyekezo sokukhushulwa kwesibonelelo sikahulumeni sisemthethweni",
+    "summary": "Umhlahlandlela wokuqala wokuthembana wokuhlola ukuthi ingabe isibuyekezo sokukhushulwa kwesibonelelo sikahulumeni sivela ngempela emthonjeni osemthethweni ngaphambi kokuthi uthembele kuso.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola ukuthi isibuyekezo sokukhushulwa kwesibonelelo sikahulumeni sisemthethweni yini ngokubheka umthombo, umzila, nesigaba sesibonelelo kunokuthemba inani noma amagama kuphela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amaposi amaningi akhuphukayo abukeka ekholeka ngoba asebenzisa ulimi olujwayelekile lwesibonelelo. Inkinga ukuthi amagama akopishiwe angahamba ngokushesha kunezibuyekezo zangempela ezisemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Isimangalo sokwenyuka esingamanga singashintsha izinhlelo zendlu, sidale ukukhathazeka, noma sisunduzele abasebenzisi kumakhasi angaphephile azenza sengathi achaza noma avule ushintsho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Bheka umthombo osemthethweni ocacile.\n2. Qondanisa isibuyekezo nesigaba esifanele sesibonelelo.\n3. Hlola ukuthi ingabe okuthunyelwe kusenengqondo yini esikhathini sakamuva.\n4. Gwema ukuthembela ezithombeni-skrini ezabiwe ezingenamthombo.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuqonda umehluko phakathi kwesiqondiso nokuqinisekiswa."
+      },
+      {
+        "title": "Umthombo uza ngaphambi kwenani",
+        "body": "Inani kokuthunyelwe akulona ubufakazi obunamandla. Ubufakazi obuqine kakhulu ukuthi ingabe isibuyekezo singesomzila osemthethweni olungile futhi sisebenza ngokusobala kusibonelelo okuxoxwa ngaso."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayisebenzi njengomshicileli osemthethweni wokwenyuka kwesibonelelo. Isiza abasebenzisi ukuthi bahlole izimangalo ngokucophelela."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise ukukhushulwa kokuthunyelwe namakhasi ohlobo lwesibonelelo, imihlahlandlela yemizila esemthethweni, nomongo wedethi yokukhokha ukuze ufunde isimangalo ngokuzola."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-grant-increase-searches-usually-mean\n• /guides/how-to-read-grant-increase-news-safely\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani umthombo ubaluleke kakhulu kunenombolo?",
+        "body": "Ngoba inombolo ingakopishwa kalula, kuyilapho umthombo osemthethweni ocacile unzima kakhulu ukukhohlisa kahle."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngethembe isithombe esikhulayo esabiwe eqenjini?",
+        "body": "Cha. Qinisekisa umthombo osemthethweni kuqala."
+      },
+      {
+        "title": "I-FAQ: Yini enye okufanele ngiyifanise ngaphandle komthombo?",
+        "body": "Qondanisa isibuyekezo nesigaba esifanele sesibonelelo kanye nesikhathi esifanele."
+      }
+    ]
+  },
+  "how-to-read-grant-increase-news-safely": {
+    "title": "Uzifunda kanjani izindaba zesibonelelo sikahulumeni ngokuphepha",
+    "summary": "Umhlahlandlela osebenzayo wokufunda isibonelelo sinyusa izindaba ngendlela ezolile necophelelayo ngaphandle kokushintsha zonke izihloko zezindaba zibe isenzo esiqinisekisiwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Funda izindaba zokukhushulwa kwesibonelelo sikahulumeni ngokuphepha ngokuhlola ukuthi umbiko ukhomba yini isibuyekezo esisemthethweni esicacile, ukuthi isihloko siyafana yini nesigaba sesibonelelo sikahulumeni, kanye nokuthi isikhathi sisemanje yini."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Imibiko yokwanda kwesitayela sezindaba ivamise ukucindezela ulwazi oluningi lube sihloko esisodwa. Abasebenzisi kusadingeka behlise ijubane ngokwanele ukuze babuze ukuthi yini eshintshile, yasiphi isibonelelo, futhi ngokuya ngamuphi umthombo osemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Isihloko esifushane singenza isibuyekezo esihlala njalo noma esidala sizwakale ngokushesha futhi sifinyelele indawo yonke uma singenjalo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Funda ngale kwesihloko.\n2. Hlola ukuthi umbiko umayelana nani ngempela.\n3. Bheka ukuthi ingabe ikhomba emuva kusibuyekezo esishicilelwe esisemthethweni.\n4. Qaphela izindaba ezindala okwabelwana ngazo futhi kamuva.\n5. Sebenzisa i-GrantCare ukuze uqonde incazelo engokoqobo ngaphandle kokufunda kakhulu isihloko."
+      },
+      {
+        "title": "Izihloko zezindaba ngokuvamile zenza kube lula kunalokho ezikuchazayo",
+        "body": "Umkhuba owusizo ukuphatha izihloko zezindaba ezikhuphukayo njengesiqalo sokuqinisekisa, hhayi njengobufakazi bokugcina. Imininingwane emincane ivamise ukushintsha indlela isihloko okufanele siqondwe ngayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuthi bafunde ukubika komphakathi ngokucophelela, kodwa ayithathi indawo yemithombo esemthethweni yokuqinisekisa kokugcina."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza usuke esihlokweni uye ekhasini elifanele lesibonelelo, inkomba yokuhlola isibuyekezo, noma umongo wokukhokha ngaphandle kokuqagela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-if-a-grant-increase-update-is-official\n• /guides/what-grant-increase-searches-usually-mean\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/where-to-find-official-updates-safely\n• /guides/how-to-know-if-a-sassa-website-is-official"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde ngale kwesihloko?",
+        "body": "Ngoba imininingwane ebalulekile mayelana nomthombo, isikhathi, kanye nesigaba sesibonelelo sivame ukuba ngaphakathi kwendaba, hhayi esihlokweni."
+      },
+      {
+        "title": "I-FAQ: Ingabe indaba endala yokwenyuka ingaqhubeka nokusabalala ngokuhamba kwesikhathi?",
+        "body": "Yebo. Yingakho ukuhlola isikhathi kubaluleke kakhulu."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise nayo umbiko wezindaba?",
+        "body": "Qhathanisa nesibuyekezo esisemthethweni esifanele kanye nesigaba esifanele sesibonelelo."
+      }
+    ]
+  },
+  "how-to-check-older-persons-grant-increase-updates-safely": {
+    "title": "Ungahlola kanjani ukuvuselelwa kwesibonelelo sikahulumeni sabadala ngokuphephile",
+    "summary": "Igayidi yokwethenjwa yokuqala kubantu asebekhulile inikeza ukusesha okukhulayo kanye nendlela yokuhlukanisa izibuyekezo ezisemthethweni ezishicilelwe kokuthunyelwe okukopishiwe noma amalebula onyaka omdala.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola ukuthi abantu abadala banikeza izibuyekezo zokukhushulwa ngokusebenzisa ulwazi lwakamuva olusemthethweni olushicilelwe kunokuthembela ngokwabo izithombe-skrini, okuthunyelwe okukopishiwe, noma amalebula onyaka omdala."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukwenyuka Kwesibonelelo Sabantu Abadala ukusesha ngokuvamile kuvela kubasebenzisi abafuna impendulo eyodwa elula mayelana nemali noma isikhathi. Impendulo ephephile ngokuvamile akuyona inombolo eyodwa kokuthunyelwe. Isibuyekezo sakamuva esishicilelwe esisemthethweni saleso sigaba sesibonelelo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Khulisa amahlebezi asakazwa kalula ngoba abasebenzisi bafuna isiqiniseko ngokushesha. Uma inombolo ingalungile noma iphelelwe isikhathi, ingadala ithemba elingamanga, ukwethuka, noma ukudideka mayelana nokuthi ushintsho lusebenza nini ngempela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola isibuyekezo sakamuva esisemthethweni sezinguquko zezibonelelo zabantu abadala.\n2. Qaphela amalebula onyaka afana no-2025 noma 2026 uma iposi lidala.\n3. Gwema ukwethemba izithombe-skrini ezingenamthombo.\n4. Qhathanisa isibuyekezo nohlobo lwesibonelelo osithola ngempela.\n5. Sebenzisa i-GrantCare uma udinga usizo lokufunda isibuyekezo ngaphandle kokuphutha isiqondiso sokuqinisekisa."
+      },
+      {
+        "title": "Uhlobo lwesibonelelo lubaluleke kakhulu njengenombolo",
+        "body": "Indlela ephephe kunazo zonke yokufunda isimangalo sokwenyuka ukusifanisa nohlobo oluqondile lwesibonelelo sikahulumeni kuqala. Inombolo ezwakala ilungile ngokujwayelekile isengaba nephutha kubantu abadala abanikeza usizo ngokukhethekile."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikushicileli ukukhuphuka kwezibonelelo ezisemthethweni njengesiphathimandla sikahulumeni. Isiza abasebenzisi ukuthi bafunde izimangalo zomphakathi ngokucophelela futhi bazibuyisele eziteshini ezisemthethweni ukuze ziqinisekiswe okokugcina."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise amakhasi ohlobo lwesibonelelo, izinsuku zokukhokha, nemihlahlandlela yokuhlola isibuyekezo esiphephile ukuze ukhuphule izimangalo zizwe zingadideki futhi zingenabungozi kangako."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grants/older-persons\n• /guides/how-to-check-if-a-grant-increase-update-is-official\n• /guides/how-to-read-grant-increase-news-safely\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe kufanele ngithembe umsebenzi wokukhushulwa kwesibonelelo sikahulumeni sabantu abadala ngaphandle komthombo?",
+        "body": "Cha. Kuphephe kakhudlwana ukuqinisekisa isibuyekezo sakamuva esishicilelwe esisemthethweni kuqala."
+      },
+      {
+        "title": "I-FAQ: Kungani amalebula onyaka omdala ebaluleke kangaka?",
+        "body": "Ngoba abasebenzisi bavame ukwabelana ngamaposi amadala angasabonisi isimo sakamuva esishicilelwe."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingaqinisekisa inani lokugcina?",
+        "body": "I-GrantCare ingachaza ukuthi isimangalo sisho ukuthini, kodwa isiqinisekiso esisemthethweni siseseziteshini zikahulumeni ezifanele."
+      }
+    ]
+  },
+  "how-to-check-disability-grant-increase-updates-safely": {
+    "title": "Ungahlola kanjani ukuthuthukiswa kwezibonelelo zokukhubazeka ngokuphepha",
+    "summary": "Igayidi yokwethenjwa yokuqala ekusesheni okukhushulwayo kwesibonelelo sokukhubazeka kanye nendlela yokuhlukanisa izibuyekezo ezisemthethweni ezishicilelwe kokuthunyelwe okukopishiwe noma amalebula onyaka omdala.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola izibuyekezo zokukhushulwa kwesibonelelo sokukhubazeka ngokusebenzisa ulwazi lwakamuva olusemthethweni olushicilelwe esikhundleni sokuthemba izithombe-skrini, okuthunyelwe okukopishiwe, noma amalebula onyaka omdala ngokwawo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho olukhushulwayo lwe-Diability Grant ngokuvamile luvela kubasebenzisi abafuna impendulo eyodwa elula mayelana nemali noma isikhathi. Impendulo ephephile ngokuvamile akuyona inombolo eyodwa kokuthunyelwe. Isibuyekezo sakamuva esishicilelwe esisemthethweni saleso sigaba sesibonelelo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Khulisa amahlebezi asakazwa kalula ngoba abasebenzisi bafuna isiqiniseko ngokushesha. Uma inombolo ingalungile noma iphelelwe isikhathi, ingadala ithemba elingamanga, ukwethuka, noma ukudideka mayelana nokuthi ushintsho lusebenza nini ngempela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola isibuyekezo sakamuva esisemthethweni ngezinguquko zesibonelelo sokukhubazeka.\n2. Qaphela amalebula onyaka afana no-2025 noma 2026 uma iposi lidala.\n3. Gwema ukwethemba izithombe-skrini ezingenamthombo.\n4. Qhathanisa isibuyekezo nohlobo lwesibonelelo osithola ngempela.\n5. Sebenzisa i-GrantCare uma udinga usizo lokufunda isibuyekezo ngaphandle kokuphutha isiqondiso sokuqinisekisa."
+      },
+      {
+        "title": "Uhlobo lwesibonelelo lubaluleke kakhulu njengenombolo",
+        "body": "Indlela ephephe kunazo zonke yokufunda isimangalo sokwenyuka ukusifanisa nohlobo oluqondile lwesibonelelo sikahulumeni kuqala. Inombolo ezwakala ilungile ngokuvamile isengaba nephutha ekusekelweni kwesibonelelo sokukhubazeka ngokuqondile."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikushicileli ukukhuphuka kwezibonelelo ezisemthethweni njengesiphathimandla sikahulumeni. Isiza abasebenzisi ukuthi bafunde izimangalo zomphakathi ngokucophelela futhi bazibuyisele eziteshini ezisemthethweni ukuze ziqinisekiswe okokugcina."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise amakhasi ohlobo lwesibonelelo, izinsuku zokukhokha, nemihlahlandlela yokuhlola isibuyekezo esiphephile ukuze ukhuphule izimangalo zizwe zingadideki futhi zingenabungozi kangako."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grants/disability\n• /guides/how-to-check-if-a-grant-increase-update-is-official\n• /guides/how-to-read-grant-increase-news-safely\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe kufanele ngithembe umsebenzi wokukhushulwa kwesibonelelo sikahulumeni sokukhubazeka ngaphandle komthombo?",
+        "body": "Cha. Kuphephe kakhudlwana ukuqinisekisa isibuyekezo sakamuva esishicilelwe esisemthethweni kuqala."
+      },
+      {
+        "title": "I-FAQ: Kungani amalebula onyaka omdala ebaluleke kangaka?",
+        "body": "Ngoba abasebenzisi bavame ukwabelana ngamaposi amadala angasabonisi isimo sakamuva esishicilelwe."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingaqinisekisa inani lokugcina?",
+        "body": "I-GrantCare ingachaza ukuthi isimangalo sisho ukuthini, kodwa isiqinisekiso esisemthethweni siseseziteshini zikahulumeni ezifanele."
+      }
+    ]
+  },
+  "how-to-check-child-support-grant-increase-updates-safely": {
+    "title": "Ungahlola kanjani izibuyekezo zokwenyuka kwesibonelelo sezingane ngokuphepha",
+    "summary": "Igayidi yokwethenjwa yokuqala yokuseshwa kwesibonelelo sezingane kanye nendlela yokuhlukanisa izibuyekezo ezisemthethweni ezishicilelwe kokuthunyelwe okukopishiwe noma amalebula onyaka omdala.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola izibuyekezo zokukhushulwa kwesibonelelo sezingane ngokusebenzisa ulwazi lwakamuva olusemthethweni olushicilelwe esikhundleni sokuthemba izithombe-skrini, okuthunyelwe okukopishiwe, noma amalebula onyaka omdala ngokwawo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho olukhushulwayo lweSibonelelo Sokusekelwa Kwezingane ngokuvamile luvela kubasebenzisi abafuna impendulo eyodwa elula mayelana nemali noma isikhathi. Impendulo ephephile ngokuvamile akuyona inombolo eyodwa kokuthunyelwe. Isibuyekezo sakamuva esishicilelwe esisemthethweni saleso sigaba sesibonelelo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Khulisa amahlebezi asakazwa kalula ngoba abasebenzisi bafuna isiqiniseko ngokushesha. Uma inombolo ingalungile noma iphelelwe isikhathi, ingadala ithemba elingamanga, ukwethuka, noma ukudideka mayelana nokuthi ushintsho lusebenza nini ngempela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola isibuyekezo sakamuva esisemthethweni sezinguquko zesibonelelo sezingane.\n2. Qaphela amalebula onyaka afana no-2025 noma 2026 uma iposi lidala.\n3. Gwema ukwethemba izithombe-skrini ezingenamthombo.\n4. Qhathanisa isibuyekezo nohlobo lwesibonelelo osithola ngempela.\n5. Sebenzisa i-GrantCare uma udinga usizo lokufunda isibuyekezo ngaphandle kokuphutha isiqondiso sokuqinisekisa."
+      },
+      {
+        "title": "Uhlobo lwesibonelelo lubaluleke kakhulu njengenombolo",
+        "body": "Indlela ephephe kunazo zonke yokufunda isimangalo sokwenyuka ukusifanisa nohlobo oluqondile lwesibonelelo sikahulumeni kuqala. Inombolo ezwakala ilungile ngokujwayelekile isengaba nephutha emalini yesibonelelo sezingane ngokuqondile."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikushicileli ukukhuphuka kwezibonelelo ezisemthethweni njengesiphathimandla sikahulumeni. Isiza abasebenzisi ukuthi bafunde izimangalo zomphakathi ngokucophelela futhi bazibuyisele eziteshini ezisemthethweni ukuze ziqinisekiswe okokugcina."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise amakhasi ohlobo lwesibonelelo, izinsuku zokukhokha, nemihlahlandlela yokuhlola isibuyekezo esiphephile ukuze ukhuphule izimangalo zizwe zingadideki futhi zingenabungozi kangako."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grants/child-support\n• /guides/how-to-check-if-a-grant-increase-update-is-official\n• /guides/how-to-read-grant-increase-news-safely\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe kufanele ngithembe umsebenzi wokwenyusa imali yesibonelelo sezingane ngaphandle komthombo?",
+        "body": "Cha. Kuphephe kakhudlwana ukuqinisekisa isibuyekezo sakamuva esishicilelwe esisemthethweni kuqala."
+      },
+      {
+        "title": "I-FAQ: Kungani amalebula onyaka omdala ebaluleke kangaka?",
+        "body": "Ngoba abasebenzisi bavame ukwabelana ngamaposi amadala angasabonisi isimo sakamuva esishicilelwe."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingaqinisekisa inani lokugcina?",
+        "body": "I-GrantCare ingachaza ukuthi isimangalo sisho ukuthini, kodwa isiqinisekiso esisemthethweni siseseziteshini zikahulumeni ezifanele."
+      }
+    ]
+  },
+  "what-pension-increase-searches-usually-mean": {
+    "title": "Ukuthi ukukhuphuka kwempesheni kusesho ukuthini ngokujwayelekile",
+    "summary": "Igayidi ezolile yokusesha okwenyukayo kwesitayela sempesheni nokuthi ungayifunda kanjani ngaphandle kwenkulumo evamile edidayo, izikhala zezibonelelo zabadala, nezibuyekezo ezisemthethweni.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho lokwenyuka kwempesheni ngokuvamile lusho ukuthi abasebenzisi bazama ukuqinisekisa izinguquko zosekelo lwabantu abadala. Umkhuba ophephe kakhulu ukufanisa isimangalo nesigaba sangempela sesibonelelo sikahulumeni kanye nesibuyekezo sakamuva esisemthethweni."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abantu bavame ukusebenzisa igama elithi impesheni ngisho besho imali yesibonelelo sikahulumeni yabantu abadala. Lokho kungenza imiphumela yosesho izwakale ixubile futhi kunzima ukuyithemba uma umzila nesigaba sesibonelelo singahlolisiswa ngokucophelela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma amagama aseposini kanye nesigaba sesibonelelo esisemthethweni engafani ngokuhlanzekile, kulula ukuthi izimangalo ezindala noma ezingacacile zisakazeke."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi ingabe okuthunyelwe kumayelana nesibonelelo sikahulumeni sabantu abadala.\n2. Bheka umthombo osemthethweni ocacile.\n3. Qaphela ngokuthunyelwe okusekelwe onyakeni okwabiwe futhi kamuva.\n4. Gwema ukwethemba inani uwedwa.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuhumusha ulimi lokusesha lube esigabeni esilungile sesibonelelo."
+      },
+      {
+        "title": "Ulimi lokusesha namagama ezibonelelo ezisemthethweni awahlali afana",
+        "body": "Ingxenye enkulu yokufunda okuphephile lapha iwukubona ukuthi imikhuba yosesho ingasebenzisa ilebula eyodwa kuyilapho uhlelo olusemthethweni lwesibonelelo lisebenzisa enye. Leso sinyathelo sokuhumusha sisiza abasebenzisi ukuthi baqinisekise umzila olungile."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi baqonde ukusesha kwendlela yempesheni, kodwa ukuqinisekiswa okusemthethweni mayelana nesibonelelo sikahulumeni sabantu abadala kuseseziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke emazwini empesheni uye ekhasini lezibonelelo zabantu abadala, imikhuba esemthethweni yokuhlola ukubuyekezwa, kanye nomongo wedethi yokukhokha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-older-persons-grant-increase-updates-safely\n• /guides/how-to-check-old-age-grant-increase-rumours-safely\n• /grants/older-persons\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani ukusesha impesheni kuzwakala kuxubene nosesho lwezibonelelo?",
+        "body": "Ngoba abasebenzisi bavamise ukusebenzisa amagama ansuku zonke angafani ncamashi negama lesibonelelo elisemthethweni."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyifanise kuqala?",
+        "body": "Qondanisa isimangalo nesigaba sesibonelelo sabantu abadala kuqala."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe inani ngedwa?",
+        "body": "Cha. Umthombo nesigaba sesibonelelo sibalulekile."
+      }
+    ]
+  },
+  "how-to-check-old-age-grant-increase-rumours-safely": {
+    "title": "Ungawabheka kanjani amahemuhemu esibonelelo sikahulumeni sabadala ngokuphepha",
+    "summary": "Umhlahlandlela wokuhlola amahemuhemu akhuphukayo esibonelelo sikahulumeni sabadala ngaphandle kokuphazama izimangalo ezabiwe zezinguquko ezisemthethweni eziqinisekisiwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola amahemuhemu okukhulisa isibonelelo sabadala ngokuphepha ngokufanisa isimangalo nesibonelelo sabadala, ubheke umthombo osemthethweni ocacile, futhi uqaphe ngamalebula onyaka agaywe kabusha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amahlebezi okukhula kwesibonelelo sikahulumeni avame ukusabalala emilayezweni emifushane noma ezithombeni. Zizwakala ziwusizo ngoba kulula ukwabelana ngazo, kodwa lokho kulula kungafihla umongo ongekho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi bangase benze izinhlelo mayelana namahemuhemu ngaphambi kokuthi bazi ukuthi angempela, awamanje, noma axhumene nesigaba esifanele sesibonelelo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Humusha amagama asebekhulile esigabeni sezibonelelo zabantu abadala.\n2. Hlola ukuthi isimangalo sinawo yini umthombo osemthethweni ocacile.\n3. Qaphela ngokuthunyelwe usebenzisa amadethi amadala noma amalebula onyaka.\n4. Gwema ukwethemba izithombe ezinqanyuliwe.\n5. Sebenzisa i-GrantCare ukuze uqhathanise isimangalo nekhasi elilungile lesibonelelo kanye nemihlahlandlela yokuhlola isibuyekezo."
+      },
+      {
+        "title": "Amahemuhemu amafushane asusa umongo oyidinga kakhulu",
+        "body": "Lapho amahemuhemu emfushane, kubaluleke kakhulu ukuthi uzakhele kabusha umongo ongekho. Lokho kusho ukuhlola isigaba sesibonelelo, isikhathi, kanye nomthombo ngaphambi kokuthi ukholelwe inombolo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ichaza amahlebezi ezibonelelo zabadala ngolimi olulula, kodwa isiqinisekiso sokugcina esisemthethweni siseseziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuxhuma amahemuhemu ekhasini elifanele lesibonelelo, amagama afanele, kanye nemikhuba efanele yokuhlola isibuyekezo."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-older-persons-grant-increase-updates-safely\n• /guides/what-pension-increase-searches-usually-mean\n• /grants/older-persons\n• /guides/how-to-read-grant-increase-news-safely\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kulula ukuwethemba amahlebezi ezibonelelo zabadala?",
+        "body": "Ngoba mafushane, aqondile, futhi avame ukuhlanganyela emagameni ajwayelekile."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihumushe kuqala?",
+        "body": "Humusha amagama asebekhulile uwafake esigabeni sesibonelelo sabantu abadala kuqala."
+      },
+      {
+        "title": "I-FAQ: Yini eyenza amahemuhemu abe buthaka?",
+        "body": "Umthombo ongekho, isikhathi esingacacile, nezithombe ezingenawo umongo osemthethweni konke kuyenza ibe buthaka."
+      }
+    ]
+  },
+  "how-to-tell-grant-amount-pages-from-rumours": {
+    "title": "Ungawahlukanisa kanjani amakhasi enani lemali yesibonelelo kumahemuhemu",
+    "summary": "Umhlahlandlela wokuthembana wokutshela umehluko phakathi kwekhasi lenani lesibonelelo nekhasi lamahemuhemu elakhelwe eduze kokwesaba, ukuphuthuma, noma izinombolo ezikopishiwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Tshela amakhasi yenani lemali yesibonelelo kusuka kumahemuhemu ngokubheka ukuthi ikhasi liwuchaza ngokucacile yini umthombo, isigaba sesibonelelo, kanye nesikhathi esikhundleni sokuphusha inombolo noma isimangalo esiphuthumayo kuphela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ikhasi lemali yangempela kufanele lisize abasebenzisi baqonde ukuthi inombolo isho ukuthini, isiphi isibonelelo, futhi ngokuya ngamuphi umthombo. Amakhasi amahemuhemu ngokuvamile agxila enombolweni kanye nomuzwa ozungezile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi bengakwazi ukusho umehluko, bangase bathembe inombolo engenandlela ethembekile ngemuva kwayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi ikhasi lisho ngokucacile yini isigaba sesibonelelo.\n2. Bheka ukuthi ingabe ikhomba emthonjeni othembekile.\n3. Qaphela uma ikhasi liphinda izinombolo kanye nokuphuthuma.\n4. Qhathanisa ikhasi neziqondiso zomzila osemthethweni.\n5. Sebenzisa i-GrantCare uma udinga usizo lokufunda ikhasi ngokuphepha."
+      },
+      {
+        "title": "Ikhasi eliwusizo lichaza umongo, hhayi izinombolo kuphela",
+        "body": "Uphawu oluhle kakhulu lwekhasi eliwusizo umongo. Amahemuhemu ngokuvamile azama ukuhamba ngokushesha kunencazelo. Ikhasi eliphephile linikeza abasebenzisi umongo owanele wokucabanga ngaphambi kokuba benze."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iwumhlahlandlela ozimele hhayi umthombo osemthethweni wamanani esibonelelo. Isiza abasebenzisi ukuhlola inani lamakhasi ngokucophelela."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise amakhasi wenani nemikhuba yemizila esemthethweni, imihlahlandlela yokuhlola isibuyekezo, namakhasi ohlobo lwesibonelelo ukuze isimangalo sibe lula ukukwahlulela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-read-grant-amount-pages-safely\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-check-if-a-grant-increase-update-is-official\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Imuphi umehluko omkhulu phakathi kwekhasi eliwusizo nekhasi lamahemuhemu?",
+        "body": "Ikhasi eliwusizo lichaza umongo nomthombo, kuyilapho ikhasi lamahemuhemu liphusha inombolo ngaphandle kokusekelwa okwanele."
+      },
+      {
+        "title": "I-FAQ: Kungani ukuphuthuma kuwuphawu lwesixwayiso?",
+        "body": "Ngoba kungacindezela abasebenzisi ukuthi bathembe isimangalo ngaphambi kokuthi basihlole kahle."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyibheke kuqala?",
+        "body": "Bheka isigaba esicacile sesibonelelo, umthombo, kanye nemininingwane yesikhathi kuqala."
+      }
+    ]
+  },
+  "how-to-read-grant-amount-pages-safely": {
+    "title": "Ungawafunda kanjani amakhasi yenani lesibonelelo sikahulumeni ngokuphepha",
+    "summary": "Umhlahlandlela osebenzayo wokufunda amakhasi yenani lesibonelelo ngaphandle kokuphazama umhlahlandlela wesikhashana noma amanani amadala ukuze kuqinisekiswe ngokusemthethweni kwamanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Funda amakhasi yenani lesibonelelo sikahulumeni ngokubheka ukuthi inani lemali lingesasiphi isibonelelo, lisebenza kusiphi isikhathi, kanye nokuthi ikhasi lisihlukanisa ngokucacile yini isiqondiso nokuqinisekiswa."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amakhasi enani angasiza uma ecophelela futhi esobala. Ziba yingozi uma abasebenzisi beqa inombolo kuphela futhi banganaki uhlobo lwesibonelelo, isikhathi, noma umthombo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Inombolo esekhasini lesibonelelo esingalungile noma kusukela esikhathini esingalungile ingadukisa abasebenzisi ngendlela amahemuhemu angenza ngayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qondanisa inani nesigaba esiqondile sesibonelelo.\n2. Hlola isikhathi ikhasi elibhekise kuso.\n3. Bheka ukuthi ikhasi libonisa isixwayiso noma isiqinisekiso esisemthethweni.\n4. Gwema ukuthemba amakhasi amadala abiwe futhi kamuva.\n5. Sebenzisa i-GrantCare ukuze uqhathanise ikhasi nesibonelelo esilungile kanye nesiqondiso sokubuyekeza okusemthethweni."
+      },
+      {
+        "title": "Inombolo ibalulekile kuphela uma umongo wayo ucacile",
+        "body": "Amanani e-Grant aba usizo kuphela uma abasebenzisi bazi ukuthi iyiphi isibonelelo, yisiphi isikhathi, nokuthi inombolo ingeyamuphi umthombo. Ngaphandle kwalezo zinto ezintathu, leli khasi liyancipha ukwethembeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuthi bafunde amakhasi wenani ngokuphepha kakhulu, kodwa akuyena umshicileli osemthethweni wamanani esibonelelo sokugcina."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqondanise amakhasi wenani nekhasi elifanele lesibonelelo, imikhuba efanele yokuhlola isibuyekezo, kanye nomongo olungile wedethi yokukhokha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-check-if-a-grant-increase-update-is-official\n• /guides/how-to-check-older-persons-grant-increase-updates-safely\n• /grants"
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyifanise kuqala ekhasini lesamba?",
+        "body": "Qondanisa inani nesigaba esifanele sesibonelelo kuqala."
+      },
+      {
+        "title": "I-FAQ: Kungani isikhathi sesikhathi sibalulekile?",
+        "body": "Ngoba inani elidala lingaqhubeka lijikeleza ngisho nangemva kokuba isikhundla esisemthethweni sesishintshile."
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi eliqaphelayo lisengaba usizo?",
+        "body": "Yebo. Ikhasi elibonisa isixwayiso ngokucacile lingathembeka kakhulu kunelilo elizwakala liqinisekile kakhulu."
+      }
+    ]
+  },
+  "what-r700-grant-searches-usually-mean": {
+    "title": "Okushiwo ukusesha kwesibonelelo sika-R700 kuvame ukusho",
+    "summary": "Umhlahlandlela wolimi olulula osesho lwesibonelelo sika-R700 nokuthi kungani abasebenzisi kufanele baphathe amanani esibonelelo sikahulumeni njengento okufanele iqinisekiswe, hhayi njengobufakazi obusheshayo besibonelelo sikahulumeni sangempela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukuseshwa kwesibonelelo sika-R700 ngokuvamile kusho ukuthi abasebenzisi bazama ukuqinisekisa ukuthi inani lemali yesibonelelo esifunwayo noma indaba yokukhokha ingeyangempela. Isinyathelo esiphephe kunazo zonke siwukuthatha isimangalo njengesingaqinisekisiwe kuze kube yilapho umthombo osemthethweni usisekela ngokucacile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amanani ezibonelelo ezifunwayo angasabalala ngokushesha kakhulu ngoba abukeka elula futhi eqondile. Lokho kunemba kubenza bazizwe bethembekile, kodwa inani elijwayelekile lilodwa alibonisi ukuthi isimangalo sibonisa isibonelelo sangempela esisemthethweni noma isibuyekezo senkokhelo esisemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Izimangalo zenani elingamanga zivame ukudala ukuphuthuma, ithemba elingamanga, noma ingcindezi yokuchofoza ngokushesha. Abasebenzisi abama kancane ukuze baqinisekise umthombo mancane kakhulu amathuba okuba balandele umzila mbumbulu noma bathembe okuthunyelwe okudukisayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha inani elifunwayo njengelingaqinisekisiwe ekuqaleni.\n2. Hlola ukuthi isimangalo sivela kusibuyekezo esisemthethweni esicacile.\n3. Gwema ukwethemba uhlu lwabahlomuli, okuthunyelwe okuphuthumayo, noma izixhumanisi zezicelo ezikopishiwe ngokwazo.\n4. Qhathanisa isimangalo nohlobo lwesibonelelo noma umzila wokusekela okuthiwa ufana nawo.\n5. Sebenzisa i-GrantCare ukuze uqonde isimangalo ngokuphepha ngaphambi kokuthi uthathe isinyathelo ngaso."
+      },
+      {
+        "title": "Inani elithile lingase libe isignali ebuthakathaka",
+        "body": "Abantu bavame ukwethemba isimangalo ngoba sizwakala sinembile. Umbuzo ongcono awukona ukuthi inani liqondile kangakanani. Umbuzo ongcono ngowokuthi ingabe umzila, umthombo, kanye nesigaba sesibonelelo siyahambisana nakho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele neze kwenziwe iphutha njengomthombo osemthethweni wokudala isibonelelo, ukugunyazwa, noma ukuqinisekiswa kwenani. Amanani ezibonelelo ezisemthethweni nokufaneleka kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise amanani afunwayo nesiqondiso somzila osemthethweni, amakhasi okufaneleka, nemikhuba yokuhlola ephephile ukuze ungaphazamisi amahlebezi ngomnikelo wangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-read-grant-amount-pages-safely\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe imali yesibonelelo sika-R700 yenza isicelo sithembeke kakhulu?",
+        "body": "Cha. Inani elithile lisadinga umthombo othembekile osemthethweni ngemuva kwalo."
+      },
+      {
+        "title": "I-FAQ: Kungani amahlebezi amanani asakazeka kalula kangaka?",
+        "body": "Ngoba izinombolo eziqondile zizwakala zicacile futhi zabelana ngisho nalapho umthombo ubuthakathaka."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokuthatha isinyathelo ngesimangalo?",
+        "body": "Hlola umthombo, umzila, kanye nesigaba sesibonelelo isimangalo esikhuluma ngaso."
+      }
+    ]
+  },
+  "how-to-check-if-an-r700-grant-page-is-real": {
+    "title": "Ungabheka kanjani ukuthi ikhasi lesibonelelo sika-R700 liyiqiniso",
+    "summary": "Umhlahlandlela wokwethenjwa wabasebenzisi abathola amakhasi ezibonelelo zika-R700 futhi badinga indlela ephephile yokwahlulela ukuthi ikhasi libonisa umzila wangempela osemthethweni noma isimangalo nje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola ukuthi ikhasi lesibonelelo sika-R700 lingokoqobo yini ngokuphatha inani njengelingaqinisekisiwe kuqala, uhlole umzila nomthombo ngokucophelela, futhi ungathembi isimangalo ngenxa nje yokuthi inombolo ibukeka icacile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ikhasi lenani lingabukeka likhuthaza uma lisebenzisa inombolo enembile kanye nelebula elifana nesibonelelo. Umbuzo ophephile ngowokuthi ingabe leli khasi ngelingelomzila osemthethweni noma lilingisa kuphela ulimi olusemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma ikhasi liyisimangalo kuphela, abasebenzisi bangase bamoshe isikhathi, babelane ngemininingwane endaweni engafanele, noma bakhe okulindelekile kokuthile okungasekelwe ngokusemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isimangalo sika-R700 njengesingakaqinisekiswa kuqala.\n2. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni wangempela.\n3. Gwema ukwethemba izicelo ezikopishiwe noma izicelo zabahlomuli.\n4. Qhathanisa ikhasi nemikhuba ephephile yokufunda inani.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahlebezi, noma okuthile okuyingozi."
+      },
+      {
+        "title": "Ukucaciswa akubona ubufakazi",
+        "body": "Ikhasi lizwakala lithembekile ngoba isimangalo sizwakala sinembile. Yingakho nje abasebenzisi kumele bame kancane futhi bahlole umzila ngokucophelela kunalokho abebengakwenza."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayisekeli izibonelelo ezifunwayo ngaphandle kokuqinisekiswa okusemthethweni. Isiza abasebenzisi ukuhlola ukuphepha kwalokho abakutholile."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise ikhasi neziqondiso zomzila osemthethweni, amakhasi amahemuhemu amanani, kanye nemikhuba yokuhlola isibuyekezo ephephile ngaphambi kokulethemba."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-r700-grant-searches-usually-mean\n• /guides/what-r700-eligibility-pages-usually-mean\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kulula ukulethemba ikhasi lika-R700 ngokushesha okukhulu?",
+        "body": "Ngoba inani eliqondile lingazwakala lisemthethweni kakhulu kunalokho eliyikho ngempela."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphandle kwenani?",
+        "body": "Hlola umzila, umthombo, kanye nokuthi ikhasi ngokusobala lingelenqubo esemthethweni."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngifake imininingwane ukuze ngiyihlole?",
+        "body": "Cha. Qinisekisa umzila kuqala."
+      }
+    ]
+  },
+  "is-the-r700-grant-real": {
+    "title": "Ingabe isibonelelo sika-R700 singokoqobo?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezicelo zesibonelelo sikahulumeni sika-R700, noma ngabe isibonelelo sikahulumeni singokoqobo, kanye nendlela yokugwema amakhasi angaphephile akhiwe eduze kwenombolo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izicelo zesibonelelo sika-R700 njengezingaqinisekisiwe ngaphandle uma umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi isibonelelo singokoqobo kuphela ngoba inani lizwakala likhethekile noma ikhasi libukeka lijwayelekile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuningi kwezibonelelo zika-R700 kuvela kubasebenzisi abazama ukuqinisekisa isimangalo, hhayi emzileni ozinzile osemthethweni wesibonelelo. Umkhuba wokufunda ophephile ukuphatha inani njengamahemuhemu kuqala, bese uhlola ukuthi umzila osemthethweni, isibuyekezo esisemthethweni, noma isigaba sangempela sesibonelelo sisekela ngokusobala yini."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi angama-R700 angadala ithemba elingamanga, afake abasebenzisi izicelo zomgunyathi, noma akhuthaze abantu ukuthi babelane ngemininingwane yemizila engaphephile. Ikhasi eliqondile lokuqamba izinganekwane lisiza abasebenzisi ukuthi behlise ijubane ngaphambi kokuthi bathembe isimangalo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isimangalo sika-R700 njengesingakaqinisekiswa kuqala.\n2. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni wangempela.\n3. Gwema ukwethemba izicelo ezikopishiwe, izimangalo zomhlomuli, noma ukufaneleka ngokwabo.\n4. Qhathanisa ikhasi namanani amanje esibonelelo sikahulumeni kanye nesigaba esifanele sesibonelelo.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Inombolo iyihhuku, hhayi ubufakazi",
+        "body": "Inani elithile lingazwakala linegunya, kodwa amagama aqondile kulula ukuwakopisha. Ukuhlola kwangempela ukuthi ingabe umzila, umthombo, nesigaba sesibonelelo sisemthethweni ngokusobala futhi esamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zesibonelelo sikahulumeni ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, amanani asemthethweni, nezicelo ezisemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izimangalo zika-R700 namanani amanje esibonelelo sikahulumeni, imikhuba ephephile yokufunda amakhasi, kanye neziqondiso zomzila osemthethweni ukuze ungaphutheli amahemuhemu ngesibonelelo sangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /claim-checker\n• /guides/what-r700-grant-searches-usually-mean\n• /guides/how-to-check-if-an-r700-grant-page-is-real\n• /guides/what-r700-eligibility-pages-usually-mean\n• /guides/how-to-avoid-fake-grant-amount-pages"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe inani elithile lenza isimangalo sika-R700 sikholweke nakakhulu?",
+        "body": "Cha. Inani elithile lisadinga umthombo othembekile osemthethweni ngemuva kwalo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngifake isicelo uma ikhasi lithi izicelo zivuliwe?",
+        "body": "Hhayi kuze kube yilapho uqinisekisa ukuthi umzila usemthethweni futhi isibonelelo ngokwaso singokoqobo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise nekhasi kuqala?",
+        "body": "Qhathanisa namanani amanje esibonelelo, isiqondiso somzila osemthethweni, kanye nesigaba sangempela sesibonelelo esithi siyasifanisa."
+      }
+    ]
+  },
+  "is-the-youth-grant-real": {
+    "title": "Ingabe isibonelelo sentsha singokoqobo?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezimangalo zesibonelelo sentsha, noma ngabe isibonelelo singokoqobo, kanye nendlela yokugwema amakhasi ezicelo angaphephile akhiwe azungeze ilebula.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izicelo zezibonelelo zentsha njengezingaqinisekisiwe ngaphandle uma umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi uxhaso lungokoqobo kuphela ngoba ikhasi linikeza isicelo, uhlu lokufaneleka, noma isithembiso esiphuthumayo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho oluningi lwezibonelelo zentsha luvela kubasebenzisi abasabela kokuthunyelwe komphakathi, izixhumanisi ezikopishiwe, noma amakhasi asebenzisa ulimi olujwayelekile lwesibonelelo ngaphandle kokufakazela ukuthi umzila wangempela osemthethweni wokunikeza intsha ukhona. Umkhuba ophephile uwukuqinisekisa kuqala isibonelelo bese ucabanga ngezicelo kuphela ngemva kwalokho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi esibonelelo sentsha angamosha isikhathi, adale ithemba elingamanga, noma acindezele abasebenzisi kumafomu angaphephile nemizila mbumbulu. Ikhasi eliqondile lokuqamba izinganekwane lisiza abasebenzisi ukuthi bame ngaphambi kokuthi bazibophezele esimangalweni esingazuzanga ukwethenjwa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isicelo sesibonelelo sentsha njengesingakaqinisekiswa kuqala.\n2. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni ocacile.\n3. Ungaphathi ifomu lesicelo noma uhlu lokufaneleka njengobufakazi ngokwalo.\n4. Qhathanisa isimangalo nezigaba zamanje zesibonelelo sangempela kanye nesihloli sokufaneleka.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Isixhumanisi sesicelo asibona ubufakazi bokuthi isibonelelo singokoqobo",
+        "body": "Amakhasi amaningi adukisayo azama ukuhambisa abasebenzisi ngqo ekufakeni isicelo. Ukuhleleka okuphephile kuphambene: qinisekisa ukuthi isibonelelo ngokwaso singokoqobo, bese ukhathazeka ngokuthi ubani ofaneleka nokuthi usifaka kuphi isicelo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zesibonelelo sikahulumeni ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, izicelo ezisemthethweni, nokufaneleka okusemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izimangalo zesibonelelo sentsha nezigaba zesibonelelo sangempela, imikhuba ephephile yokufunda amakhasi, kanye nesiqondiso somzila osemthethweni ukuze ungaphazami amahlebezi ngomzila wosekelo wangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /eligibility-checker\n• /claim-checker\n• /grants\n• /guides/how-to-know-which-grant-application-fits-you\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-know-if-a-sassa-website-is-official"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ikhasi lesicelo liyakufakazela ukuthi isibonelelo sikahulumeni sentsha singokoqobo?",
+        "body": "Cha. Ikhasi linganikeza isicelo ngaphandle kokuqinisekisa ukuthi isibonelelo ngokwaso sisekelwa ngokusemthethweni."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqinisekise ngaphambi kokuthi ngicabange ngokufaneleka?",
+        "body": "Qinisekisa ukuthi isibonelelo ngokwaso singokoqobo nokuthi umzila usemthethweni yini kuqala."
+      },
+      {
+        "title": "I-FAQ: Kufanele ngiqhathanise kuphi isimangalo nezinketho zangempela?",
+        "body": "Qhathanisa nesihloli sokufaneleka, ilabhulali yesibonelelo, kanye neziqondiso zomzila osemthethweni ngaphambi kokuyethemba."
+      }
+    ]
+  },
+  "is-the-r1400-grant-real": {
+    "title": "Ingabe isibonelelo sika-R1400 singokoqobo?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezicelo zezibonelelo zesibonelelo sika-R1400, izikhala zohlu lwabahlomulayo, kanye nokuthi isibonelelo esifunwayo singokoqobo yini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izicelo zesibonelelo sika-R1400 njengezingaqinisekisiwe ngaphandle uma umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi imali yesibonelelo ingokoqobo ngoba ikhasi likhuluma ngabahlomulayo, izinkokhelo, noma inani elithile lanyanga zonke."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuningi kuka-R1400 kuvela kubasebenzisi abazama ukuqinisekisa isimangalo esabiwe, hhayi emzileni ozinzile osemthethweni wesibonelelo. Umkhuba wokufunda ophephe kakhulu ukuphatha inani kanye nanoma yiluphi ulimi lohlu lwabahlomulayo njengamahemuhemu kuqala, bese uhlola ukuthi umzila wangempela osemthethweni uyawasekela ngokusobala yini."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi angu-R1400 angakha ithemba elingamanga, afake ukuchofoza ohlwini lwabahlomula mbumbulu, noma acindezele abasebenzisi ukuthi babelane ngemininingwane emakhasini angaphephile. Ikhasi eliqondile lokuqamba izinganekwane lisiza abasebenzisi ukuthi behlise ijubane ngaphambi kokuthi bathembe indaba."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isicelo sika-R1400 njengesingakaqinisekiswa.\n2. Ungaphathi uhlu lwabahlomulayo noma iposi lokukhokha njengobufakazi ngokwalo.\n3. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni wangempela.\n4. Qhathanisa isimangalo namanani amanje esibonelelo sikahulumeni kanye nezigaba zamanje zesibonelelo sangempela.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Ulimi lwabahlomuli luvame ukuba yingxenye yehhuku",
+        "body": "Amakhasi akhuluma ngabahlomuli noma uhlu lwanyanga zonke angazwakala njengokuphatha futhi ngenxa yalokho athembekile. Ukuhlola okungcono kakhulu kusewukuthi umzila, umthombo, kanye nesigaba sesibonelelo sisemthethweni ngokusobala futhi esamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zesibonelelo sikahulumeni ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, ulwazi olusemthethweni lwabahlomuli, kanye nezicelo ezisemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izimangalo zika-R1400 namanani amanje esibonelelo sikahulumeni, imikhuba ephephile yokufunda amakhasi, kanye neziqondiso zomzila osemthethweni ukuze ungaphutheli amahemuhemu endlela yokuhlomula ngesibonelelo sangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /claim-checker\n• /guides/what-r1400-beneficiary-list-searches-usually-mean\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe uhlu lwabahlomulayo lufakazela ukuthi isibonelelo sika-R1400 singokoqobo?",
+        "body": "Cha. Uhlu lwabahlomulayo noma okuthunyelwe kwendlela yokukhokha kusadinga umthombo othembekile osemthethweni ngemuva kwakho."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani amakhasi angu-R1400 kulula ukuwethemba ngokushesha?",
+        "body": "Ngoba inani elithile kanye namagama omhlomuli angenza isimangalo sizwakale sisemthethweni kunalokho esiyikho ngempela."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise isimangalo nayo kuqala?",
+        "body": "Qhathanisa namanani amanje esibonelelo, izigaba zesibonelelo sangempela, neziqondiso zomzila osemthethweni ngaphambi kokuyethemba."
+      }
+    ]
+  },
+  "is-the-r2090-grant-real": {
+    "title": "Ingabe isibonelelo sika-R2090 singokoqobo?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezicelo zezibonelelo zesibonelelo sika-R2090, izithembiso zosuku lokukhokha, kanye nokuthi isibonelelo esifunwayo singokoqobo yini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izicelo zesibonelelo sika-R2090 njengezingaqinisekisiwe ngaphandle uma umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi imali yesibonelelo ingokoqobo ngoba ikhasi lihlanganisa inani nezinsuku zokukhokha noma amagama okufaneleka."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuningi kuka-R2090 kuvela kubasebenzisi abazama ukuqinisekisa isimangalo, hhayi emzileni ozinzile osemthethweni wesibonelelo. Umkhuba wokufunda ophephile ukuphatha inani, ulimi lwedethi yokukhokha, nolimi lokufaneleka njengamahemuhemu kuqala, bese uhlola ukuthi umzila wangempela osemthethweni uyawusekela ngokusobala yini."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi angu-R2090 angamosha isikhathi, enze okulindelwe okungamanga mayelana nezinkokhelo, noma adonsele abasebenzisi emizileni engaphephile elingisa amakhasi ezibonelelo ezisemthethweni. Ikhasi eliqondile lokuqamba izinganekwane lisiza abasebenzisi ukuthi bayeke ngaphambi kokuthi bathembe isimangalo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isicelo sika-R2090 njengesingakaqinisekiswa.\n2. Ungathathi izinsuku zokukhokha noma amagama okufaneleka njengobufakazi ngokwabo.\n3. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni wangempela.\n4. Qhathanisa isimangalo namanani amanje esibonelelo sikahulumeni kanye nezigaba zamanje zesibonelelo sangempela.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Amagama osuku lokukhokha angenza isimangalo esingumgunyathi sizizwe sisemthethweni",
+        "body": "Ikhasi elihlanganisa inani elithile nezinsuku zokukhokha noma ukufaneleka lingase lizizwe lilawula futhi linokwethenjelwa. Ukuhlola okuphephile kusese ukuthi umzila, umthombo, nesigaba sesibonelelo sisemthethweni ngokusobala futhi esamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zesibonelelo sikahulumeni ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, izinsuku zokukhokha ezisemthethweni, nokufaneleka okusemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izimangalo zika-R2090 namanani amanje esibonelelo sikahulumeni, imikhuba ephephile yokufunda amakhasi, kanye neziqondiso zomzila osemthethweni ukuze ungaphutheli amahemuhemu endlela yokukhokha ngesibonelelo sangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /claim-checker\n• /guides/what-r2090-grant-searches-usually-mean\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe izinsuku zokukhokha zifakazela ukuthi isibonelelo sika-R2090 singokoqobo?",
+        "body": "Cha. Idethi yokukhokha efunwayo isadinga umzila osemthethweni othembekile kanye nesigaba sangempela sesibonelelo esingemuva kwayo."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani u-R2090 evame ukuxutshwa nezithembiso zokufaneleka noma zokukhokha?",
+        "body": "Ngoba leyo mininingwane eyengeziwe yenza isimangalo sizizwe sisemthethweni ngisho nalapho umthombo ubuthakathaka."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise nekhasi kuqala?",
+        "body": "Qhathanisa namanani amanje esibonelelo, izigaba zesibonelelo sangempela, neziqondiso zomzila osemthethweni ngaphambi kokuyethemba."
+      }
+    ]
+  },
+  "is-the-senior-grant-bonus-real": {
+    "title": "Ingabe ibhonasi yesibonelelo sikahulumeni esiphezulu ingokoqobo?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezimangalo zebhonasi yesibonelelo sikahulumeni, okuthunyelwe kwenkokhelo yebhonasi, kanye nokuthi inkokhelo eyengeziwe efunwayo iyiqiniso yini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izimangalo zebhonasi yesibonelelo sikahulumeni njengezingaqinisekisiwe ngaphandle kwalapho umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi isimangalo singokoqobo ngoba sisebenzisa abantu abadala, impesheni, noma amagama ebhonasi azwakala ajwayelekile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuningi kwebhonasi yesibonelelo sikahulumeni kuvela kubasebenzisi abasabela kokuthunyelwe okwabiwe, izihloko zezindaba ezikopishiwe, noma amakhasi axuba ulimi olunikeza abantu abadala bangempela nesimangalo senkokhelo eyengeziwe esingaqinisekisiwe. Umkhuba ophephile ukuhlukanisa isibonelelo sangempela kwibhonasi efunwayo futhi uqinisekise ibhonasi ngokwakho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi ebhonasi yezibonelelo eziphezulu angadala ithemba elingamanga, asunduzele abasebenzisi ekubuyekezeni okungaphephile noma ezixhumanisini zokukhokha, noma enze ikhasi elivamile lesibonelelo sabantu abadala libukeke njengobufakazi benkokhelo eyengeziwe. Ikhasi eliqondile lokuqamba izinganekwane lisiza abasebenzisi ukuthi bayeke ngaphambi kokuthi bathembe isimangalo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isimangalo sebhonasi yesibonelelo sikahulumeni njengengaqinisekisiwe kuqala.\n2. Hlukanisa isibonelelo sangempela sabantu abadala enkokhelweni yebhonasi efunwayo.\n3. Ungathathi izinsuku zokukhokha okwabelwana ngazo, izithombe-skrini, noma amagama abahlomuli njengobufakazi ngokwabo.\n4. Qhathanisa isimangalo namanani amanje ezibonelelo kanye nekhasi langempela lesibonelelo sabantu abadala.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Ulimi lwangempela lwesibonelelo lungasetshenziswa ukugqoka isimangalo sebhonasi mbumbulu",
+        "body": "Ikhasi lingazwakala lingakholakala uma liboleka amagama ajwayelekile njengempesheni, imali yokuguga, noma isibonelelo sikahulumeni sabantu abadala. Ukuhlola okuphephile ukuthi ingabe ibhonasi efunwayo inokwesekwa kwayo okusemthethweni okucacile esikhundleni sokuboleka ukwethenjwa kwisibonelelo sangempela."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zebhonasi ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, amanani asemthethweni, nezibuyekezo zokukhokha ezisemthethweni kusengezaziteshi ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uqhathanise izimangalo zebhonasi yesibonelelo sikahulumeni namanani amanje esibonelelo sikahulumeni, umzila wangempela wesibonelelo sabantu abadala, kanye nemikhuba ephephile yokuhlola ukubuyekezwa ukuze ungaphutheli amahlebezi ngenkokhelo eyengeziwe yangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /claim-checker\n• /grants/older-persons\n• /guides/how-to-check-old-age-grant-increase-rumours-safely\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Ingabe abantu abadala banikeza amagama afakazela ukuthi ibhonasi ingokoqobo?",
+        "body": "Cha. Amagama ajwayelekile esibonelelo sikahulumeni asengasetshenziswa ngaphakathi kwesimangalo sebhonasi esingaqinisekisiwe."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe okuthunyelwe okubonisa izinsuku zokukhokha noma imininingwane yabahlomuli?",
+        "body": "Cha. Leyo mininingwane isadinga umthombo othembekile osemthethweni ngemuva kwesimangalo sebhonasi ngokwaso."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise isimangalo nayo kuqala?",
+        "body": "Qhathanisa namanani amanje esibonelelo, ikhasi langempela lesibonelelo sabantu abadala, kanye nesiqondiso sokubuyekeza okusemthethweni ngaphambi kokuyethemba."
+      }
+    ]
+  },
+  "what-r700-eligibility-pages-usually-mean": {
+    "title": "Lokho amakhasi okufaneleka angu-R700 ngokuvamile akushoyo",
+    "summary": "Umhlahlandlela ozothile wokusesha ukufaneleka kuka-R700 nokuthi kungani abasebenzisi kufanele bawaphathe njengezimangalo zokuqinisekisa kunokuba njengobufakazi besibonelelo sangempela esisemthethweni.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Amakhasi okufaneleka angu-R700 ngokuvamile asho ukuthi abasebenzisi bazama ukuhlola ukuthi isibonelelo esifunwayo singokoqobo yini nokuthi singafaka isicelo kubani. Isinyathelo esiphephe kakhulu siwukuqinisekisa ukuthi isibonelelo sikahulumeni ngokwaso sisemthethweni ngaphambi kokukhathazeka ngokufaneleka."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi bagxumela ngqo ekufanelekeni ngoba inani lizwakala likhanga. Ukuhleleka okucophelelayo kuphambene: qinisekisa ukuthi isibonelelo esifunwayo sikhona ngokusemthethweni, bese ucabanga ukuthi ngesabani."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma isibonelelo ngokwaso singaqinisekisiwe, imibuzo yokufaneleka ingadonsela abasebenzisi bajule esimangalweni esingakazuzi ukwethenjwa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi isibonelelo esifunwayo sisekelwa umzila osemthethweni ocacile.\n2. Gwema ukuphatha izinhlu zokufaneleka njengobufakazi ngokwabo.\n3. Qaphela amakhasi asebenzisa ukuphuthuma noma izithembiso.\n4. Qhathanisa ikhasi nemikhuba ephephile yokufunda inani.\n5. Sebenzisa i-GrantCare ukuze uhlehle futhi wahlulele isimangalo ngaphambi kokuba wenze okuthile ngakho."
+      },
+      {
+        "title": "Ukufaneleka kubaluleke kuphela ngemva kokuba isibonelelo sikahulumeni singokoqobo",
+        "body": "Iphutha elivamile ukuhamba ngokushesha kakhulu kokuthi ubani ofaneleka ngaphambi kokuqinisekisa lokho okuyiqiniso. Lowo myalelo wenza abasebenzisi babe sengcupheni enkulu yamakhasi edukisayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayithembisi ukufaneleka noma ivumele izimangalo zesibonelelo sikahulumeni ezingaqinisekisiwe. Isiza abasebenzisi ukuthi bacabange ngokucophelela ngaphambi kokuthi bazibophezele emzileni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlukanise isiqondiso sokufaneleka sangempela emakhasini okufaka isicelo asebenzisa ulimi lokufaneleka ngaphandle kwesibonelelo esithembekile ngemuva kwakho."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-r700-grant-searches-usually-mean\n• /guides/how-to-check-if-an-r700-grant-page-is-real\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /eligibility-checker\n• /guides/how-to-know-if-a-sassa-website-is-official"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngiqinisekise isibonelelo kuqala?",
+        "body": "Ngoba ukufaneleka kubaluleke kuphela uma isibonelelo ngokwaso singokoqobo futhi sisekelwa ngokusemthethweni."
+      },
+      {
+        "title": "I-FAQ: Ingabe uhlu lokufaneleka lusengadukisa?",
+        "body": "Yebo. Kungazwakala kuwusizo ngenkathi kusakhiwa eduze kwesimangalo esingaqinisekisiwe."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze ngaphambi kokuthi ngithembe ikhasi?",
+        "body": "Hlola ukuthi umzila nomthombo uyasisekela ngokusobala isimangalo."
+      }
+    ]
+  },
+  "what-r1400-beneficiary-list-searches-usually-mean": {
+    "title": "Lokho okuvame ukusho ukusesha kohlu lwabahlomulayo ngo-R1400",
+    "summary": "Umhlahlandlela wolimi olulula lokuseshwa kohlu lwabahlomulayo luka-R1400 nokuthi kungani abasebenzisi kufanele baphathe amanani esibonelelo sikahulumeni njengokuthile okufanele kuqinisekiswe, hhayi njengobufakazi obusheshayo besibonelelo sikahulumeni sangempela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha kohlu lwabahlomulayo kuka-R1400 ngokuvamile kusho ukuthi abasebenzisi bazama ukuqinisekisa ukuthi inani lemali yesibonelelo esifunwayo noma indaba yokukhokha ingokoqobo. Isinyathelo esiphephe kunazo zonke siwukuthatha isimangalo njengesingaqinisekisiwe kuze kube yilapho umthombo osemthethweni usisekela ngokucacile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amanani ezibonelelo ezifunwayo angasabalala ngokushesha kakhulu ngoba abukeka elula futhi eqondile. Lokho kunemba kubenza bazizwe bethembekile, kodwa inani elijwayelekile lilodwa alibonisi ukuthi isimangalo sibonisa isibonelelo sangempela esisemthethweni noma isibuyekezo senkokhelo esisemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Izimangalo zenani elingamanga zivame ukudala ukuphuthuma, ithemba elingamanga, noma ingcindezi yokuchofoza ngokushesha. Abasebenzisi abama kancane ukuze baqinisekise umthombo mancane kakhulu amathuba okuba balandele umzila mbumbulu noma bathembe okuthunyelwe okudukisayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha inani elifunwayo njengelingaqinisekisiwe ekuqaleni.\n2. Hlola ukuthi isimangalo sivela kusibuyekezo esisemthethweni esicacile.\n3. Gwema ukwethemba uhlu lwabahlomuli, okuthunyelwe okuphuthumayo, noma izixhumanisi zezicelo ezikopishiwe ngokwazo.\n4. Qhathanisa isimangalo nohlobo lwesibonelelo noma umzila wokusekela okuthiwa ufana nawo.\n5. Sebenzisa i-GrantCare ukuze uqonde isimangalo ngokuphepha ngaphambi kokuthi uthathe isinyathelo ngaso."
+      },
+      {
+        "title": "Inani elithile lingase libe isignali ebuthakathaka",
+        "body": "Abantu bavame ukwethemba isimangalo ngoba sizwakala sinembile. Umbuzo ongcono awukona ukuthi inani liqondile kangakanani. Umbuzo ongcono ngowokuthi ingabe umzila, umthombo, kanye nesigaba sesibonelelo siyahambisana nakho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele neze kwenziwe iphutha njengomthombo osemthethweni wokudala isibonelelo, ukugunyazwa, noma ukuqinisekiswa kwenani. Amanani ezibonelelo ezisemthethweni nokufaneleka kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise amanani afunwayo nesiqondiso somzila osemthethweni, amakhasi okufaneleka, nemikhuba yokuhlola ephephile ukuze ungaphazamisi amahlebezi ngomnikelo wangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-read-grant-amount-pages-safely\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe uhlu lwabahlomulayo lwenani elingu-R1400 lenza isimangalo sithembeke kakhudlwana?",
+        "body": "Cha. Inani elithile lisadinga umthombo othembekile osemthethweni ngemuva kwalo."
+      },
+      {
+        "title": "I-FAQ: Kungani amahlebezi amanani asakazeka kalula kangaka?",
+        "body": "Ngoba izinombolo eziqondile zizwakala zicacile futhi zabelana ngisho nalapho umthombo ubuthakathaka."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokuthatha isinyathelo ngesimangalo?",
+        "body": "Hlola umthombo, umzila, kanye nesigaba sesibonelelo isimangalo esikhuluma ngaso."
+      }
+    ]
+  },
+  "what-r1370-grant-searches-usually-mean": {
+    "title": "Okushiwo ukusesha kwesibonelelo sika-R1370 kuvame ukusho",
+    "summary": "Umhlahlandlela wolimi olulula lokuseshwa kwesibonelelo sikahulumeni sika-R1370 nokuthi kungani abasebenzisi kufanele baphathe amanani esibonelelo sikahulumeni njengokuthile okufanele kuqinisekiswe, hhayi njengobufakazi obusheshayo besibonelelo sikahulumeni sangempela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha kwesibonelelo sika-R1370 ngokuvamile kusho ukuthi abasebenzisi bazama ukuqinisekisa ukuthi inani lemali yesibonelelo esifunwayo noma indaba yokukhokha ingeyangempela. Isinyathelo esiphephe kunazo zonke siwukuthatha isimangalo njengesingaqinisekisiwe kuze kube yilapho umthombo osemthethweni usisekela ngokucacile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amanani ezibonelelo ezifunwayo angasabalala ngokushesha kakhulu ngoba abukeka elula futhi eqondile. Lokho kunemba kubenza bazizwe bethembekile, kodwa inani elijwayelekile lilodwa alibonisi ukuthi isimangalo sibonisa isibonelelo sangempela esisemthethweni noma isibuyekezo senkokhelo esisemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Izimangalo zenani elingamanga zivame ukudala ukuphuthuma, ithemba elingamanga, noma ingcindezi yokuchofoza ngokushesha. Abasebenzisi abama kancane ukuze baqinisekise umthombo mancane kakhulu amathuba okuba balandele umzila mbumbulu noma bathembe okuthunyelwe okudukisayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha inani elifunwayo njengelingaqinisekisiwe ekuqaleni.\n2. Hlola ukuthi isimangalo sivela kusibuyekezo esisemthethweni esicacile.\n3. Gwema ukwethemba uhlu lwabahlomuli, okuthunyelwe okuphuthumayo, noma izixhumanisi zezicelo ezikopishiwe ngokwazo.\n4. Qhathanisa isimangalo nohlobo lwesibonelelo noma umzila wokusekela okuthiwa ufana nawo.\n5. Sebenzisa i-GrantCare ukuze uqonde isimangalo ngokuphepha ngaphambi kokuthi uthathe isinyathelo ngaso."
+      },
+      {
+        "title": "Inani elithile lingase libe isignali ebuthakathaka",
+        "body": "Abantu bavame ukwethemba isimangalo ngoba sizwakala sinembile. Umbuzo ongcono awukona ukuthi inani liqondile kangakanani. Umbuzo ongcono ngowokuthi ingabe umzila, umthombo, kanye nesigaba sesibonelelo siyahambisana nakho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele neze kwenziwe iphutha njengomthombo osemthethweni wokudala isibonelelo, ukugunyazwa, noma ukuqinisekiswa kwenani. Amanani ezibonelelo ezisemthethweni nokufaneleka kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise amanani afunwayo nesiqondiso somzila osemthethweni, amakhasi okufaneleka, nemikhuba yokuhlola ephephile ukuze ungaphazamisi amahlebezi ngomnikelo wangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-read-grant-amount-pages-safely\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe imali yesibonelelo sika-R1370 yenza isicelo sithembeke kakhulu?",
+        "body": "Cha. Inani elithile lisadinga umthombo othembekile osemthethweni ngemuva kwalo."
+      },
+      {
+        "title": "I-FAQ: Kungani amahlebezi amanani asakazeka kalula kangaka?",
+        "body": "Ngoba izinombolo eziqondile zizwakala zicacile futhi zabelana ngisho nalapho umthombo ubuthakathaka."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokuthatha isinyathelo ngesimangalo?",
+        "body": "Hlola umthombo, umzila, kanye nesigaba sesibonelelo isimangalo esikhuluma ngaso."
+      }
+    ]
+  },
+  "what-r2090-grant-searches-usually-mean": {
+    "title": "Okushiwo ukusesha kwesibonelelo sika-R2090 kuvame ukusho",
+    "summary": "Umhlahlandlela wolimi olulula osesho lwezibonelelo zika-R2090 nokuthi kungani abasebenzisi kufanele baphathe amanani esibonelelo sikahulumeni njengento okufanele iqinisekiswe, hhayi njengobufakazi obusheshayo besibonelelo sikahulumeni sangempela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha kwesibonelelo sika-R2090 ngokuvamile kusho ukuthi abasebenzisi bazama ukuqinisekisa ukuthi inani lemali yesibonelelo esifunwayo noma indaba yokukhokha ingeyangempela. Isinyathelo esiphephe kunazo zonke siwukuthatha isimangalo njengesingaqinisekisiwe kuze kube yilapho umthombo osemthethweni usisekela ngokucacile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amanani ezibonelelo ezifunwayo angasabalala ngokushesha kakhulu ngoba abukeka elula futhi eqondile. Lokho kunemba kubenza bazizwe bethembekile, kodwa inani elijwayelekile lilodwa alibonisi ukuthi isimangalo sibonisa isibonelelo sangempela esisemthethweni noma isibuyekezo senkokhelo esisemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Izimangalo zenani elingamanga zivame ukudala ukuphuthuma, ithemba elingamanga, noma ingcindezi yokuchofoza ngokushesha. Abasebenzisi abama kancane ukuze baqinisekise umthombo mancane kakhulu amathuba okuba balandele umzila mbumbulu noma bathembe okuthunyelwe okudukisayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha inani elifunwayo njengelingaqinisekisiwe ekuqaleni.\n2. Hlola ukuthi isimangalo sivela kusibuyekezo esisemthethweni esicacile.\n3. Gwema ukwethemba uhlu lwabahlomuli, okuthunyelwe okuphuthumayo, noma izixhumanisi zezicelo ezikopishiwe ngokwazo.\n4. Qhathanisa isimangalo nohlobo lwesibonelelo noma umzila wokusekela okuthiwa ufana nawo.\n5. Sebenzisa i-GrantCare ukuze uqonde isimangalo ngokuphepha ngaphambi kokuthi uthathe isinyathelo ngaso."
+      },
+      {
+        "title": "Inani elithile lingase libe isignali ebuthakathaka",
+        "body": "Abantu bavame ukwethemba isimangalo ngoba sizwakala sinembile. Umbuzo ongcono awukona ukuthi inani liqondile kangakanani. Umbuzo ongcono ngowokuthi ingabe umzila, umthombo, kanye nesigaba sesibonelelo siyahambisana nakho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele neze kwenziwe iphutha njengomthombo osemthethweni wokudala isibonelelo, ukugunyazwa, noma ukuqinisekiswa kwenani. Amanani ezibonelelo ezisemthethweni nokufaneleka kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise amanani afunwayo nesiqondiso somzila osemthethweni, amakhasi okufaneleka, nemikhuba yokuhlola ephephile ukuze ungaphazamisi amahlebezi ngomnikelo wangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-read-grant-amount-pages-safely\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe imali yesibonelelo sika-R2090 yenza isicelo sithembeke kakhulu?",
+        "body": "Cha. Inani elithile lisadinga umthombo othembekile osemthethweni ngemuva kwalo."
+      },
+      {
+        "title": "I-FAQ: Kungani amahlebezi amanani asakazeka kalula kangaka?",
+        "body": "Ngoba izinombolo eziqondile zizwakala zicacile futhi zabelana ngisho nalapho umthombo ubuthakathaka."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokuthatha isinyathelo ngesimangalo?",
+        "body": "Hlola umthombo, umzila, kanye nesigaba sesibonelelo isimangalo esikhuluma ngaso."
+      }
+    ]
+  },
+  "what-r3070-grant-searches-usually-mean": {
+    "title": "Okushiwo ukusesha kwesibonelelo sika-R3070 kuvame ukusho",
+    "summary": "Umhlahlandlela wolimi olulula lokuseshwa kwesibonelelo sikahulumeni sika-R3070 nokuthi kungani abasebenzisi kufanele baphathe amanani esibonelelo sikahulumeni njengokuthile okufanele kuqinisekiswe, hhayi njengobufakazi obusheshayo besibonelelo sikahulumeni sangempela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha kwesibonelelo sika-R3070 ngokuvamile kusho ukuthi abasebenzisi bazama ukuqinisekisa ukuthi inani lemali yesibonelelo esifunwayo noma indaba yokukhokha ingeyangempela. Isinyathelo esiphephe kunazo zonke siwukuthatha isimangalo njengesingaqinisekisiwe kuze kube yilapho umthombo osemthethweni usisekela ngokucacile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amanani ezibonelelo ezifunwayo angasabalala ngokushesha kakhulu ngoba abukeka elula futhi eqondile. Lokho kunemba kubenza bazizwe bethembekile, kodwa inani elijwayelekile lilodwa alibonisi ukuthi isimangalo sibonisa isibonelelo sangempela esisemthethweni noma isibuyekezo senkokhelo esisemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Izimangalo zenani elingamanga zivame ukudala ukuphuthuma, ithemba elingamanga, noma ingcindezi yokuchofoza ngokushesha. Abasebenzisi abama kancane ukuze baqinisekise umthombo mancane kakhulu amathuba okuba balandele umzila mbumbulu noma bathembe okuthunyelwe okudukisayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha inani elifunwayo njengelingaqinisekisiwe ekuqaleni.\n2. Hlola ukuthi isimangalo sivela kusibuyekezo esisemthethweni esicacile.\n3. Gwema ukwethemba uhlu lwabahlomuli, okuthunyelwe okuphuthumayo, noma izixhumanisi zezicelo ezikopishiwe ngokwazo.\n4. Qhathanisa isimangalo nohlobo lwesibonelelo noma umzila wokusekela okuthiwa ufana nawo.\n5. Sebenzisa i-GrantCare ukuze uqonde isimangalo ngokuphepha ngaphambi kokuthi uthathe isinyathelo ngaso."
+      },
+      {
+        "title": "Inani elithile lingase libe isignali ebuthakathaka",
+        "body": "Abantu bavame ukwethemba isimangalo ngoba sizwakala sinembile. Umbuzo ongcono awukona ukuthi inani liqondile kangakanani. Umbuzo ongcono ngowokuthi ingabe umzila, umthombo, kanye nesigaba sesibonelelo siyahambisana nakho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele neze kwenziwe iphutha njengomthombo osemthethweni wokudala isibonelelo, ukugunyazwa, noma ukuqinisekiswa kwenani. Amanani ezibonelelo ezisemthethweni nokufaneleka kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise amanani afunwayo nesiqondiso somzila osemthethweni, amakhasi okufaneleka, nemikhuba yokuhlola ephephile ukuze ungaphazamisi amahlebezi ngomnikelo wangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-read-grant-amount-pages-safely\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe imali yesibonelelo sika-R3070 yenza isicelo sithembeke kakhulu?",
+        "body": "Cha. Inani elithile lisadinga umthombo othembekile osemthethweni ngemuva kwalo."
+      },
+      {
+        "title": "I-FAQ: Kungani amahlebezi amanani asakazeka kalula kangaka?",
+        "body": "Ngoba izinombolo eziqondile zizwakala zicacile futhi zabelana ngisho nalapho umthombo ubuthakathaka."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokuthatha isinyathelo ngesimangalo?",
+        "body": "Hlola umthombo, umzila, kanye nesigaba sesibonelelo isimangalo esikhuluma ngaso."
+      }
+    ]
+  },
+  "how-to-avoid-fake-grant-amount-pages": {
+    "title": "Ungawagwema kanjani amakhasi enani lemali yesibonelelo sikahulumeni",
+    "summary": "Umhlahlandlela osebenzayo wokugwema amakhasi amanani omgunyathi noma adukisayo asebenzisa izinombolo ezithile ukuze ahehe ukuchofoza nokwethenjwa.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Gwema amakhasi enani lemali yesibonelelo sikahulumeni mbumbulu ngokubheka umzila, umthombo, nesigaba sesibonelelo esikhundleni sokuthemba inani noma isihloko sodwa."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amakhasi enani elingelona iqiniso avame ukuncika kufomula elula: inombolo eyodwa ncamashi, isithembiso esiphuthumayo, kanye nomongo omncane kakhulu. Abasebenzisi abayaziyo leyo phethini kunzima kakhulu ukudukisa."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ikhasi lenani elingumgunyathi lingaphushela abasebenzisi kuzixhumanisi ezingaphephile, amafomu akopishiwe, noma okulindelwe okungenangqondo mayelana nemali nokufaneleka."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qaphela amakhasi akhiwe azungeze inombolo eyodwa ngqo.\n2. Hlola ukuthi ikhasi liyasichaza kahle yini isigaba sesibonelelo.\n3. Bheka ukuthi umthombo ucacile futhi usemthethweni.\n4. Gwema ukwabelana ngemininingwane emizileni engacacile.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisimangalo kuphela."
+      },
+      {
+        "title": "Inombolo ivame ukuba yihhuku, hhayi ubufakazi",
+        "body": "Amakhasi amaningi adukisayo asebenza ngokwenza inombolo yenze konke okukholisayo. Umkhuba ophephile ukususa ukunaka kwakho kude nenombolo bese ubuyela emzileni nomthombo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiwashicileli amanani omgunyathi noma iphathe amahlebezi njengezimemezelo ezisemthethweni zikahulumeni. Ihlala endimeni yokuqondisa."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa amakhasi enani neziqondiso zomzila osemthethweni, amathuluzi okufaneleka, nemikhuba yokuhlola isibuyekezo ephephile ngaphambi kokuthi bathembe abakutholile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /claim-checker\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/how-to-read-grant-amount-pages-safely\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/what-r700-grant-searches-usually-mean\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani amakhasi enani lomgunyathi esebenza kangaka?",
+        "body": "Ngoba izinombolo eziqondile ziheha ukunaka futhi zizwakala zilula kunencazelo ecophelelayo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphandle kwenombolo?",
+        "body": "Hlola umzila, isigaba sesibonelelo, kanye nomthombo."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma ikhasi lizwakala liyaphuthuma?",
+        "body": "Phatha ukuphuthuma njengesizathu sokwehlisa ijubane futhi uqinisekise ngokucophelela."
+      }
+    ]
+  },
+  "what-srd-grant-amount-searches-usually-mean": {
+    "title": "Lokho okuvamise ukusho ukusesha kwenani lesibonelelo se-SRD",
+    "summary": "Umhlahlandlela wolimi olulula wokusesha inani lesibonelelo se-SRD nokuthi kungani abasebenzisi kufanele baphathe amanani esibonelelo sikahulumeni njengokuthile okufanele kuqinisekiswe, hhayi njengobufakazi obusheshayo besibonelelo sikahulumeni sangempela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha kwenani lesibonelelo se-SRD ngokuvamile kusho ukuthi abasebenzisi bazama ukuqinisekisa ukuthi inani lesibonelelo esifunwayo noma indaba yokukhokha ingokoqobo. Isinyathelo esiphephe kunazo zonke siwukuthatha isimangalo njengesingaqinisekisiwe kuze kube yilapho umthombo osemthethweni usisekela ngokucacile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amanani ezibonelelo ezifunwayo angasabalala ngokushesha kakhulu ngoba abukeka elula futhi eqondile. Lokho kunemba kubenza bazizwe bethembekile, kodwa inani elijwayelekile lilodwa alibonisi ukuthi isimangalo sibonisa isibonelelo sangempela esisemthethweni noma isibuyekezo senkokhelo esisemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Izimangalo zenani elingamanga zivame ukudala ukuphuthuma, ithemba elingamanga, noma ingcindezi yokuchofoza ngokushesha. Abasebenzisi abama kancane ukuze baqinisekise umthombo mancane kakhulu amathuba okuba balandele umzila mbumbulu noma bathembe okuthunyelwe okudukisayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha inani elifunwayo njengelingaqinisekisiwe ekuqaleni.\n2. Hlola ukuthi isimangalo sivela kusibuyekezo esisemthethweni esicacile.\n3. Gwema ukwethemba uhlu lwabahlomuli, okuthunyelwe okuphuthumayo, noma izixhumanisi zezicelo ezikopishiwe ngokwazo.\n4. Qhathanisa isimangalo nohlobo lwesibonelelo noma umzila wokusekela okuthiwa ufana nawo.\n5. Sebenzisa i-GrantCare ukuze uqonde isimangalo ngokuphepha ngaphambi kokuthi uthathe isinyathelo ngaso."
+      },
+      {
+        "title": "Inani elithile lingase libe isignali ebuthakathaka",
+        "body": "Abantu bavame ukwethemba isimangalo ngoba sizwakala sinembile. Umbuzo ongcono awukona ukuthi inani liqondile kangakanani. Umbuzo ongcono ngowokuthi ingabe umzila, umthombo, kanye nesigaba sesibonelelo siyahambisana nakho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele neze kwenziwe iphutha njengomthombo osemthethweni wokudala isibonelelo, ukugunyazwa, noma ukuqinisekiswa kwenani. Amanani ezibonelelo ezisemthethweni nokufaneleka kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise amanani afunwayo nesiqondiso somzila osemthethweni, amakhasi okufaneleka, nemikhuba yokuhlola ephephile ukuze ungaphazamisi amahlebezi ngomnikelo wangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-read-grant-amount-pages-safely\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Ingabe inani lemali lesibonelelo le-SRD lenza isimangalo sithembeke kakhudlwana?",
+        "body": "Cha. Inani elithile lisadinga umthombo othembekile osemthethweni ngemuva kwalo."
+      },
+      {
+        "title": "I-FAQ: Kungani amahlebezi amanani asakazeka kalula kangaka?",
+        "body": "Ngoba izinombolo eziqondile zizwakala zicacile futhi zabelana ngisho nalapho umthombo ubuthakathaka."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokuthatha isinyathelo ngesimangalo?",
+        "body": "Hlola umthombo, umzila, kanye nesigaba sesibonelelo isimangalo esikhuluma ngaso."
+      }
+    ]
+  },
+  "what-covid-19-social-relief-of-distress-grant-wording-usually-means": {
+    "title": "Lokho okuvame ukusho i-COVID-19 social relief of distress words",
+    "summary": "Umchazi womlando wabasebenzisi abasasesha ngamagama okusiza umphakathi we-COVID-19 futhi abafuna ukuqonda ukuthi ixhumeka kanjani ku-SRD, R350, kanye nolimi lwe-R370 namuhla.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Amagama e-COVID-19 yosizo lwenhlalo yesibonelelo sokucindezeleka ngokuvamile akhomba abasebenzisi emndenini ofanayo wokweseka usizo lomphakathi ovame ukuseshwa njenge-SRD, R350, noma R370. Ukunyakaza okuphephile ukuphatha umushwana omdala njengamagama omlando, bese usebenzisa umzila wamanje ofana nomsebenzi wakho."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi basakhumbula ukusekelwa ngamagama amadala e-COVID-19, kuyilapho abanye basesha nge-SRD, R350, noma amagama angu-R370. Lawo malebula angagqagqana, kodwa awahlali echaza ngqo umsebenzi owudingayo ngokulandelayo. Umsebenzi usabalulekile ngaphezu kwebinzana lokusesha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi bephatha amagama amadala e-COVID-19 njengesibonelelo esisha esihlukile, bangalandela imiyalelo ephelelwe yisikhathi, bathembe amakhasi engobo yomlando akopishiwe, noma baphuthelwe isimo samanje, inkokhelo, noma umzila wesicelo ofanelana nesimo sabo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha amagama e-COVID-19 njengomongo womlando kuqala.\n2. Qondanisa nendlela yamanje yokusiza umphakathi noma i-SRD ngaphambi kokwenza noma yini enye.\n3. Nquma ukuthi uyaludinga ngempela usizo lwesicelo, usizo lwesimo, noma usizo lwedethi yokukhokha.\n4. Ungacabangi ukuthi R350 noma R370 amagama asho isibonelelo esihlukile ngokwaso.\n5. Sebenzisa i-GrantCare ukuze usuke emshweni omdala uye ekhasini elilungile lamanje ngokuphepha."
+      },
+      {
+        "title": "Amagama ashintshile, kodwa umsebenzi usewumbuzo wangempela",
+        "body": "Abasebenzisi bavame ukusesha ngamagama abawakhumbula kakhulu, ikakhulukazi uma kuxoxiswana ngosekelo iminyaka. Umkhuba wokufunda ophephile uwukubeka kumephu umushwana omdala we-COVID-19 kumongo wamanje we-SRD, bese ukhetha ikhasi elifana nomsebenzi wakho wangempela esikhundleni sokujaha zonke izinhlobo zamagama."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iwumhlahlandlela ozimele futhi ayithathi indawo yohlelo olusemthethweni lwe-SRD. Ukuhlolwa kwesimo esisemthethweni, izicelo, nokuqinisekiswa kwenkokhelo kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhumushe amagama amadala e-COVID-19 e-COVID-19 emongweni wamanje we-SRD, R350, kanye ne-R370 ukuze ukwazi ukufinyelela ikhasi elifanele lesibonelelo, ikhasi losuku lokukhokha, noma inkomba yesimo ngaphandle kokuqagela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grants/social-relief\n• /payment-dates\n• /guides/what-the-srd-portal-is-for\n• /guides/how-to-check-srd-status-online\n• /guides/how-to-use-sassa-status-check-for-r350"
+      },
+      {
+        "title": "I-FAQ: Ingabe i-COVID-19 impumuzo yenhlalo yokucindezeleka iyafana ne-SRD?",
+        "body": "Abasebenzisi bavame ukusho umndeni ofanayo wosekelo wokusiza umphakathi, kodwa indlela ephephe kunazo zonke kusewukusebenzisa umzila wamanje we-SRD kanye nekhasi elifana nomsebenzi wakho."
+      },
+      {
+        "title": "I-FAQ: Kungani amanye amakhasi ethi R350 kanti amanye athi R370?",
+        "body": "Abantu bavame ukusesha ngamalebula amanani ahlukene abawabone ngaphambilini, ngakho amagama angahluka ngisho nalapho isinyathelo esilandelayo esiphephile siwumzila ofanayo wamanje we-SRD."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngethembe isicelo esidala senkathi ye-COVID noma imiyalelo yokukhokha?",
+        "body": "Cha. Phatha amagama amadala njengomongo futhi usebenzise umzila wamanje osemthethweni nganoma yisiphi isenzo sangempela noma isiqinisekiso sokugcina."
+      }
+    ]
+  },
+  "capitec-sassa-payment-delay-help": {
+    "title": "Capitec SASSA ukubambezeleka kokukhokha: yini okufanele uyihlole kuqala",
+    "summary": "Umhlahlandlela osebenzayo wabasebenzisi abathola inkokhelo ye-SASSA nge-Capitec futhi bafuna ukuthola ukuthi yini okufanele bayihlole ngaphambi kokuthatha ukuthi ibhange yilo lonke inkinga.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma inkokhelo ye-SASSA ibonakala ibambezelekile ku-Capitec, qala ngokuhlukanisa idethi yokukhokha, isigaba sokucubungula inkokhelo, kanye nomzila wemininingwane yasebhange ngaphambi kokuthi ucabange ukuthi ukubambezeleka kuqale ebhange ngokwalo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi basesha ukubambezeleka kokukhokha kwe-Capitec lapho imali yephuzile noma ingekho, kodwa inkinga ingase iqale ngaphambi kwesikhathi ochungechungeni. Ukubambezeleka kungavela ekucutshungulweni kwenkokhelo, odabeni lwendlela yokukhokha, imininingwane yasebhange, noma ukungaqondi kahle kwesikhathi kunokuba kuvele ku-Capitec kuphela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi besola ibhange ngokushesha okukhulu, bangaphuthelwa imbangela yangempela, balandele umzila wosekelo ongalungile, noma bashintshe imininingwane ngaphambi kokuthi bazi ukuthi kwenzekani ngempela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola idethi yokukhokha efanele kanye nesigaba sesibonelelo kuqala.\n2. Funda ukuthi ingabe icala lakho libukeka ligunyaziwe, liyacutshungulwa, libambezelekile, noma lingakacaci.\n3. Hlola ukuthi imininingwane yakho yasebhange ishintshile yini noma isadinga ukuqinisekiswa.\n4. Qhathanisa inkinga nokushoda kwenkokhelo kanye nesiqondiso sokucubungula inkokhelo ngaphambi kokuthi ucabange ukuthi inkinga ye-Capitec kuphela.\n5. Sebenzisa umzila wokuxhumana osemthethweni olungile uma inkokhelo isabukeka ibambekile ngemuva kwalawo masheke."
+      },
+      {
+        "title": "Ibhange liyingxenye eyodwa kuphela yochungechunge lokukhokha",
+        "body": "Ukubambezeleka kokuboniswa kwebhange kungaba okwangempela, kodwa kuphephe kakhudlwana ukuhlola izigaba zangaphambili kuqala. Abasebenzisi bavame ukuthola izimpendulo ezingcono ngokubheka isimo sokukhokha, indlela yokukhokha, kanye nedethi yokukhokha ngaphambi kokwehlisela inkinga ku-Capitec."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiwaboni amarekhodi ebhange langasese futhi ayithathi indawo yosekelo olusemthethweni noma ukusekelwa kwebhange. Isiza abasebenzisi ukuthi babone ukuthi iyiphi ingxenye yeketango edinga ukunakwa kuqala."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise ukubambezeleka kwenkokhelo namagama okucubungula inkokhelo, izibuyekezo zemininingwane yasebhange, neziqondiso zokukhokha ezingekho ukuze ungaqageli ngokungaboni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /guides/how-banking-details-updates-work\n• /guides/how-to-find-official-contact-details-safely"
+      },
+      {
+        "title": "I-FAQ: Ingabe ukubambezeleka kwe-Capitec kuhlale kusho ukuthi ibhange lidale inkinga?",
+        "body": "Cha. Ukubambezeleka kungase kuqale ngaphambi kwesikhathi ngokucubungula inkokhelo, indlela yokukhokha, noma isikhathi kunokuba kuqale ebhange lodwa."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphambi kokuthi ngithinte noma ubani?",
+        "body": "Hlola idethi yokukhokha, isigaba sakho sesibonelelo, nokuthi ingabe icala lisacutshungulwa noma lishoda kunokuba ligcine."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngishintshe imininingwane yasebhange ngokushesha?",
+        "body": "Hhayi uze uqonde ukuthi ukubambezeleka kuyinkinga yemininingwane yasebhange ngempela."
+      }
+    ]
+  },
+  "what-social-grant-usually-means": {
+    "title": "Ngokuvamile kusho ukuthini isibonelelo sikahulumeni eNingizimu Afrika",
+    "summary": "Igayidi yolimi olulula ekusesheni okubanzi kwesibonelelo sikahulumeni kanye nokuthi lawo magama ngokuvamile akhomba kanjani izigaba zesibonelelo se-SASSA zangempela, izinsuku, amanani, nemisebenzi yesicelo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo sikahulumeni ngokuvamile sisho ukusesha okubanzi kosekelo lwe-SASSA kunoxhaso olulodwa olulodwa. Isinyathelo esilandelayo esiphephe kakhulu ukuthola ukuthi udinga uhlobo lwesibonelelo, usuku lokukhokha, inani, isimo, noma umzila wokufaka isicelo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi bavame ukucinga isibonelelo sikahulumeni uma besho okuthile okubanzi kunekhasi elilodwa elingaziphendula ngokwalo. Bangase bafune Abantu Abadala, Ukukhubazeka, Isondlo Sezingane, SRD, izinsuku zokukhokha, noma indawo yokuqala evamile. Amagama abanzi awusizo, kodwa isinyathelo esilandelayo kufanele sicace kakhudlwana."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi behlala ezingeni elibanzi lesibonelelo sikahulumeni isikhathi eside kakhulu, bangakwazi ukuhlala emzileni ongalungile, bafunde ikhasi lesibonelelo elingalungile, noma baphuthelwe yiwona msebenzi ababewudinga ngempela ukuze bawuxazulule."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Nquma ukuthi udinga uhlobo lwesibonelelo, usuku lokukhokha, inani, isimo, noma umzila wokufaka isicelo.\n2. Vula ihabhu yezibonelelo uma usadinga isigaba esifanele.\n3. Vula izinsuku zokukhokha uma umbuzo wakho wangempela umayelana nesikhathi.\n4. Vula amanani ezibonelelo uma umbuzo wakho wangempela umayelana nemali.\n5. Sebenzisa isihloli sokufaneleka uma namanje ungazi ukuthi yisiphi isibonelelo esifanelana nesimo sakho."
+      },
+      {
+        "title": "Igama elibanzi liyisiqalo, hhayi umzila wokugcina",
+        "body": "Isibonelelo sikahulumeni siwulimi lokusesha oluwusizo ngoba luhambisana nendlela abantu abakhuluma ngayo. Iba wusizo kakhulu kuphela uma uyinciphisa ungene esibonelweni esiqondile noma umsebenzi owudinga ngempela ngokulandelayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iwumhlahlandlela ozimele. Isiza abasebenzisi ukuthi basuke emazwini abanzi ezibonelelo zomphakathi baye ekhasini elingakwesokudla elilandelayo, kodwa izicelo ezisemthethweni, izenzo zesimo, nokuqinisekiswa kokugcina kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhumushe igama elibanzi ekhasini elilungile lesibonelelo, ikhasi ledethi yokukhokha, ikhasi lenani, noma umhlahlandlela wesimo ukuze uchithe isikhathi esincane ngokuchofoza."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grants\n• /payment-dates\n• /grant-amounts\n• /eligibility-checker\n• /grants/social-relief"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe isibonelelo sikahulumeni sisho isibonelelo esisodwa esithi SASSA?",
+        "body": "Akuvamile. Ngokuvamile kusho ukuthi umsebenzisi udinga indawo yokuqala ebanzi ngaphambi kokukhetha uxhaso oluqondile noma umsebenzi."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyivule uma ngidinga isikhathi?",
+        "body": "Vula ikhasi lezinsuku zokukhokha uma umbuzo wakho wangempela umayelana nokuthi isibonelelo singakhokhwa nini."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma ngingazi ukuthi yisiphi isibonelelo esilingana nami?",
+        "body": "Sebenzisa ihabhu lezibonelelo kanye nesihloli sokufaneleka ukuze unciphise isigaba esifanele kuqala."
+      }
+    ]
+  },
+  "what-social-grant-dates-searches-usually-mean": {
+    "title": "Ukuthi ukuseshwa kwezinsuku zesibonelelo sikahulumeni ngokuvamile kusho ukuthini",
+    "summary": "Umhlahlandlela osebenzayo osesho lwedethi yesibonelelo sikahulumeni nokuthi ungasuka kanjani kubinzana lesikhathi elibanzi uye ekhasini elilungile lenyanga kanye nesigaba sesibonelelo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha kwezinsuku zesibonelelo sikahulumeni ngokuvamile kusho ukuthi abasebenzisi bafuna ishejuli yokukhokha ye-SASSA ebanzi, hhayi usuku olulodwa olumisiwe lwazo zonke izibonelelo. Ukunyakaza okuphephe kakhulu ukuvula ihabhu yedethi yokukhokha bese uqondanisa inyanga nesigaba sesibonelelo ngokucophelela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Inkulumo ethi izinsuku zesibonelelo sikahulumeni zingabandakanya Abantu Abadala, Abakhubazekile, izibonelelo zezingane, noma isikhathi se-SRD. Abasebenzisi bavame ukusesha kabanzi kuqala bese bedinga usizo lokunciphisa ikhasi lenyanga elilungile kanye nesigaba esikhundleni sokuphatha idethi eyodwa njengempendulo yendawo yonke."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi bethemba idethi eyodwa entantayo ngaphandle kokufanisa uhlobo lwesibonelelo nenyanga, bangahlela ngeshejuli engalungile noma bangaqondi kahle ukuthi ikhasi libonisani ngempela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ihabhu yezinsuku zokukhokha kuqala.\n2. Khetha inyanga efanele noma unyaka ngaphambi kokuthi uthembe noma iyiphi idethi.\n3. Qondanisa ishejuli nesigaba esiqondile sesibonelelo osidingayo.\n4. Funda ukuthi isikhathi sishicilelwe, silindelwe, noma sisekelwe kuphothali.\n5. Sebenzisa isiqondiso sokukhokha samanje esikhundleni sezithombe-skrini ezindala noma okuthunyelwe kwedethi okugaywe kabusha."
+      },
+      {
+        "title": "Ibinzana lokusesha elilodwa lingafihla amashejuli ambalwa ahlukene",
+        "body": "Ukusesha okubanzi kwedethi kuzwakala kulula, kodwa kuvame ukuhlanganisa izibonelelo ezivamile, izibonelelo zezingane eziqoqwe, nosekelo lwesitayela se-SRD. Umkhuba wokufunda ophephe kakhulu ukunciphisa inyanga nesigaba ngaphambi kokuthi uthembele kusikhathi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ichaza isikhathi somphakathi ngolimi olulula, kodwa isiqinisekiso esisemthethweni sisesesemzileni osemthethweni ofanele lapho udaba lwakho ludinga impendulo yokugcina."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekuseshweni okubanzi kwezinsuku zesibonelelo sikahulumeni uye ekhasini elilungile lenyanga, isigaba sesibonelelo, kanye nomhlahlandlela wesikhathi ngaphandle kokuphatha zonke izinsuku njengezishintshashintshayo."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates\n• /grants/older-persons\n• /grants/social-relief\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-track-payment-dates-without-rumours"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe izinsuku zesibonelelo sikahulumeni zisho ishejuli eyodwa yazo zonke izibonelelo?",
+        "body": "Cha. Ibinzana ngokuvamile lihlanganisa izigaba ezingaphezu kwesisodwa futhi lidinga ukuncishiswa ngaphambi kokuba kucace isikhathi."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphandle kwedethi ngokwayo?",
+        "body": "Hlola inyanga, isigaba sesibonelelo, nokuthi isikhathi sishicilelwe, silindelwe, noma sisekelwe kuphothali."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe izinsuku ezivela ezithombeni ezindala noma okuthunyelwe okwabiwe?",
+        "body": "Cha. Kuphephe kakhudlwana ukusebenzisa ihabhu yezinsuku zokukhokha kanye nesiqondiso samanje sesikhathi."
+      }
+    ]
+  },
+  "is-the-r500-grant-real": {
+    "title": "Ingabe isibonelelo sika-R500 singokoqobo?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezicelo zesibonelelo sikahulumeni ezingu-R500, izikhala zokubambezeleka kokukhokha, kanye nokuthi isibonelelo esifunwayo singokoqobo yini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izicelo zesibonelelo sika-R500 njengezingaqinisekisiwe ngaphandle uma umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi isimangalo singokoqobo ngoba ikhasi likhuluma ngokubambezeleka, izicelo, noma ilebula elijwayelekile lesibonelelo sikahulumeni."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuningi kuka-R500 kuvela kubasebenzisi abazama ukuqinisekisa isimangalo, hhayi emzileni ozinzile osemthethweni wesibonelelo. Amanye amakhasi azama ukwenza isimangalo sizwakale sikholeka kakhudlwana ngokuxuba inani namagama okulibaziseka, ulimi lwesimo, noma imigomo yesibonelelo esivamile abasebenzisi asebeyazi kakade."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi angama-R500 angakha ithemba elingamanga, athumele abasebenzisi izicelo zomgunyathi, noma abaphushele ezixhumanisini ezingaphephile ezishaya sengathi zichaza ukubambezeleka noma inkinga yokukhokha."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isicelo sika-R500 njengesingakaqinisekiswa.\n2. Ungathathi ukulibaziseka kwamagama noma amagama asetshenziswayo njengobufakazi ngokwawo.\n3. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni wangempela.\n4. Qhathanisa isimangalo namanani amanje esibonelelo sikahulumeni kanye nezigaba zamanje zesibonelelo sangempela.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Ukulibaziseka kwamagama kungenza isimangalo esingumgunyathi sizwakale sisemthethweni",
+        "body": "Ikhasi lingazwakala likholeka uma lengeza isizathu sokuthi kungani imali ifika sekwephuzile noma lapho isicelo kufanele siye khona. Leyo mininingwane eyengeziwe ayikafakazi ukuthi isibonelelo sikhona. Ukuhlolwa kwangempela umzila, umthombo, kanye nesigaba sangempela sesibonelelo esingemuva kwakho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zesibonelelo sikahulumeni ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, amanani asemthethweni, nezibuyekezo zokukhokha ezisemthethweni kusengezaziteshi ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izimangalo zika-R500 namanani amanje esibonelelo sikahulumeni, imikhuba ephephile yokufunda amakhasi, kanye nesiqondiso somzila osemthethweni ukuze ungaphazamisi amahlebezi ngesibonelelo sangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /claim-checker\n• /guides/what-r500-grant-payment-delay-searches-usually-mean\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe amagama okulibazisa ukukhokha afakazela ukuthi isibonelelo sika-R500 singokoqobo?",
+        "body": "Cha. Ukulibaziseka kwamagama kungenza isimangalo esibuthakathaka sizwakale njengokuphatha kakhudlwana, kodwa sisadinga umthombo othembekile osekelwe kuso."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ngabe kufanele ngithembe ikhasi elithi izicelo zama-R500 zivuliwe?",
+        "body": "Hhayi kuze kube yilapho uqinisekisa ukuthi umzila usemthethweni futhi isibonelelo ngokwaso singokoqobo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise isimangalo nayo kuqala?",
+        "body": "Qhathanisa namanani amanje esibonelelo, izigaba zesibonelelo sangempela, neziqondiso zomzila osemthethweni ngaphambi kokuyethemba."
+      }
+    ]
+  },
+  "what-r500-grant-payment-delay-searches-usually-mean": {
+    "title": "Okushiwo ukuseshwa kokulibaziseka kwenkokhelo yesibonelelo sika-R500 ngokuvamile kusho",
+    "summary": "Umhlahlandlela wolimi olulula osesho lokulibaziseka kuka-R500 kanye nokuthi kungani abasebenzisi kufanele baqinisekise isibonelelo sikahulumeni esifunwayo kuqala ngaphambi kokuba bakhathazeke ngokuthi kungani imali ifika sekwephuzile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha kokulibaziseka kwenkokhelo yesibonelelo sika-R500 ngokuvamile kusho ukuthi abasebenzisi bazama ukuqinisekisa ukuthi inkokhelo ka-R500 efunwayo ingeyangempela yini nokuthi kungani ingakafiki. Isinyathelo esiphephe kunazo zonke siwukuqinisekisa isimangalo sesibonelelo sikahulumeni kuqala ngaphambi kokuthatha indaba yokubambezeleka njengenengqondo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukubambezeleka kwamagama kungenza isimangalo esingumgunyathi noma esingacacile sizwakale sisemthethweni kakhulu ngoba kudala umuzwa wokuthi inkokhelo isivele ikhona futhi isikhathi kuphela esiyinkinga. Empeleni, umbuzo wokuqala kusamele ube ukuthi ngabe isibonelelo sika-R500 esibangwayo singokoqobo yini."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi beqa baqonde encazelweni yokulibaziseka, bangamosha isikhathi emakhasini angalungile, babelane ngemininingwane ngokungaphephile, noma bathembe isimangalo esingumgunyathi esingakaze sibe nomzila wangempela osemthethweni ngemva kwakho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi isibonelelo sika-R500 esibangwayo singokoqobo.\n2. Ungathathi ukubambezeleka, ukucubungula, noma amagama asebhange njengobufakazi ngokwakho.\n3. Qhathanisa isimangalo namanani amanje esibonelelo sikahulumeni kanye nezigaba zesibonelelo sangempela.\n4. Sebenzisa usuku lokukhokha noma isiqondiso sesimo sokukhokha kuphela uma isimangalo sesibonelelo sithembekile.\n5. Sebenzisa iziteshi ezisemthethweni uma inkinga yokukhokha yangempela isadinga ukuqinisekiswa okuqondile."
+      },
+      {
+        "title": "Incazelo yokubambezeleka ayifani nobufakazi",
+        "body": "Amanye amakhasi adukisayo asebenza ngokweqa umbuzo wokuthi ingabe isibonelelo sikahulumeni singokoqobo futhi siqonde ngqo kokuthi kungani inkokhelo yephuzile. Lokho kwenza isimangalo sizizwe siqinisekisiwe ngisho noma isibonelelo ngokwaso singakakuzuzi ukuthenjwa."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zokulibaziseka ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Isiqinisekiso sokukhokha esisemthethweni kanye nemininingwane yecala esemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlukanise izindaba zesigaba sokukhokha sangempela nezimangalo zenani elingumgunyathi ukuze ungachithi isikhathi uhlola inkokhelo okungenzeka ayizange ibe ngokoqobo kwasekuqaleni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/is-the-r500-grant-real\n• /grant-amounts\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /guides/how-to-avoid-fake-grant-amount-pages"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani amakhasi okulibaziseka angama-R500 ezwakala ekholakala?",
+        "body": "Ngoba ulimi lokulibaziseka lwenza indaba izwakale njengenkinga yokukhokha ekhona esikhundleni sesicelo sesibonelelo esingaqinisekisiwe."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngibheke imininingwane yebhange noma yokukhokha kuqala?",
+        "body": "Okokuqala qinisekisa ukuthi isibonelelo sika-R500 esibangwayo singokoqobo. Ukuhlola ukubambezeleka kunengqondo ngemva kwalokho."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma ikhasi libonisa idethi yokukhokha noma inothi lokucubungula?",
+        "body": "Leyo mininingwane isadinga umthombo othembekile osemthethweni ngemuva kwesimangalo ngokwaso."
+      }
+    ]
+  },
+  "what-r350-grant-wording-usually-means": {
+    "title": "Lokho okuvame ukusho i-R350 ukunikeza amagama",
+    "summary": "Umhlahlandlela wolimi olulula wabasebenzisi abasasesha ngamagama esibonelelo se-R350 futhi abafuna ukuqonda ukuthi ungena kanjani ku-SRD yamanje kanye nomxholo wokusiza umphakathi.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Amagama esibonelelo se-R350 ngokuvamile akhomba abasebenzisi ku-SRD noma umndeni wokusekela usizo lomphakathi esikhundleni sesibonelelo esihlukile esingahlobene. Umnyakazo ophephe kakhulu ukubeka amagama kumephu yomsebenzi wakho wangempela, njengokufaka isicelo, isimo, noma izinsuku zokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi basasesha nge-R350 ngoba leyo ilebula yenani abalikhumbula kakhulu. Empeleni, isinyathelo esilandelayo esiwusizo akukona ukujaha amagama wedwa. Okokuthola ukuthi uyalidinga yini ikhasi lamanje le-SRD, umzila wesimo, umhlahlandlela wohlelo lokusebenza, noma ikhasi losuku lokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi bephatha amagama e-R350 njengomzila ohlukile wawo wonke umsebenzi, bangalandela izixhumanisi eziphelelwe yisikhathi, bathembe amakhasi akopishiwe, noma baphuthe umzila wamanje we-SRD olingana nabakudingayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha i-R350 njengamagama okusesha ajwayelekile kuqala.\n2. Imatanise ne-SRD yamanje noma umzila wokusiza umphakathi ngaphambi kokwenza noma yini enye.\n3. Nquma ukuthi umsebenzi wakho wangempela uwuhlelo lokusebenza, isimo, izinsuku zokukhokha, noma incazelo evamile.\n4. Ungacabangi ukuthi ikhasi ngalinye le-R350 liyindlela esemthethweni yesenzo.\n5. Sebenzisa i-GrantCare ukusuka kumagama uye ekhasini elilungile lamanje ngokuphepha."
+      },
+      {
+        "title": "Inani elikhunjulwayo alihlali liyimpendulo egcwele",
+        "body": "I-R350 imvamisa ilebula abantu abayikhumbulayo, kodwa umbuzo ongcono ukuthi yini okudingeka ukwenze manje. Uma lokho sekucacile, ikhasi elilungile le-SRD liba lula ukulithola futhi kube lula ukulethemba."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iwumhlahlandlela ozimele futhi ayithathi indawo yohlelo olusemthethweni lwe-SRD. Izicelo ezisemthethweni, izenzo zesimo, nokuqinisekiswa kokukhokha kokugcina kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhumushe amagama angu-R350 uwayise ekhasini elilungile le-SRD ukuze uthole isimo, isicelo, izinsuku zokukhokha, noma ukwesekwa okuvamile ngaphandle kokuqagela izixhumanisi ezikopishiwe."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grants/social-relief\n• /guides/how-to-use-sassa-status-check-for-r350\n• /guides/how-to-start-an-r350-online-application-safely\n• /payment-dates\n• /guides/what-the-srd-portal-is-for"
+      },
+      {
+        "title": "I-FAQ: Ingabe i-R350 iyinto efanayo nomzila wamanje we-SRD?",
+        "body": "Abasebenzisi bavame ukusho umndeni ofanayo wosekelo wokusiza umphakathi, kodwa umnyakazo ophephe kakhulu kusewukusebenzisa umzila wamanje we-SRD ofana nomsebenzi wakho."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe noma yiliphi ikhasi eliphinda i-R350 esihlokweni?",
+        "body": "Cha. Amagama ajwayelekile akufakazeli ukuthi leli khasi lisemthethweni noma elamanje."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele nginqume kuqala uma ngicinga i-R350?",
+        "body": "Nquma ukuthi uyaludinga yini usizo lwesimo, usizo lwesicelo, izinsuku zokukhokha, noma ikhasi eliyinhloko le-SRD."
+      }
+    ]
+  },
+  "what-r370-grant-wording-usually-means": {
+    "title": "Lokho okuvame ukusho i-R370 ukunikeza amagama",
+    "summary": "Umhlahlandlela wolimi olulula wabasebenzisi abasesha ngamagama esibonelelo se-R370 futhi abafuna ukuqonda ukuthi lelo lebula ifanelana kanjani ne-SRD yamanje kanye nomxholo wokusiza umphakathi.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Amagama esibonelelo se-R370 ngokuvamile akhomba abasebenzisi ku-SRD noma umndeni wosekelo lokusiza umphakathi esikhundleni sesibonelelo esisha esihlukile. Ukunyakaza okuphephe kakhulu ukufanisa amagama nomsebenzi wakho wangempela, njengesimo, izinsuku zokukhokha, noma isiqondiso sohlelo lokusebenza."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi basesha nge-R370 ngoba balandela amagama amanani amasha, kodwa inselele eyinhloko isafana: ukuthola ikhasi elilungile lamanje le-SRD lomsebenzi abawudingayo ngempela. Amagama ewodwa akufanele anqume ukuthi yimuphi umzila ongawethemba."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi bephatha amagama e-R370 njengobufakazi bokuthi ikhasi ngelemanje, bangathemba izixhumanisi ezibuthakathaka ngokushesha noma baphuthe umzila oqondile we-SRD ophethe isimo, isicelo, noma isikhathi sokukhokha ngokuphepha."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha i-R370 njengenani lamagama lamanje kuqala.\n2. Qondanisa ne-SRD noma umzila wokusiza umphakathi ngaphambi kokuthemba ikhasi.\n3. Nquma ukuthi udinga usizo lwesimo, izinsuku zokukhokha, usizo lwesicelo, noma incazelo evamile.\n4. Ungacabangi ukuthi ikhasi lisemthethweni kuphela ngoba lisebenzisa inani elisha.\n5. Sebenzisa i-GrantCare ukusuka kumagama uye ekhasini elilungile lamanje ngokuphepha."
+      },
+      {
+        "title": "Amagama amasha asadinga umzila olungile ngemuva kwawo",
+        "body": "Ikhasi lingazwakala lisesikhathini samanje ngoba lisebenzisa ilebula yenani elisha, kodwa ukuhlola okuphephile kusese ukuthi umzila, umthombo, nomsebenzi konke kumugqa ocacile yini."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iwumhlahlandlela ozimele futhi ayithathi indawo yohlelo olusemthethweni lwe-SRD. Ukuhlolwa kwesimo esisemthethweni, izicelo, nokuqinisekiswa kwenkokhelo yokugcina kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhumushe amagama angu-R370 uwayise ekhasini elilungile le-SRD ukuze uthole isimo, izinsuku zokukhokha, noma isiqondiso sokufaka isicelo ngaphandle kokuphatha wonke amakhasi asekelwe enanini njengesemthethweni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grants/social-relief\n• /guides/how-to-check-r370-status-safely\n• /guides/how-to-use-an-r370-application-page-safely\n• /payment-dates\n• /guides/what-the-srd-portal-is-for"
+      },
+      {
+        "title": "I-FAQ: Ingabe i-R370 isho ukuthi ngidinga umzila wesibonelelo ohlukile kusukela ku-SRD?",
+        "body": "Akuvamile. Ukunyakaza okuphephile ukusebenzisa umzila we-SRD wamanje ofana nomsebenzi owudingayo."
+      },
+      {
+        "title": "I-FAQ: Kungani amakhasi e-R370 ezizwa kulula ukuwethemba?",
+        "body": "Ngoba amagama amanani amasha angenza ikhasi lizwakale lamanje ngisho noma umzila usadinga ukuhlolwa."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele nginqume kuqala uma ngicinga i-R370?",
+        "body": "Nquma ukuthi udinga usizo lwesimo, usizo lwedethi yokukhokha, isiqondiso sohlelo lokusebenza, noma ikhasi eliyinhloko le-SRD."
+      }
+    ]
+  },
+  "what-social-grant-increase-searches-usually-mean": {
+    "title": "Ukuthi ukusesha ngokwenyuswa kwemali yesibonelelo sikahulumeni ngokuvamile kusho ukuthini",
+    "summary": "Umhlahlandlela ozothile osesho lokukhushulwa kwezibonelelo zomphakathi kanye nokuthi uzifunda kanjani izimangalo zokwenyuka okubanzi ngaphandle kokudida izihloko ezijwayelekile, okuthunyelwe okudala, kanye nesigaba esiqondile sesibonelelo esishintshile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho lokwenyuka kwezibonelelo zikahulumeni ngokuvamile lusho ukuthi abasebenzisi bafuna impendulo ebanzi mayelana nokushintsha amanani ezibonelelo. Umnyakazo ophephe kakhulu uwukunciphisa isimangalo siye esigabeni esiqondile sesibonelelo sikahulumeni kanye nesibuyekezo sakamuva esisemthethweni ngaphambi kokuba ulethembe inani."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abantu bavame ukucinga ukukhushulwa kwesibonelelo sikahulumeni lapho bengakanciphisi ukuthi baqonde Abantu Abadala, Abakhubazekile, Isondlo Sezingane, SRD, noma esinye isigaba. Lawo magama abanzi awusizo njengesiqalo, kodwa sisadinga ukuhunyushwa esibonelweni esilungile kanye nesibuyekezo esifanele samanje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ibinzana elibanzi lokukhuphula lingahlanganisa izihloko zezindaba ezixubile namalebula onyaka agaywe kabusha. Uma abasebenzisi bengasinciphisi isimangalo ngendlela efanele, bangathemba inani elingalungile noma isikhathi esingalungile ngokushesha okukhulu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Bheka isimangalo sokwenyuka okubanzi njengesiqalo, hhayi impendulo yokugcina.\n2. Nquma ukuthi yisiphi isigaba sesibonelelo isibuyekezo esimayelana ngempela.\n3. Hlola isibuyekezo sakamuva esishicilelwe esisemthethweni saleso sigaba.\n4. Qaphela ngezithombe-skrini ezindala nokuthunyelwe okusekelwe onyakeni.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuhumusha amagama abanzi uwayise ekhasini elilungile lesibonelelo noma inkomba yenani."
+      },
+      {
+        "title": "Ukwandiswa kwamagama okubanzi kusadinga uxhaso olulodwa ngemuva kwakho",
+        "body": "Indlela ephephe kunazo zonke yokufunda isimangalo sokwenyuswa kwesibonelelo sikahulumeni ukusinciphisa kuze kusele isigaba esisodwa kuphela. Leso sinyathelo sehlisa ukudideka futhi senza kube lula ukwahlulela ukuthi umthombo usengowamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingasiza abasebenzisi baqonde izimangalo ezikhuphukayo, kodwa ukuqinisekiswa okusemthethweni kwamanani ashintshiwe kusengokwemithombo eshicilelwe esemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke emazwini abanzi okwandisa isibonelelo-somphakathi uye ekhasini lenani elifanele, ikhasi lesibonelelo, kanye nomhlahlandlela wokuhlola isibuyekezo ukuze isimangalo sizwakale sixubene kakhulu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /grants\n• /guides/how-to-check-if-a-grant-increase-update-is-official\n• /guides/how-to-read-grant-increase-news-safely\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani ukukhuphuka kwezibonelelo zikahulumeni kuseshwa kuzwakala kubanzi kangaka?",
+        "body": "Ngoba abasebenzisi bavame ukufuna impendulo eyodwa elula ngaphambi kokuthi banciphise isigaba esiqondile sesibonelelo esihilelekile."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyifanise kuqala?",
+        "body": "Qondanisa isimangalo sokwenyuka nesigaba esiqondile sesibonelelo sikahulumeni kuqala."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe inani ngaphandle kokuhlola umthombo?",
+        "body": "Cha. Isigaba esiqondile sesibonelelo kanye nomthombo kubaluleke ngaphezu kwenombolo yodwa."
+      }
+    ]
+  },
+  "how-to-check-social-grant-increase-updates-safely": {
+    "title": "Ungahlola kanjani ukuthuthukiswa kwezibonelelo zikahulumeni ngokuphepha",
+    "summary": "Umhlahlandlela wokuqala wokuthembana wokuhlola izibuyekezo ezibanzi zokukhushulwa kwezibonelelo zomphakathi ngaphandle kokuphatha izihloko ezixubile, amalebula onyaka, noma izithombe-skrini njengokuqinisekisa kokugcina.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola izibuyekezo zokukhushulwa kwezibonelelo zikahulumeni ngokuphepha ngokunciphisa isimangalo siye esigabeni esiqondile sesibonelelo, bese usiqhathanisa nesibuyekezo sakamuva esishicilelwe esisemthethweni esikhundleni sokuthembela esihlokweni noma isithombe-skrini sodwa."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho olubanzi lokukhushulwa kwezibonelelo zomphakathi ngokuvamile luqala ngokungaqiniseki. Abasebenzisi bayazi ukuthi kungenzeka ukuthi kukhona okushintshile, kodwa okwamanje abazi ukuthi iyiphi isibonelelo, yisiphi isikhathi, noma yimuphi umthombo okufanele bawuthembe. Yingakho isinyathelo esinciphile sibaluleke kakhulu."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngaphandle kokuhlolwa komthombo ngokucophelela, abasebenzisi bangadida isibonelelo esisodwa nesinye, bathembe isibuyekezo esidala esiphindaphindiwe, noma balindele ukuguqulwa kwenani elingahambisani nesibonelelo sabo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Nquma ukuthi yisiphi isigaba sesibonelelo isibuyekezo esibonakala sisisho.\n2. Hlola ukuthi isibuyekezo sikhomba yini emthonjeni oshicilelwe osemthethweni ocacile.\n3. Qhathanisa isikhathi ngokucophelela ukuze unganciki kulebula yonyaka omdala.\n4. Sebenzisa ikhasi lamanani ezibonelelo kanye nekhasi lesibonelelo esihambelanayo ukuze uthole umongo.\n5. Phatha okuthunyelwe komphakathi nezithombe-skrini njengokungaqinisekisiwe kuze kube yilapho umthombo usucacile."
+      },
+      {
+        "title": "Ukuhlola okuphephile kuncane kunosesho",
+        "body": "Umkhuba owusizo ukuvumela ukusesha kuhlale kubanzi okwesikhashana. Isinyathelo esilandelayo kufanele sibe sincane kakhulu: isigaba esisodwa sesibonelelo, isibuyekezo samanje esisodwa, nomthombo owodwa ocacile."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bahlole izimangalo zokukhushulwa komphakathi, kodwa ukuqinisekiswa okusemthethweni kwamanani esibonelelo sikahulumeni ashintshile kusengokweziteshi ezishicilelwe ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusesheni okubanzi uye ekhasini elilungile lesibonelelo, umhlahlandlela wamanani, kanye nomkhuba wokuhlola umthombo ukuze ungafundi kakhulu okuthunyelwe okukodwa noma isihloko."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /grants\n• /guides/what-social-grant-increase-searches-usually-mean\n• /guides/how-to-check-if-a-grant-increase-update-is-official\n• /guides/how-to-read-grant-increase-news-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele nginciphise isigaba sesibonelelo kuqala?",
+        "body": "Ngoba ulimi olubanzi lwesibonelelo sikahulumeni lungahlanganisa isibonelelo esingaphezu kwesisodwa kanye nesibuyekezo esingaphezu kwesisodwa ndawonye."
+      },
+      {
+        "title": "I-FAQ: Iyiphi ingozi enkulu ngezithombe-skrini?",
+        "body": "Izithombe-skrini zivame ukususa idethi, umthombo, noma isigaba sesibonelelo esingabonisa ukuthi isibuyekezo sisesekhona yini."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kufanele ngiqhathanise nani isimangalo?",
+        "body": "Qhathanisa nesigaba esifanele sesibonelelo kanye nesibuyekezo sakamuva esisemthethweni esishicilelwe."
+      }
+    ]
+  },
+  "how-to-check-srd-grant-increase-updates-safely": {
+    "title": "Ungazibheka kanjani izibuyekezo zokwenyuka kwesibonelelo se-SRD ngokuphepha",
+    "summary": "Umhlahlandlela osebenzayo wokuhlola izibuyekezo zokukhushulwa kwesibonelelo se-SRD ngaphandle kwamahemuhemu amanani adidayo, amalebula onyaka, namagama amanje okusiza umphakathi.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola izibuyekezo zokukhushulwa kwesibonelelo se-SRD ngokuphepha ngokufanisa isimangalo nomzila wamanje wokusiza umphakathi, uhlole isibuyekezo sakamuva esisemthethweni esishicilelwe, futhi uqaphe ngokuthunyelwe okuphinda kuphela okuthi R350, R370, noma enye inombolo engenamthombo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwe-SRD okwandayo kuvame ukuqhutshwa amagama asuselwa enanini afana ne-R350 noma i-R370, okungenza abasebenzisi bacabange ukuthi inombolo iyodwa exoxa indaba egcwele. Indlela ephephile ukuxhuma isimangalo emuva ku-SRD yamanje noma umzila wokusiza umphakathi kanye nesibuyekezo sakamuva esisemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi bethemba isimangalo senani elikopishiwe ngokushesha okukhulu, bangaqondi kahle ukuthi yini eshintshile, uma sisebenza, noma ukuthi okuthunyelwe kuveza ngisho nokuqukethwe kwamanje kwe-SRD nhlobo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qondanisa isimangalo sokwenyuka nomzila wamanje we-SRD noma wokusiza umphakathi.\n2. Hlola isibuyekezo sakamuva esisemthethweni esishicilelwe esikhundleni sokuthemba inani lodwa.\n3. Qaphela ngamagama amadala R350 noma R370 entsha uma umthombo ungacacile.\n4. Qhathanisa isimangalo nekhasi lamanani ezibonelelo kanye nekhasi lesibonelelo le-SRD.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuhlukanisa amagama nesibuyekezo sangempela."
+      },
+      {
+        "title": "Inombolo ingashintsha, kodwa ukuhlola umthombo kuhlala kunjalo",
+        "body": "Abasebenzisi bavame ukugxila enanini kuqala ngoba lizwakala lilula. Umkhuba wokufunda ophephile ukuhlola umthombo, isikhathi, kanye nomzila wamanje we-SRD ngaphambi kokwethemba lokho inombolo ebonakala ikusho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuthi bafunde i-SRD bakhuphule izimangalo ngokuphepha kakhulu, kodwa ukuqinisekiswa okusemthethweni kwamanani ashintshiwe kusengokwemithombo eshicilelwe esemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izimangalo zokukhushulwa kwe-SRD namanani amanje esibonelelo sikahulumeni, ikhasi lesibonelelo le-SRD, nemihlahlandlela yokuhlola isibuyekezo esiphephile ukuze ungafundi kakhulu amahemuhemu asekelwe enanini."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /grants/social-relief\n• /guides/what-r350-grant-wording-usually-means\n• /guides/what-r370-grant-wording-usually-means\n• /guides/how-to-check-if-a-grant-increase-update-is-official"
+      },
+      {
+        "title": "I-FAQ: Kungani i-SRD inyusa ukusesha kuvame ukugxila enanini?",
+        "body": "Ngoba amalebula amanani afana ne-R350 kanye ne-R370 ayakhumbuleka futhi kulula ukwabelana, ngisho noma umthombo ngemuva kwawo ubuthakathaka."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe okuthunyelwe okuthi kuphela inani le-SRD lishintshile?",
+        "body": "Cha. Hlola umthombo kanye nomzila wamanje we-SRD ngaphambi kokuthi uphathe isimangalo njengesingokoqobo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise isimangalo nayo kuqala?",
+        "body": "Qhathanisa nekhasi lamanje le-SRD, ikhasi lamanani esibonelelo, kanye nesibuyekezo sakamuva esisemthethweni esishicilelwe."
+      }
+    ]
+  },
+  "is-the-r12500-youth-grant-real": {
+    "title": "Ngabe isibonelelo sentsha sika-R12500 siyiqiniso?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezicelo zesibonelelo sentsha zika-R12500, amakhasi ezicelo, kanye nokuthi isibonelelo esifunwayo singokoqobo yini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izicelo zesibonelelo sentsha zika-R12500 njengezingaqinisekisiwe ngaphandle uma umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi isibonelelo singokoqobo ngoba ikhasi lihlanganisa inani elikhulu namagama entsha kanye nesithembiso sesicelo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuningi kwesibonelelo sentsha kuka-R12 500 kuvela kubasebenzisi abasabela kokuthunyelwe komphakathi, izixhumanisi zezicelo ezikopishiwe, noma amakhasi azama ukwenza isimangalo sizwakale siphuthuma ngokunamathisela inani elikhulu kulebula ebanzi yentsha. Umkhuba ophephile uwukuqinisekisa kuqala isibonelelo bese ucabanga ukufaka isicelo ngemva kwalokho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi esibonelelo sentsha angu-R12500 angadala ithemba elingamanga, amoshe isikhathi, noma acindezele abasebenzisi ukuba bafake amafomu angaphephile nemizila ekopishiwe. Ikhasi eliqondile lokuqamba izinganekwane lisiza abasebenzisi ukuthi bame ngaphambi kokuthi bazibophezele esimangalweni esingazuzanga ukwethenjwa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isicelo sesibonelelo sentsha sika-R12500 njengesingakaqinisekiswa kuqala.\n2. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni ocacile.\n3. Ungaphathi ifomu lesicelo noma isithembiso semali njengobufakazi ngokwaso.\n4. Qhathanisa isimangalo nezigaba zangempela zezibonelelo, umhloli wokufaneleka, kanye nomhlahlandlela okhona wesibonelelo sentsha.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Inani elikhulu lingenza isimangalo sentsha sizizwe siqiniseka ngokwengeziwe",
+        "body": "Inani ngokuvamile liyi-hook. Inombolo enkulu kanye namagama entsha ingenza ikhasi lizizwe liphuthuma futhi libalulekile, kodwa ukuhlolwa kwangempela kusewukuthi umzila, umthombo, kanye nesibonelelo sikahulumeni ngokwaso sisemthethweni ngokusobala."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zesibonelelo sentsha ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, izicelo ezisemthethweni, nokufaneleka okusemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izimangalo zesibonelelo sentsha zika-R12500 nekhasi lezinganekwane ezibanzi zezibonelelo zentsha, izigaba zamanje zezibonelelo, kanye nesiqondiso somzila osemthethweni ukuze ungaphazamisi amahlebezi ngomzila wokwesekwa wangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/is-the-youth-grant-real\n• /claim-checker\n• /eligibility-checker\n• /grants\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-know-if-a-sassa-website-is-official"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe inani elikhulu lenza imali yesibonelelo sikahulumeni yentsha ikholeleke kakhulu?",
+        "body": "Cha. Inani elikhulu lingenza isimangalo sizizwe siphuthuma kakhulu, kodwa sisadinga umthombo othembekile osemthethweni ngemuva kwaso."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe kufanele ngithembe ikhasi elinikeza isicelo sentsha sika-R12500?",
+        "body": "Hhayi kuze kube yilapho uqinisekisa ukuthi umzila usemthethweni futhi isibonelelo ngokwaso singokoqobo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise isimangalo nayo kuqala?",
+        "body": "Qhathanisa nekhasi lenganekwane lesibonelelo sentsha, izigaba zesibonelelo sangempela, kanye nesiqondiso somzila osemthethweni ngaphambi kokuyethemba."
+      }
+    ]
+  },
+  "is-the-r1370-grant-real": {
+    "title": "Ingabe isibonelelo sika-R1370 singokoqobo?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezicelo zezibonelelo zesibonelelo sika-R1370, amakhasi ezicelo, kanye nokuthi isibonelelo esifunwayo singokoqobo yini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izicelo zezibonelelo zesibonelelo sika-R1370 njengezingaqinisekisiwe ngaphandle uma umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi lesi sibonelelo singokoqobo ngoba ikhasi lengeza imininingwane mayelana nezicelo, ukufaneleka, noma izinsuku zokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuningi kuka-R1370 kuvela kubasebenzisi abazama ukuqinisekisa isimangalo, hhayi emzileni ozinzile osemthethweni wesibonelelo. Amanye amakhasi azama ukwenza isimangalo sizwakale sithembekile ngokungeza isicelo, ukufaneleka, noma ulimi lokukhokha oluzwakala njengokuphatha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi angu-R1370 angakha ithemba elingamanga, asunduze abasebenzisi kumafomu angaphephile, noma enze isimangalo esikopishiwe sizizwe sisemthethweni kakhulu kunalokho esiyikho ngempela. Ikhasi eliqondile lokuqamba izinganekwane lisiza abasebenzisi ukuthi behlise ijubane ngaphambi kokuthi bathembe indaba."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isicelo sika-R1370 njengesingakaqinisekiswa.\n2. Ungaphathi isicelo, ukufaneleka, noma amagama okukhokha njengobufakazi ngokwakho.\n3. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni wangempela.\n4. Qhathanisa isimangalo namanani amanje esibonelelo sikahulumeni kanye nezigaba zamanje zesibonelelo sangempela.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Imininingwane eyengeziwe isengahlala phezu kwesimangalo esibuthakathaka",
+        "body": "Ikhasi lingazwakala likholeka uma linikeza imininingwane yokufaneleka noma yesicelo, kodwa leyo mininingwane ibalulekile kuphela uma isibonelelo ngokwaso singokoqobo futhi umzila usemthethweni ngokusobala."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zesibonelelo sikahulumeni ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, izicelo ezisemthethweni, nesiqondiso sokukhokha esisemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izimangalo zika-R1370 namanani amanje esibonelelo sikahulumeni, imikhuba ephephile yokufunda amakhasi, kanye neziqondiso zomzila osemthethweni ukuze ungaphutheli amahemuhemu anemininingwane ngesibonelelo sangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /claim-checker\n• /guides/what-r1370-grant-searches-usually-mean\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe amagama okufaneleka afakazela ukuthi isibonelelo sika-R1370 singokoqobo?",
+        "body": "Cha. Ukufaneleka kwamagama kungenza isimangalo sizwakale sisemthethweni, kodwa sisadinga umthombo othembekile osemthethweni ngemuva kwaso."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe ikhasi elithi izicelo zika-R1370 zivuliwe?",
+        "body": "Hhayi kuze kube yilapho uqinisekisa ukuthi umzila usemthethweni futhi isibonelelo ngokwaso singokoqobo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise isimangalo nayo kuqala?",
+        "body": "Qhathanisa namanani amanje esibonelelo, izigaba zesibonelelo sangempela, neziqondiso zomzila osemthethweni ngaphambi kokuyethemba."
+      }
+    ]
+  },
+  "is-the-r2315-grant-real": {
+    "title": "Ingabe isibonelelo sika-R2315 singokoqobo?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezicelo zezibonelelo zesibonelelo sika-R2315, amakhasi osuku lokukhokha, kanye nokuthi isibonelelo esifunwayo singokoqobo yini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izicelo zezibonelelo zesibonelelo sika-R2315 njengezingaqinisekisiwe ngaphandle uma umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi imali yesibonelelo ingokoqobo ngoba ikhasi lihlanganisa inani nezinsuku zokukhokha noma ishejuli yokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuningi kuka-R2315 kuvela kubasebenzisi abazama ukuqinisekisa isimangalo, hhayi emzileni ozinzile wesibonelelo sikahulumeni. Amanye amakhasi azama ukwenza isimangalo sizizwe simisiwe ngokugxumela ngqo ezinsukwini zokukhokha noma ohlelweni lokukhokha ngaphambi kokuqinisekisa ukuthi isibonelelo sikahulumeni ngokwaso."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi angu-R2315 angadala okulindelwe okungamanga mayelana nesikhathi noma imali futhi angase adonsele abasebenzisi emizileni engaphephile elingisa amakhasi okukhokha asemthethweni. Ikhasi eliqondile lokuqamba izinganekwane lisiza abasebenzisi ukuthi bayeke ngaphambi kokuthi bathembe isimangalo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isicelo sika-R2315 njengesingakaqinisekiswa kuqala.\n2. Ungathathi izinsuku zokukhokha noma uhlele amagama njengobufakazi ngokwabo.\n3. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni wangempela.\n4. Qhathanisa isimangalo namanani amanje esibonelelo sikahulumeni kanye nezigaba zamanje zesibonelelo sangempela.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Ishejuli yokukhokha ingenza isimangalo esingumgunyathi sizizwe sixazululiwe",
+        "body": "Uma ikhasi ligxumela kumadethi namashejuli, lingenza ukuthi isibonelelo sizwakale sesivele sisunguliwe. Ukuhlola okuphephile kusese ukuthi umzila, umthombo, nesigaba sesibonelelo sisemthethweni ngokusobala futhi esamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zesibonelelo sikahulumeni ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, izinsuku zokukhokha ezisemthethweni, nokuqinisekiswa kokukhokha okusemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izimangalo zika-R2315 namanani amanje esibonelelo sikahulumeni, isiqondiso sosuku lokukhokha, kanye namasheke omzila osemthethweni ukuze ungaphutheli amahemuhemu esitayela seshejuli wesibonelelo sangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /claim-checker\n• /payment-dates\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-understand-payment-dates\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe izinsuku zokukhokha zifakazela ukuthi isibonelelo sika-R2315 singokoqobo?",
+        "body": "Cha. Izinsuku ezifunwayo noma amashejuli asadinga umzila osemthethweni othembekile kanye nesigaba sangempela sesibonelelo esisemva kwawo."
+      },
+      {
+        "title": "I-FAQ: Kungani amakhasi esitayela seshejuli kulula ukwethemba?",
+        "body": "Ngoba ishejuli yenza isimangalo sizizwe njengokuphatha futhi sixazululiwe ngisho nalapho umthombo ubuthakathaka."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise isimangalo nayo kuqala?",
+        "body": "Qhathanisa namanani amanje esibonelelo, izigaba zesibonelelo sangempela, neziqondiso zomzila osemthethweni ngaphambi kokuyethemba."
+      }
+    ]
+  },
+  "is-the-r3070-grant-real": {
+    "title": "Ingabe isibonelelo sika-R3070 singokoqobo?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezimangalo zesibonelelo sikahulumeni ezingu-R3070, amaposi wohlu, kanye nokuthi isibonelelo esifunwayo singokoqobo yini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izicelo zezibonelelo zesibonelelo sika-R3070 njengezingaqinisekisiwe ngaphandle uma umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi imali yesibonelelo ingokoqobo ngoba ikhasi lengeza izinhlu, iziqu, noma amagama okukhokha azungeze inani."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuningi kuka-R3070 kuvela kubasebenzisi abazama ukuqinisekisa isimangalo, hhayi emzileni ozinzile osemthethweni wesibonelelo. Amanye amakhasi azama ukwenza isimangalo sizwakale sisemthethweni kakhulu ngokuxuba inani nezinhlu, iziqu, noma amanothi okukhokha azwakala ethize."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi angu-R3070 angadala ithemba elingamanga, amoshe isikhathi, noma acindezele abasebenzisi ukuthi bangene emakhasini angaphephile alingisa isiqondiso sangempela sesibonelelo. Ikhasi eliqondile lokuqamba izinganekwane lisiza abasebenzisi ukuthi bayeke ngaphambi kokuthi bathembe isimangalo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isicelo sika-R3070 njengesingakaqinisekiswa kuqala.\n2. Ungaphathi indlela yohlu noma amagama eziqu njengobufakazi ngokwawo.\n3. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni wangempela.\n4. Qhathanisa isimangalo namanani amanje esibonelelo sikahulumeni kanye nezigaba zamanje zesibonelelo sangempela.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Imininingwane yesitayela sohlu ingenza isimangalo esibuthakathaka sizwakale sihlelekile",
+        "body": "Amanye amakhasi azizwa ekhuthaza ngoba engeza izinhlu noma amanothi okufaneleka. Leso sakhiwo esengeziwe asikafakazi ukuthi isibonelelo sikhona. Ukuhlola kwangempela umthombo, umzila, kanye nesigaba sangempela sesibonelelo esingemva kwesimangalo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zesibonelelo sikahulumeni ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, amanani asemthethweni, nokufaneleka okusemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izimangalo zika-R3070 namanani amanje esibonelelo sikahulumeni, imikhuba ephephile yokufunda amakhasi, kanye neziqondiso zomzila osemthethweni ukuze ungaphazamisi amahlebezi ahlelekile ngesibonelelo sangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /claim-checker\n• /guides/what-r3070-grant-searches-usually-mean\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe iziqu noma izinhlu zifakazela ukuthi isibonelelo sika-R3070 singokoqobo?",
+        "body": "Cha. Imininingwane ehleliwe ingenza isimangalo sizwakale sihlelekile, kodwa basadinga umthombo othembekile osemthethweni ngemuva kwabo."
+      },
+      {
+        "title": "I-FAQ: Kungani amakhasi esitayela sohlu kulula ukwethemba ngokushesha kakhulu?",
+        "body": "Ngoba isakhiwo singenza isimangalo sizizwe sihlelekile ngisho nalapho umzila ubuthakathaka."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise isimangalo nayo kuqala?",
+        "body": "Qhathanisa namanani amanje esibonelelo, izigaba zesibonelelo sangempela, neziqondiso zomzila osemthethweni ngaphambi kokuyethemba."
+      }
+    ]
+  },
+  "is-the-r530-grant-real": {
+    "title": "Ingabe isibonelelo sika-R530 singokoqobo?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezicelo zesibonelelo sikahulumeni ezingama-R530, amakhasi emininingwane, kanye nokuthi isibonelelo esifunwayo singokoqobo yini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izicelo zezibonelelo zesibonelelo sika-R530 njengezingaqinisekisiwe ngaphandle uma umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi imali yesibonelelo ingokoqobo ngoba ikhasi lengeza imininingwane mayelana nokufaneleka, inkokhelo, noma iziqu."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuningi kuka-R530 kuvela kubasebenzisi abazama ukuqinisekisa isimangalo, hhayi emzileni ozinzile osemthethweni wesibonelelo. Amanye amakhasi azama ukwenza isimangalo sizwakale sinokwethenjelwa kakhulu ngokwengeza imininingwane emayelana nokufaneleka, inkokhelo, noma iziqu ezizwakala zisebenza futhi ziqondile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi angama-R530 angakha ithemba elingamanga, afake abasebenzisi kuzixhumanisi ezingaphephile, noma enze isimangalo sesamba esikopishiwe sizizwe sisemthethweni kakhulu kunalokho esiyikho ngempela. Ikhasi eliqondile lokuqamba izinganekwane lisiza abasebenzisi ukuthi behlise ijubane ngaphambi kokuthi bathembe indaba."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isimangalo sika-R530 njengesingakaqinisekiswa kuqala.\n2. Ungaphathi ukufaneleka, inkokhelo, noma amagama afaneleka njengobufakazi ngokwakho.\n3. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni wangempela.\n4. Qhathanisa isimangalo namanani amanje esibonelelo sikahulumeni kanye nezigaba zamanje zesibonelelo sangempela.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Imininingwane esebenzayo isengakhelwa esicelweni semali mbumbulu",
+        "body": "Ikhasi lingazwakala liwusizo ngoba linikeza iziqu, amanothi okukhokha, noma imininingwane eyengeziwe. Lokho kusizakala kusebuthakathaka uma isibonelelo ngokwaso singakafakazelwa ngokucacile ngomzila osemthethweni nomthombo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zesibonelelo sikahulumeni ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, amanani asemthethweni, nokufaneleka okusemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izimangalo zika-R530 namanani amanje esibonelelo sikahulumeni, imikhuba ephephile yokufunda amakhasi, kanye neziqondiso zomzila osemthethweni ukuze ungaphutheli amahemuhemu anemininingwane ngesibonelelo sangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /claim-checker\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/how-to-tell-grant-amount-pages-from-rumours\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ukufaneleka noma amagama okukhokha afakazela ukuthi isibonelelo sika-R530 singokoqobo?",
+        "body": "Cha. Leyo mininingwane ingenza isimangalo sizwakale siwusizo, kodwa basadinga umthombo othembekile osisekelayo."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani amakhasi emininingwane enza izicelo zama-R530 zizizwe zikholeka?",
+        "body": "Ngoba imininingwane eyengeziwe ingenza isimangalo sizizwe siwusizo futhi ngenxa yalokho sisemthethweni kakhulu kunalokho esiyikho ngempela."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise isimangalo nayo kuqala?",
+        "body": "Qhathanisa namanani amanje esibonelelo, izigaba zesibonelelo sangempela, neziqondiso zomzila osemthethweni ngaphambi kokuyethemba."
+      }
+    ]
+  },
+  "is-the-r1500-grocery-grant-real": {
+    "title": "Ingabe isibonelelo segrosa sika-R1500 singokoqobo?",
+    "summary": "Umhlahlandlela oqondile wabasebenzisi abafuna impendulo ecacile mayelana nezicelo zesibonelelo segrosa zika-R1500, amakhasi okuxhasa igrosa, kanye nokuthi isibonelelo esifunwayo singokoqobo yini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Phatha izicelo zesibonelelo segrosa zika-R1500 njengezingaqinisekisiwe ngaphandle uma umthombo ocacile osemthethweni uzisekela. Ungacabangi ukuthi isimangalo singokoqobo ngoba ikhasi lisebenzisa amagama osizo lwegrosa azwakala aphuthuma noma asebenzayo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuningi kwesibonelelo segilosa kuka-R1500 kuvela kubasebenzisi abasabela kokuthunyelwe komphakathi noma amakhasi akopishiwe axuba inani elithile namagama asekela igrosa. Leyo nhlanganisela ingenza isimangalo sizizwe sisebenza futhi sishesha ngisho nalapho ungekho umzila osemthethweni ocacile ngemuva kwakho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi e-R1500 esibonelelo segrosa angadala ithemba elingamanga, acindezele abasebenzisi kuzixhumanisi ezingaphephile, noma enze inzwabethi ekopishiwe izwakale ikholeka kakhulu ngoba izwakala iboshelwe ekusekelweni kokudla esikhundleni sesithembiso sokukhokha esijwayelekile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isicelo sesibonelelo segrosa sika-R1500 njengesingakaqinisekiswa kuqala.\n2. Ungaphathi amagama okusiza egrosa njengobufakazi ngokwawo.\n3. Hlola ukuthi ikhasi likhomba yini emzileni osemthethweni wangempela.\n4. Qhathanisa isimangalo namanani amanje esibonelelo sikahulumeni kanye nezigaba zamanje zesibonelelo sangempela.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi ikhasi liyisiqondiso, amahemuhemu, noma umzila womgunyathi oyingozi."
+      },
+      {
+        "title": "Amagama asekelayo asebenzayo angenza isimangalo esingumgunyathi sizizwe sinozwela",
+        "body": "Ikhasi lingazizwa liqiniseka uma lixhuma inani lokudla noma usizo lwegrosa. Lokho kudonswa kwemizwa namanje akufakazeli ukuthi isibonelelo sikhona. Ukuhlola okuphephile umzila, umthombo, kanye nesigaba sangempela sokusekela ngemuva kwesimangalo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zesibonelelo sikahulumeni ezingaqinisekisiwe noma ishicilele izibonelelo ezingamanga njengezisemthethweni. Izibonelelo ezisemthethweni, amanani asemthethweni, nemizila yokwesekwa esemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uqhathanise izimangalo zegrosa zika-R1500 namanani amanje esibonelelo sikahulumeni, imikhuba ephephile yokufunda amakhasi, kanye neziqondiso zomzila osemthethweni ukuze ungaphazami amahlebezi azwakalayo njengesibonelelo sangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /grant-amounts\n• /claim-checker\n• /guides/how-to-avoid-fake-grant-amount-pages\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe amagama asekela igrosa afakazela ukuthi isibonelelo sika-R1500 singokoqobo?",
+        "body": "Cha. Amagama awusizo asekelayo angenza isimangalo sizwakale njengozwela, kodwa sisadinga umthombo othembekile osekelwe kuso."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani amakhasi egilosa ka-R1500 ezwakala akholeka?",
+        "body": "Ngoba baxhuma inani elithile esidingweni sansuku zonke, okwenza isimangalo sizizwe siphuthuma futhi siwusizo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise isimangalo nayo kuqala?",
+        "body": "Qhathanisa namanani amanje esibonelelo, izigaba zesibonelelo sangempela, neziqondiso zomzila osemthethweni ngaphambi kokuyethemba."
+      }
+    ]
+  },
+  "what-beneficiary-detail-update-searches-usually-mean": {
+    "title": "Ukuthi ukusesha kwemininingwane yabahlomuli ngokuvamile kusho ukuthini",
+    "summary": "Umhlahlandlela osebenzayo osesho lwemininingwane yabahlomulayo kanye nendlela yokubhekana nayo ngaphandle kokudida izinguquko zerekhodi elivamile nezicelo ezingaphephile zezinkampani zangaphandle.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha kwemininingwane yabahlomuli ngokuvamile kusho ukuthi abasebenzisi bafuna ukushintsha noma ukuqinisekisa amarekhodi asemthethweni. Umkhuba ophephe kakhulu ukusebenzisa umzila osemthethweni kuphela ukuze uthole isibuyekezo sangempela futhi ugweme ukwabelana ngemininingwane ngamakhasi angacacile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kokubuyekeza irekhodi kungase kuhlobane nemininingwane yokuxhumana, imininingwane yokukhokha, noma olunye ushintsho olusemthethweni lwephrofayela. Okubalulekile wukugcina isibuyekezo ngokwaso kumzila osemthethweni futhi ungavumeli amakhasi adidayo ahlale phakathi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi bekhathazekile ngezinsuku zokugcina noma ngezinkinga zokukhokha, bangase babelane ngemininingwane ngokushesha kakhulu kunoma yiliphi ikhasi elithembisa ukusiza ukuzibuyekeza."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Nquma ukuthi iyiphi imininingwane yabahlomuli okufanele uyibuyekeze.\n2. Thola umzila wokubuyekeza osemthethweni olungile waleyo mininingwane.\n3. Gwema ukufaka imininingwane ekhasini elikhuluma kuphela ngezibuyekezo ngaphandle kokuqinisekisa umzila.\n4. Londoloza noma isiphi isiqinisekiso esisemthethweni ngemva koshintsho.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuqonda ukuthi hlobo luni lomzila wokubuyekeza oyidingayo ngempela."
+      },
+      {
+        "title": "Umzila wokubuyekeza ubaluleke kakhulu njengemininingwane",
+        "body": "Ushintsho lwemininingwane luphephe kakhulu uma abasebenzisi bazi kahle ukuthi bashintsha ini nokuthi yimuphi umzila osemthethweni osiphethe. Amakhasi okubuyekeza angacacile yilapho amaphutha avame ukuqala khona."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayilona uhlelo olusemthethweni lokubuyekeza imininingwane yabahlomuli. Isiza abasebenzisi baqonde umsebenzi futhi bafinyelele umzila osemthethweni olungile ngokuphepha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlukanise ifoni, ibhange, ukuqinisekiswa, nezibuyekezo zamarekhodi avamile ukuze ungaqageli ukuthi yimuphi umzila ongawusebenzisa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-phone-number-changes-affect-status-checks\n• /guides/how-banking-details-updates-work\n• /guides/how-to-check-if-a-deadline-notice-is-official\n• /guides/how-to-find-the-right-sassa-website-for-your-task\n• /guides/how-to-find-official-contact-details-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele nginqume imininingwane eqondile kuqala?",
+        "body": "Ngoba izinguquko zemininingwane ehlukene zingasebenzisa imizila esemthethweni ehlukene."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe ikhasi elithi kuphela isibuyekezo lapha?",
+        "body": "Cha. Qinisekisa umzila nomsebenzi kuqala."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyilondoloze ngemva kokubuyekeza imininingwane?",
+        "body": "Londoloza ukuqinisekiswa okusemthethweni noma irekhodi loshintsho."
+      }
+    ]
+  },
+  "what-double-payment-rumours-usually-mean": {
+    "title": "Okuvame ukusho amahemuhemu okukhokha kabili",
+    "summary": "Umchazi ozolile kumahemuhemu okukhokha kabili nokuthi kungani abasebenzisi kufanele bawaphathe njengezimangalo zokuqinisekisa, hhayi njengezindaba zokukhokha eziqinisekisiwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Amahemuhemu okukhokha kabili ngokuvamile asho ukuthi abasebenzisi basabela ezimangalweni ezabiwe mayelana nezinkokhelo ezengeziwe. Isinyathelo esiphephe kunazo zonke siwukuthatha lezo zimangalo njengezingaqinisekisiwe kuze kube yilapho umthombo ocacile osemthethweni uzisekela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amahemuhemu mayelana nezinkokhelo ezimbili asabalale ngoba azwakala ejabulisa futhi ephuthumayo. Lokho kubenza babelane kakhulu ngisho nalapho ubufakazi babo bubuthakathaka."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi bangashintsha izinhlelo, bakhulise okulindelekile, noma bachofoze izixhumanisi ezingaphephile uma becabanga ukuthi amahlebezi kufanele abe yiqiniso."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Phatha isimangalo sokukhokha kabili njengesingaqinisekisiwe kuqala.\n2. Hlola umthombo osemthethweni ocacile.\n3. Gwema ukwethemba izithombe-skrini, okuthunyelwe okunqanyuliwe, noma uhlu lwabahlomulayo ngokwazo.\n4. Qhathanisa isimangalo nedethi yokukhokha efanele kanye namakhasi okuhlola isibuyekezo.\n5. Sebenzisa i-GrantCare ukufunda amahlebezi ngokucophelela ngaphambi kokuthatha isinyathelo ngawo."
+      },
+      {
+        "title": "Amahemuhemu enkokhelo eyengeziwe asakazeka ngokushesha kunezincazelo",
+        "body": "Ukudonswa ngokomzwelo kwesimangalo senkokhelo ephindwe kabili yingakho nje abasebenzisi bedinga umkhuba ohamba kancane, wokuqala wokufunda umthombo lapho bewubona."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayishicileli izithembiso zokukhokha ezingamanga noma yethule amahlebezi njengezimemezelo zokukhokha ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise okuthunyelwe okukhokha kabili nezinsuku zokukhokha, imikhuba yokubuyekeza esemthethweni, nezindlela eziphephile zokufunda amakhasi ngaphambi kokuthi uzethembe."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /claim-checker\n• /guides/how-to-check-if-a-double-payment-update-is-real\n• /guides/what-to-do-if-you-see-a-double-grant-payment-post\n• /guides/how-to-understand-payment-dates\n• /payment-dates\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani amahlebezi okukhokha kabili eheha kangaka?",
+        "body": "Ngoba ahlanganisa ukuphuthuma, ithemba, kanye nesimangalo esilula okulula ukwabelana ngaso."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole kuqala?",
+        "body": "Hlola ukuthi isimangalo sikhomba emthonjeni osemthethweni ocacile."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngethembe isithombe esabiwe sohlu lwezinkokhelo?",
+        "body": "Cha. Uhlu noma isithombe sisadinga umthombo othembekile ngemuva kwakho."
+      }
+    ]
+  },
+  "how-to-check-if-a-double-payment-update-is-real": {
+    "title": "Ungahlola kanjani ukuthi isibuyekezo sokukhokha kabili singokoqobo",
+    "summary": "Umhlahlandlela wokuthembana wabasebenzisi ababona izibuyekezo zenkokhelo eyengeziwe futhi abafuna indlela ephephile yokuyiqinisekisa.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola ukuthi isibuyekezo sokukhokha kabili singokoqobo yini ngokufuna umthombo osemthethweni ocacile, ukuwufanisa nesigaba esilungile sesibonelelo, futhi ugweme izimangalo ezithembele kuphela kuzithombe-skrini noma imilayezo yeqembu."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Izibuyekezo zokukhokha kabili ngokuvamile zizwakala ziphuthuma kunezindaba zokukhokha ezivamile. Lokho kuphuthuma yingakho ukuhlola umthombo kubaluleke kakhulu kunokujwayelekile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma isibuyekezo singalungile, abasebenzisi bangakha okulindelwe ngemali engakaze iqinisekiswe ngokucacile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Bheka umthombo osemthethweni ocacile.\n2. Qondanisa isibuyekezo nesigaba esiqondile sesibonelelo.\n3. Hlola ukuthi isikhathi sisezwakala yini.\n4. Qaphela ngezithombe-skrini nokuthunyelwe okudluliselwe phambili.\n5. Sebenzisa i-GrantCare uma udinga usizo lokunquma ukuthi isibuyekezo singamahemuhemu kuphela."
+      },
+      {
+        "title": "Isibuyekezo siqine njengomthombo waso kuphela",
+        "body": "Isimangalo senkokhelo emangalisayo singazwakala sinamandla kunalokho esiyikho ngempela. Ukuhlola kwangempela ukuthi umthombo, isigaba sesibonelelo, kanye nesikhathi konke kuhamba ngokusobala."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ichaza amahlebezi okukhokha, kodwa isiqinisekiso sokukhokha esisemthethweni siseseziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise isibuyekezo nemihlahlandlela yedethi yokukhokha, imikhuba ephephile yokufunda isibuyekezo, nokuhlola umzila osemthethweni ukuze ukuqinisekise ngokuzola."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-double-payment-rumours-usually-mean\n• /claim-checker\n• /guides/how-to-track-payment-dates-without-rumours\n• /guides/how-to-read-payment-notes-on-date-pages\n• /guides/where-to-find-official-updates-safely\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Iluphi uphawu oluqine kakhulu lokuthi isibuyekezo asinamandla?",
+        "body": "Uphawu oluqine kakhulu yilapho luthembele kuphela kusithombe-skrini noma umlayezo odluliselwe ngaphandle komthombo osemthethweni ocacile."
+      },
+      {
+        "title": "I-FAQ: Kungani isigaba sesibonelelo sibalulekile lapha?",
+        "body": "Ngoba isimangalo senkokhelo singaba iphutha ngisho noma sizwakala sizwakala sisonke."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngihlele mayelana nesibuyekezo ngokushesha?",
+        "body": "Kuphephe kakhudlwana ukuqinisekisa umthombo kuqala ngaphambi kokushintsha izinhlelo."
+      }
+    ]
+  },
+  "what-to-do-if-you-see-a-double-grant-payment-post": {
+    "title": "Okufanele ukwenze uma ubona iposi lokukhokha kabili isibonelelo",
+    "summary": "Umhlahlandlela osebenzayo wesinyathelo esilandelayo wabasebenzisi abahlangabezana nokuthunyelwe okukhokhelwa kabili futhi abafuna ukuphendula ngokucophelela esikhundleni sokusabela ngokucabangayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ubona iposi lokukhokha izibonelelo ezimbili, ungakuphathi njengokuqinisekisiwe ngaso leso sikhathi. Londoloza okuthunyelwe uma kudingeka, hlola umthombo, futhi uwuqhathanise nezibuyekezo ezisemthethweni ngaphambi kokuthi ukukholelwe."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Okuthunyelwe okukhokhelwa kabili kuvame ukwabiwa ngoba kuqashelwa ngokushesha. Lokho akukwenzi kube ngamanga ngokuzenzekelayo, kodwa kusho ukuthi abasebenzisi kufanele baqaphele ngokuyethemba ngokushesha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukusabela ngokushesha kungaholela ekulindelweni okungamanga noma ekulandeleni izixhumanisi ezaklanyelwe ukusizakala ngelukuluku nokuphuthuma."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Misa isikhashana ngaphambi kokwabelana noma ukwethemba okuthunyelwe.\n2. Hlola ukuthi okuthunyelwe kuxhumene yini nomthombo osemthethweni ocacile.\n3. Qhathanisa isimangalo nedethi yokukhokha yamanje kanye namakhasi okubuyekeza.\n4. Gwema ukuchofoza izixhumanisi eziphuthumayo ozizwa ungazazi.\n5. Sebenzisa i-GrantCare uma ufuna usizo lokuqonda ukuthi okuthunyelwe kusabukeka kubuthakathaka noma ukwethembeka."
+      },
+      {
+        "title": "Ukumisa isikhashana isinyathelo sokuqala esiphephe kunazo zonke",
+        "body": "Into ephephe kakhulu mayelana nokuthunyelwe okukhokhelwa kabili akulona ulwazi olungaphakathi kwakho. Yisikhathi lapho umsebenzisi emisa khona ngaphambi kokuthatha isinyathelo. Lokho kuphumula kuvikela ezingozini eziningi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiqinisekisi izimangalo zokukhokha kabili njengezimemezelo ezisemthethweni. Isiza abasebenzisi ukuthi bafunde lezo zimangalo ngokuphepha kakhulu."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke kokuthunyelwe komphakathi uye edethithini efanele yokukhokha kanye nemihlahlandlela yokuhlola isibuyekezo ukuze uthembele kancane kokuthunyelwe ngokwako."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-double-payment-rumours-usually-mean\n• /guides/how-to-check-if-a-double-payment-update-is-real\n• /guides/how-to-track-payment-dates-without-rumours\n• /guides/how-to-understand-payment-dates\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngabelane ngokuthunyelwe ngokushesha?",
+        "body": "Cha. Hlola umthombo kuqala."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma okuthunyelwe kuzwakala kuphuthuma kakhulu?",
+        "body": "Phatha ukuphuthuma njengesizathu sokwehlisa ijubane futhi uqinisekise isimangalo ngokucophelela."
+      },
+      {
+        "title": "I-FAQ: Kufanele ngiqhathanise nani okuthunyelwe?",
+        "body": "Iqhathanise nemizila yokubuyekeza ethembekile kanye neziqondiso zedethi yokukhokha."
+      }
+    ]
+  },
+  "what-grant-suspension-searches-usually-mean": {
+    "title": "Ukuthi usesho lokumiswa kwesibonelelo luvame ukusho ukuthini",
+    "summary": "Umchazi ozolile osesho lokumiswa kwesibonelelo sikahulumeni kanye nendlela yokubona umehluko phakathi kokwesaba, ulimi oluyisixwayiso, kanye nesenzo esisemthethweni esiqinisekisiwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Nikeza ukusesha ukumiswa ngokuvamile kusho ukuthi abasebenzisi bakhathazekile ngokuthi isibonelelo singama noma sibuyekezwe. Isinyathelo esiphephe kunazo zonke siwukufunda amagama angempela ngokucophelela futhi uqinisekise ukuthi udaba luwumlayezo wangempela osemthethweni noma amahemuhemu kuphela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ulimi lokumiswa luzwakala lubucayi, ngakho ngisho nezimangalo ezingacacile zingadala ukwesaba ngokushesha. Kungakho abasebenzisi badinga indlela ecacile yokuhlukanisa amagama asemthethweni nokwethuka komphakathi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Usesho olusekelwe ekwesabeni lungaholela abasebenzisi ukuthi bathembe amakhasi angaphephile noma basabele ngokweqile ngaphambi kokuba babe nolwazi olwanele ukuze bazi ukuthi umlayezo usho ukuthini ngempela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Londoloza amagama aqondile abangele ukukhathazeka.\n2. Hlola ukuthi iphuma emzileni osemthethweni ocacile.\n3. Hlukanisa amagama asemthethweni aqondile namahemuhemu noma okuthunyelwe okwabiwe.\n4. Qhathanisa neziqondiso eziphephile zokufunda ukumiswa.\n5. Sebenzisa izindlela zokulandelela ezisemthethweni uma amagama adinga isenzo ngokusobala."
+      },
+      {
+        "title": "Ukwesaba ukumiswa kukhula ngokushesha lapho amagama angacacile",
+        "body": "Indlela engcono kakhulu yokunciphisa ukwethuka ukugxila emazwini aqondile kanye nomthombo oqondile. Iningi lokudideka mayelana nokumiswa kwesikhashana liqala lapho abasebenzisi besebenza ngekhanda noma amahlebezi esikhundleni somlayezo wangempela."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingachaza amagama ahlobene nokumiswa, kodwa ukuqinisekiswa okusemthethweni nezinyathelo ezilandelayo ezisemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise ulimi lokumiswa okwesikhashana nezaziso zomnqamulajuqu, amagama abuyekeziwe, neziqondiso zomzila wokuxhumana ukuze wazi ukuthi ingabe inkinga isadinga incazelo noma ukulandelela kwangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /claim-checker\n• /guides/how-to-read-grant-suspension-wording-safely\n• /guides/how-to-check-if-a-suspension-warning-is-official\n• /guides/what-to-do-if-you-fear-your-grant-is-suspended\n• /guides/how-to-find-official-contact-details-safely\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani amagama amisiwe azwakala ethusa kangaka?",
+        "body": "Ngoba kuzwakala kubucayi futhi kungathinta umuzwa wokuphepha womsebenzisi ngokushesha."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole kuqala?",
+        "body": "Hlola amagama aqondile nokuthi avele emzileni osemthethweni ocacile yini."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe okuthunyelwe komphakathi mayelana nokumiswa?",
+        "body": "Cha. Qinisekisa umthombo osemthethweni kuqala."
+      }
+    ]
+  },
+  "how-to-read-grant-suspension-wording-safely": {
+    "title": "Ungawafunda kanjani amagama okumiswa kwesibonelelo sikahulumeni ngokuphepha",
+    "summary": "Umhlahlandlela osebenzayo wokufunda imilayezo yesitayela sokumiswa ngokucophelela ukuze abasebenzisi bangaphuthelwa izexwayiso, ukubuyekezwa, nezenzo eziqinisekisiwe zento efanayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Funda amagama amisiwe ngokuphepha ngokusebenzisa umlayezo oqondile, hhayi inkumbulo, futhi ngokubheka ukuthi akhomba yini ekubuyekezeni, isexwayiso, umnqamulajuqu, noma isenzo esisemthethweni esiqinisekisiwe."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amagama amisiwe ngokuvamile ahlala eduze kweminye imilayezo enemisindo engathi sína. Kungakho ukufunda umusho okuyiwonawona kubaluleke kakhulu lapha kunokunye ukusesha okuningi kwesibonelelo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi abacindezela umlayezo ube igama elilodwa elithusayo bangaphuthelwa umehluko phakathi kwesixwayiso nesinyathelo sokugcina esisemthethweni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Gcina amagama aqondile.\n2. Funda ukuthi umlayezo uyisixwayiso, isibuyekezo, isicelo, noma isenzo esiqinisekisiwe.\n3. Hlola ukuthi kunamathiselwe umnqamulajuqu noma imininingwane esekelayo.\n4. Qhathanisa umlayezo nomhlahlandlela ofanele we-GrantCare.\n5. Sebenzisa imigudu esemthethweni uma amagama acela isenzo ngokusobala."
+      },
+      {
+        "title": "Ibinzana eliqondile lingashintsha incazelo kakhulu",
+        "body": "Ulimi lwesitayela sokumiswa ngokuvamile luzwakala lufana lapho uqala nje, kodwa umehluko omncane wamagama ungashintsha ngokuphelele lokho umsebenzisi okufanele akwenze ngokulandelayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ichaza amaphethini wamagama kodwa ayishintshi iziteshi ezisemthethweni zokuqinisekisa noma isenzo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi bahlukanise ukumiswa okwesikhashana, umnqamulajuqu, ukubuyekezwa, nolimi lokuqinisekisa ukuze bangaphenduli enkingeni engalungile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-grant-suspension-searches-usually-mean\n• /guides/how-to-check-if-a-suspension-warning-is-official\n• /guides/what-id-and-kyc-deadline-searches-usually-mean\n• /guides/what-to-do-if-you-fear-your-grant-is-suspended\n• /guides/how-to-find-official-contact-details-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngigcine amagama aqondile?",
+        "body": "Ngoba umusho oqondile ungakutshela ukuthi inkinga iyisexwayiso, isibuyekezo, noma isenzo esisemthethweni esiqinisekisiwe."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma igama lisabonakala libucayi kakhulu ukuthi ungahlulela ngomoya ophansi?",
+        "body": "Sebenzisa umhlahlandlela wamagama kanye nomthombo osemthethweni ndawonye esikhundleni sokuthembela enkumbulweni."
+      },
+      {
+        "title": "I-FAQ: Kufanele ngenze nini?",
+        "body": "Thatha isenzo lapho amagama asemthethweni acela ngokusobala isinyathelo esilandelayo kunokuqagela nje esicelweni esingacacile."
+      }
+    ]
+  },
+  "how-to-check-if-a-suspension-warning-is-official": {
+    "title": "Ungabheka kanjani ukuthi isexwayiso sokumiswa sisemthethweni",
+    "summary": "Umhlahlandlela wokuthembana wokuqinisekisa izexwayiso zokumiswa ngaphambi kokuthi abasebenzisi bethuke noma baphendule umzila ongalungile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola ukuthi isixwayiso sokumiswa sisemthethweni yini ngokuqinisekisa umthombo, umzila, kanye namagama aqondile ngaphambi kokuthi usiphathe njengesaziso sesenzo sangempela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Izexwayiso zokumiswa zingavela emilayezweni, kokuthunyelwe, noma emakhasini azwakala aphuthuma. Lokho kuphuthuma yingakho nje abasebenzisi bedinga ukuhlola komthombo okuqinile ngaphambi kokuthi bakholwe isexwayiso."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma isexwayiso singelona iqiniso noma sihlanekezelwe, abasebenzisi bangamosha isikhathi, babelane ngemininingwane ngokungaphephile, noma bathathe isinyathelo esilandelayo esingalungile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi isixwayiso sivelaphi.\n2. Bheka ukuthi ingabe ikhomba umzila osemthethweni ocacile.\n3. Gcina amagama aqondile nanoma yiluphi usuku olunamathiselwe.\n4. Gwema ukuchofoza izixhumanisi eziphuthumayo ezingawubonisi ngokucacile umzila.\n5. Sebenzisa ukuxhumana okusemthethweni noma imizila yesimo uma isexwayiso sisabukeka singokoqobo ngemva kokuhlola."
+      },
+      {
+        "title": "Ukuphuthuma yilapho ukuhlola umthombo kubaluleke kakhulu",
+        "body": "Uma isixwayiso siphuthuma kakhulu, abasebenzisi kufanele behlise ijubane futhi bahlole umthombo esikhundleni sokusabela ekusabeni esikudalayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuthi bahlole izexwayiso, kodwa ukuqinisekiswa okusemthethweni kwezindaba ezihlobene nokumiswa kuseseziteshini ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uqhathanise izexwayiso zokumiswa namagama okubuyekeza, izaziso zomnqamulajuqu, neziqondiso zokuxhumana ukuze ungaphenduli ngokunganaki."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-grant-suspension-searches-usually-mean\n• /claim-checker\n• /guides/how-to-read-grant-suspension-wording-safely\n• /guides/what-id-and-kyc-deadline-searches-usually-mean\n• /guides/how-to-find-official-contact-details-safely\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani izixwayiso zokumiswa kulula ukuzethemba ngokushesha okukhulu?",
+        "body": "Ngoba zidala ukwesaba nokuphuthuma, okungacindezela abasebenzisi ukuthi beqe ukuqinisekiswa."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyonge kuqala?",
+        "body": "Londoloza isixwayiso esiqondile kanye nanoma iyiphi idethi enamathiselwe kuso."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma isexwayiso sisabukeka singokoqobo ngemva kokusihlola?",
+        "body": "Yiya emzileni osemthethweni olungile ukuze uthole ukuqinisekiswa noma isinyathelo esilandelayo esidingekayo."
+      }
+    ]
+  },
+  "what-to-do-if-you-fear-your-grant-is-suspended": {
+    "title": "Okufanele ukwenze uma wesaba ukuthi isibonelelo sikahulumeni siyamiswa",
+    "summary": "Umhlahlandlela wesinyathelo esilandelayo ozolile wabasebenzisi abesaba izimangalo zokumiswa futhi abadinga indlela ecacile yokuphendula.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma wesaba ukuthi isibonelelo sakho sizomiswa, qala ngokulondoloza amagama, uhlole umthombo, futhi uthole ukuthi umlayezo uyisaziso sangempela esisemthethweni noma inzwabethi ngaphambi kokwenza noma yini enye."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukwesaba ukumiswa kungase kuvele emagameni asemthethweni, umlayezo, okuthunyelwe, noma ngisho namahemuhemu abiwe omunye umuntu. Impendulo ephephe kunazo zonke iwukusuka ekwesabeni uye emaqinisweni ngokushesha ngangokunokwenzeka."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukwenza ngokwesaba kukodwa kungacindezela abasebenzisi kuzixhumanisi ezimbi, ekucabangeni okungalungile, noma ukwabelana okungaphephile kwemininingwane yomuntu siqu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Gcina amagama noma umyalezo obangele ukwesaba.\n2. Hlola ukuthi iphuma emzileni osemthethweni ocacile.\n3. Qhathanisa neziqondiso ezifanele zokumiswa kanye nomnqamulajuqu.\n4. Qoqa noma imaphi amarekhodi noma imininingwane exhumene nodaba.\n5. Sebenzisa iziteshi ezisemthethweni uma umlayezo ngokusobala udinga ukulandelelwa kwangempela."
+      },
+      {
+        "title": "Susa ukwesaba uye emlayezo oqondile",
+        "body": "Indlela eshesha kakhulu yokudambisa inkinga ukuyeka ukusebenza ekubeni wedwa bese uqala ukusebenza ngokusuka emazwini aqondile, umthombo oqondile, kanye nesicelo sesinyathelo esilandelayo uma sikhona."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiyena umenzi wezinqumo osemthethweni ezindabeni zokumiswa. Isiza abasebenzisi ukuchaza isimo ngokucace kakhudlwana ngaphambi kokuba benze okuthile."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi baqonde ukuthi ingabe inkinga ibukeka njengomnqamulajuqu, isibuyekezo, udaba lokuqinisekisa, noma isenzo esisemthethweni esiqondile esidinga ukulandelelwa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-grant-suspension-searches-usually-mean\n• /guides/how-to-read-grant-suspension-wording-safely\n• /guides/how-to-check-if-a-suspension-warning-is-official\n• /guides/how-to-find-official-contact-details-safely\n• /guides/how-to-keep-records-of-payment-problems"
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze kuqala uma ngizwa ukwesaba?",
+        "body": "Londoloza amagama futhi uhlole umthombo ngaphambi kokwenza noma yini enye."
+      },
+      {
+        "title": "I-FAQ: Kungani kungafanele ngithathe isinyathelo ngenxa yokwesaba ngedwa?",
+        "body": "Ngoba ukwesaba kungenza amakhasi angaphephile futhi izimangalo ezibuthakathaka zizizwe zithembeke kakhulu kunalokho eziyikho."
+      },
+      {
+        "title": "I-FAQ: Yini esiza ngemva kokulondoloza amagama?",
+        "body": "Qhathanisa nomhlahlandlela ofanele kanye nomzila osemthethweni ofanele ngaphambi kokuthi usabele ngokuqhubekayo."
+      }
+    ]
+  },
+  "what-id-and-kyc-deadline-searches-usually-mean": {
+    "title": "Lokho okuvamise ukusho i-ID kanye nosesho lomnqamulajuqu lwe-KYC",
+    "summary": "Umhlahlandlela osebenzayo wokubuyekeza i-ID kanye nosesho lomnqamulajuqu lwe-KYC nokuthi uzifunda kanjani izimangalo zomnqamulajuqu ngokuphepha ngaphandle kokusabela ngokweqile ezixwayiso ezingacacile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha kwe-ID kanye nomnqamulajuqu we-KYC ngokuvamile kusho ukuthi abasebenzisi bakhathazekile ngesibuyekezo serekhodi noma umnqamulajuqu wokuqinisekisa. Umnyakazo ophephe kakhulu ukuhlola amagama aqondile kanye nomthombo ngaphambi kokuphatha umnqamulajuqu njengomyalelo osemthethweni oqinisekisiwe."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ulimi lomnqamulajuqu lungabhekisela ezintweni ezihlukene: ukuqinisekiswa kwe-ID, ukubuyekezwa kwesitayela se-KYC, izinguquko zamakhadi, noma esinye isinyathelo esihlobene nerekhodi. Kungakho abasebenzisi kumele baqonde ukuthi umnqamulajuqu umayelana nani ngaphambi kokuthi bathathe isinyathelo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Isaziso somnqamulajuqu esingacacile singadala ukwethuka, kodwa impendulo efanele incike ekutheni umlayezo ungokoqobo, owamanje, futhi uxhumeke ngokucacile yini esimweni somsebenzisi."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Londoloza amagama aqondile omnqamulajuqu.\n2. Thola ukuthi umnqamulajuqu umayelana nani ngempela.\n3. Hlola ukuthi umthombo usemthethweni ngokusobala yini.\n4. Gwema ukusebenzisa amakhasi ezinkampani zangaphandle ukuze uphathe isibuyekezo.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuhumusha umlayezo womnqamulajuqu ube isinyathelo esilandelayo esiphephile."
+      },
+      {
+        "title": "Umnqamulajuqu uwusizo kuphela uma umsebenzi ucacile",
+        "body": "Abasebenzisi bavame ukugxila osukwini futhi bakhohlwe ukukhomba umsebenzi ongemuva kwayo. Ukufunda okuphephile kuqala ngokubuza ukuthi umnqamulajuqu ukucela ukuthi wenzeni."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingachaza amagama omnqamulajuqu, kodwa ukuqinisekiswa okusemthethweni nezibuyekezo zamarekhodi ezisemthethweni kusengezamizila esemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlukanise i-ID, i-KYC, ikhadi, nosesho lwesibuyekezo semininingwane yabahlomulayo ukuze wazi ukuthi yimuphi umzila osemthethweni onengqondo ngesixwayiso osibonile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /claim-checker\n• /guides/how-to-check-if-a-deadline-notice-is-official\n• /guides/what-gold-card-and-card-deadline-searches-usually-mean\n• /guides/what-beneficiary-detail-update-searches-usually-mean\n• /guides/how-to-find-official-contact-details-safely\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha komnqamulajuqu kungazwakala kudida kakhulu kunokusebenziseka?",
+        "body": "Ngoba umnqamulajuqu uvame ukuzwakala uphuthumayo ngaphambi kokuba umsebenzi wangempela ngemuva kwawo ucace."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyibone kuqala?",
+        "body": "Thola ukuthi yini umnqamulajuqu ekucela ukuthi uyibuyekeze, uqinisekise, noma uyibuyekeze."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise ikhasi lenkampani yangaphandle ukuze ngiyilungise ngokushesha?",
+        "body": "Cha. Sebenzisa umzila osemthethweni olungile kunalokho."
+      }
+    ]
+  },
+  "how-to-check-if-a-deadline-notice-is-official": {
+    "title": "Ungasibheka kanjani ukuthi isaziso somnqamulajuqu sisemthethweni",
+    "summary": "Umhlahlandlela wokuthembana wabasebenzisi ababona izaziso zomnqamulajuqu ezihlobene nesibonelelo futhi abafuna ukugwema izexwayiso ezingamanga noma amaqhinga okucindezela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola ukuthi isaziso somnqamulajuqu sisemthethweni yini ngokuqinisekisa umthombo, umzila, umsebenzi ohilelekile, kanye nokuthi amagama ahambisana kahle yini nenqubo esemthethweni yangempela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Izaziso zomnqamulajuqu zidala ingcindezi, futhi ingcindezi ngokuvamile yenza izimangalo ezibuthakathaka zizizwe zinamandla kunalokho eziyikho ngempela. Yingakho ukuhlola umthombo kubaluleke kakhulu ngemilayezo yomnqamulajuqu."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Umnqamulajuqu womgunyathi noma ongacacile ungacindezela abasebenzisi ukuthi bazibuyekeze ngokushesha, amakhasi angaphephile, noma ukwesaba okungadingekile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Gcina isaziso esiqondile.\n2. Bheka ukuthi isaziso sivelaphi.\n3. Khomba umsebenzi umnqamulajuqu obhekise kuwo.\n4. Gwema ukwenza izixhumanisi ezingacacile noma izithombe ezinqanyuliwe.\n5. Sebenzisa imizila esemthethweni uma isaziso sisabukeka singokoqobo ngemva kokuhlolwa ngokucophelela."
+      },
+      {
+        "title": "Ingcindezi iyingxenye yokuthi kungani izaziso zomnqamulajuqu zisebenza",
+        "body": "Ingozi enkulu ngezaziso zomnqamulajuqu akuwona amagama kuphela. Yingcindezi edalwa yisaziso. Lokho kucindezela yikho okwenza isheke elihamba kancane, lokuqala lomthombo libaluleke kangaka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingasiza ekuhloleni izaziso zomnqamulajuqu, kodwa ukuqinisekiswa kokugcina nesenzo esisemthethweni kusengezashaneli ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uqhathanise izaziso zomnqamulajuqu nezibuyekezo zerekhodi, izinguquko zekhadi, izexwayiso zokumiswa okwesikhashana, neziqondiso zomzila wokuxhumana ukuze inkinga izwakale kulula ukuyihlukanisa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-id-and-kyc-deadline-searches-usually-mean\n• /claim-checker\n• /guides/what-gold-card-and-card-deadline-searches-usually-mean\n• /guides/what-beneficiary-detail-update-searches-usually-mean\n• /guides/how-to-check-if-a-suspension-warning-is-official\n• /guides/how-to-find-official-contact-details-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani izaziso zomnqamulajuqu kulula ukuzethemba ngokushesha okukhulu?",
+        "body": "Ngoba kudala ukuphuthuma nokwesaba ukuphuthelwa okuthile okubalulekile."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyonge kuqala?",
+        "body": "Gcina amagama aqondile kanye nomthombo wesaziso kuqala."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngigweme ukuyenza?",
+        "body": "Gwema ukuchofoza izixhumanisi ezisheshayo noma ukwenza ezithombeni ezisikiwe ngaphandle komzila ocacile osemthethweni ngemuva kwazo."
+      }
+    ]
+  },
+  "what-gold-card-and-card-deadline-searches-usually-mean": {
+    "title": "Lokho okushiwo ukusesha kwekhadi legolide nomnqamulajuqu wekhadi ngokuvamile",
+    "summary": "Igayidi yolimi olulula ekhadini legolide, ikhadi elimnyama, ukushintshwa, kanye nosesho losuku lomnqamulajuqu lwekhadi nokuthi ungalufunda kanjani ngokuphephile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Usesho lwekhadi legolide kanye nosuku lomnqamulajuqu lwekhadi ngokuvamile lusho ukuthi abasebenzisi bazama ukuqinisekisa ukuthi ukuguqulwa kwekhadi noma umnqamulajuqu uyasebenza yini kubo ngempela. Umnyakazo ophephe kakhulu ukuhlola isaziso esisemthethweni esiqondile futhi unganciki ekuthunyelweni komphakathi kuphela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuhlobene namakhadi kuvame ukuba nokuphuthuma ngoba kuthinta ukufinyelela, ubunikazi, noma ukuzethemba kwenkokhelo. Lokho kuphuthuma kungenza okuthunyelwe okungacacile kuzizwe kunamandla kunalokho okuyikho ngempela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma umlayezo wekhadi ungaqondakali, abasebenzisi bangase bahambe ngokungadingekile, baphuthe umsebenzi wangempela, noma bathembe umzila ongalungile ukuze uthole izibuyekezo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Gcina umlayezo noma isaziso esihlobene ngqo nekhadi.\n2. Hlola ukuthi iphuma emzileni osemthethweni ocacile.\n3. Thola ukuthi ingabe inkinga imayelana nokumiselela, umnqamulajuqu, noma izindaba ezijwayelekile zokubuyekeza.\n4. Gwema ukuthembela ezithombeni-skrini ezabiwe ezingenamthombo.\n5. Sebenzisa ukuthintana okusemthethweni noma ubuyekeze imizila uma isaziso sisabonakala siyiqiniso."
+      },
+      {
+        "title": "Imilayezo yekhadi izwakala isebenza, kodwa isadinga ukuqinisekiswa",
+        "body": "Ngenxa yokuthi izaziso ezihambisana namakhadi zizwakala ziphathekayo, abasebenzisi bangase bazithembe ngokushesha okukhulu. Umkhuba ophephile uwukuqinisekisa umzila ngaphambi kokwenza izinhlelo mayelana nesaziso."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayilona uhlelo olusemthethweni lokushintsha ikhadi noma uhlelo olusemthethweni lokubuyekeza ikhadi. Isiza abasebenzisi ukuthi bafunde izimangalo ezihlobene nekhadi ngokuphepha kakhulu."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uhumushele ukusesha okuhlobene namakhadi koxhumana naye osemthethweni olungile noma ubuyekeze umzila futhi ugcine amahlebezi ehlukene nezaziso zangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-if-a-deadline-notice-is-official\n• /guides/what-id-and-kyc-deadline-searches-usually-mean\n• /guides/how-to-find-official-contact-details-safely\n• /guides/how-to-find-a-sassa-office-near-you-safely\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha komnqamulajuqu wekhadi kuzwakala kuphuthuma kangaka?",
+        "body": "Ngoba abasebenzisi bahlobanisa izinguquko zekhadi nokufinyelela ekusekelweni nasekuvikelekeni kwenkokhelo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe isithombe-skrini somnqamulajuqu wekhadi ngokwaso?",
+        "body": "Cha. Hlola ukuthi ingabe iphuma emzileni osemthethweni ocacile."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyibone kuqala?",
+        "body": "Khomba ukuthi ingabe isaziso simayelana nokushintshwa, umnqamulajuqu, noma umsebenzi ohlukile ohlobene nekhadi."
+      }
+    ]
+  }
+};
+
+function withZuTranslations<
+  T extends {
+    slug: string;
+    title: string;
+    summary: string;
+    sections: Array<{ title: string; body: string }>;
+    translations?: Record<string, unknown>;
+  },
+>(guide: T, translation: GuideTranslation) {
+  return {
+    ...guide,
+    translations: {
+      ...(guide.translations ?? {}),
+      zu: translation,
+    },
+  };
+}
+
+export const SEO_BATCH_FOURTEEN_GUIDES = SEO_BATCH_FOURTEEN_GUIDES_SOURCE.map((guide) =>
+  addSetswanaTranslations(withZuTranslations(guide, ZU_TRANSLATIONS[guide.slug])),
+);

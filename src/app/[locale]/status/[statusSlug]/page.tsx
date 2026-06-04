@@ -12,6 +12,7 @@ import {
   listRelatedStatuses,
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
@@ -73,11 +74,23 @@ export async function generateMetadata({
     return {};
   }
 
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      metaTitle: (title: string) => `${title} SASSA Status Meaning and Next Steps`,
+      metaDescription: (title: string) => `See what "${title}" means on SASSA, why it happens, and the safest next step before you act.`,
+    },
+    {
+      metaTitle: (title: string) => `${title}: Incazelo Yesimo se-SASSA Nezinyathelo Ezilandelayo`,
+      metaDescription: (title: string) => `Bona ukuthi "${title}" kusho ukuthini ku-SASSA, kungani kwenzeka, nesinyathelo esilandelayo esiphephile ngaphambi kokwenza okuthile.`,
+    },
+  );
+
   return buildLocalizedMetadata({
     locale,
     path: `/status/${statusSlug}`,
-    title: `${status.title} SASSA Status Meaning and Next Steps`,
-    description: `See what "${status.title}" means on SASSA, why it happens, and the safest next step before you act.`,
+    title: routeCopy.metaTitle(status.title),
+    description: routeCopy.metaDescription(status.title),
   });
 }
 
@@ -93,6 +106,19 @@ export default async function StatusDetailPage({
   }
 
   const copy = getCopy(locale);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      breadcrumbStatusHelp: "Status help",
+      howToName: (title: string) => `How to fix SASSA "${title}" status`,
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      breadcrumbStatusHelp: "Usizo lwesimo",
+      howToName: (title: string) => `Indlela yokulungisa isimo se-SASSA esithi "${title}"`,
+    },
+  );
   const status = await getStatusMeaningBySlug(locale, statusSlug);
 
   if (!status) {
@@ -135,7 +161,7 @@ export default async function StatusDetailPage({
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: `How to fix SASSA "${status.title}" status`,
+    name: routeCopy.howToName(status.title),
     description: status.meaning,
     step: howToSteps,
     totalTime: "PT30M",
@@ -150,8 +176,8 @@ export default async function StatusDetailPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "Status help", path: "/status" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
+          { label: routeCopy.breadcrumbStatusHelp, path: "/status" },
           { label: status.title, path: `/status/${statusSlug}` },
         ]}
       />

@@ -11,6 +11,7 @@ import {
   listRelatedNews,
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import {
   buildLocalizedMetadata,
   buildNewsMetaDescription,
@@ -38,7 +39,26 @@ function titleCase(value: string) {
     .join(" ");
 }
 
-function getInternalPathLabel(path: string) {
+function getInternalPathLabel(locale: Locale, path: string) {
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      paymentDates: "Payment dates",
+      paymentDatesForMonth: (month: string, year: string) => `${titleCase(month)} ${year} payment dates`,
+      paymentDatesForGrant: (grant: string, month: string, year: string) => `${titleCase(grant)} payment dates for ${titleCase(month)} ${year}`,
+      statusMeaning: (status: string) => `${titleCase(status)} status meaning`,
+      grantLabel: (grant?: string) => grant ? `${titleCase(grant)} grant` : "Grant types",
+      eligibilityChecker: "Eligibility checker",
+    },
+    {
+      paymentDates: "Izinsuku zokukhokha",
+      paymentDatesForMonth: (month: string, year: string) => `Izinsuku zokukhokha zango-${titleCase(month)} ${year}`,
+      paymentDatesForGrant: (grant: string, month: string, year: string) => `Izinsuku zokukhokha ze-${titleCase(grant)} zango-${titleCase(month)} ${year}`,
+      statusMeaning: (status: string) => `Incazelo yesimo esithi ${titleCase(status)}`,
+      grantLabel: (grant?: string) => grant ? `Isibonelelo se-${titleCase(grant)}` : "Izinhlobo zezibonelelo",
+      eligibilityChecker: "Isihloli sokufaneleka",
+    },
+  );
   const segments = path.split("/").filter(Boolean);
 
   if (segments.length === 0) {
@@ -50,29 +70,29 @@ function getInternalPathLabel(path: string) {
   }
 
   if (segments[0] === "status" && segments[1]) {
-    return `${titleCase(segments[1])} status meaning`;
+    return routeCopy.statusMeaning(segments[1]);
   }
 
   if (segments[0] === "payment-dates") {
     if (segments.length === 1) {
-      return "Payment dates";
+      return routeCopy.paymentDates;
     }
 
     if (segments.length === 3) {
-      return `${titleCase(segments[2])} ${segments[1]} payment dates`;
+      return routeCopy.paymentDatesForMonth(segments[2], segments[1]);
     }
 
     if (segments.length >= 4) {
-      return `${titleCase(segments[3])} payment dates for ${titleCase(segments[2])} ${segments[1]}`;
+      return routeCopy.paymentDatesForGrant(segments[3], segments[2], segments[1]);
     }
   }
 
   if (segments[0] === "grants") {
-    return segments[1] ? `${titleCase(segments[1])} grant` : "Grant types";
+    return routeCopy.grantLabel(segments[1]);
   }
 
   if (segments[0] === "eligibility-checker") {
-    return "Eligibility checker";
+    return routeCopy.eligibilityChecker;
   }
 
   return path;
@@ -160,7 +180,7 @@ function renderArticleText(locale: Locale, text: string) {
         href={buildLocalePath(locale, text)}
         className="font-medium text-primary underline decoration-border underline-offset-4"
       >
-        {getInternalPathLabel(text)}
+        {getInternalPathLabel(locale, text)}
       </Link>
     );
   }
@@ -245,6 +265,29 @@ export default async function NewsDetailPage({
   }
 
   const copy = getCopy(locale);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      hubPaymentDescription: "Check the payment schedule after a date-related update.",
+      hubGuidesDescription: "Open the guide library for deeper context around the update.",
+      hubNewsDescription: "Go back to the news archive for newer and older updates.",
+      updateTitle: "Update",
+      sourcesTitle: "Sources",
+      relatedNewsTitle: "Related news",
+      moreToExploreTitle: "More to explore",
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      hubPaymentDescription: "Hlola uhlelo lokukhokha ngemva kwesibuyekezo esihlobene nosuku.",
+      hubGuidesDescription: "Vula ilabhulali yemihlahlandlela ukuze uthole umongo owengeziwe ngesibuyekezo.",
+      hubNewsDescription: "Buyela kungobo yezindaba ukuze ubone izibuyekezo ezintsha nezindala.",
+      updateTitle: "Isibuyekezo",
+      sourcesTitle: "Imithombo",
+      relatedNewsTitle: "Izindaba ezihlobene",
+      moreToExploreTitle: "Okunye ongakuhlola",
+    },
+  );
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -263,17 +306,17 @@ export default async function NewsDetailPage({
     {
       href: "/payment-dates",
       title: copy.paymentDates,
-      description: "Check the payment schedule after a date-related update.",
+      description: routeCopy.hubPaymentDescription,
     },
     {
       href: "/guides",
       title: copy.guides,
-      description: "Open the guide library for deeper context around the update.",
+      description: routeCopy.hubGuidesDescription,
     },
     {
       href: "/news",
       title: copy.news,
-      description: "Go back to the news archive for newer and older updates.",
+      description: routeCopy.hubNewsDescription,
     },
   ];
 
@@ -283,7 +326,7 @@ export default async function NewsDetailPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
           { label: copy.news, path: "/news" },
           { label: article.title, path: `/news/${article.slug}` },
         ]}
@@ -305,7 +348,7 @@ export default async function NewsDetailPage({
         </div>
       </Section>
 
-      <Section title="Update">
+      <Section title={routeCopy.updateTitle}>
         <Card className="space-y-6">
           {article.sections.map((section) => (
             <div key={section.title} className="space-y-3">
@@ -319,7 +362,7 @@ export default async function NewsDetailPage({
       </Section>
 
       {article.sourceUrls.length > 0 ? (
-        <Section title="Sources">
+        <Section title={routeCopy.sourcesTitle}>
           <div className="grid gap-3">
             {article.sourceUrls.map((sourceUrl) => (
               <Card key={sourceUrl}>
@@ -338,7 +381,7 @@ export default async function NewsDetailPage({
       ) : null}
 
       {relatedNews.length > 0 ? (
-        <Section title="Related news">
+        <Section title={routeCopy.relatedNewsTitle}>
           <div className="grid gap-4 md:grid-cols-3">
             {relatedNews.map((relatedArticle) => (
               <Link key={relatedArticle.slug} href={buildLocalePath(locale, `/news/${relatedArticle.slug}`)}>
@@ -367,7 +410,7 @@ export default async function NewsDetailPage({
         </Section>
       ) : null}
 
-      <Section title="More to explore">
+      <Section title={routeCopy.moreToExploreTitle}>
         <div className="grid gap-4 md:grid-cols-3">
           {hubLinks.map((item) => (
             <Link key={item.href} href={buildLocalePath(locale, item.href)}>

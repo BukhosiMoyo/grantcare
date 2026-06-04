@@ -19,6 +19,7 @@ import {
   listRelatedGuides,
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { getGrantAmountDetails } from "@/lib/official-resources";
 import { formatPaymentPageLastUpdated, isPaymentYearIndexable } from "@/lib/payment-seo";
@@ -43,11 +44,23 @@ export async function generateMetadata({
     return {};
   }
 
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      metaTitle: (label: string) => `SASSA Grant Payout Dates for ${label} (Official Calendar)`,
+      metaDescription: (label: string) => `Looking for the official SASSA grant payout dates for ${label}? View the confirmed payment schedule, see status definitions, and calculate when child, old age, and disability payments release.`,
+    },
+    {
+      metaTitle: (label: string) => `Izinsuku Zokukhokha Zezibonelelo ze-SASSA zango-${label} (Ikhalenda Esemthethweni)`,
+      metaDescription: (label: string) => `Ufuna izinsuku zokukhokha zezibonelelo ze-SASSA ezisemthethweni zango-${label}? Buka uhlelo lokukhokha oluqinisekisiwe, izincazelo zesimo, nokuthi izinkokhelo zezingane, abadala, nezokukhubazeka zikhishwa nini.`,
+    },
+  );
+
   return buildLocalizedMetadata({
     locale,
     path: `/payment-dates/${year}/${month}`,
-    title: `SASSA Grant Payout Dates for ${paymentMonth.label} (Official Calendar)`,
-    description: `Looking for the official SASSA grant payout dates for ${paymentMonth.label}? View the confirmed payment schedule, see status definitions, and calculate when child, old age, and disability payments release.`,
+    title: routeCopy.metaTitle(paymentMonth.label),
+    description: routeCopy.metaDescription(paymentMonth.label),
     noIndex: !isPaymentYearIndexable(paymentMonth.year),
     noIndexFollow: true,
   });
@@ -65,6 +78,51 @@ export default async function PaymentMonthPage({
   }
 
   const copy = getCopy(locale);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      breadcrumbPaymentDates: "Payment dates",
+      updatedLabel: "Updated",
+      faqClearQuestion: (label: string) => `When do SASSA payment dates usually clear for ${label}?`,
+      faqClearAnswer: "SASSA payments are typically cleared on the morning of the published payment date. Bank processing times can vary, so funds may reflect later in the day depending on your commercial bank (such as Capitec, FNB, Nedbank, Standard Bank, or TymeBank).",
+      faqWeekendQuestion: "What happens if a payment day falls on a weekend or public holiday?",
+      faqWeekendAnswer: "SASSA payments are never released on weekends or national public holidays. If a scheduled date falls on a Saturday, Sunday, or public holiday, the release is usually shifted to the next standard business day.",
+      faqVerifyQuestion: "How do I check if my payment is ready or verify banking details?",
+      faqVerifyAnswer: "You can check your payment status and banking details verification state by logging in securely to the official SASSA Services Portal. If your status shows 'Approved', your funds will be released during the designated payment window.",
+      hubPaymentDatesDescription: "Return to the payment-date hub if you need another month or grant category.",
+      hubApprovedTitle: "Approved status meaning",
+      hubApprovedDescription: "Read the approved status page if the timing makes more sense once the status is clear.",
+      hubUnderstandTitle: "How to understand payment dates",
+      hubUnderstandDescription: "Use the guide when you need help reading expected, pending, or portal-only timing.",
+      hubDelayTitle: "Why payment is delayed",
+      hubDelayDescription: "Open the delay guide if the payment window feels unclear or late.",
+      itemListName: (label: string) => `SASSA Payment Dates for ${label}`,
+      payoutFaqTitle: (label: string) => `${label} Payout FAQs`,
+      morePaymentHelpTitle: "More payment help",
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      breadcrumbPaymentDates: "Izinsuku zokukhokha",
+      updatedLabel: "Kubuyekezwe",
+      faqClearQuestion: (label: string) => `Izinsuku zokukhokha ze-SASSA zivame ukungena nini zango-${label}?`,
+      faqClearAnswer: "Izinkokhelo ze-SASSA zivame ukucaciswa ekuseni ngosuku lokukhokha olushicilelwe. Izikhathi zamabhange zingahluka, ngakho imali ingavela kamuva ngalolo suku kuye ngebhange lakho.",
+      faqWeekendQuestion: "Kwenzekani uma usuku lokukhokha luwela ngempelasonto noma ngeholide lomphakathi?",
+      faqWeekendAnswer: "Izinkokhelo ze-SASSA azikhishwa ngezimpelasonto noma ngamaholide omphakathi kazwelonke. Uma usuku luwela ngoMgqibelo, ngeSonto, noma ngeholide, ukukhishwa kuvame ukuhanjiswa osukwini lwebhizinisi olulandelayo.",
+      faqVerifyQuestion: "Ngihlola kanjani ukuthi inkokhelo yami isilungile noma ngiqinisekise imininingwane yasebhange?",
+      faqVerifyAnswer: "Ungahlola isimo senkokhelo nokuqinisekiswa kwemininingwane yasebhange ngokungena ngokuphepha ku-SASSA Services Portal esemthethweni. Uma isimo sakho sithi 'Approved', imali izokhishwa ngesikhathi sewindi lokukhokha elibekiwe.",
+      hubPaymentDatesDescription: "Buyela kuhabhu yezinsuku zokukhokha uma udinga enye inyanga noma isigaba sesibonelelo.",
+      hubApprovedTitle: "Incazelo yesimo esithi Approved",
+      hubApprovedDescription: "Funda ikhasi lesimo esithi approved uma isikhathi sokukhokha sicaca kangcono lapho isimo sesicacile.",
+      hubUnderstandTitle: "Indlela yokuqonda izinsuku zokukhokha",
+      hubUnderstandDescription: "Sebenzisa umhlahlandlela uma udinga usizo lokufunda isikhathi esilindelekile, esisalindile, noma esibonakala ephothali kuphela.",
+      hubDelayTitle: "Kungani inkokhelo ibambezelekile",
+      hubDelayDescription: "Vula umhlahlandlela wokubambezeleka uma iwindi lokukhokha lingacaci noma libonakala sekwephuzile.",
+      itemListName: (label: string) => `Izinsuku Zokukhokha ze-SASSA zango-${label}`,
+      payoutFaqTitle: (label: string) => `Imibuzo ye-Payout zango-${label}`,
+      morePaymentHelpTitle: "Olunye usizo lokukhokha",
+    },
+  );
   const paymentMonth = await getPaymentPeriod(locale, Number(year), month);
 
   if (!paymentMonth) {
@@ -86,16 +144,16 @@ export default async function PaymentMonthPage({
   const lastUpdated = formatPaymentPageLastUpdated();
   const scheduleFaqs = [
     {
-      question: `When do SASSA payment dates usually clear for ${paymentMonth.label}?`,
-      answer: `SASSA payments are typically cleared on the morning of the published payment date. Bank processing times can vary, so funds may reflect later in the day depending on your commercial bank (such as Capitec, FNB, Nedbank, Standard Bank, or TymeBank).`,
+      question: routeCopy.faqClearQuestion(paymentMonth.label),
+      answer: routeCopy.faqClearAnswer,
     },
     {
-      question: "What happens if a payment day falls on a weekend or public holiday?",
-      answer: "SASSA payments are never released on weekends or national public holidays. If a scheduled date falls on a Saturday, Sunday, or public holiday, the release is usually shifted to the next standard business day.",
+      question: routeCopy.faqWeekendQuestion,
+      answer: routeCopy.faqWeekendAnswer,
     },
     {
-      question: "How do I check if my payment is ready or verify banking details?",
-      answer: "You can check your payment status and banking details verification state by logging in securely to the official SASSA Services Portal. If your status shows 'Approved', your funds will be released during the designated payment window.",
+      question: routeCopy.faqVerifyQuestion,
+      answer: routeCopy.faqVerifyAnswer,
     },
   ];
 
@@ -116,22 +174,22 @@ export default async function PaymentMonthPage({
     {
       href: "/payment-dates",
       title: copy.paymentDates,
-      description: "Return to the payment-date hub if you need another month or grant category.",
+      description: routeCopy.hubPaymentDatesDescription,
     },
     {
       href: "/status/approved",
-      title: "Approved status meaning",
-      description: "Read the approved status page if the timing makes more sense once the status is clear.",
+      title: routeCopy.hubApprovedTitle,
+      description: routeCopy.hubApprovedDescription,
     },
     {
       href: "/guides/how-to-understand-payment-dates",
-      title: "How to understand payment dates",
-      description: "Use the guide when you need help reading expected, pending, or portal-only timing.",
+      title: routeCopy.hubUnderstandTitle,
+      description: routeCopy.hubUnderstandDescription,
     },
     {
       href: "/guides/why-payment-is-delayed",
-      title: "Why payment is delayed",
-      description: "Open the delay guide if the payment window feels unclear or late.",
+      title: routeCopy.hubDelayTitle,
+      description: routeCopy.hubDelayDescription,
     },
   ];
 
@@ -139,13 +197,13 @@ export default async function PaymentMonthPage({
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: `SASSA Payment Dates for ${paymentMonth.label}`,
+    name: routeCopy.itemListName(paymentMonth.label),
     numberOfItems: paymentMonth.entries.length,
     itemListElement: paymentMonth.entries.map((entry, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: `${entry.grantName} — ${getPaymentSummaryDayText(copy, {
-        date: entry.date ? formatDateLabel(entry.date) : null,
+        date: entry.date ? formatDateLabel(entry.date, locale) : null,
         grantSlug: entry.grantSlug,
         month: paymentMonth.month,
         state: entry.state,
@@ -167,8 +225,8 @@ export default async function PaymentMonthPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "Payment dates", path: "/payment-dates" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
+          { label: routeCopy.breadcrumbPaymentDates, path: "/payment-dates" },
           { label: paymentMonth.label, path: `/payment-dates/${year}/${month}` },
         ]}
       />
@@ -182,10 +240,10 @@ export default async function PaymentMonthPage({
         }}
       />
       <Section eyebrow={copy.paymentDates} title={paymentMonth.label}>
-        <p className="text-sm text-muted">Updated {lastUpdated}</p>
+        <p className="text-sm text-muted">{routeCopy.updatedLabel} {lastUpdated}</p>
         <div className="grid gap-4">
           {paymentMonth.entries.map((entry) => {
-            const amountDetails = getGrantAmountDetails(entry.grantSlug);
+            const amountDetails = getGrantAmountDetails(entry.grantSlug, locale);
 
             return (
               <Link
@@ -200,7 +258,7 @@ export default async function PaymentMonthPage({
                   footer={<p className="text-base text-muted">{entry.note}</p>}
                   payDayLabel={copy.summaryPayDayLabel}
                   payDayText={getPaymentSummaryDayText(copy, {
-                    date: entry.date ? formatDateLabel(entry.date) : null,
+                    date: entry.date ? formatDateLabel(entry.date, locale) : null,
                     grantSlug: entry.grantSlug,
                     month: paymentMonth.month,
                     state: entry.state,
@@ -250,7 +308,7 @@ export default async function PaymentMonthPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <Section title={`${paymentMonth.label} Payout FAQs`}>
+      <Section title={routeCopy.payoutFaqTitle(paymentMonth.label)}>
         <div className="space-y-4">
           {scheduleFaqs.map((faq) => (
             <details
@@ -271,7 +329,7 @@ export default async function PaymentMonthPage({
         </div>
       </Section>
 
-      <InternalLinkGrid locale={locale} title="More payment help" items={hubLinks} />
+      <InternalLinkGrid locale={locale} title={routeCopy.morePaymentHelpTitle} items={hubLinks} />
 
       {blocks.length > 0 ? (
         <Section title={copy.sponsoredTitle}>

@@ -11,6 +11,7 @@ import { StatusPicker } from "@/components/status-picker";
 import { Card, Section } from "@/components/ui";
 import { listStatusMeanings, listFaqs } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
@@ -26,12 +27,25 @@ export async function generateMetadata({
     return {};
   }
 
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      metaTitle: "SASSA Status Check Meanings for SRD, R350 and R370 Results",
+      metaDescription:
+        "Understand SASSA status check wording for SRD, R350, and R370 results, including Approved, Pending, Declined, Banking Issue, Identity Verification, and Reapplication Needed after an official status check.",
+    },
+    {
+      metaTitle: "Izincazelo Zokuhlola Isimo se-SASSA zemiphumela ye-SRD, R350 ne-R370",
+      metaDescription:
+        "Qonda amagama okuhlola isimo se-SASSA emiphumeleni ye-SRD, R350, ne-R370, okuhlanganisa Approved, Pending, Declined, Banking Issue, Identity Verification, ne-Reapplication Needed ngemva kokuhlola isimo okusemthethweni.",
+    },
+  );
+
   return buildLocalizedMetadata({
     locale,
     path: "/status",
-    title: "SASSA Status Check Meanings for SRD, R350 and R370 Results",
-    description:
-      "Understand SASSA status check wording for SRD, R350, and R370 results, including Approved, Pending, Declined, Banking Issue, Identity Verification, and Reapplication Needed after an official status check.",
+    title: routeCopy.metaTitle,
+    description: routeCopy.metaDescription,
   });
 }
 
@@ -47,6 +61,47 @@ export default async function StatusPage({
   }
 
   const copy = getCopy(locale);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      breadcrumbStatusHelp: "Status help",
+      hubIdentityTitle: "Check identity verification meaning",
+      hubIdentityDescription: "Open the identity verification status guide when the official wording says another identity check is still blocking progress.",
+      hubBankingTitle: "Check banking issue meaning",
+      hubBankingDescription: "Open the banking issue status guide when payment release depends on bank verification or a payment-method problem.",
+      hubReapplicationTitle: "Check reapplication needed meaning",
+      hubReapplicationDescription: "Open the reapplication-needed guide if the official wording points to a fresh application route instead of ordinary waiting.",
+      hubPhoneTitle: "Change your phone number safely",
+      hubPhoneDescription: "Read the phone-number guide if OTP, mismatch, or number-change issues are affecting your status.",
+      hubWebsiteTitle: "Check if a SASSA website is official",
+      hubWebsiteDescription: "Use the website-safety guide before entering details on a copied status-check, verification, or reapplication link.",
+      itemListName: "SASSA Status Meanings",
+      heroDescription: "Understand common official SASSA status-check wording for SRD, R350, and R370 searches. This page is not an official status checker.",
+      quickUtilitiesTitle: "Quick Utilities",
+      relatedHelpTitle: "Related help",
+      statusFaqTitle: "Status Checks FAQ",
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      breadcrumbStatusHelp: "Usizo lwesimo",
+      hubIdentityTitle: "Hlola incazelo ye-identity verification",
+      hubIdentityDescription: "Vula umhlahlandlela wesimo se-identity verification uma amagama asemthethweni ethi olunye uhlolo lobunikazi lusavimba inqubekela phambili.",
+      hubBankingTitle: "Hlola incazelo ye-banking issue",
+      hubBankingDescription: "Vula umhlahlandlela wesimo se-banking issue uma ukukhishwa kwenkokhelo kuncike ekuqinisekisweni kwebhange noma enkingeni yendlela yokukhokha.",
+      hubReapplicationTitle: "Hlola incazelo ye-reapplication needed",
+      hubReapplicationDescription: "Vula umhlahlandlela we-reapplication-needed uma amagama asemthethweni ekhomba indlela entsha yesicelo esikhundleni sokulinda okuvamile.",
+      hubPhoneTitle: "Shintsha inombolo yakho yocingo ngokuphepha",
+      hubPhoneDescription: "Funda umhlahlandlela wenombolo yocingo uma i-OTP, ukungafani, noma izinkinga zokushintsha inombolo kuthinta isimo sakho.",
+      hubWebsiteTitle: "Hlola ukuthi iwebhusayithi ye-SASSA isemthethweni yini",
+      hubWebsiteDescription: "Sebenzisa umhlahlandlela wokuphepha kwewebhusayithi ngaphambi kokufaka imininingwane kusixhumanisi esikopishiwe sokuhlola isimo, ukuqinisekisa, noma ukufaka kabusha isicelo.",
+      itemListName: "Izincazelo Zezimo ze-SASSA",
+      heroDescription: "Qonda amagama ajwayelekile asemthethweni okuhlola isimo se-SASSA ekusesheni kwe-SRD, R350, ne-R370. Leli khasi alisona isihloli sesimo esisemthethweni.",
+      quickUtilitiesTitle: "Amathuluzi asheshayo",
+      relatedHelpTitle: "Usizo oluhlobene",
+      statusFaqTitle: "Imibuzo yokuhlola isimo",
+    },
+  );
   const [statuses, faqs] = await Promise.all([
     listStatusMeanings(locale),
     listFaqs(locale),
@@ -55,28 +110,28 @@ export default async function StatusPage({
   const hubLinks = [
     {
       href: "/status/identity-verification",
-      title: "Check identity verification meaning",
-      description: "Open the identity verification status guide when the official wording says another identity check is still blocking progress.",
+      title: routeCopy.hubIdentityTitle,
+      description: routeCopy.hubIdentityDescription,
     },
     {
       href: "/status/banking-issue",
-      title: "Check banking issue meaning",
-      description: "Open the banking issue status guide when payment release depends on bank verification or a payment-method problem.",
+      title: routeCopy.hubBankingTitle,
+      description: routeCopy.hubBankingDescription,
     },
     {
       href: "/status/reapplication-needed",
-      title: "Check reapplication needed meaning",
-      description: "Open the reapplication-needed guide if the official wording points to a fresh application route instead of ordinary waiting.",
+      title: routeCopy.hubReapplicationTitle,
+      description: routeCopy.hubReapplicationDescription,
     },
     {
       href: "/guides/how-to-change-phone-number",
-      title: "Change your phone number safely",
-      description: "Read the phone-number guide if OTP, mismatch, or number-change issues are affecting your status.",
+      title: routeCopy.hubPhoneTitle,
+      description: routeCopy.hubPhoneDescription,
     },
     {
       href: "/guides/how-to-know-if-a-sassa-website-is-official",
-      title: "Check if a SASSA website is official",
-      description: "Use the website-safety guide before entering details on a copied status-check, verification, or reapplication link.",
+      title: routeCopy.hubWebsiteTitle,
+      description: routeCopy.hubWebsiteDescription,
     },
   ];
 
@@ -84,7 +139,7 @@ export default async function StatusPage({
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "SASSA Status Meanings",
+    name: routeCopy.itemListName,
     numberOfItems: statuses.length,
     itemListElement: statuses.map((status, index) => ({
       "@type": "ListItem",
@@ -99,8 +154,8 @@ export default async function StatusPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "Status help", path: "/status" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
+          { label: routeCopy.breadcrumbStatusHelp, path: "/status" },
         ]}
       />
       <script
@@ -116,7 +171,7 @@ export default async function StatusPage({
             {copy.statusHelp}
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-8 text-muted sm:text-xl">
-             Understand common official SASSA status-check wording for SRD, R350, and R370 searches. This page is not an official status checker.
+             {routeCopy.heroDescription}
           </p>
         </div>
 
@@ -146,15 +201,15 @@ export default async function StatusPage({
           ))}
         </div>
       </Section>
-      <Section title="Quick Utilities">
-        <QuickCheckOptions />
+      <Section title={routeCopy.quickUtilitiesTitle}>
+        <QuickCheckOptions locale={locale} />
       </Section>
 
-      <InternalLinkGrid locale={locale} title="Related help" items={hubLinks} />
+      <InternalLinkGrid locale={locale} title={routeCopy.relatedHelpTitle} items={hubLinks} />
 
       {/* ── FAQ Section ── */}
       {statusFaqs.length > 0 ? (
-        <Section title="Status Checks FAQ">
+        <Section title={routeCopy.statusFaqTitle}>
           <FaqSchema faqs={statusFaqs} />
           <div className="space-y-4">
             {statusFaqs.map((faq) => (

@@ -1,4 +1,36 @@
 import { WHATSAPP_CHANNEL } from "@/lib/official-resources";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/site";
+
+const COPY: Partial<Record<Locale, {
+  channel: string;
+  detail: string;
+  updates: string;
+}>> = {
+  zu: {
+    channel: "Isiteshi se-WhatsApp",
+    detail: "Thola izibuyekezo zezinsuku zokukhokha, izexwayiso zesimo, nezindaba zezibonelelo ngqo ku-WhatsApp.",
+    updates: "Thola izibuyekezo ku-WhatsApp",
+  },
+  tn: {
+    channel: "Kanale ya WhatsApp",
+    detail: "Amogela dintšhwafatso tsa malatsi a tefo, ditemoso tsa maemo, le ditaba tsa dithuso ka tlhamalalo mo WhatsApp.",
+    updates: "Amogela dintšhwafatso mo WhatsApp",
+  },
+  xh: {
+    channel: "Ijelo le-WhatsApp",
+    detail: "Fumana uhlaziyo lwemihla yokuhlawula, izilumkiso zesimo, neendaba zezibonelelo ngqo ku-WhatsApp.",
+    updates: "Fumana uhlaziyo ku-WhatsApp",
+  },
+};
+
+function getCopy(locale: Locale) {
+  return {
+    channel: "WhatsApp Channel",
+    detail: "Get payment date updates, status alerts, and grant news directly on WhatsApp.",
+    updates: "Get updates on WhatsApp",
+    ...(COPY[locale] ?? {}),
+  };
+}
 
 /**
  * WhatsApp channel CTA — reusable across the site.
@@ -6,9 +38,13 @@ import { WHATSAPP_CHANNEL } from "@/lib/official-resources";
  */
 export function WhatsAppChannelBanner({
   compact = false,
+  locale = DEFAULT_LOCALE,
 }: {
   compact?: boolean;
+  locale?: Locale;
 }) {
+  const copy = getCopy(locale);
+
   if (compact) {
     return (
       <a
@@ -18,7 +54,7 @@ export function WhatsAppChannelBanner({
         className="focus-ring tap-target inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-2.5 text-[18px] font-semibold text-white transition-colors hover:bg-[#1DA851]"
       >
         <WhatsAppIcon className="h-5 w-5" />
-        Get updates on WhatsApp
+        {copy.updates}
       </a>
     );
   }
@@ -36,10 +72,10 @@ export function WhatsAppChannelBanner({
         </span>
         <div className="space-y-0.5">
           <p className="text-base font-semibold text-foreground group-hover:text-[#1DA851]">
-            Get updates on WhatsApp
+            {copy.updates}
           </p>
           <p className="text-sm text-muted">
-            Get payment date updates, status alerts, and grant news directly on WhatsApp.
+            {copy.detail}
           </p>
         </div>
       </div>
@@ -50,7 +86,15 @@ export function WhatsAppChannelBanner({
 /**
  * Inline WhatsApp link for use in footer or nav.
  */
-export function WhatsAppChannelLink({ className }: { className?: string }) {
+export function WhatsAppChannelLink({
+  className,
+  locale = DEFAULT_LOCALE,
+}: {
+  className?: string;
+  locale?: Locale;
+}) {
+  const copy = getCopy(locale);
+
   return (
     <a
       href={WHATSAPP_CHANNEL.href}
@@ -59,7 +103,7 @@ export function WhatsAppChannelLink({ className }: { className?: string }) {
       className={className ?? "inline-flex items-center gap-1.5 text-sm text-muted hover:text-foreground"}
     >
       <WhatsAppIcon className="h-3.5 w-3.5" />
-      WhatsApp Channel
+      {copy.channel}
     </a>
   );
 }

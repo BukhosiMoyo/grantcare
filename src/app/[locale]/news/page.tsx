@@ -8,6 +8,7 @@ import { PageViewTracker } from "@/components/page-view-tracker";
 import { Card, Section } from "@/components/ui";
 import { listNewsArticles } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
@@ -22,12 +23,25 @@ export async function generateMetadata({
     return {};
   }
 
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      metaTitle: "SASSA News and Payment Updates",
+      metaDescription:
+        "Read the latest SASSA news, payment-date changes, official announcement summaries, and GrantCare coverage updates.",
+    },
+    {
+      metaTitle: "Izindaba ze-SASSA Nezibuyekezo Zokukhokha",
+      metaDescription:
+        "Funda izindaba zakamuva ze-SASSA, izinguquko zezinsuku zokukhokha, izifinyezo zezaziso ezisemthethweni, nezibuyekezo ze-GrantCare.",
+    },
+  );
+
   return buildLocalizedMetadata({
     locale,
     path: "/news",
-    title: "SASSA News and Payment Updates",
-    description:
-      "Read the latest SASSA news, payment-date changes, official announcement summaries, and GrantCare coverage updates.",
+    title: routeCopy.metaTitle,
+    description: routeCopy.metaDescription,
   });
 }
 
@@ -43,27 +57,52 @@ export default async function NewsPage({
   }
 
   const copy = getCopy(locale);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      breadcrumbNews: "News",
+      hubPaymentDescription: "Open the latest payment schedule when a news update changes a date.",
+      hubGuidesDescription: "Read related guides when a news update needs more context.",
+      hubGrantsDescription: "Move to the grant library for grant-specific background and amounts.",
+      hubFaqDescription: "Use the short answers first when you only need the basics.",
+      latestNewsTitle: "Latest news",
+      noNewsText: "No published news yet.",
+      moreToExploreTitle: "More to explore",
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      breadcrumbNews: "Izindaba",
+      hubPaymentDescription: "Vula uhlelo lwakamuva lokukhokha uma isibuyekezo sezindaba sishintsha usuku.",
+      hubGuidesDescription: "Funda imihlahlandlela ehlobene uma isibuyekezo sezindaba sidinga umongo owengeziwe.",
+      hubGrantsDescription: "Dlulela kulabhulali yezibonelelo ukuze uthole isizinda namanani aqondene nesibonelelo.",
+      hubFaqDescription: "Sebenzisa izimpendulo ezimfishane kuqala uma udinga okuyisisekelo kuphela.",
+      latestNewsTitle: "Izindaba zakamuva",
+      noNewsText: "Azikho izindaba ezishicilelwe okwamanje.",
+      moreToExploreTitle: "Okunye ongakuhlola",
+    },
+  );
   const articles = await listNewsArticles(locale);
   const hubLinks = [
     {
       href: "/payment-dates",
       title: copy.paymentDates,
-      description: "Open the latest payment schedule when a news update changes a date.",
+      description: routeCopy.hubPaymentDescription,
     },
     {
       href: "/guides",
       title: copy.guides,
-      description: "Read related guides when a news update needs more context.",
+      description: routeCopy.hubGuidesDescription,
     },
     {
       href: "/grants",
       title: copy.grantTypesTitle,
-      description: "Move to the grant library for grant-specific background and amounts.",
+      description: routeCopy.hubGrantsDescription,
     },
     {
       href: "/faq",
       title: copy.faq,
-      description: "Use the short answers first when you only need the basics.",
+      description: routeCopy.hubFaqDescription,
     },
   ];
 
@@ -72,12 +111,12 @@ export default async function NewsPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "News", path: "/news" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
+          { label: routeCopy.breadcrumbNews, path: "/news" },
         ]}
       />
       <PageViewTracker name="page.viewed" locale={locale} />
-      <Section eyebrow={copy.news} title="Latest news">
+      <Section eyebrow={copy.news} title={routeCopy.latestNewsTitle}>
         {articles.length > 0 ? (
           <div className="grid gap-4 md:grid-cols-2">
             {articles.map((article) => (
@@ -96,11 +135,11 @@ export default async function NewsPage({
           </div>
         ) : (
           <Card>
-            <p className="text-sm text-muted">No published news yet.</p>
+            <p className="text-sm text-muted">{routeCopy.noNewsText}</p>
           </Card>
         )}
       </Section>
-      <InternalLinkGrid locale={locale} title="More to explore" items={hubLinks} />
+      <InternalLinkGrid locale={locale} title={routeCopy.moreToExploreTitle} items={hubLinks} />
     </div>
   );
 }

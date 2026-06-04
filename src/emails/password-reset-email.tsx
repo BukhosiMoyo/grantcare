@@ -9,12 +9,51 @@ import {
   Section,
   Text,
 } from "@react-email/components";
+import type { Locale } from "@/lib/site";
 
-export function PasswordResetEmail({ resetUrl }: { resetUrl: string }) {
+type PasswordResetEmailCopy = {
+  button: string;
+  fallback: string;
+  heading: string;
+  intro: string;
+  preview: string;
+  subject: string;
+};
+
+const PASSWORD_RESET_EMAIL_COPY: Partial<Record<Locale, PasswordResetEmailCopy>> = {
+  en: {
+    button: "Reset password",
+    fallback: "If you did not request this, you can ignore this email.",
+    heading: "Reset your password",
+    intro: "Use the button below to choose a new GrantCare password. This link expires in 2 hours.",
+    preview: "Reset your GrantCare password",
+    subject: "GrantCare password reset",
+  },
+  zu: {
+    button: "Setha kabusha iphasiwedi",
+    fallback: "Uma ungakucelanga lokhu, ungayiziba le imeyili.",
+    heading: "Setha kabusha iphasiwedi yakho",
+    intro: "Sebenzisa inkinobho engezansi ukuze ukhethe iphasiwedi entsha ye-GrantCare. Lesi sixhumanisi siphelelwa isikhathi emahoreni angu-2.",
+    preview: "Setha kabusha iphasiwedi yakho ye-GrantCare",
+    subject: "Ukusetha kabusha iphasiwedi ye-GrantCare",
+  },
+};
+
+function getPasswordResetEmailCopy(locale: Locale) {
+  return PASSWORD_RESET_EMAIL_COPY[locale] ?? (PASSWORD_RESET_EMAIL_COPY.en as PasswordResetEmailCopy);
+}
+
+export function getPasswordResetEmailSubject(locale: Locale) {
+  return getPasswordResetEmailCopy(locale).subject;
+}
+
+export function PasswordResetEmail({ locale = "en", resetUrl }: { locale?: Locale; resetUrl: string }) {
+  const copy = getPasswordResetEmailCopy(locale);
+
   return (
     <Html>
       <Head />
-      <Preview>Reset your GrantCare password</Preview>
+      <Preview>{copy.preview}</Preview>
       <Body style={{ backgroundColor: "#f5f3ee", color: "#1d2a21", fontFamily: "Arial, sans-serif", margin: 0 }}>
         <Container style={{ maxWidth: "560px", margin: "0 auto", padding: "32px 20px" }}>
           <Section
@@ -26,10 +65,10 @@ export function PasswordResetEmail({ resetUrl }: { resetUrl: string }) {
             }}
           >
             <Heading style={{ fontSize: "28px", lineHeight: "34px", margin: "0 0 12px" }}>
-              Reset your password
+              {copy.heading}
             </Heading>
             <Text style={{ color: "#4f5a53", fontSize: "15px", lineHeight: "24px", margin: "0 0 16px" }}>
-              Use the button below to choose a new GrantCare password. This link expires in 2 hours.
+              {copy.intro}
             </Text>
             <Button
               href={resetUrl}
@@ -43,10 +82,10 @@ export function PasswordResetEmail({ resetUrl }: { resetUrl: string }) {
                 textDecoration: "none",
               }}
             >
-              Reset password
+              {copy.button}
             </Button>
             <Text style={{ color: "#4f5a53", fontSize: "13px", lineHeight: "22px", margin: "20px 0 0" }}>
-              If you did not request this, you can ignore this email.
+              {copy.fallback}
             </Text>
           </Section>
         </Container>

@@ -8,40 +8,9 @@ import { FlowScreen } from "@/components/interview-guide/flow-screen";
 import { OptionGroup } from "@/components/interview-guide/option-card";
 import { LoadingSequence } from "@/components/interview-guide/loading-sequence";
 import { buildLocalePath, type Locale } from "@/lib/site";
+import { getEmailTemplateCopy } from "../copy";
 
 import "./builder.css";
-
-/* ── Flow Data ── */
-
-const EMAIL_TYPES = [
-  { label: "Apply for a job", value: "application" },
-  { label: "Send CV without a vacancy", value: "cold-cv" },
-  { label: "Follow up on application", value: "follow-up" },
-  { label: "Confirm interview", value: "confirm-interview" },
-  { label: "Thank you after interview", value: "thank-you" },
-  { label: "Internship / Learnership", value: "internship" },
-];
-
-const EXPERIENCE_OPTIONS = [
-  { label: "No experience", value: "none" },
-  { label: "Some experience", value: "some" },
-  { label: "Experienced", value: "experienced" },
-];
-
-const TONE_OPTIONS = [
-  { label: "Professional", value: "professional" },
-  { label: "Friendly professional", value: "friendly" },
-  { label: "Formal", value: "formal" },
-  { label: "Confident", value: "confident" },
-];
-
-const LENGTH_OPTIONS = [
-  { label: "Short & simple", value: "short" },
-  { label: "Detailed & strong", value: "detailed" },
-];
-
-const JOB_SUGGESTIONS = ["Admin Clerk", "Retail Assistant", "Call Centre Agent"];
-const COMPANY_SUGGESTIONS = ["Shoprite", "Transnet", "Small business"];
 
 const TOTAL_STEPS = 8; 
 
@@ -64,6 +33,7 @@ type Screen = "type" | "job" | "company" | "experience" | "tone" | "length" | "n
 export function BuilderClient({ locale }: { locale: Locale }) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
+  const copy = getEmailTemplateCopy(locale);
 
   const [screen, setScreen] = useState<Screen>("type");
   const [formData, setFormData] = useState<FlowData>({
@@ -107,22 +77,22 @@ export function BuilderClient({ locale }: { locale: Locale }) {
     try {
       const res = await fetch("/api/tools/email-template/generate", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "x-grantcare-locale": locale },
         body: JSON.stringify(formData),
       });
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(body.error || "Failed to generate email");
+        throw new Error(body.error || copy.failedGenerate);
       }
 
       const data = await res.json();
       router.push(buildLocalePath(locale, `/tools/email-template/result/${data.id}`));
     } catch (err: unknown) {
       console.error("[builder]", err);
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setError(err instanceof Error ? err.message : copy.genericError);
     }
-  }, [formData, locale, router]);
+  }, [copy.failedGenerate, copy.genericError, formData, locale, router]);
 
   return (
     <>
@@ -133,10 +103,10 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 1: Email Type ── */}
       {screen === "type" && (
         <FlowScreen
-          question="What kind of email do you need?"
+          question={copy.typeQuestion}
         >
           <OptionGroup
-            options={EMAIL_TYPES}
+            options={copy.emailTypes}
             value={formData.emailType}
             onChange={(v) => selectAndAdvance("emailType", v, "job")}
           />
@@ -146,8 +116,8 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 2: Job Role ── */}
       {screen === "job" && (
         <FlowScreen
-          question="What job are you applying for?"
-          subtitle="If it's an internship/learnership, specify the field."
+          question={copy.jobQuestion}
+          subtitle={copy.jobSubtitle}
           onBack={() => goTo("type")}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -155,13 +125,13 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               ref={inputRef}
               type="text"
               className="flow-input"
-              placeholder="e.g. Admin Clerk, Retail Assistant"
+              placeholder={copy.jobPlaceholder}
               value={formData.jobTitle}
               onChange={(e) => setFormData((prev) => ({ ...prev, jobTitle: e.target.value }))}
               autoFocus
             />
             <div className="flow-chips">
-              {JOB_SUGGESTIONS.map((job) => (
+              {copy.jobSuggestions.map((job) => (
                 <button
                   key={job}
                   type="button"
@@ -181,7 +151,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               disabled={formData.jobTitle.trim().length < 2}
               onClick={() => goTo("company")}
             >
-              Continue
+              {copy.continue}
             </button>
           </div>
         </FlowScreen>
@@ -190,8 +160,8 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 3: Company Name ── */}
       {screen === "company" && (
         <FlowScreen
-          question="Which company is this for?"
-          subtitle="Used to naturally personalise the email."
+          question={copy.companyQuestion}
+          subtitle={copy.companySubtitle}
           onBack={() => goTo("job")}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -199,13 +169,13 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               ref={inputRef}
               type="text"
               className="flow-input"
-              placeholder="e.g. Shoprite, Transnet, Small business"
+              placeholder={copy.companyPlaceholder}
               value={formData.companyName}
               onChange={(e) => setFormData((prev) => ({ ...prev, companyName: e.target.value }))}
               autoFocus
             />
             <div className="flow-chips">
-              {COMPANY_SUGGESTIONS.map((comp) => (
+              {copy.companySuggestions.map((comp) => (
                 <button
                   key={comp}
                   type="button"
@@ -225,7 +195,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               disabled={formData.companyName.trim().length < 2}
               onClick={() => goTo("experience")}
             >
-              Continue
+              {copy.continue}
             </button>
           </div>
         </FlowScreen>
@@ -234,11 +204,11 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 4: Experience Level ── */}
       {screen === "experience" && (
         <FlowScreen
-          question="What's your experience level?"
+          question={copy.experienceQuestion}
           onBack={() => goTo("company")}
         >
           <OptionGroup
-            options={EXPERIENCE_OPTIONS}
+            options={copy.experienceOptions}
             value={formData.experienceLevel}
             onChange={(v) => selectAndAdvance("experienceLevel", v, "tone")}
           />
@@ -248,11 +218,11 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 5: Tone ── */}
       {screen === "tone" && (
         <FlowScreen
-          question="How should your email sound?"
+          question={copy.toneQuestion}
           onBack={() => goTo("experience")}
         >
           <OptionGroup
-            options={TONE_OPTIONS}
+            options={copy.toneOptions}
             value={formData.tone}
             onChange={(v) => selectAndAdvance("tone", v, "length")}
           />
@@ -262,11 +232,11 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 6: Email Length ── */}
       {screen === "length" && (
         <FlowScreen
-          question="What type of email do you want?"
+          question={copy.lengthQuestion}
           onBack={() => goTo("tone")}
         >
           <OptionGroup
-            options={LENGTH_OPTIONS}
+            options={copy.lengthOptions}
             value={formData.length}
             onChange={(v) => selectAndAdvance("length", v, "name")}
           />
@@ -276,8 +246,8 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 7: Name Input ── */}
       {screen === "name" && (
         <FlowScreen
-          question="What's your name?"
-          subtitle="Used for the professional closing line."
+          question={copy.nameQuestion}
+          subtitle={copy.nameSubtitle}
           onBack={() => goTo("length")}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -285,7 +255,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               ref={inputRef}
               type="text"
               className="flow-input"
-              placeholder="e.g. Bukhosi"
+              placeholder={copy.namePlaceholder}
               value={formData.userName}
               onChange={(e) => setFormData((prev) => ({ ...prev, userName: e.target.value }))}
               onKeyDown={(e) => {
@@ -301,7 +271,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               disabled={formData.userName.trim().length < 2}
               onClick={generate}
             >
-              Create My Email
+              {copy.cta}
             </button>
           </div>
         </FlowScreen>
@@ -312,13 +282,8 @@ export function BuilderClient({ locale }: { locale: Locale }) {
         <LoadingSequence
           error={error}
           onRetry={generate}
-          title="Writing your professional email…"
-          messages={[
-            "Structuring your message...",
-            "Making it sound professional...",
-            "Customising for your situation...",
-            "Formatting for easy reading..."
-          ]}
+          title={copy.loadingTitle}
+          messages={copy.loadingMessages}
         />
       )}
     </>

@@ -11,6 +11,9 @@ import { buildLocalePath } from "@/lib/site";
 
 export async function SiteHeader({ locale }: { locale: Locale }) {
   const copy = getCopy(locale);
+  const localCopy = {
+    menu: locale === "zu" ? "Imenyu" : locale === "tn" ? "Menu" : locale === "xh" ? "Imenyu" : "Menu",
+  };
   const sessionUser = await getSessionUser();
 
   const navItems = [
@@ -90,7 +93,7 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
           <div className="flex shrink-0 items-center gap-2 lg:hidden">
             <details className="relative">
               <summary className="focus-ring flex h-10 list-none items-center rounded-full border border-border bg-surface px-3.5 text-sm font-medium text-foreground hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
-                Menu
+                {localCopy.menu}
               </summary>
               <div className="absolute right-0 top-full z-30 mt-3 w-[min(20rem,calc(100vw-2rem))] rounded-[1.5rem] border border-border bg-surface p-4 shadow-[0_18px_42px_-28px_rgba(24,36,31,0.18)]">
                 <nav className="grid gap-1">
@@ -105,7 +108,7 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
                   ))}
                 </nav>
                 <div className="mt-2">
-                  <WhatsAppChannelBanner compact />
+                  <WhatsAppChannelBanner compact locale={locale} />
                 </div>
                 <div className="mt-4 border-t border-border/80 pt-4">
                   <div className="mb-4 flex items-center justify-between gap-2 px-1">

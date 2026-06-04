@@ -5,65 +5,130 @@ import type { Locale } from "@/lib/site";
 const localeCodes = ["en", "zu", "xh", "af", "nso", "tn"] as const satisfies readonly Locale[];
 const localeEnum = z.enum(localeCodes);
 
-const emailSchema = z
-  .string()
-  .trim()
-  .min(1, "Enter your email address.")
-  .email("Enter a valid email address.")
-  .transform((value) => value.toLowerCase());
+const ENGLISH_VALIDATION_COPY = {
+  confirmPasswordRequired: "Confirm your password.",
+  emailInvalid: "Enter a valid email address.",
+  emailRequired: "Enter your email address.",
+  nameMax: "Name must be 80 characters or fewer.",
+  nameMin: "Name must be at least 2 characters.",
+  nameRequired: "Enter your name.",
+  passwordMax: "Password must be 100 characters or fewer.",
+  passwordMin: "Password must be at least 8 characters.",
+  passwordMismatch: "Passwords do not match.",
+  passwordRequired: "Enter your password.",
+  resetLinkInvalid: "Reset link is not valid.",
+};
 
-const passwordSchema = z
-  .string()
-  .min(1, "Enter your password.")
-  .min(8, "Password must be at least 8 characters.")
-  .max(100, "Password must be 100 characters or fewer.");
+type ValidationCopy = typeof ENGLISH_VALIDATION_COPY;
 
-export const signInSchema = z.object({
-  email: emailSchema,
-  password: passwordSchema,
-});
+const VALIDATION_COPY: Partial<Record<Locale, Partial<ValidationCopy>>> = {
+  en: ENGLISH_VALIDATION_COPY,
+  zu: {
+    confirmPasswordRequired: "Qinisekisa iphasiwedi yakho.",
+    emailInvalid: "Faka ikheli le-imeyili elisebenzayo.",
+    emailRequired: "Faka ikheli lakho le-imeyili.",
+    nameMax: "Igama kufanele libe nezinhlamvu ezingu-80 noma ngaphansi.",
+    nameMin: "Igama kufanele libe nezinhlamvu okungenani ezingu-2.",
+    nameRequired: "Faka igama lakho.",
+    passwordMax: "Iphasiwedi kufanele ibe nezinhlamvu ezingu-100 noma ngaphansi.",
+    passwordMin: "Iphasiwedi kufanele ibe nezinhlamvu okungenani ezingu-8.",
+    passwordMismatch: "Amaphasiwedi awafani.",
+    passwordRequired: "Faka iphasiwedi yakho.",
+    resetLinkInvalid: "Isixhumanisi sokusetha kabusha asivumelekile.",
+  },
+};
 
-export const signUpSchema = z
-  .object({
-    name: z
-      .string()
-      .trim()
-      .min(1, "Enter your name.")
-      .min(2, "Name must be at least 2 characters.")
-      .max(80, "Name must be 80 characters or fewer."),
-    email: emailSchema,
-    password: passwordSchema,
-    confirmPassword: z.string().min(1, "Confirm your password."),
-  })
-  .superRefine((value, context) => {
-    if (value.password !== value.confirmPassword) {
-      context.addIssue({
-        code: "custom",
-        message: "Passwords do not match.",
-        path: ["confirmPassword"],
-      });
-    }
+function getValidationCopy(locale: Locale = "en") {
+  return {
+    ...ENGLISH_VALIDATION_COPY,
+    ...VALIDATION_COPY[locale],
+  };
+}
+
+function createEmailSchema(locale: Locale = "en") {
+  const copy = getValidationCopy(locale);
+
+  return z
+    .string()
+    .trim()
+    .min(1, copy.emailRequired)
+    .email(copy.emailInvalid)
+    .transform((value) => value.toLowerCase());
+}
+
+function createPasswordSchema(locale: Locale = "en") {
+  const copy = getValidationCopy(locale);
+
+  return z
+    .string()
+    .min(1, copy.passwordRequired)
+    .min(8, copy.passwordMin)
+    .max(100, copy.passwordMax);
+}
+
+export function getSignInSchema(locale: Locale = "en") {
+  return z.object({
+    email: createEmailSchema(locale),
+    password: createPasswordSchema(locale),
   });
+}
 
-export const forgotPasswordSchema = z.object({
-  email: emailSchema,
-});
+export function getSignUpSchema(locale: Locale = "en") {
+  const copy = getValidationCopy(locale);
 
-export const resetPasswordSchema = z
-  .object({
-    token: z.string().trim().min(1, "Reset link is not valid."),
-    password: passwordSchema,
-    confirmPassword: z.string().min(1, "Confirm your password."),
-  })
-  .superRefine((value, context) => {
-    if (value.password !== value.confirmPassword) {
-      context.addIssue({
-        code: "custom",
-        message: "Passwords do not match.",
-        path: ["confirmPassword"],
-      });
-    }
+  return z
+    .object({
+      name: z
+        .string()
+        .trim()
+        .min(1, copy.nameRequired)
+        .min(2, copy.nameMin)
+        .max(80, copy.nameMax),
+      email: createEmailSchema(locale),
+      password: createPasswordSchema(locale),
+      confirmPassword: z.string().min(1, copy.confirmPasswordRequired),
+    })
+    .superRefine((value, context) => {
+      if (value.password !== value.confirmPassword) {
+        context.addIssue({
+          code: "custom",
+          message: copy.passwordMismatch,
+          path: ["confirmPassword"],
+        });
+      }
+    });
+}
+
+export function getForgotPasswordSchema(locale: Locale = "en") {
+  return z.object({
+    email: createEmailSchema(locale),
   });
+}
+
+export function getResetPasswordSchema(locale: Locale = "en") {
+  const copy = getValidationCopy(locale);
+
+  return z
+    .object({
+      token: z.string().trim().min(1, copy.resetLinkInvalid),
+      password: createPasswordSchema(locale),
+      confirmPassword: z.string().min(1, copy.confirmPasswordRequired),
+    })
+    .superRefine((value, context) => {
+      if (value.password !== value.confirmPassword) {
+        context.addIssue({
+          code: "custom",
+          message: copy.passwordMismatch,
+          path: ["confirmPassword"],
+        });
+      }
+    });
+}
+
+export const signInSchema = getSignInSchema();
+export const signUpSchema = getSignUpSchema();
+export const forgotPasswordSchema = getForgotPasswordSchema();
+export const resetPasswordSchema = getResetPasswordSchema();
 
 export const profileSchema = z.object({
   name: z.string().trim().min(2).max(80),

@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 
 import {
   DEFAULT_LOCALE,
-  PUBLIC_LOCALE_PREFIX_ENABLED,
   getInternalLocalePath,
   isLocale,
+  isPublicLocale,
   stripLocaleFromPathname,
 } from "@/lib/site";
 
@@ -14,18 +14,18 @@ function getPathSegments(pathname: string) {
 }
 
 export function proxy(request: NextRequest) {
-  if (PUBLIC_LOCALE_PREFIX_ENABLED) {
-    return NextResponse.next();
-  }
-
   const { pathname } = request.nextUrl;
   const firstSegment = getPathSegments(pathname)[0];
 
-  if (firstSegment && isLocale(firstSegment)) {
+  if (firstSegment && isLocale(firstSegment) && (firstSegment === DEFAULT_LOCALE || !isPublicLocale(firstSegment))) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = stripLocaleFromPathname(pathname);
 
     return NextResponse.redirect(redirectUrl, 308);
+  }
+
+  if (firstSegment && isPublicLocale(firstSegment)) {
+    return NextResponse.next();
   }
 
   const rewriteUrl = request.nextUrl.clone();

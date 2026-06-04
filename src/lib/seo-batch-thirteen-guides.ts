@@ -1,3 +1,5 @@
+import { addSetswanaTranslations } from "./generated-guide-translations";
+
 const section = (title: string, body: string) => ({ title, body });
 const faq = (question: string, answer: string) =>
   section(`FAQ: ${question}`, answer);
@@ -56,7 +58,7 @@ function guide({
   };
 }
 
-export const SEO_BATCH_THIRTEEN_GUIDES = [
+const SEO_BATCH_THIRTEEN_GUIDES_SOURCE = [
   guide({
     slug: "how-to-check-if-an-online-application-link-is-official",
     title: "How to check if an online application link is official",
@@ -1198,3 +1200,1534 @@ export const SEO_BATCH_THIRTEEN_GUIDES = [
     sortOrder: 293,
   }),
 ];
+
+type GuideTranslation = {
+  title: string;
+  summary: string;
+  sections: Array<{ title: string; body: string }>;
+};
+
+const ZU_TRANSLATIONS: Record<string, GuideTranslation> = {
+  "how-to-check-if-an-online-application-link-is-official": {
+    "title": "Ungabheka kanjani ukuthi isixhumanisi sesicelo se-inthanethi sisemthethweni",
+    "summary": "Igayidi yokuthembana kuqala yokuhlola ukuthi ingabe isixhumanisi sohlelo lokusebenza esiku-inthanethi singesomzila osemthethweni ngaphambi kokuba usisebenzise.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola ukuthi isixhumanisi sohlelo lokusebenza ku-inthanethi sisemthethweni yini ngokufanisa isixhumanisi nomsebenzi, uhlole ikheli ngokucophelela, futhi ungawathembi amagama ohlelo lokusebenza olukopishiwe ngokwawo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi basesha isixhumanisi sohlelo lokusebenza ngoba bafuna indlela esheshayo ukuqala. Lokho kuphuthuma kungenza isixhumanisi esikopishiwe noma esingacacile sibonakale sithembeke kakhulu kunalokho esiyikho ngempela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma isixhumanisi singalungile, yonke into ngemva kokuvikeleka kancane. Kungakho ukuhlola isixhumanisi kubalulekile ngaphambi kokuthi ucabange ngamafomu, ukungena ngemvume, noma ukuhambisa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Nquma ukuthi yimuphi umsebenzi ohlobene nesibonelelo isixhumanisi esifuna ukusisingatha.\n2. Hlola ikheli ngokucophelela.\n3. Qhathanisa nendlela esemthethweni eyaziwayo yalowo msebenzi.\n4. Gwema ukufaka imininingwane uma umthombo usazizwa ungacacile.\n5. Sebenzisa i-GrantCare ukuze uqinisekise uhlobo lwekhasi elisemthethweni olidingayo ngaphambi kokuzama futhi."
+      },
+      {
+        "title": "Isixhumanisi esibukeka kahle asanele",
+        "body": "Izixhumanisi zohlelo lokusebenza zivame ukuzizwa zithembekile ngoba zisebenzisa amagama ajwayelekile. Ukuhlola okuphephile ukuthi isixhumanisi singesomzila osemthethweni womsebenzi oqondile owudingayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ayithathi indawo yezindlela ezisemthethweni zohlelo lokusebenza futhi akufanele neze kwenziwe iphutha nekhasi lesicelo elisemthethweni ngokwalo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uthole ukuthi uyalidinga yini ikhasi lesicelo, ikhasi lesimo, noma omunye umzila osemthethweni ngaphambi kokuthi uthembe isixhumanisi ositholile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-the-official-application-form-safely\n• /guides/how-to-find-the-right-sassa-website-for-your-task\n• /guides/how-to-use-sassa-online-application-safely\n• /guides/how-to-apply-without-using-unofficial-websites\n• /guides/how-to-know-if-a-sassa-website-is-official"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngihlole umsebenzi ngaphambi kwesixhumanisi?",
+        "body": "Ngoba isixhumanisi esifanele sincike emsebenzini ozama ukuwuqedela."
+      },
+      {
+        "title": "I-FAQ: Ingabe amagama esibonelelo sikahulumeni akopishiwe angenza isixhumanisi sibukeke sisemthethweni?",
+        "body": "Yebo. Amagama ajwayelekile akuwona ubufakazi ngokwawo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze uma isixhumanisi sisazwakala singacacile?",
+        "body": "Buyela emuva futhi uqinisekise umzila osemthethweni olungile ngaphambi kokufaka noma yini."
+      }
+    ]
+  },
+  "how-to-use-sassa-online-application-safely": {
+    "title": "Ungalusebenzisa kanjani uhlelo lwe-inthanethi lwe-SASSA ngokuphepha",
+    "summary": "Umhlahlandlela olula wokusebenzisa amakhasi ohlelo lokusebenza ku-inthanethi ngokucophelela ngaphandle kokudida ukulungiselela, isiqondiso, nokuhambisa okusemthethweni.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa uhlelo lokusebenza oluku-inthanethi ngokuphepha ngokuqinisekisa uhlobo lwesibonelelo kuqala, uvule umzila osemthethweni olungile, futhi uphathe imihlahlandlela ezimele kuphela njengosekelo lokulungiselela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kohlelo lokusebenza ku-inthanethi kuvame ukwenzeka lapho abasebenzisi befuna isinyathelo sokuqala esilula. Isiqalo esiphephe kunazo zonke akukhona nje ukuthola noma yiluphi uhlobo. Ifanisa ifomu elifanele nomzila wesibonelelo olungile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi bephuthuma ekhasini lesicelo elingalungile, isimo sakamuva, idokhumenti, nemibuzo yokukhokha kuba nzima ukuyixazulula."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi iyiphi isibonelelo noma uhlobo losekelo olufanelana necala lakho.\n2. Qoqa amadokhumenti okungenzeka ngaphambi kokuthi uqale.\n3. Vula umzila osemthethweni wokufaka isicelo.\n4. Londoloza noma isiphi isiqinisekiso noma ireferensi uma usuthumele.\n5. Sebenzisa i-GrantCare kamuva uma udinga usizo lokuqonda ukuthi kwenzekani ngokulandelayo."
+      },
+      {
+        "title": "Ukuphepha kuqala ngomzila olungile",
+        "body": "Umkhuba wokufaka isicelo ku-inthanethi ophephe kakhulu ulula: isibonelelo esilungile, ikhasi elisemthethweni elilungile, nokwehlukana okucacile phakathi kwesiqondiso nesenzo esisemthethweni."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukukuthumelela isicelo esisemthethweni. Kukusiza ukuthi ulungiselele futhi uqonde inqubo, kodwa isicelo sangempela sisesemzileni osemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise izinhlobo zezibonelelo, ulungise amadokhumenti, futhi usuke emibuzweni yesicelo uye kusimo nemihlahlandlela yokukhokha ngokuhamba kwesikhathi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-the-official-application-form-safely\n• /guides/how-to-check-if-an-online-application-link-is-official\n• /guides/how-to-prepare-for-an-online-application\n• /guides/how-to-know-which-grant-application-fits-you\n• /eligibility-checker"
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingangilethela isicelo?",
+        "body": "Cha. Kukusiza ukuthi ulungiselele, kodwa ukuhambisa okusemthethweni kusenzeka emzileni osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngiqinisekise uhlobo lwesibonelelo kuqala?",
+        "body": "Ngoba umzila wesicelo olungile uncike ohlotsheni lwesibonelelo noma lokusekela."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyilondoloze ngemva kokuhambisa?",
+        "body": "Londoloza ukuqinisekiswa okusemthethweni noma ireferensi uma isistimu ikunikeza eyodwa."
+      }
+    ]
+  },
+  "how-to-start-an-r350-online-application-safely": {
+    "title": "Ungaluqala kanjani uhlelo lwe-inthanethi lwe-R350 ngokuphepha",
+    "summary": "Umhlahlandlela osebenziseka kalula ukuze uqale uhlelo lokusebenza lwe-inthanethi lwesitayela se-R350 ngaphandle kokudida isenzo esisemthethweni nesiqondiso esizimele.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Qala uhlelo lokusebenza lwe-inthanethi lwesitayela se-R350 ngokuphephile ngokuqinisekisa ukuthi uhlobo losekelo lufanelana nesimo sakho, bese uya emzileni osemthethweni olungile wesinyathelo sangempela sohlelo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwezinhlelo zokusebenza okuhlobene ne-R350 kuvame ukuphuthuma. Lokho kwenza abasebenzisi ukuthi bachofoze ngokushesha futhi mancane amathuba okuthi bahlukanise ukulungiselela nokuthunyelwe okusemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Isiqalo esisheshayo singadala amaphutha azovela kamuva njengokudideka, ukukhathazeka ngesimo, noma imininingwane engekho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi uhlobo lokusekela luhambisana nesimo sakho.\n2. Lungiselela imininingwane yakho ebalulekile kanye namadokhumenti.\n3. Vula umzila osemthethweni wokufaka isicelo.\n4. Thumela ngokucophelela futhi ugcine noma iyiphi ireferensi enikeziwe.\n5. Sebenzisa i-GrantCare kamuva ukuze uthole isimo, inkokhelo, noma izincazelo zesinyathelo esilandelayo."
+      },
+      {
+        "title": "Ukuphuthuma akufani nokulungela",
+        "body": "Izinhlelo zokusebenza ezihlobene ne-R350 zivame ukuzizwa ziphuthuma, kodwa isiqalo esiphephe kakhulu sisuka ekuhloleni umzila olungile nokulungiselela kahle ngaphambi kokuthi uthumele."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akulona uhlelo olusemthethweni lwe-R350 noma i-SRD. Akufanele ithathwe njengekhasi lesicelo elisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi unqume ukuthi uhlobo losekelo luyalingana, yimiphi imibhalo engabaluleka, nokuthi ungayifunda kanjani umphumela ngemva kokuqala kwesicelo esisemthethweni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-apply-online-for-social-relief\n• /guides/social-relief-who-may-qualify\n• /guides/how-to-find-the-official-application-form-safely\n• /guides/how-to-check-if-your-online-application-was-submitted\n• /guides/how-to-check-srd-status-online"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise isixhumanisi sokuqala sohlelo lokusebenza le-R350 engisibonayo?",
+        "body": "Cha. Qinisekisa umzila osemthethweni kuqala."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyilungiselele ngaphambi kokuqala?",
+        "body": "Lungiselela imininingwane ebalulekile kanye namadokhumenti okungenzeka axhunywe nesicelo."
+      },
+      {
+        "title": "I-FAQ: Kwenzekani ngemva kokuhambisa?",
+        "body": "Londoloza isithenjwa sakho futhi usebenzise umzila osemthethweni ukuze uthole izibuyekezo, bese usebenzisa i-GrantCare ukuze uthole izincazelo uma kudingeka."
+      }
+    ]
+  },
+  "how-to-use-an-r370-application-page-safely": {
+    "title": "Isetshenziswa kanjani ikhasi lesicelo le-R370 ngokuphepha",
+    "summary": "Umhlahlandlela wabasebenzisi abasesha amakhasi ohlelo lwe-R370 futhi badinga indlela ephephile yokuhlukanisa imizila esemthethweni kuzixhumanisi ezikopishiwe noma ezingacacile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa ikhasi lesicelo lesitayela se-R370 ngokuphephile ngokuqinisekisa umzila osemthethweni wosekelo olucelayo futhi unganciki ekumangalweni kwekhasi elikopishiwe kuphela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwesitayela se-R370 kuvame ukubonisa ukushintsha amagama asesidlangalaleni noma izinkomba ezisuselwe onyakeni. Lokho kwenza kubaluleke nakakhulu ukufanisa ikhasi nomsebenzi wamanje osemthethweni kunenombolo eyaziwa kakhulu kumphumela wosesho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi bangalahlekelwa isikhathi ngokujaha amalebula ekhasi esikhundleni sokuqinisekisa ukuthi imuphi umzila wosekelo ophethwe yikhasi."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi yiliphi uhlobo losekelo leli khasi elibhekise kulo.\n2. Qinisekisa umzila osemthethweni walolo hlobo losekelo.\n3. Gwema ukuthemba ikhasi kuphela ngoba lisebenzisa inani elijwayelekile.\n4. Londoloza umzila osemthethweni olungile uma usuqinisekisiwe.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuhumusha amagama azungeze uhlelo lokusebenza."
+      },
+      {
+        "title": "Umzila ubaluleke ngaphezu kwelebula yenani",
+        "body": "Inani elijwayelekile kumphumela wosesho alanele ukufakazela ukuthi ikhasi liwumzila osemthethweni olungile. Uhlobo losekelo oluyisisekelo nomsebenzi osemthethweni kubaluleke kakhulu."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiwasebenzisi amakhasi ohlelo lokusebenza asemthethweni. Isiza abasebenzisi ukuthi bahumushe ukushintsha ulimi lokusesha ngaphandle kokulenza iphutha njengegunya elisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uhumushele ukusesha okusekelwe enanini kumzila wosekelo osemthethweni olungile ngaphambi kokusebenzisa noma yiliphi ikhasi lohlelo lokusebenza."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-start-an-r350-online-application-safely\n• /guides/how-to-find-the-right-sassa-website-for-your-task\n• /guides/how-to-check-if-an-online-application-link-is-official\n• /guides/how-to-understand-r370-application-status-safely\n• /guides/how-to-check-370-application-pages-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani kungafanele ngithembe ilebula yenani iyodwa?",
+        "body": "Ngoba inombolo ejwayelekile ayifakazi ukuthi ikhasi liwumzila osemthethweni olungile."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqinisekise kuqala?",
+        "body": "Qinisekisa uhlobo lwangempela losekelo kanye nomzila osemthethweni osiphathayo."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingangitshela ukuthi ikhasi liphephile yini?",
+        "body": "Ingakuqondisa kokuthi yini okufanele uyihlole, kodwa ukuqinisekiswa okusemthethweni kusancike emzileni ngokwawo."
+      }
+    ]
+  },
+  "how-to-use-online-application-login-safely": {
+    "title": "Ungakusebenzisa kanjani ukungena ngemvume kohlelo lokusebenza ku-inthanethi ngokuphepha",
+    "summary": "Umhlahlandlela wokuphepha wabasebenzisi abafuna amakhasi okungena ngemvume ku-inthanethi futhi badinga ukugwema izikrini zokungena ezingelona iqiniso noma amaphutha asheshayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa ukungena ngemvume kohlelo lokusebenza ku-inthanethi ngokuphepha ngokuqinisekisa ikhasi kuqala, uhlole ukuthi ukungena ngemvume kuyindlela esemthethweni yomsebenzi wakho, futhi ungafaki imininingwane emakhasini angaqinisekile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amakhasi okungena ngemvume kuhlelo lokusebenza ngokuvamile azizwa ephuthumayo ngoba abasebenzisi bacabanga ukuthi ukungena ngemvume okukodwa kuzoxazulula yonke into. Empeleni, ikhasi lisadinga ukuhlolwa okufanayo kokwethenjwa njenganoma yimuphi omunye umzila osemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ikhasi lokungena elingalungile liyingozi kakhulu kunekhasi lemininingwane engalungile ngoba abasebenzisi bangase banikeze imininingwane ngaphambi kokuba babone ukuthi umzila awucacile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa umsebenzi kuqala.\n2. Vula umzila wokungena osemthethweni owaziwayo walowo msebenzi.\n3. Hlola ikheli ngokucophelela.\n4. Faka imininingwane kuphela uma ikhasi lifana ngokusobala nomzila osemthethweni.\n5. Yima uphinde uhlole ukuthi ikhasi lizwakala lingajwayelekile yini noma lihluke kakhulu kumsebenzi obuwulindele."
+      },
+      {
+        "title": "Ukuphepha kokungena ngemvume kuncike ekucaceni komsebenzi",
+        "body": "Umkhuba wokungena ophephe kakhulu ukwazi kahle ukuthi yimuphi umsebenzi ongena ngemvume. Lokho kwenza kube lula ukubona uma ikhasi lingafani nalokho okudingayo ngempela."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayizibambi izenzo zokungena ezisemthethweni. Isiza abasebenzisi ukuthi bafinyelele umzila osemthethweni olungile ngokuphepha futhi baqonde ukuthi yini ezayo ngemva kokungena ngemvume."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi unqume ukuthi uyawudinga yini umzila wokungena wangempela, ikhasi lesimo, noma ikhasi lolwazi ngaphambi kokuthi uqale ukuthayipha imininingwane."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-use-services-sassa-gov-za-login-safely\n• /guides/what-sassa-portal-login-is-for\n• /guides/what-to-do-if-online-application-login-is-not-working\n• /guides/how-to-check-if-an-online-application-link-is-official\n• /guides/how-to-keep-your-portal-login-details-safe"
+      },
+      {
+        "title": "I-FAQ: Kungani ukucaca komsebenzi kubaluleke kangaka ngaphambi kokungena ngemvume?",
+        "body": "Ngoba ikhasi lokungena elilungile lincike kumsebenzi ozama ukuwuqeda."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngingene ekhasini elibukeka ngilijwayele kuphela?",
+        "body": "Cha. Qinisekisa umzila kuqala."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze uma ikhasi lizwakala lingalungile?",
+        "body": "Yima uphinde uhlole umzila osemthethweni ngaphambi kokuqhubeka."
+      }
+    ]
+  },
+  "what-to-do-if-online-application-login-is-not-working": {
+    "title": "Okufanele ukwenze uma ukungena kwesicelo se-inthanethi kungasebenzi",
+    "summary": "Umhlahlandlela wokuxazulula izinkinga wezinkinga zokungena ku-inthanethi ezisemthethweni, ugxile ezinyathelweni ezilandelayo eziphephile esikhundleni sokuqagela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ukungena kuhlelo lokusebenza ku-inthanethi kungasebenzi, qala uqinisekise umzila kanye nekhasi ngokwalo ngaphambi kokuthi ucabange ukuthi inkinga isesicelo sakho noma imininingwane."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Inkinga yokungena ingase ivele ekhasini, emzileni, ekuxhumekeni, noma esinyathelweni sokungena ngokwaso. Akumele iphathwe ngokuzenzakalela njengenkinga yohlelo lokusebenza."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi abaqagela ngokuphindaphindiwe ekhasini elingalungile bangakha ingcindezi eyengeziwe ngaphandle kokusondela enkingeni yangempela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi usekhasini lokungena elisemthethweni elilungile.\n2. Zama futhi ngokucophelela esikhundleni sokujaha imizamo ephindaphindiwe.\n3. Hlola uxhumano nomthwalo wekhasi.\n4. Gcina inothi ukuthi yisiphi isinyathelo esihlulekayo.\n5. Sebenzisa imizila yokwesekwa esemthethweni uma ukungena ngemvume okusemthethweni okuqinisekisiwe namanje kungasebenzi."
+      },
+      {
+        "title": "Inkinga yokungena ayifani nenkinga yohlelo lokusebenza",
+        "body": "Umehluko owusizo kakhulu uphakathi kwenkinga yokufinyelela nenkinga yecala. Ukwehluleka kokungena ngokuvamile okokufinyelela kuqala, hhayi kumphumela wakho wangempela wohlelo lokusebenza."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukulungisa ukufinyelela kokungena ngemvume okusemthethweni. Isiza abasebenzisi ukugwema ama-workaround angaphephile futhi bacabange inkinga ngokucacile."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlukanise izinkinga zokungena ezinkingeni zesimo sohlelo lokusebenza, okwenza isinyathelo esilandelayo sibe lula ukwehlulela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-use-online-application-login-safely\n• /guides/what-to-do-if-you-cannot-log-in-to-the-sassa-portal\n• /guides/how-to-find-the-right-sassa-website-for-your-task\n• /guides/how-to-check-if-an-online-application-link-is-official\n• /guides/how-to-find-official-contact-details-safely"
+      },
+      {
+        "title": "I-FAQ: Ingabe inkinga yokungena isho ukuthi isicelo sami sehlulekile?",
+        "body": "Cha. Ivamise ukukhomba inkinga yokufinyelela kuqala."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngiyeke ukuqagela okuphindaphindiwe?",
+        "body": "Ngoba ukuqagela ngokuphindaphindiwe kungenza isimo sidideke ngaphandle kokulungisa inkinga yangempela."
+      },
+      {
+        "title": "I-FAQ: Kufanele ngisebenzise nini ukwesekwa okusemthethweni?",
+        "body": "Yisebenzise lapho ukungena okusemthethweni okuqinisekisiwe namanje kungasebenzi ngemva kokuzama kabusha ngokucophelela."
+      }
+    ]
+  },
+  "how-to-find-an-official-application-status-page-safely": {
+    "title": "Ungalithola kanjani ikhasi lesimo sohlelo lokusebenza ngokuphephile",
+    "summary": "Umhlahlandlela wokuthola ikhasi elisemthethweni lesimo sohlelo lokusebenza ngaphandle kokulidida ngomhlahlandlela ojwayelekile, isixhumanisi esikopishiwe, noma iphothali engalungile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Thola ikhasi elisemthethweni lesimo sohlelo lokusebenza ngokuphepha ngokufanisa ikhasi nesibonelelo noma uhlobo losekelo kuqala, bese uqinisekisa umzila ngaphambi kokufaka noma yimiphi imininingwane."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amakhasi wesimo sohlelo lokusebenza angabukeka afana neziqondiso ezijwayelekile zokuhlola isimo, kodwa umzila olungile usancike ohlotsheni oluqondile losekelo nenqubo esemthethweni ozama ukuyilandela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ikhasi lesimo elingalungile lingaveza ukudideka nangaphambi kokuba ubone umphumela. Izindaba zokufanisa ikhasi eliphephile ngaphambi kokuthi ukuhumusha kuqale."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Khomba uhlobo lokusekela oluhlolayo.\n2. Bheka umzila osemthethweni wesimo oxhunywe kulolo hlobo.\n3. Qinisekisa ikheli lekhasi nenjongo.\n4. Gwema ukusebenzisa izixhumanisi ezikopishiwe ezingenamthombo ocacile.\n5. Sebenzisa i-GrantCare kuphela ukuze utolike umphumela ngemva kokuba ikhasi elisemthethweni liwunikeze."
+      },
+      {
+        "title": "Ikhasi lesimo elilungile liqala ngesigaba esifanele",
+        "body": "Ukusesha isimo sohlelo lokusebenza kusebenza kahle kakhulu uma kuqala ngohlobo losekelo, hhayi nje isimo segama. Lelo shifu elilodwa lisusa ukudideka okukhulu."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare akulona ikhasi lesimo esisemthethweni. Isiza abasebenzisi ukuthi bathole umzila osemthethweni olungile futhi baqonde amagama abawabona lapho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi unciphise umsebenzi, ukhethe umzila ofanele wesimo, futhi uqonde ukuthi umphumela usho ukuthini uma ikhasi elisemthethweni liwubonisa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-application-status-on-the-official-portal-safely\n• /guides/how-to-move-from-application-to-status-check\n• /guides/how-to-read-application-status-after-applying-online\n• /guides/how-to-avoid-fake-application-status-pages\n• /status"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngiqale ngohlobo losekelo?",
+        "body": "Ngoba indlela efanele yesimo esemthethweni ingase incike ekutheni ubhalisele uhlobo luni loxhaso."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngethembe isixhumanisi sesimo esikopishiwe?",
+        "body": "Cha. Qinisekisa umthombo nomzila kuqala."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze ngemva kokuthola ikhasi?",
+        "body": "Sebenzisa ikhasi elisemthethweni ukuze uthole isheke, bese usebenzisa i-GrantCare uma udinga usizo lokufunda umphumela."
+      }
+    ]
+  },
+  "what-to-do-after-you-submit-an-online-application": {
+    "title": "Okufanele ukwenze ngemuva kokufaka isicelo se-inthanethi",
+    "summary": "Umhlahlandlela ozolile wezinyathelo zokuqala ngemuva kokuthunyelwa ku-inthanethi ukuze abasebenzisi bangalahlekelwa isithenjwa sabo noma baqale ukuqagela kusenesikhathi kakhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngemva kokuhambisa isicelo ku-inthanethi, gcina isiqinisekiso noma ireferensi, phawula usuku, bese unikeza isistimu esemthethweni isikhathi ngaphambi kokuthi uqale ukuhlola izibuyekezo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukuzithoba kuwukuphela kwesigaba esisodwa, hhayi ukuphela kwayo yonke inqubo. Isigaba esilandelayo sivame ukulinda ukunyakaza okusemthethweni, okulula ukusiphatha uma amarekhodi ecacile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi bavame ukusuka baqonde ekuhambiseni baye ekuhloleni ukukhathazeka futhi bakhohlwe ukulondoloza ulwazi olufakazela ukuthi uhlelo lokusebenza luthunyelwe ngempela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Gcina isiqinisekiso noma ireferensi.\n2. Qaphela usuku lokuhambisa.\n3. Gcina imininingwane eyinhloko nezithombe-skrini ndawonye.\n4. Linda iwindi lokuhlola isimo elifanele esikhundleni sokuhlola kusenesikhathi.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuqonda isimo esilandelayo noma isinyathelo sokukhokha kamuva."
+      },
+      {
+        "title": "Ukuhambisa kufanele kukushiye nerekhodi",
+        "body": "Into ewusizo kakhulu ngemuva kokuhambisa ayikona ukuchofoza ngaphezulu. Kuyirekhodi elicacile elikhombisa ukuthi isicelo sidlulile nokuthi senzeka nini."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukuqinisekisa ukuthunyelwa okusemthethweni ngaphakathi kwesistimu esemthethweni. Ingakusiza kuphela ukuthi uqonde izinyathelo ezilandelayo uma usunerekhodi lakho elisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekuthumeleni uye ekuhloleni isimo, isikhathi sokukhokha, kanye nokusetha isikhumbuzi ngaphandle kokulahlekelwa okuyisisekelo."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-if-your-online-application-was-submitted\n• /guides/how-to-move-from-application-to-status-check\n• /guides/how-to-check-application-status-on-mobile\n• /guides/how-grant-reminders-can-help\n• /dashboard"
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyonge kuqala?",
+        "body": "Londoloza isiqinisekiso noma ireferensi isistimu esemthethweni ekunika yona."
+      },
+      {
+        "title": "I-FAQ: Kungani uqaphele usuku lokuhambisa?",
+        "body": "Ngoba ikusiza ukuthi wehlulele isikhathi sokuhlolwa kwesimo sakamuva nezibuyekezo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngihlole isimo ngokushesha ngemva kokuhambisa?",
+        "body": "Ngokuvamile kuyasiza ukunikeza uhlelo olusemthethweni isikhathi esithile kuqala."
+      }
+    ]
+  },
+  "how-to-check-if-your-online-application-was-submitted": {
+    "title": "Ungahlola kanjani ukuthi isicelo sakho esiku-inthanethi sithunyelwe",
+    "summary": "Umhlahlandlela osebenzayo wokuhlola ukuthi ingabe ukuthunyelwa ku-inthanethi kwenzeke ngempela yini ngaphambi kokuthi uqale ukukhathazeka ngezibuyekezo zesimo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola ukuthi isicelo sakho esiku-inthanethi sithunyelwe yini ngokubheka isiqinisekiso esisemthethweni, ireferensi, noma isinyathelo sokugcina sokuhambisa kunokuqagela ngekhanda."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi ngezinye izikhathi bashiya ikhasi ngokushesha okukhulu, balahlekelwe isikrini sokugcina, noma bazizwe bengenasiqiniseko sokuthi isinyathelo sokugcina sokuhambisa senzeke ngempela yini. Umkhondo ongcono kakhulu ukuqinisekiswa okusemthethweni, hhayi umuzwa okungenzeka ukuthi udlule kuwo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma ukuhambisa kungazange kuqedwe, ukuhlola isimo kamuva kuzodala ukudideka okwengeziwe. Yingakho ukuqinisekisa ukuhanjiswa kubalulekile kuqala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Bheka isiqinisekiso esisemthethweni noma ireferensi.\n2. Hlola ukuthi ufinyelele esinyathelweni sokugcina sokuhambisa.\n3. Gcina noma yiziphi izikrini zokuqinisekisa noma imilayezo.\n4. Gcina usuku lokuthumela luserekhodini.\n5. Sebenzisa umzila osemthethweni futhi kuphela uma ungakwazi ukuqinisekisa ukuthunyelwa."
+      },
+      {
+        "title": "Ukuqinisekisa kubaluleke ngaphezu kwenkumbulo",
+        "body": "Kuqala ukudideka ngoba abasebenzisi bathembele enkumbulweni esikhundleni sokuqinisekisa okusemthethweni. Irekhodi elicacile liwusizo kakhulu kunokuqagela kamuva."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukubona ngaphakathi kwesistimu yesicelo esemthethweni. Isiza abasebenzisi bazi ukuthi ibuphi ubufakazi bokuthunyelwe okufanele bugcinwe."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi ubhanqe ukuqinisekiswa kokuthunyelwa nesimo sakamuva nemihlahlandlela yokukhokha ukuze ungeqi uye phambili maduzane."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-to-do-after-you-submit-an-online-application\n• /guides/how-to-move-from-application-to-status-check\n• /guides/how-to-check-application-status-on-the-official-portal-safely\n• /guides/how-to-save-your-status-results-for-reference\n• /guides/how-to-keep-records-after-reapplying"
+      },
+      {
+        "title": "I-FAQ: Iluphi uphawu olungcono kakhulu ukuhanjiswa okudlule kukho?",
+        "body": "Uphawu oluhle kakhulu isiqinisekiso esisemthethweni noma inkomba evela esinyathelweni sokugcina sokuhambisa."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngilondoloze isikrini sokuqinisekisa?",
+        "body": "Ngoba kusiza ukufakazela okwenzekile uma kamuva uzizwa ungaqiniseki."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma ngingenaso nhlobo isiqinisekiso?",
+        "body": "Hlola kabusha ngokucophelela ngaphambi kokuthi ukuhambisa kuqediwe."
+      }
+    ]
+  },
+  "how-to-move-from-application-to-status-check": {
+    "title": "Ungasuka kanjani kuhlelo lokusebenza uye ekuhlolweni kwesimo",
+    "summary": "Umhlahlandlela webhuloho wabasebenzisi asebesifakile isicelo futhi abafuna ukwazi ukuthi bangashintshela nini futhi kanjani ekuhloleni isimo ngokuphephile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Suka kuhlelo lokusebenza uye ekuhloleni isimo ngokugcina irekhodi lakho lokuthumela, ulinde isigaba esifanele, bese usebenzisa umzila olungile wesimo osemthethweni wohlobo losekelo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Isicelo kanye nokuhlolwa kwesimo kuxhumene, kodwa akusona isigaba esifanayo. Abasebenzisi bavamise ukugxuma ngokushesha kakhulu besuka komunye baye komunye ngaphandle kokuqinisekisa ukuthunyelwa noma ukunikeza isistimu isikhathi sokuhamba."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma uqala ukuhlola isimo kusenesikhathi kakhulu noma usendleleni engalungile, kungase kuzwakale sengathi akwenzeki lutho ngisho noma udaba lukusikhathi kuphela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi isicelo sakho sithunyelwe.\n2. Gcina ireferensi yakho kanye nosuku lokuthumela.\n3. Nikeza uhlelo olusemthethweni isikhathi sokudlulela esigabeni esilandelayo.\n4. Sebenzisa umzila wesimo osemthethweni olungile wohlobo losekelo.\n5. Sebenzisa i-GrantCare ukuhumusha amagama uma ikhasi elisemthethweni seliyibonisile."
+      },
+      {
+        "title": "Lolu wushintsho lwesiteji, hhayi isinqamuleli",
+        "body": "Ukudlulela ekuhloleni isimo kusebenza kangcono kakhulu uma ukuthatha njengesigaba esilandelayo senqubo efanayo, hhayi njengesinqamuleli esisheshayo esiya ekuqinisekiseni."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi baqonde i-handoff phakathi kwezigaba, kodwa ayithathi indawo yomzila wesicelo osemthethweni noma umzila osemthethweni wesimo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi ulawule ukusuka ekuhambiseni ukuya esimweni, bese usuka esimweni uye kumhlahlandlela wokukhokha uma icala lakho liya phambili."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-if-your-online-application-was-submitted\n• /guides/how-to-find-an-official-application-status-page-safely\n• /guides/how-to-read-application-status-after-applying-online\n• /guides/how-to-check-application-status-on-mobile\n• /guides/how-to-check-your-status-without-making-mistakes"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngiqinisekise ukuthunyelwa ngaphambi kokuhlola isimo?",
+        "body": "Ngoba ukuhlola isimo akusizi kangako uma ungenaso isiqiniseko sokuthi isicelo sidlulile."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngihlole isimo ngokushesha ngemva kokuhambisa?",
+        "body": "Ngokuvamile kuyasiza ukunikeza isistimu esemthethweni isikhathi kuqala."
+      },
+      {
+        "title": "I-FAQ: Imuphi umzila okufanele ngiwusebenzisele isimo?",
+        "body": "Sebenzisa umzila wesimo osemthethweni ofana nohlobo losekelo olufakele isicelo."
+      }
+    ]
+  },
+  "how-to-read-application-status-after-applying-online": {
+    "title": "Usifunda kanjani isimo sesicelo ngemuva kokufaka isicelo ku-inthanethi",
+    "summary": "Umhlahlandlela oqondile wokufunda amagama esimo sohlelo lokusebenza ngemuva kokuthunyelwa ku-inthanethi ngaphandle kokusabela ngokweqile ekungaqinisekini kwangaphambilini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Funda isimo sohlelo lokusebenza ngemva kokufaka isicelo ku-inthanethi ngokuhlola amagama aqondile, uwahlukanise nalokho okulindelekile kwenkokhelo, nokusebenzisa umlayezo njengesibuyekezo sesiteji kunendaba yokugcina."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngemva kokufaka isicelo ku-inthanethi, abasebenzisi bavame ukufuna impendulo eyodwa elula. Empeleni, amagama esimo avame ukukhombisa ukuthi icala likusiphi isigaba esikhundleni sokuphendula yonke imibuzo yakamuva ngesikhathi esisodwa."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi bephatha yonke imilayezo yesimo sangaphambi kwesikhathi njengomphumela wokugcina, bangethuka noma benze okuthile maduzane kakhulu. Ukufunda okusesiteji kuzolile futhi ngokuvamile kunembe kakhudlwana."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Funda amagama aqondile ekhasini elisemthethweni.\n2. Hlukanisa isimo sohlelo lokusebenza nesikhathi sokukhokha.\n3. Qhathanisa umlayezo nomhlahlandlela ofanayo we-GrantCare.\n4. Londoloza amagama kanye nosuku ukuze uthole ireferensi.\n5. Sebenzisa umzila osemthethweni esenzweni sangempela esilandelayo kuphela uma umlayezo ukhomba ngokusobala kokukodwa."
+      },
+      {
+        "title": "Isimo ngokuvamile siwumlayezo wasesiteji",
+        "body": "Amagama amaningi wesimo sohlelo lokusebenza aqondwa kangcono njengomlayezo wokuqhubeka. Lokho kusiza abasebenzisi ukuthi balinde noma benze ngesizathu esifanele esikhundleni sokusabela ekwesabeni."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ichaza amagama esimo ngolimi olulula, kodwa ukuqinisekiswa okusemthethweni nezenzo ezisemthethweni zisenzeka ezinhlelweni ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uqhathanise amagama esimo sohlelo lokusebenza nezincazelo zesimo sesibonelelo, imihlahlandlela yokukhokha, namakhasi okulandelela ukuze umphumela ube nomqondo owengeziwe."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-application-status-on-the-official-portal-safely\n• /guides/how-to-read-your-status-check-result\n• /guides/how-to-check-application-status-on-mobile\n• /status\n• /guides/what-to-do-after-a-status-check-result"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngiphathe isimo njengomlayezo wasesiteji?",
+        "body": "Ngoba imilayezo eminingi yesimo ibonisa ukuqhubeka noma ukulinda kunomphumela wokugcina."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngihlanganise imibuzo yesimo kanye nenkokhelo ndawonye?",
+        "body": "Kuyasiza ukuwahlukanisa, ngoba ngokuvamile angokwezigaba ezahlukene."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyilondoloze lapho ngifunda isimo?",
+        "body": "Londoloza amagama kanye nosuku owakubona ngalo."
+      }
+    ]
+  },
+  "how-to-check-application-status-on-mobile": {
+    "title": "Usihlola kanjani isimo sohlelo lokusebenza kuselula",
+    "summary": "Umhlahlandlela wokuqala weselula wokuhlola isimo sohlelo lokusebenza ngokuphephile ocingweni ngaphandle kokulahlekelwa umzila, amagama, noma umthombo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola isimo sohlelo lokusebenza kumakhalekhukhwini ngokuvula umzila osemthethweni olungile, uhlole ikheli lekhasi ocingweni lwakho, futhi ufunde amagama ngokucophelela ngaphambi kokuvala ikhasi."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi benza yonke into ocingweni. Lokho kwenza ukuhlola isimo seselula kuvame, kodwa futhi kusho indawo yesikrini esincane samakheli, amanothi, kanye nomxholo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ocingweni kulula ukugeja ikheli eligcwele, ukujaha umphumela, noma ukhohlwe ukulondoloza amagama owabonile. Umkhuba weselula ohamba kancane unganciphisa lokho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula umzila wesimo osemthethweni olungile kufoni yakho.\n2. Hlola ikheli lekhasi ngaphambi kokuqhubeka.\n3. Funda amagama aphelele, hhayi igama elingukhiye elilodwa kuphela.\n4. Londoloza isithombe-skrini noma inothi ukuze uthole ireferensi.\n5. Sebenzisa i-GrantCare ukuze utolike umphumela uma udinga usizo ngemva kwalokho."
+      },
+      {
+        "title": "Ukuhlola kweselula kudinga ukuphunyuzwa okukodwa okwengeziwe",
+        "body": "Ukuma kancane ukuhlola ikheli nokulondoloza amagama abaluleke kakhulu ocingweni ngoba isikrini esincane sifihla umongo kalula."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isebenziseka kalula, kodwa akulona uhlelo olusemthethweni lwesimo. Ukuhlola okusemthethweni kusengokwendlela esemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uguqule umphumela osheshayo wefoni ube ukuqonda okucacile ngokuchaza amagama ngolimi olulula ngemva kokuwuhlola ngokusemthethweni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-r350-status-on-mobile\n• /guides/how-to-check-application-status-on-the-official-portal-safely\n• /guides/how-to-read-application-status-after-applying-online\n• /guides/how-to-save-your-status-results-for-reference\n• /guides/how-to-check-your-status-without-making-mistakes"
+      },
+      {
+        "title": "I-FAQ: Kungani ukuhlola isimo seselula kulula ukusifunda kabi?",
+        "body": "Ngoba isikrini esincane singafihla ikheli futhi senze abasebenzisi banyakaze ngokushesha kakhulu."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngigcine amagama efonini yami?",
+        "body": "Yebo. Isithombe-skrini noma inothi lingakusiza ukuthi usiqhathanise ngokuhamba kwesikhathi."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze ngemva kokubona umphumela?",
+        "body": "Sebenzisa i-GrantCare ukuze uyitolike uma igama lisazwakala lingacacile."
+      }
+    ]
+  },
+  "what-to-do-if-your-application-status-does-not-update": {
+    "title": "Okufanele ukwenze uma isimo sakho sohlelo lokusebenza singabuyekezi",
+    "summary": "Umhlahlandlela wesinyathelo esilandelayo sabasebenzisi isimo sabo sohlelo lokusebenza esihlala sinjalo isikhathi eside futhi asisazizwa njengokulinda okuvamile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma isimo sakho sesicelo singabuyekezi, qala ngokugcina amagama nosuku, bese unquma ukuthi udaba lusabukeka njengokulinda okuvamile noma manje ludinga ukulandelelwa ngokusemthethweni."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Isimo esingashintshi singasho ukulinda okuvamile, kodwa singasho futhi ukuthi inqubo isifinyelele endaweni lapho kungase kudingeke khona esinye isinyathelo noma ukucaciswa."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi besabela ngaphambi kwesikhathi kakhulu, bangadala ukudideka okwengeziwe. Uma belinda isikhathi eside lapho icala lidinga usizo ngokucacile, ukucindezeleka kukhula kuphela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Londoloza amagama amanje kanye nosuku.\n2. Hlola ukuthi umyalezo ofanayo uhlale isikhathi esingakanani.\n3. Qhathanisa nomhlahlandlela wesimo we-GrantCare ofanayo.\n4. Gcina amarekhodi anoma yiziphi ezinye izinguquko ezenzeka eduze kwayo.\n5. Sebenzisa umzila osemthethweni uma isimo manje sidinga ukulandelela okuqondile kunokunye ukulinda."
+      },
+      {
+        "title": "Inhloso wukwahlulela ukuthi ngabe lokhu kusekulindile yini okujwayelekile",
+        "body": "Ukulinda isikhathi eside kulula ukukusingatha uma unganquma ukuthi umlayezo ofanayo usalingana yini nesiteji noma manje ukhomba icala elimile."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukuphoqa ukubuyekezwa kwesimo esisemthethweni. Isiza abasebenzisi ukuthi bahlulele lapho okunye ukulinda kusenengqondo nalapho udaba lungase ludinge ukunakwa okusemthethweni okuqondile."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise amagama esimo angashintshiwe nemihlahlandlela elindile, yokuqinisekisa, yesikhalazo, nemihlahlandlela yokubambezeleka kokukhokha ukuze uyeke ukuqagela ngokungaboni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-to-do-if-your-status-does-not-change\n• /guides/how-status-check-pages-can-change-over-time\n• /guides/how-to-find-official-application-status-updates-safely\n• /guides/when-to-use-contact-details-instead-of-status-check\n• /status/pending"
+      },
+      {
+        "title": "I-FAQ: Ingabe isimo esingashintshiwe sihlala sisho ukuthi kukhona okungalungile?",
+        "body": "Cha. Kusengabonisa ukulinda, kodwa isikhathi nephethini kubalulekile."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyigcine ngenkathi ngilindile?",
+        "body": "Gcina amagama, izinsuku, nanoma yiziphi izinguquko ezihlobene nerekhodi."
+      },
+      {
+        "title": "I-FAQ: Kunini lapho kufanele ngidlulele ngale kokulinda?",
+        "body": "Lapho umlayezo ongashintshiwe awusabonakali ukulingana nesigaba esivamile senqubo."
+      }
+    ]
+  },
+  "how-to-read-application-status-after-changing-details": {
+    "title": "Usifunda kanjani isimo sohlelo lokusebenza ngemuva kokushintsha imininingwane",
+    "summary": "Umhlahlandlela wokuqonda imilayezo yesimo ngemva kokubuyekeza ifoni, ukubhanga, noma eminye imininingwane yohlelo lokusebenza.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngemva kokushintsha imininingwane, funda isimo sohlelo lokusebenza ngokuqaphela okwengeziwe ngoba kungenzeka ukuthi isistimu isabuyekeza noma iqinisekisa ulwazi olusha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ushintsho lwemininingwane lungathinta okwesikhashana indlela isimo esibukeka ngayo. Lokho akusho ngaso sonke isikhathi ukuthi lonke icala lishintshile. Kwesinye isikhathi kusho ukuthi ulwazi olubuyekeziwe lusadinga ukulungiswa noma ukuqinisekiswa."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi bavame ukwethuka lapho amagama esimo ashintsha ngemva kokubuyekezwa. Ukufunda okupholile kuqala ngokubuza ukuthi ingabe ushintsho lungase lubonise isibuyekezo ngokwaso."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qaphela ukuthi iyiphi imininingwane eyashintshwa futhi nini.\n2. Gcina amagama esimo esisha.\n3. Qhathanisa amagama neziqondiso mayelana nezibuyekezo zemininingwane nokuqinisekisa.\n4. Gwema ukuhlela okungadingekile okuphindaphindiwe.\n5. Sebenzisa umzila osemthethweni uma amagama amasha ekhomba ngokusobala inkinga ehlukile engayicacisi."
+      },
+      {
+        "title": "Ukushintsha isimo ngemva kokubuyekezwa kudinga umongo",
+        "body": "Isikhathi sokushintsha imininingwane sibalulekile. Ngaphandle kwalowo mongo, abasebenzisi bangakwazi ukufunda kabi isigaba sokuqinisekisa njengokwehluleka okukhulu kunalokho esiyikho ngempela."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukuqinisekisa umphumela wangaphakathi woshintsho lwemininingwane ohlelweni olusemthethweni. Ingasiza kuphela abasebenzisi ukuthi bafunde amaphethini azungezile ngokucophelela."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uqhathanise amaphethini wesimo semininingwane eshintshile nefoni, ibhange, nemihlahlandlela yokuqinisekisa ukuze amagama amasha azwakale engaqondakali."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-phone-number-changes-affect-status-checks\n• /guides/what-to-do-if-your-bank-details-changed\n• /guides/what-pending-verification-means\n• /guides/how-to-check-status-after-changing-details\n• /status/banking-issue"
+      },
+      {
+        "title": "I-FAQ: Ingabe ukushintsha imininingwane kungaba nomthelela oboniswa yikhasi lesimo?",
+        "body": "Yebo. Kwesinye isikhathi ingashintsha amagama ngesikhathi kusacutshungulwa ulwazi olusha."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithuke uma amagama eshintsha ngemva kokubuyekezwa?",
+        "body": "Cha. Qala uqhathanise ushintsho nesikhathi sokubuyekeza kwakho kanye nohlobo lwemininingwane oyishintshile."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngigweme ukuyenza?",
+        "body": "Gwema ukuhlela okungadingekile okuphindaphindiwe ngaphambi kokuthi uqonde ukuthi isibuyekezo sokuqala sishintshe ini."
+      }
+    ]
+  },
+  "how-to-avoid-fake-application-status-pages": {
+    "title": "Ungawagwema kanjani amakhasi wesimo sohlelo lokusebenza olungelona iqiniso",
+    "summary": "Umhlahlandlela wokuthenjwa wokubona nokugwema amakhasi esimo sohlelo lokusebenza angamanga noma adukisayo ngaphambi kokuthi uthembele kuwo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Gwema amakhasi angamanga wesimo sohlelo lokusebenza ngokufanisa ikhasi nomzila osemthethweni olungile, uhlole ikheli ngokucophelela, futhi ungathembi izimangalo zesimo esikopishiwe ngaphandle komthombo osemthethweni ocacile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amakhasi wesimo ayimpokophelo evamile yokudideka ngoba abasebenzisi bafuna izimpendulo ezisheshayo. Lokho kwenza ukusesha okuhlobene nesimo kube enye yezindawo ezilula kakhulu zamakhasi akopishiwe ukuthi abukeke eqinisekisa."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ikhasi lesimo esingelona iqiniso lingadala ithemba elingamanga, ukwethuka okungamanga, noma izicelo ezingaphephile zemininingwane yomuntu siqu. Kungakho ukuhlola umthombo kubalulekile ngaphambi kokuhlolwa kwemiphumela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa uhlobo lokusekela kanye nomzila osemthethweni olungile.\n2. Hlola ikheli ngokucophelela.\n3. Gwema ukuthemba amakhasi aphinda amagama ezimo ezivamile kuphela.\n4. Yima uma ikhasi libuza imininingwane engajwayelekile noma lizizwa lingacacile.\n5. Sebenzisa umzila osemthethweni wesheke langempela kanye ne-GrantCare ukuze uthole incazelo kamuva."
+      },
+      {
+        "title": "Amagama ajwayelekile kulula ukuwakopisha",
+        "body": "Amagama agunyaziwe, alindile, noma anqatshiwe akukona okwenza ikhasi lesimo libe semthethweni. Umzila nomthombo yikona okubaluleke kakhulu."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi isho ngokucacile. Ichaza imilayezo yesimo, kodwa ayilokothi izenze ikhasi lesimo esisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi ukhombe uhlobo lomzila wesimo oludingayo ukuze mancane amathuba okuthi uthembe ikhasi elingumgunyathi ngephutha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/how-to-find-an-official-application-status-page-safely\n• /guides/how-to-check-your-status-without-making-mistakes\n• /guides/how-to-find-official-status-check-updates-safely\n• /guides/official-status-check-vs-independent-guide"
+      },
+      {
+        "title": "I-FAQ: Kungani amakhasi esimo somgunyathi ekholisa kangaka?",
+        "body": "Ngoba bavame ukukopisha amagama afanayo esibonelelo abasebenzisi abalindele ukuwabona."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke ngaphezu kwamagama?",
+        "body": "Umzila, ikheli, kanye nokuthi ngokusobala ikhasi elohlelo olusemthethweni yini."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze uma ikhasi lizwakala lingacacile?",
+        "body": "Yima futhi uqinisekise umzila osemthethweni ngaphambi kokuthi uqhubeke."
+      }
+    ]
+  },
+  "how-to-find-official-application-status-updates-safely": {
+    "title": "Uzithola kanjani izibuyekezo zesimo sohlelo lokusebenza ngokuphephile",
+    "summary": "Umhlahlandlela wokuthola izibuyekezo zesimo esisemthethweni ngokuphepha ngaphandle kokuthembela emahlebeni, izithombe-skrini, noma imilayezo ekopishiwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Thola izibuyekezo zesimo sohlelo lokusebenza ngokuphephile ngokubuyela emzileni olungile wesimo, uhlole umlayezo ngokuqondile, futhi unganciki ngezimangalo zesimo sesibili."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Izibuyekezo zesimo zizwakala ziphuthumayo, yingakho abasebenzisi bevamise ukwamukela ulwazi olukopishiwe ngokushesha okukhulu. Umkhuba ophephile ukuhlola umzila osemthethweni ngokuqondile esikhundleni sokuthemba inguqulo yomunye umuntu yesibuyekezo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Isibuyekezo esikopishiwe singasusa umongo ozungezile onikeza isimo incazelo yaso yangempela. Lokho kwenza kube lula ukungaqondi ukuthi yini eshintshile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula kabusha umzila osemthethweni wesimo.\n2. Hlola amagama amanje ngokuqondile.\n3. Gcina umlayezo omusha kanye nosuku.\n4. Gwema ukuthembela ezithombeni-skrini ezabiwe ezingenamthombo.\n5. Sebenzisa i-GrantCare ukuze uhumushe amagama ngemva kokuba ikhasi elisemthethweni likunikeze."
+      },
+      {
+        "title": "Ukuhlola okuqondile kuphephile kunezibuyekezo ezenziwe ngesandla",
+        "body": "Isibuyekezo sesimo esiphephe kunazo zonke yileso ozifundele sona ekhasini elisemthethweni elilungile. Yilokho okuvikela incazelo yomlayezo ekuphucweni."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingasiza ukuchaza izibuyekezo zesimo esisemthethweni, kodwa akufanele neze ithathe indawo yokuzihlola okusemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi baqonde ukuthi ukubuyekezwa kwesimo esisha kuyasishintsha yini isiteji, isinyathelo esilandelayo esingaba khona, noma amagama kuphela azungeze udaba olufanayo."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-status-check-pages-can-change-over-time\n• /guides/how-to-read-your-status-check-result\n• /guides/how-to-avoid-fake-application-status-pages\n• /guides/how-to-save-your-status-results-for-reference\n• /status"
+      },
+      {
+        "title": "I-FAQ: Kungani ukubuyekezwa kwesimo esabiwe kuyingozi?",
+        "body": "Ngoba bavame ukususa umthombo, idethi, noma umongo ogcwele womlayezo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyilondoloze lapho ngibona isibuyekezo esisha sesimo?",
+        "body": "Londoloza amagama kanye nosuku ukuze ukwazi ukuqhathanisa kamuva."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze ngemva kokufunda isibuyekezo?",
+        "body": "Sebenzisa i-GrantCare ukuze uyitolike uma igama lisazwakala lingacacile."
+      }
+    ]
+  },
+  "what-an-application-update-page-usually-means": {
+    "title": "Ukuthi ikhasi lokubuyekeza uhlelo lokusebenza ngokuvamile lisho ukuthini",
+    "summary": "Umhlahlandlela wolimi olulula wamakhasi akhuluma ngezibuyekezo zohlelo lokusebenza nokuthi yini abasebenzisi okufanele bayibheke ngaphambi kokuwaphatha njengamakhasi esenzo asemthethweni.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ikhasi lokubuyekeza uhlelo lokusebenza ngokuvamile lisho ikhasi elixhunywe ekuhloleni, ekuguquleni, noma ekulandeleni uhlelo olukhona kakade. Umnyakazo ophephe kakhulu uwukuqinisekisa ukuthi hlobo luni lwesibuyekezo esiphathwa yikhasi ngaphambi kokulisebenzisa."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi bavame ukucinga isibuyekezo lapho besho izinto ezihlukile: ukuhlola isimo, ukushintsha imininingwane, noma ukulandela uhlelo olukhona kakade. Kungakho amakhasi okuvuselela angazizwa engacacile ekuqaleni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma ungazi ukuthi ikhasi elokuhlola, ukushintsha, noma ukuqinisekisa okuthile, kulula ukusebenzisa umzila ongalungile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Nquma ukuthi usho isibuyekezo sesimo, isibuyekezo semininingwane, noma ukulandelela uhlelo lokusebenza.\n2. Hlola ukuthi ikhasi liyahambisana yini naleyo nhloso.\n3. Qinisekisa umzila ngaphambi kokufaka noma yini.\n4. Gcina ireferensi yesicelo sakho sangaphambilini eduze.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuqonda ukuthi hlobo luni lwekhasi lokubuyekeza oludingayo ngempela."
+      },
+      {
+        "title": "Isibuyekezo yigama elibanzi",
+        "body": "Igama elithi update livame ukufihla umsebenzi wangempela. Umzila ophephile uvela uma ususho umsebenzi ngokucacile futhi uqondanise nekhasi nawo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayisebenzi njengekhasi elisemthethweni lokubuyekeza uhlelo lokusebenza. Isiza abasebenzisi ukuthi baqonde ukuthi yiluphi uhlobo lomzila osemthethweni ongalingana nesibuyekezo samagama esimweni sabo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlukanise izinguquko zemininingwane, ukulandelela uhlelo lokusebenza, nokuhlola isimo ukuze wazi ukuthi yiliphi ikhasi lokubuyekeza elisemthethweni ongalethemba."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-read-application-status-after-changing-details\n• /guides/how-to-find-an-official-application-status-page-safely\n• /guides/how-to-check-if-an-online-application-link-is-official\n• /guides/what-to-do-after-you-submit-an-online-application\n• /guides/how-to-find-the-right-sassa-website-for-your-task"
+      },
+      {
+        "title": "I-FAQ: Kungani igama elithi update lidida?",
+        "body": "Ngoba kungasho ukuhlola isimo, ukushintsha imininingwane, noma ukulandela uhlelo lokusebenza olukhona."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele nginqume kuqala?",
+        "body": "Nquma ukuthi yiluphi uhlobo lwesibuyekezo ofuna ukusenza noma ukufunda."
+      },
+      {
+        "title": "I-FAQ: Yini esiza ngemva kokuhlonza umsebenzi?",
+        "body": "Qondanisa ikhasi nalowo msebenzi ngqo ngaphambi kokuwethemba."
+      }
+    ]
+  },
+  "how-reapplication-pages-usually-work": {
+    "title": "Ngokuvamile amakhasi okufaka isicelo asebenza kanjani",
+    "summary": "Umhlahlandlela wokuqonda ukuthi amakhasi okufaka isicelo angawaphi futhi nokuthi ahluke kanjani emizileni yokufaka isicelo sokuqala.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Amakhasi wohlelo lokusebenza avamise ukuba khona ezimeni lapho kudingeka khona isinyathelo esisha sohlelo. Okubalulekile wukuqinisekisa ukuthi ukufaka isicelo kabusha kuyisinyathelo esifanele ngempela ngaphambi kokusebenzisa ikhasi."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukuphinda kufakwe isicelo akufani ngaso sonke isikhathi nesikhalazo futhi akufani ngaso sonke isikhathi nokuqala ku-zero. Ngokuvamile kungokwesimo esithile lapho uhlelo olusemthethweni ludinga isigaba esisha sokufaka isicelo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi bangamosha isikhathi uma bethuthela ekufakeni isicelo kabusha ngaphambi kokuthi baqonde ukuthi icala liyawudinga ngempela lowo mzila."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Funda amagama akamuva asemthethweni mayelana necala lakho.\n2. Hlola ukuthi ingabe ikhomba ngokusobala ekusetshenzisweni kabusha.\n3. Qinisekisa umzila osemthethweni wokufaka isicelo futhi.\n4. Lungiselela imininingwane namarekhodi ongawadinga futhi.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuqonda ukuthi ukufaka isicelo kabusha kuyasifanela ngempela yini isimo sakho."
+      },
+      {
+        "title": "Ukusebenzisa kabusha kuyindlela, hhayi ukuqagela",
+        "body": "Indlela ephephe kunazo zonke yokufinyelela ekufakweni kabusha ukukuphatha njengomzila othile osemthethweni wecala elithile, hhayi njengesinqamuleli esivamile lapho uzizwa ubambekile."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ichaza ukuphinda kusetshenziswe ngolimi olulula, kodwa isinyathelo esisemthethweni sokufaka isicelo sisesesohlelweni olusemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise ukuphinda usebenzise isicelo nesikhalazo, ukulinda isimo esijwayelekile, nemizila emisha yohlelo lokusebenza ukuze ukhethe isinyathelo esilandelayo ngokunembe kakhudlwana."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/reapplication-needed-meaning\n• /guides/appeal-vs-reapplication-guide\n• /guides/how-to-know-if-reapplication-is-the-right-step\n• /status/reapplication-needed\n• /guides/how-to-find-the-official-reapplication-page-safely"
+      },
+      {
+        "title": "I-FAQ: Ingabe ukufaka isicelo kabusha kuyafana nesikhalazo?",
+        "body": "Cha. Ziyizindlela ezihlukene futhi akufanele zihlanganiswe ndawonye."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngifake isicelo kabusha ngoba nje ngizizwa ngibambekile?",
+        "body": "Cha. Okokuqala hlola ukuthi amagama asemthethweni akhomba ukuphinda kusetshenziswe."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqinisekise ngaphambi kokufaka isicelo kabusha?",
+        "body": "Qinisekisa ukuthi ukufaka isicelo kabusha kuyisinyathelo esilandelayo esisemthethweni secala lakho."
+      }
+    ]
+  },
+  "how-to-know-if-reapplication-is-the-right-step": {
+    "title": "Ungazi kanjani ukuthi isicelo se-SASSA siyisinyathelo esifanele",
+    "summary": "Umhlahlandlela wesinqumo wabasebenzisi abangenaso isiqiniseko sokuthi kufanele balinde, bafake isikhalazo, noma basebenzise umzila wokuphinda usebenzise we-SASSA.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusebenzisa kabusha kuyisinyathelo esifanele kuphela lapho amagama akamuva asemthethweni ekhomba ngokusobala kumzila wohlelo lokusebenza omusha kunokulinda okuvamile noma isikhalazo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi bavame ukufinyelela usesho lohlelo lokusebenza futhi lapho bezizwa bevinjiwe. Lowo muzwa ungokoqobo, kodwa isinyathelo esifanele sisancike kulokho okushiwo igama elisemthethweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma ukhetha ukufaka isicelo kusenesikhathi kakhulu, ungase usuke emzileni olingana necala. Uma uyigwema lapho idingeka ngokucacile, inqubo ingadonsa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Funda umlayezo wakamuva osemthethweni ngokucophelela.\n2. Nquma ukuthi kukhomba ekulindeni, ekudluliseleni icala, noma ekufakeni isicelo kabusha.\n3. Qhathanisa umlayezo neziqondiso ze-GrantCare zaleyo mizila emithathu.\n4. Gcina amarekhodi akho nezinsuku eduze.\n5. Yiya emzileni osemthethweni wokufaka isicelo kuphela uma amagama akusekela ngokucacile."
+      },
+      {
+        "title": "Ukuzizwa ubambekile akufani nokudinga ukuphinda ufakwe isicelo",
+        "body": "Ukuhlolwa okufanele akukona ukukhungatheka. Ukuhlola okulungile ukuthi umlayezo osemthethweni ukhomba ngempela umzila omusha wohlelo lokusebenza."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukukwenzela isinqumo esisemthethweni. Ingakusiza kuphela ukuthi uqhathanise imizila yesinyathelo esilandelayo ngokucace kakhulu."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlele umehluko phakathi kwesikhalazo, ukulinda, nokusebenzisa futhi ukuze ukukhetha kuzwakale njengokuqagela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/reapplication-needed-meaning\n• /guides/appeal-vs-reapplication-guide\n• /guides/how-reapplication-pages-usually-work\n• /guides/how-to-prepare-before-reapplying\n• /guides/how-to-find-the-official-reapplication-page-safely"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngifake isicelo kabusha ngoba nje inqubo izwakala ihamba kancane?",
+        "body": "Cha. Ukuthuthuka kancane kukodwa akufakazeli ukuthi ukuphinda kufakwe isicelo kuyadingeka."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele iqondise isinqumo kakhulu?",
+        "body": "Amagama akamuva asemthethweni mayelana necala lakho kufanele aliqondise kakhulu."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma ngisazizwa ngingaqiniseki?",
+        "body": "Qhathanisa imihlahlandlela yokulinda, isikhalazo, kanye nesicelo ngaphambi kokuthi wenze."
+      }
+    ]
+  },
+  "how-to-prepare-before-reapplying": {
+    "title": "Uzilungiselela kanjani ngaphambi kokufaka kabusha kwe-SASSA",
+    "summary": "Umhlahlandlela wokulungiselela wabasebenzisi abaqinisekise ukuthi ukufaka isicelo kabusha kwe-SASSA kuyadingeka futhi bafuna ukugwema ukuphinda ukudideka kwangaphambili.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Lungiselela ngaphambi kokufaka isicelo kabusha ngokuhlola ukuthi kungani isicelo futhi sidingeka, uqoqe amarekhodi akho, futhi uqinisekise ukuthi uyawuqonda umzila osemthethweni ozowusebenzisa."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukuphinda kusetshenziswe kusebenza kahle kakhulu uma abasebenzisi bengakuphathi njengokuphinda okungaboni kwesinyathelo sangaphambili. Umgomo uwukuqonda ukuthi yini eshintshile noma yini esabalulekile ngaphambi kokuba uqale futhi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma ufaka isicelo kabusha ngaphandle kokulungiselela, ungase uphinde ukudideka okufanayo noma ulahlekelwe umkhondo wamarekhodi achaza icala langaphambili."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Londoloza amagama akamuva asemthethweni akhomba ukuphinda usebenzise.\n2. Qoqa ireferensi yakho yangaphambili namarekhodi.\n3. Hlola ukuthi ikhona yini imininingwane noma amadokhumenti adinga ukunakwa.\n4. Qinisekisa umzila osemthethweni wokufaka isicelo futhi.\n5. Qala ukufaka isicelo kabusha kuphela lapho amaphuzu ayinhloko esecacile."
+      },
+      {
+        "title": "Isiqalo sesibili esingcono sivela kumarekhodi acacile",
+        "body": "Ukuphinda ufake isicelo akukhona nje ukuthi uzame futhi. Kumayelana nokuqhubekisela phambili amarekhodi alungile kanye nokuqonda kusukela enqubweni yangaphambili."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukukuthumelela isicelo futhi. Kukusiza ukuthi ulungiselele ngokucace kakhudlwana umzila osemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlele amarekhodi angaphambili, uqhathanise ukuphinda usebenzise isicelo nesikhalazo, futhi ulungiselele isigaba sesimo esilandelayo ngemva kwalokho."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/reapplication-needed-meaning\n• /guides/how-to-check-reapplication-status-safely\n• /guides/how-to-keep-records-after-reapplying\n• /guides/how-to-find-the-official-reapplication-page-safely\n• /guides/how-reapplication-pages-usually-work"
+      },
+      {
+        "title": "I-FAQ: Kungani ulondoloza amagama angaphambili ngaphambi kokufaka isicelo kabusha?",
+        "body": "Ngoba kuyasiza ukuchaza ukuthi kungani ukuphinda kufakwe isicelo futhi kugcina isinyathelo sesibili sigxilile."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiphathe ukufaka isicelo kabusha njengokuphinda okungaboni?",
+        "body": "Cha. Kuyasiza ukuqonda umongo wangaphambili kuqala."
+      },
+      {
+        "title": "I-FAQ: Yimaphi amarekhodi abaluleke kakhulu?",
+        "body": "Izithenjwa zangaphambilini, amagama esimo sakamuva, nanoma imaphi amadokhumenti axhunywe necala."
+      }
+    ]
+  },
+  "what-to-check-before-you-reapply": {
+    "title": "Okufanele ukuhlole ngaphambi kokufaka isicelo kabusha",
+    "summary": "Umhlahlandlela olula wohlu lokuhlola wabasebenzisi abafuna ukwenza isiqiniseko sokuthi ukufaka isicelo kabusha kuyisinyathelo esilandelayo esilungile ngaphambi kokuthi bakuthumele.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngaphambi kokufaka isicelo kabusha, hlola umlayezo wakamuva osemthethweni, amarekhodi akho angaphambili, umzila osemthethweni olungile, nokuthi ingabe ikhona imininingwane ebalulekile edinga ukubuyekezwa."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukuphinda kusetshenziswe kungase kuzwakale njengempendulo esobala uma icala libambekile, kodwa uhlu lokuhlola olufushane lusiza abasebenzisi ukuthi bagweme ukuhamba ngesivinini esikhulu emzileni ongalungile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukuhlola okumbalwa okucacile kunganciphisa ukuphinda ukudideka futhi kwenze isinyathelo sesibili sihlanzeke kunesokuqala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi amagama asemthethweni akhomba ngempela ekusetshenzisweni kabusha.\n2. Gcina ireferensi yakho yangaphambili namarekhodi eduze.\n3. Qinisekisa umzila osemthethweni wokufaka isicelo kabusha.\n4. Buyekeza imininingwane ebalulekile yanoma yini eshintshile.\n5. Londoloza umzila nesikhathi ngaphambi kokuthi uqhubeke."
+      },
+      {
+        "title": "Uhlu lokuhlola olufushane luvikela umzamo wesibili",
+        "body": "Iphuzu lalolu hlu lokuhlola alikona ukubambezeleka ngenxa yalo. Kuwukuqinisekisa ukuthi isinyathelo esilandelayo sinembile ngaphambi kokuthi uzibophezele kuso."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingasiza ngesinqumo namalungiselelo, kodwa isinyathelo esisemthethweni sokufaka isicelo sisesesohlelweni olusemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uqhathanise ukuphinda usebenzise nezinye izinketho zesinyathelo esilandelayo futhi wenze uhlu lokuhlola luzizwe lusebenza kakhudlwana kunokungaphezu kwamandla."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-know-if-reapplication-is-the-right-step\n• /guides/how-to-prepare-before-reapplying\n• /guides/how-to-find-the-official-reapplication-page-safely\n• /guides/reapplication-needed-meaning\n• /guides/how-to-use-reapplication-pages-without-unofficial-sites"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele usebenzise uhlu lokuhlola ngaphambi kokufaka isicelo kabusha?",
+        "body": "Ngoba kunciphisa ithuba lokuthatha isinyathelo esilandelayo esingalungile ngokushesha."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqinisekise kuqala?",
+        "body": "Qinisekisa ukuthi umlayezo wakamuva osemthethweni uyakweseka ukuphinda kusetshenziswe."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngihlole kabusha imininingwane yami?",
+        "body": "Yebo. Kuyasiza ukubuyekeza noma yini ebalulekile ngaphambi kokuthi uqale futhi."
+      }
+    ]
+  },
+  "how-to-find-the-official-reapplication-page-safely": {
+    "title": "Ungalithola kanjani ngokuphepha ikhasi lokufaka isicelo le-SASSA elisemthethweni",
+    "summary": "Umhlahlandlela ogxile ekuthembekeni wabasebenzisi abadinga umzila wokuphinda usebenzise i-SASSA futhi abafuna ukugwema amakhasi akopishiwe noma adukisayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Thola ikhasi lokuphinda usebenzise elisemthethweni ngokuphepha ngokuqinisekisa ukuthi ukufaka isicelo kabusha kuyadingeka ngempela, bese uhlola umzila ngokucophelela ngaphambi kokufaka noma yimiphi imininingwane."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amakhasi okufaka isicelo kabusha angaheha ukudideka ngoba abasebenzisi bavame ukuwacinga ngenkathi becindezelwe. Lokho kwenza ukuhlola umzila osemthethweni kubaluleke kakhulu."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ikhasi lokufaka isicelo kabusha elingalungile liyinkinga ekabili: libambezela isinyathelo esilandelayo esifanele futhi lingadala ukudideka okusha phezu kwecala elivele linengcindezi."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi ukufaka isicelo kabusha kuyindlela efanele.\n2. Vula ikhasi elisemthethweni emthonjeni othembekile.\n3. Hlola ikheli kanye nenjongo yekhasi ngokucophelela.\n4. Gwema izixhumanisi zokuphinda zikopishwe ezingenamthombo osemthethweni ocacile.\n5. Sebenzisa i-GrantCare kuphela ukuze uthole incazelo nokulungiselela ekhasini."
+      },
+      {
+        "title": "Ikhasi elifanele lincike esinqumweni esifanele kuqala",
+        "body": "Ukuthola ikhasi elisemthethweni lokufaka isicelo kabusha kuqala ngokuqinisekisa ukuthi ukufaka isicelo kabusha kuyisinyathelo osidingayo ngempela. Ukuhlola isixhumanisi kuza ngemva kwalokho, hhayi ngaphambili."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare akulona ikhasi elisemthethweni lokuphinda ufake isicelo futhi akufanele neze kwenziwe iphutha nelilodwa."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi unqume ukuthi uyasidinga yini isicelo futhi, bese ikusiza ukuthi ubone uhlobo lwekhasi elisemthethweni okufanele ulufune."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-know-if-reapplication-is-the-right-step\n• /guides/reapplication-needed-meaning\n• /guides/how-to-prepare-before-reapplying\n• /guides/appeal-vs-reapplication-guide\n• /guides/how-to-use-reapplication-pages-without-unofficial-sites"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngiqinisekise ukufaka isicelo kabusha kuqala?",
+        "body": "Ngoba indlela ephephe kakhulu incike ekutheni ukufaka kabusha kuyisinyathelo esilungile yini."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngethembe isixhumanisi sokuphinda ngifake isicelo esivela eqenjini lengxoxo?",
+        "body": "Cha. Qinisekisa umthombo osemthethweni kuqala."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ekhasini ngokwalo?",
+        "body": "Hlola ukuthi ikhasi lifana kahle yini nomsebenzi osemthethweni wokufaka isicelo futhi owudingayo."
+      }
+    ]
+  },
+  "how-to-use-reapplication-pages-without-unofficial-sites": {
+    "title": "Ungawasebenzisa kanjani amakhasi okufaka isicelo kabusha ngaphandle kwamasayithi angekho emthethweni",
+    "summary": "Umhlahlandlela wokuphepha wabasebenzisi okudingeka baphinde bafake isicelo futhi abafuna ukugcina isenzo esisemthethweni sihlukile kunesiqondiso esizimele.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa amakhasi okufaka isicelo kabusha ngaphandle kwamasayithi angekho emthethweni ngokugcina isinyathelo sangempela sokufaka isicelo kumzila osemthethweni futhi usebenzise iziqondiso ezizimele kuphela ukulungiselela nokuqonda."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukuqondisa okuzimele kusengaba usizo phakathi nokuphinda kufakwe isicelo, kodwa isenzo esisemthethweni ngokwaso kufanele sihlale emzileni osemthethweni. Lokho kwehlukana kuvikela ukwethembana futhi kunciphisa ukudideka."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi befiphalisa umugqa phakathi kwesiqondiso nesenzo esisemthethweni, bangagcina sebenikeze isinyathelo esibalulekile ekhasini elingalungile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Sebenzisa i-GrantCare ukuze uqonde ukuthi ukufaka isicelo kabusha kuyahambisana yini necala lakho.\n2. Yiya emzileni osemthethweni wokufaka isicelo ngesinyathelo sangempela.\n3. Qinisekisa ikhasi ngaphambi kokufaka imininingwane yakho.\n4. Londoloza isiqinisekiso esisemthethweni ngemva kokusithumela.\n5. Buyela ku-GrantCare kamuva ukuze uthole usizo lokufunda isimo esilandelayo noma umlayezo wokukhokha."
+      },
+      {
+        "title": "Isiqondiso singasekela ukuphinda kufakwe isicelo ngaphandle kokusishintsha",
+        "body": "Ukusetshenziswa okuphephe kakhulu kweziqondiso ezizimele kungaphambi noma ngemva kwesinyathelo esisemthethweni, hhayi esikhundleni saso. Lowo mthetho ubaluleke nakakhulu lapho icala selivele lizwakala liyinkimbinkimbi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iwulwazi oluzimele kanye nenkundla yesikhumbuzo. Kufanele ihlale ihluke ngokusobala ezinhlelweni ezisemthethweni zokufaka isicelo kabusha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi ulungiselele ukuphinda usebenzise futhi uqonde ukuthi yini elandelayo, kuyilapho ugcina ukuthunyelwa okusemthethweni lapho kufanele khona."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-the-official-reapplication-page-safely\n• /guides/how-to-apply-without-using-unofficial-websites\n• /guides/how-to-prepare-before-reapplying\n• /guides/official-status-check-vs-independent-guide\n• /guides/where-to-confirm-payment-problems-officially"
+      },
+      {
+        "title": "I-FAQ: Ingabe amasayithi azimele asengasiza ngokuphinda ufake isicelo?",
+        "body": "Yebo, uma behlala ngokucacile endimeni yokuqondisa futhi bengazenzi umzila osemthethweni wokufaka isicelo kabusha."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ihlale njalo kumzila osemthethweni?",
+        "body": "Isenzo sangempela sokufaka isicelo futhi nanoma yisiphi isinyathelo esisemthethweni sokuhambisa kufanele kuhlale lapho."
+      },
+      {
+        "title": "I-FAQ: I-GrantCare ingasiza kanjani?",
+        "body": "I-GrantCare ingasiza ngokulungiselela, ukuqonda, kanye nokuhumusha kwesinyathelo esilandelayo emzileni osemthethweni."
+      }
+    ]
+  },
+  "what-to-do-if-the-reapplication-page-will-not-open": {
+    "title": "Okufanele ukwenze uma ikhasi lokufaka isicelo kabusha lingavulwa",
+    "summary": "Umhlahlandlela wokuxazulula izinkinga wamakhasi okusebenza kabusha asemthethweni ahlulekayo ukulayisha noma abonakala engatholakali uma abasebenzisi bewadinga kakhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ikhasi lokufaka isicelo kabusha lingeke livuleke, qala uliphathe njengomzila noma inkinga yokufinyelela futhi ugweme ukugxumela kwezinye izixhumanisi okungenzeka ukuthi azisemthethweni."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ikhasi lokuphinda lingalayishi livame ukusho inkinga yokufinyelela kuqala, hhayi ukuthi udaba lwakho ngokwalo lunqunywe ngendlela ehlukile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi abathuthumelayo kuleli phuzu kungenzeka ukuthi bachofoze izixhumanisi ezikopishiwe noma basebenzise umzila ongalungile, okwengeza inkinga yokwethembana enkingeni yobuchwepheshe."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi umzila owusebenzisayo ungosemthethweni.\n2. Vuselela ikhasi noma uzame futhi isiphequluli.\n3. Hlola ukuxhumana nokulayisha ikhasi futhi.\n4. Gwema izixhumanisi ezishintshayo ezingahleliwe.\n5. Buyela emzileni osemthethweni uma inkinga yokufinyelela isixazululiwe."
+      },
+      {
+        "title": "Phatha lokhu njengenkinga yokufinyelela ngaphambi kwanoma yini enye",
+        "body": "Ukufundwa kokuqala okuphephe kakhulu ukuthi ikhasi alivulwa kahle, hhayi ukuthi icala lakho lonke lishintshe ngokuzumayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukulungisa ikhasi elisemthethweni lokuphinda usebenzise. Isiza abasebenzisi ukugwema ama-workaround angaphephile ngenkathi beqinisekisa umzila olungile."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlale ugxile ekhasini elisemthethweni elilungile futhi ugweme ukushintsha inkinga yesikhashana yokufinyelela ibe inkinga enkulu yokuthembana."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-the-official-reapplication-page-safely\n• /guides/how-reapplication-pages-usually-work\n• /guides/what-to-do-if-your-application-form-will-not-open\n• /guides/how-to-use-reapplication-pages-without-unofficial-sites\n• /guides/how-to-find-official-contact-details-safely"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi lokuphinda lingalayishi lisho ukuthi ukuphinda kufakwe isicelo akusavunyelwe?",
+        "body": "Akuvamile. Ivamise ukukhomba ekufinyeleleni noma enkingeni yomzila kuqala."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngichofoze noma yisiphi isixhumanisi esingena esikhundleni engisitholayo?",
+        "body": "Cha. Hlala nemizila esemthethweni ethembekile esikhundleni sokushintshwa okungahleliwe."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole kuqala?",
+        "body": "Hlola ukuthi umzila usemthethweni nokuthi ikhasi lilayisha lisuka endaweni efanele."
+      }
+    ]
+  },
+  "how-to-check-reapplication-status-safely": {
+    "title": "Usihlola kanjani isimo sokufaka isicelo kabusha ngokuphepha",
+    "summary": "Umhlahlandlela wokulandela isimo ngemuva kokufaka isicelo kabusha ngaphandle kokudida umzila wokufaka isicelo kabusha nomzila wesimo sakamuva.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola isimo sokufaka isicelo kabusha ngokuphepha ngokuqinisekisa ukuthi isicelo sithunyelwe, bese usebenzisa umzila olungile wesimo osemthethweni wohlobo losekelo esikhundleni sokuqagela ekhasini lohlelo lokusebenza ngokwalo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Isimo sokuphinda isicelo nesokufaka isicelo sixhumekile, kodwa azisona isinyathelo esifanayo. Abasebenzisi bavame ukuhlala isikhathi eside ekhasini lesicelo uma ulwazi olulandelayo oluwusizo manje selungomzila wesimo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma udida ukufaka isicelo kabusha nesimo sokufaka isicelo kabusha, kuba nzima ukusho ukuthi isigaba esilandelayo sesiqalile ngempela yini."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi isicelo kabusha sithunyelwe.\n2. Londoloza ireferensi nosuku.\n3. Linda isiteji esifanele ngaphambi kokuhlola isimo.\n4. Sebenzisa umzila osemthethweni wesimo.\n5. Sebenzisa i-GrantCare ukuze utolike umphumela uma ikhasi elisemthethweni seliwubonisile."
+      },
+      {
+        "title": "Umzila wokufaka isicelo kabusha kanye nomzila wesimo awulona ikhasi elifanayo",
+        "body": "Ukusebenzisa kabusha kuqalisa isigaba esilandelayo. Ukuhlola isimo kukutshela ukuthi icala likusiphi isigaba manje. Ukugcina lezo ndima zihlukene kwenza inqubo ibe lula kakhulu ukuyilandela."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukuhlola isimo sokuphinda sifake isicelo ngokuqondile. Isiza abasebenzisi ukuthi baqonde ukuthi yimuphi umzila okufanele bawusebenzise nokuthi bawafunda kanjani amagama ngokuphepha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekufakeni isicelo kabusha uye ekuhloleni isimo bese uye enkokhelweni noma kumhlahlandlela wesinyathelo esilandelayo lapho amagama ashintsha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-to-do-after-you-reapply-online\n• /guides/how-to-read-application-status-after-reapplication\n• /guides/how-to-check-application-status-on-the-official-portal-safely\n• /guides/reapplication-needed-meaning\n• /status"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngiqinisekise ukufaka isicelo kabusha kuqala?",
+        "body": "Ngoba ukuhlola isimo akusizi kangako uma ungaqiniseki ukuthi isicelo kabusha sithunyelwe."
+      },
+      {
+        "title": "I-FAQ: Ngingakwazi ukuhlola isimo sokufaka isicelo kabusha ekhasini lokufaka isicelo kabusha ngokwalo?",
+        "body": "Umkhuba ophephile ukusebenzisa umzila osemthethweni wesimo lapho isigaba sokufaka isicelo kabusha sesiphelile."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyilondoloze ngaphambi kokuhlola isimo?",
+        "body": "Londoloza isithenjwa sokufaka isicelo kabusha kanye nosuku esithunyelwe ngalo."
+      }
+    ]
+  },
+  "what-to-do-after-you-reapply-online": {
+    "title": "Okufanele ukwenze ngemva kokufaka isicelo kabusha ku-inthanethi",
+    "summary": "Umhlahlandlela ozolile wezinyathelo zokuqala ngemuva kokufaka kabusha ku-inthanethi ukuze abasebenzisi bagcine amarekhodi alungile kanye nokulindelwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngemva kokufaka isicelo kabusha ku-inthanethi, londoloza ukuqinisekiswa okusemthethweni, phawula idethi, futhi unikeze isikhathi senqubo ngaphambi kokuba uqale ukuhlola umnyakazo olandelayo wesimo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukuphinda kuqedwe isigaba bese kuqala esinye. Isinyathelo esilandelayo esiwusizo kakhulu ukugcina amarekhodi acacile ukuze isigaba sesimo sakamuva sibe lula ukusilandela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi bangalahlekelwa inzuzo yesiqalo esisha uma bekhohlwa ukugcina amarekhodi afakazela ukuthi isicelo senzeka nini."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Londoloza isiqinisekiso sokufaka isicelo kabusha noma ireferensi.\n2. Qaphela usuku lokuhambisa.\n3. Gcina amarekhodi angaphambili namasha ndawonye.\n4. Linda isiteji sokuhlola isimo esifanele.\n5. Sebenzisa i-GrantCare kamuva ukuze uhumushe amagama amasha uma kudingeka."
+      },
+      {
+        "title": "Ukuthunyelwa okusha kusadinga irekhodi elisha",
+        "body": "Umphumela owusizo kakhulu wokufaka isicelo kabusha akukhona nje ukuthi isinyathelo senziwe. Futhi wukuthi manje usunerekhodi elisha elicacile lalokho okwenzeka ngokulandelayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikuqinisekisi ukuthunyelwa kwesicelo kabusha esisemthethweni ngaphakathi kwesistimu esemthethweni. Isiza abasebenzisi bazi ukuthi yini okufanele bayigcine nokuthi yini okufanele bayenze ngokulandelayo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi usuke ekusetshenzisweni kabusha uye esimweni, isikhathi, kanye nencazelo yokukhokha ngaphandle kokulahlekelwa umkhondo wesiteji esisha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-reapplication-status-safely\n• /guides/how-to-keep-records-after-reapplying\n• /guides/how-to-check-if-your-online-application-was-submitted\n• /guides/how-to-read-application-status-after-reapplication\n• /dashboard"
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyilondoloze ngemva kokufaka isicelo kabusha?",
+        "body": "Londoloza ukuqinisekiswa okusemthethweni noma ireferensi kanye nosuku lokuthumela."
+      },
+      {
+        "title": "I-FAQ: Kungani ugcina amarekhodi angaphambili namasha ndawonye?",
+        "body": "Ngoba basiza ukukhombisa indaba ephelele yecala kuzo zombili izigaba."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngihlole isimo ngokushesha futhi?",
+        "body": "Ngokuvamile kuyasiza ukunikeza inqubo isikhathi esithile kuqala."
+      }
+    ]
+  },
+  "how-to-keep-records-after-reapplying": {
+    "title": "Ungawagcina kanjani amarekhodi ngemva kokufaka isicelo kabusha",
+    "summary": "Umhlahlandlela osebenzayo wokugcina amarekhodi okufaka isicelo ecacile ukuze isimo sakamuva kanye nemibuzo yokukhokha kube lula ukuyilandela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Gcina amarekhodi ngemva kokufaka isicelo kabusha ngokulondoloza ireferensi entsha, idethi yokuthunyelwa, amagama akamuva asemthethweni, nanoma imaphi amarekhodi angaphambili achaza ukuthi kungani ukufaka isicelo futhi kwenzeke."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukuphinda kufakwe isicelo kudala isendlalelo sesibili samarekhodi. Ngaphandle komkhuba olula wokugcina amarekhodi, kuba nzima kakhulu ukuqhathanisa okushintshile kusuka esigabeni sangaphambili kuya kwesisha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amarekhodi amahle asiza abasebenzisi ukuthi bagweme ukuhlanganisa imilayezo yesimo yangaphambili nemisha futhi enze ukulandelela kwakamuva kucace nakakhulu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Londoloza ireferensi entsha yohlelo lokusebenza.\n2. Gcina izinsuku ezintsha nezangaphambili zindawonye.\n3. Londoloza amagama akamuva asemthethweni ngemva kokufaka isicelo kabusha.\n4. Izithombe-skrini namanothi ahlobene neqembu endaweni eyodwa.\n5. Buyekeza umugqa wesikhathi ngaphambi kokuthatha isinyathelo esilandelayo esisemthethweni."
+      },
+      {
+        "title": "Isigaba sesibili sidinga umugqa wesikhathi ocacile",
+        "body": "Ukusebenzisa kabusha kudala ngaphambi nangemuva. Umugqa wesikhathi olula wenza kube lula kakhulu ukubona ukuthi yini eshintshile nokuthi yini engazange inyakaze."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikugcineli amarekhodi asemthethweni ngokuzenzakalelayo. Abasebenzisi kufanele bagcine amakhophi abo ezibuyekezo ezibalulekile ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhumushe umugqa wesikhathi kumarekhodi akho ngokuwuqhathanisa nokuphinda usebenzise, ​​isimo, nemihlahlandlela yokukhokha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-to-do-after-you-reapply-online\n• /guides/how-to-read-application-status-after-reapplication\n• /guides/how-to-check-reapplication-status-safely\n• /guides/how-to-keep-records-for-an-appeal\n• /guides/how-to-keep-records-of-payment-problems"
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyiqophe kuqala ngemva kokufaka isicelo kabusha?",
+        "body": "Rekhoda ireferensi entsha kanye nosuku lokuphinda ufake isicelo kuqala."
+      },
+      {
+        "title": "I-FAQ: Kungani futhi ugcine amarekhodi amadala?",
+        "body": "Ngoba ziyachaza ukuthi kungani isicelo futhi senzeka futhi zikusiza ukuthi uqhathanise okushintshile kamuva."
+      },
+      {
+        "title": "I-FAQ: Ngabe umugqa wesikhathi usiza kanjani?",
+        "body": "Kukusiza ukuthi uhlukanise isiteji sangaphambili nesisha ngokucacile."
+      }
+    ]
+  },
+  "how-to-read-application-status-after-reapplication": {
+    "title": "Usifunda kanjani isimo sohlelo lokusebenza ngemuva kokufaka isicelo futhi",
+    "summary": "Umhlahlandlela wokufunda amagama esimo ngemva kokufaka isicelo kabusha ngaphandle kokuhlanganisa isigaba secala elidala nelisha.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Funda isimo sohlelo lokusebenza ngemva kokufaka kabusha ngokusiphatha njengesiteji esisha, ulondoloze amagama amasha, futhi usiqhathanise nedethi yokufakwa kabusha kwesicelo esikhundleni sokulindelwe okudala kuphela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngemva kokufaka kabusha, abasebenzisi bavamise ukuthwala ukukhungatheka kwesigaba sangaphambili bakuyise kwesisha. Kuyaqondakala lokho, kodwa kuyasiza ukufunda isimo esisha njengengxenye yesiteji esisha esinomugqa wesikhathi waso."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi beqhathanisa yonke imilayezo emisha kuphela nenkinga yangaphambili, bangase baphuthelwe lokho okuboniswa yisiteji esisha."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Gcina amagama amasha ngemva kokufaka isicelo futhi.\n2. Qhathanisa nosuku lokuphinda ufake isicelo kanye nereferensi.\n3. Funda umlayezo omusha njengengxenye yesiteji esisha.\n4. Sebenzisa umhlahlandlela ofanayo we-GrantCare wamagama owabonayo.\n5. Gcina amarekhodi angaphambili namanje ehlukene ngokwanele ukuze uwaqhathanise ngokucacile."
+      },
+      {
+        "title": "Isiteji esisha sifanelwe ukufundwa kwaso",
+        "body": "Umlayezo wesimo sokufaka isicelo kabusha kufanele ufundwe ekukhanyeni kwesiteji esisha, hhayi kuphela ngokukhungatheka kwesiteji esidala. Lokho kushintsha ngokuvamile kwenza amagama aqondwe kalula."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingachaza amagama amasha, kodwa ukuqinisekiswa kwesimo esisemthethweni kusesekumzila osemthethweni owubonisayo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uxhume umugqa wesikhathi wokufaka isicelo kabusha namagama esimo esisha ukuze ungagoqi izigaba ezimbili zibe indaba eyodwa edidayo."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-reapplication-status-safely\n• /guides/reapplication-needed-meaning\n• /guides/how-to-keep-records-after-reapplying\n• /guides/how-to-read-application-status-after-applying-online\n• /status"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngikuphathe njengesiteji esisha?",
+        "body": "Ngoba ukuphinda kufakwe isicelo kuqala umugqa wesikhathi omusha futhi isimo esisha sidinga ukufundwa kulowo mongo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngigcine amarekhodi angaphambili?",
+        "body": "Yebo, kodwa ziqhathanise ngokucophelela esikhundleni sokuhlanganisa yonke imilayezo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyilondoloze kusukela kusiteji esisha?",
+        "body": "Londoloza amagama amasha, idethi, kanye nereferensi yokuphinda usebenzise isicelo."
+      }
+    ]
+  },
+  "what-sc19-searches-usually-mean": {
+    "title": "Kusho ukuthini i-SC19 emakhasini we-SRD",
+    "summary": "Umhlahlandlela wolimi olulula wokuthi i-SC19 isho ukuthini esimweni se-SRD noma emakhasini ohlelo lokusebenza, nokuthi kungani abasebenzisi kufanele bagxile emsebenzini osemthethweni ngemuva kwethemu esikhundleni sekhodi yodwa.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma useshe i-SC19, ngokuvamile uzama ukufinyelela uhlelo oluthile oluhlobene ne-SRD noma umzila wesimo. Ukunyakaza okuphephe kakhulu ukukhomba umsebenzi ongemuva kwekhodi ngaphambi kokuthi uthembe ikhasi."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amakhodi afana ne-SC19 angabukeka ecacile futhi ngenxa yalokho ethembeke kakhulu. Inkinga ukuthi abasebenzisi bangase bagxile kukhodi ngokwayo futhi bakhohlwe ukuhlola ukuthi ikhasi lisafana yini nomsebenzi osemthethweni abawudingayo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Usesho olusekelwe kukhodi lungazwakala lunembe ngenkathi lusaholela ekudidekeni uma umsebenzisi engazi ukuthi uyaludinga yini uhlelo lokusebenza, isimo, noma omunye umzila."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Nquma ukuthi uyaludinga yini uhlelo lokusebenza, isimo, noma omunye umsebenzi ohlobene ne-SRD.\n2. Qondanisa usesho olusekelwe kukhodi nalowo msebenzi.\n3. Qinisekisa umzila wekhasi ngaphambi kokuwusebenzisa.\n4. Gwema ukwethemba izixhumanisi ezisekelwe kukhodi ezabiwe ngaphandle komongo.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuhumusha igama lokusesha libe umsebenzi osemthethweni ofanele."
+      },
+      {
+        "title": "Ikhodi akuwona umsebenzi",
+        "body": "Imigomo yesitayela se-SC19 ingasiza abasebenzisi ukuthi bathole amakhasi, kodwa akufanele bathathe indawo yombuzo obaluleke kakhulu wokuthi imuphi umsebenzi osemthethweni ikhasi elihloselwe ukuwenza."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare akulona ikhasi le-SC19 elisemthethweni. Isiza abasebenzisi baqonde ukusesha okusekelwe kukhodi ngaphandle kokuzenza umzila osemthethweni ngokwawo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhumushe amagama okusesha afana nekhodi kuhlelo lokusebenza olusemthethweni olulungile, isimo, noma umzila wokulandelela ngaphambi kokuthi uchofoze kude kakhulu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-use-sc19-pages-safely\n• /guides/how-to-check-srd-status-online\n• /guides/how-to-find-an-official-application-status-page-safely\n• /guides/how-to-start-an-r350-online-application-safely\n• /guides/how-to-find-the-right-sassa-website-for-your-task"
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwe-SC19 kuzwakala kuthembekile?",
+        "body": "Ngoba ikhodi izwakala iqondile, okungenza abasebenzisi bathembe umphumela ngokushesha okukhulu."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele nginqume ngaphambi kokwethemba ikhasi le-SC19?",
+        "body": "Nquma ukuthi yimuphi umsebenzi odinga ukuthi ikhasi liwuphathe."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingasebenzisa i-SC19 njengomzila osemthethweni?",
+        "body": "Cha. Isiza kuphela ukuchaza ukuthi igama lokusesha lingase libhekisele kuphi."
+      }
+    ]
+  },
+  "how-to-use-sc19-pages-safely": {
+    "title": "Asetshenziswa kanjani amakhasi e-SC19 ngokuphepha",
+    "summary": "Umhlahlandlela wokuphepha wabasebenzisi abahlala kuhlelo lokusebenza lwesitayela se-SC19 noma amakhasi wesimo futhi abafuna ukwenza isiqiniseko sokuthi bawusebenzisa ngendlela efanele umzila.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa amakhasi esitayela se-SC19 ngokuphepha ngokuqinisekisa ukuthi ikhasi elokufaka isicelo noma isimo, uhlole umzila ngokucophelela, futhi uphathe izixhumanisi ezikopishiwe ngokuqaphela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amakhasi esitayela se-SC19 avame ukutholakala ngokusesha okuqondile noma izixhumanisi ezabiwe. Lokho kwenza kubaluleke kakhulu ukuqinisekisa injongo yekhasi ngaphambi kokufaka imininingwane noma ukwethemba umphumela owubonayo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Umsebenzisi odida ikhasi lohlelo lokusebenza ngekhasi lesimo angalahlekelwa isikhathi, afunde kabi isinyathelo esilandelayo, noma athembe umzila ongalungile ngokushesha okukhulu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi ikhasi elokufaka isicelo, isimo, noma omunye umsebenzi wokulandelela.\n2. Qinisekisa umzila nekheli ngokucophelela.\n3. Gwema ukwethemba izixhumanisi ezidluliselwe phambili ze-SC19 ezingenamthombo.\n4. Sebenzisa ikhasi kuphela kumsebenzi eliwuphethe ngokucacile.\n5. Sebenzisa i-GrantCare ukuze uhumushe umphumela noma amagama ngemva kokuba ikhasi elisemthethweni liwunikeze."
+      },
+      {
+        "title": "Inhloso yekhasi iza ngaphambi kwekhodi yekhasi",
+        "body": "Umbuzo owusizo kakhulu akukhona nje ukuthi leli yikhasi le-SC19. Umbuzo ongcono ngowokuthi empeleni imuphi umsebenzi owenzelwa leli khasi njengamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iwumhlahlandlela ozimele hhayi umzila osemthethweni we-SC19. Izenzo ezisemthethweni zisengezohlelo olusemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza unqume ukuthi ikhasi le-SC19 lisetshenziselwa umsebenzi ofanele futhi lingachaza amagama avela lapho kamuva."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-sc19-searches-usually-mean\n• /guides/how-to-check-if-an-online-application-link-is-official\n• /guides/how-to-find-an-official-application-status-page-safely\n• /guides/how-to-check-srd-status-online\n• /guides/official-status-check-vs-independent-guide"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngihlole ukuthi ikhasi elokufaka isicelo noma isimo?",
+        "body": "Ngoba ukusebenzisa injongo yekhasi engalungile kudala ukudideka okungadingekile mayelana nesinyathelo esilandelayo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngethembe noma yisiphi isixhumanisi se-SC19 umuntu engithumelela sona?",
+        "body": "Cha. Qinisekisa umthombo nomsebenzi kuqala."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze ngemva kokubona umphumela?",
+        "body": "Sebenzisa i-GrantCare ukuhumusha amagama uma ikhasi elisemthethweni seliyibonisile."
+      }
+    ]
+  }
+};
+
+function withZuTranslations<
+  T extends {
+    slug: string;
+    title: string;
+    summary: string;
+    sections: Array<{ title: string; body: string }>;
+    translations?: Record<string, unknown>;
+  },
+>(guide: T, translation: GuideTranslation) {
+  return {
+    ...guide,
+    translations: {
+      ...(guide.translations ?? {}),
+      zu: translation,
+    },
+  };
+}
+
+export const SEO_BATCH_THIRTEEN_GUIDES = SEO_BATCH_THIRTEEN_GUIDES_SOURCE.map((guide) =>
+  addSetswanaTranslations(withZuTranslations(guide, ZU_TRANSLATIONS[guide.slug])),
+);

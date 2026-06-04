@@ -4,6 +4,7 @@ import { openai } from "@ai-sdk/openai";
 import { z } from "zod";
 import { auth } from "@/auth";
 import { db } from "@/lib/prisma";
+import { getRequestLocale, getSassaAppealApiCopy } from "../copy";
 
 const InputSchema = z.object({
   grantType: z.string(),
@@ -20,23 +21,6 @@ const OutputSchema = z.object({
 });
 
 export const maxDuration = 30;
-
-/* ── Mappings ── */
-const GRANT_LABELS: Record<string, string> = {
-  "srd_r370": "SRD R370 Grant",
-  "child_support": "Child Support Grant",
-  "disability": "Disability Grant",
-  "older_persons": "Older Persons Grant",
-};
-
-const REASON_LABELS: Record<string, string> = {
-  "alternative_income": "Alternative Income Source Identified",
-  "uif_registered": "UIF Registered",
-  "nsfas_registered": "NSFAS Registered",
-  "identity_failed": "Identity Verification Failed",
-  "medical_failed": "Medical Assessment Failed",
-  "other": "Other / Unspecified",
-};
 
 const SYSTEM_PROMPT = `You are a professional legal drafter specializing in South African Social Security Agency (SASSA) and Independent Tribunal for Social Assistance Appeals (ITSAA) cases.
 
@@ -61,19 +45,24 @@ Rules for Required Documents:
 - If alternative income -> "3 months stamped bank statements".`;
 
 export async function POST(req: Request) {
-  if (!process.env.OPENAI_API_KEY) {
-    return NextResponse.json({ error: "OpenAI API missing" }, { status: 500 });
-  }
+  const locale = getRequestLocale(req);
+  const copy = getSassaAppealApiCopy(locale);
 
   try {
+    if (!process.env.OPENAI_API_KEY) {
+      return NextResponse.json({ error: copy.apiMissing }, { status: 500 });
+    }
+
     const session = await auth();
     const userId = session?.user?.id;
 
     const json = await req.json();
     const data = InputSchema.parse(json);
 
-    const grantLabel = GRANT_LABELS[data.grantType] ?? data.grantType;
-    const reasonLabel = REASON_LABELS[data.rejectionReason] ?? data.rejectionReason;
+    const grantLabels = copy.grantLabels as Record<string, string>;
+    const reasonLabels = copy.reasonLabels as Record<string, string>;
+    const grantLabel = grantLabels[data.grantType] ?? data.grantType;
+    const reasonLabel = reasonLabels[data.rejectionReason] ?? data.rejectionReason;
 
     const userPrompt = `Based on the following details:
 
@@ -83,7 +72,7 @@ Grant Type: ${grantLabel}
 Rejection Reason: ${reasonLabel}
 User's Defense (in their words): "${data.defense}"
 
-Generate the appeal letter, required documents list, and specific warnings.`;
+Generate the appeal letter, required documents list, and specific warnings.${copy.outputLanguageInstruction}`;
 
     const { object } = await generateObject({
       model: openai("gpt-4o-mini"),
@@ -105,6 +94,6 @@ Generate the appeal letter, required documents list, and specific warnings.`;
     return NextResponse.json({ id: generation.id });
   } catch (error) {
     console.error("[generate-sassa-appeal]", error);
-    return NextResponse.json({ error: "Failed to generate appeal" }, { status: 500 });
+    return NextResponse.json({ error: copy.failedGenerate }, { status: 500 });
   }
 }

@@ -8,26 +8,9 @@ import { FlowScreen } from "@/components/interview-guide/flow-screen";
 import { OptionGroup } from "@/components/interview-guide/option-card";
 import { LoadingSequence } from "@/components/interview-guide/loading-sequence";
 import { buildLocalePath, type Locale } from "@/lib/site";
+import { getSassaAppealCopy } from "../copy";
 
 import "./builder.css";
-
-/* ── Flow Data ── */
-
-const GRANT_TYPES = [
-  { label: "SRD R370 Grant", value: "srd_r370" },
-  { label: "Child Support Grant", value: "child_support" },
-  { label: "Disability Grant", value: "disability" },
-  { label: "Older Persons Grant", value: "older_persons" },
-];
-
-const REJECTION_REASONS = [
-  { label: "Alternative Income Source", value: "alternative_income" },
-  { label: "UIF Registered", value: "uif_registered" },
-  { label: "NSFAS Registered", value: "nsfas_registered" },
-  { label: "Identity Verification Failed", value: "identity_failed" },
-  { label: "Medical Assessment Failed", value: "medical_failed" },
-  { label: "Other / Unsure", value: "other" },
-];
 
 const TOTAL_STEPS = 4;
 
@@ -48,6 +31,7 @@ type Screen = "grant" | "reason" | "defense" | "identity" | "loading";
 export function BuilderClient({ locale }: { locale: Locale }) {
   const router = useRouter();
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const copy = getSassaAppealCopy(locale);
 
   const [screen, setScreen] = useState<Screen>("grant");
   const [formData, setFormData] = useState<FlowData>({
@@ -86,22 +70,22 @@ export function BuilderClient({ locale }: { locale: Locale }) {
     try {
       const res = await fetch("/api/tools/sassa-appeal/generate", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "x-grantcare-locale": locale },
         body: JSON.stringify(formData),
       });
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(body.error || "Failed to generate appeal letter");
+        throw new Error(body.error || copy.failedGenerate);
       }
 
       const data = await res.json();
       router.push(buildLocalePath(locale, `/tools/sassa-appeal/result/${data.id}`));
     } catch (err: unknown) {
       console.error("[builder]", err);
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setError(err instanceof Error ? err.message : copy.genericError);
     }
-  }, [formData, locale, router]);
+  }, [copy.failedGenerate, copy.genericError, formData, locale, router]);
 
   return (
     <>
@@ -112,10 +96,10 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 1: Grant Type ── */}
       {screen === "grant" && (
         <FlowScreen
-          question="Which SASSA grant was rejected?"
+          question={copy.grantQuestion}
         >
           <OptionGroup
-            options={GRANT_TYPES}
+            options={copy.grantTypes}
             value={formData.grantType}
             onChange={(v) => selectAndAdvance("grantType", v, "reason")}
           />
@@ -125,12 +109,12 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 2: Rejection Reason ── */}
       {screen === "reason" && (
         <FlowScreen
-          question="Why did SASSA reject your application?"
-          subtitle="You can check your status on the SASSA portal to confirm."
+          question={copy.reasonQuestion}
+          subtitle={copy.reasonSubtitle}
           onBack={() => goTo("grant")}
         >
           <OptionGroup
-            options={REJECTION_REASONS}
+            options={copy.rejectionReasons}
             value={formData.rejectionReason}
             onChange={(v) => selectAndAdvance("rejectionReason", v, "defense")}
           />
@@ -140,15 +124,15 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 3: Your Defense ── */}
       {screen === "defense" && (
         <FlowScreen
-          question="Why is this rejection incorrect?"
-          subtitle="Briefly explain the truth. We will structure it professionally for the Tribunal."
+          question={copy.defenseQuestion}
+          subtitle={copy.defenseSubtitle}
           onBack={() => goTo("reason")}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             <textarea
               ref={inputRef}
               className="flow-input w-full p-4 min-h-[120px]"
-              placeholder="e.g. I have not received any income since 2021. The bank deposit was a gift from my sister..."
+              placeholder={copy.defensePlaceholder}
               value={formData.defense}
               onChange={(e) => setFormData((prev) => ({ ...prev, defense: e.target.value }))}
               autoFocus
@@ -159,7 +143,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               disabled={formData.defense.trim().length < 5}
               onClick={() => goTo("identity")}
             >
-              Continue
+              {copy.continue}
             </button>
           </div>
         </FlowScreen>
@@ -168,28 +152,28 @@ export function BuilderClient({ locale }: { locale: Locale }) {
       {/* ── Screen 4: Identity Details ── */}
       {screen === "identity" && (
         <FlowScreen
-          question="Your Details for the Appeal"
-          subtitle="Your information is used to generate your appeal draft."
+          question={copy.identityQuestion}
+          subtitle={copy.identitySubtitle}
           onBack={() => goTo("defense")}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             <div className="space-y-4 text-left w-full max-w-sm mx-auto">
               <div>
-                <label className="block text-sm font-semibold mb-1">Full Name</label>
+                <label className="block text-sm font-semibold mb-1">{copy.fullName}</label>
                 <input
                   type="text"
                   className="flow-input w-full"
-                  placeholder="e.g. Sipho Nkosi"
+                  placeholder={copy.fullNamePlaceholder}
                   value={formData.fullName}
                   onChange={(e) => setFormData((prev) => ({ ...prev, fullName: e.target.value }))}
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold mb-1">ID Number</label>
+                <label className="block text-sm font-semibold mb-1">{copy.idNumber}</label>
                 <input
                   type="text"
                   className="flow-input w-full"
-                  placeholder="e.g. 9001015043081"
+                  placeholder={copy.idNumberPlaceholder}
                   value={formData.idNumber}
                   maxLength={13}
                   onChange={(e) => setFormData((prev) => ({ ...prev, idNumber: e.target.value }))}
@@ -208,7 +192,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               disabled={formData.fullName.trim().length < 2 || formData.idNumber.trim().length < 13}
               onClick={generate}
             >
-              Draft My Appeal Letter
+              {copy.cta}
             </button>
           </div>
         </FlowScreen>
@@ -219,13 +203,8 @@ export function BuilderClient({ locale }: { locale: Locale }) {
         <LoadingSequence
           error={error}
           onRetry={generate}
-          title="Drafting appeal letter…"
-          messages={[
-            "Structuring format for the Independent Tribunal...",
-            "Formalising your defense and circumstances...",
-            "Generating list of required supporting affidavits...",
-            "Preparing final document..."
-          ]}
+          title={copy.loadingTitle}
+          messages={copy.loadingMessages}
         />
       )}
     </>

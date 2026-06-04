@@ -9,7 +9,13 @@ import {
 } from "@/lib/content";
 import { filterIndexableGuides } from "@/lib/guide-seo";
 import { buildLocalizedSitemapEntry } from "@/lib/metadata";
-import { filterIndexablePaymentPeriods } from "@/lib/payment-seo";
+import {
+  filterIndexablePaymentPeriods,
+  getPaymentGrantSitemapPriority,
+  getPaymentMonthSitemapPriority,
+  getPaymentSitemapChangeFrequency,
+  getPaymentSitemapLastModified,
+} from "@/lib/payment-seo";
 import { getPublicLocales } from "@/lib/site";
 
 function escapeXml(value: string) {
@@ -141,15 +147,17 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       buildLocalizedSitemapEntry({
         locale: locale.code,
         path: `/payment-dates/${period.year}/${period.monthSlug}`,
-        changeFrequency: "monthly",
-        priority: 0.8,
+        lastModified: getPaymentSitemapLastModified(),
+        changeFrequency: getPaymentSitemapChangeFrequency(period),
+        priority: getPaymentMonthSitemapPriority(period),
       }),
       ...period.entries.map((entry) =>
         buildLocalizedSitemapEntry({
           locale: locale.code,
           path: `/payment-dates/${period.year}/${period.monthSlug}/${entry.grantSlug}`,
-          changeFrequency: "monthly",
-          priority: 0.78,
+          lastModified: getPaymentSitemapLastModified(),
+          changeFrequency: getPaymentSitemapChangeFrequency(period),
+          priority: getPaymentGrantSitemapPriority(period, entry.grantSlug),
         }),
       ),
     ]),

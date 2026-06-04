@@ -11,10 +11,10 @@ import { buildLocalePath, isLocale } from "@/lib/site";
 import { isDatabaseConfigured } from "@/lib/server-env";
 import { createUser, getUserByEmail } from "@/lib/users";
 import {
-  forgotPasswordSchema,
-  resetPasswordSchema,
-  signInSchema,
-  signUpSchema,
+  getForgotPasswordSchema,
+  getResetPasswordSchema,
+  getSignInSchema,
+  getSignUpSchema,
 } from "@/lib/validation";
 
 export type AuthActionState = {
@@ -51,7 +51,7 @@ export async function authenticateAction(
     ? String(formData.get("next"))
     : buildLocalePath(locale, "/dashboard");
 
-  const parsed = signInSchema.safeParse({
+  const parsed = getSignInSchema(locale).safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
   });
@@ -88,7 +88,7 @@ export async function registerAction(
   const locale = getLocale(formData.get("locale"));
   const copy = getCopy(locale);
 
-  const parsed = signUpSchema.safeParse({
+  const parsed = getSignUpSchema(locale).safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
     password: formData.get("password"),
@@ -151,7 +151,7 @@ export async function requestPasswordResetAction(
   const locale = getLocale(formData.get("locale"));
   const copy = getCopy(locale);
 
-  const parsed = forgotPasswordSchema.safeParse({
+  const parsed = getForgotPasswordSchema(locale).safeParse({
     email: formData.get("email"),
   });
 
@@ -181,7 +181,7 @@ export async function resetPasswordAction(
   const locale = getLocale(formData.get("locale"));
   const copy = getCopy(locale);
 
-  const parsed = resetPasswordSchema.safeParse({
+  const parsed = getResetPasswordSchema(locale).safeParse({
     token: formData.get("token"),
     password: formData.get("password"),
     confirmPassword: formData.get("confirmPassword"),

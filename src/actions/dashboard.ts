@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 import { trackServerEvent } from "@/lib/analytics";
 import { requireUser } from "@/lib/auth-guards";
-import { buildLocalePath, isLocale } from "@/lib/site";
+import { buildLocalePath, isLocale, type Locale } from "@/lib/site";
 import { syncReminderJobsForSubscription } from "@/lib/reminders";
 import {
   getReminderSubscription,
@@ -18,6 +18,35 @@ import { profileSchema, reminderSubscriptionSchema } from "@/lib/validation";
 
 function getLocale(value: FormDataEntryValue | null) {
   return typeof value === "string" && isLocale(value) ? value : "en";
+}
+
+type DashboardActionCopy = {
+  emailInUse: string;
+  profileInvalid: string;
+  profileUpdated: string;
+  reminderInvalid: string;
+  reminderUpdated: string;
+};
+
+const DASHBOARD_ACTION_COPY: Partial<Record<Locale, DashboardActionCopy>> = {
+  en: {
+    emailInUse: "That email is already in use.",
+    profileInvalid: "Check your profile details and try again.",
+    profileUpdated: "Profile updated.",
+    reminderInvalid: "Check the reminder settings and try again.",
+    reminderUpdated: "Reminder settings updated.",
+  },
+  zu: {
+    emailInUse: "Leyo imeyili isivele isetshenziswa.",
+    profileInvalid: "Hlola imininingwane yephrofayili yakho bese uzama futhi.",
+    profileUpdated: "Iphrofayili ibuyekeziwe.",
+    reminderInvalid: "Hlola izilungiselelo zezikhumbuzi bese uzama futhi.",
+    reminderUpdated: "Izilungiselelo zezikhumbuzi zibuyekeziwe.",
+  },
+};
+
+function getDashboardActionCopy(locale: Locale) {
+  return DASHBOARD_ACTION_COPY[locale] ?? (DASHBOARD_ACTION_COPY.en as DashboardActionCopy);
 }
 
 function buildRedirect(path: string, params: Record<string, string | null | undefined>) {
@@ -34,6 +63,7 @@ function buildRedirect(path: string, params: Record<string, string | null | unde
 
 export async function updateProfileAction(formData: FormData) {
   const locale = getLocale(formData.get("locale"));
+  const copy = getDashboardActionCopy(locale);
   const user = await requireUser(locale, buildLocalePath(locale, "/dashboard"));
 
   const parsed = profileSchema.safeParse({
@@ -50,7 +80,7 @@ export async function updateProfileAction(formData: FormData) {
   if (!parsed.success) {
     redirect(
       buildRedirect(buildLocalePath(locale, "/dashboard"), {
-        error: "Check your profile details and try again.",
+        error: copy.profileInvalid,
       }),
     );
   }
@@ -67,7 +97,7 @@ export async function updateProfileAction(formData: FormData) {
     ) {
       redirect(
         buildRedirect(buildLocalePath(locale, "/dashboard"), {
-          error: "That email is already in use.",
+          error: copy.emailInUse,
         }),
       );
     }
@@ -104,13 +134,14 @@ export async function updateProfileAction(formData: FormData) {
   revalidatePath(buildLocalePath(locale, "/dashboard"));
   redirect(
     buildRedirect(buildLocalePath(locale, "/dashboard"), {
-      message: "Profile updated.",
+      message: copy.profileUpdated,
     }),
   );
 }
 
 export async function updateReminderSubscriptionAction(formData: FormData) {
   const locale = getLocale(formData.get("locale"));
+  const copy = getDashboardActionCopy(locale);
   const user = await requireUser(locale, buildLocalePath(locale, "/dashboard"));
 
   const parsed = reminderSubscriptionSchema.safeParse({
@@ -124,7 +155,7 @@ export async function updateReminderSubscriptionAction(formData: FormData) {
   if (!parsed.success) {
     redirect(
       buildRedirect(buildLocalePath(locale, "/dashboard"), {
-        error: "Check the reminder settings and try again.",
+        error: copy.reminderInvalid,
       }),
     );
   }
@@ -159,7 +190,7 @@ export async function updateReminderSubscriptionAction(formData: FormData) {
   revalidatePath(buildLocalePath(locale, "/dashboard"));
   redirect(
     buildRedirect(buildLocalePath(locale, "/dashboard"), {
-      message: "Reminder settings updated.",
+      message: copy.reminderUpdated,
     }),
   );
 }

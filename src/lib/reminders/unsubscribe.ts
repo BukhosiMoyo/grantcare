@@ -13,6 +13,19 @@ type ReminderUnsubscribeTokenPayload = {
   subscriptionId: string;
 };
 
+const REMINDER_UNSUBSCRIBE_COPY: Partial<Record<Locale, { cancelReason: string }>> = {
+  en: {
+    cancelReason: "User unsubscribed.",
+  },
+  zu: {
+    cancelReason: "Umsebenzisi uyekile ukubhalisa.",
+  },
+};
+
+function getReminderUnsubscribeCopy(locale: Locale) {
+  return REMINDER_UNSUBSCRIBE_COPY[locale] ?? (REMINDER_UNSUBSCRIBE_COPY.en as { cancelReason: string });
+}
+
 function getTokenSecret() {
   if (!process.env.AUTH_SECRET) {
     throw new Error("AUTH_SECRET is required for reminder unsubscribe tokens.");
@@ -132,7 +145,7 @@ export async function unsubscribeFromReminderToken(token: string) {
     },
     data: {
       status: ReminderJobStatus.cancelled,
-      cancelReason: "User unsubscribed.",
+      cancelReason: getReminderUnsubscribeCopy(payload.locale).cancelReason,
       processingStartedAt: null,
     },
   });

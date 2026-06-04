@@ -19,6 +19,23 @@ const ADMIN_ITEMS = [
   { href: "/admin/seo", label: "SEO & Search Console" },
 ];
 
+const ZU_ADMIN_NAV_COPY: Record<string, string> = {
+  Overview: "Uhlolojikelele",
+  Grants: "Izibonelelo",
+  "Payment dates": "Izinsuku zokukhokha",
+  Statuses: "Izimo",
+  Guides: "Imihlahlandlela",
+  News: "Izindaba",
+  FAQ: "FAQ",
+  Notices: "Izaziso",
+  Placements: "Izindawo",
+  "SEO & Search Console": "SEO ne-Search Console",
+};
+
+function navCopy(locale: Locale, text: string) {
+  return locale === "zu" ? (ZU_ADMIN_NAV_COPY[text] ?? text) : text;
+}
+
 export function AdminNav({
   locale,
 }: {
@@ -43,7 +60,7 @@ export function AdminNav({
                 : "border-border bg-surface text-foreground hover:bg-surface-muted",
             )}
           >
-            {item.label}
+            {navCopy(locale, item.label)}
           </Link>
         );
       })}

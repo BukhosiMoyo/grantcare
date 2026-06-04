@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/site";
 
 const MESSAGES = [
   "Analysing your role…",
@@ -10,21 +11,57 @@ const MESSAGES = [
   "Finalising your interview guide…",
 ];
 
+const LOCALIZED_MESSAGES: Partial<Record<Locale, string[]>> = {
+  zu: [
+    "Kuhlaziywa indima yakho…",
+    "Kulungiswa izimpendulo eziqinile…",
+    "Kwenziwa ngendlela yezinga lakho lolwazi…",
+    "Kukhiqizwa amathiphu enzelwe wena…",
+    "Kuphethwa umhlahlandlela wakho wenhlolokhono…",
+  ],
+};
+
+const COPY: Partial<Record<Locale, {
+  defaultTitle: string;
+  errorTitle: string;
+  retry: string;
+}>> = {
+  zu: {
+    defaultTitle: "Kudalwa umhlahlandlela wakho wenhlolokhono…",
+    errorTitle: "Kukhona okungahambanga kahle",
+    retry: "Zama futhi",
+  },
+};
+
+function getCopy(locale: Locale) {
+  return {
+    defaultTitle: "Creating your personalised interview guide…",
+    errorTitle: "Something went wrong",
+    retry: "Try Again",
+    ...(COPY[locale] ?? {}),
+  };
+}
+
 /**
  * Animated loading screen that cycles through messages
  * to build anticipation while the AI generates content.
  */
 export function LoadingSequence({
   error,
+  locale = DEFAULT_LOCALE,
   onRetry,
-  messages = MESSAGES,
-  title = "Creating your personalised interview guide…",
+  messages,
+  title,
 }: {
   error?: string | null;
+  locale?: Locale;
   onRetry?: () => void;
   messages?: string[];
   title?: string;
 }) {
+  const copy = getCopy(locale);
+  const resolvedMessages = messages ?? LOCALIZED_MESSAGES[locale] ?? MESSAGES;
+  const resolvedTitle = title ?? copy.defaultTitle;
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -32,13 +69,13 @@ export function LoadingSequence({
 
     const timer = setInterval(() => {
       setActiveIndex((prev) => {
-        if (prev < messages.length - 1) return prev + 1;
+        if (prev < resolvedMessages.length - 1) return prev + 1;
         return prev;
       });
     }, 1800);
 
     return () => clearInterval(timer);
-  }, [error, messages.length]);
+  }, [error, resolvedMessages.length]);
 
   if (error) {
     return (
@@ -46,12 +83,12 @@ export function LoadingSequence({
         <div className="flow-error">
           <span className="flow-error-icon">⚠️</span>
           <h2 style={{ fontSize: "1.5rem", fontWeight: 600, color: "var(--foreground)" }}>
-            Something went wrong
+            {copy.errorTitle}
           </h2>
           <p>{error}</p>
           {onRetry && (
             <button className="flow-btn flow-btn-primary" onClick={onRetry} style={{ width: "auto", marginTop: "0.5rem" }}>
-              Try Again
+              {copy.retry}
             </button>
           )}
         </div>
@@ -64,10 +101,10 @@ export function LoadingSequence({
       <div className="loading-spinner" />
       <div>
         <h2 style={{ fontSize: "1.5rem", fontWeight: 600, color: "var(--foreground)", marginBottom: "1.5rem" }}>
-          {title}
+          {resolvedTitle}
         </h2>
         <div className="loading-messages">
-          {messages.map((msg, i) => {
+          {resolvedMessages.map((msg, i) => {
             let state: "pending" | "active" | "done" = "pending";
             if (i < activeIndex) state = "done";
             else if (i === activeIndex) state = "active";

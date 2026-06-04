@@ -1,3 +1,5 @@
+import { addSetswanaTranslations } from "./generated-guide-translations";
+
 const section = (title: string, body: string) => ({ title, body });
 const faq = (question: string, answer: string) =>
   section(`FAQ: ${question}`, answer);
@@ -209,8 +211,6 @@ function grantSpecificGuide({
   grantSlug,
   grantTitle,
   shortLabel,
-  summaryAngle,
-  riskAngle,
   routePath,
   relatedGuideSlug,
   relatedStatusPath,
@@ -269,7 +269,7 @@ function grantSpecificGuide({
   });
 }
 
-export const SEO_BATCH_NINE_GUIDES = [
+const SEO_BATCH_NINE_GUIDES_SOURCE = [
   monthlyOverviewGuide("june", 144),
   monthlyOverviewGuide("july", 145),
   monthlyOverviewGuide("august", 146),
@@ -509,3 +509,1534 @@ export const SEO_BATCH_NINE_GUIDES = [
     sortOrder: 173,
   }),
 ];
+
+type GuideTranslation = {
+  title: string;
+  summary: string;
+  sections: Array<{ title: string; body: string }>;
+};
+
+const ZU_TRANSLATIONS: Record<string, GuideTranslation> = {
+  "payment-dates-june-2026": {
+    "title": "Izinsuku zokukhokha zikaJuni 2026",
+    "summary": "Umhlahlandlela ocacile, ongenangqondo wezinsuku zokukhokha zikaJuni 2026. Sichaza kahle ukuthi isibonelelo ngasinye sikhokha nini nokuthi ungaluqinisekisa kanjani usuku lwakho ngaphambi kokuthembela kulo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ufuna ukwazi idethi yakho yokukhokha kaJuni, bheka isigaba sakho semali yesibonelelo kuqala. Khumbula: abantu abadala, izibonelelo zezingane, kanye ne-SRD zonke zikhokha ngezinsuku ezihluke ngokuphelele."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "UJuni uphawula phakathi nonyaka, isikhathi esibalulekile sokuthola izikweletu zaphakathi nonyaka noma imali yesikole. Inkokhelo ebambezelekile ngoJuni ithinta kakhulu imindeni. Ungacabangi ukuthi imali yakho izofika ngosuku lokuqala lwenyanga. I-SASSA ikhipha izinkokhelo ukuze kuvinjelwe ama-ATM nezitolo ezinkulu ukuthi zingaminyana."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngenxa yokuthi imali iqinile maphakathi nonyaka, amashejuli mbumbulu we-'early payment' angena egazini njalo ngoJuni. Zivikele ngezinsuku zokwethemba kuphela eziphethe umaka we-'published' emithonjeni esemthethweni. Uma wenza iphutha ngosuku lokukhokha isibonelelo sezingane ngosuku lwe-SRD, uzogcina ulinde ulayini wemali engakaqedwa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula uhlelo lokukhokha olusemthethweni lukaJuni 2026 lwe-SASSA.\n2. Skrolela phansi uze uthole uhlobo oluqondile lwesibonelelo sakho.\n3. Bheka igama elithi \"Published\" eduze nosuku ukuze uqinisekise ukuthi liwujuqu.\n4. Khumbula ukuthi izimpelasonto namaholide azobambezela inkokhelo yakho.\n5. Uma usuku lwakho seludlulile futhi ungenayo imali, ngena kuphothali esemthethweni ukuze uhlole isimo sakho."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Phatha lolu hlelo lukaJuni njengemephu yomgwaqo, hhayi isithembiso esibophezela ngokomthetho. Ngisho noma izinsuku zishicilelwa, ukubambezeleka kwebhange lobuchwepheshe kusengakuphoqa ukuthi ulinde amahora angama-24 engeziwe."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza lo mugqa wesikhathi ukukusiza wenze isabelomali, kodwa asabalalisi imali. Uma izinkokhelo zikaJuni zibambezeleka kuzwelonke, yi-SASSA kuphela engaxazulula lolu daba."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sihlukanisa ishejuli yangoJuni ukuze wazi kahle ukuthi yini ongayilindela. Uma inkokhelo yakho yephuzile, i-GrantCare ikusiza ukuthi uqonde ukuthi ingabe kuwukubambezeleka kukazwelonke noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/june\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe zonke izinsuku zikaJuni 2026 ziwujuqu?",
+        "body": "Cha. Ezinye zingashicilelwa ngokusemthethweni kuyilapho ezinye zisalindelwe noma zisekelwe kuphothali."
+      },
+      {
+        "title": "I-FAQ: Kungani ikhasi elilodwa likaJuni lingakhombisa amagama ahlukene okukhokha ngohlobo lwesibonelelo?",
+        "body": "Ngoba akuzona zonke izigaba zesibonelelo ezibuyekezwa ngendlela efanayo ncamashi noma ohlelweni olufanayo lomphakathi."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise izinsuku zikaJuni 2026 ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma udinga isiqiniseko sokugcina noma ikhasi lisabonisa amagama alindelekile noma engosi kuphela."
+      }
+    ]
+  },
+  "payment-dates-july-2026": {
+    "title": "Izinsuku zokukhokha zikaJulayi 2026",
+    "summary": "Umhlahlandlela ocacile, ongenawo umbhedo wezinsuku zokukhokha zikaJulayi 2026. Sichaza kahle ukuthi isibonelelo ngasinye sikhokha nini nokuthi ungaluqinisekisa kanjani usuku lwakho ngaphambi kokuthembela kulo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ufuna ukwazi idethi yakho yokukhokha kaJulayi, bheka isigaba sakho semali yesibonelelo kuqala. Khumbula: abantu abadala, izibonelelo zezingane, kanye ne-SRD zonke zikhokha ngezinsuku ezihluke ngokuphelele."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "UJulayi ubusika obujulile eNingizimu Afrika. Uma imali yakho yesibonelelo siyindlela yakho yokuphila ngopharafini, izifudumezi, noma imithi, awukwazi ukuqagela ukuthi imali yakho izophela nini. Ungacabangi ukuthi imali yakho izofika ngosuku lokuqala lwenyanga. I-SASSA ikhipha izinkokhelo ukuze kuvinjelwe ama-ATM nezitolo ezinkulu ukuthi zingaminyana."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ungavumeli ukucindezeleka kwasebusika kukuphoqelele ekwenzeni izithembiso zezimali ngaphambi kokuba imali yakho ifike. Linda kuze kube yilapho isimo sakho sibuyekezwa ku-'approved' ngedethi yokugcina, eqinisekisiwe yokukhokha. Uma wenza iphutha ngosuku lokukhokha isibonelelo sezingane ngosuku lwe-SRD, uzogcina ulinde ulayini wemali engakaqedwa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula uhlelo lokukhokha lukaJulayi 2026 olusemthethweni lwe-SASSA.\n2. Skrolela phansi uze uthole uhlobo oluqondile lwesibonelelo sakho.\n3. Bheka igama elithi \"Published\" eduze nosuku ukuze uqinisekise ukuthi liwujuqu.\n4. Khumbula ukuthi izimpelasonto namaholide azobambezela inkokhelo yakho.\n5. Uma usuku lwakho seludlulile futhi ungenayo imali, ngena kuphothali esemthethweni ukuze uhlole isimo sakho."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Phatha lolu hlelo lukaJulayi njengemephu yomgwaqo, hhayi isithembiso esibophezelayo. Ngisho noma izinsuku zishicilelwa, ukubambezeleka kwebhange lobuchwepheshe kusengakuphoqa ukuthi ulinde amahora angama-24 engeziwe."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza lo mugqa wesikhathi ukukusiza wenze isabelomali, kodwa asabalalisi imali. Uma izinkokhelo zikaJulayi zibambezeleka kuzwelonke, i-SASSA kuphela engaxazulula lolu daba."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sihlukanisa ishejuli yangoJulayi ukuze wazi kahle ukuthi yini ongayilindela. Uma inkokhelo yakho yephuzile, i-GrantCare ikusiza ukuthi uqonde ukuthi ingabe kuwukubambezeleka kukazwelonke noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/july\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe zonke izinsuku zikaJulayi 2026 ziwujuqu?",
+        "body": "Cha. Ezinye zingashicilelwa ngokusemthethweni kuyilapho ezinye zisalindelwe noma zisekelwe kuphothali."
+      },
+      {
+        "title": "I-FAQ: Kungani ikhasi elilodwa likaJulayi lingakhombisa amagama ahlukene okukhokha ngohlobo lwesibonelelo?",
+        "body": "Ngoba akuzona zonke izigaba zesibonelelo ezibuyekezwa ngendlela efanayo ncamashi noma ohlelweni olufanayo lomphakathi."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise izinsuku zikaJulayi 2026 ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma udinga isiqiniseko sokugcina noma ikhasi lisabonisa amagama alindelekile noma engosi kuphela."
+      }
+    ]
+  },
+  "payment-dates-august-2026": {
+    "title": "Izinsuku zokukhokha zika-Agasti 2026",
+    "summary": "Umhlahlandlela ocacile, ongenangqondo wezinsuku zokukhokha zika-Agasti 2026. Sichaza kahle ukuthi isibonelelo ngasinye sikhokha nini nokuthi ungaluqinisekisa kanjani usuku lwakho ngaphambi kokuthembela kulo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ufuna ukwazi idethi yakho yokukhokha ka-Agasti, bheka isigaba sakho semali yesibonelelo kuqala. Khumbula: abantu abadala, izibonelelo zezingane, kanye ne-SRD zonke zikhokha ngezinsuku ezihluke ngokuphelele."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Njengoba singena ku-August, izindleko zokuphila kwansuku zonke ziyaqhubeka nokucindezela imindeni. Ukwazi usuku lwakho oluqondile lokukhokha kukusiza ukuthi ugweme ukuboleka imali ukuze uvale igebe. Ungacabangi ukuthi imali yakho izofika ngosuku lokuqala lwenyanga. I-SASSA ikhipha izinkokhelo ukuze kuvinjelwe ama-ATM nezitolo ezinkulu ukuthi zingaminyana."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abakhwabanisi basebenzisa igebe elide eliphakathi kwezinkokhelo zikaJulayi no-Agasti. Ngaphambi kokuthi uboleke imali kwisibonelelo sakho, qinisekisa ukuthi usuku lwakho luka-Agasti luqinisekisiwe ngokusemthethweni. Uma wenza iphutha ngosuku lokukhokhelwa kwesibonelelo sezingane ngosuku lwe-SRD, uzogcina ulinde ulayini wemali engakaqedwa ngisho namanje."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula uhlelo lokukhokha luka-August 2026 olusemthethweni lwe-SASSA.\n2. Skrolela phansi uze uthole uhlobo oluqondile lwesibonelelo sakho.\n3. Bheka igama elithi \"Published\" eduze nosuku ukuze uqinisekise ukuthi liwujuqu.\n4. Khumbula ukuthi izimpelasonto namaholide azobambezela inkokhelo yakho.\n5. Uma usuku lwakho seludlulile futhi ungenayo imali, ngena kuphothali esemthethweni ukuze uhlole isimo sakho."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Phatha lolu hlelo luka-Agasti njengemephu yomgwaqo, hhayi isithembiso esibophezela ngokomthetho. Ngisho noma izinsuku zishicilelwa, ukubambezeleka kwebhange lobuchwepheshe kusengakuphoqa ukuthi ulinde amahora angama-24 engeziwe."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza lo mugqa wesikhathi ukukusiza wenze isabelomali, kodwa asabalalisi imali. Uma izinkokhelo zika-Agasti zibambezeleka kuzwelonke, i-SASSA kuphela engaxazulula inkinga."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sihlukanisa ishejuli ka-Agasti ukuze wazi kahle ukuthi yini ongayilindela. Uma inkokhelo yakho yephuzile, i-GrantCare ikusiza ukuthi uqonde ukuthi ingabe kuwukubambezeleka kukazwelonke noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/august\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe zonke izinsuku zika-Agasti 2026 ziwujuqu?",
+        "body": "Cha. Ezinye zingashicilelwa ngokusemthethweni kuyilapho ezinye zisalindelwe noma zisekelwe kuphothali."
+      },
+      {
+        "title": "I-FAQ: Kungani ikhasi elilodwa lika-Agasti lingabonisa amagama ahlukene okukhokha ngohlobo lwesibonelelo?",
+        "body": "Ngoba akuzona zonke izigaba zesibonelelo ezibuyekezwa ngendlela efanayo ncamashi noma ohlelweni olufanayo lomphakathi."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise izinsuku zika-Agasti 2026 ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma udinga isiqiniseko sokugcina noma ikhasi lisabonisa amagama alindelekile noma engosi kuphela."
+      }
+    ]
+  },
+  "payment-dates-september-2026": {
+    "title": "Izinsuku zokukhokha zikaSepthemba 2026",
+    "summary": "Umhlahlandlela ocacile, ongenawo umbhedo wezinsuku zokukhokha zikaSepthemba 2026. Sichaza kahle ukuthi isibonelelo ngasinye sikhokha nini nokuthi ungaluqinisekisa kanjani usuku lwakho ngaphambi kokuthembela kulo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ufuna ukwazi idethi yakho yokukhokha kaSepthemba, bheka isigaba sakho semali yesibonelelo kuqala. Khumbula: abantu abadala, izibonelelo zezingane, kanye ne-SRD zonke zikhokha ngezinsuku ezihluke ngokuphelele."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "USepthemba uletha intwasahlobo, kodwa futhi uletha iqiniso lekota yokugcina yonyaka. Isenti ngalinye libalulekile njengoba uqala ukubheka isikhathi samaholide esibizayo. Ungacabangi ukuthi imali yakho izofika ngosuku lokuqala lwenyanga. I-SASSA ikhipha izinkokhelo ukuze kuvinjelwe ama-ATM nezitolo ezinkulu ukuthi zingaminyana."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ungayethembi idethi kaSepthemba ethunyelwe kuwe ngeqembu le-WhatsApp. Lezi kuvame ukuba amashejuli amadala kusukela eminyakeni edlule. Njalo hlola kabili unyaka kanye nokukhishwa okusemthethweni kwe-SASSA. Uma wenza iphutha ngosuku lokukhokha isibonelelo sezingane ngosuku lwe-SRD, uzogcina ulinde ulayini wemali engakaqedwa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula uhlelo lokukhokha luka-September 2026 olusemthethweni lwe-SASSA.\n2. Skrolela phansi uze uthole uhlobo oluqondile lwesibonelelo sakho.\n3. Bheka igama elithi \"Published\" eduze nosuku ukuze uqinisekise ukuthi liwujuqu.\n4. Khumbula ukuthi izimpelasonto namaholide azobambezela inkokhelo yakho.\n5. Uma usuku lwakho seludlulile futhi ungenayo imali, ngena kuphothali esemthethweni ukuze uhlole isimo sakho."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Phatha lolu hlelo lukaSepthemba njengemephu yomgwaqo, hhayi isithembiso esibophezela ngokomthetho. Ngisho noma izinsuku zishicilelwa, ukubambezeleka kwebhange lobuchwepheshe kusengakuphoqa ukuthi ulinde amahora angama-24 engeziwe."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza lo mugqa wesikhathi ukukusiza wenze isabelomali, kodwa asabalalisi imali. Uma izinkokhelo zikaSepthemba zibambezeleka kuzwelonke, i-SASSA kuphela engaxazulula inkinga."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sihlukanisa ishejuli kaSepthemba ukuze wazi kahle ukuthi yini ongayilindela. Uma inkokhelo yakho yephuzile, i-GrantCare ikusiza ukuthi uqonde ukuthi ingabe kuwukubambezeleka kukazwelonke noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/september\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe zonke izinsuku zango-Septhemba 2026 ziwujuqu?",
+        "body": "Cha. Ezinye zingashicilelwa ngokusemthethweni kuyilapho ezinye zisalindelwe noma zisekelwe kuphothali."
+      },
+      {
+        "title": "I-FAQ: Kungani ikhasi elilodwa likaSepthemba lingabonisa amagama ahlukene okukhokha ngohlobo lwesibonelelo?",
+        "body": "Ngoba akuzona zonke izigaba zesibonelelo ezibuyekezwa ngendlela efanayo ncamashi noma ohlelweni olufanayo lomphakathi."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise izinsuku zikaSepthemba 2026 ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma udinga isiqiniseko sokugcina noma ikhasi lisabonisa amagama alindelekile noma engosi kuphela."
+      }
+    ]
+  },
+  "payment-dates-october-2026": {
+    "title": "Izinsuku zokukhokha zika-Okthoba 2026",
+    "summary": "Umhlahlandlela ocacile, ongenawo umbhedo wezinsuku zokukhokha zika-Okthoba 2026. Sichaza kahle ukuthi isibonelelo ngasinye sikhokha nini nokuthi ungaluqinisekisa kanjani usuku lwakho ngaphambi kokuthembela kulo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ufuna ukwazi idethi yakho yokukhokha ka-Okthoba, bheka isigaba sakho semali yesibonelelo kuqala. Khumbula: abantu abadala, izibonelelo zezingane, kanye ne-SRD zonke zikhokha ngezinsuku ezihluke ngokuphelele."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngo-Okthoba, wonke umuntu uzwa ukukhathala kwezimali konyaka. Ukubambezeleka ngo-Okthoba kungaphazamisa ngokuphelele izinhlelo zakho zikaNovemba noDisemba. Ungacabangi ukuthi imali yakho izofika ngosuku lokuqala lwenyanga. I-SASSA ikhipha izinkokhelo ukuze kuvinjelwe ama-ATM nezitolo ezinkulu ukuthi zingaminyana."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Njengoba amaholide esondela, uhlelo lwe-SASSA luvamise ukuba nethrafikhi ephezulu. Lokhu kusho ukuthi inkokhelo yakho ka-Okthoba ingase ithathe usuku olwengeziwe ukubonakala, ngisho nangemva kwedethi esemthethweni. Uma wenza iphutha ngosuku lokukhokha isibonelelo sezingane ngosuku lwe-SRD, uzogcina ulinde ulayini wemali engakaqedwa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula uhlelo lokukhokha olusemthethweni luka-Okthoba 2026 lwe-SASSA.\n2. Skrolela phansi uze uthole uhlobo oluqondile lwesibonelelo sakho.\n3. Bheka igama elithi \"Published\" eduze nosuku ukuze uqinisekise ukuthi liwujuqu.\n4. Khumbula ukuthi izimpelasonto namaholide azobambezela inkokhelo yakho.\n5. Uma usuku lwakho seludlulile futhi ungenayo imali, ngena kuphothali esemthethweni ukuze uhlole isimo sakho."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Phatha lolu hlelo luka-Okthoba njengemephu yomgwaqo, hhayi isithembiso esibophezelayo. Ngisho noma izinsuku zishicilelwa, ukubambezeleka kwebhange lobuchwepheshe kusengakuphoqa ukuthi ulinde amahora angama-24 engeziwe."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza lo mugqa wesikhathi ukukusiza wenze isabelomali, kodwa asabalalisi imali. Uma izinkokhelo zika-Okthoba zibambezeleka kuzwelonke, i-SASSA kuphela engaxazulula inkinga."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sihlukanisa ishejuli ka-Okthoba ukuze wazi kahle ukuthi yini ongayilindela. Uma inkokhelo yakho yephuzile, i-GrantCare ikusiza ukuthi uqonde ukuthi ingabe kuwukubambezeleka kukazwelonke noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/october\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe zonke izinsuku zika-Okthoba 2026 ziwujuqu?",
+        "body": "Cha. Ezinye zingashicilelwa ngokusemthethweni kuyilapho ezinye zisalindelwe noma zisekelwe kuphothali."
+      },
+      {
+        "title": "I-FAQ: Kungani ikhasi elilodwa lika-Okthoba lingabonisa amagama ahlukene okukhokha ngohlobo lwesibonelelo?",
+        "body": "Ngoba akuzona zonke izigaba zesibonelelo ezibuyekezwa ngendlela efanayo ncamashi noma ohlelweni olufanayo lomphakathi."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise izinsuku zika-Okthoba 2026 ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma udinga isiqiniseko sokugcina noma ikhasi lisabonisa amagama alindelekile noma engosi kuphela."
+      }
+    ]
+  },
+  "payment-dates-november-2026": {
+    "title": "Izinsuku zokukhokha zikaNovemba 2026",
+    "summary": "Umhlahlandlela ocacile, ongenawo umbhedo wezinsuku zokukhokha zikaNovemba 2026. Sichaza kahle ukuthi isibonelelo ngasinye sikhokha nini nokuthi ungaluqinisekisa kanjani usuku lwakho ngaphambi kokuthembela kulo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ufuna ukwazi idethi yakho yokukhokha yangoNovemba, bheka isigaba sakho semali yesibonelelo kuqala. Khumbula: abantu abadala, izibonelelo zezingane, kanye ne-SRD zonke zikhokha ngezinsuku ezihluke ngokuphelele."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "UNovemba yinyanga ebaluleke kakhulu ekuhleleni imali. Uzama ukwelula lesi sibonelelo ukuze ukhokhele izindleko zangaphambi kukaDisemba, okwenza isikhathi sokukhokha sibe esibaluleke kakhulu. Ungacabangi ukuthi imali yakho izofika ngosuku lokuqala lwenyanga. I-SASSA ikhipha izinkokhelo ukuze kuvinjelwe ama-ATM nezitolo ezinkulu ukuthi zingaminyana."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngenxa yokuthi uNovemba uyisango lokuya emaholidini, noma yikuphi ukubambezeleka kubangela ukukhathazeka okukhulu. Khumbula ukuthi isibonelelo sakho siphela ngezinsuku ezahlukene kuye ngokuthi ingane, umuntu omdala, noma isibonelelo se-SRD. Uma wenza iphutha ngosuku lokukhokha isibonelelo sezingane ngosuku lwe-SRD, uzogcina ulinde ulayini wemali engakaqedwa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula uhlelo lokukhokha lukanovemba 2026 olusemthethweni lwe-SASSA.\n2. Skrolela phansi uze uthole uhlobo oluqondile lwesibonelelo sakho.\n3. Bheka igama elithi \"Published\" eduze nosuku ukuze uqinisekise ukuthi liwujuqu.\n4. Khumbula ukuthi izimpelasonto namaholide azobambezela inkokhelo yakho.\n5. Uma usuku lwakho seludlulile futhi ungenayo imali, ngena kuphothali esemthethweni ukuze uhlole isimo sakho."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Phatha lolu hlelo lukaNovemba njengemephu yomgwaqo, hhayi isithembiso esibophezelayo. Ngisho noma izinsuku zishicilelwa, ukubambezeleka kwebhange lobuchwepheshe kusengakuphoqa ukuthi ulinde amahora angama-24 engeziwe."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza lo mugqa wesikhathi ukukusiza wenze isabelomali, kodwa asabalalisi imali. Uma izinkokhelo zangoNovemba zibambezeleka kuzwelonke, i-SASSA kuphela engaxazulula lolu daba."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sihlukanisa ishejuli yangoNovemba ukuze wazi kahle ukuthi yini ongayilindela. Uma inkokhelo yakho yephuzile, i-GrantCare ikusiza ukuthi uqonde ukuthi ingabe kuwukubambezeleka kukazwelonke noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/november\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe zonke izinsuku zangoNovemba 2026 ziwujuqu?",
+        "body": "Cha. Ezinye zingashicilelwa ngokusemthethweni kuyilapho ezinye zisalindelwe noma zisekelwe kuphothali."
+      },
+      {
+        "title": "I-FAQ: Kungani ikhasi elilodwa langoNovemba lingakhombisa amagama ahlukene okukhokha ngohlobo lwesibonelelo?",
+        "body": "Ngoba akuzona zonke izigaba zesibonelelo ezibuyekezwa ngendlela efanayo ncamashi noma ohlelweni olufanayo lomphakathi."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise izinsuku zikaNovemba 2026 ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma udinga isiqiniseko sokugcina noma ikhasi lisabonisa amagama alindelekile noma engosi kuphela."
+      }
+    ]
+  },
+  "payment-dates-december-2026": {
+    "title": "Izinsuku zokukhokha zikaDisemba 2026",
+    "summary": "Umhlahlandlela ocacile, ongenawo umbhedo wezinsuku zokukhokha zikaDisemba 2026. Sichaza kahle ukuthi isibonelelo ngasinye sikhokha nini nokuthi ungaluqinisekisa kanjani usuku lwakho ngaphambi kokuthembela kulo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ufuna ukwazi idethi yakho yokukhokha kaDisemba, bheka isigaba sakho semali yesibonelelo kuqala. Khumbula: abantu abadala, izibonelelo zezingane, kanye ne-SRD zonke zikhokha ngezinsuku ezihluke ngokuphelele."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "UZibandlela uyinyanga ecindezela kakhulu onyakeni kwabamukeli bezibonelelo. Izitolo ezinkulu zigcwele phama, amanani aphakeme, futhi wonke umuntu ufisa ukuthola imali yakhe ngaphambi kwamaholide. Ungacabangi ukuthi imali yakho izofika ngosuku lokuqala lwenyanga. I-SASSA ikhipha izinkokhelo ukuze kuvinjelwe ama-ATM nezitolo ezinkulu ukuthi zingaminyana."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "I-SASSA kwesinye isikhathi ishintsha izinsuku zikaDisemba ngaphambi kwesikhathi ukuze kuhlangatshezwane namaholide, okubangela ukudideka okukhulu. Unganciki onyakeni odlule's schedule. Check the official confirmation before joining a long ATM queue. If you mistake a children's usuku lokukhokha lwesibonelelo sosuku lwe-SRD, uzogcina ulinde ulayini wemali engakasulwa ngisho namanje."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula uhlelo lokukhokha luka-December 2026 olusemthethweni lwe-SASSA.\n2. Skrolela phansi uze uthole uhlobo oluqondile lwesibonelelo sakho.\n3. Bheka igama elithi \"Published\" eduze nosuku ukuze uqinisekise ukuthi liwujuqu.\n4. Khumbula ukuthi izimpelasonto namaholide azobambezela inkokhelo yakho.\n5. Uma usuku lwakho seludlulile futhi ungenayo imali, ngena kuphothali esemthethweni ukuze uhlole isimo sakho."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Phatha lolu hlelo lukaDisemba njengomhlahlandlela, hhayi isithembiso esibophezela ngokomthetho. Ngisho noma izinsuku zishicilelwa, ukubambezeleka kwebhange lobuchwepheshe kusengakuphoqa ukuthi ulinde amahora angama-24 engeziwe."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza lo mugqa wesikhathi ukukusiza wenze isabelomali, kodwa asabalalisi imali. Uma izinkokhelo zikaDisemba zibambezeleka kuzwelonke, i-SASSA kuphela engaxazulula inkinga."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sihlukanisa ishejuli kaDisemba ukuze wazi kahle ukuthi yini ongayilindela. Uma inkokhelo yakho yephuzile, i-GrantCare ikusiza ukuthi uqonde ukuthi ingabe kuwukubambezeleka kukazwelonke noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/december\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe zonke izinsuku zika-December 2026 ziwujuqu?",
+        "body": "Cha. Ezinye zingashicilelwa ngokusemthethweni kuyilapho ezinye zisalindelwe noma zisekelwe kuphothali."
+      },
+      {
+        "title": "I-FAQ: Kungani ikhasi elilodwa likaDisemba lingabonisa amagama ahlukene okukhokha ngohlobo lwesibonelelo?",
+        "body": "Ngoba akuzona zonke izigaba zesibonelelo ezibuyekezwa ngendlela efanayo ncamashi noma ohlelweni olufanayo lomphakathi."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise izinsuku zikaDisemba 2026 ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma udinga isiqiniseko sokugcina noma ikhasi lisabonisa amagama alindelekile noma engosi kuphela."
+      }
+    ]
+  },
+  "srd-payment-dates-june-2026": {
+    "title": "Izinsuku zokukhokha ze-SRD Juni 2026",
+    "summary": "Umhlahlandlela obalulekile wezinsuku zokukhokha zikaJuni 2026 SRD. Sichaza ukuthi kungani isibonelelo sakho se-R350/R370 singalandeli ishejuli efanayo nezibonelelo ezivamile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo se-SRD asinalo usuku olulodwa olukhulu lomholo lukazwelonke ngoJuni. Kunalokho, i-SASSA icubungula lezi zinkokhelo ngamaqoqo isonto lonke lokugcina lenyanga."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uma ufuna idethi eyodwa kaJuni SRD, ufuna into engekho. Idethi yakho yokukhokha iyingqayizivele enombolweni yakho kamazisi futhi iqinisekiswa kuphela uma isimo sakho sishintsha sibe 'Approved' ngedethi ethile yokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abakhwabanisi bayazi ukuthi abantu balangazelela izinsuku ze-SRD. Bazothumela amakhalenda mbumbulu ku-inthanethi ukuze bakhohlise. Ngenxa yokuthi imali iqinile maphakathi nonyaka, amashejuli mbumbulu we-'early payment' angena egazini njalo ngoJuni. Zivikele ngezinsuku zokwethemba kuphela eziphethe umaka we-'published' emithonjeni esemthethweni. Ungawi ngenxa yamahemuhemu e-\"SRD Payday\" eyodwa—hlola eyakho ingosi esikhundleni salokho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ingosi yesimo ye-SRD esemthethweni ngoJuni.\n2. Faka i-ID yakho nenombolo yocingo.\n3. Bheka isimo sakho sikaJuni. Ingabe ilindile noma igunyaziwe?\n4. Uma kuvunyiwe, funda usuku oluqondile lokukhokha olubhalwe ngezansi.\n5. Linda i-SMS evela ebhange lakho, noma uyinikeze izinsuku ezingu-2-3 ukuze ibonakale."
+      },
+      {
+        "title": "Kungani amakhasi esikhathi we-SRD edinga ukuqaphela okwengeziwe",
+        "body": "Inkokhelo yakho ye-SRD iboshelwe ngqo ekuqinisekiseni kwakho kwanyanga zonke. Uma i-SASSA isahlola imininingwane yakho yasebhange noma umazisi wango-June, idethi yakho yokukhokha ngeke ivele okwamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukusheshisa inkokhelo yakho ye-SRD. Uma idethi yakho kaJuni ithi 'Null' noma ishoda ngokuphelele, kusho ukuthi i-SASSA isacubungula ifayela lakho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza imilayezo edidayo yesimo se-SRD ukuze wazi ukuthi inkokhelo yakho kaJuni iyeza, ibambezelekile, noma ibambekile ku-loop yokuqinisekisa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/june/social-relief\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /guides/how-to-check-srd-status-online\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani ngoJuni 2026 i-SRD ingase ibonise amagama engosi kuphela?",
+        "body": "Ngoba idethi yomphakathi eyodwa ingase ingabonisi ngokuphephile zonke izimo ze-SRD futhi umzila osemthethweni usengaba umthombo wokugcina ongcono kakhulu."
+      },
+      {
+        "title": "I-FAQ: Ngingakwazi yini ukusebenzisa i-GrantCare ukulandelela isikhathi sikaJuni SRD?",
+        "body": "Yebo. I-GrantCare ingasiza ngesiqondiso nezikhumbuzi, kodwa hhayi ngokuqinisekiswa okusemthethweni ngokwako."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku olulodwa olulula lukaJuni SRD?",
+        "body": "Phatha umzila osemthethweni we-SRD njengegunya lokugcina ngaphambi kokwethemba idethi yomphakathi ekopishiwe."
+      }
+    ]
+  },
+  "srd-payment-dates-july-2026": {
+    "title": "Izinsuku zokukhokha ze-SRD zikaJulayi 2026",
+    "summary": "Umhlahlandlela obalulekile wezinsuku zokukhokha zikaJulayi 2026 SRD. Sichaza ukuthi kungani isibonelelo sakho se-R350/R370 singalandeli ishejuli efanayo nezibonelelo ezivamile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo se-SRD asinalo usuku olulodwa olukhulu lomholo lukazwelonke ngoJulayi. Kunalokho, i-SASSA icubungula lezi zinkokhelo ngamaqoqo isonto lonke lokugcina lenyanga."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uma ufuna idethi eyodwa kaJulayi SRD, ufuna into engekho. Idethi yakho yokukhokha iyingqayizivele enombolweni yakho kamazisi futhi iqinisekiswa kuphela uma isimo sakho sishintsha sibe 'Approved' ngedethi ethile yokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abakhwabanisi bayazi ukuthi abantu balangazelela izinsuku ze-SRD. Bazothumela amakhalenda mbumbulu ku-inthanethi ukuze bakhohlise. Ungavumeli ukucindezeleka kwasebusika kukuphoqelele ekwenzeni izithembiso zezimali ngaphambi kokuba imali yakho ifike. Linda kuze kube yilapho isimo sakho sibuyekezwa ku-'approved' ngedethi yokugcina, eqinisekisiwe yokukhokha. Ungawi ngenxa yamahemuhemu e-\"SRD Payday\" eyodwa—hlola eyakho ingosi esikhundleni salokho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ingosi yesimo ye-SRD esemthethweni ngoJulayi.\n2. Faka i-ID yakho nenombolo yocingo.\n3. Bheka isimo sakho sikaJulayi. Ingabe ilindile noma igunyaziwe?\n4. Uma kuvunyiwe, funda usuku oluqondile lokukhokha olubhalwe ngezansi.\n5. Linda i-SMS evela ebhange lakho, noma uyinikeze izinsuku ezingu-2-3 ukuze ibonakale."
+      },
+      {
+        "title": "Kungani amakhasi esikhathi we-SRD edinga ukuqaphela okwengeziwe",
+        "body": "Inkokhelo yakho ye-SRD iboshelwe ngqo ekuqinisekiseni kwakho kwanyanga zonke. Uma i-SASSA isahlola imininingwane yakho yasebhange noma umazisi wangoJulayi, idethi yakho yokukhokha ngeke ivele okwamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukusheshisa inkokhelo yakho ye-SRD. Uma idethi yakho kaJulayi ithi 'Null' noma ishoda ngokuphelele, kusho ukuthi i-SASSA isacubungula ifayela lakho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza imilayezo edidayo yesimo se-SRD ukuze wazi ukuthi inkokhelo yakho kaJulayi iyeza, ibambezelekile, noma isamile ku-loop yokuqinisekisa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/july/social-relief\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /guides/how-to-check-srd-status-online\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani uJulayi 2026 i-SRD ingabonisa amagama asebenzisa ingosi kuphela?",
+        "body": "Ngoba idethi yomphakathi eyodwa ingase ingabonisi ngokuphephile zonke izimo ze-SRD futhi umzila osemthethweni usengaba umthombo wokugcina ongcono kakhulu."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ngingakwazi yini ukusebenzisa i-GrantCare ukulandelela isikhathi sikaJulayi SRD?",
+        "body": "Yebo. I-GrantCare ingasiza ngesiqondiso nezikhumbuzi, kodwa hhayi ngokuqinisekiswa okusemthethweni ngokwako."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku olulodwa olulula lukaJulayi SRD?",
+        "body": "Phatha umzila osemthethweni we-SRD njengegunya lokugcina ngaphambi kokwethemba idethi yomphakathi ekopishiwe."
+      }
+    ]
+  },
+  "srd-payment-dates-august-2026": {
+    "title": "Izinsuku zokukhokha ze-SRD Agasti 2026",
+    "summary": "Umhlahlandlela obalulekile wezinsuku zokukhokha zika-Agasti 2026 SRD. Sichaza ukuthi kungani isibonelelo sakho se-R350/R370 singalandeli ishejuli efanayo nezibonelelo ezivamile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo se-SRD asinalo usuku olulodwa olukhulu lomholo lukazwelonke ngo-Agasti. Kunalokho, i-SASSA icubungula lezi zinkokhelo ngamaqoqo isonto lonke lokugcina lenyanga."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uma ufuna idethi eyodwa ka-Agasti SRD, ufuna into engekho. Idethi yakho yokukhokha iyingqayizivele enombolweni yakho kamazisi futhi iqinisekiswa kuphela uma isimo sakho sishintsha sibe 'Approved' ngedethi ethile yokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abakhwabanisi bayazi ukuthi abantu balangazelela izinsuku ze-SRD. Bazothumela amakhalenda mbumbulu ku-inthanethi ukuze bakhohlise. Abakhwabanisi basebenzisa igebe elide eliphakathi kwezinkokhelo zikaJulayi no-Agasti. Ngaphambi kokuthi uboleke imali kwisibonelelo sakho, qinisekisa ukuthi usuku lwakho luka-Agasti luqinisekisiwe ngokusemthethweni. Ungawi ngenxa yamahemuhemu e-\"SRD Payday\" eyodwa—hlola eyakho ingosi esikhundleni salokho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ingosi yesimo ye-SRD esemthethweni ka-Agasti.\n2. Faka i-ID yakho nenombolo yocingo.\n3. Bheka isimo sakho sika-August. Ingabe ilindile noma igunyaziwe?\n4. Uma kuvunyiwe, funda usuku oluqondile lokukhokha olubhalwe ngezansi.\n5. Linda i-SMS evela ebhange lakho, noma uyinikeze izinsuku ezingu-2-3 ukuze ibonakale."
+      },
+      {
+        "title": "Kungani amakhasi esikhathi we-SRD edinga ukuqaphela okwengeziwe",
+        "body": "Inkokhelo yakho ye-SRD iboshelwe ngqo ekuqinisekiseni kwakho kwanyanga zonke. Uma i-SASSA isahlola imininingwane yakho yasebhange noma umazisi wango-August, idethi yakho yokukhokha ngeke ivele okwamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukusheshisa inkokhelo yakho ye-SRD. Uma idethi yakho ka-Agasti ithi 'Null' noma ishoda ngokuphelele, kusho ukuthi i-SASSA isacubungula ifayela lakho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza imilayezo edidayo yesimo se-SRD ukuze wazi ukuthi inkokhelo yakho ka-Agasti iyeza, ibambezelekile, noma isamile ku-loop yokuqinisekisa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/august/social-relief\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /guides/how-to-check-srd-status-online\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani u-Agasti 2026 i-SRD ingase ibonise amagama engosi kuphela?",
+        "body": "Ngoba idethi yomphakathi eyodwa ingase ingabonisi ngokuphephile zonke izimo ze-SRD futhi umzila osemthethweni usengaba umthombo wokugcina ongcono kakhulu."
+      },
+      {
+        "title": "I-FAQ: Ngingakwazi yini ukusebenzisa i-GrantCare ukulandelela isikhathi sika-August SRD?",
+        "body": "Yebo. I-GrantCare ingasiza ngesiqondiso nezikhumbuzi, kodwa hhayi ngokuqinisekiswa okusemthethweni ngokwako."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku olulodwa olulula luka-August SRD?",
+        "body": "Phatha umzila osemthethweni we-SRD njengegunya lokugcina ngaphambi kokwethemba idethi yomphakathi ekopishiwe."
+      }
+    ]
+  },
+  "srd-payment-dates-september-2026": {
+    "title": "Izinsuku zokukhokha ze-SRD ngoSepthemba 2026",
+    "summary": "Umhlahlandlela obalulekile wezinsuku zokukhokha zikaSepthemba 2026 SRD. Sichaza ukuthi kungani isibonelelo sakho se-R350/R370 singalandeli ishejuli efanayo nezibonelelo ezivamile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo se-SRD asinalo usuku olulodwa olukhulu lomholo lukazwelonke ngoSepthemba. Kunalokho, i-SASSA icubungula lezi zinkokhelo ngamaqoqo isonto lonke lokugcina lenyanga."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uma ufuna idethi eyodwa kaSepthemba SRD, ufuna into engekho. Idethi yakho yokukhokha iyingqayizivele enombolweni yakho kamazisi futhi iqinisekiswa kuphela uma isimo sakho sishintsha sibe 'Approved' ngedethi ethile yokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abakhwabanisi bayazi ukuthi abantu balangazelela izinsuku ze-SRD. Bazothumela amakhalenda mbumbulu ku-inthanethi ukuze bakhohlise. Ungayethembi idethi kaSepthemba ethunyelwe kuwe ngeqembu le-WhatsApp. Lezi kuvame ukuba amashejuli amadala kusukela eminyakeni edlule. Njalo hlola kabili unyaka kanye nokukhishwa okusemthethweni kwe-SASSA. Ungawi ngenxa yamahemuhemu e-\"SRD Payday\" eyodwa—hlola eyakho ingosi esikhundleni salokho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ingosi esemthethweni yesimo se-SRD kaSepthemba.\n2. Faka i-ID yakho nenombolo yocingo.\n3. Bheka isimo sakho sikaSepthemba. Ingabe ilindile noma igunyaziwe?\n4. Uma kuvunyiwe, funda usuku oluqondile lokukhokha olubhalwe ngezansi.\n5. Linda i-SMS evela ebhange lakho, noma uyinikeze izinsuku ezingu-2-3 ukuze ibonakale."
+      },
+      {
+        "title": "Kungani amakhasi esikhathi we-SRD edinga ukuqaphela okwengeziwe",
+        "body": "Inkokhelo yakho ye-SRD iboshelwe ngqo ekuqinisekiseni kwakho kwanyanga zonke. Uma i-SASSA isahlola imininingwane yakho yasebhange noma umazisi kaSepthemba, idethi yakho yokukhokha ngeke ivele okwamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukusheshisa inkokhelo yakho ye-SRD. Uma idethi yakho kaSepthemba ithi 'Null' noma ishoda ngokuphelele, kusho ukuthi i-SASSA isacubungula ifayela lakho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza imilayezo edidayo yesimo se-SRD ukuze wazi ukuthi inkokhelo yakho kaSepthemba iyeza, ibambezelekile, noma isamile ku-loop yokuqinisekisa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/september/social-relief\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /guides/how-to-check-srd-status-online\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani uSepthemba 2026 i-SRD ingabonisa amagama asebenzisa ingosi kuphela?",
+        "body": "Ngoba idethi yomphakathi eyodwa ingase ingabonisi ngokuphephile zonke izimo ze-SRD futhi umzila osemthethweni usengaba umthombo wokugcina ongcono kakhulu."
+      },
+      {
+        "title": "I-FAQ: Ngingakwazi yini ukusebenzisa i-GrantCare ukulandelela isikhathi se-September SRD?",
+        "body": "Yebo. I-GrantCare ingasiza ngesiqondiso nezikhumbuzi, kodwa hhayi ngokuqinisekiswa okusemthethweni ngokwako."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku olulodwa olulula lwe-September SRD?",
+        "body": "Phatha umzila osemthethweni we-SRD njengegunya lokugcina ngaphambi kokwethemba idethi yomphakathi ekopishiwe."
+      }
+    ]
+  },
+  "srd-payment-dates-october-2026": {
+    "title": "Izinsuku zokukhokha ze-SRD Okthoba 2026",
+    "summary": "Umhlahlandlela obalulekile wezinsuku zokukhokha zika-Okthoba 2026 SRD. Sichaza ukuthi kungani isibonelelo sakho se-R350/R370 singalandeli ishejuli efanayo nezibonelelo ezivamile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo se-SRD asinalo usuku olulodwa olukhulu lomholo lukazwelonke ngo-Okthoba. Kunalokho, i-SASSA icubungula lezi zinkokhelo ngamaqoqo isonto lonke lokugcina lenyanga."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uma ufuna idethi eyodwa ka-Okthoba SRD, ufuna into engekho. Idethi yakho yokukhokha iyingqayizivele enombolweni yakho kamazisi futhi iqinisekiswa kuphela uma isimo sakho sishintsha sibe 'Approved' ngedethi ethile yokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abakhwabanisi bayazi ukuthi abantu balangazelela izinsuku ze-SRD. Bazothumela amakhalenda mbumbulu ku-inthanethi ukuze bakhohlise. Njengoba amaholide esondela, uhlelo lwe-SASSA luvamise ukuba nethrafikhi ephezulu. Lokhu kusho ukuthi inkokhelo yakho ka-Okthoba ingase ithathe usuku olwengeziwe ukubonakala, ngisho nangemva kwedethi esemthethweni. Ungawi ngenxa yamahemuhemu e-\"SRD Payday\" eyodwa—hlola eyakho ingosi esikhundleni salokho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ingosi yesimo ye-SRD esemthethweni ka-Okthoba.\n2. Faka i-ID yakho nenombolo yocingo.\n3. Bheka isimo sakho sika-Okthoba. Ingabe ilindile noma igunyaziwe?\n4. Uma kuvunyiwe, funda usuku oluqondile lokukhokha olubhalwe ngezansi.\n5. Linda i-SMS evela ebhange lakho, noma uyinikeze izinsuku ezingu-2-3 ukuze ibonakale."
+      },
+      {
+        "title": "Kungani amakhasi esikhathi we-SRD edinga ukuqaphela okwengeziwe",
+        "body": "Inkokhelo yakho ye-SRD iboshelwe ngqo ekuqinisekiseni kwakho kwanyanga zonke. Uma i-SASSA isahlola imininingwane yakho yasebhange noma umazisi wango-Okthoba, idethi yakho yokukhokha ngeke ivele okwamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukusheshisa inkokhelo yakho ye-SRD. Uma idethi yakho ka-Okthoba ithi 'Null' noma ishoda ngokuphelele, kusho ukuthi i-SASSA isacubungula ifayela lakho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza imilayezo edidayo yesimo se-SRD ukuze wazi ukuthi inkokhelo yakho ka-Okthoba iyeza, ibambezelekile, noma isamile ku-loop yokuqinisekisa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/october/social-relief\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /guides/how-to-check-srd-status-online\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani u-Okthoba 2026 i-SRD ingabonisa amagama asebenzisa ingosi kuphela?",
+        "body": "Ngoba idethi yomphakathi eyodwa ingase ingabonisi ngokuphephile zonke izimo ze-SRD futhi umzila osemthethweni usengaba umthombo wokugcina ongcono kakhulu."
+      },
+      {
+        "title": "I-FAQ: Ngingakwazi yini ukusebenzisa i-GrantCare ukulandelela isikhathi sika-Okthoba SRD?",
+        "body": "Yebo. I-GrantCare ingasiza ngesiqondiso nezikhumbuzi, kodwa hhayi ngokuqinisekiswa okusemthethweni ngokwako."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku olulodwa olulula luka-Okthoba SRD?",
+        "body": "Phatha umzila osemthethweni we-SRD njengegunya lokugcina ngaphambi kokwethemba idethi yomphakathi ekopishiwe."
+      }
+    ]
+  },
+  "srd-payment-dates-november-2026": {
+    "title": "Izinsuku zokukhokha ze-SRD Novemba 2026",
+    "summary": "Umhlahlandlela obalulekile wezinsuku zokukhokha zikaNovemba 2026 SRD. Sichaza ukuthi kungani isibonelelo sakho se-R350/R370 singalandeli ishejuli efanayo nezibonelelo ezivamile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo se-SRD asinalo usuku olulodwa olukhulu lomholo lukazwelonke ngoNovemba. Kunalokho, i-SASSA icubungula lezi zinkokhelo ngamaqoqo isonto lonke lokugcina lenyanga."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uma ufuna idethi eyodwa kaNovemba SRD, ufuna into engekho. Idethi yakho yokukhokha iyingqayizivele enombolweni yakho kamazisi futhi iqinisekiswa kuphela uma isimo sakho sishintsha sibe 'Approved' ngedethi ethile yokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abakhwabanisi bayazi ukuthi abantu balangazelela izinsuku ze-SRD. Bazothumela amakhalenda mbumbulu ku-inthanethi ukuze bakhohlise. Ngenxa yokuthi uNovemba uyisango lokuya emaholidini, noma yikuphi ukubambezeleka kubangela ukukhathazeka okukhulu. Khumbula ukuthi isibonelelo sakho siphela ngezinsuku ezahlukene kuye ngokuthi ingane, umuntu omdala, noma isibonelelo se-SRD. Ungawi ngenxa yamahemuhemu e-\"SRD Payday\" eyodwa—hlola eyakho ingosi esikhundleni salokho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ingosi yesimo ye-SRD esemthethweni kaNovemba.\n2. Faka i-ID yakho nenombolo yocingo.\n3. Bheka isimo sakho sangoNovemba. Ingabe ilindile noma igunyaziwe?\n4. Uma kuvunyiwe, funda usuku oluqondile lokukhokha olubhalwe ngezansi.\n5. Linda i-SMS evela ebhange lakho, noma uyinikeze izinsuku ezingu-2-3 ukuze ibonakale."
+      },
+      {
+        "title": "Kungani amakhasi esikhathi we-SRD edinga ukuqaphela okwengeziwe",
+        "body": "Inkokhelo yakho ye-SRD iboshelwe ngqo ekuqinisekiseni kwakho kwanyanga zonke. Uma i-SASSA isahlola imininingwane yakho yasebhange noma umazisi kaNovemba, idethi yakho yokukhokha ngeke ivele okwamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukusheshisa inkokhelo yakho ye-SRD. Uma idethi yakho yangoNovemba ithi 'Null' noma ishoda ngokuphelele, kusho ukuthi i-SASSA isacubungula ifayela lakho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza imilayezo edidayo yesimo se-SRD ukuze wazi ukuthi inkokhelo yakho yangoNovemba iyeza, ibambezelekile, noma isamile ku-loop yokuqinisekisa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/november/social-relief\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /guides/how-to-check-srd-status-online\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani uNovemba 2026 i-SRD ingabonisa amagama asebenzisa ingosi kuphela?",
+        "body": "Ngoba idethi yomphakathi eyodwa ingase ingabonisi ngokuphephile zonke izimo ze-SRD futhi umzila osemthethweni usengaba umthombo wokugcina ongcono kakhulu."
+      },
+      {
+        "title": "I-FAQ: Ngingakwazi yini ukusebenzisa i-GrantCare ukulandelela isikhathi sika-November SRD?",
+        "body": "Yebo. I-GrantCare ingasiza ngesiqondiso nezikhumbuzi, kodwa hhayi ngokuqinisekiswa okusemthethweni ngokwako."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku olulodwa olulula lukaNovemba SRD?",
+        "body": "Phatha umzila osemthethweni we-SRD njengegunya lokugcina ngaphambi kokwethemba idethi yomphakathi ekopishiwe."
+      }
+    ]
+  },
+  "srd-payment-dates-december-2026": {
+    "title": "Izinsuku zokukhokha ze-SRD Disemba 2026",
+    "summary": "Umhlahlandlela obalulekile wezinsuku zokukhokha zikaDisemba 2026 SRD. Sichaza ukuthi kungani isibonelelo sakho se-R350/R370 singalandeli ishejuli efanayo nezibonelelo ezivamile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo se-SRD asinalo usuku olulodwa olukhulu lomholo lukazwelonke ngoDisemba. Kunalokho, i-SASSA icubungula lezi zinkokhelo ngamaqoqo isonto lonke lokugcina lenyanga."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uma ufuna idethi eyodwa kaDisemba SRD, ufuna into engekho. Idethi yakho yokukhokha iyingqayizivele enombolweni yakho kamazisi futhi iqinisekiswa kuphela uma isimo sakho sishintsha sibe 'Approved' ngedethi ethile yokukhokha."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abakhwabanisi bayazi ukuthi abantu balangazelela izinsuku ze-SRD. Bazothumela amakhalenda mbumbulu ku-inthanethi ukuze bakhohlise. I-SASSA kwesinye isikhathi ishintsha izinsuku zikaDisemba ngaphambi kwesikhathi ukuze kuhlangatshezwane namaholide, okubangela ukudideka okukhulu. Unganciki ohlelweni lwangonyaka odlule. Hlola ukuqinisekiswa okusemthethweni ngaphambi kokujoyina ulayini omude we-ATM. Ungawi ngenxa yamahemuhemu e-\"SRD Payday\" eyodwa—hlola eyakho ingosi esikhundleni salokho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ingosi yesimo ye-SRD esemthethweni ngoDisemba.\n2. Faka i-ID yakho nenombolo yocingo.\n3. Bheka isimo sakho sikaDisemba. Ingabe ilindile noma igunyaziwe?\n4. Uma kuvunyiwe, funda usuku oluqondile lokukhokha olubhalwe ngezansi.\n5. Linda i-SMS evela ebhange lakho, noma uyinikeze izinsuku ezingu-2-3 ukuze ibonakale."
+      },
+      {
+        "title": "Kungani amakhasi esikhathi we-SRD edinga ukuqaphela okwengeziwe",
+        "body": "Inkokhelo yakho ye-SRD iboshelwe ngqo ekuqinisekiseni kwakho kwanyanga zonke. Uma i-SASSA isahlola imininingwane yakho yasebhange noma umazisi wango-December, idethi yakho yokukhokha ngeke ivele okwamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukusheshisa inkokhelo yakho ye-SRD. Uma idethi yakho kaDisemba ithi 'Null' noma ishoda ngokuphelele, kusho ukuthi i-SASSA isacubungula ifayela lakho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza imilayezo edidayo yesimo se-SRD ukuze wazi ukuthi inkokhelo yakho kaDisemba iyeza, ibambezelekile, noma isamile ku-loop yokuqinisekisa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/december/social-relief\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /guides/how-to-check-srd-status-online\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani u-December 2026 i-SRD ingase ibonise amagama engosi kuphela?",
+        "body": "Ngoba idethi yomphakathi eyodwa ingase ingabonisi ngokuphephile zonke izimo ze-SRD futhi umzila osemthethweni usengaba umthombo wokugcina ongcono kakhulu."
+      },
+      {
+        "title": "I-FAQ: Ngingakwazi yini ukusebenzisa i-GrantCare ukulandelela isikhathi sika-December SRD?",
+        "body": "Yebo. I-GrantCare ingasiza ngesiqondiso nezikhumbuzi, kodwa hhayi ngokuqinisekiswa okusemthethweni ngokwako."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku olulodwa olulula luka-December SRD?",
+        "body": "Phatha umzila osemthethweni we-SRD njengegunya lokugcina ngaphambi kokwethemba idethi yomphakathi ekopishiwe."
+      }
+    ]
+  },
+  "older-persons-grant-payment-dates-june-2026": {
+    "title": "Izinsuku zokukhokhwa kweSibonelelo Sabantu Abadala ngoJuni 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaJuni 2026 zeSibonelelo Sabantu Abadala. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sabantu Abadala ngokuvamile sikhokha ngosuku lwaso oluqondile ngoJuni, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uJuni ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngenxa yokuthi imali iqinile maphakathi nonyaka, amashejuli mbumbulu we-'early payment' angena egazini njalo ngoJuni. Zivikele ngezinsuku zokwethemba kuphela eziphethe umaka we-'published' emithonjeni esemthethweni. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yangoJuni ngokuqondile Isibonelelo Sabantu Abadala.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sabantu Abadala ngoJuni. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sakho Sabantu Abadala sibambezeleka ngoJuni, iphothali esemthethweni kuphela ye-SASSA engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sabadala sikaJuni. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/june/older-persons\n• /guides/how-to-know-if-your-payment-is-ready\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ikhasi lesibonelelo sangoJuni 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sabantu abadala?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yabantu abadala ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "older-persons-grant-payment-dates-july-2026": {
+    "title": "Izinsuku zokukhokha zeSibonelelo Sabantu Abadala ngoJulayi 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaJulayi 2026 zeSibonelelo Sabantu Abadala. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sabantu Abadala ngokuvamile sikhokha ngosuku lwaso oluqondile ngoJulayi, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uJulayi ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ungavumeli ukucindezeleka kwasebusika kukuphoqelele ekwenzeni izithembiso zezimali ngaphambi kokuba imali yakho ifike. Linda kuze kube yilapho isimo sakho sibuyekezwa ku-'approved' ngedethi yokugcina, eqinisekisiwe yokukhokha. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yangoJulayi ngokuqondile Yesibonelelo Sikahulumeni Sabantu Abadala.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sabantu Abadala ngoJulayi. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sabantu Abadala sibambezeleka ngoJulayi, yiphothali esemthethweni kuphela ye-SASSA engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sabadala sikaJulayi. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/july/older-persons\n• /guides/why-payment-is-delayed\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi lesibonelelo sangoJulayi 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sabantu abadala?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yabantu abadala ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "older-persons-grant-payment-dates-august-2026": {
+    "title": "Izinsuku zokukhokha Zesibonelelo Sabantu Abadala Agasti 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zika-Agasti 2026 zeSibonelelo Sabantu Abadala. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sikahulumeni Sabantu Abadala ngokuvamile sikhokha ngosuku lwaso oluqondile ngo-Agasti, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi u-August ulandela iphethini efana nse nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abakhwabanisi basebenzisa igebe elide eliphakathi kwezinkokhelo zikaJulayi no-Agasti. Ngaphambi kokuthi uboleke imali kwisibonelelo sakho, qinisekisa ukuthi usuku lwakho luka-Agasti luqinisekisiwe ngokusemthethweni. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha ka-Agasti yeSibonelelo Sabantu Abadala.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sabantu Abadala ka-Agasti. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sabantu Abadala sibambezeleka ngo-Agasti, yiphothali esemthethweni ye-SASSA kuphela engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sabadala sika-Agasti. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/august/older-persons\n• /guides/how-to-understand-payment-dates\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ikhasi lika-August 2026 elinikeza abantu abadala lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sabantu abadala?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yabantu abadala ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "older-persons-grant-payment-dates-september-2026": {
+    "title": "Izinsuku zokukhokha zeSibonelelo Sabantu Abadala ngoSepthemba 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaSepthemba 2026 zeSibonelelo Sabantu Abadala. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sabantu Abadala ngokuvamile sikhokha ngosuku lwaso oluqondile ngoSepthemba, sihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uSepthemba ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ungayethembi idethi kaSepthemba ethunyelwe kuwe ngeqembu le-WhatsApp. Lezi kuvame ukuba amashejuli amadala kusukela eminyakeni edlule. Njalo hlola kabili unyaka kanye nokukhishwa okusemthethweni kwe-SASSA. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yangoSepthemba ngokuqondile Yesibonelelo Sikahulumeni Sabantu Abadala.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sabantu Abadala kaSepthemba. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sabantu Abadala sibambezeleka ngoSepthemba, iphothali esemthethweni kuphela ye-SASSA engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sabadala sikaSepthemba. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/september/older-persons\n• /guides/approved-but-no-payment\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ikhasi elinikeza abantu abadala likaSepthemba 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sabantu abadala?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yabantu abadala ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "older-persons-grant-payment-dates-october-2026": {
+    "title": "Izinsuku zokukhokha zeSibonelelo Sabantu Abadala ngo-Okthoba 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zika-Okthoba 2026 zeSibonelelo Sabantu Abadala. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sabantu Abadala ngokuvamile sikhokha ngosuku lwaso oluqondile ngo-Okthoba, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi u-Okthoba ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Njengoba amaholide esondela, uhlelo lwe-SASSA luvamise ukuba nethrafikhi ephezulu. Lokhu kusho ukuthi inkokhelo yakho ka-Okthoba ingase ithathe usuku olwengeziwe ukubonakala, ngisho nangemva kwedethi esemthethweni. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha ka-Okthoba ngokuqondile Yesibonelelo Sikahulumeni Sabantu Abadala.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sabantu Abadala ka-Okthoba. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sabantu Abadala sibambezeleka ngo-Okthoba, ingosi esemthethweni kuphela ye-SASSA engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sabadala sika-Okthoba. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/october/older-persons\n• /guides/how-payments-work\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ikhasi lika-Okthoba 2026 elinikeza abantu abadala lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sabantu abadala?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yabantu abadala ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "older-persons-grant-payment-dates-november-2026": {
+    "title": "Izinsuku zokukhokha zeSibonelelo Sabantu Abadala Novemba 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaNovemba 2026 zeSibonelelo Sabantu Abadala. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sabantu Abadala ngokuvamile sikhokha ngosuku lwaso oluqondile ngoNovemba, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uNovemba ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngenxa yokuthi uNovemba uyisango lokuya emaholidini, noma yikuphi ukubambezeleka kubangela ukukhathazeka okukhulu. Khumbula ukuthi isibonelelo sakho siphela ngezinsuku ezahlukene kuye ngokuthi ingane, umuntu omdala, noma isibonelelo se-SRD. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yangoNovemba ngokuqondile Yesibonelelo Sikahulumeni Sabantu Abadala.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sabantu Abadala kaNovemba. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sakho Sabantu Abadala sibambezeleka ngoNovemba, iphothali esemthethweni kuphela ye-SASSA engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sabadala sikaNovemba. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/november/older-persons\n• /guides/how-to-know-if-your-payment-is-ready\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ikhasi lezibonelelo langoNovemba 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sabantu abadala?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yabantu abadala ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "older-persons-grant-payment-dates-december-2026": {
+    "title": "Izinsuku zokukhokha zeSibonelelo Sabantu Abadala ngoDisemba 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaDisemba 2026 zeSibonelelo Sabantu Abadala. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sabantu Abadala ngokuvamile sikhokha ngosuku lwaso olukhethekile ngo-December, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uDisemba ulandela iphethini efana ncamashi nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "I-SASSA kwesinye isikhathi ishintsha izinsuku zikaDisemba ngaphambi kwesikhathi ukuze kuhlangatshezwane namaholide, okubangela ukudideka okukhulu. Unganciki ohlelweni lwangonyaka odlule. Hlola ukuqinisekiswa okusemthethweni ngaphambi kokujoyina ulayini omude we-ATM. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yango-December ukuze uthole Isibonelelo Sabantu Abadala.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sabantu Abadala kaDisemba. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sabantu Abadala sibambezeleka ngo-December, yiphothali esemthethweni ye-SASSA kuphela engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sabadala sikaDisemba. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/december/older-persons\n• /guides/why-payment-is-delayed\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ikhasi lango-December 2026 elinikeza abantu abadala lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sabantu abadala?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yabantu abadala ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "child-support-grant-payment-dates-june-2026": {
+    "title": "Izinsuku zokukhokha Isibonelelo Sikahulumeni Sezingane ngoJuni 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaJuni 2026 zeSibonelelo Sezingane. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sikahulumeni Sezingane ngokuvamile sikhokha ngosuku lwaso oluqondile ngoJuni, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uJuni ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngenxa yokuthi imali iqinile maphakathi nonyaka, amashejuli mbumbulu we-'early payment' angena egazini njalo ngoJuni. Zivikele ngezinsuku zokwethemba kuphela eziphethe umaka we-'published' emithonjeni esemthethweni. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yangoJuni ngokuqondile Isibonelelo Sikahulumeni Sezingane.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sezingane sikaJuni. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sakho Sezingane sibambezeleka ngoJuni, yiphothali esemthethweni kuphela ye-SASSA engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sezingane sikaJuni. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/june/children\n• /guides/how-to-understand-payment-dates\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ikhasi likaJuni 2026 lesibonelelo sengane lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sezingane?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yengane ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "child-support-grant-payment-dates-july-2026": {
+    "title": "Izinsuku zokukhokha Isibonelelo Sezingane zikaJulayi 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaJulayi 2026 zeSibonelelo Sezingane. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sikahulumeni Sezingane ngokuvamile sikhokha ngosuku lwaso oluqondile ngoJulayi, oluhluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uJulayi ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ungavumeli ukucindezeleka kwasebusika kukuphoqelele ekwenzeni izithembiso zezimali ngaphambi kokuba imali yakho ifike. Linda kuze kube yilapho isimo sakho sibuyekezwa ku-'approved' ngedethi yokugcina, eqinisekisiwe yokukhokha. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yangoJulayi ngokuqondile Yesibonelelo Sikahulumeni Sezingane.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sezingane sikaJulayi. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sakho Sezingane sibambezeleka ngo-Julayi, yiphothali esemthethweni ye-SASSA kuphela engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sezingane sikaJulayi. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/july/children\n• /guides/how-to-know-if-your-payment-is-ready\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ikhasi likaJulayi 2026 lesibonelelo sengane lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sezingane?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yengane ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "child-support-grant-payment-dates-august-2026": {
+    "title": "Izinsuku zokukhokha Isibonelelo Sikahulumeni Sezingane Agasti 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zika-Agasti 2026 zeSibonelelo Sezingane. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sikahulumeni Sezingane ngokuvamile sikhokha ngosuku lwaso oluqondile ngo-Agasti, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi u-August ulandela iphethini efana nse nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abakhwabanisi basebenzisa igebe elide eliphakathi kwezinkokhelo zikaJulayi no-Agasti. Ngaphambi kokuthi uboleke imali kwisibonelelo sakho, qinisekisa ukuthi usuku lwakho luka-Agasti luqinisekisiwe ngokusemthethweni. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha ka-August ngokuqondile Yesibonelelo Sikahulumeni Sezingane.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sezingane sika-Agasti. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sakho Sezingane sibambezeleka ngo-Agasti, yiphothali esemthethweni ye-SASSA kuphela engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sezingane sika-Agasti. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/august/children\n• /guides/why-payment-is-delayed\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi lesibonelelo sezingane lika-Agasti 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sezingane?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yengane ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "child-support-grant-payment-dates-september-2026": {
+    "title": "Izinsuku zokukhokha zeSibonelelo Sezingane zikaSepthemba 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaSepthemba 2026 zeSibonelelo Sezingane. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sikahulumeni Sezingane ngokuvamile sikhokha ngosuku lwaso oluqondile ngoSepthemba, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uSepthemba ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ungayethembi idethi kaSepthemba ethunyelwe kuwe ngeqembu le-WhatsApp. Lezi kuvame ukuba amashejuli amadala kusukela eminyakeni edlule. Njalo hlola kabili unyaka kanye nokukhishwa okusemthethweni kwe-SASSA. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yangoSepthemba ngokukhethekileyo Yesibonelelo Sikahulumeni Sezingane.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sezingane sikaSepthemba. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sakho Sezingane sibambezeleka ngoSepthemba, yiphothali esemthethweni ye-SASSA kuphela engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sezingane sikaSepthemba. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/september/children\n• /guides/how-payments-work\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi lesibonelelo sezingane likaSepthemba 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sezingane?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yengane ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "child-support-grant-payment-dates-october-2026": {
+    "title": "Izinsuku zokukhokha Isibonelelo Sikahulumeni Sezingane Okthoba 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zika-Okthoba 2026 zeSibonelelo Sezingane. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sikahulumeni Sezingane ngokuvamile sikhokha ngosuku lwaso oluqondile ngo-Okthoba, oluhluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi u-Okthoba ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Njengoba amaholide esondela, uhlelo lwe-SASSA luvamise ukuba nethrafikhi ephezulu. Lokhu kusho ukuthi inkokhelo yakho ka-Okthoba ingase ithathe usuku olwengeziwe ukubonakala, ngisho nangemva kwedethi esemthethweni. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha ka-Okthoba ngokuqondile Yesibonelelo Sikahulumeni Sezingane.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sezingane sika-Okthoba. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sakho Sezingane sibambezeleka ngo-Okthoba, yiphothali esemthethweni ye-SASSA kuphela engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sezingane sika-Okthoba. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/october/children\n• /guides/how-to-fix-missing-payment-issues\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ikhasi lesibonelelo sezingane lika-Okthoba 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sezingane?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yengane ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "child-support-grant-payment-dates-november-2026": {
+    "title": "Izinsuku zokukhokha Isibonelelo Sikahulumeni Sezingane Novemba 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaNovemba 2026 zeSibonelelo Sezingane. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sikahulumeni Sezingane ngokuvamile sikhokha ngosuku lwaso oluqondile ngoNovemba, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uNovemba ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngenxa yokuthi uNovemba uyisango lokuya emaholidini, noma yikuphi ukubambezeleka kubangela ukukhathazeka okukhulu. Khumbula ukuthi isibonelelo sakho siphela ngezinsuku ezahlukene kuye ngokuthi ingane, umuntu omdala, noma isibonelelo se-SRD. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yangoNovemba ngokuqondile Yesibonelelo Sikahulumeni Sezingane.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sezingane sangoNovemba. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sakho Sezingane sibambezeleka ngoNovemba, yingosi esemthethweni kuphela ye-SASSA engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sezingane sikaNovemba. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/november/children\n• /guides/how-to-understand-payment-dates\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi lesibonelelo sezingane likaNovemba 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sezingane?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yengane ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "child-support-grant-payment-dates-december-2026": {
+    "title": "Izinsuku zokukhokha Isibonelelo Sikahulumeni Sezingane Disemba 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaDisemba 2026 zeSibonelelo Sezingane. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sikahulumeni Sezingane ngokuvamile sikhokha ngosuku lwaso oluqondile ngo-December, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uDisemba ulandela iphethini efana ncamashi nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "I-SASSA kwesinye isikhathi ishintsha izinsuku zikaDisemba ngaphambi kwesikhathi ukuze kuhlangatshezwane namaholide, okubangela ukudideka okukhulu. Unganciki ohlelweni lwangonyaka odlule. Hlola ukuqinisekiswa okusemthethweni ngaphambi kokujoyina ulayini omude we-ATM. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yango-December ukuze uthole Isibonelelo Sikahulumeni Sezingane.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sezingane sangoDisemba. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sakho Sezingane sibambezeleka ngo-December, yingosi esemthethweni kuphela ye-SASSA engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sezingane sikaDisemba. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/december/children\n• /guides/why-payment-is-delayed\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ikhasi likaDisemba 2026 lesibonelelo sikahulumeni lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sezingane?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sikahulumeni yengane ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "disability-grant-payment-dates-may-2026": {
+    "title": "Izinsuku zokukhokha Zesibonelelo Sikahulumeni Sokukhubazeka ngoMeyi 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaMeyi 2026 zeSibonelelo Sokukhubazeka. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sikahulumeni Sokukhubazeka ngokuvamile sikhokha ngosuku lwaso oluqondile ngoMeyi, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uMeyi ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Kuyakulinga ukukholelwa idethi yokuqala yokukhokha kaMeyi oyibona ku-Facebook. Ungakwenzi. Ngaso sonke isikhathi hlola ukuthi idethi ishicilelwe ngokusemthethweni yi-SASSA noma iwukuqagela nje okufundile. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yangoMeyi ngokuqondile yeSibonelelo Sokukhubazeka.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sokukhubazeka kaMeyi. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sakho Sokukhubazeka sibambezeleka ngoMeyi, yingosi esemthethweni kuphela ye-SASSA engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sokukhubazeka ngoMeyi. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/may/disability\n• /guides/how-to-know-if-your-payment-is-ready\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi lesibonelelo sabakhubazekile langoMeyi 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sokukhubazeka?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sokukhubazeka ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  },
+  "disability-grant-payment-dates-june-2026": {
+    "title": "Izinsuku zokukhokha Zesibonelelo Sikahulumeni Sokukhubazeka ngoJuni 2026",
+    "summary": "Umhlahlandlela ogxile wezinsuku zokukhokha zikaJuni 2026 zeSibonelelo Sokukhubazeka. Sinqamule umsindo ukuze wazi kahle ukuthi imali yakho iphuma nini.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isibonelelo Sikahulumeni Sokukhubazeka ngokuvamile sikhokha ngosuku lwaso oluqondile ngoJuni, esihluke ngokuphelele kwezinye izibonelelo. Kufanele uqinisekise isimo se-'Published' salolu suku ngaphambi kokuya ku-ATM."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngisho noma ubona idethi ku-inthanethi, i-SASSA ingase ilungise ishejuli ngenxa yezimpelasonto noma amaholide omphakathi. Ungacabangi ukuthi uJuni ulandela iphethini efanayo nenyanga edlule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngenxa yokuthi imali iqinile maphakathi nonyaka, amashejuli mbumbulu we-'early payment' angena egazini njalo ngoJuni. Zivikele ngezinsuku zokwethemba kuphela eziphethe umaka we-'published' emithonjeni esemthethweni. Ukufika e-ATM ngosuku kusenesikhathi kusho ukumosha imali yokugibela amatekisi nokuchitha amahora emgqeni ungenalutho. Vikela isikhathi sakho ngokuhlola kabili isimo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ishejuli yokukhokha yangoJuni ngokuqondile iSibonelelo Sokukhubazeka.\n2. Bheka ilebula yokukhokha—ingabe ithi 'Expected' noma 'Published'?\n3. Maka usuku olushicilelwe ekhalendeni lakho.\n4. Linda kuze kube ntambama yalolo suku ngaphambi kokuhoxa, ukuze uqinisekise ukuthi amaseva asebhange avumelanisiwe.\n5. Uma usuku ludlula ngaphandle kwemali, hlola isimo sakho esisemthethweni se-SASSA."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Leli khasi lihlinzeka ngomugqa wesikhathi osemthethweni weSibonelelo Sokukhubazeka kaJuni. Kuphathe lokhu njengomhlahlandlela oqinisekisiwe, kodwa khumbula ukuthi ukubambezeleka kobuchwepheshe phakathi koMnyango Wezezimali nebhange lakho elithile kusengenzeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza isiqondiso sokuhlela esizimele. Uma Isibonelelo Sakho Sokukhubazeka sibambezeleka ngoJuni, iphothali esemthethweni kuphela ye-SASSA engakutshela ukuthi kungani."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina unolwazi mayelana nesikhathi sesibonelelo sokukhubazeka sangoJuni. Uma kukhona okungahambi kahle, sebenzisa i-GrantCare ukuze uthole ukuthi ingabe kuwukubambezeleka kwebhange okuvamile noma inkinga ye-akhawunti yomuntu siqu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/june/disability\n• /guides/how-payments-work\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi lesibonelelo sabakhubazekile likaJuni 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ikhasi lingabonisa amalebula ashicilelwe, alindelwe, noma amanye esikhathi kuye ngesimo samanje solwazi."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze kosuku lwesibonelelo sokukhubazeka?",
+        "body": "Ngoba inothi livame ukuchaza ukuthi idethi iqinisekisiwe, iyalinganiselwa, noma isadinga ukuqinisekiswa okusemthethweni."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kuthiwani uma inkokhelo yesibonelelo sokukhubazeka ingakafiki ngemva kosuku olubonakalayo?",
+        "body": "Hlola amagama akamuva, bese uwaqhathanisa nezinkokhelo ezihlobene neziqondiso zesimo ngaphambi kokuthatha ukuthi inkokhelo ayikho."
+      }
+    ]
+  }
+};
+
+function withZuTranslations<
+  T extends {
+    slug: string;
+    title: string;
+    summary: string;
+    sections: Array<{ title: string; body: string }>;
+    translations?: Record<string, unknown>;
+  },
+>(guide: T, translation: GuideTranslation) {
+  return {
+    ...guide,
+    translations: {
+      ...(guide.translations ?? {}),
+      zu: translation,
+    },
+  };
+}
+
+export const SEO_BATCH_NINE_GUIDES = SEO_BATCH_NINE_GUIDES_SOURCE.map((guide) =>
+  addSetswanaTranslations(withZuTranslations(guide, ZU_TRANSLATIONS[guide.slug])),
+);

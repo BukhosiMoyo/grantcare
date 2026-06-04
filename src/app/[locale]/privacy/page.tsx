@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { LegalPage } from "@/components/legal-page";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { isLocale } from "@/lib/site";
 
@@ -16,11 +17,23 @@ export async function generateMetadata({
     return {};
   }
 
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      metaTitle: "Privacy Policy",
+      metaDescription: "Read how GrantCare handles reminders, saved preferences, account access, and product analytics.",
+    },
+    {
+      metaTitle: "Inqubomgomo Yobumfihlo",
+      metaDescription: "Funda ukuthi i-GrantCare iziphatha kanjani izikhumbuzi, izintandokazi ezigciniwe, ukufinyelela ku-akhawunti, nokuhlaziywa komkhiqizo.",
+    },
+  );
+
   return buildLocalizedMetadata({
     locale,
     path: "/privacy",
-    title: "Privacy Policy",
-    description: "Read how GrantCare handles reminders, saved preferences, account access, and product analytics.",
+    title: routeCopy.metaTitle,
+    description: routeCopy.metaDescription,
   });
 }
 
@@ -35,16 +48,16 @@ export default async function PrivacyPage({
     notFound();
   }
 
-  return (
-    <LegalPage
-      currentPath="/privacy"
-      eyebrow="Privacy"
-      intro={[
+  const content = getLocalizedRouteCopy(
+    locale,
+    {
+      eyebrow: "Privacy",
+      title: "Privacy",
+      intro: [
         "GrantCare keeps product data limited to reminders, saved preferences, account access, and basic support handling.",
         "GrantCare is independent and not affiliated with SASSA or the South African government.",
-      ]}
-      locale={locale}
-      sections={[
+      ],
+      sections: [
         {
           title: "What GrantCare may store",
           paragraphs: [
@@ -65,8 +78,48 @@ export default async function PrivacyPage({
             "Official government questions should go through the official SASSA contacts and portals listed on the contact page.",
           ],
         },
-      ]}
-      title="Privacy"
+      ],
+    },
+    {
+      eyebrow: "Ubumfihlo",
+      title: "Ubumfihlo",
+      intro: [
+        "I-GrantCare igcina idatha yomkhiqizo ilinganiselwe ezikhumbuzini, ezintandokazini ezigciniwe, ekufinyeleleni ku-akhawunti, nasekuphathweni kosizo oluyisisekelo.",
+        "I-GrantCare izimele futhi ayihlangene ne-SASSA noma uhulumeni waseNingizimu Afrika.",
+      ],
+      sections: [
+        {
+          title: "Okungase kugcinwe yi-GrantCare",
+          paragraphs: [
+            "Amakheli e-imeyili e-akhawunti, imininingwane yokungena, izilungiselelo zezikhumbuzi, imihlahlandlela egciniwe, nezintandokazi zezibonelelo kungagcinwa ukuze umkhiqizo usebenze.",
+            "Izicelo ezisemthethweni, izikhalazo, nokuhlolwa kwesimo okusemthethweni kungokwezinhlelo zikahulumeni, hhayi i-GrantCare.",
+          ],
+        },
+        {
+          title: "Indlela idatha esetshenziswa ngayo",
+          paragraphs: [
+            "I-GrantCare isebenzisa idatha egciniwe ukusekela ukungena, izikhumbuzi, amakhasi agciniwe, nokuhlaziywa okuyisisekelo komkhiqizo.",
+            "I-GrantCare kufanele igweme ukuqoqa imibhalo ebucayi yezibonelelo noma idatha yezicelo ezisemthethweni ngaphandle uma lokho kushintsha esicini esichazwe ngokucacile.",
+          ],
+        },
+        {
+          title: "Izindlela zokuxhumana ezisemthethweni",
+          paragraphs: [
+            "Imibuzo esemthethweni kahulumeni kufanele iye koxhumana nabo namaphothali asemthethweni e-SASSA abhalwe ekhasini lokuxhumana.",
+          ],
+        },
+      ],
+    },
+  );
+
+  return (
+    <LegalPage
+      currentPath="/privacy"
+      eyebrow={content.eyebrow}
+      intro={content.intro}
+      locale={locale}
+      sections={content.sections}
+      title={content.title}
     />
   );
 }

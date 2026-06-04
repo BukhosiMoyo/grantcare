@@ -4,13 +4,41 @@ import { BrandLogo } from "@/components/brand-logo";
 import { WhatsAppChannelLink } from "@/components/whatsapp-channel";
 import { getSessionUser } from "@/lib/auth-guards";
 import { getCopy } from "@/lib/copy";
-import { LEGAL_LINKS, OFFICIAL_SASSA_CONTACTS } from "@/lib/official-resources";
+import { getLegalLinks, getOfficialSassaContacts } from "@/lib/official-resources";
 import type { Locale } from "@/lib/site";
 import { buildLocalePath } from "@/lib/site";
 
 export async function SiteFooter({ locale }: { locale: Locale }) {
   const copy = getCopy(locale);
   const sessionUser = await getSessionUser();
+  const legalLinks = getLegalLinks(locale);
+  const officialContacts = getOfficialSassaContacts(locale);
+  const localCopy = {
+    contact:
+      locale === "zu"
+        ? "Xhumana nathi"
+        : locale === "tn"
+          ? "Ikgolaganye"
+          : locale === "xh"
+            ? "Qhagamshelana"
+            : "Contact",
+    htmlSitemap:
+      locale === "zu"
+        ? "Imephu yesayithi ye-HTML"
+        : locale === "tn"
+          ? "Mapa wa saete ya HTML"
+          : locale === "xh"
+            ? "Imephu yesayithi ye-HTML"
+            : "HTML sitemap",
+    xmlSitemap:
+      locale === "zu"
+        ? "Imephu yesayithi ye-XML"
+        : locale === "tn"
+          ? "Mapa wa saete ya XML"
+          : locale === "xh"
+            ? "Imephu yesayithi ye-XML"
+            : "XML sitemap",
+  };
   const quickLinks = [
     { href: buildLocalePath(locale, "/payment-dates"), label: copy.paymentDates },
     { href: buildLocalePath(locale, "/status"), label: copy.statusHelp },
@@ -19,7 +47,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
     { href: buildLocalePath(locale, "/guides"), label: copy.guides },
     { href: buildLocalePath(locale, "/grants"), label: copy.grantTypesTitle },
     { href: buildLocalePath(locale, "/faq"), label: copy.faq },
-    { href: buildLocalePath(locale, "/contact"), label: "Contact" },
+    { href: buildLocalePath(locale, "/contact"), label: localCopy.contact },
   ];
 
   return (
@@ -45,7 +73,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
               {copy.officialLinks}
             </p>
             <div className="flex flex-col gap-2 text-sm text-muted">
-              {OFFICIAL_SASSA_CONTACTS.map((link) => {
+              {officialContacts.map((link) => {
                 const isHttp = link.href.startsWith("http");
 
                 return (
@@ -62,21 +90,21 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
               })}
             </div>
             <div className="mt-3 pt-3 border-t border-border/50">
-              <WhatsAppChannelLink />
+              <WhatsAppChannelLink locale={locale} />
             </div>
           </div>
         </div>
         <div className="flex flex-wrap gap-4 border-t border-border/70 pt-4 text-sm text-muted">
-          {LEGAL_LINKS.map((link) => (
+          {legalLinks.map((link) => (
             <Link key={link.path} href={buildLocalePath(locale, link.path)} className="hover:text-foreground">
               {link.label}
             </Link>
           ))}
           <Link href={buildLocalePath(locale, "/sitemap")} className="hover:text-foreground">
-            HTML sitemap
+            {localCopy.htmlSitemap}
           </Link>
           <Link href="/sitemap.xml" className="hover:text-foreground">
-            XML sitemap
+            {localCopy.xmlSitemap}
           </Link>
           <Link href={buildLocalePath(locale, "/dashboard")} className="hover:text-foreground">
             {copy.dashboard}

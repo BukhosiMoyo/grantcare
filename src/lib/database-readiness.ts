@@ -1,7 +1,7 @@
 import { Prisma } from "@prisma/client";
 
 import { db } from "@/lib/prisma";
-import { isDatabaseConfigured, isProductionServer } from "@/lib/server-env";
+import { isDatabaseConfigured, isProductionBuild, isProductionServer } from "@/lib/server-env";
 
 const DEV_DATABASE_CHECK_TTL_MS = 15000;
 
@@ -30,7 +30,7 @@ export async function canQueryDatabase() {
     return false;
   }
 
-  if (isProductionServer()) {
+  if (isProductionServer() && !isProductionBuild()) {
     return true;
   }
 

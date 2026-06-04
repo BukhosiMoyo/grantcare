@@ -1,3 +1,5 @@
+import { addSetswanaTranslations } from "./generated-guide-translations";
+
 const section = (title: string, body: string) => ({ title, body });
 const faq = (question: string, answer: string) =>
   section(`FAQ: ${question}`, answer);
@@ -56,7 +58,7 @@ function guide({
   };
 }
 
-export const SEO_BATCH_ELEVEN_GUIDES = [
+const SEO_BATCH_ELEVEN_GUIDES_SOURCE = [
   guide({
     slug: "what-payment-status-check-means",
     title: "What payment status check means",
@@ -1198,3 +1200,1534 @@ export const SEO_BATCH_ELEVEN_GUIDES = [
     sortOrder: 233,
   }),
 ];
+
+type GuideTranslation = {
+  title: string;
+  summary: string;
+  sections: Array<{ title: string; body: string }>;
+};
+
+const ZU_TRANSLATIONS: Record<string, GuideTranslation> = {
+  "what-payment-status-check-means": {
+    "title": "Kusho ukuthini ukuhlola isimo sokukhokha",
+    "summary": "Incazelo ecacile yokuthi isheke lesimo sokukhokha likutshelani ngempela, nokuthi kungani lihluke ngokuphelele esimweni sakho sesicelo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isimo sakho sokukhokha sikutshela kahle ukuthi imali yakho ikuphi ohlelweni lwamabhange njengamanje. Isibuyekezo esihlukile ekugunyazweni kwesicelo sakho."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abantu abaningi babona i-'Approved' futhi ngokushesha bagijimele ku-ATM. Kodwa ukugunyazwa kusho ukuthi ufanelekile ngokusemthethweni. Isimo sakho sokukhokha yisona esikutshela ukuthi ingabe imali ihleliwe, ikhululiwe, noma ibambezeleke ngephutha lasebhange."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma udida lezi zimo ezimbili, uzomosha imali uhambela i-ATM ekubeni imali ingakakhishwa. Ukuhlola isimo sakho sokukhokha ngokwehlukana kongela isikhathi nengcindezi."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ngena kuphothali esemthethweni ye-SASSA bese ubheka udlule umlayezo we-'Approved'.\n2. Thola umugqa othize we-'Payment Status'.\n3. Hlola ukuthi ithi 'Scheduled', 'Released', noma 'Pending'.\n4. Qhathanisa lesi simo nezinsuku zokukhokha ezisemthethweni zenyanga.\n5. Uma isimo sikhomba iphutha lasebhange, ungalindi—lilungise ngokushesha ngomzila osemthethweni."
+      },
+      {
+        "title": "Leli sheke lingeleni ngempela",
+        "body": "Cabanga ngesimo sakho sokukhokha njengenombolo yokulandelela ukulethwa. Ikutshela uma iphakheji isendaweni yokugcina impahla (Ilindile), elolini (Kuhleliwe), noma emnyango wakho (Ikhishiwe)."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ichaza ukuthi la magama adidayo asho ukuthini ngesiNgisi esilula. Nokho, asikwazi ukusheshisa uhlelo lwamabhange noma ukukhulula inkokhelo yakho ngokushesha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sihlukanisa yonke imilayezo yesimo sokukhokha ukuze wazi kahle ukuthi kufanele uye ku-ATM noma ulinde olunye usuku."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-read-payment-status-after-approval\n• /guides/what-payment-released-means\n• /guides/what-payment-scheduled-means\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe isimo sokukhokha siyefana nesimo sohlelo lokusebenza?",
+        "body": "Cha. Isimo sesicelo siyakutshela ukuthi ufanelekile yini. Isimo sokukhokha siyakutshela ukuthi imali ikuphi."
+      },
+      {
+        "title": "I-FAQ: Ingabe ukuhlola isimo sokukhokha kusho ukuthi imali isikhona kakade?",
+        "body": "Hhayi njalo. Ingase ithi 'Pending' noma 'Scheduled', okusho ukuthi usadinga ukulinda."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngifunde kuqala?",
+        "body": "Funda amagama aqondile okukhokha kuqala, bese uwaqhathanisa nekhasi ledethi yokukhokha."
+      }
+    ]
+  },
+  "how-to-read-payment-status-after-approval": {
+    "title": "Usifunda kanjani isimo sokukhokha ngemuva kokugunyazwa",
+    "summary": "Umhlahlandlela opholile ochaza ukuthi kungani i-'Approved' ingasho ukuthi imali yakho isilungele ukuhoxiswa ngalo mzuzwana.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isimo se-'Approved' sisho ukuthi uphumelele wonke amasheke futhi i-SASSA ikukweleta imali. Kodwa kusamele ulinde uhlelo ukuthi lucubungule ukudluliselwa kwebhange kwangempela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukugunyazwa kuyisinqumo esisemthethweni. Ukukhishwa kwenkokhelo kuyinqubo yasebhange. Ngisho nangemva kokuba i-SASSA ikugunyazile, umnyango wabo wezezimali kusafanele ufake umugqa wenkokhelo yakho, uyithumele ebhange, bese ulinda ibhange ukuthi likusule."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Lena ingxenye ecindezela kakhulu yenqubo. Uyazi ukuthi uyahola, kodwa imali ayikho. Uma uqonda ukuthi imvume yasebhange ithatha izinsuku ezimbalwa, ungagwema ukwethuka."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Bungaza isimo se-'Approved'—ingxenye enzima isiphelile.\n2. Manje, bheka isibuyekezo se-'Payment Status'.\n3. Hlola ikhalenda elisemthethweni lokukhokha le-SASSA ukuze uthole isibonelelo sakho esithile.\n4. Linda isimo sishintshe sisuke ku-'Pending' siye ku-'Released'.\n5. Nikeza ibhange lakho amahora angu-24 kuya kwangu-48 ukuze usule izimali uma sezikhishiwe."
+      },
+      {
+        "title": "Kungani ukugunyazwa kulandelwa isikhathi sokulinda",
+        "body": "I-SASSA icubungula izigidi zezinkokhelo ngesikhathi esisodwa. Abayithumeli imali ngokwesibili lapho isicelo sivunyiwe. Imali ihamba ngamaqoqo amakhulu, okuthatha isikhathi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukuphoqa i-SASSA ukuthi icubungule inkokhelo yakho ngokushesha ngemva kokugunyazwa. Singakusiza kuphela ukuthi uqonde ukuthi ukuphi kulayini."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza umugqa wesikhathi phakathi kwesinqumo sokugunyaza kanye nemali yangempela eshaya i-akhawunti yakho, ukuze wazi ukuthi yini evamile nokuthi yini ukubambezeleka kwangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/approved-but-no-payment\n• /guides/payment-processing-meaning\n• /guides/how-to-know-if-your-payment-is-ready\n• /status/approved\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Kungani ukugunyazwa kusengabonisa ukubambezeleka kwenkokhelo?",
+        "body": "Ngoba ukugunyaza kuyisinqumo esingokomthetho, kodwa inkokhelo iyinqubo yasebhange ethatha isikhathi."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithuke uma inkokhelo ingasheshi ngemva kokugunyazwa?",
+        "body": "Cha. Imali yakho iphephile, ihlezi nje emgqeni wokukhokha."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise namagama agunyaziwe?",
+        "body": "Qhathanisa nesimo sokukhokha kanye nekhasi ledethi yokukhokha yakamuva."
+      }
+    ]
+  },
+  "what-payment-released-means": {
+    "title": "Kusho ukuthini inkokhelo ekhishiwe",
+    "summary": "Kahle kahle ukuthi i-'Payment Released' isho ukuthini ku-akhawunti yakho yasebhange, nokuthi kungani kungase kudingeke ulinde amahora ambalwa engeziwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "I-'Payment Released' isho ukuthi i-SASSA isithumele ngokusemthethweni imali isuka ebhange labo kweyakho. Kuwuphawu oluhle kakhulu ongaluthola, kodwa ukubambezeleka okujwayelekile kwebhange kusengasebenza."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uhulumeni uwenzile umsebenzi wakhe. Imali ishiye umgcinimafa we-SASSA. Manje, kuphuma ebhange lakho elithile (Capitec, Standard Bank, FNB, njll.) ukucubungula ukudlulisa okungenayo futhi likubonise kubhalansi yakho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi abaningi babona i-'Released' futhi balindele ukuthi imali ibe lapho ngalowo mzuzu. Uma ingekho, bayatatazela. Ukuqonda ukuthi amabhange adinga isikhathi sokusula ukudluliselwa kuvimbela lokhu kucindezeleka okungadingekile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Thatha umoya—'Released' kusho ukuthi imali yakho iphephile futhi isendleleni.\n2. Hlola usuku oluseduze nomlayezo we-'Released'.\n3. Vumela kufika emahoreni angu-48 ukuze imali ibonakale ku-akhawunti yakho.\n4. Isici ngezimpelaviki noma ngamaholide, okumisa kancane ukucubungula kwebhange.\n5. Thinta ibhange lakho kuphela uma imali ingakaveli ngemva kwezinsuku ezintathu zebhizinisi."
+      },
+      {
+        "title": "Okukhishiwe kusho okuthunyelwe, akutholakali ngokushesha",
+        "body": "I-'Released' ifana nomuntu onikeza incwadi eposini. Incwadi ithunyelwe, kodwa unoposi usadinga ukuyishayela endlini yakho. Imali iyeza."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkomba yezemfundo. Asikwazi ukufinyelela i-akhawunti yakho yasebhange futhi asikwazi ukukutshela ngokuqondile ukuthi imali izoveza ngasiphi isikhathi."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikufundisa ukuthi amabhange ahlukene aziphatha kanjani izikhathi zokukhokha ukuze wazi kahle ukuthi ungayilindela nini imali yakho ngemuva kokubona i-'Released'."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-know-when-funds-should-show\n• /guides/what-payment-scheduled-means\n• /guides/what-to-do-if-payment-ready-but-not-reflecting\n• /guides/why-payment-is-delayed\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ukukhishwa kusho ukuthi imali isivele ibonakala?",
+        "body": "Hhayi njalo. Kusho ukuthi imali isithunyelwe, kodwa ukukhishwa kwebhange kuthatha isikhathi."
+      },
+      {
+        "title": "I-FAQ: Ingabe ukukhululwa kuwuphawu oluhle?",
+        "body": "Yebo, kuwuphawu oluhle kakhulu. Kusho ukuthi inkokhelo yakho ihamba ngempumelelo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze uma ukukhululwa kungabonisi?",
+        "body": "Linda amahora webhizinisi angama-48. Uma kuyimpelasonto, linda kuze kube uMsombuluko ntambama."
+      }
+    ]
+  },
+  "what-payment-not-yet-available-means": {
+    "title": "Ukuthi inkokhelo engakatholakali isho ukuthini",
+    "summary": "I-Don't panic if you see 'Payment ayikakatholakali'. Siyachaza ukuthi kungani lona kuwumlayezo ojwayelekile wokulinda hhayi ukunqatshelwa.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "I-'Payment not yet available' imane isho ukuthi imali yakho ayikakalungeli ukuqoqwa namuhla. Akusho ukuthi isibonelelo sakho sinqatshiwe noma sikhanseliwe."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "I-SASSA ikhokha izibonelelo ezahlukene ngezinsuku ezahlukene. Uma uhlola isimo sakho ngaphambi kosuku lwakho oluqondile lokukhokha, isistimu izokutshela ukuthi izimali azikakatholakali. Kumane kuwumlayezo wesikhathi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abantu babona lo mlayezo bese becabanga ukuthi bavinjiwe. Lokhu kubangela ukuthi baphuthume emahhovisi e-SASSA kungenasidingo, bamoshe imali yokugibela amatekisi nokuma kolayini abade ngaphandle kwesizathu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ungathuki—lona umlayezo ojwayelekile wokuhlela.\n2. Hlola usuku oluqondile owabona ngalo umlayezo.\n3. Bheka ikhalenda lokukhokha le-SASSA lenyanga yamanje.\n4. Linda kuze kufike usuku lokukhokha lwesigaba sakho sezibonelelo ezithile.\n5. Hlola isimo sakho futhi ngosuku olufanele."
+      },
+      {
+        "title": "Lo mlayezo usho ukuthi 'Wait', hhayi 'No'",
+        "body": "I-'Not yet available' yindlela yesistimu yokukutshela ukuthi usheshe. Imali iphephile, ivaliwe nje kuze kufike usuku olulungile lokukhishwa."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingakuchaza la magama ukuze uthulise izinzwa zakho, kodwa asikwazi ukuvula izimali zakho. Umugqa wesikhathi osemthethweni we-SASSA kuphela oshoyo ukuthi imali ikhishwa nini."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sinikeza amakhalenda okukhokha acacile, afundeka kalula ukuze wazi kahle ukuthi i-'not yet available' izophenduka nini i-'released'."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-payment-pending-means\n• /guides/what-payment-scheduled-means\n• /guides/how-to-know-when-funds-should-show\n• /guides/why-payment-is-delayed\n• /guides/how-to-check-if-a-missing-payment-is-just-a-delay"
+      },
+      {
+        "title": "I-FAQ: Ingabe okwamanje ayitholakali kusho ukuthi inkokhelo yehlulekile?",
+        "body": "Cha. Kusho ukuthi uhlola ngaphambi kwedethi yokukhishwa."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngilinde noma ngithathe isinyathelo ngokushesha?",
+        "body": "Linda idethi yakho yokukhokha esemthethweni ukuthi ifike ngaphambi kokuba ukhathazeke."
+      },
+      {
+        "title": "I-FAQ: Kufanele ngiqhathanise nani leli gama?",
+        "body": "Hlola ishejuli yokukhokha ye-SASSA yenyanga yamanje."
+      }
+    ]
+  },
+  "how-to-know-when-funds-should-show": {
+    "title": "Ungazi kanjani ukuthi imali kufanele ibonakale nini",
+    "summary": "Ungahlulela kanjani ngokweqiniso ukuthi imali yakho izovela nini ku-akhawunti yakho, ngaphandle kokuncika kumahemuhemu e-Facebook.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Izimali zivame ukuvela emahoreni angama-24 kuye kwangama-48 ngemuva kokuthi i-SASSA izikhiphe ngokusemthethweni. Isikhathi esiqondile sincike ngokuphelele ekutheni yiliphi ibhange olisebenzisayo nokuthi impelasonto."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ayikho i-'magic minute' eyodwa lapho wonke umuntu waseNingizimu Afrika ehola ngesikhathi esisodwa. I-Capitec ingase isule izinkokhelo ngo-2 AM, kuyilapho i-Standard Bank ingazisula ngo-8 AM. Iyahluka ngokugqamile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma ulindele imali yakho phakathi kwamabili ngoba iqembu le-WhatsApp lisho njalo, uzochitha ubusuku bonke ucindezelekile. Ukubeka okulindelwe okungokoqobo okusekelwe emithethweni yasebhange kunempilo kakhulu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi isimo sakho sithi 'Released'.\n2. Qaphela isikhathi nosuku lokukhishwa.\n3. Hlola ukuthi namuhla uLwesihlanu noma iholidi lomphakathi (lokhu kubambezela ukucutshungulwa).\n4. Qonda izikhathi ezijwayelekile zokugunyazwa kwebhange lakho.\n5. Linda amahora webhizinisi angama-48 ngaphambi kokuthi ucabange ukuthi inkokhelo ayikho."
+      },
+      {
+        "title": "Buza umbuzo ofanele mayelana nesikhathi",
+        "body": "Yeka ukubuza 'What time exactly will the money show?' Qala ukubuza 'Has enough normal banking time passed since the release?' Le ndlela isusa ukwethuka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukubona ohlelweni lwamabhange. Sinikeza isiqondiso ngokusekelwe ezikhathini ezijwayelekile zokubhanga, kodwa ibhange lakho lilawula ukubonakaliswa kokugcina."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza ukuthi izimpelasonto, amaholide omphakathi, nezinhlelo zamabhange ezihlukene zisithinta kanjani isikhathi sakho sokukhokha ukuze ukwazi ukuhlela uhambo lwakho lokuthenga ngokuphepha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-payment-released-means\n• /guides/what-weekends-and-holidays-can-do-to-payments\n• /guides/what-to-do-if-payment-ready-but-not-reflecting\n• /guides/how-to-check-payment-method-before-pay-date\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe izimali zingaboniswa ngosuku olufanayo namagama akhishiwe?",
+        "body": "Yebo, kodwa ngokuvamile kuthatha amahora angu-24 engeziwe kuye ngebhange."
+      },
+      {
+        "title": "I-FAQ: Kwenzekani lapho izimali zibonisa?",
+        "body": "Ibhange lakho elithile, isikhathi sosuku elikhishwe ngalo, nezimpelasonto."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma imali ingakabonakali?",
+        "body": "Uma sekudlule amahora angu-48 ebhizinisi kusukela ekukhululweni, xhumana nebhange lakho kuqala."
+      }
+    ]
+  },
+  "what-payment-scheduled-means": {
+    "title": "Kusho ukuthini ukukhokha okuhleliwe",
+    "summary": "Isho ukuthini i-'Scheduled' ngenkokhelo yakho ye-SASSA, futhi kungani kuwuphawu oluhle lokuthi imali yakho ihamba ngendlela efanele.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "I-'Payment Scheduled' isho ukuthi imali yakho yesibonelelo inikezwe idethi ethile yokukhishwa. Kuwuphawu oluhle kakhulu, kodwa imali ayikadluliswa ebhange lakho kuze kube manje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Cabanga nge-'Scheduled' njengokubhuka indiza. Unalo ithikithi lakho nesihlalo sakho, kodwa indiza ayikasuki. I-SASSA ikumugqa wenkokhelo yakho, futhi ilinde usuku oluqondile lokuthunyelwa kwayo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abantu bavame ukudida i-'Scheduled' ne-'Released' futhi baphuthume ebhange kusenesikhathi. Uma ulinda kuze kube yilapho isimo sishintsha kokuthi Okuhlelelwe ukuya Kokhishiwe, ngeke uchithe isikhathi sakho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Bheka isimo se-'Scheduled' futhi uqaphele usuku olunikeziwe.\n2. Ungayi e-ATM noma ebhange okwamanje.\n3. Linda usuku oluhleliwe ukuthi lufike.\n4. Hlola iphothali futhi ukuze ubone ukuthi isimo siyashintsha yini sibe 'Released'.\n5. Uma usukhululiwe, vumela isikhathi esijwayelekile sokubhanga."
+      },
+      {
+        "title": "Okuhleliwe akusona isinyathelo sokugcina",
+        "body": "Okuhleliwe kusho ukuthi uhlelo lunohlelo lwemali yakho. Ingcono kakhulu kune-'Pending', kodwa isadinga ukubekezela."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ikusiza ukuthi uqonde ukuthi le migomo yasebhange isho ukuthini, kodwa asikwazi ukuhambisa inkokhelo ehleliwe ngedethi yangaphambili."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikusiza ukuthi uhlukanise phakathi kwezigaba zokulinda ezihlukene ukuze uhambe uye ebhange kuphela uma imali yakho ikhona."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-payment-released-means\n• /guides/what-payment-not-yet-available-means\n• /guides/how-to-read-payment-status-after-approval\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ukuhlela kusho ukuthi ngingakwazi ukuqoqa khona manje?",
+        "body": "Cha. Kusho ukuthi usuku lwakho lokukhokha selumisiwe, kodwa imali ayikathunyelwa."
+      },
+      {
+        "title": "I-FAQ: Ingabe ishejuliwe ingcono kunokulinda?",
+        "body": "Yebo. Kusho ukuthi usuphumile kulayini wokulinda futhi unohlelo lokukhokha oluqinisekisiwe."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise okuhleliwe nayo?",
+        "body": "Iqhathanise nekhasi ledethi yokukhokha ukuze wazi ukuthi izoshintsha nini ibe yi-'Released'."
+      }
+    ]
+  },
+  "how-to-check-if-payment-was-sent-back": {
+    "title": "Ungahlola kanjani ukuthi inkokhelo ibuyiselwe emuva",
+    "summary": "Uzibona kanjani izimpawu eziyisixwayiso zokuthi inkokhelo yakho ibuyisiwe noma yehlulekile ukusulwa, nokuthi yini okufanele uyenze ngokulandelayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma inkokhelo yakho ibuyiselwe emuva, isimo sakho ngokuvamile sizokhuluma nge-'Return', 'Reversal', noma 'Failed Bank Details'. Lokhu kusho ukuthi i-SASSA izamile ukukukhokhela, kodwa ibhange lakho linqabile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Inkokhelo ebuyisiwe ayikona ukubambezeleka kwe-SASSA—ukwehluleka kwebhange. Ngokuvamile kwenzeka uma i-akhawunti yakho yasebhange ivaliwe, imisiwe, noma uma igama eliku-akhawunti lingahambisani ne-ID yakho ye-SASSA ncamashi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma ucabanga ukuthi inkokhelo ebuyisiwe yi-'late' nje, uzolinda unomphela. Inkokhelo ebuyisiwe ayisoze yazilungisa yona. Kufanele uvuselele imininingwane yakho yasebhange ukuze uthole imali yakho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Funda ngokucophelela isimo sakho sokukhokha ukuze uthole amagama afana ne-'Returned' noma 'Failed'.\n2. Shayela ibhange lakho ngokushesha ukuze uhlole ukuthi i-akhawunti yakho iyasebenza yini.\n3. Qinisekisa ukuthi igama le-akhawunti yakho yasebhange lifana kahle nedokhumenti yakho kamazisi.\n4. Uma i-akhawunti ivaliwe, vula entsha egameni lakho.\n5. Ngena kuphothali esemthethweni ye-SASSA futhi ubuyekeze ngokuphephile imininingwane yakho yasebhange."
+      },
+      {
+        "title": "Ukubuyisela akufani nokubambezeleka",
+        "body": "Inkokhelo ebambezelekile idinga isineke. Inkokhelo ebuyisiwe idinga isenzo. Uma imali ibuyile, i-SASSA ngeke iphinde izame kuze kube yilapho uhlinzeka ngemininingwane yasebhange emisha, esebenzayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukubona ukuthi kungani ibhange lakho elithile linqabe inkokhelo. Kufanele uxhumane nebhange lakho ngokuqondile ukuze uqonde ibhulokhi."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Siyakuqondisa ukuthi ungayibuyekeza kanjani ngokuphephile imininingwane yakho yasebhange ye-SASSA ngemva kokubhampa kwenkokhelo, ukuze ukwazi ukubuyisela imali yakho."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-to-do-if-payment-was-returned\n• /guides/how-to-know-if-your-payment-method-is-blocking-release\n• /guides/what-to-do-if-payment-keeps-failing\n• /guides/how-to-fix-missing-payment-issues\n• /status/banking-issue"
+      },
+      {
+        "title": "I-FAQ: Ingabe ukuthunyelwa emuva kusho okufanayo nokubambezeleka?",
+        "body": "Cha. Ukubuyiselwa kusho ukuthi inkokhelo yehlulekile ebhange futhi kudinga ukuthi ulungise imininingwane yakho."
+      },
+      {
+        "title": "I-FAQ: Hlobo luni lwamagama okufanele ngilubuke?",
+        "body": "Buka amagama afana ne-'Returned', 'Failed', 'Reversed', noma 'Banking Details Issue'."
+      },
+      {
+        "title": "I-FAQ: Kungani ugcine amagama?",
+        "body": "Ngakho wazi kahle ukuthi yini okufanele uyitshele ihhovisi le-SASSA noma ibhange lakho lapho ucela usizo."
+      }
+    ]
+  },
+  "what-to-do-if-payment-was-returned": {
+    "title": "Okufanele ukwenze uma inkokhelo ibuyiswa",
+    "summary": "Umhlahlandlela wesinyathelo ngesinyathelo sokuthola uma i-SASSA izama ukukukhokhela, kodwa imali ibuya isuka ku-akhawunti yakho yasebhange.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma inkokhelo yakho ibuyisiwe, kufanele uhlole ngokushesha ibhange lakho ukuze uthole ukuthi kungani i-akhawunti ivinjiwe, bese ubuyekeza imininingwane yakho kuphothali esemthethweni ye-SASSA."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "I-SASSA ayizange inqabe imali yakho yesibonelelo. Bayithumele imali, kodwa ibhange lakho's system said 'No'. Lokhu kwenzeka kaningi ngama-akhawunti angasebenzi noma ama-akhawunti afinyelele umkhawulo wawo wokufaka imali."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma imali ibuyiswa, i-SASSA ikubambele yona ngokuphephile. Kodwa-ke, ngeke ukhokhelwe kuze kube yilapho inkinga yasebhange isixazululiwe ngokuphelele futhi iqinisekiswa, okungathatha amasonto."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ungathuki—imali yakho ayilahleki, isanda kumiswa.\n2. Vakashela igatsha lakho lasebhange ubabuze ukuthi kungani ukudluliswa kwe-SASSA kungabhampa.\n3. Lungisa inkinga ye-akhawunti noma uvule i-akhawunti entsha evamile yokonga.\n4. Ngena kuwebhusayithi esemthethweni ye-SASSA bese ulayisha imininingwane emisha yasebhange.\n5. Linda i-SASSA ukuze uqinisekise i-akhawunti entsha ngaphambi kokuba bazame ukukhokha futhi."
+      },
+      {
+        "title": "Gxila ebhange, hhayi isicelo",
+        "body": "Isicelo sakho silungile. Inkinga indawo oya kuyo. Kuze kube yilapho unikeza indlela ecacile, yokusebenza ukuze imali ihambe, izohlala iphephile ku-SASSA."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "Ungalokothi unikeze imininingwane yakho yasebhange emisha ku-'agent' noma othile othembisa ukulungisa lokhu ku-WhatsApp. Zilayishe kuphela kuwebhusayithi esemthethweni ye-SASSA."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikudlulisa eziteshini ezifanele, ezisemthethweni ukuze ubuyekeze imininingwane yakho yasebhange ukuze imali yakho iyeke ukubhampa futhi iqale ukuqedwa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-if-payment-was-sent-back\n• /guides/how-to-know-if-your-payment-method-is-blocking-release\n• /guides/what-to-do-if-payment-keeps-failing\n• /guides/why-payment-is-delayed\n• /status/banking-issue"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngilinde uma inkokhelo ibuyiswa?",
+        "body": "Cha. Inkokhelo ebuyisiwe isho ukuthi imininingwane yasebhange yehlulekile. Kufanele uthathe isinyathelo ukuze uzilungise."
+      },
+      {
+        "title": "I-FAQ: Ingabe ukubuyiselwa kusho ukuthi isicelo senqatshiwe manje?",
+        "body": "Cha. Isibonelelo sakho sisavunyiwe, kodwa imali ayikho indawo ephephile ukuthi ingahlala kuyo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole kuqala?",
+        "body": "Hlola nebhange lakho ukuze uqinisekise ukuthi i-akhawunti yakho iyasebenza futhi isegameni lakho ngqo."
+      }
+    ]
+  },
+  "how-payment-batches-can-cause-delays": {
+    "title": "Ukuthi amaqoqo okukhokha angadala kanjani ukubambezeleka",
+    "summary": "Kungani umngane wakho ekhokhelwa ngaphambi kwakho, nokuthi uhlelo olukhulu lokucubungula iqoqo lwe-SASSA lusebenza kanjani ngempela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "I-SASSA ikhokha izigidi zabantu ngokuthumela imali ngamaqoqo amakhulu. Ngisho noma wena nomakhelwane wakho ninesibonelelo esifanayo, izinkokhelo zakho zingase zicutshungulwe ngamahora noma izinsuku ngokuhlukana."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uhlelo lwamabhange alukwazi ukucubungula izinkokhelo eziyizigidi eziyishumi ngomzuzwana owodwa ngaphandle kokuphahlazeka. Ngakho-ke, i-SASSA iwahlukanisa ngamaqembu (amaqoqo). Ukuba seqenjini lakamuva akusho ukuthi inkokhelo yakho yehlulekile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukuqhathanisa isikhathi sakho sokukhokha nesomunye umuntu kuyindlela esheshayo yokuzibangela ukwethuka okungadingekile. Ukuthi umfowenu uthole i-SMS yakhe ngo-8 AM akusho ukuthi inkokhelo yakho ka-2 PM yephukile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Yeka ukuqhathanisa isikhathi sakho esiqondile sokukhokha nabanye abantu.\n2. Hlola idethi yokukhokha ye-SASSA esemthethweni yohlobo lwakho lwesibonelelo.\n3. Qonda ukuthi ukucubungula kuqala kusukela ekuseni kuze kube kusihlwa.\n4. Nikeza isistimu usuku olugcwele lokucubungula iqoqo lakho elithile.\n5. Qala ukukhathazeka kuphela uma inkokhelo yakho ingabonisi amahora angu-48 ngemva kwedethi yokukhishwa."
+      },
+      {
+        "title": "Kungani ukuqhathanisa kubangela ukwethuka",
+        "body": "Inkokhelo yakho ixhunywe ku-ID yakho ethile kanye nenhlanganisela yebhange. Iseqenjini layo. Ungacabangi ukuthi inkinga ikhona ngoba useqenjini lakamuva."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukukutshela kahle ukuthi iyiphi inqwaba yenkokhelo yakho. Sinikeza lolu lwazi ukuze sikusize ulawule okulindele ngokuzola."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza ukuthi lezi zinhlelo zamabhange ezinkulu zisebenza kanjani ngemuva, ukuze uqonde ukuthi ukubambezeleka okuncane kuyinto evamile ngokuphelele."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/why-payment-is-delayed\n• /guides/what-weekends-and-holidays-can-do-to-payments\n• /guides/how-to-track-payment-dates-without-rumours\n• /guides/how-to-check-if-a-missing-payment-is-just-a-delay\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe isikhathi seqoqo singenza umuntu oyedwa akhokhelwe ngaphambi komunye?",
+        "body": "Yebo, lokhu kujwayelekile ngokuphelele futhi kwenzeka njalo ngenyanga eyodwa."
+      },
+      {
+        "title": "I-FAQ: Ingabe ukukhokha kancane njalo kusho inkinga?",
+        "body": "Cha. Kusho ukuthi ubekwe eqeqebeni lokucubungula kamuva losuku."
+      },
+      {
+        "title": "I-FAQ: Kunini lapho kufanele ngikhathazeke kakhulu?",
+        "body": "Kuphela uma sekudlule amahora webhizinisi angama-48 kusukela ngedethi yokukhokha futhi ungakabi nalutho."
+      }
+    ]
+  },
+  "what-weekends-and-holidays-can-do-to-payments": {
+    "title": "Yiziphi izimpelaviki namaholide angakwenza ukuze ukhokhe",
+    "summary": "Ukuthi izimpelaviki kanye namaholide omphakathi akumisa kanjani inkokhelo yakho ohlelweni lwamabhange, nokuthi kungani ungathuki.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Amabhange awakucubunguli ukudluliswa kwezimali nge-elekthronikhi ngamaSonto noma ngamaholide. Uma i-SASSA ikhipha inkokhelo yakho ngoLwesihlanu ntambama, cishe uzobona kuphela imali ngoMsombuluko noma ngoLwesibili."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uhlelo lwamabhange lunamahora okusebenza. Inkokhelo ethunyelwa ngaphandle kwalawo mahora ifakwa kulayini. Alilahleki; isaphumula kuze kube yilapho uhlelo lokusula lwebhange luphinde lukhanyise."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Izigidi zabantu ziyatatazela lapho usuku lomholo lwangoLwesihlanu luba ne-akhawunti yasebhange yangempelasonto engenalutho. Ukwazi ukuthi amabhange amise okwesikhashana ukucubungula ngempelasonto kukusindisa ekucindezelekeni okukhulu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Bheka ikhalenda ukuze ubone ukuthi usuku lwakho lokuhola lungoLwesihlanu noma ngempelasonto.\n2. Uma kwenzeka, lindela ukuthi imali ibonakale kusenesikhathi ngesonto elilandelayo.\n3. Ungamoshi isikhathi somoya ngokuhlola ibhalansi yakho ngokuphindaphindiwe ngeSonto.\n4. Linda kuze kube uMsombuluko ntambama ngaphambi kokuba ukhathazeke.\n5. Isici samaholide, nawo asebenza njengeSonto lokucutshungulwa kwebhange."
+      },
+      {
+        "title": "Iwashi lasebhange liyaphumula ngezimpelasonto",
+        "body": "I-SASSA ingase ivuleke 24/7 ku-inthanethi, kodwa izinhlelo ezijwayelekile zokusula amabhange azinjalo. Uma inkokhelo yakho ifika ebhange ngempelasonto, ilinda emgqeni kuze kube uMsombuluko."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukuphoqa ibhange lakho ukuthi licubungule imali ngempelasonto. Lona umthetho wamabhange waseNingizimu Afrika osebenza kuwo wonke umuntu."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikusiza ukuthi ubikezele ukuthi ikhalenda lizoluthinta kanjani usuku lwakho lokukhokhelwa lomhlaba wangempela, likuvumela ukuthi uhlele ibhajethi yakho ngaphandle kokukhathazeka ngempelasonto."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-know-when-funds-should-show\n• /guides/what-payment-released-means\n• /guides/what-to-do-if-payment-arrives-later-than-expected\n• /guides/why-payment-is-delayed\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe impelasonto ingalibazisa inkokhelo ebonakala isikhishiwe?",
+        "body": "Yebo. Inkokhelo iyakhululwa, kodwa uhlelo lwebhange lumiswe okwesikhashana ngempelasonto."
+      },
+      {
+        "title": "I-FAQ: Ingabe ukubambezeleka kweholide kusho ukuthi inkokhelo yehlulekile?",
+        "body": "Cha. Kusho ukuthi abasebenzi basebhange kanye nezinhlelo basuke bengekho emsebenzini."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise nekhalenda?",
+        "body": "Ngaso sonke isikhathi hlola ukuthi usuku lwakho lokuhola lwe-SASSA luthinta uLwesihlanu, uMgqibelo, iSonto, noma iholidi lomphakathi."
+      }
+    ]
+  },
+  "how-to-read-payment-notes-on-date-pages": {
+    "title": "Ungawafunda kanjani amanothi okukhokha emakhasini edethi",
+    "summary": "Kungani amanothi amancane eduze nezinsuku zokukhokha ze-SASSA ngokuvamile ebaluleke kakhulu kunosuku ngokwalo, nokuthi afundwa kanjani.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Izinsuku zokukhokha zivame ukuza namanothi afana ne-'Estimated', 'Pending Verification', noma 'Excludes SRD'. Uma uziba inothi, ungase uthembe idethi engasebenzi kuwe."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Idethi iyodwa iyinombolo nje. Inothi likutshela uma lolo suku luyisithembiso esiqinisekiswa ngo-100%, noma ukuqagela nje okufundisiwe yisistimu okusekelwe emigqeni yesikhathi evamile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Imbangela enkulu ye-SASSA ukukhungatheka ukulindela imali ngedethi ebhalwe ngokucacile ukuthi 'Estimated'. Ukufunda imibhalo emihle kukusindisa ekuyeni ebhange ukuze uthole inkokhelo engaqinisekisiwe."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Bheka usuku lokukhokha ku-portal ye-SASSA noma isimiso esisemthethweni.\n2. Funda umbhalo ngokuqondile ngaphansi noma eceleni kosuku.\n3. Hlola ukuthi ithi 'Published' (Kuqinisekisiwe) noma 'Expected' (Qagela).\n4. Qinisekisa ukuthi usuku lusebenza ngokusobala ohlotsheni lwakho oluthile lwesibonelelo.\n5. Amadethi okuthenjwa kuphela aqinisekiswa ngaphandle kwezixwayiso noma imibandela."
+      },
+      {
+        "title": "Inothi lishintsha incazelo yedethi",
+        "body": "Ungagcini nje ngokuthwebula idethi bese uyabelana ngayo. Inothi elinamathiselwe kuyo yilona elikutshela ukuthi kuphephe kangakanani ukusebenzisa imali ongakayitholi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare igqamisa lawa manothi ukuze ungabanjwa, kodwa asiwadali amadethi. I-SASSA kuphela engaphothula uhlelo lokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikufundisa ukuthi ungawafunda kanjani amashejuli asemthethweni ukuze ungalokothi wenze iphutha idethi ye-'Expected' ngosuku lokukhokha oluqinisekisiwe."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-track-payment-dates-without-rumours\n• /guides/how-to-know-if-a-payment-date-is-still-current\n• /payment-dates\n• /guides/where-to-confirm-payment-problems-officially"
+      },
+      {
+        "title": "I-FAQ: Kungani inothi ekhasini lokukhokha libaluleke kangaka?",
+        "body": "Ngoba ikutshela uma usuku luyisithembiso esiqinisekisiwe noma isilinganiso nje."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe idethi ekopishiwe ngaphandle kwenothi?",
+        "body": "Ungalokothi. Abakhwabanisi bavamise ukukhipha amanothi esixwayiso lapho babelana ngezinsuku ezingamanga ku-WhatsApp."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyibheke encwadzini?",
+        "body": "Bheka amagama afana ne-'Estimated', 'Confirmed', 'Expected', noma amagama athile ezibonelelo."
+      }
+    ]
+  },
+  "what-to-do-if-payment-ready-but-not-reflecting": {
+    "title": "Okufanele ukwenze uma inkokhelo isilungile kodwa ingabonisi",
+    "summary": "Okufanele ukwenze uma i-SASSA ithi inkokhelo yakho isilungile, kodwa i-akhawunti yakho yasebhange isangenalutho ngokuphelele.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma inkokhelo yakho ithi 'Ready' kodwa ingabonisi, linda amahora angu-48 ukuze uthole ukukhishwa kwebhange. Uma ingakabonakali, hlola ukuthi i-akhawunti yakho yasebhange ivinjiwe noma ayisebenzi."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "I-SASSA ifake imali emnyango, kodwa ayikangeni ku-akhawunti yakho yasebhange. Ukubambezeleka kuhlale kuhlangothi lwasebhange, hhayi ohlangothini lwe-SASSA."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abantu bebona i-'Ready' kodwa bengenayo imali, bavele bacabange ukuthi baqoliwe noma bagetshengiwe. Ngokuvamile, ibhange limane licubungula ukudluliselwa, noma i-akhawunti yakho idinga isibuyekezo esisheshayo se-FICA."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Thatha isithombe-skrini somlayezo we-'Payment Ready'.\n2. Linda amahora ebhizinisi angu-48 agcwele (ungazinaki izimpelasonto).\n3. Hlola uhlelo lwakho lokusebenza lwasebhange ukuze ubone ukuthi i-akhawunti yakho iyasebenza futhi iyayamukela yini imali efakwayo.\n4. Shayela ibhange lakho futhi ubuze ukuthi kukhona yini ukudluliselwa okungenayo okulindile.\n5. Yiya ku-SASSA kuphela uma ibhange lakho liqinisekisa ukuthi liyinqabile inkokhelo."
+      },
+      {
+        "title": "Ukulungele kusho okulungiselelwe, akulethiwe",
+        "body": "Cabanga nge-'Ready' njengepizza ehlezi phezu kwekhawunta. Kuyaphekwa futhi kufakwe ebhokisini, kodwa umshayeli wokulethwa (ibhange) usadinga isikhathi sokukuletha endlini yakho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukubona ibhalansi yakho yasebhange noma iphoqelele ibhange lakho ukuthi lisule izimali ngokushesha. Singakutshela kuphela izikhathi zokulinda ezijwayelekile."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikusiza ukuthi uyeke ukwethuka ngokukuchazela izinyathelo eziqondile ongazithatha uma imali yakho ye-SASSA ibambekile endleleni yokuhamba phakathi kukahulumeni nebhange lakho."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-payment-released-means\n• /guides/how-to-know-when-funds-should-show\n• /guides/how-to-check-if-a-missing-payment-is-just-a-delay\n• /guides/how-to-know-if-your-payment-method-is-blocking-release\n• /guides/how-to-fix-missing-payment-issues"
+      },
+      {
+        "title": "I-FAQ: Ingabe inkokhelo isilungile kusho ukuthi imali kufanele isivele isivele?",
+        "body": "Cha. I-'Ready' isho ukuthi i-SASSA isiyilungisile, kodwa ukususa amabhange kusathatha isikhathi."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphandle kwamagama?",
+        "body": "Hlola i-akhawunti yakho yasebhange ukuze uqinisekise ukuthi iyasebenza futhi ayimiswa ngenxa yemithetho ye-FICA."
+      },
+      {
+        "title": "I-FAQ: Iyeka nini ukubonakala ijwayelekile?",
+        "body": "Uma imali ingabonisi ngemva kwezinsuku ezigcwele zebhizinisi ezingu-3, ​​udinga ukuxhumana nebhange lakho."
+      }
+    ]
+  },
+  "how-to-check-payment-method-before-pay-date": {
+    "title": "Uyibheka kanjani indlela yokukhokha ngaphambi kwedethi yokukhokha",
+    "summary": "Ukuthi ukuhlola imininingwane yakho yasebhange *ngaphambi* kosuku lokukhokha kungakonga kanjani ekuhlulekeni kwenkokhelo yenyanga yonke.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlala ungena ngemvume kuphothali ye-SASSA isonto ngaphambi kosuku lokuhola ukuze uqinisekise ukuthi imininingwane yakho yasebhange isasebenza futhi iqinisekisiwe. Ukubamba iphutha kusenesikhathi kuvimbela inkokhelo yakho ekubhampini."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abantu abaningi babheka kuphela imininingwane yabo yasebhange *ngemuva kokuba* imali yabo ingafiki. Ngaleso sikhathi, inkokhelo isiyehlile, futhi ukuyilungisa kuthatha amasonto. Ukuhlola kusengaphambili okusheshayo kugwema ngokuphelele leli phupho elibi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Inkokhelo ebhanseliwe isho ukuthi ngeke uyithole imali yakho kule nyanga. Uma i-akhawunti yakho yasebhange ivaliwe ngenxa yokungasebenzi, noma uma ushintshe isibongo sakho, i-SASSA izokwala ukudluliselwa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ngena kuphothali esemthethweni ye-SASSA okungenani izinsuku ezingu-7 ngaphambi kosuku lwakho lokuhola.\n2. Zulazulela esigabeni 'Banking Details'.\n3. Qinisekisa ukuthi inombolo ye-akhawunti yakho yamanje ilungile futhi imakwe ngokuthi 'Active'.\n4. Uma imininingwane iyiphutha, yibuyekeze ngokushesha.\n5. Ungenzi izinguquko uma imininingwane ilungile—izibuyekezo ezingadingekile zibangela ukubambezeleka."
+      },
+      {
+        "title": "Ukuvimbela kungcono kunokulinda",
+        "body": "Ukuhlolwa kwemizuzu emi-2 namuhla kungakongela izinsuku ezingu-30 zokulinda. Qiniseka ukuthi i-'pipe' icacile ngaphambi kokuthi i-SASSA izame ukuthumela amanzi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ikukhumbuza ukuthi uhlole imininingwane yakho, kodwa kufanele wenze izibuyekezo zangempela kuphothali kahulumeni ye-SASSA evikelekile, esemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza kahle ukuthi yini okufanele uyibheke lapho uqinisekisa imininingwane yakho yasebhange ukuze ungaqalisi ngephutha isexwayiso sokukhwabanisa ngokushintsha izinto kaningi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-to-do-if-your-bank-details-changed\n• /guides/banking-details-pending-meaning\n• /guides/how-to-know-if-your-payment-method-is-blocking-release\n• /guides/how-banking-details-updates-work\n• /status/banking-issue"
+      },
+      {
+        "title": "I-FAQ: Kungani ubheka indlela yokukhokha ngaphambi kosuku lokukhokha?",
+        "body": "Ngoba uma uthola iphutha kusenesikhathi, ungalilungisa ngaphambi kokuthi inkokhelo iqhume."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqhubeke ngihlela imininingwane yasebhange ngaphambi nje kokukhokha?",
+        "body": "Ungalokothi. Zihlele kuphela uma zinephutha ngempela. Ukuzihlela kuqalisa kabusha inqubo yokuqinisekisa."
+      },
+      {
+        "title": "I-FAQ: Iluphi uphawu oluyinhloko okufanele ulubuke?",
+        "body": "Qiniseka ukuthi ibhange lakho seliyisebenzisile muva nje't closed your account because you haven't."
+      }
+    ]
+  },
+  "how-to-track-payment-dates-without-rumours": {
+    "title": "Ungawalandela kanjani amadethi okukhokha ngaphandle kwamahemuhemu",
+    "summary": "Ungakuyeka kanjani ukuwela ngezinsuku zokukhokha ze-SASSA ezingamanga ku-WhatsApp naku-Facebook, nokuthi ungazithola kuphi ezangempela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ungalokothi uthembe idethi yokukhokha evela kokuthunyelwe okungahleliwe kwenkundla yezokuxhumana. Njalo qinisekisa izinsuku usebenzisa ingosi esemthethweni ye-SASSA, ama-akhawunti abo enkundla yezokuxhumana aqinisekisiwe, noma ukukhishwa kwezindaba okuthembekile kukahulumeni."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abakhohlisi nabalimi abasebenzisanayo bahlale bethumela i-'Urgent SASSA Payment Dates' yomgunyathi ukuze bathole ukuchofoza. Ukuthembela kula mahemuhemu kuzokushiya umile ku-ATM engenalutho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi mbumbulu adala ukulimala kwezimali kwangempela. Ungase uboleke imali olindele ukukhokhwa ngoLwesibili, uthole ukuthi usuku lwangempela uLwesihlanu. Njalo qinisekisa umthombo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ziba izithombe-skrini zezinsuku ezithunyelwe ngamaqembu e-WhatsApp ngaphandle kwesixhumanisi.\n2. Iya ngqo kuwebhusayithi esemthethweni ye-SASSA (sassa.gov.za).\n3. Hlola amakhasi abo e-Twitter (X) aqinisekisiwe (X) noma e-Facebook ukuze uthole imininingwane esemthethweni.\n4. Qhathanisa amadethi ngohlobo lwakho oluthile lwesibonelelo (isb., Abantu Abadala vs SRD).\n5. Hlela ibhajethi yakho ngosuku oluqinisekisiwe, hhayi amahlebezi."
+      },
+      {
+        "title": "Uma singekho isixhumanisi esisemthethweni, amahemuhemu",
+        "body": "Isheduli yokukhokha yeqiniso ihlala ishicilelwa yi-SASSA ngokuqondile. Uma othile abelana ngedethi kodwa engakwazi ukunikeza isixhumanisi esisemthethweni se-SASSA, ungayethembi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ishicilela izinsuku ezisuselwe *kuphela* ekukhishweni okusemthethweni kwe-SASSA. Asizisunguli izinsuku noma sisabalalisi amahlebezi omphakathi angaqinisekisiwe."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikufundisa ukuthi ungalubona kanjani uhlelo lwe-SASSA olungamanga ukuze uzivikele wena nomphakathi wakho ekucindezelekeni okungadingekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-read-payment-notes-on-date-pages\n• /guides/how-to-know-if-a-payment-date-is-still-current\n• /payment-dates\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani amahlebezi ezinsuku zokukhokha eyingozi?",
+        "body": "Ngoba zenza ukuthi uhambe uye ebhange ngosuku olungalungile, uchithe imali yakho yokuthutha."
+      },
+      {
+        "title": "I-FAQ: Yini ephephe ngaphezu kwesithombe-skrini?",
+        "body": "Isixhumanisi esiqondile esiya kuwebhusayithi kahulumeni ye-SASSA esemthethweni noma ikhasi labo lenkundla yezokuxhumana eliqinisekisiwe."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise izinsuku ezingaqinisekile ngokusemthethweni?",
+        "body": "Yebo. Uma idethi ithi 'Expected', kufanele uqhubeke ubheka ingosi esemthethweni ize iqinisekiswe."
+      }
+    ]
+  },
+  "what-to-do-if-payment-date-passed-with-no-update": {
+    "title": "Okufanele ukwenze uma usuku lokukhokha ludlula ngaphandle kokubuyekezwa",
+    "summary": "Umhlahlandlela ozolile wokuthi yini okufanele uyenze uma usuku lwakho lokukhokha olusemthethweni selufikile futhi lwadlula, kodwa imali yakho isekhona.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma usuku lwakho lokukhokha ludlule ngaphandle kwemali, ungathuki. Okokuqala, hlola ukuthi ingabe idethi bekuyi-'Expected' noma i-'Confirmed'. Bese, hlola amaphutha ebhange noma ukubambezeleka kwempelasonto."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Idethi ephasisiwe izwakala kabi, kodwa akuvamile ukukhansela ngokuphelele. Ngokuvamile, kusho ukuthi inkokhelo yakho iphushelwe eqoqweni lokucubungula kamuva, noma ibhange lakho liyinqabele idiphozi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukuphuthuma ehhovisi le-SASSA ekuseni ngemva kwedethi ephuthelwe ngokuvamile kuwukuchitha isikhathi. Izinkokhelo eziningi sekwephuzile ziyazixazulula emahoreni angu-48 noma zidinga isibuyekezo esilula sasebhange."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi usuku oludlulile bekuyisimo sakho sokukhokha's official payday.\n2. Log into the portal and read your current 'Qiniso' word-for-word.\n3. Check if the status says 'Ibuyiswe' or 'Yehlulekile' (which requires action).\n4. If it still says 'Ivunyiwe' or 'Qikiwe', linda amahora angu-48 ebhizinisi.\n5. Uma imali isashoda ngemva kwezinsuku ezi-3, khuphuka usebenzise inombolo yamahhala ethi SASSA."
+      },
+      {
+        "title": "Ukukhokha sekwephuzile akuyona inkokhelo ekhanseliwe",
+        "body": "Idethi iyinhloso, akusona isiqinisekiso. Uma idethi idlula, isistimu isazama ukukukhokhela. Udinga nje ukuthola ukuthi yini eyenza ukubambezela."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ikusiza ukuthi uhlole ukuthi kungani inkokhelo yephuzile, kodwa asikwazi ukufinyelela uhlelo lwe-SASSA ukuze siphoqelele ukukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sihamba nawe ezinyathelweni zokuxazulula inkinga ukuze wazi kahle ukuthi kufanele yini ulinde, shayela ibhange lakho, noma uthinte i-SASSA."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-know-if-a-payment-date-is-still-current\n• /guides/why-payment-is-delayed\n• /guides/how-to-check-if-a-missing-payment-is-just-a-delay\n• /guides/how-to-read-payment-notes-on-date-pages\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe idethi yokuphasiswa ihlala isho ukuthi inkokhelo yehlulekile?",
+        "body": "Cha. Ngokuvamile kusho ukuthi ibhange lithatha isikhathi eside ukucubungula ukudluliselwa."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole kuqala?",
+        "body": "Hlola ukuthi idethi ephasisiwe bekungoLwesihlanu yini, okusho ukuthi kufanele ulinde kuze kube uMsombuluko."
+      },
+      {
+        "title": "I-FAQ: Kufanele ngenyuke nini ngokusemthethweni?",
+        "body": "Uma sekudlule izinsuku zebhizinisi ezi-3 futhi isimo sakho sephothali singakashintshi ukuze sibe 'Returned' noma 'Failed'."
+      }
+    ]
+  },
+  "how-to-know-if-a-payment-date-is-still-current": {
+    "title": "Ungazi kanjani ukuthi idethi yokukhokha isengamanje",
+    "summary": "Ungazi kanjani uma isithombe-skrini sedethi yokukhokha ku-Facebook siyisibuyekezo esisha noma amahemuhemu agaywe kabusha angonyaka odlule.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Idethi yokukhokha ingeyamanje kuphela uma ungangena kuphothali ye-SASSA namuhla futhi uzibonele yona, noma uma ithunyelwe ezinkundleni zokuxhumana eziqinisekisiwe ze-SASSA kuleli sonto."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abantu bavame ukwabelana ngamashejuli okukhokha amadala ezinyanga noma iminyaka edlule, bethi masha. Lokhu kubangela ukudideka okukhulu futhi kwenza abantu balindele imali ngezinsuku ezingafanele."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma uthembele kusithombe-skrini esivela eqenjini le-Facebook, ungase ume kulayini wasebhange amahora angu-4 ukuze uthole inkokhelo engafanele ikhokhwe kuze kube iviki elizayo. Njalo qinisekisa ubusha."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ungalokothi uthembe isithombe-skrini sedethi engenaso isixhumanisi esinamathiselwe kuso.\n2. Iya kuwebhusayithi esemthethweni ye-SASSA (sassa.gov.za).\n3. Hlola inyanga ebhalwe ohlelweni—ingabe iyinyanga kanye nonyaka wamanje?\n4. Ngena ku-portal yakho ye-SASSA ukuze ubone usuku lwakho lomuntu siqu.\n5. Uma amadethi engafani, themba idethi yakho yephothali, hhayi isithombe-skrini."
+      },
+      {
+        "title": "Izithombe-skrini zingaqamba amanga; i-portal ayifuni",
+        "body": "Kuthatha imizuzwana emibili ukushintsha idethi esithombeni ngaphambi kokwabelana ngaso ku-WhatsApp. Akunakwenzeka ukwenza umgunyathi usuku olubonisiwe lapho ungena kuphrofayela yakho ye-SASSA."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ibuyekeza amakhalenda ayo okukhokha ngokuqondile ehhovisi lezindaba le-SASSA. Asilokothi sisebenzise amadethi amadala."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikufundisa ukuthi ungabheka kanjani amaqiniso ngokushesha ukuze ungalokothi ukhohliswe okuthunyelwe kwenkundla yezokuxhumana okugaywe kabusha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-read-payment-notes-on-date-pages\n• /guides/how-to-track-payment-dates-without-rumours\n• /guides/what-to-do-if-payment-date-passed-with-no-update\n• /payment-dates\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Ingabe isithombe-skrini esidala singenza idethi yokukhokha ibukeke ingeyamanje?",
+        "body": "Yebo. Abakhwabanisi bahlala besebenzisa kabusha amadethi amadala ukuze bathole ukwabelana nokuthandwa ku-Facebook."
+      },
+      {
+        "title": "I-FAQ: Yini eyenza idethi yokukhokha ibukeke ingeyamanje?",
+        "body": "Kufanele ishicilelwe ngokucacile kuphothali esemthethweni ye-SASSA yenyanga yamanje."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe usuku olungenayo inothi layo?",
+        "body": "Cha. Ungalokothi uthembe idethi enqanyuliwe isuswe engqikithini yayo yasekuqaleni esemthethweni."
+      }
+    ]
+  },
+  "how-to-check-payment-readiness-for-r350-support": {
+    "title": "Ungabheka kanjani ukulungela ukukhokha ukuze uthole ukwesekwa kwe-R350",
+    "summary": "Ungahlola kanjani ukuthi imali yakho yesibonelelo ye-R350 SRD isikulungele ngempela ukukhokhelwa, ngaphandle kokudida i-'Approved' ne-'Paid'.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngomnikelo we-SRD, i-'Approved' isho nje ukuthi uphumelele ukuhlolwa kwezindlela. Inkokhelo yakho isilungile kuphela uma isimo sithuthukela ku-'Payment Released' ngedethi ethile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Isibonelelo se-SRD sidinga ukuhlolwa kwezindlela ezintsha njalo ngenyanga eyodwa. Ukuthi ugunyazwe ngoMeyi akusho ukuthi imali yakho isilungele ukuqoqwa."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Izigidi zabazuzi be-R350 zibona i-'Approved' bese ziphuthuma esitolo ukuze zihoxe, bese zithola i-akhawunti engenalutho. Kufanele ulinde usuku oluqondile lwe-'Payday' ukuze lubonakale kuphrofayela yakho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ngena kuwebhusayithi ye-SRD (srd.sassa.gov.za) futhi uhlole inyanga yamanje.\n2. Uma ithi 'Approved', bheka inkundla 'Payday' ngaphansi kwayo.\n3. Uma inkundla ye-'Payday' ingenalutho, imali yakho ayikalungi.\n4. Linda usuku oluthile oluzovela kunkambu ye-'Payday'.\n5. Linda i-SMS, noma uvumele amahora angu-48 ngemva kwe-'Payday' ngaphambi kokuzama ukuhoxa."
+      },
+      {
+        "title": "Ukugunyazwa kanye ne-Payday yizinto ezimbili ezihlukene",
+        "body": "Uhlelo lwe-SRD lusebenza ngezinyathelo ezimbili. Isinyathelo 1: Bahlola ukuthi umpofu ngokwanele yini kule nyanga (Ukugunyazwa). Isinyathelo sesi-2: Bahlela ukudluliswa kwemali kwakho (I-Payday). Udinga kokubili."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukusheshisa i-SRD isho ukuhlola noma ukuphoqa i-SASSA ukuthi yabele usuku lokukhokha ngokushesha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sihlaziya incazelo eqondile yayo yonke imilayezo yesimo ye-SRD ukuze uye esitolo kuphela uma imali yakho isikhona."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-read-r350-payment-status-safely\n• /guides/what-payment-pending-means\n• /guides/what-payment-released-means\n• /guides/payment-processing-meaning\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ukulungela kuyafana nokugunyazwa kosekelo lwe-R350?",
+        "body": "Cha. Ukugunyazwa kusho ukuthi uphumelele ukuhlolwa. Ukulungela kusho ukuthi imali isihleliwe."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphandle kokugunyazwa?",
+        "body": "Njalo hlola usuku lwe-'Payday' kuphothali yakho ye-SRD."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingaqinisekisa ukukhishwa kwenkokhelo kwe-R350 esemthethweni?",
+        "body": "Cha. Singakutshela ukuthi usifunde kanjani isimo, kodwa isayithi elisemthethweni le-SRD kuphela elihlinzeka ngosuku lwakho oluqondile lokukhokha."
+      }
+    ]
+  },
+  "what-payment-pending-means": {
+    "title": "Kusho ukuthini ukukhokha okulindile",
+    "summary": "Incazelo yolimi olulula yokuthi kungani inkokhelo yakho ithi 'Pending' nokuthi kungase kudingeke ulinde isikhathi esingakanani.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "I-'Payment Pending' isho ukuthi i-SASSA isacubungula ifayela lakho lale nyanga. Awukanqatshwa, kodwa imali yakho ayikahlelelwe ukukhululwa okwamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Igumbi lokulinda elilindile. Ngokuvamile kusho ukuthi i-SASSA imatasa yenza amasheke avamile ku-ID yakho noma i-akhawunti yasebhange ngaphambi kokuba bacindezele inkinobho ukuthumela imali yakho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Okulindile kungase kuzwakale kucindezeleke kakhulu ngoba akuyona i-'Yes' noma i-'No'. Kodwa ukuqonda ukuthi kuwukumisa okwesikhashana nje kokuphatha kukuvimbela ekwenzeni izinguquko ezingadingekile kuphrofayela yakho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qaphela ukuthi i-'Pending' ayikona ukunqatshelwa—isibonelelo sakho sisasebenza.\n2. Ungayishintshi imininingwane yakho yasebhange ngenkathi isimo sakho sisalindile (lokhu kubangela ukubambezeleka okwengeziwe).\n3. Linda izinsuku zebhizinisi ezi-3 kuya kwezi-5 bese uhlola iphothali futhi.\n4. Bheka ukuthi isimo sizoshintsha sibe 'Approved' noma 'Scheduled'.\n5. Uma ihlala Ilindile izinsuku ezingaphezu kweziyi-14, shayela ucingo lwamahhala lwe-SASSA."
+      },
+      {
+        "title": "Okusalindile wukucabanga kwesistimu",
+        "body": "Uma isimo silindile, isistimu yenza ukuhlola kwayo kwangemuva. Ukushintsha inombolo yakho yocingo noma imininingwane yasebhange khona manje kuzophoqa isistimu ukuthi iqale ukucabanga kabusha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi 'un-pend' isimo sakho. Singakucebisa kuphela ngendlela ephephe kunazo zonke yokulinda ngaphandle kokubangela ukubambezeleka okwengeziwe."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikusiza ukuthi uqonde ukuthi isigaba se-'Pending' sivamise ukuthatha isikhathi esingakanani ukuze wazi ukuthi sekuyisikhathi sokukhuphuka."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-payment-scheduled-means\n• /guides/what-payment-not-yet-available-means\n• /guides/why-payment-is-delayed\n• /status/pending\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe inkokhelo elindile isho ukuthi inkokhelo yehlulekile?",
+        "body": "Cha. Kusho ukuthi isistimu isahlola imininingwane yakho ngenkokhelo yale nyanga."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqhubeke ngishintsha imininingwane yami ngenkathi ngisalindile imibukiso?",
+        "body": "Ungalokothi. Ukushintsha imininingwane yakho ngesikhathi kusalindile kuphoqa isistimu ukuthi iqale kabusha lonke isheke."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele okulindile iphenduke ibe ngokulandelayo?",
+        "body": "Kufanele ekugcineni ishintshe ibe 'Approved' bese kuba 'Scheduled' noma 'Released'."
+      }
+    ]
+  },
+  "what-payment-hold-may-mean": {
+    "title": "Ukuthi ukubanjwa kwenkokhelo okungase kusho ukuthini",
+    "summary": "Kusho ukuthini uma i-SASSA ibeka i-'Hold' enkokhelweni yakho, kanye nezinyathelo okufanele uzithathe ukuze uyivule.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "I-'Payment on Hold' isho ukuthi i-SASSA imise imali yakho ngamabomu ngoba ibone inkinga. Lokhu ngokuvamile kungenxa yephutha lasebhange noma i-ID engaqinisekisiwe."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukubamba kubi kakhulu kune-'Pending'. Okulindile kusho ukuthi 'wait'. Ukubamba kusho i-'stop'. Isistimu ithole ukungafani—njenge-akhawunti yasebhange evaliwe noma i-ID ephelelwe yisikhathi—futhi yakhiya izimali zakho ukuze kuvinjelwe ukukhwabanisa."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukubamba akusoze kwazilungisa. Uma uhlezi ulindile, awusoze wahola. Kufanele ukhombe inkinga futhi uthumele ulwazi olulungile ukuze uphakamise ukubamba."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ngena kuphothali yakho ye-SASSA bese ubheka noma yimiphi imilayezo yephutha eduze kwesimo se-'Hold'.\n2. Shayela ibhange lakho ngokushesha futhi ubuze ukuthi i-akhawunti yakho imisiwe noma ivaliwe.\n3. Hlola ukuthi inombolo yakho yocingo noma imininingwane ye-ID ishintshile muva nje.\n4. Buyekeza noma yimiphi imininingwane engalungile ngokuqondile kuphothali ye-SASSA.\n5. Linda i-SASSA ukuze uqinisekise imininingwane emisha, ezophakamisa ngokuzenzakalelayo ukubamba."
+      },
+      {
+        "title": "Ukubamba kudinga ukuthi wenze okuthile",
+        "body": "I-SASSA ibamba ukuze uvikele imali yakho ekubhampini noma ukuya kumuntu ongafanele. Kuyisici sokuvikela, hhayi isijeziso, kodwa kufanele unikeze ucezu lwendida olungekho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukususa ukubanjwa kwenkokhelo. Uhlelo olusemthethweni lwe-SASSA kuphela olungasusa ibhulokhi uma usunikeze ulwazi olulungile, oluqinisekisiwe."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Siyakuqondisa ukuthi usithola kanjani isizathu esiqondile sokubamba ukuze ukwazi ukulungisa imininingwane yakho yasebhange noma kamazisi ngokushesha nangokuphephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-know-if-your-payment-method-is-blocking-release\n• /guides/what-pending-verification-means\n• /guides/banking-details-pending-meaning\n• /guides/why-identity-verification-fails\n• /status/banking-issue"
+      },
+      {
+        "title": "I-FAQ: Ingabe ukubanjwa kwenkokhelo kubi kakhulu kunokulindile?",
+        "body": "Yebo. Okulindile ukulinda okuvamile. Ukubamba kusho ukuthi isistimu ithole inkinga yase imisa inkokhelo."
+      },
+      {
+        "title": "I-FAQ: Yiziphi izinhlobo zezinkinga ezingabangela ukubanjwa?",
+        "body": "Ngokuvamile imininingwane yasebhange engalungile, i-akhawunti yasebhange efriziwe, noma ukuqinisekiswa kukamazisi okuhlulekile."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze kuqala?",
+        "body": "Ngena kuphothali esemthethweni ye-SASSA ukuze ubone ukuthi bayakucela yini ukuthi ubuyekeze imininingwane yakho yasebhange."
+      }
+    ]
+  },
+  "how-to-fix-common-payment-release-problems": {
+    "title": "Uzilungisa kanjani izinkinga ezijwayelekile zokukhishwa kwenkokhelo",
+    "summary": "Umhlahlandlela wokuxazulula izinkinga wezizathu ezivame kakhulu ukugunyazwa kwenkokhelo yakho kodwa ungabonisi ebhange lakho.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma inkokhelo yakho ibambekile, cishe njalo ibangelwa enye yezinto ezintathu: i-akhawunti yasebhange evaliwe, ukungafani kwegama phakathi kwe-ID yakho nebhange, noma ukubambezeleka kokucubungula ngempelasonto."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uma inkokhelo ihluleka ukukhululwa, abantu bacabanga ukuthi lonke uhlelo luphukile. Eqinisweni, u-90% wezinkinga zokukhishwa zidalwa amaphutha amancane omphathi kuphrofayela yasebhange yomzuzi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma uzazi izizathu ezijwayelekile zokubambezeleka, ungazihlola ohlwini esikhundleni sokwethuka. Ukuthola iphutha eliqondile ukuphela kwendlela yokwenza imali yakho ihambe futhi."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ikhalenda: Ingabe impelasonto noma iholidi? Uma kunjalo, linda kuze kube uMsombuluko.\n2. Hlola ibhange lakho: Ingabe i-akhawunti yakho iyasebenza, noma ivalwe ngenxa yebhalansi enguziro?\n3. Hlola igama lakho: Ingabe igama eliku-akhawunti yakho yasebhange lihambisana kahle ne-ID yakho ye-SASSA?\n4. Hlola umkhawulo wakho: Ingabe i-akhawunti yakho yasebhange inomkhawulo wokuthi ingabamba malini?\n5. Lungisa iphutha elithile ngebhange lakho noma ingosi ye-SASSA."
+      },
+      {
+        "title": "Thola isivimbamgwaqo esiqondile",
+        "body": "Ungaqageli. Ungacabangi ukuthi SASSA 'forgot' wena. Kunesizathu esithile sobuchwepheshe sokuthi imali iyeke ukuhamba. Yithole, uyilungise, futhi imali izogeleza."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ikusiza ukuthi uhlonze imbangela okungenzeka kakhulu yokubambezeleka kwakho, kodwa kufanele wenze izilungiso zangempela kuphothali kahulumeni esemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sihlinzeka ngohlu lokuhlola olulula lwamaphutha avamile ebhange nawomazisi ukuze uthole ngokushesha ukuthi kungani inkokhelo yakho ibambekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-if-a-missing-payment-is-just-a-delay\n• /guides/what-to-do-if-payment-was-returned\n• /guides/how-to-know-if-your-payment-method-is-blocking-release\n• /guides/why-payment-is-delayed\n• /guides/where-to-confirm-payment-problems-officially"
+      },
+      {
+        "title": "I-FAQ: Iyiphi into yokuqala okumele uyibone?",
+        "body": "Hlola ukuthi ingabe inkinga iyiphutha lasebhange, ukubambezeleka kwempelasonto, noma ukungqubuzana kwe-ID."
+      },
+      {
+        "title": "I-FAQ: Kungani ukulungisa okukodwa kungasebenzi kuzo zonke izinkinga zokukhokha?",
+        "body": "Ngoba i-akhawunti yasebhange efriziwe idinga ukulungiswa okuhlukile kunokulibaziseka kokucubungula ngempelasonto."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyigcine ngenkathi ngixazulula inkinga?",
+        "body": "Gcina izithombe-skrini zengosi yakho ye-SASSA kanye nesitatimende sakho sasebhange ukuze ukwazi ukufakazela ukuthi imali ayifikanga."
+      }
+    ]
+  },
+  "what-to-do-if-payment-arrives-later-than-expected": {
+    "title": "Okufanele ukwenze uma inkokhelo ifika ngemva kwesikhathi kunobekulindelekile",
+    "summary": "Okufanele ukwenze uma inkokhelo yakho ifika, kodwa kwaba yizinsuku noma amasonto kamuva kuneshejuli esemthethweni ye-SASSA.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma inkokhelo yakho ifike sekwephuzile, hlola ukuthi ubuyekeze imininingwane yakho yasebhange muva nje, noma belikhona yini iholide lomphakathi. Ukukhokha sekwephuzile akusho ukuthi inyanga ezayo nayo izofika sekwephuzile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Inkokhelo efike sekwephuzile ngokungavamile ngokuvamile ibangelwa umcimbi ophuma kanye—njengokuthuthukiswa kwesistimu ebhange lakho, iholide lomphakathi, noma isheke lokuqinisekisa mathupha kuphrofayela yakho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abantu abathola inkokhelo sekwephuzile bavame ukwethuka, becabanga ukuthi imali yabo yesibonelelo sishintshiwe unomphela noma yehlisiwe. Ngokuvamile, kwakumane kuyisiphithiphithi sesikhashana."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi imali isisuliwe ngempela futhi iku-akhawunti yakho.\n2. Qaphela usuku efike ngalo uma kuqhathaniswa nohlelo olusemthethweni.\n3. Hlola ukuthi abekhona yini amaholide omphakathi noma ukugqagqana kwezimpelaviki.\n4. Hlola ukuthi usanda kushintsha inombolo yakho yocingo noma imininingwane yasebhange.\n5. Hlela isabelomali sakho ucabanga ukuthi ngenyanga ezayo izobuyela ohlelweni olujwayelekile."
+      },
+      {
+        "title": "Ukuhlwa kanye akusho ukuthi sekwephuzile njalo",
+        "body": "Inkokhelo eyodwa sekwephuzile ngokuvamile kuba inkinga yesikhashana. Ungacabangi ukuthi idethi yakho yokukhokha isishintshe unomphela ngaphandle kwalapho i-SASSA iyimemezela ngokusemthethweni."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukubuyisela emuva inkokhelo noma ukuchaza isizathu esithile sobuchwepheshe sokubambezeleka okukhona kanye. Sinikeza izizathu ezivame kakhulu zokukunikeza ukuthula kwengqondo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza izizathu zokuphatha zokuthi kungani izinkokhelo ngezinye izikhathi zifika sekwephuzile, ukuze ungachithi unyaka wonke ukhathazeke ngokuthi kuzokwenzeka futhi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-weekends-and-holidays-can-do-to-payments\n• /guides/how-payment-batches-can-cause-delays\n• /guides/how-to-check-if-a-missing-payment-is-just-a-delay\n• /guides/what-to-do-if-payment-date-passed-with-no-update\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe ukukhokha sekwephuzile kusho ukuthi kukhona okungahambi kahle ngesibonelelo sami?",
+        "body": "Cha. Ngokuvamile, kumane kuwukubambezeleka kwebhange noma ukucubungula ukucubungula kwaleyo nyanga ethile."
+      },
+      {
+        "title": "I-FAQ: Ngabe ngenyanga ezayo nayo izofika sekwephuzile?",
+        "body": "Akuvamile. Izinkokhelo eziningi ezifika sekwephuzile eziningi aziphindi ngaphandle uma kunenkinga yasebhange eqhubekayo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngibike inkokhelo sekwephuzile esesifikile kakade?",
+        "body": "Cha. Uma imali isisuliwe, inkinga isixazululekile."
+      }
+    ]
+  },
+  "how-to-read-payment-pages-and-status-pages-together": {
+    "title": "Ungawafunda kanjani amakhasi okukhokha kanye namakhasi ezimo ndawonye",
+    "summary": "Ungaluhlanganisa kanjani uhlelo lokukhokha lwe-SASSA nekhasi lakho lesimo somuntu siqu ukuze uthole isithombe esiphelele.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Isheduli yokukhokha ikutshela ukuthi *nini* imali ihamba ngokujwayelekile. Ikhasi lakho lesimo somuntu siqu likutshela *uma* imali yakho ethile ihamba. Udinga kokubili ukwazi usuku lwakho lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uhlelo lokukhokha lufana nohlelo lwezikhathi zebhasi—likutshela ukuthi ibhasi lihamba nini. Ikhasi lakho lesimo yithikithi lakho—likutshela ukuthi uvunyelwe yini kulelo bhasi kule nyanga."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abantu abaningi babheka ishejuli yokukhokha yomphakathi bese becabanga ukuthi bazokhokhelwa, bese bethola ukuthi isimo sabo siqu sasingu-'Pending'. Ukuhlola kokubili kukuvimbela ekwenzeni ukucabangela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Bheka uhlelo olusemthethweni lwedethi yokukhokha ye-SASSA yenyanga.\n2. Thola usuku oluqondile olusohlwini lohlobo oluthile lwesibonelelo sakho.\n3. Ngena ku-SASSA SRD yakho siqu noma unikeze ingosi yakho.\n4. Hlola ukuthi isimo sakho siqu sithi 'Approved' noma 'Released' kuleyo nyanga efanayo.\n5. Uma isimo sakho sithi 'Pending', idethi yeshejuli yomphakathi ayisebenzi kuwe okwamanje."
+      },
+      {
+        "title": "Uhlelo lusesidlangalaleni; isimo esomuntu siqu",
+        "body": "Ungalokothi uthembe idethi yokukhokha yomphakathi ngaphandle kokuqinisekisa isimo sakho sokugunyaza kuqala. Idethi ayisho lutho uma ifayela lakho elithile lingagunyaziwe ukuthi likhishwe."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ihlinzeka ngamashejuli futhi ikufundise ukuthi usihlola kanjani isimo sakho, kodwa ingosi esemthethweni kuphela enedatha yakho yokugunyaza yesikhathi sangempela."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikubonisa indlela yokuphambanisa ikhalenda nephrofayela yakho yangempela, ukuze ungalokothi ulinde inkokhelo engakagunyazwa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates\n• /status\n• /guides/how-to-understand-payment-dates\n• /guides/what-payment-status-check-means\n• /guides/how-to-check-if-a-missing-payment-is-just-a-delay"
+      },
+      {
+        "title": "I-FAQ: Kungani ngidinga ukuhlola kokubili?",
+        "body": "Ngoba ikhalenda libonisa usuku lomholo olujwayelekile, kodwa isimo sakho siyaqinisekisa ukuthi usohlwini ngempela yini."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma usuku seludlulile kodwa isimo sami sisalindile?",
+        "body": "Kusho ukuthi awufakiwe kuleyo nqwaba yokukhokha, futhi kufanele ulinde isimo sakho ukuthi sibuyekezwe."
+      },
+      {
+        "title": "I-FAQ: Iliphi ikhasi elibaluleke kakhulu?",
+        "body": "Ikhasi lakho lesimo somuntu siqu lihlala linembe kakhulu esimweni sakho esithile."
+      }
+    ]
+  },
+  "how-to-check-if-a-missing-payment-is-just-a-delay": {
+    "title": "Ungabheka kanjani ukuthi inkokhelo engekho iwukubambezeleka nje",
+    "summary": "Ungabona kanjani ukuthi inkokhelo yakho elahlekile iwukubambezeleka okuvamile kokubhanga kwamahora angu-48, noma inkinga enkulu edinga isinyathelo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Inkokhelo engekho ngokuvamile iwukubambezeleka kwasebhange uma sekungaphansi kwamahora angu-48 kusukela ngedethi yokukhokha esemthethweni. Uma sekudlule izinsuku ezi-3, kungase kube inkinga yangempela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Sivamise ukusebenzisa igama elithi 'missing' uma siqonde 'delayed' ngempela. Izinkokhelo zangempela ezingekho (lapho kulahleka khona imali) ziyivelakancane kakhulu. Isikhathi esiningi, amakhompyutha ebhange asuke esebenza kancane."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma uphatha ukubambezeleka okuvamile njengenkokhelo engekho, uzomosha amahora ushayela izintambo zosekelo ngaphandle kwesizathu. Ukwazi umehluko kongela isikhathi, i-airtime, kanye nengcindezi."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola usuku lokukhokha olusemthethweni lwesibonelelo sakho esithile.\n2. Bala kahle ukuthi zingaki izinsuku zebhizinisi ezidlulile kusukela ngalolo suku.\n3. Uma kungaphansi kwamahora angu-48, kuwukubambezeleka okuvamile. Ungenzi lutho.\n4. Uma isimo sokukhokha sithi 'Returned' noma 'Failed', kuyindaba okufanele uyilungise.\n5. Uma sekudlule izinsuku ezi-3 futhi isimo sisathi 'Approved' noma 'Released', xhumana nebhange lakho."
+      },
+      {
+        "title": "Ukubambezeleka akushoda",
+        "body": "Inkokhelo ebambezelekile isendleleni. Inkokhelo engekho kusho ukuthi isistimu yehlulekile. Nikeza uhlelo lwamabhange amahora angu-48 ukwenza umsebenzi walo ngaphambi kokuthi imali isihambile."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ikusiza ukuthi uhlole ukubambezeleka, kodwa asikwazi ukulandelela indawo ngqo yemali yakho ngaphakathi kwenethiwekhi yamabhange."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikusiza ukuthi wehlise umoya ngokukubonisa izikhathi ezijwayelekile zokudluliswa kwemali ebhange nge-elekthronikhi ukuze wazi kahle ukuthi ungaqala nini ukukhathazeka."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/why-payment-is-delayed\n• /guides/what-to-do-if-payment-was-returned\n• /guides/how-to-know-if-your-payment-method-is-blocking-release\n• /guides/what-to-do-if-payment-arrives-later-than-expected\n• /guides/how-to-fix-missing-payment-issues"
+      },
+      {
+        "title": "I-FAQ: Kufanele ngilinde isikhathi esingakanani ngaphambi kokuyibiza ngenkokhelo engekho?",
+        "body": "Linda okungenani amahora webhizinisi angama-48 kuye kwangama-72 ngemuva kwedethi yokukhokha esemthethweni."
+      },
+      {
+        "title": "I-FAQ: Iyiphi inkomba enkulu yokuthi ukubambezeleka kuphela?",
+        "body": "Idethi isanda kudlula, kodwa awukho umlayezo we-'Return' noma 'Failed' kuphothali yakho okwamanje."
+      },
+      {
+        "title": "I-FAQ: Kufanele ngicabange nini ukuthi kunenkinga yangempela?",
+        "body": "Uma isimo sishintshela kumlayezo wephutha ocacile, noma uma sihlala isikhathi eside singekho ngemva kwewindi lezinsuku ezi-3."
+      }
+    ]
+  },
+  "how-to-know-if-your-payment-method-is-blocking-release": {
+    "title": "Ungazi kanjani ukuthi indlela yakho yokukhokha ivimba ukukhishwa",
+    "summary": "Ungabona kanjani lapho i-akhawunti yakho yasebhange iyisizathu esiqondile i-SASSA ingakwazi ukukhipha izimali zakho.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma isimo sakho sigunyaziwe kodwa ungakhokhelwa, hlola ukuthi i-akhawunti yakho yasebhange ithule, imisiwe, noma igama eliku-akhawunti lihlukile yini ku-ID yakho. Lezi zizovimba ukukhishwa."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uhlelo lwe-SASSA ngeke lukhiphe imali ku-akhawunti ebukeka isolisa noma ingasebenzi. Kuyisici sokuvikela ukumisa abakhwabanisi ukuthi bantshontshe imali yakho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma indlela yakho yokukhokha ivimbela ukukhishwa, imali izohlala ku-SASSA unomphela. Kufanele ulungise i-'pipe' ngaphambi kokuthi amanzi akwazi ukugeleza."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ngena kuphothali yakho ye-SASSA bese ubheka i-'Banking Details Pending' noma izixwayiso ezifanayo.\n2. Hlola uhlelo lwakho lokusebenza lokubhanga ukuze uqinisekise ukuthi i-akhawunti yakho isebenza ngokugcwele.\n3. Qiniseka ukuthi umkhawulo we-akhawunti yakho yasebhange awukafinyelelwa (uvamile nama-akhawunti ayisisekelo).\n4. Qinisekisa ukuthi isipelingi esinembile segama lakho sifana no-SASSA kanye nebhange.\n5. Buyekeza imininingwane yakho yasebhange kuphothali ye-SASSA uma uthola amaphutha."
+      },
+      {
+        "title": "I-SASSA ngeke ikhokhe i-akhawunti evinjiwe",
+        "body": "Indlela yokukhokha evinjiwe iyisitobhi esiqinile. I-SASSA isilungile, kodwa umnyango wangaphambili webhange lakho ukhiyiwe. Uwena kuphela ongakwazi ukuyivula ngokubuyekeza imininingwane yakho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingakusiza ukuthi ubone laba bavimbi basebhange, kodwa kufanele uxhumane nebhange lakho ngokuqondile ukuze uvule i-akhawunti."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sinikeza uhlu lokuhlola olulula lwamaphutha ebhange ukuze ukwazi ukubona ngokushesha ukuthi i-akhawunti yakho iyisizathu esenza imali yakho ingafiki."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/banking-details-pending-meaning\n• /guides/what-to-do-if-your-bank-details-changed\n• /guides/how-to-check-if-payment-was-sent-back\n• /guides/what-to-do-if-payment-keeps-failing\n• /status/banking-issue"
+      },
+      {
+        "title": "I-FAQ: Ingabe i-akhawunti yasebhange endala ingamisa inkokhelo?",
+        "body": "Yebo. Uma i-akhawunti ingasebenzi, ibhange lizokwenqaba ngokuzenzakalelayo ukudluliselwa kwe-SASSA."
+      },
+      {
+        "title": "I-FAQ: Ngiyilungisa kanjani indlela yokukhokha evinjiwe?",
+        "body": "Vakashela ibhange lakho ukuze uxazulule inkinga ye-akhawunti, bese ungena ngemvume ku-SASSA ukuze ubuyekeze imininingwane ngokuphephile."
+      },
+      {
+        "title": "I-FAQ: Ingabe lokhu kusho ukuthi isibonelelo sami sikhanseliwe?",
+        "body": "Cha. Isibonelelo sakho sisavunyiwe, kodwa imali ayinandawo engaya kuyo kuze kulungiswe i-akhawunti."
+      }
+    ]
+  },
+  "what-to-do-if-payment-keeps-failing": {
+    "title": "Okufanele ukwenze uma inkokhelo ilokhu ihluleka",
+    "summary": "Okufanele ukwenze uma inkokhelo yakho ye-SASSA yehluleka izikhathi eziningi, nokuthi ungawunqamula kanjani umjikelezo wokudluliswa kwemali okubhampisiwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma inkokhelo iqhubeka nokwehluleka, imininingwane yakho yasebhange kungenzeka ibangele ukuvinjwa unomphela. Kufanele uvakashele ibhange lakho ukuze uthole isitatimende sasebhange esigxivizwe, bese usilayisha kuphothali ye-SASSA."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukwehluleka okuphindaphindiwe kusho ukuthi uhlelo aluyona nje i-'glitching'. Kusho ukuthi ngaso sonke isikhathi i-SASSA izama ukuthumela imali, isistimu yebhange lakho iyayenqaba ngokuzenzakalelayo ngenxa yephutha elinzima ku-akhawunti yakho."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma uqhubeka ulindile, inkokhelo izolokhu ihluleka njalo ngenyanga. Kufanele wephule umjikelezo ngokufakazela ku-SASSA ukuthi une-akhawunti yasebhange entsha, esebenzayo, eqinisekisiwe."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Yeka ukulinda ukuthi imali ivele ngokuzumayo.\n2. Yiya egatsheni lebhange eliseduze nawe futhi ubuze ukuthi kungani ukudluliselwa kwezimali kubhampa.\n3. Lungisa udaba nebhange lakho, noma uvule i-akhawunti entsha ngokuphelele eyisisekelo.\n4. Cela ibhange incwadi enesitembu eqinisekisa imininingwane ye-akhawunti yakho entsha.\n5. Ngena kuphothali esemthethweni ye-SASSA futhi ubuyekeze imininingwane yakho yasebhange usebenzisa ulwazi olusha."
+      },
+      {
+        "title": "Ukwehluleka okuphindaphindiwe yipayipi elivinjiwe",
+        "body": "Cabanga nge-akhawunti yakho yasebhange njengepayipi. Uma ivinjiwe, i-SASSA ingaqhubeka nokuthela imali kuyo, kodwa izoqhubeka nokuchafaza emuva. Kufanele ulungise ipayipi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukulungisa i-akhawunti yakho yasebhange. Kufanele usebenzelane ngokuqondile nebhange lakho ukuze uxazulule inkinga ye-akhawunti ngaphambi kokuthi i-SASSA ikukhokhele ngempumelelo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza ukuthi ungamisa kanjani umjikelezo wezinkokhelo ezibhampa ngokubuyekeza imininingwane yakho yasebhange ngokuphephile nangokusemthethweni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-if-payment-was-sent-back\n• /guides/how-to-keep-records-of-payment-problems\n• /guides/how-to-know-if-your-payment-method-is-blocking-release\n• /guides/what-to-do-if-payment-was-returned\n• /status/banking-issue"
+      },
+      {
+        "title": "I-FAQ: Ingabe ukwehluleka okuphindaphindiwe kuzilungisa?",
+        "body": "Cha. Uma inkokhelo igxuma izikhathi eziningi, kufanele ubuyekeze imininingwane yakho yasebhange ukuze uyilungise."
+      },
+      {
+        "title": "I-FAQ: Isiphi isizathu esivame kakhulu sokwehluleka okuphindaphindiwe?",
+        "body": "I-akhawunti yasebhange evaliwe, noma igama eliku-akhawunti elingafani ne-ID yakho ye-SASSA."
+      },
+      {
+        "title": "I-FAQ: Isinyathelo sami esilandelayo kufanele sibe yini?",
+        "body": "Vakashela ibhange lakho ukuze ulungise i-akhawunti, bese ubuyekeza imininingwane yakho kuphothali esemthethweni ye-SASSA."
+      }
+    ]
+  },
+  "how-to-keep-records-of-payment-problems": {
+    "title": "Ungawagcina kanjani amarekhodi ezinkinga zokukhokha",
+    "summary": "Uzilandelela kanjani kahle izindaba zakho zokukhokha ze-SASSA ukuze ube nobufakazi obuqondile lapho udinga ukwenyuka.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Thatha njalo izithombe-skrini zengosi yakho ye-SASSA, ikakhulukazi uma izimo zishintsha. Bhala phansi amadethi aqondile nezikhathi ozihlolile, ukuze ukwazi ukwakha umugqa wesikhathi ocacile we-ejenti yosekelo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Uma ushayela i-SASSA, uthi 'My money hasn't woza isikhathi eside' isn't kuyasiza. Ukuthi 'My status changed from Scheduled to Pending on the 14th of May' uthola imiphumela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amarekhodi amahle afakazela ukuthi awuqageli. Uma inkokhelo yakho yehla, ukuba nesithombe-skrini somlayezo wephutha wangempela kukusindisa kusukela ekuqaleni uphenyo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Thatha isithombe-skrini njalo uma isimo sakho se-SASSA sishintsha.\n2. Qinisekisa ukuthi isithombe-skrini sikhombisa ngokusobala usuku kanye nenombolo yakho kamazisi.\n3. Bhala phansi noma yimiphi i-SMS noma izibuyekezo ze-imeyili ozithola zivela kwa-SASSA noma ibhange lakho.\n4. Gcina zonke izitatimende zakho zasebhange kusukela ezinyangeni ongazange ukhokhelwe ngazo.\n5. Nikeza lo mugqa wesikhathi oqondile kusikhulu se-SASSA uma udinga ukwenyuka."
+      },
+      {
+        "title": "Ubufakazi amandla",
+        "body": "Unganciki enkumbulweni yakho. Ezinhlelweni ezinkulu zikahulumeni, imigqa yesikhathi ebhaliwe ixazulula izinkinga ngokushesha kunezikhalazo ezingacacile."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iluleka ngokugcina amarekhodi, kodwa asilokothi sikucele ukuthi usithumelele izithombe-skrini zakho eziyimfihlo. Yabelana ngazo kuphela nabasebenzi abasemthethweni be-SASSA."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikufundisa indlela yokuqoqa ubufakazi obufanele ukuze kuthi lapho ekugcineni ukhuluma nesikhulu, sikwazi ukulungisa inkinga yakho ngokushesha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-to-do-if-payment-keeps-failing\n• /guides/how-to-check-if-a-missing-payment-is-just-a-delay\n• /guides/how-to-fix-common-payment-release-problems\n• /guides/where-to-confirm-payment-problems-officially\n• /guides/how-grant-reminders-can-help"
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyiqophe kuqala?",
+        "body": "Qopha amagama aqondile kanye nosuku owakubona ngalo kuqala."
+      },
+      {
+        "title": "I-FAQ: Kungani izithombe-skrini zisiza?",
+        "body": "Banikeza ubufakazi obuqondile balokho okwashiwo yingosi ngaphambi kokuthi isimo sinyamalale noma sishintshwe."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngilandele izinguquko zemininingwane yasebhange futhi?",
+        "body": "Yebo. Ukushintsha imininingwane yakho yasebhange kuyimbangela yokuqala yokubambezeleka kwezinkokhelo."
+      }
+    ]
+  },
+  "how-to-use-reminders-for-payment-readiness": {
+    "title": "Ungazisebenzisa kanjani izikhumbuzi ukuze ulungele ukukhokha",
+    "summary": "Ungalisebenzisa kanjani ikhalenda lefoni yakho ukulandelela inkokhelo yakho ye-SASSA ngaphandle kokugcizelela nsuku zonke.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Setha isikhumbuzi sekhalenda sosuku lwakho oluqondile lokukhokha, kanye nesinye amahora angama-48 kamuva. Hlola ibhalansi yakho yasebhange kuphela ngemva kokuba isikhumbuzi sesibili sivaliwe."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukuhlola uhlelo lwakho lokusebenza lokubhanga izikhathi eziyishumi ngosuku ngeke kwenze imali ifike ngokushesha—kuzoqeda idatha yakho nempilo yakho yengqondo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukukhathazeka kuyakhula uma uhlezi ulindele i-SMS engase ibambezeleke uhlelo olukhulu lokucubungula iqoqo. Izikhumbuzi zikuvumela ukuthi usuke futhi uphile impilo yakho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Thola idethi yokukhokha ye-SASSA esemthethweni yohlobo lwakho lwesibonelelo.\n2. Setha isikhumbuzi efonini yakho se-8 AM ngalolo suku oluqondile.\n3. Setha isikhumbuzi sesibili samahora angu-48 kamuva (iwindi le-'clearance').\n4. Ungawanaki wonke amahemuhemu ezinkundleni zokuxhumana phakathi kwalezo zinsuku ezimbili.\n5. Thatha isinyathelo kuphela noma ukhathazeke uma isikhumbuzi sesibili sidlula ngaphandle kwemali."
+      },
+      {
+        "title": "Lawula ukulinda, ungakuvumeli kukulawule",
+        "body": "Uhlelo lwamabhange luzihambela ngokwalo ijubane. Ukubeka umngcele ngesikhumbuzi kukuvimbela ekubeni ugxile entweni ongakwazi ukuyisheshisa."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ihlinzeka ngezinsuku zokuthi usethe izikhumbuzi zakho, kodwa asikwazi ukukuthumelela i-SMS uma imali yakho siqu isiphelile."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikusiza ukuthi wakhe imikhuba yokulinda enempilo ukuze ungachithi isikhathi somoya ushayela ibhange njalo ngamahora ambalwa."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-grant-reminders-can-help\n• /payment-dates\n• /dashboard\n• /guides/how-to-track-payment-dates-without-rumours\n• /guides/how-to-know-when-funds-should-show"
+      },
+      {
+        "title": "I-FAQ: Ingabe izikhumbuzi zisho ukuthi inkokhelo iqinisekisiwe?",
+        "body": "Cha. Izikhumbuzi zivele zikuvimbe ekukhathazekeni nasekuhloleni nsuku zonke."
+      },
+      {
+        "title": "I-FAQ: Yisiphi isikhathi esingcono kakhulu sesikhumbuzi?",
+        "body": "Zibekele usuku lwangempela lokukhokha, bese kuthi ngemva kwamahora angu-48 uvumele ukugunyazwa kwebhange."
+      },
+      {
+        "title": "I-FAQ: Ingabe izikhumbuzi zingasiza ekucindezelekeni?",
+        "body": "Yebo. Bakunikeza imvume yokuyeka ukucabanga ngemali kuze kube yilapho isikhumbuzi sihamba."
+      }
+    ]
+  },
+  "what-to-do-if-payment-ready-message-disappears": {
+    "title": "Okufanele ukwenze uma umlayezo olungile wokukhokha unyamalala",
+    "summary": "Kungani isimo sakho se-'Payment Ready' sishabalala kungazelelwe, nokuthi empeleni kusho ukuthini ngemali yakho.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma isimo sakho se-'Payment Ready' sinyamalala, ungathuki. Ngokuvamile kusho ukuthi isistimu ibuyekezela inyanga entsha, noma inkokhelo isulwe ngokuphelele futhi umlayezo omdala ususiwe."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ingosi ye-SASSA iyisistimu ebukhoma. Imilayezo yesimo ayihlali lapho unomphela. Uma umjikelezo wokukhokha uphela, imilayezo emidala ifakwa kungobo yomlando ukuze kuvuleke indawo yenyanga elandelayo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Umlayezo onyamalalayo uzwakala sengathi inkokhelo ikhanseliwe. Eqinisweni, ngokuvamile kuwukuhlanza nje kokuphatha. Linda ukuze ubone ukuthi yimuphi umlayezo ozongena esikhundleni sawo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ungacabangi ukuthi isibonelelo sakho sikhanseliwe ngoba umbhalo unyamalele.\n2. Hlola i-akhawunti yakho yasebhange ukuze ubone ukuthi imali ifikile ngempela umlayezo ungekho.\n3. Linda amahora angu-24 ukuze ingosi ye-SASSA iqedele ukubuyekezwa kwesistimu yayo.\n4. Ngena futhi ukuze ubone isimo esisha senyanga yamanje.\n5. Yinyuka kuphela uma isimo esisha sithi 'Failed' noma 'Declined'."
+      },
+      {
+        "title": "Isikrini esingenalutho ngokuvamile siyisibuyekezo",
+        "body": "Cabanga ngephothali njengebhodi. Ngezinye izikhathi kufanele basule ibhodi ngaphambi kokuba babhale isethi elandelayo yemiyalelo. Akuvamile ukukhansela."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ichaza ukuziphatha kwesistimu, kodwa asikwazi ukubuyisa umlayezo osusiwe kuphrofayela yakho yomuntu siqu ye-SASSA."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikusiza ukuthi uqonde ukuthi ingosi yedijithali isebenza kanjani ukuze isibuyekezo esilula singabangeli ukwethuka okungadingekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-payment-pending-means\n• /guides/what-payment-hold-may-mean\n• /guides/what-to-do-if-payment-ready-but-not-reflecting\n• /guides/how-to-fix-common-payment-release-problems\n• /status/banking-issue"
+      },
+      {
+        "title": "I-FAQ: Ingabe umlayezo olungile onyamalele uhlala usho ukuthi inkokhelo ayisekho?",
+        "body": "Cha. Ngokuvamile kusho ukuthi isistimu ivuselela ikhasi lenyanga entsha."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise kuqala?",
+        "body": "Qhathanisa umlayezo onyamalele nebhalansi yakho yangempela yasebhange. Ngokuvamile, imali ifika lapho umyalezo uphela."
+      },
+      {
+        "title": "I-FAQ: Kungani ugcine amagama amasha ngokushesha?",
+        "body": "Ngoba ikutshela kahle ukuthi isistimu yenzani ngokulandelayo."
+      }
+    ]
+  },
+  "how-to-read-r350-payment-status-safely": {
+    "title": "Usifunda kanjani isimo sokukhokha se-R350 ngokuphepha",
+    "summary": "Ungasibheka kanjani isimo sakho se-SRD R350 ngaphandle kokukhohliswa izixhumanisi ezingamanga noma izinhlelo zokusebenza ezingekho emthethweni.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Njalo nje hlola isimo sakho se-SRD R350 kuwebhusayithi esemthethweni: srd.sassa.gov.za. Ungalokothi usebenzise izinhlelo zokusebenza zezinkampani zangaphandle, WhatsApp bots, noma izixhumanisi ezithunyelwe abantu ongabazi."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngenxa yokuthi izigidi zabantu zihlola isimo se-R350 nsuku zonke, abakhohlisi bakha amawebhusayithi mbumbulu afana ncamashi ne-SASSA ukuze bantshontshe i-ID yakho nenombolo yocingo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma ufaka imininingwane yakho kusihloli sesimo esingelona iqiniso, umkhohlisi angaduna iphrofayela yakho, ashintshe imininingwane yakho yasebhange, futhi antshontshe imali yakho yesibonelelo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Thayipha i-'srd.sassa.gov.za' ngqo esipheqululini sakho.\n2. Ungalokothi uchofoze izixhumanisi ezithi 'Check SRD Status Here' ku-Facebook noma WhatsApp.\n3. Bheka i-'gov.za' ekugcineni kwekheli lesizindalwazi—lokhu kufakazela ukuthi iyisizinda sikahulumeni sangempela.\n4. Ungalandi noma iyiphi i-'SASSA Status Apps' esitolo sohlelo lokusebenza (i-SASSA ayinalo uhlelo lokusebenza olusemthethweni).\n5. Faka i-ID yakho nenombolo yocingo ngokuphephile."
+      },
+      {
+        "title": "Vikela imininingwane yakho njengokheshi",
+        "body": "Inombolo yakho kamazisi kanye nenombolo yocingo izikhiye zesibonelelo sakho. Uma unikeza labo khiye kuwebhusayithi mbumbulu, unikeza imali yakho."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayisoze yakucela umazisi wakho noma inombolo yocingo. Sinikeza imihlahlandlela, kodwa konke ukuhlola isimo kwangempela kufanele kwenziwe kusayithi likahulumeni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikufundisa indlela yokubona amawebhusayithi nezinhlelo zokusebenza ezingamanga ukuze uhlole isimo sakho ngokuzethemba okungu-100%."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-check-payment-readiness-for-r350-support\n• /guides/what-payment-status-check-means\n• /guides/how-to-track-payment-dates-without-rumours\n• /guides/payment-processing-meaning\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani amagama okukhokha e-R350 kulula ukuwasebenzisa kabi?",
+        "body": "Ngoba abakhwabanisi bakha amawebhusayithi mbumbulu akunikeza izimpendulo ezingelona iqiniso ukuze nje bantshontshe idatha yakho."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise namagama?",
+        "body": "Njalo qinisekisa ukuthi i-URL yewebhusayithi ithi 'gov.za' ngaphambi kokuthayipha noma yini."
+      },
+      {
+        "title": "I-FAQ: Kufanele ngiwusebenzise nini umzila osemthethweni?",
+        "body": "Kufanele ngaso sonke isikhathi usebenzise umzila osemthethweni we-SASSA ukuze uhlole isimo sakho siqu, esiyimfihlo."
+      }
+    ]
+  },
+  "where-to-confirm-payment-problems-officially": {
+    "title": "Kuzoqinisekisa kuphi izinkinga zokukhokha ngokusemthethweni",
+    "summary": "Iziteshi ezisemthethweni kuphela okufanele uzisebenzise ukubika udaba lokukhokha lwe-SASSA olubucayi.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma unenkinga yokukhokha yangempela, kufanele uthinte i-SASSA ngokuqondile ngenombolo yabo yamahhala (0800 60 10 11), i-imeyili (GrantEnquiries@sassa.gov.za), noma uvakashele igatsha lasendaweni."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amabhulogi, amaqembu e-Facebook, namawebhusayithi ezindaba awakwazi ukulungisa inkinga yakho ye-SASSA. Bangakunikeza iseluleko, kodwa i-SASSA kuphela enamandla okuvula i-akhawunti yakho noma ukukhipha kabusha inkokhelo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abantu bachitha amasonto bekhononda ezinkundleni zokuxhumana, benethemba lokuthi kukhona ozokulungisa. Okuwukuphela kwendlela yokuthola imali yakho iwukuba ungene ngemvume ngokusemthethweni ngemigudu efanele kahulumeni."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Sebenzisa i-GrantCare ukuze uthole ukuthi iyini inkinga (isb., imininingwane yasebhange ehlulekile uma iqhathaniswa nokubambezeleka okuvamile).\n2. Qoqa i-ID yakho, ifoni yakho, kanye nesithombe-skrini sesimo sakho sephothali.\n3. Shayela ucingo lwamahhala olusemthethweni: 0800 60 10 11.\n4. Uma ucingo luhluleka, thumela i-imeyili ku- GrantEnquiries@sassa.gov.za kanye nenombolo yakho kamazisi emugqeni wesihloko.\n5. Uma kokubili kwehluleka, thatha umazisi wakho kanye nesitatimende sasebhange uye ehhovisi eliseduze nawe le-SASSA."
+      },
+      {
+        "title": "Umthombo kuphela ongalungisa inkinga",
+        "body": "Silapha ukuze sibe umeluleki wakho omethembayo, ukuze sikuchazele imigomo edidayo, futhi sikugcinele uhambo oluya ebhange. Kodwa uma uhlelo luphuka ngempela, kufanele uye emthonjeni."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yezemfundo ezimele. Asiyona i-SASSA, futhi asikwazi ukufinyelela ifayela lakho noma ukuxazulula amaphutha okukhokha esikhundleni sakho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikusiza ukuthi ulungiselele ulwazi oluqondile oludingayo ngaphambi kokuthi ushayele i-SASSA, ukuze inkinga yakho ixazululwe ngokushesha okukhulu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-fix-common-payment-release-problems\n• /guides/how-to-keep-records-of-payment-problems\n• /guides/how-to-check-if-a-missing-payment-is-just-a-delay\n• /guides/where-to-find-official-updates-safely\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Kunini lapho i-GrantCare inganele iyodwa?",
+        "body": "Uma udinga ngempela othile ukuze acindezele inkinobho futhi alungise i-akhawunti yakho. Lokho kudinga i-SASSA."
+      },
+      {
+        "title": "I-FAQ: Kungani usebenzise i-GrantCare kuqala?",
+        "body": "Ngoba sikusiza ukuthi uthole ukuthi yini okufanele uyisho kumenzeli we-SASSA, ukuze bakuqonde ngokushesha."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngihambe nayo uma ngiyolandelela ngokusemthethweni?",
+        "body": "I-ID yakho, ifoni yakho, noma yiziphi izithombe-skrini, nesitatimende sasebhange esigxivizwe."
+      }
+    ]
+  }
+};
+
+function withZuTranslations<
+  T extends {
+    slug: string;
+    title: string;
+    summary: string;
+    sections: Array<{ title: string; body: string }>;
+    translations?: Record<string, unknown>;
+  },
+>(guide: T, translation: GuideTranslation) {
+  return {
+    ...guide,
+    translations: {
+      ...(guide.translations ?? {}),
+      zu: translation,
+    },
+  };
+}
+
+export const SEO_BATCH_ELEVEN_GUIDES = SEO_BATCH_ELEVEN_GUIDES_SOURCE.map((guide) =>
+  addSetswanaTranslations(withZuTranslations(guide, ZU_TRANSLATIONS[guide.slug])),
+);

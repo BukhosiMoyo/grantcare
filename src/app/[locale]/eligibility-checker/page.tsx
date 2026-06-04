@@ -11,7 +11,33 @@ import { Card, Section } from "@/components/ui";
 import { listPublicGrantTypes, listFaqs } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { buildLocalizedMetadata } from "@/lib/metadata";
-import { buildLocalePath, isLocale } from "@/lib/site";
+import { buildLocalePath, isLocale, type Locale } from "@/lib/site";
+
+const ZU_ELIGIBILITY_PAGE_COPY: Record<string, string> = {
+  "SASSA Eligibility Checker for Grants and SRD": "Isihloli sokufaneleka se-SASSA sezibonelelo ne-SRD",
+  "Use the SASSA eligibility checker to find the right grant or SRD path before you apply. Free guidance for the main grant types.":
+    "Sebenzisa isihloli sokufaneleka se-SASSA ukuthola indlela efanele yesibonelelo noma ye-SRD ngaphambi kokufaka isicelo. Isiqondiso samahhala sezinhlobo eziyinhloko zezibonelelo.",
+  Home: "Ikhaya",
+  "Eligibility checker": "Isihloli sokufaneleka",
+  "Compare grant pages if you want to read checks and documents side by side.":
+    "Qhathanisa amakhasi ezibonelelo uma ufuna ukufunda ukuhlolwa nemibhalo eceleni eceleni.",
+  "Open payment dates after you know which grant category you need to follow.":
+    "Vula izinsuku zokukhokha ngemva kokwazi ukuthi yisiphi isigaba sesibonelelo okufanele usilandele.",
+  "Use status help if your question is about wording, not eligibility.":
+    "Sebenzisa usizo lwesimo uma umbuzo wakho umayelana namagama, hhayi ukufaneleka.",
+  "Prepare before applying": "Lungiselela ngaphambi kokufaka isicelo",
+  "Read the preparation guide if you want a calmer application checklist before using official channels.":
+    "Funda umhlahlandlela wokulungiselela uma ufuna uhlu lokuhlola oluzolile ngaphambi kokusebenzisa iziteshi ezisemthethweni.",
+  "Claim checker": "Isihloli sezimangalo",
+  "Open the checker if the page you found sounds like a claim or rumour rather than a normal grant route.":
+    "Vula isihloli uma ikhasi olitholile lizwakala njengesimangalo noma ihlebo kunendlela evamile yesibonelelo.",
+  "Next pages to open": "Amakhasi alandelayo okuwavula",
+  "Eligibility FAQ": "I-FAQ yokufaneleka",
+};
+
+function eligibilityPageCopy(locale: Locale, text: string) {
+  return locale === "zu" ? (ZU_ELIGIBILITY_PAGE_COPY[text] ?? text) : text;
+}
 
 export async function generateMetadata({
   params,
@@ -27,9 +53,11 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     path: "/eligibility-checker",
-    title: "SASSA Eligibility Checker for Grants and SRD",
-    description:
+    title: eligibilityPageCopy(locale, "SASSA Eligibility Checker for Grants and SRD"),
+    description: eligibilityPageCopy(
+      locale,
       "Use the SASSA eligibility checker to find the right grant or SRD path before you apply. Free guidance for the main grant types.",
+    ),
   });
 }
 
@@ -54,27 +82,39 @@ export default async function EligibilityPage({
     {
       href: "/grants",
       title: copy.grantTypesTitle,
-      description: "Compare grant pages if you want to read checks and documents side by side.",
+      description: eligibilityPageCopy(
+        locale,
+        "Compare grant pages if you want to read checks and documents side by side.",
+      ),
     },
     {
       href: "/payment-dates",
       title: copy.paymentDates,
-      description: "Open payment dates after you know which grant category you need to follow.",
+      description: eligibilityPageCopy(
+        locale,
+        "Open payment dates after you know which grant category you need to follow.",
+      ),
     },
     {
       href: "/status",
       title: copy.statusHelp,
-      description: "Use status help if your question is about wording, not eligibility.",
+      description: eligibilityPageCopy(locale, "Use status help if your question is about wording, not eligibility."),
     },
     {
       href: "/guides/how-to-prepare-before-applying",
-      title: "Prepare before applying",
-      description: "Read the preparation guide if you want a calmer application checklist before using official channels.",
+      title: eligibilityPageCopy(locale, "Prepare before applying"),
+      description: eligibilityPageCopy(
+        locale,
+        "Read the preparation guide if you want a calmer application checklist before using official channels.",
+      ),
     },
     {
       href: "/claim-checker",
-      title: "Claim checker",
-      description: "Open the checker if the page you found sounds like a claim or rumour rather than a normal grant route.",
+      title: eligibilityPageCopy(locale, "Claim checker"),
+      description: eligibilityPageCopy(
+        locale,
+        "Open the checker if the page you found sounds like a claim or rumour rather than a normal grant route.",
+      ),
     },
   ];
 
@@ -83,8 +123,8 @@ export default async function EligibilityPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "Eligibility checker", path: "/eligibility-checker" },
+          { label: eligibilityPageCopy(locale, "Home"), path: "/" },
+          { label: eligibilityPageCopy(locale, "Eligibility checker"), path: "/eligibility-checker" },
         ]}
       />
       <PageViewTracker name="page.viewed" locale={locale} />
@@ -118,11 +158,11 @@ export default async function EligibilityPage({
           ))}
         </div>
       </Section>
-      <InternalLinkGrid locale={locale} title="Next pages to open" items={hubLinks} />
+      <InternalLinkGrid locale={locale} title={eligibilityPageCopy(locale, "Next pages to open")} items={hubLinks} />
 
       {/* ── FAQ Section ── */}
       {eligibilityFaqs.length > 0 ? (
-        <Section title="Eligibility FAQ">
+        <Section title={eligibilityPageCopy(locale, "Eligibility FAQ")}>
           <FaqSchema faqs={eligibilityFaqs} />
           <div className="space-y-4">
             {eligibilityFaqs.map((faq) => (

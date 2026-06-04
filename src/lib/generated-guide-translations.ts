@@ -1,0 +1,928 @@
+type GuideSection = { title: string; body: string };
+
+type TranslatableGuide = {
+  title: string;
+  summary: string;
+  sections: GuideSection[];
+  translations?: Record<string, unknown>;
+};
+
+const section = (title: string, body: string) => ({ title, body });
+
+const TN_EXACT_TEXT: Record<string, string> = {
+  Account: "Akhaonto",
+  Admin: "Botsamaisi",
+  Archive: "Arakaefe",
+  Author: "Mokwadi",
+  "Back to sign in": "Boela go tsena",
+  "Check dates": "Tlhola malatsi",
+  "Check payment dates": "Tlhola malatsi a tefo",
+  "Payment dates": "Malatsi a tefo",
+  "Check status": "Tlhola maemo",
+  "Check status meanings": "Tlhola bokao jwa maemo",
+  "Choose a status": "Tlhopha maemo",
+  "Common fixes": "Ditharabololo tse di tlwaelegileng",
+  "Common questions": "Dipotso tse di tlwaelegileng",
+  "Common status meanings": "Bokao jwa maemo jo bo tlwaelegileng",
+  "Copy link": "Kopisa kgokagano",
+  "Create account": "Dira akhaonto",
+  Dashboard: "Dashboard",
+  Disclaimer: "Tlhagiso",
+  Documents: "Ditokomane",
+  Eligibility: "Tshwanelo",
+  "Eligibility checker": "Setlhola-tshwanelo",
+  Email: "Imeile",
+  "Email reminders": "Dikgopotso tsa imeile",
+  "Enable reminders": "Bulela dikgopotso",
+  Explore: "Batlisisa",
+  FAQ: "FAQ",
+  "Forgot password?": "O lebetse phasewete?",
+  "Forgot password": "O lebetse phasewete",
+  "Frequently asked questions": "Dipotso tse di botisiwang gantsi",
+  "Frequently Asked Questions": "Dipotso tse di botisiwang gantsi",
+  "General guidance only": "Tataiso ya kakaretso fela",
+  Generate: "Dira",
+  "Grant type": "Mofuta wa thuso",
+  "Grant types": "Mefuta ya dithuso",
+  Guide: "Tataiso",
+  "Guide library": "Laeborari ya ditaelo",
+  Guides: "Ditaelo",
+  Help: "Thuso",
+  "Helpful offers": "Dikakanyo tse di thusang",
+  "How it works": "Kafa go dirang ka teng",
+  Language: "Puo",
+  "Last updated": "E ntšhwafaditswe la bofelo",
+  "Latest news": "Ditaba tsa bosheng",
+  "Latest payment dates": "Malatsi a tefo a bosheng",
+  "Latest schedule slots": "Dinako tsa lenaneo tsa bosheng",
+  "Likely match": "Go ka nna ga tshwana",
+  Meaning: "Bokao",
+  Month: "Kgwedi",
+  "Monthly payment schedule": "Lenaneo la tefo la kgwedi",
+  "More months": "Dikgwedi tse dingwe",
+  "More payment dates": "Malatsi a mangwe a tefo",
+  "My dashboard": "Dashboard ya me",
+  Name: "Leina",
+  "Next steps": "Dikgato tse di latelang",
+  News: "Ditaba",
+  "No preference": "Ga go tlhopho",
+  Notice: "Kitsiso",
+  "Notify me": "Nkgakolole",
+  "Official link": "Kgokagano ya semmuso",
+  "Official links": "Dikgokagano tsa semmuso",
+  "Official next step": "Kgato e e latelang ya semmuso",
+  "Official notice": "Kitsiso ya semmuso",
+  Open: "Bula",
+  "Open dashboard": "Bula dashboard",
+  "Other grants": "Dithuso tse dingwe",
+  Password: "Phasewete",
+  Privacy: "Boporaefete",
+  Profile: "Porofaele",
+  "Popular tools": "Didirisiwa tse di tumileng",
+  "Popular payment routes": "Ditsela tsa tefo tse di dirisiwang thata",
+  "Read guide": "Bala tataiso",
+  "Read guides": "Bala ditaelo",
+  "Related guides": "Ditaelo tse di amanang",
+  "Related pages": "Ditsebe tse di amanang",
+  "Related statuses": "Maemo a a amanang",
+  Reminders: "Dikgopotso",
+  "Remove saved guide": "Tlosa tataiso e e bolokilweng",
+  "Reset password": "Seta phasewete sešwa",
+  "Save date": "Boloka letsatsi",
+  "Save guide": "Boloka tataiso",
+  "Save profile": "Boloka porofaele",
+  "Save reminders": "Boloka dikgopotso",
+  "Save result": "Boloka sephetho",
+  Share: "Abelana",
+  "Share guide": "Abelana ka tataiso",
+  Show: "Bontsha",
+  "Sign in": "Tsena",
+  "Sign out": "Tswa",
+  "Signing in": "Go tsenwa",
+  Sponsored: "E tshegeditswe",
+  Start: "Simolola",
+  "Start again": "Simolola gape",
+  "Start here": "Simolola fano",
+  "Short explanations for approved, pending, declined, and payment issues.": "Ditlhaloso tse dikhutshwane tsa approved, pending, declined, le mathata a tefo.",
+  "What to check": "Se o tshwanetseng go se tlhola",
+  "Look at the likely cause and the next step.": "Leba lebaka le le ka nnang teng le kgato e e latelang.",
+  "Match the exact status wording first.": "Tshwantsha mafoko a maemo pele.",
+  "Official action": "Kgato ya semmuso",
+  "official action": "kgato ya semmuso",
+  Status: "Maemo",
+  "Status help": "Thuso ya maemo",
+  "Status list": "Lenane la maemo",
+  "Status meanings": "Bokao jwa maemo",
+  "Table of contents": "Lenane la diteng",
+  "This grant": "Thuso eno",
+  "View month": "Bona kgwedi",
+  "Who it may fit": "Yo e ka mo tshwanetseng",
+  "Official website": "Webosaete ya semmuso",
+  "Online services": "Ditirelo tsa inthanete",
+  "SRD portal": "Portal ya SRD",
+  "Toll-free line": "Nomoro ya mahala",
+  "Grant enquiries": "Dipotso tsa dithuso",
+  "Head office": "Ofisi e kgolo",
+  "USSD code": "Khoutu ya USSD",
+  "Call centre": "Senthara ya megala",
+  "Quick check routes.": "Ditsela tsa go tlhola ka bonako.",
+  "WhatsApp Channel": "Kanale ya WhatsApp",
+  "Get updates on WhatsApp": "Amogela dintšhwafatso mo WhatsApp",
+  "Current grant amounts": "Madi a dithuso a gone jaanong",
+  "Standard baseline 2026 amounts.": "Madi a motheo a 2026.",
+  "SASSA Grant Amounts": "Madi a Dithuso tsa SASSA",
+  "SASSA Grant Amounts — Current Amounts and Increase Updates": "Madi a Dithuso tsa SASSA — Madi a Jaanong le Dintšhwafatso tsa Koketso",
+  "SASSA Contact Details": "Dintlha tsa Kgokagano tsa SASSA",
+  "SASSA Contact Details 2026: Phone Number and Offices": "Dintlha tsa Kgokagano tsa SASSA 2026: Nomoro ya Mogala le Diofisi",
+  "General SASSA support line": "Nomoro ya tshegetso ya kakaretso ya SASSA",
+  "Medical assessment": "Tlhatlhobo ya bongaka",
+  "Extra support if you already get a grant and need full-time care.": "Tshegetso e e oketsegileng fa o setse o amogela thuso mme o tlhoka tlhokomelo ya nako yotlhe.",
+  "Needs daily care": "O tlhoka tlhokomelo ya letsatsi le letsatsi",
+  "Medical support needed": "Go tlhokega tshegetso ya bongaka",
+  "Official contact directory source": "Motswedi wa semmuso wa lenaane la dikgokagano",
+  "Older Persons Grant": "Thuso ya Bagodi",
+  "Disability Grant": "Thuso ya Bogole",
+  "Care Dependency Grant": "Thuso ya Tlhokomelo e e Kgethegileng",
+  "Child Support Grant": "Thuso ya Tlhokomelo ya Ngwana",
+  "Foster Child Grant": "Thuso ya Ngwana wa Tlhokomelo",
+  "Grant-in-Aid": "Thuso e e Okeditsweng",
+  "Social Relief of Distress": "Thuso ya Nakwana ya Kgatelelo",
+  "Children's Grants": "Dithuso tsa Bana",
+  "Date confirmed": "Letsatsi le netefaditswe",
+  "Awaiting official update": "Go emetswe ntšhwafatso ya semmuso",
+  "SRD date varies by person": "Letsatsi la SRD le farologana ka motho",
+  "Amount pending": "Madi a sa ntse a emetswe",
+  "Old Age (60–74)": "Bagodi (60-74)",
+  "Old Age (75+)": "Bagodi (75+)",
+  "War Veterans": "Bagaka ba Ntwa",
+  Disability: "Bogole",
+  "Child Support": "Tlhokomelo ya Ngwana",
+  "Foster Child": "Ngwana wa Tlhokomelo",
+  "Care Dependency": "Tlhokomelo e e Kgethegileng",
+  "SRD Grant": "Thuso ya SRD",
+  "Quick answer": "Karabo e khutshwane",
+  "What this means": "Se se kayang",
+  "Why this happens": "Goreng seno se direga",
+  "Why this matters": "Goreng seno se le botlhokwa",
+  "What you can do next": "Se o ka se dirang morago ga moo",
+  "Important things to remember": "Dilo tsa botlhokwa tse o tshwanetseng go di gakologelwa",
+  "Where GrantCare fits in": "Fa GrantCare e ka thusang teng",
+  "What you can use GrantCare for": "Se o ka se dirisetsang GrantCare",
+  "How GrantCare can help": "Kafa GrantCare e ka thusang ka teng",
+  "Related help": "Thuso e e amanang",
+  "How to think about it": "Kafa o ka akanyang ka gone",
+  "How to read the page well": "Kafa o ka balang tsebe sentle ka teng",
+  "The purpose of appealing": "Maikaelelo a go dira boipiletso",
+  "What a banking update really changes": "Se phetogo ya tshedimosetso ya banka e se fetolang",
+  "Useful next pages:": "Ditsebe tse di latelang tse di mosola:",
+  Continue: "Tswelela",
+  Contact: "Ikgolaganye",
+  Current: "Ya jaanong",
+  Download: "Folosa",
+  Unlock: "Notlolla",
+  "Start My Interview Guide": "Simolola tataiso ya me ya puisano ya tiro",
+  "Skip & Generate My Guide": "Tlola mme o dire tataiso ya me",
+  "Draft My Appeal Letter": "Dira lekwalo la me la boipiletso",
+  "Create My Email": "Dira imeile ya me",
+  "AI-Powered Interview Prep": "Ipaakanyetso ya puisano ya tiro ka AI",
+  "Interview Questions and Answers Guide (South Africa)": "Tataiso ya dipotso le dikarabo tsa puisano ya tiro (Aforika Borwa)",
+  "Get personalized, AI-generated interview answers tailored to your job title and experience level. Build confidence and pass your interview.": "Amogela dikarabo tsa puisano ya tiro tse di dirilweng ka AI, tse di tshwanetseng tiro ya gago le maemo a maitemogelo a gago. Aga boitshepo mme o fenye puisano ya tiro.",
+  "Build Interview Guide": "Dira tataiso ya puisano ya tiro",
+  "Your Interview Guide": "Tataiso ya gago ya puisano ya tiro",
+  "Pass your next interview with answers tailored to you.": "Fenya puisano ya gago e e latelang ka dikarabo tse di go tshwanetseng.",
+  "Stop guessing what they'll ask you.": "Tlogela go fopholetsa gore ba tla go botsa eng.",
+  "Without this guide": "Kwantle ga tataiso eno",
+  "With your custom guide": "Ka tataiso ya gago",
+  "Not sure what to say in interviews": "Ga o tlhomamisege gore o reng mo dipuisanong tsa tiro",
+  "Feeling nervous and unprepared": "O ikutlwa o tshogile e bile o sa ipaakanya",
+  "Don't have experience and don't know how to explain it": "Ga o na maitemogelo mme ga o itse go a tlhalosa",
+  "Guessing what employers want to hear": "O fopholetsa se bathapi ba batlang go se utlwa",
+  "Confident, natural-sounding answers": "Dikarabo tse di utlwalang ka boitshepo le ka tlhago",
+  "Clear structure using the STAR method": "Sebopego se se phepa se se dirisang mokgwa wa STAR",
+  "Ready for any question they throw at you": "Ipaakanyeditse potso nngwe le nngwe",
+  "Knowing exactly what you bring to the table": "Go itse sentle se o se tlisang",
+  "Tell us about the job": "Re bolelele ka tiro",
+  "Your role, industry, and experience level — so we know exactly what you need.": "Maikarabelo a gago, indasteri, le maemo a maitemogelo gore re itse se o se tlhokang.",
+  "Get your personalised guide": "Amogela tataiso ya gago",
+  "Our AI creates tailored questions, answers, and tips specific to your situation.": "AI ya rona e dira dipotso, dikarabo, le dikeletso tse di tshwanetseng maemo a gago.",
+  "Walk into your interview prepared": "Tsena mo puisano ya tiro o ipaakantse",
+  "Preview free questions, then unlock your full pack.": "Bona dipotso tsa mahala pele, o bo o notlolla pakete e e feletseng.",
+  "Built to help real people get real jobs.": "E agilwe go thusa batho ba nnete go bona ditiro tsa nnete.",
+  "Used by job seekers across South Africa to build confidence.": "E dirisiwa ke ba ba batlang tiro mo Aforika Borwa go aga boitshepo.",
+  "Ready to feel confident?": "A o ikemiseditse go ikutlwa o na le boitshepo?",
+  "We help overturn common SRD rejections.": "Re thusa go ganetsa dikganetso tse di tlwaelegileng tsa SRD.",
+  "Alternative Income Source Identified": "Go bonwe motswedi o mongwe wa lotseno",
+  "UIF Registered": "O kwadisitswe mo UIF",
+  "NSFAS Registered": "O kwadisitswe mo NSFAS",
+  "How our letter helps you": "Kafa lekwalo la rona le go thusang ka teng",
+  "The Tribunal requires a formal written defense. We give you exactly what they want to see.": "Tribunal e tlhoka tlhaloso e e kwadilweng semmuso. Re go naya se ba batlang go se bona.",
+  "Properly addressed to the Independent Tribunal": "Le lebisitswe sentle kwa Independent Tribunal",
+  "Explains your financial situation formally": "Le tlhalosa maemo a gago a madi ka tsela ya semmuso",
+  "Tells you exactly which affidavits/documents to attach": "Le go bolelela gore ke diafidaviti kgotsa ditokomane dife tse o tshwanetseng go di mametlelela",
+  "Tell us the problem": "Re bolelele bothata",
+  "Explain your side": "Tlhalosa letlhakore la gago",
+  "Briefly tell us why they are wrong. Don't worry about sounding fancy, we'll fix it.": "Re bolelele ka bokhutshwane gore goreng ba phoso. O se ka wa tshwenyega ka mokwalo, re tla o rulaganya.",
+  "Don't wait 90 days.": "O se ka wa leta malatsi a le 90.",
+  "Alternative Income Source": "Motswedi o mongwe wa lotseno",
+  "Alternative Income": "Lotseno lo longwe",
+  "\"Alternative Income Source Identified\"": "\"Go bonwe motswedi o mongwe wa lotseno\"",
+  "\"UIF Registered\" (Even if you haven't worked in years)": "\"O kwadisitswe mo UIF\" (Le fa o sa dira dingwaga)",
+  "\"NSFAS Registered\" (When you aren't a student)": "\"O kwadisitswe mo NSFAS\" (Fa o se moithuti)",
+  "SASSA Appeal Letter Builder | Draft Your Grant Appeal": "Sediri sa lekwalo la boipiletso la SASSA | Kwala boipiletso jwa thuso ya gago",
+  "Create a formal appeal letter draft for a rejected SASSA SRD R370, Disability, or Child Support grant, then submit it yourself through the official appeal route.": "Dira lekwalo la boipiletso la semmuso bakeng sa thuso ya SASSA e e ganetsweng, o bo o le romela ka tsela ya semmuso ya boipiletso.",
+  "Build SASSA Appeal Letter": "Dira lekwalo la boipiletso la SASSA",
+  "Your SASSA Appeal Draft": "Boipiletso jwa gago jwa SASSA",
+  "Job Email Template Generator (South Africa)": "Sediri sa thempoleite ya imeile ya tiro (Aforika Borwa)",
+  "Write the perfect cover letter, follow-up, or networking email in 60 seconds with our AI generator.": "Kwala lekwalo la kopo, molaetsa wa go latela morago, kgotsa imeile ya kgokagano ka metsotswana e le 60 ka sediri sa rona sa AI.",
+  "Build Email Template": "Dira thempoleite ya imeile",
+  "Your Email Templates": "Dithempleite tsa gago tsa imeile",
+  "Professional Job Email Writer": "Mokwadi wa imeile ya tiro ya porofešenale",
+  "Send a professional job email in seconds.": "Romela imeile ya tiro ya porofešenale ka metsotswana.",
+  "No more guessing what to say — get a ready-to-send email that makes a strong impression.": "O se tlhole o fopholetsa gore o reng. Amogela imeile e e siametseng go romelwa.",
+  "Don't mess up your chances because of a bad email.": "O se senye ditshono tsa gago ka imeile e e sa siamang.",
+  "Do you do this?": "A o dira seno?",
+  "Sending blank emails with just a CV attached?": "O romela diimeile tse di se nang molaetsa mme di na le CV fela?",
+  "Not sure what to write to employers?": "Ga o tlhomamisege gore o kwalela bathapi eng?",
+  "Worried about sounding unprofessional or desperate?": "O tshwenyegile ka go utlwala o se porofešenale kgotsa o kgobegile marapo?",
+  "Wasting hours writing one simple follow-up?": "O senya diura o kwala go latela morago go le gongwe go bonolo?",
+  "What we give you": "Se re go nayang sone",
+  "We help you write emails that sound clean, confident, and professional.": "Re go thusa go kwala diimeile tse di phepa, tse di nang le boitshepo, le tse di porofešenale.",
+  "Proper subject line options": "Dikgetho tse di siameng tsa mola wa setlhogo",
+  "Structured, polite message": "Molaetsa o o rulagantsweng e bile o na le maitseo",
+  "Professional tone matching your experience": "Segalo sa porofešenale se se tshwanang le maitemogelo a gago",
+  "Ready to copy, paste, and send instantly": "E siametse go kopisiwa, go manegwa, le go romelwa ka bonako",
+  "Choose your email type": "Tlhopha mofuta wa imeile",
+  "Add your details": "Tsenya dintlha tsa gago",
+  "Job role, company name, your experience, and desired tone.": "Maikarabelo a tiro, leina la khampani, maitemogelo a gago, le segalo se o se batlang.",
+  "Get your email instantly": "Amogela imeile ya gago ka bonako",
+  "Preview your free starter template, then unlock all variations.": "Bona thempoleite ya ntlha ya mahala, o bo o notlolla mefuta yotlhe.",
+  "Drafted for the South African job market.": "E kwaletswe mmaraka wa ditiro wa Aforika Borwa.",
+  "Land more interviews by looking like a serious professional.": "Bona dipuisano tse dintsi ka go bonala o le porofešenale yo o tseelang tiro masisi.",
+  "Get your complete, ready-to-send email": "Amogela imeile ya gago e e feletseng e e siametseng go romelwa",
+  "follow-up": "go latela morago",
+  "Apply for a job": "Dira kopo ya tiro",
+  "Send CV without a vacancy": "Romela CV ntle le phatlhatiro",
+  "Follow up on application": "Latela kopo morago",
+  "Confirm interview": "Netefatsa puisano ya tiro",
+  "Thank you after interview": "Leboga morago ga puisano ya tiro",
+  "Internship / Learnership": "Internship / Learnership",
+  Professional: "Porofešenale",
+  professional: "porofešenale",
+  Formal: "Semmuso",
+  Confident: "Boitshepo",
+  confident: "boitshepo",
+};
+
+const XH_EXACT_TEXT: Record<string, string> = {
+  Account: "Iakhawunti",
+  Admin: "Ulawulo",
+  Archive: "Uvimba",
+  Author: "Umbhali",
+  "Back to sign in": "Buyela ekungeneni",
+  "Check dates": "Jonga imihla",
+  "Check payment dates": "Jonga imihla yokuhlawula",
+  "Payment dates": "Imihla yokuhlawula",
+  "Check status": "Jonga isimo",
+  "Check status meanings": "Jonga iintsingiselo zesimo",
+  "Choose a status": "Khetha isimo",
+  "Common fixes": "Izilungiso eziqhelekileyo",
+  "Common questions": "Imibuzo eqhelekileyo",
+  "Common status meanings": "Iintsingiselo zesimo eziqhelekileyo",
+  "Copy link": "Kopa ikhonkco",
+  "Create account": "Yenza iakhawunti",
+  Dashboard: "Ideshibhodi",
+  Disclaimer: "Isilumkiso",
+  Documents: "Amaxwebhu",
+  Eligibility: "Ukufaneleka",
+  "Eligibility checker": "Isijongi sokufaneleka",
+  Email: "I-imeyile",
+  "Email reminders": "Izikhumbuzi ze-imeyile",
+  "Enable reminders": "Vula izikhumbuzi",
+  Explore: "Phonononga",
+  FAQ: "FAQ",
+  "Forgot password?": "Ulibele igama lokugqitha?",
+  "Forgot password": "Ulibele igama lokugqitha",
+  "Frequently asked questions": "Imibuzo ebuzwa rhoqo",
+  "Frequently Asked Questions": "Imibuzo ebuzwa rhoqo",
+  "General guidance only": "Isikhokelo ngokubanzi kuphela",
+  Generate: "Yenza",
+  "Grant type": "Uhlobo lwesibonelelo",
+  "Grant types": "Iintlobo zezibonelelo",
+  Guide: "Isikhokelo",
+  "Guide library": "Ithala lezikhokelo",
+  Guides: "Izikhokelo",
+  Help: "Uncedo",
+  "Helpful offers": "Uncedo oluluncedo",
+  "How it works": "Isebenza njani",
+  Language: "Ulwimi",
+  "Last updated": "Igqityelwe ukuhlaziywa",
+  "Latest news": "Iindaba zakutshanje",
+  "Latest payment dates": "Imihla yakutshanje yokuhlawula",
+  "Latest schedule slots": "Iindawo zakutshanje zeshedyuli",
+  "Likely match": "Inokuhambelana",
+  Meaning: "Intsingiselo",
+  Month: "Inyanga",
+  "Monthly payment schedule": "Ishedyuli yentlawulo yenyanga",
+  "More months": "Iinyanga ezingaphezulu",
+  "More payment dates": "Eminye imihla yokuhlawula",
+  "My dashboard": "Ideshibhodi yam",
+  Name: "Igama",
+  "Next steps": "Amanyathelo alandelayo",
+  News: "Iindaba",
+  "No preference": "Akukho kukhetha",
+  Notice: "Isaziso",
+  "Notify me": "Ndazise",
+  "Official link": "Ikhonkco elisemthethweni",
+  "Official links": "Amakhonkco asemthethweni",
+  "Official next step": "Inyathelo elisemthethweni elilandelayo",
+  "Official notice": "Isaziso esisemthethweni",
+  Open: "Vula",
+  "Open dashboard": "Vula ideshibhodi",
+  "Other grants": "Ezinye izibonelelo",
+  Password: "Igama lokugqitha",
+  Privacy: "Ubumfihlo",
+  Profile: "Iprofayile",
+  "Popular tools": "Izixhobo ezisetyenziswa kakhulu",
+  "Popular payment routes": "Iindlela zokuhlawula ezisetyenziswa kakhulu",
+  "Read guide": "Funda isikhokelo",
+  "Read guides": "Funda izikhokelo",
+  "Related guides": "Izikhokelo ezinxulumene noko",
+  "Related pages": "Amaphepha anxulumene noko",
+  "Related statuses": "Izimo ezinxulumene noko",
+  Reminders: "Izikhumbuzi",
+  "Remove saved guide": "Susa isikhokelo esigciniweyo",
+  "Reset password": "Seta kwakhona igama lokugqitha",
+  "Save date": "Gcina lo mhla",
+  "Save guide": "Gcina isikhokelo",
+  "Save profile": "Gcina iprofayile",
+  "Save reminders": "Gcina izikhumbuzi",
+  "Save result": "Gcina isiphumo",
+  Share: "Yabelana",
+  "Share guide": "Yabelana ngesikhokelo",
+  Show: "Bonisa",
+  "Sign in": "Ngena",
+  "Sign out": "Phuma",
+  "Signing in": "Kungenwa",
+  Sponsored: "Ixhasiwe",
+  Start: "Qalisa",
+  "Start again": "Qalisa kwakhona",
+  "Start here": "Qalisa apha",
+  "Short explanations for approved, pending, declined, and payment issues.": "Iingcaciso ezimfutshane ngezimo ezivunyiweyo, ezisalindileyo, ezaliweyo, neengxaki zentlawulo.",
+  "What to check": "Into omawuyijonge",
+  "Look at the likely cause and the next step.": "Jonga unobangela onokwenzeka nenyathelo elilandelayo.",
+  "Match the exact status wording first.": "Qala ngokuthelekisa amagama esimo kanye njengoko ebhaliwe.",
+  "Official action": "Inyathelo elisemthethweni",
+  "official action": "inyathelo elisemthethweni",
+  Status: "Isimo",
+  "Status help": "Uncedo lwesimo",
+  "Status list": "Uluhlu lwezimo",
+  "Status meanings": "Iintsingiselo zesimo",
+  "Table of contents": "Uluhlu lomxholo",
+  "This grant": "Esi sibonelelo",
+  "View month": "Jonga inyanga",
+  "Who it may fit": "Inokufanela bani",
+  "Official website": "Iwebhusayithi esemthethweni",
+  "Online services": "Iinkonzo ze-intanethi",
+  "SRD portal": "Iphothali ye-SRD",
+  "Toll-free line": "Inombolo yasimahla",
+  "Grant enquiries": "Imibuzo ngezibonelelo",
+  "Head office": "Iofisi enkulu",
+  "USSD code": "Ikhowudi ye-USSD",
+  "Call centre": "Iziko leefowuni",
+  "Quick check routes.": "Iindlela zokujonga ngokukhawuleza.",
+  "WhatsApp Channel": "Ijelo le-WhatsApp",
+  "Get updates on WhatsApp": "Fumana uhlaziyo ku-WhatsApp",
+  "Current grant amounts": "Imali yezibonelelo yangoku",
+  "Standard baseline 2026 amounts.": "Imali esisiseko ka-2026.",
+  "SASSA Grant Amounts": "Imali Yezibonelelo ze-SASSA",
+  "SASSA Grant Amounts — Current Amounts and Increase Updates": "Imali Yezibonelelo ze-SASSA — Imali Yangoku noHlaziyo Lokunyuka",
+  "SASSA Contact Details": "Iinkcukacha Zonxibelelwano ze-SASSA",
+  "SASSA Contact Details 2026: Phone Number and Offices": "Iinkcukacha Zonxibelelwano ze-SASSA 2026: Inombolo Yefowuni nee-Ofisi",
+  "General SASSA support line": "Inombolo yenkxaso jikelele ye-SASSA",
+  "Medical assessment": "Uvavanyo lwezonyango",
+  "Extra support if you already get a grant and need full-time care.": "Inkxaso eyongezelelweyo ukuba sele ufumana isibonelelo kwaye udinga ukhathalelo lwexesha lonke.",
+  "Needs daily care": "Udinga ukhathalelo lwemihla ngemihla",
+  "Medical support needed": "Kufuneka inkxaso yezonyango",
+  "Official contact directory source": "Umthombo woluhlu lonxibelelwano olusemthethweni",
+  "Older Persons Grant": "Isibonelelo Sabantu Abadala",
+  "Disability Grant": "Isibonelelo Sokukhubazeka",
+  "Care Dependency Grant": "Isibonelelo Sokuxhomekeka Kukonakekelwa",
+  "Child Support Grant": "Isibonelelo Sokondla Umntwana",
+  "Foster Child Grant": "Isibonelelo Somntwana Okhuliswayo",
+  "Grant-in-Aid": "Isibonelelo Soncedo",
+  "Social Relief of Distress": "Uncedo Lwentlalo Loxinzelelo",
+  "Children's Grants": "Izibonelelo Zabantwana",
+  "Date confirmed": "Umhla uqinisekisiwe",
+  "Awaiting official update": "Kulindelwe uhlaziyo olusemthethweni",
+  "SRD date varies by person": "Umhla we-SRD uyahluka ngomntu",
+  "Amount pending": "Imali isalindile",
+  "Old Age (60–74)": "Abadala (60-74)",
+  "Old Age (75+)": "Abadala (75+)",
+  "War Veterans": "Amagqala emfazwe",
+  Disability: "Ukukhubazeka",
+  "Child Support": "Ukondla umntwana",
+  "Foster Child": "Umntwana okhuliswayo",
+  "Care Dependency": "Ukuxhomekeka kukonakekelwa",
+  "SRD Grant": "Isibonelelo se-SRD",
+  "Quick answer": "Impendulo emfutshane",
+  "What this means": "Oku kuthetha ntoni",
+  "Why this happens": "Kutheni oku kusenzeka",
+  "Why this matters": "Kutheni oku kubalulekile",
+  "What you can do next": "Into onokuyenza ngokulandelayo",
+  "Important things to remember": "Izinto ezibalulekileyo zokukhumbula",
+  "Where GrantCare fits in": "Apho i-GrantCare inokunceda khona",
+  "What you can use GrantCare for": "Into onokuyisebenzisela i-GrantCare",
+  "How GrantCare can help": "Indlela i-GrantCare enokunceda ngayo",
+  "Related help": "Uncedo olunxulumene noko",
+  "How to think about it": "Indlela yokucinga ngayo",
+  "How to read the page well": "Indlela yokufunda eli phepha kakuhle",
+  "The purpose of appealing": "Injongo yokwenza isibheno",
+  "What a banking update really changes": "Into etshintshwa luhlaziyo lwebhanki",
+  "Useful next pages:": "Amaphepha alandelayo aluncedo:",
+  Continue: "Qhubeka",
+  Contact: "Qhagamshelana",
+  Current: "Eyangoku",
+  Download: "Khuphela",
+  Unlock: "Vula",
+  "Start My Interview Guide": "Qalisa isikhokelo sam sodliwanondlebe",
+  "Skip & Generate My Guide": "Tsiba uze wenze isikhokelo sam",
+  "Draft My Appeal Letter": "Yenza ileta yam yesibheno",
+  "Create My Email": "Yenza i-imeyile yam",
+  "AI-Powered Interview Prep": "Ukulungiselela udliwanondlebe nge-AI",
+  "Interview Questions and Answers Guide (South Africa)": "Isikhokelo semibuzo neempendulo zodliwanondlebe (eMzantsi Afrika)",
+  "Get personalized, AI-generated interview answers tailored to your job title and experience level. Build confidence and pass your interview.": "Fumana iimpendulo zodliwanondlebe ezenziwe nge-AI, ezilungiselelwe umsebenzi wakho namava akho. Yakha ukuzithemba uze uphumelele udliwanondlebe.",
+  "Build Interview Guide": "Yakha isikhokelo sodliwanondlebe",
+  "Your Interview Guide": "Isikhokelo sakho sodliwanondlebe",
+  "Pass your next interview with answers tailored to you.": "Phumelela udliwanondlebe lwakho olulandelayo ngeempendulo ezilungiselelwe wena.",
+  "Stop guessing what they'll ask you.": "Yeka ukuqikelela into abaza kuyibuza.",
+  "Without this guide": "Ngaphandle kwesi sikhokelo",
+  "With your custom guide": "Ngesikhokelo sakho",
+  "Not sure what to say in interviews": "Awuqinisekanga ukuba uthini kudliwanondlebe",
+  "Feeling nervous and unprepared": "Uziva unovalo kwaye ungakulungelanga",
+  "Don't have experience and don't know how to explain it": "Awunamava kwaye awazi ukuba uwachaze njani",
+  "Guessing what employers want to hear": "Uqikelela into abaqeshi abafuna ukuyiva",
+  "Confident, natural-sounding answers": "Iimpendulo ezizithembileyo nezivakala zendalo",
+  "Clear structure using the STAR method": "Ulwakhiwo olucacileyo usebenzisa indlela ye-STAR",
+  "Ready for any question they throw at you": "Ukulungele nawuphi na umbuzo",
+  "Knowing exactly what you bring to the table": "Ukwazi kanye into ozisa yona",
+  "Tell us about the job": "Sixelele ngomsebenzi",
+  "Your role, industry, and experience level — so we know exactly what you need.": "Indima yakho, ishishini, namava akho ukuze sazi into oyifunayo.",
+  "Get your personalised guide": "Fumana isikhokelo sakho",
+  "Our AI creates tailored questions, answers, and tips specific to your situation.": "I-AI yethu yenza imibuzo, iimpendulo, neengcebiso ezilungele imeko yakho.",
+  "Walk into your interview prepared": "Ngena kudliwanondlebe ulungile",
+  "Preview free questions, then unlock your full pack.": "Jonga imibuzo yasimahla, uze uvule ipakethi epheleleyo.",
+  "Built to help real people get real jobs.": "Yakhiwe ukunceda abantu bokwenyani bafumane imisebenzi yokwenyani.",
+  "Used by job seekers across South Africa to build confidence.": "Isetyenziswa ngabafuna umsebenzi eMzantsi Afrika ukwakha ukuzithemba.",
+  "Ready to feel confident?": "Ukulungele ukuziva uzithembile?",
+  "We help overturn common SRD rejections.": "Sinceda ukulwa nokwaliwa kwe-SRD okuqhelekileyo.",
+  "Alternative Income Source Identified": "Kufunyenwe omnye umthombo wengeniso",
+  "UIF Registered": "Ubhaliswe kwi-UIF",
+  "NSFAS Registered": "Ubhaliswe kwi-NSFAS",
+  "How our letter helps you": "Indlela ileta yethu ekunceda ngayo",
+  "The Tribunal requires a formal written defense. We give you exactly what they want to see.": "I-Tribunal ifuna inkcazelo ebhaliweyo esemthethweni. Sikunika kanye into abafuna ukuyibona.",
+  "Properly addressed to the Independent Tribunal": "Ibhekiswe kakuhle kwi-Independent Tribunal",
+  "Explains your financial situation formally": "Ichaza imeko yakho yemali ngendlela esemthethweni",
+  "Tells you exactly which affidavits/documents to attach": "Ikuxelela kanye ukuba zeziphi ii-affidavit okanye amaxwebhu omawuwancamathisele",
+  "Tell us the problem": "Sixelele ingxaki",
+  "Explain your side": "Chaza icala lakho",
+  "Briefly tell us why they are wrong. Don't worry about sounding fancy, we'll fix it.": "Sixelele ngokufutshane ukuba kutheni bephosakele. Ungakhathazeki ngolwimi, siza kululungisa.",
+  "Don't wait 90 days.": "Musa ukulinda iintsuku ezingama-90.",
+  "Alternative Income Source": "Omnye umthombo wengeniso",
+  "Alternative Income": "Enye ingeniso",
+  "\"Alternative Income Source Identified\"": "\"Kufunyenwe omnye umthombo wengeniso\"",
+  "\"UIF Registered\" (Even if you haven't worked in years)": "\"Ubhaliswe kwi-UIF\" (Nokuba awusebenzanga iminyaka)",
+  "\"NSFAS Registered\" (When you aren't a student)": "\"Ubhaliswe kwi-NSFAS\" (Xa ungengomfundi)",
+  "SASSA Appeal Letter Builder | Draft Your Grant Appeal": "Umakhi weleta yesibheno se-SASSA | Bhala isibheno sakho",
+  "Create a formal appeal letter draft for a rejected SASSA SRD R370, Disability, or Child Support grant, then submit it yourself through the official appeal route.": "Yenza uyilo lweleta yesibheno esemthethweni yesibonelelo se-SASSA esaliweyo, uze usithumele ngokwakho ngendlela esemthethweni yesibheno.",
+  "Build SASSA Appeal Letter": "Yakha ileta yesibheno se-SASSA",
+  "Your SASSA Appeal Draft": "Uyilo lwakho lwesibheno se-SASSA",
+  "Job Email Template Generator (South Africa)": "Umenzi wethempleyithi ye-imeyile yomsebenzi (eMzantsi Afrika)",
+  "Write the perfect cover letter, follow-up, or networking email in 60 seconds with our AI generator.": "Bhala ileta yesicelo, umyalezo wokulandela, okanye i-imeyile yonxibelelwano ngemizuzwana engama-60 ngomenzi wethu we-AI.",
+  "Build Email Template": "Yakha ithempleyithi ye-imeyile",
+  "Your Email Templates": "Iithempleyithi zakho ze-imeyile",
+  "Professional Job Email Writer": "Umbhali we-imeyile yomsebenzi",
+  "Send a professional job email in seconds.": "Thumela i-imeyile yomsebenzi ngemizuzwana.",
+  "No more guessing what to say — get a ready-to-send email that makes a strong impression.": "Yeka ukuqikelela into omawuyithethe. Fumana i-imeyile ekulungele ukuthunyelwa.",
+  "Don't mess up your chances because of a bad email.": "Musa ukonakalisa amathuba akho ngenxa ye-imeyile embi.",
+  "Do you do this?": "Uyenza le nto?",
+  "Sending blank emails with just a CV attached?": "Uthumela ii-imeyile ezingenanto ezine-CV kuphela?",
+  "Not sure what to write to employers?": "Awuqinisekanga ukuba ubhale ntoni kubaqeshi?",
+  "Worried about sounding unprofessional or desperate?": "Uxhalabile ngokuvakala ungengomntu wobuchule okanye unxunguphele?",
+  "Wasting hours writing one simple follow-up?": "Uchitha iiyure ubhala umyalezo omnye wokulandela?",
+  "What we give you": "Into esikunika yona",
+  "We help you write emails that sound clean, confident, and professional.": "Sikunceda ubhale ii-imeyile ezicocekileyo, ezizithembileyo, nezobuchule.",
+  "Proper subject line options": "Iindlela ezifanelekileyo zomgca wesihloko",
+  "Structured, polite message": "Umyalezo ocwangcisiweyo nonembeko",
+  "Professional tone matching your experience": "Ithoni yobuchule ehambelana namava akho",
+  "Ready to copy, paste, and send instantly": "Ilungele ukukopishwa, ukunamathiselwa, nokuthunyelwa kwangoko",
+  "Choose your email type": "Khetha uhlobo lwe-imeyile",
+  "Add your details": "Yongeza iinkcukacha zakho",
+  "Job role, company name, your experience, and desired tone.": "Indima yomsebenzi, igama lenkampani, amava akho, nethoni oyifunayo.",
+  "Get your email instantly": "Fumana i-imeyile yakho kwangoko",
+  "Preview your free starter template, then unlock all variations.": "Jonga ithempleyithi yasimahla, uze uvule zonke iinguqulelo.",
+  "Drafted for the South African job market.": "Yenzelwe imarike yemisebenzi yaseMzantsi Afrika.",
+  "Land more interviews by looking like a serious professional.": "Fumana udliwanondlebe oluninzi ngokubonakala ungumntu wobuchule.",
+  "Get your complete, ready-to-send email": "Fumana i-imeyile yakho epheleleyo ekulungele ukuthunyelwa",
+  "follow-up": "ukulandelela",
+  "Apply for a job": "Faka isicelo somsebenzi",
+  "Send CV without a vacancy": "Thumela i-CV ngaphandle kwesithuba",
+  "Follow up on application": "Landela isicelo",
+  "Confirm interview": "Qinisekisa udliwanondlebe",
+  "Thank you after interview": "Bulela emva kodliwanondlebe",
+  "Internship / Learnership": "Internship / Learnership",
+  Professional: "Yobuchule",
+  professional: "yobuchule",
+  Formal: "Esemthethweni",
+  Confident: "Ukuzithemba",
+  confident: "ukuzithemba",
+};
+
+function protectStructuredText(value: string) {
+  const protectedParts: string[] = [];
+  const text = value.replace(/\/[a-z0-9][a-z0-9\-/]*/gi, (match) => {
+    protectedParts.push(match);
+    return "__GC_PROTECTED_" + (protectedParts.length - 1) + "__";
+  });
+
+  return { text, protectedParts };
+}
+
+function restoreStructuredText(value: string, protectedParts: string[]) {
+  return value.replace(/__GC_PROTECTED_(\d+)__/g, (_, index) => protectedParts[Number(index)] ?? "");
+}
+
+function getMonthYearText(value: string): string {
+  const months: Record<string, string> = {
+    january: "Ferikgong",
+    february: "Tlhakole",
+    march: "Mopitlwe",
+    april: "Moranang",
+    may: "Motsheganong",
+    june: "Seetebosigo",
+    july: "Phukwi",
+    august: "Phatwe",
+    september: "Lwetse",
+    october: "Diphalane",
+    november: "Ngwanatsele",
+    december: "Sedimonthole",
+  };
+  const lower = value.toLowerCase();
+  const month = Object.entries(months).find(([english]) => lower.includes(english))?.[1];
+  const year = value.match(/20\d{2}/)?.[0];
+
+  return [month, year].filter(Boolean).join(" ");
+}
+
+function getGrantText(value: string): string {
+  const lower = value.toLowerCase();
+
+  if (lower.includes("child support")) return "thuso ya tlhokomelo ya ngwana";
+  if (lower.includes("foster")) return "thuso ya ngwana wa tlhokomelo";
+  if (lower.includes("care dependency")) return "thuso ya tlhokomelo e e kgethegileng";
+  if (lower.includes("disability")) return "thuso ya bogole";
+  if (lower.includes("older") || lower.includes("old age") || lower.includes("pension")) {
+    return "thuso ya bagodi";
+  }
+  if (lower.includes("srd") || lower.includes("r350") || lower.includes("r370")) {
+    return "thuso ya SRD R370";
+  }
+
+  return "thuso";
+}
+
+function getXhosaMonthYearText(value: string): string {
+  const months: Record<string, string> = {
+    january: "Januwari",
+    february: "Februwari",
+    march: "Matshi",
+    april: "Epreli",
+    may: "Meyi",
+    june: "Juni",
+    july: "Julayi",
+    august: "Agasti",
+    september: "Septemba",
+    october: "Oktobha",
+    november: "Novemba",
+    december: "Disemba",
+  };
+  const lower = value.toLowerCase();
+  const month = Object.entries(months).find(([english]) => lower.includes(english))?.[1];
+  const year = value.match(/20\d{2}/)?.[0];
+
+  return [month, year].filter(Boolean).join(" ");
+}
+
+function getXhosaGrantText(value: string): string {
+  const lower = value.toLowerCase();
+
+  if (lower.includes("child support")) return "isibonelelo sokondla umntwana";
+  if (lower.includes("foster")) return "isibonelelo somntwana okhuliswayo";
+  if (lower.includes("care dependency")) return "isibonelelo sokuxhomekeka kukonakekelwa";
+  if (lower.includes("disability")) return "isibonelelo sokukhubazeka";
+  if (lower.includes("older") || lower.includes("old age") || lower.includes("pension")) {
+    return "isibonelelo sabantu abadala";
+  }
+  if (lower.includes("srd") || lower.includes("r350") || lower.includes("r370")) {
+    return "isibonelelo se-SRD R370";
+  }
+
+  return "isibonelelo";
+}
+
+function translateShortText(value: string): string {
+  const exact = TN_EXACT_TEXT[value.trim()];
+  if (exact) return exact;
+
+  const lower = value.toLowerCase();
+  const monthYear = getMonthYearText(value);
+  const grantText = getGrantText(value);
+
+  if (value.startsWith("FAQ:")) {
+    return `Dipotso tse di botisiwang gantsi: ${translateShortText(value.slice(4).trim())}`;
+  }
+
+  if (lower.includes("payment date") || lower.includes("pay date") || lower.includes("payment dates")) {
+    return monthYear
+      ? `Malatsi a tefo a ${grantText} a ${monthYear}`
+      : `Malatsi a tefo a ${grantText}`;
+  }
+
+  if (lower.includes("status")) {
+    return `Bokao jwa maemo a ${grantText}`;
+  }
+
+  if (lower.includes("appeal")) {
+    return "Kafa o ka dirang boipiletso sentle ka teng";
+  }
+
+  if (lower.includes("bank")) {
+    return "Tshedimosetso ya banka le ditefo";
+  }
+
+  if (lower.includes("identity") || lower.includes("verification")) {
+    return "Netefatso ya boitsebiso";
+  }
+
+  if (lower.includes("apply") || lower.includes("application") || lower.includes("qualify")) {
+    return "Kopo le go tshwanelega";
+  }
+
+  if (lower.includes("document")) {
+    return "Ditokomane tse o ka di tlhokang";
+  }
+
+  return value
+    .replace(/\bpayment dates?\b/gi, "malatsi a tefo")
+    .replace(/\bpay date\b/gi, "letsatsi la tefo")
+    .replace(/\bstatus\b/gi, "maemo")
+    .replace(/\bgrant\b/gi, "thuso")
+    .replace(/\bapplication\b/gi, "kopo")
+    .replace(/\bfollow-up\b/gi, "go latela morago")
+    .replace(/\bguide\b/gi, "tataiso")
+    .replace(/\bofficial\b/gi, "semmuso");
+}
+
+function translateShortXhosaText(value: string): string {
+  const exact = XH_EXACT_TEXT[value.trim()];
+  if (exact) return exact;
+
+  const lower = value.toLowerCase();
+  const monthYear = getXhosaMonthYearText(value);
+  const grantText = getXhosaGrantText(value);
+
+  if (value.startsWith("FAQ:")) {
+    return `Imibuzo ebuzwa rhoqo: ${translateShortXhosaText(value.slice(4).trim())}`;
+  }
+
+  if (lower.includes("payment date") || lower.includes("pay date") || lower.includes("payment dates")) {
+    return monthYear
+      ? `Imihla yokuhlawula ye-${grantText} ka-${monthYear}`
+      : `Imihla yokuhlawula ye-${grantText}`;
+  }
+
+  if (lower.includes("status")) {
+    return `Iintsingiselo zesimo se-${grantText}`;
+  }
+
+  if (lower.includes("appeal")) {
+    return "Indlela yokwenza isibheno kakuhle";
+  }
+
+  if (lower.includes("bank")) {
+    return "Iinkcukacha zebhanki neentlawulo";
+  }
+
+  if (lower.includes("identity") || lower.includes("verification")) {
+    return "Ukuqinisekiswa kwesazisi";
+  }
+
+  if (lower.includes("apply") || lower.includes("application") || lower.includes("qualify")) {
+    return "Isicelo nokufaneleka";
+  }
+
+  if (lower.includes("document")) {
+    return "Amaxwebhu onokuwadinga";
+  }
+
+  return value
+    .replace(/\bpayment dates?\b/gi, "imihla yokuhlawula")
+    .replace(/\bpay date\b/gi, "umhla wokuhlawula")
+    .replace(/\bstatus\b/gi, "isimo")
+    .replace(/\bgrant\b/gi, "isibonelelo")
+    .replace(/\bapplication\b/gi, "isicelo")
+    .replace(/\bfollow-up\b/gi, "ukulandelela")
+    .replace(/\bguide\b/gi, "isikhokelo")
+    .replace(/\bofficial\b/gi, "esemthethweni");
+}
+
+function translateBodyText(value: string): string {
+  const lower = value.toLowerCase();
+  const monthYear = getMonthYearText(value);
+  const grantText = getGrantText(value);
+
+  if (lower.includes("useful next pages")) {
+    return value.replace("Useful next pages:", "Ditsebe tse di latelang tse di mosola:");
+  }
+
+  if (lower.includes("payment date") || lower.includes("pay date") || lower.includes("payment dates")) {
+    return monthYear
+      ? `Tataiso eno e tlhalosa malatsi a tefo a ${grantText} a ${monthYear}. Bala letshwao la tsebe ka kelotlhoko, farologanya letsatsi le le netefaditsweng le le le solofetsweng, mme o dirise motswedi wa semmuso fa o tlhoka tshwetso ya bofelo. Fa letsatsi le fetoga, tsaya tshedimosetso ya bosheng e le yone e e botlhokwa.`
+      : `Tataiso eno e thusa go tlhalosa malatsi a tefo a ${grantText}. Bala mafoko a a mo tsebeng ka kelotlhoko, netefatsa gore o lebeletse kgwedi le mofuta wa thuso o o siameng, mme o se ka wa tsaya molaetsa o o phatlaladitsweng mo inthaneteng e le wa bofelo go fitlha o o bapisa le motswedi wa semmuso.`;
+  }
+
+  if (lower.includes("pending") || lower.includes("approved") || lower.includes("declined") || lower.includes("status")) {
+    return "Maemo a SASSA a tshwanetse go balwa ka kelotlhoko, ka gonne lefoko le le lengwe le ka raya gore kopo e sa ntse e sekasekiwa, e amogetswe, e ganetswe, kgotsa e tlhoka tshedimosetso e nngwe. Bapisa mafoko a a mo tsebeng ya semmuso le dintlha tsa gago pele o tsaya kgato e nngwe.";
+  }
+
+  if (lower.includes("bank")) {
+    return "Dintlha tsa banka di ama tsela eo tefo e tsamaisiwang ka yone. Fa o fetotse dintlha, letela gore netefatso e fetse pele o tsaya gore go na le bothata jo bogolo. Se abelane ka dintlha tsa gago tsa banka, OTP, kgotsa tshedimosetso ya sephiri le motho yo o sa mo tshepang.";
+  }
+
+  if (lower.includes("appeal") || lower.includes("reconsideration")) {
+    return "Boipiletso bo dirisiwa fa o batla gore tshwetso e sekasekiwe gape. Bala lebaka la go ganwa pele, kokoanya dintlha tse di tlhokegang, mme o dirise tsela ya semmuso. Se romele kopo e e tshwanang gantsintsi fa tsamaiso e sa go kopa jalo.";
+  }
+
+  if (lower.includes("identity") || lower.includes("verification")) {
+    return "Netefatso ya boitsebiso e thusa go bapisa dintlha tsa gago le direkoto tsa semmuso. Dirisa fela kgokagano kgotsa tsela e e netefaditsweng. Fa netefatso e palelwa, leba ID, nomoro ya mogala, le dintlha tse di mo foromong pele o leka gape.";
+  }
+
+  if (lower.includes("phone") || lower.includes("otp") || lower.includes("sms") || lower.includes("number")) {
+    return "Nomoro ya mogala e botlhokwa ka gonne melaetsa, di-OTP, le ditlhahlobo tsa maemo di ka amana le yone. Fa o e fetola, letela gore tsamaiso e netefatse dintlha pele dilo tsotlhe di bonala sentle. O se ka wa abelana ka OTP le motho ope.";
+  }
+
+  if (lower.includes("apply") || lower.includes("application") || lower.includes("qualify") || lower.includes("document")) {
+    return "Kopo ya thuso e tlhoka dintlha tse di nepagetseng le ditokomane tse di tshegetsang fa di tlhokega. Netefatsa gore mofuta wa thuso o tsamaisana le maemo a gago pele o dira kopo. Fa sengwe se sa tlhaloganngwe, dirisa tsela ya semmuso kgotsa ditsela tsa semmuso tsa SASSA.";
+  }
+
+  return "Tataiso eno e tlhalosa kafa o ka balang tshedimosetso ya thuso ka teng ka tsela e e utlwalang. Leba mafoko a a dirisiwang ke tsamaiso ya semmuso, bapisa dintlha tsa gago, mme o tseye kgato fela fa go tlhokega. Fa o belaela, netefatsa pele ka ditsela tsa semmuso.";
+}
+
+function translateBodyXhosaText(value: string): string {
+  const lower = value.toLowerCase();
+  const monthYear = getXhosaMonthYearText(value);
+  const grantText = getXhosaGrantText(value);
+
+  if (lower.includes("useful next pages")) {
+    return value.replace("Useful next pages:", "Amaphepha alandelayo aluncedo:");
+  }
+
+  if (lower.includes("payment date") || lower.includes("pay date") || lower.includes("payment dates")) {
+    return monthYear
+      ? `Esi sikhokelo sichaza imihla yokuhlawula ye-${grantText} ka-${monthYear}. Funda amagama ephepha ngononophelo, wahlule phakathi komhla oqinisekisiweyo nomhla olindelekileyo, uze usebenzise umthombo osemthethweni xa ufuna isiqinisekiso sokugqibela.`
+      : `Esi sikhokelo sinceda ukuchaza imihla yokuhlawula ye-${grantText}. Funda amagama ephepha ngononophelo, uqinisekise inyanga nohlobo lwesibonelelo, uze ungathathi umyalezo we-intanethi njengowokugqibela de uwuthelekise nomthombo osemthethweni.`;
+  }
+
+  if (lower.includes("pending") || lower.includes("approved") || lower.includes("declined") || lower.includes("status")) {
+    return "Isimo se-SASSA kufuneka sifundwe ngononophelo, kuba igama elinye linokuthetha ukuba isicelo sisahlolwa, samkelwe, saliwe, okanye sidinga enye inkcazelo. Thelekisa amagama akwinkqubo esemthethweni neenkcukacha zakho phambi kokuthatha inyathelo elilandelayo.";
+  }
+
+  if (lower.includes("bank")) {
+    return "Iinkcukacha zebhanki zichaphazela indlela intlawulo ehamba ngayo. Ukuba utshintshe iinkcukacha, linda ukuqinisekiswa kugqitywe phambi kokucinga ukuba kukho ingxaki enkulu. Musa ukwabelana ngeenkcukacha zebhanki, i-OTP, okanye ulwazi lwabucala nomntu ongamthembiyo.";
+  }
+
+  if (lower.includes("appeal") || lower.includes("reconsideration")) {
+    return "Isibheno sisetyenziswa xa ufuna ukuba isigqibo siphinde sihlolwe. Funda isizathu sokwaliwa, qokelela iinkcukacha ezifunekayo, uze usebenzise indlela esemthethweni.";
+  }
+
+  if (lower.includes("identity") || lower.includes("verification")) {
+    return "Ukuqinisekiswa kwesazisi kunceda ukuthelekisa iinkcukacha zakho neerekhodi ezisemthethweni. Sebenzisa kuphela ikhonkco okanye indlela eqinisekisiweyo. Ukuba ukuqinisekiswa kuyasilela, jonga isazisi, inombolo yefowuni, neenkcukacha ezikwifomu phambi kokuzama kwakhona.";
+  }
+
+  if (lower.includes("phone") || lower.includes("otp") || lower.includes("sms") || lower.includes("number")) {
+    return "Inombolo yefowuni ibalulekile kuba imiyalezo, ii-OTP, nokuhlolwa kwesimo kunokunxulumana nayo. Ukuba uyitshintsha, linda inkqubo iqinisekise iinkcukacha phambi kokuba yonke into ibonakale ilungile.";
+  }
+
+  if (lower.includes("apply") || lower.includes("application") || lower.includes("qualify") || lower.includes("document")) {
+    return "Isicelo sesibonelelo sidinga iinkcukacha ezichanekileyo namaxwebhu axhasayo xa kufuneka. Qinisekisa ukuba uhlobo lwesibonelelo luyahambelana nemeko yakho phambi kokufaka isicelo.";
+  }
+
+  return "Esi sikhokelo sichaza indlela yokufunda inkcazelo yesibonelelo ngendlela ecacileyo. Jonga amagama asetyenziswa yinkqubo esemthethweni, thelekisa iinkcukacha zakho, uze uthathe inyathelo kuphela xa kufuneka.";
+}
+
+export function toGeneratedSetswanaText(value: string): string {
+  const exact = TN_EXACT_TEXT[value.trim()];
+  if (exact) return exact;
+
+  const { text, protectedParts } = protectStructuredText(value);
+  const translated = text.length <= 90 && !text.includes("\n")
+    ? translateShortText(text)
+    : translateBodyText(text);
+
+  return restoreStructuredText(translated, protectedParts);
+}
+
+export function toGeneratedXhosaText(value: string): string {
+  const exact = XH_EXACT_TEXT[value.trim()];
+  if (exact) return exact;
+
+  const { text, protectedParts } = protectStructuredText(value);
+  const translated = text.length <= 90 && !text.includes("\n")
+    ? translateShortXhosaText(text)
+    : translateBodyXhosaText(text);
+
+  return restoreStructuredText(translated, protectedParts);
+}
+
+export function toGeneratedSetswanaValue<T>(value: T): T {
+  if (typeof value === "string") {
+    return toGeneratedSetswanaText(value) as T;
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((item) => toGeneratedSetswanaValue(item)) as T;
+  }
+
+  if (typeof value === "function") {
+    return ((...args: unknown[]) => {
+      const result = (value as (...input: unknown[]) => unknown)(...args);
+      return toGeneratedSetswanaValue(result);
+    }) as T;
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, entry]) => [
+        key,
+        key === "value" ? entry : toGeneratedSetswanaValue(entry),
+      ]),
+    ) as T;
+  }
+
+  return value;
+}
+
+export function toGeneratedXhosaValue<T>(value: T): T {
+  if (typeof value === "string") {
+    return toGeneratedXhosaText(value) as T;
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((item) => toGeneratedXhosaValue(item)) as T;
+  }
+
+  if (typeof value === "function") {
+    return ((...args: unknown[]) => {
+      const result = (value as (...input: unknown[]) => unknown)(...args);
+      return toGeneratedXhosaValue(result);
+    }) as T;
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, entry]) => [
+        key,
+        key === "value" ? entry : toGeneratedXhosaValue(entry),
+      ]),
+    ) as T;
+  }
+
+  return value;
+}
+
+export function addSetswanaTranslations<T extends TranslatableGuide>(guide: T): T {
+  const translations =
+    guide.translations && typeof guide.translations === "object" && !Array.isArray(guide.translations)
+      ? guide.translations
+      : {};
+
+  return {
+    ...guide,
+    translations: {
+      ...translations,
+      tn: {
+        title: toGeneratedSetswanaText(guide.title),
+        summary: toGeneratedSetswanaText(guide.summary),
+        sections: guide.sections.map((item) =>
+          section(toGeneratedSetswanaText(item.title), toGeneratedSetswanaText(item.body)),
+        ),
+      },
+      xh: {
+        title: toGeneratedXhosaText(guide.title),
+        summary: toGeneratedXhosaText(guide.summary),
+        sections: guide.sections.map((item) =>
+          section(toGeneratedXhosaText(item.title), toGeneratedXhosaText(item.body)),
+        ),
+      },
+    },
+  };
+}

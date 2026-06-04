@@ -7,6 +7,7 @@ import { PageViewTracker } from "@/components/page-view-tracker";
 import { Card, Section } from "@/components/ui";
 import { listFaqs } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { isLocale } from "@/lib/site";
 
@@ -22,13 +23,25 @@ export async function generateMetadata({
   }
 
   const currentYear = new Date().getUTCFullYear();
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      metaTitle: `SASSA FAQ ${currentYear}: Grants, Payment Dates and Status Check`,
+      metaDescription:
+        "Get quick answers about SASSA grants, payment dates, status checks, eligibility, and official next steps.",
+    },
+    {
+      metaTitle: `Imibuzo Ejwayelekile ye-SASSA ${currentYear}: Izibonelelo, Izinsuku Zokukhokha Nokuhlola Isimo`,
+      metaDescription:
+        "Thola izimpendulo ezisheshayo ngezibonelelo ze-SASSA, izinsuku zokukhokha, ukuhlolwa kwesimo, ukufaneleka, nezinyathelo ezisemthethweni ezilandelayo.",
+    },
+  );
 
   return buildLocalizedMetadata({
     locale,
     path: "/faq",
-    title: `SASSA FAQ ${currentYear}: Grants, Payment Dates and Status Check`,
-    description:
-      "Get quick answers about SASSA grants, payment dates, status checks, eligibility, and official next steps.",
+    title: routeCopy.metaTitle,
+    description: routeCopy.metaDescription,
   });
 }
 
@@ -44,6 +57,27 @@ export default async function FaqPage({
   }
 
   const copy = getCopy(locale);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      breadcrumbFaq: "FAQ",
+      hubPaymentDescription: "Go straight to the payment-date hub if your question is about timing.",
+      hubStatusDescription: "Open the status hub if your question starts with a status message.",
+      hubEligibilityDescription: "Use the checker when you want general guidance about where to start.",
+      hubGuidesDescription: "Read the full guide library for longer problem-solving help.",
+      helpfulNextPagesTitle: "Helpful next pages",
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      breadcrumbFaq: "Imibuzo ejwayelekile",
+      hubPaymentDescription: "Yiya ngqo kuhabhu yezinsuku zokukhokha uma umbuzo wakho uphathelene nesikhathi.",
+      hubStatusDescription: "Vula ihabhu yesimo uma umbuzo wakho uqala ngomlayezo wesimo.",
+      hubEligibilityDescription: "Sebenzisa isihloli uma ufuna isiqondiso esijwayelekile sokuthi uqale kuphi.",
+      hubGuidesDescription: "Funda ilabhulali ephelele yemihlahlandlela ukuze uthole usizo olude lokuxazulula izinkinga.",
+      helpfulNextPagesTitle: "Amakhasi alandelayo awusizo",
+    },
+  );
   const faqs = await listFaqs(locale);
   const faqSchema = {
     "@context": "https://schema.org",
@@ -61,22 +95,22 @@ export default async function FaqPage({
     {
       href: "/payment-dates",
       title: copy.paymentDates,
-      description: "Go straight to the payment-date hub if your question is about timing.",
+      description: routeCopy.hubPaymentDescription,
     },
     {
       href: "/status",
       title: copy.statusHelp,
-      description: "Open the status hub if your question starts with a status message.",
+      description: routeCopy.hubStatusDescription,
     },
     {
       href: "/eligibility-checker",
       title: copy.eligibilityChecker,
-      description: "Use the checker when you want general guidance about where to start.",
+      description: routeCopy.hubEligibilityDescription,
     },
     {
       href: "/guides",
       title: copy.guides,
-      description: "Read the full guide library for longer problem-solving help.",
+      description: routeCopy.hubGuidesDescription,
     },
   ];
 
@@ -85,8 +119,8 @@ export default async function FaqPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "FAQ", path: "/faq" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
+          { label: routeCopy.breadcrumbFaq, path: "/faq" },
         ]}
       />
       <PageViewTracker name="page.viewed" locale={locale} />
@@ -104,7 +138,7 @@ export default async function FaqPage({
           ))}
         </div>
       </Section>
-      <InternalLinkGrid locale={locale} title="Helpful next pages" items={hubLinks} />
+      <InternalLinkGrid locale={locale} title={routeCopy.helpfulNextPagesTitle} items={hubLinks} />
     </>
   );
 }

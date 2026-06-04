@@ -20,6 +20,7 @@ import {
   listFaqs,
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import {
   filterIndexablePaymentPeriods,
@@ -41,12 +42,23 @@ export async function generateMetadata({
   }
 
   const currentYear = new Date().getUTCFullYear();
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      metaTitle: `SASSA Grant Pay Dates ${currentYear} | SRD, R350 and R370 Payment Dates`,
+      metaDescription: `Check SASSA grant pay dates for ${currentYear} by month, including SRD payment dates, R350 and R370 search intent, old age grant pay dates, and other main grant categories.`,
+    },
+    {
+      metaTitle: `Izinsuku Zokukhokha Zezibonelelo ze-SASSA ${currentYear} | Izinsuku Zokukhokha ze-SRD, R350 ne-R370`,
+      metaDescription: `Hlola izinsuku zokukhokha zezibonelelo ze-SASSA zango-${currentYear} ngenyanga, okuhlanganisa izinsuku ze-SRD, ukusesha kwe-R350 ne-R370, izinsuku zesibonelelo sabadala, nezinye izigaba ezinkulu zezibonelelo.`,
+    },
+  );
 
   return buildLocalizedMetadata({
     locale,
     path: "/payment-dates",
-    title: `SASSA Grant Pay Dates ${currentYear} | SRD, R350 and R370 Payment Dates`,
-    description: `Check SASSA grant pay dates for ${currentYear} by month, including SRD payment dates, R350 and R370 search intent, old age grant pay dates, and other main grant categories.`,
+    title: routeCopy.metaTitle,
+    description: routeCopy.metaDescription,
   });
 }
 
@@ -62,6 +74,71 @@ export default async function PaymentDatesPage({
   }
 
   const copy = getCopy(locale);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      breadcrumbPaymentDates: "Payment dates",
+      hubOldAgeTitle: "Check old age grant pay dates",
+      hubOldAgeDescription: (label: string) => `Open ${label} Older Persons Grant payment dates when you need the old age grant pay day first.`,
+      hubSrdTitle: "Check SRD payment dates",
+      hubSrdDescription: (label: string) => `Open ${label} SRD payment dates for Social Relief of Distress and R370 timing.`,
+      hubStatusTitle: "Check status meanings",
+      hubStatusDescription: "Open status meanings when payment timing depends on approved, pending, banking, or reapplication wording.",
+      hubBankingTitle: "Fix banking-related payment delays",
+      hubBankingDescription: "Use the banking guide when payment timing may be delayed by bank details, verification, or a changed payment method.",
+      hubAmountsTitle: "Check grant amounts",
+      hubAmountsDescription: "Open current SASSA grant amounts if you need the amount beside the pay date.",
+      hubDelayTitle: "Why payment is delayed",
+      hubDelayDescription: "Open the delay guide if the date has passed or the wording still does not make sense.",
+      heroTitle: (year: number) => `SASSA grant pay dates ${year}`,
+      heroDescription: "Check SRD payment dates, R370 payment dates, old age grant pay dates, and the monthly schedule for every main grant category.",
+      quickPayoutCalendarsTitle: (label: string) => `Quick Payout Calendars (${label})`,
+      srdDatesTitle: (label: string) => `SASSA SRD Dates (${label})`,
+      grantDatesTitle: (grantName: string, label: string) => `${grantName} (${label})`,
+      srdDatesDescription: "Check SRD R370 status, banking updates, and payment windows.",
+      grantDatesDescription: (grantName: string) => `View official and estimated ${grantName.toLowerCase()} payout schedules.`,
+      upcomingPaymentsTitle: "Upcoming Payments",
+      updatedLabel: "Updated",
+      currentGrantAmountsTitle: "Current grant amounts",
+      standardBaselineText: (year: number) => `Standard baseline ${year} amounts.`,
+      paymentTablesTitle: (year: number) => `${year} Payment Tables`,
+      quickCheckOptionsTitle: "Quick Check Options",
+      faqTitle: "Frequently Asked Questions",
+      popularPaymentRoutesTitle: "Popular payment routes",
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      breadcrumbPaymentDates: "Izinsuku zokukhokha",
+      hubOldAgeTitle: "Hlola izinsuku zokukhokha zesibonelelo sabadala",
+      hubOldAgeDescription: (label: string) => `Vula izinsuku zokukhokha ze-Older Persons Grant zango-${label} uma udinga kuqala usuku lwesibonelelo sabadala.`,
+      hubSrdTitle: "Hlola izinsuku zokukhokha ze-SRD",
+      hubSrdDescription: (label: string) => `Vula izinsuku zokukhokha ze-SRD zango-${label} ze-Social Relief of Distress nesikhathi se-R370.`,
+      hubStatusTitle: "Hlola izincazelo zesimo",
+      hubStatusDescription: "Vula izincazelo zesimo uma isikhathi sokukhokha sincike kumagama athi approved, pending, banking, noma reapplication.",
+      hubBankingTitle: "Lungisa ukubambezeleka kokukhokha okuhlobene nebhange",
+      hubBankingDescription: "Sebenzisa umhlahlandlela wasebhange uma isikhathi sokukhokha singabambezeleka ngenxa yemininingwane yasebhange, ukuqinisekiswa, noma indlela yokukhokha eshintshiwe.",
+      hubAmountsTitle: "Hlola amanani ezibonelelo",
+      hubAmountsDescription: "Vula amanani amanje ezibonelelo ze-SASSA uma udinga inani eduze kosuku lokukhokha.",
+      hubDelayTitle: "Kungani inkokhelo ibambezelekile",
+      hubDelayDescription: "Vula umhlahlandlela wokubambezeleka uma usuku seludlulile noma amagama engakacaci.",
+      heroTitle: (year: number) => `Izinsuku zokukhokha zezibonelelo ze-SASSA ${year}`,
+      heroDescription: "Hlola izinsuku zokukhokha ze-SRD, izinsuku ze-R370, izinsuku zesibonelelo sabadala, nohlelo lwenyanga lwazo zonke izigaba ezinkulu zezibonelelo.",
+      quickPayoutCalendarsTitle: (label: string) => `Amakhalenda asheshayo okukhokha (${label})`,
+      srdDatesTitle: (label: string) => `Izinsuku ze-SASSA SRD (${label})`,
+      grantDatesTitle: (grantName: string, label: string) => `${grantName} (${label})`,
+      srdDatesDescription: "Hlola isimo se-SRD R370, izibuyekezo zasebhange, namawindi okukhokha.",
+      grantDatesDescription: (grantName: string) => `Buka izinhlelo zokukhokha ezisemthethweni nezilinganisiwe ze-${grantName.toLowerCase()}.`,
+      upcomingPaymentsTitle: "Izinkokhelo ezizayo",
+      updatedLabel: "Kubuyekezwe",
+      currentGrantAmountsTitle: "Amanani amanje ezibonelelo",
+      standardBaselineText: (year: number) => `Amanani ayisisekelo ajwayelekile ka-${year}.`,
+      paymentTablesTitle: (year: number) => `Amathebula Okukhokha ${year}`,
+      quickCheckOptionsTitle: "Izindlela zokuhlola ngokushesha",
+      faqTitle: "Imibuzo Evame Ukubuzwa",
+      popularPaymentRoutesTitle: "Izindlela zokukhokha ezidumile",
+    },
+  );
   const [periods, paymentCategories, defaults, latestGuides, faqs] = await Promise.all([
     listPaymentPeriods(locale),
     listPaymentCategories(locale),
@@ -80,33 +157,33 @@ export default async function PaymentDatesPage({
   const hubLinks = [
     {
       href: `/payment-dates/${defaults.year}/${defaults.monthSlug}/older-persons`,
-      title: "Check old age grant pay dates",
-      description: `Open ${defaults.label} Older Persons Grant payment dates when you need the old age grant pay day first.`,
+      title: routeCopy.hubOldAgeTitle,
+      description: routeCopy.hubOldAgeDescription(defaults.label),
     },
     {
       href: `/payment-dates/${defaults.year}/${defaults.monthSlug}/social-relief`,
-      title: "Check SRD payment dates",
-      description: `Open ${defaults.label} SRD payment dates for Social Relief of Distress and R370 timing.`,
+      title: routeCopy.hubSrdTitle,
+      description: routeCopy.hubSrdDescription(defaults.label),
     },
     {
       href: "/status",
-      title: "Check status meanings",
-      description: "Open status meanings when payment timing depends on approved, pending, banking, or reapplication wording.",
+      title: routeCopy.hubStatusTitle,
+      description: routeCopy.hubStatusDescription,
     },
     {
       href: "/guides/how-to-update-banking-details",
-      title: "Fix banking-related payment delays",
-      description: "Use the banking guide when payment timing may be delayed by bank details, verification, or a changed payment method.",
+      title: routeCopy.hubBankingTitle,
+      description: routeCopy.hubBankingDescription,
     },
     {
       href: "/grant-amounts",
-      title: "Check grant amounts",
-      description: "Open current SASSA grant amounts if you need the amount beside the pay date.",
+      title: routeCopy.hubAmountsTitle,
+      description: routeCopy.hubAmountsDescription,
     },
     {
       href: "/guides/why-payment-is-delayed",
-      title: "Why payment is delayed",
-      description: "Open the delay guide if the date has passed or the wording still does not make sense.",
+      title: routeCopy.hubDelayTitle,
+      description: routeCopy.hubDelayDescription,
     },
   ];
 
@@ -117,8 +194,8 @@ export default async function PaymentDatesPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "Payment dates", path: "/payment-dates" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
+          { label: routeCopy.breadcrumbPaymentDates, path: "/payment-dates" },
         ]}
       />
       <PageViewTracker name="page.viewed" locale={locale} />
@@ -127,10 +204,10 @@ export default async function PaymentDatesPage({
       <section className="flex flex-col items-center justify-center space-y-8 rounded-[2rem] bg-surface px-4 py-12 text-center shadow-sm sm:px-6 sm:py-20 lg:py-24">
         <div className="space-y-4">
           <h1 className="text-4xl font-black tracking-tight text-primary sm:text-5xl lg:text-7xl">
-            SASSA grant pay dates {defaults.year}
+            {routeCopy.heroTitle(defaults.year)}
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-8 text-muted sm:text-xl">
-            Check SRD payment dates, R370 payment dates, old age grant pay dates, and the monthly schedule for every main grant category.
+            {routeCopy.heroDescription}
           </p>
         </div>
 
@@ -158,7 +235,7 @@ export default async function PaymentDatesPage({
         </div>
 
         <div className="pt-4">
-           <WhatsAppChannelBanner compact />
+           <WhatsAppChannelBanner compact locale={locale} />
         </div>
       </section>
 
@@ -166,17 +243,17 @@ export default async function PaymentDatesPage({
         {/* ── Contextual Payout Links Grid ── */}
         <section className="space-y-4">
           <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            Quick Payout Calendars ({defaults.label})
+            {routeCopy.quickPayoutCalendarsTitle(defaults.label)}
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {defaults.entries.map((entry) => {
               const isSrd = entry.grantSlug === "social-relief";
               const titleText = isSrd
-                ? `SASSA SRD Dates (${defaults.label})`
-                : `${entry.grantName} (${defaults.label})`;
+                ? routeCopy.srdDatesTitle(defaults.label)
+                : routeCopy.grantDatesTitle(entry.grantName, defaults.label);
               const descText = isSrd
-                ? `Check SRD R370 status, banking updates, and payment windows.`
-                : `View official and estimated ${entry.grantName.toLowerCase()} payout schedules.`;
+                ? routeCopy.srdDatesDescription
+                : routeCopy.grantDatesDescription(entry.grantName);
               return (
                 <Link
                   key={entry.grantSlug}
@@ -198,9 +275,9 @@ export default async function PaymentDatesPage({
         {/* ── 2. Current Month Schedule ── */}
         <section className="space-y-6 rounded-[2rem] border border-border bg-surface p-6 shadow-sm sm:p-8">
           <div className="space-y-2 text-center lg:text-left">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Upcoming Payments</h2>
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{routeCopy.upcomingPaymentsTitle}</h2>
             <p className="text-muted">{defaults.label}</p>
-            <p className="text-sm text-muted">Updated {lastUpdated}</p>
+            <p className="text-sm text-muted">{routeCopy.updatedLabel} {lastUpdated}</p>
           </div>
           <PaymentScheduleTable
             entries={defaults.entries}
@@ -215,15 +292,15 @@ export default async function PaymentDatesPage({
         {/* ── 3. Current Grant Amounts ── */}
         <section className="space-y-6 rounded-[2rem] border border-border bg-surface p-6 shadow-sm sm:p-8">
           <div className="space-y-2 text-center lg:text-left">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Current grant amounts</h2>
-            <p className="text-muted">Standard baseline {currentYear} amounts.</p>
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{routeCopy.currentGrantAmountsTitle}</h2>
+            <p className="text-muted">{routeCopy.standardBaselineText(currentYear)}</p>
           </div>
-          <GrantAmountTable />
+          <GrantAmountTable locale={locale} />
         </section>
       </div>
 
       {annualCategories.length > 0 ? (
-        <Section title={`${currentYear} Payment Tables`}>
+        <Section title={routeCopy.paymentTablesTitle(currentYear)}>
           <div className="mb-8 flex flex-wrap justify-center gap-3">
              {annualCategories.map((category) => (
                 <a
@@ -251,8 +328,8 @@ export default async function PaymentDatesPage({
       ) : null}
 
       <div className="space-y-8 lg:space-y-12">
-        <Section title="Quick Check Options">
-          <QuickCheckOptions />
+        <Section title={routeCopy.quickCheckOptionsTitle}>
+          <QuickCheckOptions locale={locale} />
         </Section>
 
         <Section title={copy.archiveTitle}>
@@ -287,7 +364,7 @@ export default async function PaymentDatesPage({
 
       {/* ── FAQ Section ── */}
       {paymentFaqs.length > 0 ? (
-        <Section title="Frequently Asked Questions">
+        <Section title={routeCopy.faqTitle}>
           <FaqSchema faqs={paymentFaqs} />
           <div className="space-y-4">
             {paymentFaqs.map((faq) => (
@@ -309,7 +386,7 @@ export default async function PaymentDatesPage({
         </Section>
       ) : null}
 
-      <InternalLinkGrid locale={locale} title="Popular payment routes" items={hubLinks} />
+      <InternalLinkGrid locale={locale} title={routeCopy.popularPaymentRoutesTitle} items={hubLinks} />
     </div>
   );
 }

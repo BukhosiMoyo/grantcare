@@ -68,6 +68,71 @@ const QUESTIONS = [
   },
 ] as const;
 
+const QUESTION_TRANSLATIONS = {
+  zu: [
+    {
+      label: "Iminyaka",
+      options: ["Ngaphansi kuka-18", "18 kuya ku-59", "60 noma ngaphezulu"],
+    },
+    {
+      label: "Ingabe unakekela ingane?",
+      options: ["Yebo", "Cha"],
+    },
+    {
+      label: "Ingabe ingane isekunakekelweni kwabazali bokutholwa?",
+      options: ["Yebo", "Cha"],
+    },
+    {
+      label: "Ingabe udinga ukwesekwa kokukhubazeka kwakho?",
+      options: ["Yebo", "Cha"],
+    },
+    {
+      label: "Ingabe unakekela ingane enokukhubazeka okukhulu?",
+      options: ["Yebo", "Cha"],
+    },
+    {
+      label: "Ingabe okwamanje unemali encane noma awunayo imali engenayo?",
+      options: ["Yebo", "Cha"],
+    },
+  ],
+} as const;
+
+const LOCAL_COPY: Partial<Record<Locale, {
+  back: string;
+  stepOf: (step: number, total: number) => string;
+}>> = {
+  zu: {
+    back: "Emuva",
+    stepOf: (step, total) => `Isinyathelo ${step} kwezingu-${total}`,
+  },
+};
+
+function getQuestionCopy(locale: Locale, step: number) {
+  const question = QUESTIONS[step];
+  const translation = QUESTION_TRANSLATIONS[locale as keyof typeof QUESTION_TRANSLATIONS]?.[step];
+
+  if (!translation) {
+    return question;
+  }
+
+  return {
+    ...question,
+    label: translation.label,
+    options: question.options.map((option, index) => ({
+      ...option,
+      label: translation.options[index] ?? option.label,
+    })),
+  };
+}
+
+function getLocalCopy(locale: Locale) {
+  return {
+    back: "Back",
+    stepOf: (step: number, total: number) => `Step ${step} of ${total}`,
+    ...(LOCAL_COPY[locale] ?? {}),
+  };
+}
+
 function findGrant(answers: Answers) {
   if (answers.ageBand === "older") {
     return ELIGIBILITY_RESULT_SLUGS.older;
@@ -104,6 +169,7 @@ export function EligibilityChecker({
   grants: PublicGrantType[];
 }) {
   const copy = getCopy(locale);
+  const localCopy = getLocalCopy(locale);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const isComplete = step >= QUESTIONS.length;
@@ -165,13 +231,13 @@ export function EligibilityChecker({
     );
   }
 
-  const question = QUESTIONS[step];
+  const question = getQuestionCopy(locale, step);
 
   return (
     <div className="surface-card space-y-5 rounded-[var(--radius-card)] p-5 sm:p-6">
       <div className="space-y-2">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
-          Step {step + 1} of {QUESTIONS.length}
+          {localCopy.stepOf(step + 1, QUESTIONS.length)}
         </p>
         <h3 className="text-2xl font-semibold tracking-tight">{question.label}</h3>
       </div>
@@ -196,7 +262,7 @@ export function EligibilityChecker({
           onClick={() => setStep((current) => current - 1)}
           className="focus-ring tap-target rounded-full border border-border bg-surface px-5 text-sm font-semibold"
         >
-          Back
+          {localCopy.back}
         </button>
       ) : null}
     </div>

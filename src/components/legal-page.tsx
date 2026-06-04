@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Card, Section } from "@/components/ui";
-import { LEGAL_LINKS } from "@/lib/official-resources";
+import { getLegalLinks } from "@/lib/official-resources";
 import { buildLocalePath, type Locale } from "@/lib/site";
 
 export function LegalPage({
@@ -19,7 +19,15 @@ export function LegalPage({
   sections: Array<{ title: string; paragraphs: string[] }>;
   title: string;
 }) {
-  const relatedLinks = LEGAL_LINKS.filter((link) => link.path !== currentPath);
+  const relatedLinks = getLegalLinks(locale).filter((link) => link.path !== currentPath);
+  const relatedPagesTitle =
+    locale === "zu"
+      ? "Amakhasi ahlobene"
+      : locale === "tn"
+        ? "Ditsebe tse di amanang"
+        : locale === "xh"
+          ? "Amaphepha anxulumene"
+          : "Related pages";
 
   return (
     <div className="space-y-8">
@@ -45,7 +53,7 @@ export function LegalPage({
         </Section>
       ))}
 
-      <Section title="Related pages">
+      <Section title={relatedPagesTitle}>
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {relatedLinks.map((link) => (
             <Link key={link.path} href={buildLocalePath(locale, link.path)}>

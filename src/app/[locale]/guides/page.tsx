@@ -9,6 +9,7 @@ import { Card, Section } from "@/components/ui";
 import { listGuides } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { filterIndexableGuides } from "@/lib/guide-seo";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { buildLocalePath, isLocale } from "@/lib/site";
 
@@ -23,12 +24,25 @@ export async function generateMetadata({
     return {};
   }
 
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      metaTitle: "SASSA Guides for Status, Appeals and Payments",
+      metaDescription:
+        "Browse SASSA guides for status check problems, payment delays, appeals, banking details, documents, and SRD questions.",
+    },
+    {
+      metaTitle: "Imihlahlandlela ye-SASSA Yesimo, Izikhalazo Nezinkokhelo",
+      metaDescription:
+        "Phequlula imihlahlandlela ye-SASSA yezinkinga zokuhlola isimo, ukubambezeleka kokukhokha, izikhalazo, imininingwane yasebhange, imibhalo, nemibuzo ye-SRD.",
+    },
+  );
+
   return buildLocalizedMetadata({
     locale,
     path: "/guides",
-    title: "SASSA Guides for Status, Appeals and Payments",
-    description:
-      "Browse SASSA guides for status check problems, payment delays, appeals, banking details, documents, and SRD questions.",
+    title: routeCopy.metaTitle,
+    description: routeCopy.metaDescription,
   });
 }
 
@@ -44,32 +58,55 @@ export default async function GuidesPage({
   }
 
   const copy = getCopy(locale);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      breadcrumbGuides: "Guides",
+      hubPaymentDescription: "Check the current month first, then use guides when you need more detail.",
+      hubStatusDescription: "Open the status library when your question starts with a specific status message.",
+      hubEligibilityDescription: "Use the checker for general direction before you read grant-specific guides.",
+      hubNewsDescription: "Open the news archive when you need the latest announcement coverage first.",
+      hubFaqDescription: "Read the short answers first if you only need the basics.",
+      moreWaysTitle: "More ways to explore",
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      breadcrumbGuides: "Imihlahlandlela",
+      hubPaymentDescription: "Hlola inyanga yamanje kuqala, bese usebenzisa imihlahlandlela uma udinga imininingwane eyengeziwe.",
+      hubStatusDescription: "Vula ilabhulali yesimo uma umbuzo wakho uqala ngomlayezo othile wesimo.",
+      hubEligibilityDescription: "Sebenzisa isihloli ukuze uthole isiqondiso esijwayelekile ngaphambi kokufunda imihlahlandlela yezibonelelo ezithile.",
+      hubNewsDescription: "Vula ingobo yezindaba uma udinga kuqala izindaba zakamuva zezaziso.",
+      hubFaqDescription: "Funda izimpendulo ezimfishane kuqala uma udinga okuyisisekelo kuphela.",
+      moreWaysTitle: "Ezinye izindlela zokuhlola",
+    },
+  );
   const guides = filterIndexableGuides(await listGuides(locale));
   const hubLinks = [
     {
       href: "/payment-dates",
       title: copy.paymentDates,
-      description: "Check the current month first, then use guides when you need more detail.",
+      description: routeCopy.hubPaymentDescription,
     },
     {
       href: "/status",
       title: copy.statusHelp,
-      description: "Open the status library when your question starts with a specific status message.",
+      description: routeCopy.hubStatusDescription,
     },
     {
       href: "/eligibility-checker",
       title: copy.eligibilityChecker,
-      description: "Use the checker for general direction before you read grant-specific guides.",
+      description: routeCopy.hubEligibilityDescription,
     },
     {
       href: "/news",
       title: copy.news,
-      description: "Open the news archive when you need the latest announcement coverage first.",
+      description: routeCopy.hubNewsDescription,
     },
     {
       href: "/faq",
       title: copy.faq,
-      description: "Read the short answers first if you only need the basics.",
+      description: routeCopy.hubFaqDescription,
     },
   ];
 
@@ -78,8 +115,8 @@ export default async function GuidesPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "Guides", path: "/guides" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
+          { label: routeCopy.breadcrumbGuides, path: "/guides" },
         ]}
       />
       <PageViewTracker name="page.viewed" locale={locale} />
@@ -95,7 +132,7 @@ export default async function GuidesPage({
           ))}
         </div>
       </Section>
-      <InternalLinkGrid locale={locale} title="More ways to explore" items={hubLinks} />
+      <InternalLinkGrid locale={locale} title={routeCopy.moreWaysTitle} items={hubLinks} />
     </div>
   );
 }

@@ -1,23 +1,63 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import type { Session } from "next-auth";
 import { auth } from "@/auth";
 import { db } from "@/lib/prisma";
 import { getGscConfig, queryGscData, type GscPerformanceSummary } from "@/lib/google-gsc";
+import { DEFAULT_LOCALE, isLocale, type Locale } from "@/lib/site";
+
+type GscActionCopy = {
+  invalidJson: string;
+  missingKeys: string;
+  notConnected: string;
+  propertyUrlRequired: string;
+  queryFailed: string;
+  unauthorized: string;
+};
+
+const GSC_ACTION_COPY: Partial<Record<Locale, GscActionCopy>> = {
+  en: {
+    invalidJson: "Invalid Service Account JSON credentials (JSON parse error).",
+    missingKeys: "Service Account JSON must contain client_email and private_key keys.",
+    notConnected: "Google Search Console is not connected yet.",
+    propertyUrlRequired: "Property URL is required.",
+    queryFailed: "Failed to query Google Search Console API.",
+    unauthorized: "Unauthorized",
+  },
+  zu: {
+    invalidJson: "Imininingwane ye-Service Account JSON ayivumelekile (iphutha lokufunda i-JSON).",
+    missingKeys: "I-Service Account JSON kufanele ibe nama-key athi client_email kanye ne-private_key.",
+    notConnected: "I-Google Search Console ayikaxhunyaniswa.",
+    propertyUrlRequired: "I-Property URL iyadingeka.",
+    queryFailed: "Kwehlulekile ukubuza i-Google Search Console API.",
+    unauthorized: "Awugunyaziwe",
+  },
+};
+
+function getSessionLocale(session: Session | null): Locale {
+  const locale = session?.user?.preferredLocale;
+  return typeof locale === "string" && isLocale(locale) ? locale : DEFAULT_LOCALE;
+}
+
+function getGscActionCopy(locale: Locale) {
+  return GSC_ACTION_COPY[locale] ?? (GSC_ACTION_COPY.en as GscActionCopy);
+}
 
 /**
  * Saves Google Search Console Connection Credentials
  */
 export async function saveGscCredentials(propertyUrl: string, serviceAccountKeyJson: string) {
   const session = await auth();
+  const copy = getGscActionCopy(getSessionLocale(session));
   if (session?.user?.role !== "admin") {
-    throw new Error("Unauthorized");
+    throw new Error(copy.unauthorized);
   }
 
   // Validate propertyUrl
   const trimmedUrl = propertyUrl.trim();
   if (!trimmedUrl) {
-    throw new Error("Property URL is required.");
+    throw new Error(copy.propertyUrlRequired);
   }
 
   // Validate JSON key
@@ -25,11 +65,11 @@ export async function saveGscCredentials(propertyUrl: string, serviceAccountKeyJ
   try {
     parsedKey = JSON.parse(serviceAccountKeyJson.trim()) as Record<string, unknown>;
   } catch {
-    throw new Error("Invalid Service Account JSON credentials (JSON parse error).");
+    throw new Error(copy.invalidJson);
   }
 
   if (!parsedKey || typeof parsedKey !== "object" || !parsedKey.client_email || !parsedKey.private_key) {
-    throw new Error("Service Account JSON must contain client_email and private_key keys.");
+    throw new Error(copy.missingKeys);
   }
 
   // Save to database
@@ -55,8 +95,9 @@ export async function saveGscCredentials(propertyUrl: string, serviceAccountKeyJ
  */
 export async function disconnectGsc() {
   const session = await auth();
+  const copy = getGscActionCopy(getSessionLocale(session));
   if (session?.user?.role !== "admin") {
-    throw new Error("Unauthorized");
+    throw new Error(copy.unauthorized);
   }
 
   await db.siteSetting.deleteMany({
@@ -81,8 +122,9 @@ export async function getGscDashboardReport(days: number = 7): Promise<{
   report?: GscPerformanceSummary;
 }> {
   const session = await auth();
+  const copy = getGscActionCopy(getSessionLocale(session));
   if (session?.user?.role !== "admin") {
-    throw new Error("Unauthorized");
+    throw new Error(copy.unauthorized);
   }
 
   const config = await getGscConfig();
@@ -90,7 +132,7 @@ export async function getGscDashboardReport(days: number = 7): Promise<{
     return {
       success: false,
       config: { propertyUrl: config.propertyUrl, isConnected: false },
-      error: "Google Search Console is not connected yet.",
+      error: copy.notConnected,
     };
   }
 
@@ -107,7 +149,7 @@ export async function getGscDashboardReport(days: number = 7): Promise<{
     return {
       success: false,
       config: { propertyUrl: config.propertyUrl, isConnected: true },
-      error: err.message || "Failed to query Google Search Console API.",
+      error: err.message || copy.queryFailed,
     };
   }
 }

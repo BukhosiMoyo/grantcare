@@ -6,7 +6,10 @@ import { isProductionServer } from "@/lib/server-env";
 import { SUPPORT_EMAIL, type Locale, buildLocalePath } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
 import { getUserByEmail } from "@/lib/users";
-import { PasswordResetEmail } from "@/emails/password-reset-email";
+import {
+  PasswordResetEmail,
+  getPasswordResetEmailSubject,
+} from "@/emails/password-reset-email";
 
 const PASSWORD_RESET_TTL_MS = 1000 * 60 * 60 * 2;
 
@@ -62,8 +65,9 @@ export async function createPasswordResetRequest(input: {
         from: fromEmail,
         replyTo: SUPPORT_EMAIL,
         to: user.email,
-        subject: "GrantCare password reset",
+        subject: getPasswordResetEmailSubject(input.locale),
         react: PasswordResetEmail({
+          locale: input.locale,
           resetUrl: toAbsoluteUrl(resetPath),
         }),
       },

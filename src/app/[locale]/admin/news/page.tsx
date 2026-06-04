@@ -20,6 +20,39 @@ import { LOCALES, isLocale, type Locale } from "@/lib/site";
 import { isDatabaseConfigured } from "@/lib/server-env";
 import { getTranslationText } from "@/lib/translation-utils";
 
+const ZU_NEWS_COPY: Record<string, string> = {
+  News: "Izindaba",
+  "Database not configured.": "Idathabheyisi ayilungisiwe.",
+  "News article saved.": "Udaba lwezindaba lulondoloziwe.",
+  "News article deleted.": "Udaba lwezindaba lususiwe.",
+  "Check the news form and try again.": "Hlola ifomu lezindaba bese uzama futhi.",
+  "Edit news article": "Hlela udaba lwezindaba",
+  "New news article": "Udaba lwezindaba olusha",
+  Slug: "I-slug",
+  Title: "Isihloko",
+  "Sort order": "Ukuhlelwa",
+  Status: "Isimo",
+  Draft: "Okusalungiswa",
+  Published: "Kushicilelwe",
+  draft: "okusalungiswa",
+  published: "kushicilelwe",
+  Summary: "Isifinyezo",
+  Sections: "Izigaba",
+  "Source URLs": "Ama-URL emithombo",
+  Featured: "Okugqanyisiwe",
+  Translations: "Ukuhumusha",
+  Saving: "Kuyalondolozwa",
+  "Save news article": "Londoloza udaba lwezindaba",
+  "All news articles": "Zonke izindaba",
+  Edit: "Hlela",
+  "Delete this news article?": "Susa lolu daba lwezindaba?",
+  Delete: "Susa",
+};
+
+function newsCopy(locale: Locale, text: string) {
+  return locale === "zu" ? (ZU_NEWS_COPY[text] ?? text) : text;
+}
+
 function isMissingNewsArticleTableError(error: unknown) {
   return (
     error instanceof Prisma.PrismaClientKnownRequestError &&
@@ -44,9 +77,9 @@ export default async function AdminNewsPage({
 
   if (!isDatabaseConfigured()) {
     return (
-      <Section eyebrow="Admin" title="News">
+      <Section eyebrow="Admin" title={newsCopy(locale, "News")}>
         <Card>
-          <p className="text-sm text-muted">Database not configured.</p>
+          <p className="text-sm text-muted">{newsCopy(locale, "Database not configured.")}</p>
         </Card>
       </Section>
     );
@@ -67,43 +100,43 @@ export default async function AdminNewsPage({
 
   return (
     <div className="space-y-8">
-      <Section eyebrow="Admin" title="News">
+      <Section eyebrow="Admin" title={newsCopy(locale, "News")}>
         <div className="space-y-4">
           {resolvedSearchParams.message ? (
-            <StatusMessage>{resolvedSearchParams.message}</StatusMessage>
+            <StatusMessage>{newsCopy(locale, resolvedSearchParams.message)}</StatusMessage>
           ) : null}
           {resolvedSearchParams.error ? (
-            <StatusMessage tone="error">{resolvedSearchParams.error}</StatusMessage>
+            <StatusMessage tone="error">{newsCopy(locale, resolvedSearchParams.error)}</StatusMessage>
           ) : null}
         </div>
       </Section>
 
-      <Section title={selectedArticle ? "Edit news article" : "New news article"}>
+      <Section title={newsCopy(locale, selectedArticle ? "Edit news article" : "New news article")}>
         <Card className="space-y-5">
           <form action={upsertNewsArticleAction} className="space-y-5">
             <input type="hidden" name="locale" value={locale} />
             <input type="hidden" name="id" value={selectedArticle?.id ?? ""} />
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Slug">
+              <Field label={newsCopy(locale, "Slug")}>
                 <Input name="slug" defaultValue={selectedArticle?.slug ?? ""} required />
               </Field>
-              <Field label="Title">
+              <Field label={newsCopy(locale, "Title")}>
                 <Input name="title" defaultValue={selectedArticle?.title ?? ""} required />
               </Field>
-              <Field label="Sort order">
+              <Field label={newsCopy(locale, "Sort order")}>
                 <Input name="sortOrder" type="number" min="0" defaultValue={selectedArticle?.sortOrder ?? 0} required />
               </Field>
-              <Field label="Status">
+              <Field label={newsCopy(locale, "Status")}>
                 <Select name="status" defaultValue={selectedArticle?.status ?? "draft"}>
-                  <option value="draft">Draft</option>
-                  <option value="published">Published</option>
+                  <option value="draft">{newsCopy(locale, "Draft")}</option>
+                  <option value="published">{newsCopy(locale, "Published")}</option>
                 </Select>
               </Field>
             </div>
-            <Field label="Summary">
+            <Field label={newsCopy(locale, "Summary")}>
               <Textarea name="summary" defaultValue={selectedArticle?.summary ?? ""} required />
             </Field>
-            <Field label="Sections">
+            <Field label={newsCopy(locale, "Sections")}>
               <Textarea
                 name="sections"
                 defaultValue={stringifySectionsInput(
@@ -113,7 +146,7 @@ export default async function AdminNewsPage({
                 )}
               />
             </Field>
-            <Field label="Source URLs">
+            <Field label={newsCopy(locale, "Source URLs")}>
               <Textarea
                 name="sourceUrls"
                 defaultValue={
@@ -124,19 +157,19 @@ export default async function AdminNewsPage({
               />
             </Field>
             <div className="grid gap-3">
-              <CheckboxRow name="featured" label="Featured" defaultChecked={selectedArticle?.featured ?? false} />
+              <CheckboxRow name="featured" label={newsCopy(locale, "Featured")} defaultChecked={selectedArticle?.featured ?? false} />
             </div>
             <div className="space-y-4 rounded-3xl border border-border bg-surface-muted p-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">Translations</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{newsCopy(locale, "Translations")}</p>
               {LOCALES.filter((entry) => entry.code !== "en").map((entry) => (
                 <div key={entry.code} className="grid gap-4 sm:grid-cols-2">
-                  <Field label={`Title (${entry.label})`}>
+                  <Field label={`${newsCopy(locale, "Title")} (${entry.label})`}>
                     <Input
                       name={`translation_title_${entry.code}`}
                       defaultValue={getTranslationText(selectedArticle?.translations, entry.code as Locale, "title")}
                     />
                   </Field>
-                  <Field label={`Summary (${entry.label})`}>
+                  <Field label={`${newsCopy(locale, "Summary")} (${entry.label})`}>
                     <Textarea
                       name={`translation_summary_${entry.code}`}
                       defaultValue={getTranslationText(selectedArticle?.translations, entry.code as Locale, "summary")}
@@ -145,19 +178,19 @@ export default async function AdminNewsPage({
                 </div>
               ))}
             </div>
-            <SubmitButton pendingLabel="Saving">Save news article</SubmitButton>
+            <SubmitButton pendingLabel={newsCopy(locale, "Saving")}>{newsCopy(locale, "Save news article")}</SubmitButton>
           </form>
         </Card>
       </Section>
 
-      <Section title="All news articles">
+      <Section title={newsCopy(locale, "All news articles")}>
         <div className="grid gap-4">
           {articles.map((article) => (
             <Card key={article.id} className="space-y-4">
               <div className="space-y-1">
                 <h3 className="text-xl font-semibold">{article.title}</h3>
                 <p className="text-sm text-muted">
-                  {article.slug} · {article.status}
+                  {article.slug} · {newsCopy(locale, article.status)}
                   {article.publishedAt ? ` · ${article.publishedAt.toISOString().slice(0, 10)}` : ""}
                 </p>
               </div>
@@ -166,13 +199,13 @@ export default async function AdminNewsPage({
                   href={`?edit=${article.id}`}
                   className="focus-ring tap-target inline-flex items-center rounded-full border border-border bg-surface px-4 text-sm font-semibold"
                 >
-                  Edit
+                  {newsCopy(locale, "Edit")}
                 </a>
                 <form action={deleteNewsArticleAction}>
                   <input type="hidden" name="locale" value={locale} />
                   <input type="hidden" name="id" value={article.id} />
-                  <ConfirmSubmitButton confirmText="Delete this news article?">
-                    Delete
+                  <ConfirmSubmitButton confirmText={newsCopy(locale, "Delete this news article?")}>
+                    {newsCopy(locale, "Delete")}
                   </ConfirmSubmitButton>
                 </form>
               </div>

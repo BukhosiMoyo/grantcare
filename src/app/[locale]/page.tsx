@@ -26,10 +26,9 @@ import {
   listStatusMeanings,
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
-import { getHomepageContent } from "@/lib/homepage-content";
+import { getHomepageContent, getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
-import { getGrantAmountDetails } from "@/lib/official-resources";
-import { REPORTED_CHECK_METHODS } from "@/lib/official-resources";
+import { getGrantAmountDetails, REPORTED_CHECK_METHODS } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { formatDateLabel } from "@/lib/utils";
 
@@ -78,6 +77,62 @@ export default async function HomePage({
   ]);
 
   const homepage = getHomepageContent(locale, defaults.month, defaults.year);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      actionPaymentText: "Check the month, the grant type, and the payment state in one place.",
+      actionStatusText: "Understand what common status wording usually means before you guess.",
+      actionEligibilityText: "Use simple guidance to narrow the right grant direction before applying.",
+      actionRemindersText: "Save a preferred grant, language, and reminder choice on your dashboard.",
+      latestNewsTitle: "Latest news",
+      stepLabel: "Step",
+      quickCheckOptionsTitle: "Quick check options",
+      currentGrantAmountsTitle: "Current grant amounts",
+      openArrow: "Open →",
+      officialContactsTitle: "Official contacts",
+      checkMethodTranslations: {},
+    },
+    {
+      actionPaymentText: "Hlola inyanga, uhlobo lwesibonelelo, nesimo sokukhokha endaweni eyodwa.",
+      actionStatusText: "Qonda ukuthi amagama ajwayelekile esimo avame ukusho ukuthini ngaphambi kokuqagela.",
+      actionEligibilityText: "Sebenzisa isiqondiso esilula ukuze unciphise indlela yesibonelelo efanele ngaphambi kokufaka isicelo.",
+      actionRemindersText: "Londoloza isibonelelo osithandayo, ulimi, nokukhetha kwesikhumbuzi kudeshibhodi yakho.",
+      latestNewsTitle: "Izindaba zakamuva",
+      stepLabel: "Isinyathelo",
+      quickCheckOptionsTitle: "Izindlela zokuhlola ngokushesha",
+      currentGrantAmountsTitle: "Amanani amanje ezibonelelo",
+      openArrow: "Vula →",
+      officialContactsTitle: "Oxhumana nabo abasemthethweni",
+      checkMethodTranslations: {
+        "USSD code": {
+          title: "Ikhodi ye-USSD",
+          detail: "Okunye: *120*69277# no-*134*7737#",
+        },
+        WhatsApp: {
+          detail: "Thumela umlayezo wesimo noma wokubuyekeza",
+        },
+        "Call centre": {
+          title: "Isikhungo sezingcingo",
+          detail: "Inombolo yosizo evamile ye-SASSA",
+        },
+        "SRD portal": {
+          title: "Iphothali ye-SRD",
+          detail: "Isimo, izikhalazo, nezibuyekezo",
+        },
+      },
+    },
+  );
+  const reportedCheckMethods = REPORTED_CHECK_METHODS.map((method) => {
+    const translation = (
+      routeCopy.checkMethodTranslations as Record<string, { title?: string; detail?: string }>
+    )[method.title] ?? {};
+
+    return {
+      ...method,
+      title: translation.title ?? method.title,
+      detail: translation.detail ?? method.detail,
+    };
+  });
   const [nextPeriod, yearPeriods] = await Promise.all([
     getNextPaymentPeriod(locale, defaults),
     listPaymentPeriodsForYear(locale, defaults.year),
@@ -86,25 +141,25 @@ export default async function HomePage({
   const actionCards = [
     {
       title: copy.paymentDates,
-      text: "Check the month, the grant type, and the payment state in one place.",
+      text: routeCopy.actionPaymentText,
       href: buildLocalePath(locale, "/payment-dates"),
       icon: CalendarIcon,
     },
     {
       title: copy.statusHelp,
-      text: "Understand what common status wording usually means before you guess.",
+      text: routeCopy.actionStatusText,
       href: buildLocalePath(locale, "/status"),
       icon: StatusIcon,
     },
     {
       title: copy.eligibilityChecker,
-      text: "Use simple guidance to narrow the right grant direction before applying.",
+      text: routeCopy.actionEligibilityText,
       href: buildLocalePath(locale, "/eligibility-checker"),
       icon: CompassIcon,
     },
     {
       title: copy.reminders,
-      text: "Save a preferred grant, language, and reminder choice on your dashboard.",
+      text: routeCopy.actionRemindersText,
       href: buildLocalePath(locale, "/dashboard"),
       icon: BellIcon,
     },
@@ -137,7 +192,7 @@ export default async function HomePage({
               {copy.statusHelp}
             </ButtonLink>
           </div>
-          <WhatsAppChannelBanner compact />
+          <WhatsAppChannelBanner compact locale={locale} />
         </div>
         <p className="max-w-3xl text-[16px] leading-[1.7] text-muted">{homepage.heroDisclaimer}</p>
       </section>
@@ -162,9 +217,9 @@ export default async function HomePage({
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:gap-4">
           {Object.values(defaults.grants).map((entry) => {
-            const amountDetails = getGrantAmountDetails(entry.grantSlug);
+            const amountDetails = getGrantAmountDetails(entry.grantSlug, locale);
             const payDayText = getPaymentSummaryDayText(copy, {
-              date: entry.date ? formatDateLabel(entry.date) : null,
+              date: entry.date ? formatDateLabel(entry.date, locale) : null,
               grantSlug: entry.grantSlug,
               month: defaults.month,
               state: entry.state,
@@ -230,7 +285,7 @@ export default async function HomePage({
       ) : null}
 
       {latestNews.length > 0 ? (
-        <Section eyebrow={copy.news} title="Latest news">
+        <Section eyebrow={copy.news} title={routeCopy.latestNewsTitle}>
           <div className="grid gap-4 md:grid-cols-3">
             {latestNews.map((article) => (
               <Link key={article.slug} href={buildLocalePath(locale, `/news/${article.slug}`)}>
@@ -292,7 +347,7 @@ export default async function HomePage({
         <div className="grid gap-4 md:grid-cols-3">
           {homeSteps.map((step, index) => (
             <Card key={step} className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">Step {index + 1}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{routeCopy.stepLabel} {index + 1}</p>
               <p className="text-base text-foreground">{step}</p>
             </Card>
           ))}
@@ -300,14 +355,14 @@ export default async function HomePage({
       </Section>
 
       {/* ── 6. Quick Check Options ── */}
-      <Section eyebrow={copy.paymentDates} title="Quick check options">
-        <QuickCheckOptions />
+      <Section eyebrow={copy.paymentDates} title={routeCopy.quickCheckOptionsTitle}>
+        <QuickCheckOptions locale={locale} />
       </Section>
 
       {/* ── 7. Current Grant Amounts ── */}
-      <Section eyebrow={copy.paymentDates} title="Current grant amounts">
+      <Section eyebrow={copy.paymentDates} title={routeCopy.currentGrantAmountsTitle}>
         <Card>
-          <GrantAmountTable />
+          <GrantAmountTable locale={locale} />
         </Card>
       </Section>
 
@@ -315,7 +370,7 @@ export default async function HomePage({
       <Section eyebrow={copy.statusHelp} title={homepage.waysToCheckTitle}>
         <p className="max-w-3xl text-base leading-8 text-muted">{homepage.waysToCheckBody}</p>
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {REPORTED_CHECK_METHODS.map((method) => (
+          {reportedCheckMethods.map((method) => (
             <Card key={method.title} className="space-y-3">
               <h3 className="text-lg font-semibold tracking-tight">{method.title}</h3>
               <p className="text-xl font-semibold text-primary">{method.value}</p>
@@ -327,7 +382,7 @@ export default async function HomePage({
                   rel="noreferrer"
                   className="inline-block text-sm font-semibold text-primary hover:underline"
                 >
-                  Open →
+                  {routeCopy.openArrow}
                 </a>
               ) : null}
             </Card>
@@ -371,9 +426,9 @@ export default async function HomePage({
             </div>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:gap-4">
               {Object.values(nextPeriod.grants).map((entry) => {
-                  const amountDetails = getGrantAmountDetails(entry.grantSlug);
+                  const amountDetails = getGrantAmountDetails(entry.grantSlug, locale);
                   const payDayText = getPaymentSummaryDayText(copy, {
-                    date: entry.date ? formatDateLabel(entry.date) : null,
+                    date: entry.date ? formatDateLabel(entry.date, locale) : null,
                     grantSlug: entry.grantSlug,
                     month: nextPeriod.month,
                     state: entry.state,
@@ -441,8 +496,8 @@ export default async function HomePage({
       </Section>
 
       {/* ── 12. Official Contacts ── */}
-      <Section eyebrow={copy.officialLinks} title="Official contacts">
-        <OfficialContactGrid />
+      <Section eyebrow={copy.officialLinks} title={routeCopy.officialContactsTitle}>
+        <OfficialContactGrid locale={locale} />
       </Section>
 
       {/* ── 13. Latest Guides ── */}

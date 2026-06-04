@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { LegalPage } from "@/components/legal-page";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { isLocale } from "@/lib/site";
 
@@ -16,12 +17,25 @@ export async function generateMetadata({
     return {};
   }
 
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      metaTitle: "Terms and Conditions",
+      metaDescription:
+        "Read the terms for using GrantCare as an independent information and reminder product.",
+    },
+    {
+      metaTitle: "Imigomo Nemibandela",
+      metaDescription:
+        "Funda imigomo yokusebenzisa i-GrantCare njengomkhiqizo ozimele wolwazi nezikhumbuzi.",
+    },
+  );
+
   return buildLocalizedMetadata({
     locale,
     path: "/terms",
-    title: "Terms and Conditions",
-    description:
-      "Read the terms for using GrantCare as an independent information and reminder product.",
+    title: routeCopy.metaTitle,
+    description: routeCopy.metaDescription,
   });
 }
 
@@ -36,15 +50,15 @@ export default async function TermsPage({
     notFound();
   }
 
-  return (
-    <LegalPage
-      currentPath="/terms"
-      eyebrow="Terms"
-      intro={[
+  const content = getLocalizedRouteCopy(
+    locale,
+    {
+      eyebrow: "Terms",
+      title: "Terms",
+      intro: [
         "These terms cover use of GrantCare as an independent information and reminder product.",
-      ]}
-      locale={locale}
-      sections={[
+      ],
+      sections: [
         {
           title: "Use of the site",
           paragraphs: [
@@ -66,8 +80,48 @@ export default async function TermsPage({
             "GrantCare may limit or remove access if the service is abused or used to mislead others.",
           ],
         },
-      ]}
-      title="Terms"
+      ],
+    },
+    {
+      eyebrow: "Imigomo",
+      title: "Imigomo",
+      intro: [
+        "Le migomo imayelana nokusebenzisa i-GrantCare njengomkhiqizo ozimele wolwazi nezikhumbuzi.",
+      ],
+      sections: [
+        {
+          title: "Ukusebenzisa isayithi",
+          paragraphs: [
+            "I-GrantCare ingasetshenziswa ukufunda isiqondiso, ukuqhathanisa izinsuku zokukhokha, ukuqonda amagama avamile esimo, nokuphatha izikhumbuzi noma izintandokazi ezigciniwe.",
+            "Abasebenzisi kufanele bagcine izenzo ezisemthethweni ezinhlelweni zikahulumeni ezisemthethweni.",
+          ],
+        },
+        {
+          title: "Imikhawulo yokuqukethwe",
+          paragraphs: [
+            "I-GrantCare ihlose ukugcina ulwazi luwusizo futhi lusesikhathini, kodwa izinqumo nezibuyekezo ezisemthethweni zihlala eziteshini zikahulumeni.",
+            "Abasebenzisi kufanele baqinisekise izenzo ezisemthethweni, iminqamulajuqu, nemiphumela yokugcina ngezindlela ezisemthethweni.",
+          ],
+        },
+        {
+          title: "Ukusebenzisa i-akhawunti",
+          paragraphs: [
+            "Abasebenzisi kufanele bagcine imininingwane yokufinyelela ku-akhawunti ivikelekile futhi basebenzise umkhiqizo ngokusemthethweni.",
+            "I-GrantCare ingakhawulela noma isuse ukufinyelela uma isevisi isetshenziswa kabi noma ukukhohlisa abanye.",
+          ],
+        },
+      ],
+    },
+  );
+
+  return (
+    <LegalPage
+      currentPath="/terms"
+      eyebrow={content.eyebrow}
+      intro={content.intro}
+      locale={locale}
+      sections={content.sections}
+      title={content.title}
     />
   );
 }

@@ -1,27 +1,30 @@
 "use client";
 
 import { useState } from "react";
+import { isLocale, type Locale } from "@/lib/site";
+import { getSassaAppealCopy } from "../../copy";
 
 export function UnlockButton({ generationId, locale }: { generationId: string; locale: string }) {
   const [isLoading, setIsLoading] = useState(false);
+  const copy = getSassaAppealCopy(isLocale(locale) ? (locale as Locale) : "en");
 
   const handleCheckout = async () => {
     setIsLoading(true);
     try {
       const res = await fetch("/api/tools/sassa-appeal/checkout", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "x-grantcare-locale": locale },
         body: JSON.stringify({ generationId, locale }),
       });
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert(data.error || "Checkout failed. Please try again.");
+        alert(data.error || copy.checkoutFailed);
       }
     } catch (err) {
       console.error(err);
-      alert("Something went wrong. Please try again.");
+      alert(copy.genericError);
     }
     setIsLoading(false);
   };
@@ -35,10 +38,10 @@ export function UnlockButton({ generationId, locale }: { generationId: string; l
       {isLoading ? (
         <span className="flex items-center gap-2">
           <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-          Processing…
+          {copy.processing}
         </span>
       ) : (
-        "Unlock Now — R19"
+        copy.unlock
       )}
     </button>
   );

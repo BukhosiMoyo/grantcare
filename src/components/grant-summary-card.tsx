@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { GrantAmountDisplay } from "@/components/grant-amount-display";
 import { Card } from "@/components/ui";
 import type { GrantAmountDetail } from "@/lib/official-resources";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type PaymentSummaryState = "expected" | "pending" | "portal-only";
@@ -16,8 +17,10 @@ type PaymentSummaryCopy = {
 type GrantSummaryCardProps = {
   amountDetails: readonly GrantAmountDetail[] | null;
   amountLabel: string;
+  amountPendingText?: string;
   className?: string;
   footer?: ReactNode;
+  locale?: Locale;
   payDayLabel: string;
   payDayText: string;
   statusText: string;
@@ -44,6 +47,7 @@ export function getPaymentSummaryDayText(
   input: {
     date: string | null;
     grantSlug?: string;
+    locale?: Locale;
     month?: number;
     state: PaymentSummaryState;
     year?: number;
@@ -54,7 +58,7 @@ export function getPaymentSummaryDayText(
   }
 
   if (input.grantSlug === "social-relief" && input.month && input.year) {
-    return getSrdPaymentWindowText(input.year, input.month);
+    return getSrdPaymentWindowText(input.year, input.month, input.locale);
   }
 
   if (input.state === "pending") {
@@ -64,8 +68,32 @@ export function getPaymentSummaryDayText(
   return copy.paymentPortalOnly;
 }
 
-export function getSrdPaymentWindowText(year: number, month: number) {
-  const monthLabel = new Intl.DateTimeFormat("en-ZA", {
+export function getSrdPaymentWindowText(
+  year: number,
+  month: number,
+  locale: Locale = DEFAULT_LOCALE,
+) {
+  if (locale === "xh") {
+    const months = [
+      "Januwari",
+      "Februwari",
+      "Matshi",
+      "Epreli",
+      "Meyi",
+      "Juni",
+      "Julayi",
+      "Agasti",
+      "Septemba",
+      "Oktobha",
+      "Novemba",
+      "Disemba",
+    ];
+
+    return `24-31 ${months[Math.max(0, Math.min(month - 1, months.length - 1))]} ${year}`;
+  }
+
+  const dateLocale = locale === "zu" ? "zu-ZA" : locale === "tn" ? "tn-ZA" : "en-ZA";
+  const monthLabel = new Intl.DateTimeFormat(dateLocale, {
     month: "long",
     year: "numeric",
   }).format(new Date(Date.UTC(year, month - 1, 1)));
@@ -76,8 +104,10 @@ export function getSrdPaymentWindowText(year: number, month: number) {
 export function GrantSummaryCard({
   amountDetails,
   amountLabel,
+  amountPendingText,
   className,
   footer,
+  locale = DEFAULT_LOCALE,
   payDayLabel,
   payDayText,
   statusText,
@@ -105,7 +135,9 @@ export function GrantSummaryCard({
           {amountDetails ? (
             <GrantAmountDisplay details={amountDetails} variant="summary" className="mt-3" />
           ) : (
-            <p className="mt-3 text-lg font-semibold text-primary">Amount pending</p>
+            <p className="mt-3 text-lg font-semibold text-primary">
+              {amountPendingText ?? (locale === "zu" ? "Imali isalindile" : locale === "tn" ? "Madi a sa ntse a emetswe" : locale === "xh" ? "Imali isalindile" : "Amount pending")}
+            </p>
           )}
         </div>
       </div>

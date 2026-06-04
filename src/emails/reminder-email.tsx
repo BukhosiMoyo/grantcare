@@ -14,7 +14,7 @@ import type { ReminderTrigger } from "@prisma/client";
 
 import type { Locale } from "@/lib/site";
 
-const COPY: Record<
+export const REMINDER_EMAIL_COPY: Record<
   Locale,
   {
     preview: string;
@@ -97,7 +97,7 @@ const COPY: Record<
 };
 
 function getMessage(locale: Locale, trigger: ReminderTrigger) {
-  const copy = COPY[locale];
+  const copy = REMINDER_EMAIL_COPY[locale];
 
   if (trigger === "on_publish") {
     return copy.published;
@@ -111,7 +111,7 @@ function getMessage(locale: Locale, trigger: ReminderTrigger) {
 }
 
 export function getReminderSubject(locale: Locale, grantName: string) {
-  return `${COPY[locale].subjectPrefix}: ${grantName}`;
+  return `${REMINDER_EMAIL_COPY[locale].subjectPrefix}: ${grantName}`;
 }
 
 export function ReminderEmail({
@@ -135,7 +135,7 @@ export function ReminderEmail({
   trigger: ReminderTrigger;
   unsubscribeUrl: string;
 }) {
-  const copy = COPY[locale];
+  const copy = REMINDER_EMAIL_COPY[locale];
 
   return (
     <Html>

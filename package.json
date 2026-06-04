@@ -18,7 +18,10 @@
     "db:seed": "prisma db seed",
     "content:publish:guide": "node --import tsx scripts/publish-guide.ts",
     "content:publish:news": "node --import tsx scripts/publish-news.ts",
-    "content:sync:dates": "node --import tsx scripts/sync-payment-dates.ts"
+    "content:sync:dates": "node --import tsx scripts/sync-payment-dates.ts",
+    "translations:audit:zu": "node --import tsx scripts/audit-translation-coverage.ts --locale=zu",
+    "translations:audit:xh": "node --import tsx scripts/audit-translation-coverage.ts --locale=xh",
+    "translations:audit:tn": "node --import tsx scripts/audit-translation-coverage.ts --locale=tn"
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.53",

@@ -9,6 +9,7 @@ import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { Card, Section } from "@/components/ui";
 import { listPublicGrantTypes, listRelatedGuides } from "@/lib/content";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { getGrantAmountDetails } from "@/lib/official-resources";
 import { getGrantSeoDisplayName } from "@/lib/seo-aliases";
@@ -26,12 +27,25 @@ export async function generateMetadata({
     return {};
   }
 
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      metaTitle: "SASSA Grant Amounts — Current Amounts and Increase Updates",
+      metaDescription:
+        "Check current SASSA grant amounts in South Africa. Compare Older Persons, Disability, Child Support, Foster Child, Care Dependency, Grant-in-Aid, and SRD amounts with official source links and increase guidance.",
+    },
+    {
+      metaTitle: "Amanani Ezibonelelo ze-SASSA — Amanani Amanje Nezibuyekezo Zokunyuswa",
+      metaDescription:
+        "Hlola amanani amanje ezibonelelo ze-SASSA eNingizimu Afrika. Qhathanisa amanani e-Older Persons, Disability, Child Support, Foster Child, Care Dependency, Grant-in-Aid, ne-SRD nezixhumanisi zemithombo esemthethweni nesiqondiso sokunyuswa.",
+    },
+  );
+
   return buildLocalizedMetadata({
     locale,
     path: "/grant-amounts",
-    title: "SASSA Grant Amounts — Current Amounts and Increase Updates",
-    description:
-      "Check current SASSA grant amounts in South Africa. Compare Older Persons, Disability, Child Support, Foster Child, Care Dependency, Grant-in-Aid, and SRD amounts with official source links and increase guidance.",
+    title: routeCopy.metaTitle,
+    description: routeCopy.metaDescription,
   });
 }
 
@@ -46,6 +60,53 @@ export default async function GrantAmountsPage({
     notFound();
   }
 
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      breadcrumbGrantAmounts: "Grant amounts",
+      itemListName: "SASSA Grant Amounts",
+      hubGrantTypesTitle: "Grant types",
+      hubGrantTypesDescription: "Open the grant library to compare eligibility, documents, and the right grant page for each amount.",
+      hubPaymentDatesTitle: "Payment dates",
+      hubPaymentDatesDescription: "Open payment dates after you identify the amount and grant type you need to follow.",
+      hubOldAgeTitle: "Old age grant",
+      hubOldAgeDescription: "Open the Older Persons Grant page for old age grant checks, payment links, and related increase guidance.",
+      hubSrdTitle: "SRD grant",
+      hubSrdDescription: "Open the SRD page for Social Relief of Distress and R370 guidance alongside the current amount.",
+      hubClaimTitle: "Claim checker",
+      hubClaimDescription: "Open the checker if you want to test whether a grant, increase, or payment story sounds real.",
+      eyebrow: "Grant amounts",
+      pageTitle: "SASSA grant amounts",
+      intro: "Check current amounts, then open the matching grant page or related guide if you need more detail.",
+      currentGrantAmountsTitle: "Current grant amounts",
+      amountsByGrantTypeTitle: "Amounts by grant type",
+      relatedGuidesTitle: "Related guides",
+      moreAmountHelpTitle: "More amount help",
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      breadcrumbGrantAmounts: "Amanani ezibonelelo",
+      itemListName: "Amanani Ezibonelelo ze-SASSA",
+      hubGrantTypesTitle: "Izinhlobo zezibonelelo",
+      hubGrantTypesDescription: "Vula ilabhulali yezibonelelo ukuze uqhathanise ukufaneleka, imibhalo, nekhasi lesibonelelo elifanele ngenani ngalinye.",
+      hubPaymentDatesTitle: "Izinsuku zokukhokha",
+      hubPaymentDatesDescription: "Vula izinsuku zokukhokha ngemva kokuthola inani nohlobo lwesibonelelo okudingeka ululandele.",
+      hubOldAgeTitle: "Isibonelelo sabadala",
+      hubOldAgeDescription: "Vula ikhasi le-Older Persons Grant ukuze ubone ukuhlola kwesibonelelo sabadala, izixhumanisi zokukhokha, nesiqondiso sokunyuswa esihlobene.",
+      hubSrdTitle: "Isibonelelo se-SRD",
+      hubSrdDescription: "Vula ikhasi le-SRD ukuze uthole isiqondiso se-Social Relief of Distress ne-R370 kanye nenani lamanje.",
+      hubClaimTitle: "Isihloli sezimangalo",
+      hubClaimDescription: "Vula isihloli uma ufuna ukuhlola ukuthi indaba yesibonelelo, ukunyuswa, noma inkokhelo izwakala iyiqiniso yini.",
+      eyebrow: "Amanani ezibonelelo",
+      pageTitle: "Amanani ezibonelelo ze-SASSA",
+      intro: "Hlola amanani amanje, bese uvula ikhasi lesibonelelo elihambisanayo noma umhlahlandlela ohlobene uma udinga imininingwane eyengeziwe.",
+      currentGrantAmountsTitle: "Amanani amanje ezibonelelo",
+      amountsByGrantTypeTitle: "Amanani ngohlobo lwesibonelelo",
+      relatedGuidesTitle: "Imihlahlandlela ehambisanayo",
+      moreAmountHelpTitle: "Olunye usizo ngamanani",
+    },
+  );
   const [grants, relatedGuides] = await Promise.all([
     listPublicGrantTypes(locale),
     listRelatedGuides(
@@ -60,12 +121,12 @@ export default async function GrantAmountsPage({
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "SASSA Grant Amounts",
+    name: routeCopy.itemListName,
     numberOfItems: grants.length,
     itemListElement: grants.map((grant, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: getGrantSeoDisplayName(grant),
+      name: getGrantSeoDisplayName(grant, locale),
       url: new URL(buildLocalePath(locale, `/grants/${grant.slug}`), siteUrl).toString(),
     })),
   };
@@ -73,28 +134,28 @@ export default async function GrantAmountsPage({
   const hubLinks = [
     {
       href: "/grants",
-      title: "Grant types",
-      description: "Open the grant library to compare eligibility, documents, and the right grant page for each amount.",
+      title: routeCopy.hubGrantTypesTitle,
+      description: routeCopy.hubGrantTypesDescription,
     },
     {
       href: "/payment-dates",
-      title: "Payment dates",
-      description: "Open payment dates after you identify the amount and grant type you need to follow.",
+      title: routeCopy.hubPaymentDatesTitle,
+      description: routeCopy.hubPaymentDatesDescription,
     },
     {
       href: "/grants/older-persons",
-      title: "Old age grant",
-      description: "Open the Older Persons Grant page for old age grant checks, payment links, and related increase guidance.",
+      title: routeCopy.hubOldAgeTitle,
+      description: routeCopy.hubOldAgeDescription,
     },
     {
       href: "/grants/social-relief",
-      title: "SRD grant",
-      description: "Open the SRD page for Social Relief of Distress and R370 guidance alongside the current amount.",
+      title: routeCopy.hubSrdTitle,
+      description: routeCopy.hubSrdDescription,
     },
     {
       href: "/claim-checker",
-      title: "Claim checker",
-      description: "Open the checker if you want to test whether a grant, increase, or payment story sounds real.",
+      title: routeCopy.hubClaimTitle,
+      description: routeCopy.hubClaimDescription,
     },
   ];
 
@@ -103,8 +164,8 @@ export default async function GrantAmountsPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "Grant amounts", path: "/grant-amounts" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
+          { label: routeCopy.breadcrumbGrantAmounts, path: "/grant-amounts" },
         ]}
       />
       <script
@@ -113,29 +174,29 @@ export default async function GrantAmountsPage({
       />
       <PageViewTracker name="page.viewed" locale={locale} />
 
-      <Section eyebrow="Grant amounts" title="SASSA grant amounts">
+      <Section eyebrow={routeCopy.eyebrow} title={routeCopy.pageTitle}>
         <Card className="space-y-3">
           <p className="text-base text-muted">
-            Check current amounts, then open the matching grant page or related guide if you need more detail.
+            {routeCopy.intro}
           </p>
         </Card>
       </Section>
 
-      <Section title="Current grant amounts">
+      <Section title={routeCopy.currentGrantAmountsTitle}>
         <Card>
-          <GrantAmountTable />
+          <GrantAmountTable locale={locale} />
         </Card>
       </Section>
 
-      <Section title="Amounts by grant type">
+      <Section title={routeCopy.amountsByGrantTypeTitle}>
         <div className="grid gap-4 md:grid-cols-2">
           {grants.map((grant) => {
-            const details = getGrantAmountDetails(grant.slug);
+            const details = getGrantAmountDetails(grant.slug, locale);
 
             return (
               <Link key={grant.slug} href={buildLocalePath(locale, `/grants/${grant.slug}`)}>
                 <Card className="space-y-3">
-                  <h3 className="text-xl font-semibold">{getGrantSeoDisplayName(grant)}</h3>
+                  <h3 className="text-xl font-semibold">{getGrantSeoDisplayName(grant, locale)}</h3>
                   {details ? <GrantAmountDisplay details={details} variant="summary" /> : null}
                   <p className="text-sm text-muted">{grant.summary}</p>
                 </Card>
@@ -145,7 +206,7 @@ export default async function GrantAmountsPage({
         </div>
       </Section>
 
-      <Section title="Related guides">
+      <Section title={routeCopy.relatedGuidesTitle}>
         <div className="grid gap-4 md:grid-cols-2">
           {relatedGuides.map((guide) => (
             <Link key={guide.slug} href={buildLocalePath(locale, `/guides/${guide.slug}`)}>
@@ -158,7 +219,7 @@ export default async function GrantAmountsPage({
         </div>
       </Section>
 
-      <InternalLinkGrid locale={locale} title="More amount help" items={hubLinks} />
+      <InternalLinkGrid locale={locale} title={routeCopy.moreAmountHelpTitle} items={hubLinks} />
     </div>
   );
 }

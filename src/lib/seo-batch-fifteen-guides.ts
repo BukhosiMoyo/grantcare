@@ -1,3 +1,5 @@
+import { addSetswanaTranslations } from "./generated-guide-translations";
+
 const section = (title: string, body: string) => ({ title, body });
 const faq = (question: string, answer: string) =>
   section(`FAQ: ${question}`, answer);
@@ -471,7 +473,7 @@ const disabilityLate2026Guides = disabilityLate2026Months.map((month, index) =>
   }),
 );
 
-export const SEO_BATCH_FIFTEEN_GUIDES = [
+const SEO_BATCH_FIFTEEN_GUIDES_SOURCE = [
   yearBridgeGuide(324),
   yearOverviewGuide(2025, 325),
   ...archiveMonthGuides,
@@ -500,3 +502,1534 @@ export const SEO_BATCH_FIFTEEN_GUIDES = [
   ...olderEarly2026Guides,
   ...disabilityLate2026Guides,
 ];
+
+type GuideTranslation = {
+  title: string;
+  summary: string;
+  sections: Array<{ title: string; body: string }>;
+};
+
+const ZU_TRANSLATIONS: Record<string, GuideTranslation> = {
+  "payment-dates-2025-to-2026": {
+    "title": "Izinsuku zokukhokha zika-2025 kuya ku-2026",
+    "summary": "Umhlahlandlela weminyaka yonke osiza abasebenzisi ukuqhathanisa ukusesha kwedethi yokukhokha yango-2025 kanye no-2026 ngaphandle kokuhlanganisa izinyanga ezifakwe kungobo yomlando nezamanje noma ezizayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa umhlahlandlela wedethi yokukhokha yango-2025 ukuya ku-2026 ukuze uhlukanise izinyanga ezifakwe kungobo yomlando kusukela ekuhleleni kwamanje. Umkhuba ophephe kakhulu ukuhlola unyaka kuqala, emva kwalokho inyanga, bese kuba uhlobo lwesibonelelo sikahulumeni kanye nenothi lokukhokha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha yeminyaka yonke kuvame ukwenzeka lapho abasebenzisi beqhathanisa isithombe-skrini esidala neshejuli entsha noma bezama ukubona ukuthi idethi eyabiwe isasebenza yini onyakeni olandelayo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Idethi ingabukeka ikholeka ngoba nje igama lenyanga liyafana. Ngaphandle konyaka nenothi lokukhokha, abasebenzisi bangathembela kalula isikhathi esingesomjikelezo ongalungile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola unyaka ngaphambi kokuthi uyethembe inyanga.\n2. Suka onyakeni uye ekhasini elifanele lenyanga.\n3. Qondanisa usuku nesigaba esifanele sesibonelelo.\n4. Funda inothi lokukhokha bese usho kahle.\n5. Sebenzisa imizila yamanje esemthethweni uma udinga isiqinisekiso sokugcina esibukhoma esikhundleni sokuqhathanisa ingobo yomlando."
+      },
+      {
+        "title": "Unyaka uyingxenye yedethi yokukhokha, hhayi imininingwane eyengeziwe",
+        "body": "Ukudideka kweminyaka kuvame ukuqala lapho abasebenzisi bephatha inyanga njengengxenye ebalulekile kuphela yeshejuli. Unyaka akuyona imininingwane encane. Iyingxenye yencazelo yedethi ngokwayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi baqhathanise umjikelezo wokukhokha ofakwe kungobo yomlando nowamanje, kodwa isiqinisekiso sokukhokha bukhoma esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukusuka ekusesheni okubanzi kuka-2025-kuya ku-2026 baye enyangeni ngqo, amakhasi esibonelelo, kanye nezimo zokukhokha enza idethi ifundeke kalula ngokuphepha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/payment-dates-2025\n• /guides/payment-dates-2026\n• /guides/how-to-know-if-a-payment-date-is-still-current\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwenkokhelo ka-2025-to-2026 kudala ukudideka?",
+        "body": "Ngoba abasebenzisi bavame ukuqhathanisa izithombe-skrini ezindala namashejuli amasha futhi bashaye indiva umehluko wonyaka."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole kuqala ekusesheni konyaka?",
+        "body": "Hlola unyaka kuqala, bese kuba yinyanga kanye nohlobo lwesibonelelo."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma usuku okwabiwe lubukeka lujwayelekile kodwa unyaka ungacacile?",
+        "body": "Kuthathe njengokungaqinisekile uze uqinisekise unyaka kanye nephepha lenkokhelo ekhasini elifanele."
+      }
+    ]
+  },
+  "payment-dates-2025": {
+    "title": "Izinsuku zokukhokha zango-2025",
+    "summary": "Umhlahlandlela wokubuka konke wonyaka wokusesha kwedethi yokukhokha yango-2025, ebhalelwe ukusiza abasebenzisi ukuthi baqinisekise izinyanga zengobo yomlando ngokuphephile futhi bagweme ukuhlanganisa imijikelezo yokukhokha emidala nokuhlela kwamanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zango-2025, sebenzisa ikhasi lonyaka njengomhlahlandlela wokulondoloza umlando. Kuwusizo kakhulu uma udinga ukuqhathanisa izinyanga ezindala, uqinisekise idethi eyabiwe, noma uhlole ukuthi isithombe-skrini sokukhokha sisetshenziswa kabusha ngaphandle komongo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lwedethi yokukhokha yango-2025 ngokuvamile luvela kubasebenzisi ababheke emuva kunokuya phambili. Lokho kwenza ikhasi lisebenziseke ikakhulukazi ekuhloleni ingobo yomlando, ukuqhathanisa komlando, nokulawula amahemuhemu esikhundleni sokuhlela bukhoma."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Unyaka omdala usengazungeza kakhulu kuzithombe-skrini, ama-PDF, nokuthunyelwe komphakathi. Ngaphandle komhlahlandlela ocacile wesitayela sengobo yomlando, abasebenzisi bangadida kalula ishejuli yangaphambilini neyamanje."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lonyaka ka-2025.\n2. Hambisa enyangeni ethile oyidingayo.\n3. Qondanisa isikhathi nesigaba esifanele sesibonelelo.\n4. Funda inothi nesimo sokukhokha, hhayi usuku kuphela.\n5. Sebenzisa amakhasi amanje noma imizila esemthethweni uma udinga ukuqinisekiswa kosuku lwamanje esikhundleni somongo wengobo yomlando."
+      },
+      {
+        "title": "Ingobo yomlando yonyaka kufanele yehlise ukudideka, hhayi ukuyidala",
+        "body": "Ikhasi eliqinile lokubuka konke lango-2025 lisiza abasebenzisi ukuthi baqinisekise ukuthi yini esebenze ezinyangeni zangaphambilini ngaphandle kokuvumela lezo zinsuku ezindala zingene ekuhlelweni kwenyanga yamanje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele kwenziwe iphutha nengobo yomlando esemthethweni. Isiza abasebenzisi ukuthi bafunde imijikelezo yokukhokha emidala ngokuphepha kuyilapho begcina ukuqinisekiswa okusemthethweni kuhlukene."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi baqhathanise imijikelezo yokukhokha efakwe kungobo yomlando neyamanje, baqonde ukuthi kungani amadethi amadala eqhubeka nokuzungeza, futhi basuke ekusesheni kohlolojikelele baye kumhlahlandlela wenyanga oqondile abawudingayo."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/payment-dates-2025-to-2026\n• /payment-dates/2025/january\n• /guides/how-to-track-payment-dates-without-rumours\n• /guides/how-to-know-if-a-payment-date-is-still-current\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zika-2025?",
+        "body": "Ngokuvamile ukuze uhlole izithombe-skrini ezindala, uqhathanise imijikelezo yokukhokha, noma uqinisekise ukuthi idethi ephinde yasetshenziswa isidala yini."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zika-2025 ezinhlelweni zamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwasebenzisa kuphela njengomongo wengobo yomlando ngaphandle kwalapho uhlola isikhathi sokukhokha esidala."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole ngaphakathi kwekhasi lonyaka?",
+        "body": "Hlola inyanga ethile, isigaba sesibonelelo, kanye nenothi lokukhokha ndawonye."
+      }
+    ]
+  },
+  "payment-dates-january-2025": {
+    "title": "Izinsuku zokukhokha zikaJanuwari 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando kaJanuwari 2025 osiza abasebenzisi ukuthi baqinisekise amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zikaJanuwari 2025, phatha ikhasi njengomhlahlandlela womlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lukaJanuwari ngokuvamile luvela kubasebenzisi abahlola iwindi lokuqala lokukhokha lonyaka noma abazama ukuqinisekisa ukuthi isithombe esikopishiwe sisasebenza yini. Ikhasi likaJanuwari 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenza kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha likaJanuwari 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha likaJanuwari 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando sikaJanuwari 2025 ngokucacile, kodwa isiqinisekiso senkokhelo samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa uJanuwari 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/january\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zikaJanuwari 2025 ukuhlela kwamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zikaJanuwari 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-february-2025": {
+    "title": "Izinsuku zokukhokha zikaFebhuwari 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando kaFebruwari 2025 esiza abasebenzisi ukuqinisekisa amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zikaFebhuwari 2025, phatha leli khasi njengomhlahlandlela womlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha kaFebhuwari kuvame ukuhlala eduze nokuhlelwa kokuphela kwenyanga, ngakho abasebenzisi badinga usizo lokuhlukanisa isikhathi esisha nokuthunyelwe okugaywe kabusha. Ikhasi langoFebruwari 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenza kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha likaFebruwari 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha langoFebhuwari 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando kaFebruwari 2025 ngokucacile, kodwa isiqinisekiso sokukhokha samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa uFebruwari 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/february\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Ingabe kufanele ngisebenzise izinsuku zikaFebruwari 2025 ukuhlela kwamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zika-February 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-march-2025": {
+    "title": "Izinsuku zokukhokha zikaMashi 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando ka-March 2025 esiza abasebenzisi ukuthi baqinisekise amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zangoMashi 2025, phatha ikhasi njengomhlahlandlela womlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lwedethi yokukhokha kaMashi ngokuvamile luvela kubasebenzisi abaqhathanisa inyanga endala nomjikelezo omusha noma ukuhlola ukuthi idethi okwabelwana ngayo isasebenza yini. Ikhasi langoMashi 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenza kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha lika-March 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha langoMashi 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando ka-March 2025 ngokucacile, kodwa isiqinisekiso senkokhelo samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa uMashi 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/march\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zika-March 2025 ukuhlela kwamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zikaMashi 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-april-2025": {
+    "title": "Izinsuku zokukhokha zika-Ephreli 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando ka-April 2025 osiza abasebenzisi ukuthi baqinisekise amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zango-April 2025, phatha ikhasi njengomhlahlandlela womlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha ka-April kuvame ukukhuphuka mayelana nokuhlelwa kwesabelomali, okwenza amalebula acacile ezwe lokukhokha abaluleke kakhulu kunezinsuku ezikopishiwe. Ikhasi lango-April 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenza kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha lika-April 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha lango-Ephreli 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando sika-April 2025 ngokucacile, kodwa isiqinisekiso senkokhelo samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa u-April 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/april\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zika-April 2025 ukuhlela kwamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zika-April 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-may-2025": {
+    "title": "Izinsuku zokukhokha zikaMeyi 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando ka-Meyi 2025 esiza abasebenzisi ukuqinisekisa amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zangoMeyi 2025, phatha ikhasi njengegayidi yomlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha kwangathi kuvame ukuphuthuma ngoba abasebenzisi bafuna isiqiniseko ngaphambi kokuba inyanga izinze, ngisho noma isikhathi esithile singase silindelwe kunokuba sibe esokugcina. Ikhasi langoMeyi 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenza kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha likaMeyi 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha langoMeyi 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando kaMeyi 2025 ngokucacile, kodwa isiqinisekiso senkokhelo samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa uMeyi 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/may\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zikaMeyi 2025 ezinhlelweni zamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zangoMeyi 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-june-2025": {
+    "title": "Izinsuku zokukhokha zikaJuni 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando kaJuni 2025 esiza abasebenzisi ukuthi baqinisekise amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zikaJuni 2025, phatha ikhasi njengegayidi yomlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lwedethi yokukhokha yangoJuni ngokuvamile luhlala esikhathini sokuhlela esimaphakathi nonyaka lapho amasheke wengobo yomlando kanye nokuhlelwa kwamanje kungahlanganiswa kalula. Ikhasi langoJuni 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenza kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha likaJuni 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha langoJuni 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando sikaJuni 2025 ngokucacile, kodwa isiqinisekiso senkokhelo samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa uJuni 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/june\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zikaJuni 2025 ukuhlela kwamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zikaJuni 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-july-2025": {
+    "title": "Izinsuku zokukhokha zikaJulayi 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando kaJulayi 2025 esiza abasebenzisi ukuthi baqinisekise amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zikaJulayi 2025, phatha ikhasi njengegayidi yomlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lwedethi yokukhokha yangoJulayi ngokuvamile luvela kubasebenzisi abaqhathanisa umjikelezo wokukhokha wasebusika owodwa nomunye, okwenza amalebula enyanga nonyaka abaluleke kakhulu. Ikhasi langoJulayi 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenze kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha likaJulayi 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha langoJulayi 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando kaJulayi 2025 ngokucacile, kodwa isiqinisekiso senkokhelo samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa uJulayi 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/july\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zikaJulayi 2025 ezinhlelweni zamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zikaJulayi 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-august-2025": {
+    "title": "Izinsuku zokukhokha zika-Agasti 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando ka-Agasti 2025 osiza abasebenzisi ukuthi baqinisekise amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zika-Agasti 2025, phatha leli khasi njengomhlahlandlela womlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha ka-Agasti kuvame ukuqala ekuhloleni okuphindaphindiwe namahemuhemu, ngakho amalebula acacile asiza abasebenzisi ukuthi bahlale bezolile. Ikhasi lango-Agasti 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenza kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha lika-Agasti 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha lango-Agasti 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando ka-Agasti 2025 ngokucacile, kodwa isiqinisekiso senkokhelo samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa u-Agasti 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/august\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zika-Agasti 2025 ukuhlela kwamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zika-Agasti 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-september-2025": {
+    "title": "Izinsuku zokukhokha zikaSepthemba 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando ka-Septhemba 2025 osiza abasebenzisi ukuthi baqinisekise amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zikaSepthemba 2025, phatha leli khasi njengomhlahlandlela womlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lwedethi yokukhokha yangoSepthemba ngokuvamile luvela kubasebenzisi abazama ukuqinisekisa isikhathi ngaphambi kokuthi umjikelezo wenyanga entsha uxazululwe ngokugcwele. Ikhasi langoSepthemba 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenza kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha lika-September 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha langoSepthemba 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando sango-Septhemba 2025 ngokucacile, kodwa isiqinisekiso senkokhelo samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa uSepthemba 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/september\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zikaSepthemba 2025 ukuhlela kwamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zikaSepthemba 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-october-2025": {
+    "title": "Izinsuku zokukhokha zika-Okthoba 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando ka-Okthoba 2025 osiza abasebenzisi ukuthi baqinisekise amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zango-Okthoba 2025, phatha ikhasi njengomhlahlandlela womlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha yango-Okthoba kuvame ukudala ukudideka lapho izithombe-skrini ezindala ziqhubeka nokuzungeza kanye nolwazi olusha olushicilelwe. Ikhasi lango-Okthoba 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenza kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha lika-Okthoba 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha lango-Okthoba 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando ka-Okthoba 2025 ngokucacile, kodwa isiqinisekiso senkokhelo samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa u-Okthoba 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/october\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zika-Okthoba 2025 ezinhlelweni zamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zika-Okthoba 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-november-2025": {
+    "title": "Izinsuku zokukhokha zikaNovemba 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando kaNovemba 2025 osiza abasebenzisi ukuthi baqinisekise amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zangoNovemba 2025, phatha ikhasi njengegayidi yomlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha yangoNovemba kuvame ukuba nengcindezi yokuphela konyaka, okwenza kube lula ukuthi izimangalo zedethi ekopishiwe zisabalale ngaphandle komongo owanele. Ikhasi langoNovemba 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenza kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha likanovember 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha langoNovemba 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando kaNovemba 2025 ngokucacile, kodwa isiqinisekiso senkokhelo samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa uNovemba 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/november\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zikaNovemba 2025 ukuhlela kwamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zikaNovemba 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-december-2025": {
+    "title": "Izinsuku zokukhokha zikaDisemba 2025",
+    "summary": "Umhlahlandlela wedethi yokukhokha wesitayela sengobo yomlando ka-December 2025 osiza abasebenzisi ukuthi baqinisekise amadethi amadala ngokuphephile futhi bagweme ukuphatha amakhasi enyanga endala njengamashejuli asemthethweni amanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zikaDisemba 2025, phatha ikhasi njengegayidi yomlando kunesithembiso samanje. Ukusetshenziswa okuphephe kakhulu ukuqinisekisa izithombe-skrini ezindala, ukuqhathanisa isikhathi esedlule, nokugwema ukuhlanganisa amadethi afakwe kungobo yomlando nokuhlela kwenyanga yamanje."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha kaDisemba kuzwela kakhulu ngoba abasebenzisi bafuna isiqiniseko sesikhathi esiqinile ngaphambi kokuphela konyaka. Ikhasi langoDisemba 2025 liwusizo kakhulu uma lisiza abasebenzisi ukuthi baqonde ukuthi yini esebenza kuleyo nyanga endala ngaphandle kokwenza sengathi isikhathi esifanayo sisasebenza manje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amadethi okukhokha afakwe kungobo yomlando avame ukusetshenziswa kabusha emilayezweni nasezithombeni-skrini isikhathi eside ngemva kokuba inyanga isidlulile. Kungakho inyanga, unyaka, isigaba sesibonelelo, kanye nenothi lokukhokha kubalulekile lapho abasebenzisi besesha imijikelezo yokukhokha emidala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha likaDisemba 2025.\n2. Qondanisa usuku nesigaba esifanele sesibonelelo.\n3. Funda inothi lokukhokha futhi usho, hhayi usuku kuphela.\n4. Phatha ikhasi njengomongo wengobo yomlando kuneshejuli ebukhoma.\n5. Sebenzisa amakhasi okukhokha amanje noma imizila esemthethweni uma udinga isiqinisekiso sosuku lwamanje esikhundleni sesheke lomlando."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lokukhokha likaDisemba 2025 liphephe kakhulu uma lisetshenziswa njengomongo. Isiza abasebenzisi ukuthi bahlole ukuthi idethi eyabiwe ibisho ukuthini, hhayi ukuthi inyanga yamanje izokwenzani manje."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ingakwazi ukuhlela isikhathi esifakwe kungobo yomlando kaDisemba 2025 ngokucacile, kodwa isiqinisekiso senkokhelo samanje esisemthethweni sisesesiteshini sikahulumeni esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa uDisemba 2025 nemijikelezo yakamuva, baqonde amagama esimo sokukhokha, futhi basuke ekuhloleni kungobo yomlando baye ekuhleleni kwenyanga yamanje ephephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/december\n• /guides/payment-dates-2025\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise izinsuku zikaDisemba 2025 ukuhlela kwamanje?",
+        "body": "Cha. Kuphephe kakhudlwana ukuwaphatha njengomongo wengobo yomlando ngaphandle kwalapho uhlola inyanga endala."
+      },
+      {
+        "title": "I-FAQ: Kungani abantu besasesha izinsuku zokukhokha zikaDisemba 2025?",
+        "body": "Ngokuvamile ukuze uqinisekise izithombe-skrini ezindala, uqhathanise imijikelezo yangaphambili, noma uhlole ukuthi idethi ekopishiwe iphinda isetshenziswe ngaphandle komongo."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ekhasini lengobo yomlando?",
+        "body": "Inyanga, unyaka, uhlobo lwesibonelelo, kanye nenothi lokukhokha kubaluleke ngaphezu kosuku lodwa."
+      }
+    ]
+  },
+  "payment-dates-january-2026": {
+    "title": "Izinsuku zokukhokha zikaJanuwari 2026",
+    "summary": "Umhlahlandlela wedethi yokukhokha yangoJanuwari 2026 osiza abasebenzisi ukuthi bafunde inyanga ngokuphepha, bahlukanise izinsuku ezilindelwe kwezishicilelwe, futhi bahlele ngaphandle kokuthembela emahlebezi akopishiwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zikaJanuwari 2026, qala ngekhasi lenyanga, bese uhlola isigaba sesibonelelo kanye nesimo sokukhokha ndawonye. Idethi ephawulwe njengelindelekile ayifani nedethi ephawulwe ukuthi ishicilelwe ngokusemthethweni."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lukaJanuwari ngokuvamile luvela kubasebenzisi abahlola iwindi lokuqala lokukhokha lonyaka noma abazama ukuqinisekisa ukuthi isithombe esikopishiwe sisasebenza yini. Indlela ephephe kunazo zonke yokusebenzisa ikhasi likaJanuwari 2026 iwukufunda inothi lokukhokha kanye nedethi ukuze wazi ukuthi isikhathi sesivele siqinisekisiwe yini noma kuseyisiqondiso kuphela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi bavame ukubona idethi eyodwa futhi bacabange ukuthi ifanela zonke izigaba zesibonelelo. Empeleni, izibonelelo ezivamile, izibonelelo zezingane eziqoqwe, nokusekelwa kwesitayela se-SRD kungavela ngamanothi esikhathi ahlukene noma amazinga ahlukene okuqinisekisa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha likaJanuwari 2026.\n2. Thola isigaba esifanele sesibonelelo.\n3. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma sisekelwe kuphothali.\n4. Funda inothi eliseduze nosuku ngokucophelela.\n5. Sebenzisa umzila osemthethweni lapho ikhasi lisabonisa ukungaqiniseki noma lapho ukuqinisekiswa kokugcina kubaluleke kakhulu."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi elihle lokukhokha likaJanuwari 2026 kufanele lizizwe njengomhlahlandlela wenyanga, hhayi isithembiso esingenawo umongo. Inothi kanye nesigaba sesibonelelo sikahulumeni kubaluleke kakhulu njengedethi ebonakalayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza ukuhlela isikhathi sikaJanuwari 2026 ngokucacile, kodwa isiqinisekiso sokugcina senkokhelo esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sangaphambi kwesikhathi sika-2026, baqonde izimo zokukhokha, futhi baye kumhlahlandlela olandelayo uma ikhasi lisakhomba ukubambezeleka, ingosi kuphela, noma amagama okukhokha angekho."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/january\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe zonke izinsuku zokukhokha zikaJanuwari 2026 zigcina?",
+        "body": "Hhayi njalo. Ezinye zingase zilindelwe noma ziboshwe kwelinye inothi kunokuba zishicilelwe ngokugcwele."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde inothi eceleni kosuku lukaJanuwari?",
+        "body": "Ngoba inothi livame ukukutshela ukuthi kuphephe kangakanani ukuphatha usuku olubonakalayo njengolugcina."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi sikaJanuwari 2026 ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma ikhasi lisabonisa amagama alindelekile noma esitayela sephothali."
+      }
+    ]
+  },
+  "payment-dates-february-2026": {
+    "title": "Izinsuku zokukhokha zikaFebhuwari 2026",
+    "summary": "Umhlahlandlela wedethi yokukhokha wangoFebhuwari 2026 osiza abasebenzisi ukuthi bafunde inyanga ngokuphepha, bahlukanise izinsuku ezilindelwe kwezishicilelwe, futhi bahlele ngaphandle kokuthembela emahlebezi akopishiwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zikaFebhuwari 2026, qala ngekhasi lenyanga, bese uhlola isigaba sesibonelelo kanye nesimo sokukhokha ndawonye. Idethi ephawulwe njengelindelekile ayifani nedethi ephawulwe ukuthi ishicilelwe ngokusemthethweni."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha kaFebhuwari kuvame ukuhlala eduze nokuhlelwa kokuphela kwenyanga, ngakho abasebenzisi badinga usizo lokuhlukanisa isikhathi esisha nokuthunyelwe okugaywe kabusha. Indlela ephephe kunazo zonke yokusebenzisa ikhasi likaFebruwari 2026 iwukufunda inothi lokukhokha kanye nedethi ukuze wazi ukuthi isikhathi sesiqinisekisiwe yini noma sisaqondiswa kuphela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi bavame ukubona idethi eyodwa futhi bacabange ukuthi ifanela zonke izigaba zesibonelelo. Empeleni, izibonelelo ezivamile, izibonelelo zezingane eziqoqwe, nokusekelwa kwesitayela se-SRD kungavela ngamanothi esikhathi ahlukene noma amazinga ahlukene okuqinisekisa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha likaFebruwari 2026.\n2. Thola isigaba esifanele sesibonelelo.\n3. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma sisekelwe kuphothali.\n4. Funda inothi eliseduze nosuku ngokucophelela.\n5. Sebenzisa umzila osemthethweni lapho ikhasi lisabonisa ukungaqiniseki noma lapho ukuqinisekiswa kokugcina kubaluleke kakhulu."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi elihle lokukhokha likaFebhuwari 2026 kufanele lizizwe njengomhlahlandlela wenyanga, hhayi isithembiso esingenawo umongo. Inothi kanye nesigaba sesibonelelo sikahulumeni kubaluleke kakhulu njengedethi ebonakalayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza ukuhlela isikhathi sikaFebruwari 2026 ngokucacile, kodwa isiqinisekiso sokugcina senkokhelo esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sangaphambi kwesikhathi sika-2026, baqonde izimo zokukhokha, futhi baye kumhlahlandlela olandelayo uma ikhasi lisakhomba ukubambezeleka, ingosi kuphela, noma amagama okukhokha angekho."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/february\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe zonke izinsuku zokukhokha zango-February 2026 ziphelele?",
+        "body": "Hhayi njalo. Ezinye zingase zilindelwe noma ziboshwe kwelinye inothi kunokuba zishicilelwe ngokugcwele."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde inothi eceleni kosuku lukaFebhuwari?",
+        "body": "Ngoba inothi livame ukukutshela ukuthi kuphephe kangakanani ukuphatha usuku olubonakalayo njengolugcina."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi sika-February 2026 ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma ikhasi lisabonisa amagama alindelekile noma esitayela sephothali."
+      }
+    ]
+  },
+  "payment-dates-march-2026": {
+    "title": "Izinsuku zokukhokha zikaMashi 2026",
+    "summary": "Umhlahlandlela wedethi yokukhokha yangoMashi 2026 osiza abasebenzisi ukuthi bafunde inyanga ngokuphepha, bahlukanise izinsuku ezilindelwe kwezishicilelwe, futhi bahlele ngaphandle kokuthembela emahlebezi akopishiwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zikaMashi 2026, qala ngekhasi lenyanga, bese uhlola isigaba sesibonelelo kanye nesimo sokukhokha ndawonye. Idethi ephawulwe njengelindelekile ayifani nedethi ephawulwe ukuthi ishicilelwe ngokusemthethweni."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lwedethi yokukhokha kaMashi ngokuvamile luvela kubasebenzisi abaqhathanisa inyanga endala nomjikelezo omusha noma ukuhlola ukuthi idethi okwabelwana ngayo isasebenza yini. Indlela ephephe kunazo zonke yokusebenzisa ikhasi langoMashi 2026 iwukufunda inothi lokukhokha kanye nosuku ukuze wazi ukuthi isikhathi sesiqinisekisiwe yini noma sisaqondiswa kuphela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi bavame ukubona idethi eyodwa futhi bacabange ukuthi ifanela zonke izigaba zesibonelelo. Empeleni, izibonelelo ezivamile, izibonelelo zezingane eziqoqwe, nokusekelwa kwesitayela se-SRD kungavela ngamanothi esikhathi ahlukene noma amazinga ahlukene okuqinisekisa."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokukhokha lika-March 2026.\n2. Thola isigaba esifanele sesibonelelo.\n3. Hlola ukuthi isikhathi sishicilelwe, silindelwe, noma sisekelwe kuphothali.\n4. Funda inothi eliseduze nosuku ngokucophelela.\n5. Sebenzisa umzila osemthethweni lapho ikhasi lisabonisa ukungaqiniseki noma lapho ukuqinisekiswa kokugcina kubaluleke kakhulu."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi elihle lokukhokha langoMashi 2026 kufanele lizizwe njengomhlahlandlela wenyanga, hhayi isithembiso esingenawo umongo. Inothi kanye nesigaba sesibonelelo sikahulumeni kubaluleke kakhulu njengedethi ebonakalayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza ukuhlela isikhathi sangoMashi 2026 ngokucacile, kodwa isiqinisekiso sokugcina senkokhelo esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sangaphambi kwesikhathi sika-2026, baqonde izimo zokukhokha, futhi baye kumhlahlandlela olandelayo uma ikhasi lisakhomba ukubambezeleka, ingosi kuphela, noma amagama okukhokha angekho."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/march\n• /guides/payment-dates-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-know-if-your-payment-is-ready\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe zonke izinsuku zokukhokha zangoMashi 2026 ziphelele?",
+        "body": "Hhayi njalo. Ezinye zingase zilindelwe noma ziboshwe kwelinye inothi kunokuba zishicilelwe ngokugcwele."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde inothi eceleni kosuku lukaMashi?",
+        "body": "Ngoba inothi livame ukukutshela ukuthi kuphephe kangakanani ukuphatha usuku olubonakalayo njengolugcina."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqinisekise isikhathi sangoMashi 2026 ngokusemthethweni?",
+        "body": "Yebo, ikakhulukazi uma ikhasi lisabonisa amagama alindelekile noma esitayela sephothali."
+      }
+    ]
+  },
+  "srd-payment-dates-2025": {
+    "title": "Izinsuku zokukhokha ze-SRD zango-2025",
+    "summary": "Umhlahlandlela wokubuka wonke unyaka wokusesha kwedethi yokukhokha ye-srd 2025, ebhalelwe ukusiza abasebenzisi ukuqhathanisa izinyanga ngokuphepha futhi bagweme ukuphatha isikhathi sengobo yomlando njengobufakazi bamanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha ze-srd ngo-2025, sebenzisa ikhasi lonyaka njengengobo yomlando ehlelekile noma ukubuka konyaka kunesithembiso esisodwa esibukhoma. Indlela ephephe kakhulu ukuqhathanisa inyanga, inothi lokukhokha, kanye nomzila osemthethweni ndawonye."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha konyaka kwe-SRD kuvame ukuvela kubasebenzisi abazama ukuqinisekisa isikhathi sengobo yomlando noma ukuqhathanisa umphumela wamanje wephothali nesimangalo esidala esidlangalaleni. Umhlahlandlela wonyaka ka-2025 uwusizo kakhulu lapho abasebenzisi badinga ukuqinisekisa isikhathi phakathi nezinyanga ezimbalwa ngaphandle kokulahlekelwa ukuthi ikhasi liyisitayela sengobo yomlando noma ukuhlela konyaka wamanje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi we-SRD avame ukukopishwa ngaphandle kwenothi elichaza ukuthi idethi ishicilelwe, ilindelwe, noma isancike komunye umzila. Ukubuka konke konyaka kusiza abasebenzisi ukugcina umongo ogcwele ubuka."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lonyaka ka-2025 ukuze uthole isikhathi se-srd.\n2. Hambisa enyangeni oyidingayo.\n3. Funda inothi lokukhokha bese usho eceleni kosuku.\n4. Phatha izinyanga zengobo yomlando ngendlela ehlukile.\n5. Sebenzisa umzila osemthethweni ofanele uma ikhasi lisakhomba ukungaqiniseki noma ukuqinisekiswa okusekelwe kuphothali."
+      },
+      {
+        "title": "Ikhasi lonyaka kufanele lisize abasebenzisi ukuqhathanisa izinyanga, hhayi ukuzenza caba",
+        "body": "Indlela ephephe kunazo zonke yokusebenzisa umhlahlandlela we-srd 2025 ukuphatha inyanga ngayinye njengomongo wayo wesikhathi kunokuthatha isitayela sosuku olulodwa noma inothi elilodwa lilingana unyaka wonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi ayithathi indawo yomthombo wesikhathi we-srd osemthethweni. Isiza abasebenzisi ukuthi bafunde unyaka ngokucacile ngenkathi begcina ukuqinisekiswa kokugcina kuhlukene."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sonyaka wonke, baye ekhasini elilungile lenyanga, futhi baqonde ukuthi inothi likhomba idethi yokugcina, idethi yokuqondisa, noma omunye umzila osemthethweni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/january/social-relief\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiphathe ikhasi lika-2025 srd njengeshejuli eyodwa yokugcina?",
+        "body": "Cha. Kuphephe kakhudlwana ukufunda inyanga ngayinye kanye nombhalo wayo ngokwehlukana."
+      },
+      {
+        "title": "I-FAQ: Kungani inothi lokukhokha lisabalulekile ekhasini lonyaka?",
+        "body": "Ngoba inothi lichaza ukuthi idethi iqinisekile kangakanani nokuthi kusengadingeka yini ukuhlola okusemthethweni okwengeziwe."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze uma ngidinga ukuqinisekiswa kwamanje?",
+        "body": "Hambisa ekhasini lenyanga ngqo bese usebenzisa umzila osemthethweni ofanele uma ukuqinisekiswa kokugcina kusabalulekile."
+      }
+    ]
+  },
+  "srd-payment-dates-january-2026": {
+    "title": "Izinsuku zokukhokha ze-SRD ngoJanuwari 2026",
+    "summary": "Umhlahlandlela kaJanuwari 2026 wesikhathi sokukhokha se-srd, esibhalelwe ukusiza abasebenzisi ukuthi bafunde inyanga ngokuphepha futhi bagweme ukwethemba amadethi akopishiwe ngokushesha okukhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha ze-srd ngoJanuwari 2026, vula ikhasi lenyanga laleso sigaba sesibonelelo futhi ufunde inothi lokukhokha kanye nosuku. Idethi eshicilelwe ihlukile kunothi okulindelekile noma elisekelwe kuphothali."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lukaJanuwari ngokuvamile luvela kubasebenzisi abahlola iwindi lokuqala lokukhokha lonyaka noma abazama ukuqinisekisa ukuthi isithombe esikopishiwe sisasebenza yini. Isikhathi se-SRD singancika kuzibuyekezo ezisuselwe kuphothali kanye nemiphumela yomuntu ngamunye ngaphezu kwamakhasi athile avamile esibonelelo. Indlela ephephe kunazo zonke yokusebenzisa ikhasi likaJanuwari 2026 ukufanisa isigaba esiqondile sesibonelelo bese ufunda inothi ngaphambi kokwakha izinhlelo ngosuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi okukhokha okuqondene nesibonelelo sikahulumeni avame ukwabelwa ngaphandle komongo ozungezile. Lokho kungenza idethi eyodwa ibukeke iqinisekile kakhulu kunalokho eyikho ngempela, ikakhulukazi uma inothi linqanyuliwe noma lishaywe indiva."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi likaJanuwari 2026 ukuze uthole isikhathi se-srd.\n2. Hlola ukuthi idethi ishicilelwe, ilindelwe, noma iboshelwe komunye umzila.\n3. Funda inothi elifakwe esikhathini.\n4. Gcina inyanga nonyaka kucacile uma uqhathanisa izithombe-skrini.\n5. Sebenzisa umzila osemthethweni ofanele uma inothi lisakhomba ukungaqiniseki noma inkinga yokukhokha evinjiwe."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi eliqinile le-srd january aliphathelene nosuku kuphela. Kumayelana nosuku, inothi, kanye nohlobo lwesibonelelo konke okuvumayo ngaphambi kokuthi umsebenzisi aphathe isikhathi njengokuphephile ukuhlela nxazonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bafunde isikhathi se-srd ngokucacile, kodwa isiqinisekiso sokugcina esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi se-srd nenkokhelo ehlobene, isimo, nemihlahlandlela yesikhumbuzi ukuze bazi ukuthi yini okufanele bayifunde ngokulandelayo uma ikhasi lisazizwa lingaqinisekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/january/social-relief\n• /guides/approved-but-no-payment\n• /status/payment-processing\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi likaJanuwari 2026 srd lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ezinye izinyanga zingase zibonise isikhathi esilindelwe noma esincike emzileni kunedethi eshicilelwe ngokugcwele."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde inothi eduze nosuku lwe-srd?",
+        "body": "Ngoba inothi ngokuvamile lichaza ukuthi isikhathi siqinisekile kangakanani nokuthi usabalulekile yini omunye umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku ngaphandle kwenothi?",
+        "body": "Phatha ikhasi elisemthethweni noma elihlelekile njengelithembeke kakhulu kunosuku olukopishiwe ngaphandle kokuqukethwe okunamathiselwe."
+      }
+    ]
+  },
+  "srd-payment-dates-february-2026": {
+    "title": "Izinsuku zokukhokha ze-SRD zikaFebhuwari 2026",
+    "summary": "Umhlahlandlela wangoFebhuwari 2026 wesikhathi sokukhokha se-srd, obhalelwe ukusiza abasebenzisi ukuthi bafunde inyanga ngokuphepha futhi bagweme ukwethemba amadethi akopishiwe ngokushesha okukhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha ze-srd ngoFebhuwari 2026, vula ikhasi lenyanga laleso sigaba sesibonelelo futhi ufunde inothi lokukhokha kanye nosuku. Idethi eshicilelwe ihlukile kunothi okulindelekile noma elisekelwe kuphothali."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha kaFebhuwari kuvame ukuhlala eduze nokuhlelwa kokuphela kwenyanga, ngakho abasebenzisi badinga usizo lokuhlukanisa isikhathi esisha nokuthunyelwe okugaywe kabusha. Isikhathi se-SRD singancika kuzibuyekezo ezisuselwe kuphothali kanye nemiphumela yomuntu ngamunye ngaphezu kwamakhasi athile avamile esibonelelo. Indlela ephephe kunazo zonke yokusebenzisa ikhasi likaFebruwari 2026 ukufanisa isigaba esiqondile sesibonelelo bese ufunda inothi ngaphambi kokwakha izinhlelo ngosuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi okukhokha okuqondene nesibonelelo sikahulumeni avame ukwabelwa ngaphandle komongo ozungezile. Lokho kungenza idethi eyodwa ibukeke iqinisekile kakhulu kunalokho eyikho ngempela, ikakhulukazi uma inothi linqanyuliwe noma lishaywe indiva."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi likaFebhuwari 2026 ukuze uthole isikhathi se-srd.\n2. Hlola ukuthi idethi ishicilelwe, ilindelwe, noma iboshelwe komunye umzila.\n3. Funda inothi elifakwe esikhathini.\n4. Gcina inyanga nonyaka kucacile uma uqhathanisa izithombe-skrini.\n5. Sebenzisa umzila osemthethweni ofanele uma inothi lisakhomba ukungaqiniseki noma inkinga yokukhokha evinjiwe."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi eliqinile le-srd February aligcini ngokuphathelene nosuku. Kumayelana nosuku, inothi, kanye nohlobo lwesibonelelo konke okuvumayo ngaphambi kokuthi umsebenzisi aphathe isikhathi njengokuphephile ukuhlela nxazonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bafunde isikhathi se-srd ngokucacile, kodwa isiqinisekiso sokugcina esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi se-srd nenkokhelo ehlobene, isimo, nemihlahlandlela yesikhumbuzi ukuze bazi ukuthi yini okufanele bayifunde ngokulandelayo uma ikhasi lisazizwa lingaqinisekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/february/social-relief\n• /guides/approved-but-no-payment\n• /status/payment-processing\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi likaFebhuwari 2026 srd lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ezinye izinyanga zingase zibonise isikhathi esilindelwe noma esincike emzileni kunedethi eshicilelwe ngokugcwele."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde inothi eduze nosuku lwe-srd?",
+        "body": "Ngoba inothi ngokuvamile lichaza ukuthi isikhathi siqinisekile kangakanani nokuthi usabalulekile yini omunye umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku ngaphandle kwenothi?",
+        "body": "Phatha ikhasi elisemthethweni noma elihlelekile njengelithembeke kakhulu kunosuku olukopishiwe ngaphandle kokuqukethwe okunamathiselwe."
+      }
+    ]
+  },
+  "srd-payment-dates-march-2026": {
+    "title": "Izinsuku zokukhokha ze-SRD Mashi 2026",
+    "summary": "Umhlahlandlela wangoMashi 2026 wesikhathi sokukhokha se-srd, obhalelwe ukusiza abasebenzisi ukuthi bafunde inyanga ngokuphepha futhi bagweme ukwethemba amadethi akopishiwe ngokushesha okukhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha ze-srd ngoMashi 2026, vula ikhasi lenyanga laleso sigaba sesibonelelo futhi ufunde inothi lokukhokha kanye nosuku. Idethi eshicilelwe ihlukile kunothi okulindelekile noma elisekelwe kuphothali."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lwedethi yokukhokha kaMashi ngokuvamile luvela kubasebenzisi abaqhathanisa inyanga endala nomjikelezo omusha noma ukuhlola ukuthi idethi okwabelwana ngayo isasebenza yini. Isikhathi se-SRD singancika kuzibuyekezo ezisuselwe kuphothali kanye nemiphumela yomuntu ngamunye ngaphezu kwamakhasi athile avamile esibonelelo. Indlela ephephe kunazo zonke yokusebenzisa ikhasi lika-March 2026 ukufanisa isigaba esiqondile sesibonelelo bese ufunda inothi ngaphambi kokwakha izinhlelo ngosuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi okukhokha okuqondene nesibonelelo sikahulumeni avame ukwabelwa ngaphandle komongo ozungezile. Lokho kungenza idethi eyodwa ibukeke iqinisekile kakhulu kunalokho eyikho ngempela, ikakhulukazi uma inothi linqanyuliwe noma lishaywe indiva."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lika-March 2026 ukuze uthole isikhathi se-srd.\n2. Hlola ukuthi idethi ishicilelwe, ilindelwe, noma iboshelwe komunye umzila.\n3. Funda inothi elifakwe esikhathini.\n4. Gcina inyanga nonyaka kucacile uma uqhathanisa izithombe-skrini.\n5. Sebenzisa umzila osemthethweni ofanele uma inothi lisakhomba ukungaqiniseki noma inkinga yokukhokha evinjiwe."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi eliqinile le-srd mashi aliphathelene nosuku kuphela. Kumayelana nosuku, inothi, kanye nohlobo lwesibonelelo konke okuvumayo ngaphambi kokuthi umsebenzisi aphathe isikhathi njengokuphephile ukuhlela nxazonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bafunde isikhathi se-srd ngokucacile, kodwa isiqinisekiso sokugcina esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi se-srd nenkokhelo ehlobene, isimo, nemihlahlandlela yesikhumbuzi ukuze bazi ukuthi yini okufanele bayifunde ngokulandelayo uma ikhasi lisazizwa lingaqinisekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/march/social-relief\n• /guides/approved-but-no-payment\n• /status/payment-processing\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi lika-March 2026 srd lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ezinye izinyanga zingase zibonise isikhathi esilindelwe noma esincike emzileni kunedethi eshicilelwe ngokugcwele."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde inothi eduze nosuku lwe-srd?",
+        "body": "Ngoba inothi ngokuvamile lichaza ukuthi isikhathi siqinisekile kangakanani nokuthi usabalulekile yini omunye umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku ngaphandle kwenothi?",
+        "body": "Phatha ikhasi elisemthethweni noma elihlelekile njengelithembeke kakhulu kunosuku olukopishiwe ngaphandle kokuqukethwe okunamathiselwe."
+      }
+    ]
+  },
+  "older-persons-grant-payment-dates-2025": {
+    "title": "Izinsuku zokukhokha zeSibonelelo Sabantu Abadala zango-2025",
+    "summary": "Umhlahlandlela wokubuka konke wonyaka wabantu abadala usesho lwedethi yokukhokha yango-2025, ebhalelwe ukusiza abasebenzisi ukuqhathanisa izinyanga ngokuphepha futhi bagweme ukuphatha isikhathi sengobo yomlando njengobufakazi bamanje.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zabantu abadala ngo-2025, sebenzisa ikhasi lonyaka njengendawo yomlando ehlelekile noma ukubuka konyaka kunesithembiso esisodwa esibukhoma. Indlela ephephe kakhulu ukuqhathanisa inyanga, inothi lokukhokha, kanye nomzila osemthethweni ndawonye."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwabantu abadala ngonyaka kuvame ukuvela kubasebenzisi abahlola ukuthi isithombe-skrini sedethi yokuhola endala sisabiwa sengathi esamanje. Umhlahlandlela wonyaka ka-2025 uwusizo kakhulu lapho abasebenzisi badinga ukuqinisekisa isikhathi phakathi nezinyanga ezimbalwa ngaphandle kokulahlekelwa ukuthi ikhasi liyisitayela sengobo yomlando noma ukuhlela konyaka wamanje."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi abantu abadala avame ukukopishwa ngaphandle kwenothi elichaza ukuthi idethi iyashicilelwa, ilindelwe, noma isancike komunye umzila. Ukubuka konke konyaka kusiza abasebenzisi ukugcina umongo ogcwele ubuka."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lonyaka ka-2025 ukuze uthole isikhathi sabantu abadala.\n2. Hambisa enyangeni oyidingayo.\n3. Funda inothi lokukhokha bese usho eceleni kosuku.\n4. Phatha izinyanga zengobo yomlando ngendlela ehlukile.\n5. Sebenzisa umzila osemthethweni ofanele uma ikhasi lisakhomba ukungaqiniseki noma ukuqinisekiswa okusekelwe kuphothali."
+      },
+      {
+        "title": "Ikhasi lonyaka kufanele lisize abasebenzisi ukuqhathanisa izinyanga, hhayi ukuzenza caba",
+        "body": "Indlela ephephe kunazo zonke yokusebenzisa umhlahlandlela wabantu abadala 2025 ukuphatha inyanga ngayinye njengomongo wayo wesikhathi kunokuthatha isitayela sosuku olulodwa noma inothi elilodwa lilingana unyaka wonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi ayithathi indawo yomthombo wesikhathi wabadala osemthethweni. Isiza abasebenzisi ukuthi bafunde unyaka ngokucacile ngenkathi begcina ukuqinisekiswa kokugcina kuhlukene."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sonyaka wonke, baye ekhasini elilungile lenyanga, futhi baqonde ukuthi inothi likhomba idethi yokugcina, idethi yokuqondisa, noma omunye umzila osemthethweni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2025/january/older-persons\n• /guides/payment-dates-2025-to-2026\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-track-payment-dates-without-rumours\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiphathe ikhasi labantu abadala lango-2025 njengeshejuli eyodwa yokugcina?",
+        "body": "Cha. Kuphephe kakhudlwana ukufunda inyanga ngayinye kanye nombhalo wayo ngokwehlukana."
+      },
+      {
+        "title": "I-FAQ: Kungani inothi lokukhokha lisabalulekile ekhasini lonyaka?",
+        "body": "Ngoba inothi lichaza ukuthi idethi iqinisekile kangakanani nokuthi kusengadingeka yini ukuhlola okusemthethweni okwengeziwe."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze uma ngidinga ukuqinisekiswa kwamanje?",
+        "body": "Hambisa ekhasini lenyanga ngqo bese usebenzisa umzila osemthethweni ofanele uma ukuqinisekiswa kokugcina kusabalulekile."
+      }
+    ]
+  },
+  "older-persons-grant-payment-dates-january-2026": {
+    "title": "Izinsuku zokukhokha zeSibonelelo Sabantu Abadala ngoJanuwari 2026",
+    "summary": "Umhlahlandlela kaJanuwari 2026 wesikhathi sokukhokha sabantu asebekhulile, obhalelwe ukusiza abasebenzisi ukuthi bafunde inyanga ngokuphepha futhi bagweme ukwethemba amadethi akopishiwe ngokushesha okukhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zabantu abadala ngoJanuwari 2026, vula ikhasi lenyanga laleso sigaba sesibonelelo sikahulumeni bese ufunda inothi lokukhokha kanye nosuku. Idethi eshicilelwe ihlukile kunothi okulindelekile noma elisekelwe kuphothali."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lukaJanuwari ngokuvamile luvela kubasebenzisi abahlola iwindi lokuqala lokukhokha lonyaka noma abazama ukuqinisekisa ukuthi isithombe esikopishiwe sisasebenza yini. Isikhathi sesibonelelo sabantu abadala sivame ukuseshwa kakhulu, okusho ukuthi amakhasi enyanga akopishiwe angasabalala ngokushesha uma inothi likhishwa. Indlela ephephe kunazo zonke yokusebenzisa ikhasi likaJanuwari 2026 ukufanisa isigaba esiqondile sesibonelelo bese ufunda inothi ngaphambi kokwakha izinhlelo ngosuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi okukhokha okuqondene nesibonelelo sikahulumeni avame ukwabelwa ngaphandle komongo ozungezile. Lokho kungenza idethi eyodwa ibukeke iqinisekile kakhulu kunalokho eyikho ngempela, ikakhulukazi uma inothi linqanyuliwe noma lishaywe indiva."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi likaJanuwari 2026 ukuze uthole isikhathi sabantu abadala.\n2. Hlola ukuthi idethi ishicilelwe, ilindelwe, noma iboshelwe komunye umzila.\n3. Funda inothi elifakwe esikhathini.\n4. Gcina inyanga nonyaka kucacile uma uqhathanisa izithombe-skrini.\n5. Sebenzisa umzila osemthethweni ofanele uma inothi lisakhomba ukungaqiniseki noma inkinga yokukhokha evinjiwe."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi labantu abadala eliqinile likaJanuwari aliphathelene nosuku kuphela. Kumayelana nosuku, inothi, kanye nohlobo lwesibonelelo konke okuvumayo ngaphambi kokuthi umsebenzisi aphathe isikhathi njengokuphephile ukuhlela nxazonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bafunde isikhathi abantu asebekhulile ngokucacile, kodwa isiqinisekiso sokugcina esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sabantu asebekhulile nezinkokhelo ezihlobene, isimo, neziqondiso zesikhumbuzi ukuze bazi ukuthi yini okufanele bayifunde ngokulandelayo uma ikhasi lisazizwa lingaqinisekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/january/older-persons\n• /guides/how-to-know-if-your-payment-is-ready\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi labantu abadala likaJanuwari 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ezinye izinyanga zingase zibonise isikhathi esilindelwe noma esincike emzileni kunedethi eshicilelwe ngokugcwele."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze nosuku lwabantu abadala?",
+        "body": "Ngoba inothi ngokuvamile lichaza ukuthi isikhathi siqinisekile kangakanani nokuthi usabalulekile yini omunye umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku ngaphandle kwenothi?",
+        "body": "Phatha ikhasi elisemthethweni noma elihlelekile njengelithembeke kakhulu kunosuku olukopishiwe ngaphandle kokuqukethwe okunamathiselwe."
+      }
+    ]
+  },
+  "older-persons-grant-payment-dates-february-2026": {
+    "title": "Izinsuku zokukhokha zeSibonelelo Sabantu Abadala ngoFebhuwari 2026",
+    "summary": "Umhlahlandlela wangoFebhuwari 2026 wesikhathi sokukhokha sabantu asebekhulile, obhalelwe ukusiza abasebenzisi ukuthi bafunde inyanga ngokuphepha futhi bagweme ukwethemba amadethi akopishiwe ngokushesha okukhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zabantu abadala ngoFebhuwari 2026, vula ikhasi lenyanga laleso sigaba sesibonelelo sikahulumeni bese ufunda inothi lokukhokha kanye nosuku. Idethi eshicilelwe ihlukile kunothi okulindelekile noma elisekelwe kuphothali."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha kaFebhuwari kuvame ukuhlala eduze nokuhlelwa kokuphela kwenyanga, ngakho abasebenzisi badinga usizo lokuhlukanisa isikhathi esisha nokuthunyelwe okugaywe kabusha. Isikhathi sesibonelelo sabantu abadala sivame ukuseshwa kakhulu, okusho ukuthi amakhasi enyanga akopishiwe angasabalala ngokushesha uma inothi likhishwa. Indlela ephephe kunazo zonke yokusebenzisa ikhasi likaFebruwari 2026 ukufanisa isigaba esiqondile sesibonelelo bese ufunda inothi ngaphambi kokwakha izinhlelo ngosuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi okukhokha okuqondene nesibonelelo sikahulumeni avame ukwabelwa ngaphandle komongo ozungezile. Lokho kungenza idethi eyodwa ibukeke iqinisekile kakhulu kunalokho eyikho ngempela, ikakhulukazi uma inothi linqanyuliwe noma lishaywe indiva."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi likaFebhuwari 2026 ukuze uthole isikhathi sabantu abadala.\n2. Hlola ukuthi idethi ishicilelwe, ilindelwe, noma iboshelwe komunye umzila.\n3. Funda inothi elifakwe esikhathini.\n4. Gcina inyanga nonyaka kucacile uma uqhathanisa izithombe-skrini.\n5. Sebenzisa umzila osemthethweni ofanele uma inothi lisakhomba ukungaqiniseki noma inkinga yokukhokha evinjiwe."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi langoFebhuwari eliqinile labantu abadala aliphathelene nosuku kuphela. Kumayelana nosuku, inothi, kanye nohlobo lwesibonelelo konke okuvumayo ngaphambi kokuthi umsebenzisi aphathe isikhathi njengokuphephile ukuhlela nxazonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bafunde isikhathi abantu asebekhulile ngokucacile, kodwa isiqinisekiso sokugcina esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sabantu asebekhulile nezinkokhelo ezihlobene, isimo, neziqondiso zesikhumbuzi ukuze bazi ukuthi yini okufanele bayifunde ngokulandelayo uma ikhasi lisazizwa lingaqinisekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/february/older-persons\n• /guides/how-to-know-if-your-payment-is-ready\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi labantu abadala langoFebhuwari 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ezinye izinyanga zingase zibonise isikhathi esilindelwe noma esincike emzileni kunedethi eshicilelwe ngokugcwele."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze nosuku lwabantu abadala?",
+        "body": "Ngoba inothi ngokuvamile lichaza ukuthi isikhathi siqinisekile kangakanani nokuthi usabalulekile yini omunye umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku ngaphandle kwenothi?",
+        "body": "Phatha ikhasi elisemthethweni noma elihlelekile njengelithembeke kakhulu kunosuku olukopishiwe ngaphandle kokuqukethwe okunamathiselwe."
+      }
+    ]
+  },
+  "older-persons-grant-payment-dates-march-2026": {
+    "title": "Izinsuku zokukhokha zeSibonelelo Sabantu Abadala Mashi 2026",
+    "summary": "Umhlahlandlela wangoMashi 2026 wesikhathi sokukhokha sabantu asebekhulile, obhalelwe ukusiza abasebenzisi ukuthi bafunde inyanga ngokuphepha futhi bagweme ukwethemba amadethi akopishiwe ngokushesha okukhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zabantu abadala ngoMashi 2026, vula ikhasi lenyanga laleso sigaba sesibonelelo sikahulumeni bese ufunda inothi lokukhokha kanye nosuku. Idethi eshicilelwe ihlukile kunothi okulindelekile noma elisekelwe kuphothali."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lwedethi yokukhokha kaMashi ngokuvamile luvela kubasebenzisi abaqhathanisa inyanga endala nomjikelezo omusha noma ukuhlola ukuthi idethi okwabelwana ngayo isasebenza yini. Isikhathi sesibonelelo sabantu abadala sivame ukuseshwa kakhulu, okusho ukuthi amakhasi enyanga akopishiwe angasabalala ngokushesha uma inothi likhishwa. Indlela ephephe kunazo zonke yokusebenzisa ikhasi lika-March 2026 ukufanisa isigaba esiqondile sesibonelelo bese ufunda inothi ngaphambi kokwakha izinhlelo ngosuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi okukhokha okuqondene nesibonelelo sikahulumeni avame ukwabelwa ngaphandle komongo ozungezile. Lokho kungenza idethi eyodwa ibukeke iqinisekile kakhulu kunalokho eyikho ngempela, ikakhulukazi uma inothi linqanyuliwe noma lishaywe indiva."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lika-March 2026 ukuze uthole isikhathi sabantu abadala.\n2. Hlola ukuthi idethi ishicilelwe, ilindelwe, noma iboshelwe komunye umzila.\n3. Funda inothi elifakwe esikhathini.\n4. Gcina inyanga nonyaka kucacile uma uqhathanisa izithombe-skrini.\n5. Sebenzisa umzila osemthethweni ofanele uma inothi lisakhomba ukungaqiniseki noma inkinga yokukhokha evinjiwe."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi lemashi labantu abadala eliqinile aliphathelene nosuku kuphela. Kumayelana nosuku, inothi, kanye nohlobo lwesibonelelo konke okuvumayo ngaphambi kokuthi umsebenzisi aphathe isikhathi njengokuphephile ukuhlela nxazonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bafunde isikhathi abantu asebekhulile ngokucacile, kodwa isiqinisekiso sokugcina esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sabantu asebekhulile nezinkokhelo ezihlobene, isimo, neziqondiso zesikhumbuzi ukuze bazi ukuthi yini okufanele bayifunde ngokulandelayo uma ikhasi lisazizwa lingaqinisekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/march/older-persons\n• /guides/how-to-know-if-your-payment-is-ready\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi labantu abadala langoMashi 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ezinye izinyanga zingase zibonise isikhathi esilindelwe noma esincike emzileni kunedethi eshicilelwe ngokugcwele."
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngifunde inothi eduze nosuku lwabantu abadala?",
+        "body": "Ngoba inothi ngokuvamile lichaza ukuthi isikhathi siqinisekile kangakanani nokuthi usabalulekile yini omunye umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku ngaphandle kwenothi?",
+        "body": "Phatha ikhasi elisemthethweni noma elihlelekile njengelithembeke kakhulu kunosuku olukopishiwe ngaphandle kokuqukethwe okunamathiselwe."
+      }
+    ]
+  },
+  "disability-grant-payment-dates-july-2026": {
+    "title": "Izinsuku zokukhokha Zesibonelelo Sikahulumeni Sokukhubazeka ngoJulayi 2026",
+    "summary": "Umhlahlandlela wangoJulayi 2026 wesikhathi sokukhokha kwabakhubazekile, obhalelwe ukusiza abasebenzisi ukuthi bafunde inyanga ngokuphepha futhi bagweme ukwethemba amadethi akopishiwe ngokushesha okukhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zabakhubazekile ngoJulayi 2026, vula ikhasi lenyanga laleso sigaba sesibonelelo sikahulumeni futhi ufunde inothi lokukhokha kanye nosuku. Idethi eshicilelwe ihlukile kunothi okulindelekile noma elisekelwe kuphothali."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lwedethi yokukhokha yangoJulayi ngokuvamile luvela kubasebenzisi abaqhathanisa umjikelezo wokukhokha wasebusika owodwa nomunye, okwenza amalebula enyanga nonyaka abaluleke kakhulu. Amakhasi enkokhelo yesibonelelo sokukhubazeka awusizo kakhulu lapho esiza abasebenzisi ukuthi bahlukanise isiqondiso senyanga ethile nezimangalo ezibukeka zingezamanje kodwa empeleni ezesinye isikhathi. Indlela ephephe kunazo zonke yokusebenzisa ikhasi likaJulayi 2026 ukufanisa isigaba esiqondile sesibonelelo bese ufunda inothi ngaphambi kokwakha izinhlelo ngosuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi okukhokha okuqondene nesibonelelo sikahulumeni avame ukwabelwa ngaphandle komongo ozungezile. Lokho kungenza idethi eyodwa ibukeke iqinisekile kakhulu kunalokho eyikho ngempela, ikakhulukazi uma inothi linqanyuliwe noma lishaywe indiva."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi likaJulayi 2026 ukuze uthole isikhathi sokukhubazeka.\n2. Hlola ukuthi idethi ishicilelwe, ilindelwe, noma iboshelwe komunye umzila.\n3. Funda inothi elifakwe esikhathini.\n4. Gcina inyanga nonyaka kucacile uma uqhathanisa izithombe-skrini.\n5. Sebenzisa umzila osemthethweni ofanele uma inothi lisakhomba ukungaqiniseki noma inkinga yokukhokha evinjiwe."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi likaJulayi lokukhubazeka eliqinile aliphathelene nosuku kuphela. Kumayelana nosuku, inothi, kanye nohlobo lwesibonelelo konke okuvumayo ngaphambi kokuthi umsebenzisi aphathe isikhathi njengokuphephile ukuhlela nxazonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bafunde isikhathi sokukhubazeka ngokucacile, kodwa isiqinisekiso sokugcina esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sokukhubazeka nenkokhelo ehlobene, isimo, neziqondiso zesikhumbuzi ukuze bazi ukuthi yini okufanele bayifunde ngokulandelayo uma ikhasi lisazizwa lingaqinisekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/july/disability\n• /guides/why-payment-is-delayed\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi labakhubazekile likaJulayi 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ezinye izinyanga zingase zibonise isikhathi esilindelwe noma esincike emzileni kunedethi eshicilelwe ngokugcwele."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde inothi eduze kosuku lokukhubazeka?",
+        "body": "Ngoba inothi ngokuvamile lichaza ukuthi isikhathi siqinisekile kangakanani nokuthi usabalulekile yini omunye umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku ngaphandle kwenothi?",
+        "body": "Phatha ikhasi elisemthethweni noma elihlelekile njengelithembeke kakhulu kunosuku olukopishiwe ngaphandle kokuqukethwe okunamathiselwe."
+      }
+    ]
+  },
+  "disability-grant-payment-dates-august-2026": {
+    "title": "Izinsuku zokukhokha Zesibonelelo Sikahulumeni Sokukhubazeka Agasti 2026",
+    "summary": "Umhlahlandlela wango-Agasti 2026 wesikhathi sokukhokha kwabakhubazekile, obhalelwe ukusiza abasebenzisi ukuthi bafunde inyanga ngokuphepha futhi bagweme ukwethemba amadethi akopishiwe ngokushesha okukhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zabakhubazekile ngo-Agasti 2026, vula ikhasi lenyanga laleso sigaba sesibonelelo sikahulumeni futhi ufunde inothi lokukhokha kanye nosuku. Idethi eshicilelwe ihlukile kunothi okulindelekile noma elisekelwe kuphothali."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha ka-Agasti kuvame ukuqala ekuhloleni okuphindaphindiwe namahemuhemu, ngakho amalebula acacile asiza abasebenzisi ukuthi bahlale bezolile. Amakhasi enkokhelo yesibonelelo sokukhubazeka awusizo kakhulu lapho esiza abasebenzisi ukuthi bahlukanise isiqondiso senyanga ethile nezimangalo ezibukeka zingezamanje kodwa empeleni ezesinye isikhathi. Indlela ephephe kunazo zonke yokusebenzisa ikhasi lika-Agasti 2026 ukufanisa isigaba esiqondile sesibonelelo bese ufunda inothi ngaphambi kokwakha izinhlelo ngosuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi okukhokha okuqondene nesibonelelo sikahulumeni avame ukwabelwa ngaphandle komongo ozungezile. Lokho kungenza idethi eyodwa ibukeke iqinisekile kakhulu kunalokho eyikho ngempela, ikakhulukazi uma inothi linqanyuliwe noma lishaywe indiva."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lika-Agasti 2026 ukuze uthole isikhathi sokukhubazeka.\n2. Hlola ukuthi idethi ishicilelwe, ilindelwe, noma iboshelwe komunye umzila.\n3. Funda inothi elifakwe esikhathini.\n4. Gcina inyanga nonyaka kucacile uma uqhathanisa izithombe-skrini.\n5. Sebenzisa umzila osemthethweni ofanele uma inothi lisakhomba ukungaqiniseki noma inkinga yokukhokha evinjiwe."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi eliqinile lango-Agasti aliphathelene nosuku kuphela. Kumayelana nosuku, inothi, kanye nohlobo lwesibonelelo konke okuvumayo ngaphambi kokuthi umsebenzisi aphathe isikhathi njengokuphephile ukuhlela nxazonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bafunde isikhathi sokukhubazeka ngokucacile, kodwa isiqinisekiso sokugcina esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sokukhubazeka nenkokhelo ehlobene, isimo, neziqondiso zesikhumbuzi ukuze bazi ukuthi yini okufanele bayifunde ngokulandelayo uma ikhasi lisazizwa lingaqinisekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/august/disability\n• /guides/why-payment-is-delayed\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi labakhubazekile lika-Agasti 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ezinye izinyanga zingase zibonise isikhathi esilindelwe noma esincike emzileni kunedethi eshicilelwe ngokugcwele."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde inothi eduze kosuku lokukhubazeka?",
+        "body": "Ngoba inothi ngokuvamile lichaza ukuthi isikhathi siqinisekile kangakanani nokuthi usabalulekile yini omunye umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku ngaphandle kwenothi?",
+        "body": "Phatha ikhasi elisemthethweni noma elihlelekile njengelithembeke kakhulu kunosuku olukopishiwe ngaphandle kokuqukethwe okunamathiselwe."
+      }
+    ]
+  },
+  "disability-grant-payment-dates-september-2026": {
+    "title": "Izinsuku zokukhokha Zesibonelelo Sikahulumeni Sokukhubazeka ngoSepthemba 2026",
+    "summary": "Umhlahlandlela wangoSepthemba 2026 wesikhathi sokukhokha kwabakhubazekile, obhalelwe ukusiza abasebenzisi ukuthi bafunde inyanga ngokuphepha futhi bagweme ukwethemba amadethi akopishiwe ngokushesha okukhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zabakhubazekile ngoSepthemba 2026, vula ikhasi lenyanga laleso sigaba sesibonelelo sikahulumeni futhi ufunde inothi lokukhokha kanye nosuku. Idethi eshicilelwe ihlukile kunothi okulindelekile noma elisekelwe kuphothali."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Usesho lwedethi yokukhokha yangoSepthemba ngokuvamile luvela kubasebenzisi abazama ukuqinisekisa isikhathi ngaphambi kokuthi umjikelezo wenyanga entsha uxazululwe ngokugcwele. Amakhasi enkokhelo yesibonelelo sokukhubazeka awusizo kakhulu lapho esiza abasebenzisi ukuthi bahlukanise isiqondiso senyanga ethile nezimangalo ezibukeka zingezamanje kodwa empeleni ezesinye isikhathi. Indlela ephephe kunazo zonke yokusebenzisa ikhasi likaSepthemba 2026 ukufanisa isigaba esiqondile sesibonelelo bese ufunda inothi ngaphambi kokwakha izinhlelo ngosuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi okukhokha okuqondene nesibonelelo sikahulumeni avame ukwabelwa ngaphandle komongo ozungezile. Lokho kungenza idethi eyodwa ibukeke iqinisekile kakhulu kunalokho eyikho ngempela, ikakhulukazi uma inothi linqanyuliwe noma lishaywe indiva."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi likaSepthemba 2026 ukuze uthole isikhathi sokukhubazeka.\n2. Hlola ukuthi idethi ishicilelwe, ilindelwe, noma iboshelwe komunye umzila.\n3. Funda inothi elifakwe esikhathini.\n4. Gcina inyanga nonyaka kucacile uma uqhathanisa izithombe-skrini.\n5. Sebenzisa umzila osemthethweni ofanele uma inothi lisakhomba ukungaqiniseki noma inkinga yokukhokha evinjiwe."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi likaSepthemba lokukhubazeka eliqinile aliphathelene nosuku kuphela. Kumayelana nosuku, inothi, kanye nohlobo lwesibonelelo konke okuvumayo ngaphambi kokuthi umsebenzisi aphathe isikhathi njengokuphephile ukuhlela nxazonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bafunde isikhathi sokukhubazeka ngokucacile, kodwa isiqinisekiso sokugcina esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sokukhubazeka nenkokhelo ehlobene, isimo, neziqondiso zesikhumbuzi ukuze bazi ukuthi yini okufanele bayifunde ngokulandelayo uma ikhasi lisazizwa lingaqinisekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/september/disability\n• /guides/why-payment-is-delayed\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi labakhubazekile likaSepthemba 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ezinye izinyanga zingase zibonise isikhathi esilindelwe noma esincike emzileni kunedethi eshicilelwe ngokugcwele."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde inothi eduze kosuku lokukhubazeka?",
+        "body": "Ngoba inothi ngokuvamile lichaza ukuthi isikhathi siqinisekile kangakanani nokuthi usabalulekile yini omunye umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku ngaphandle kwenothi?",
+        "body": "Phatha ikhasi elisemthethweni noma elihlelekile njengelithembeke kakhulu kunosuku olukopishiwe ngaphandle kokuqukethwe okunamathiselwe."
+      }
+    ]
+  },
+  "disability-grant-payment-dates-october-2026": {
+    "title": "Izinsuku zokukhokha Zesibonelelo Sikahulumeni Sokukhubazeka ngo-Okthoba 2026",
+    "summary": "Umhlahlandlela wango-Okthoba 2026 wesikhathi sokukhokha kwabakhubazekile, obhalelwe ukusiza abasebenzisi ukuthi bafunde inyanga ngokuphepha futhi bagweme ukwethemba amadethi akopishiwe ngokushesha okukhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zabakhubazekile ngo-Okthoba 2026, vula ikhasi lenyanga laleso sigaba sesibonelelo sikahulumeni futhi ufunde inothi lokukhokha kanye nosuku. Idethi eshicilelwe ihlukile kunothi okulindelekile noma elisekelwe kuphothali."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha yango-Okthoba kuvame ukudala ukudideka lapho izithombe-skrini ezindala ziqhubeka nokuzungeza kanye nolwazi olusha olushicilelwe. Amakhasi enkokhelo yesibonelelo sokukhubazeka awusizo kakhulu lapho esiza abasebenzisi ukuthi bahlukanise isiqondiso senyanga ethile nezimangalo ezibukeka zingezamanje kodwa empeleni ezesinye isikhathi. Indlela ephephe kunazo zonke yokusebenzisa ikhasi lika-Okthoba 2026 ukufanisa isigaba esiqondile sesibonelelo bese ufunda inothi ngaphambi kokwakha izinhlelo ngosuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi okukhokha okuqondene nesibonelelo sikahulumeni avame ukwabelwa ngaphandle komongo ozungezile. Lokho kungenza idethi eyodwa ibukeke iqinisekile kakhulu kunalokho eyikho ngempela, ikakhulukazi uma inothi linqanyuliwe noma lishaywe indiva."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lika-Okthoba 2026 ukuze uthole isikhathi sokukhubazeka.\n2. Hlola ukuthi idethi ishicilelwe, ilindelwe, noma iboshelwe komunye umzila.\n3. Funda inothi elifakwe esikhathini.\n4. Gcina inyanga nonyaka kucacile uma uqhathanisa izithombe-skrini.\n5. Sebenzisa umzila osemthethweni ofanele uma inothi lisakhomba ukungaqiniseki noma inkinga yokukhokha evinjiwe."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi eliqinile lika-Okthoba lokukhubazeka aliphathelene nosuku kuphela. Kumayelana nosuku, inothi, kanye nohlobo lwesibonelelo konke okuvumayo ngaphambi kokuthi umsebenzisi aphathe isikhathi njengokuphephile ukuhlela nxazonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bafunde isikhathi sokukhubazeka ngokucacile, kodwa isiqinisekiso sokugcina esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sokukhubazeka nenkokhelo ehlobene, isimo, neziqondiso zesikhumbuzi ukuze bazi ukuthi yini okufanele bayifunde ngokulandelayo uma ikhasi lisazizwa lingaqinisekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/october/disability\n• /guides/why-payment-is-delayed\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi labakhubazekile lango-Okthoba 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ezinye izinyanga zingase zibonise isikhathi esilindelwe noma esincike emzileni kunedethi eshicilelwe ngokugcwele."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde inothi eduze kosuku lokukhubazeka?",
+        "body": "Ngoba inothi ngokuvamile lichaza ukuthi isikhathi siqinisekile kangakanani nokuthi usabalulekile yini omunye umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku ngaphandle kwenothi?",
+        "body": "Phatha ikhasi elisemthethweni noma elihlelekile njengelithembeke kakhulu kunosuku olukopishiwe ngaphandle kokuqukethwe okunamathiselwe."
+      }
+    ]
+  },
+  "disability-grant-payment-dates-november-2026": {
+    "title": "Izinsuku zokukhokha Zesibonelelo Sikahulumeni Sokukhubazeka Novemba 2026",
+    "summary": "Umhlahlandlela wangoNovemba 2026 wesikhathi sokukhokha kwabakhubazekile, obhalelwe ukusiza abasebenzisi ukuthi bafunde inyanga ngokuphepha futhi bagweme ukwethemba amadethi akopishiwe ngokushesha okukhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngezinsuku zokukhokha zabakhubazekile ngoNovemba 2026, vula ikhasi lenyanga laleso sigaba sesibonelelo sikahulumeni futhi ufunde inothi lokukhokha kanye nosuku. Idethi eshicilelwe ihlukile kunothi okulindelekile noma elisekelwe kuphothali."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwedethi yokukhokha yangoNovemba kuvame ukuba nengcindezi yokuphela konyaka, okwenza kube lula ukuthi izimangalo zedethi ekopishiwe zisabalale ngaphandle komongo owanele. Amakhasi enkokhelo yesibonelelo sokukhubazeka awusizo kakhulu lapho esiza abasebenzisi ukuthi bahlukanise isiqondiso senyanga ethile nezimangalo ezibukeka zingezamanje kodwa empeleni ezesinye isikhathi. Indlela ephephe kunazo zonke yokusebenzisa ikhasi langoNovemba 2026 ukufanisa isigaba esiqondile sesibonelelo bese ufunda inothi ngaphambi kokwakha izinhlelo ngosuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Amakhasi okukhokha okuqondene nesibonelelo sikahulumeni avame ukwabelwa ngaphandle komongo ozungezile. Lokho kungenza idethi eyodwa ibukeke iqinisekile kakhulu kunalokho eyikho ngempela, ikakhulukazi uma inothi linqanyuliwe noma lishaywe indiva."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi likanovemba 2026 ukuze uthole isikhathi sokukhubazeka.\n2. Hlola ukuthi idethi ishicilelwe, ilindelwe, noma iboshelwe komunye umzila.\n3. Funda inothi elifakwe esikhathini.\n4. Gcina inyanga nonyaka kucacile uma uqhathanisa izithombe-skrini.\n5. Sebenzisa umzila osemthethweni ofanele uma inothi lisakhomba ukungaqiniseki noma inkinga yokukhokha evinjiwe."
+      },
+      {
+        "title": "Ungalifunda kanjani ikhasi kahle",
+        "body": "Ikhasi likanovemba lokukhubazeka eliqinile aliphathelene nosuku kuphela. Kumayelana nosuku, inothi, kanye nohlobo lwesibonelelo konke okuvumayo ngaphambi kokuthi umsebenzisi aphathe isikhathi njengokuphephile ukuhlela nxazonke."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare isiza abasebenzisi ukuthi bafunde isikhathi sokukhubazeka ngokucacile, kodwa isiqinisekiso sokugcina esisemthethweni sisesesiteshini sikahulumeni esifanele uma ikhasi libonisa ukuqaphela noma ushintsho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingasiza abasebenzisi ukuqhathanisa isikhathi sokukhubazeka nenkokhelo ehlobene, isimo, neziqondiso zesikhumbuzi ukuze bazi ukuthi yini okufanele bayifunde ngokulandelayo uma ikhasi lisazizwa lingaqinisekile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /payment-dates/2026/november/disability\n• /guides/why-payment-is-delayed\n• /status/approved\n• /guides/how-to-understand-payment-dates\n• /payment-dates"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi labakhubazekile langoNovemba 2026 lihlala libonisa usuku lokugcina olusemthethweni?",
+        "body": "Hhayi njalo. Ezinye izinyanga zingase zibonise isikhathi esilindelwe noma esincike emzileni kunedethi eshicilelwe ngokugcwele."
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifunde inothi eduze kosuku lokukhubazeka?",
+        "body": "Ngoba inothi ngokuvamile lichaza ukuthi isikhathi siqinisekile kangakanani nokuthi usabalulekile yini omunye umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma enye iwebhusayithi ibonisa usuku ngaphandle kwenothi?",
+        "body": "Phatha ikhasi elisemthethweni noma elihlelekile njengelithembeke kakhulu kunosuku olukopishiwe ngaphandle kokuqukethwe okunamathiselwe."
+      }
+    ]
+  }
+};
+
+function withZuTranslations<
+  T extends {
+    slug: string;
+    title: string;
+    summary: string;
+    sections: Array<{ title: string; body: string }>;
+    translations?: Record<string, unknown>;
+  },
+>(guide: T, translation: GuideTranslation) {
+  return {
+    ...guide,
+    translations: {
+      ...(guide.translations ?? {}),
+      zu: translation,
+    },
+  };
+}
+
+export const SEO_BATCH_FIFTEEN_GUIDES = SEO_BATCH_FIFTEEN_GUIDES_SOURCE.map((guide) =>
+  addSetswanaTranslations(withZuTranslations(guide, ZU_TRANSLATIONS[guide.slug])),
+);

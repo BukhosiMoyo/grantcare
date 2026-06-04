@@ -4,6 +4,7 @@ import { openai } from "@ai-sdk/openai";
 import { z } from "zod";
 import { auth } from "@/auth";
 import { db } from "@/lib/prisma";
+import { getInterviewGuideApiCopy, getRequestLocale } from "../copy";
 
 const InputSchema = z.object({
   jobTitle: z.string().min(2),
@@ -25,22 +26,6 @@ const OutputSchema = z.object({
 });
 
 export const maxDuration = 30;
-
-/* ── Concern label mapping ── */
-const CONCERN_LABELS: Record<string, string> = {
-  "dont-know-what-to-say": "I don't know what to say",
-  "get-nervous": "I get nervous",
-  "no-experience": "I don't have experience",
-  "unknown-questions": "I don't know what questions they'll ask",
-};
-
-/* ── Experience label mapping ── */
-const EXPERIENCE_LABELS: Record<string, string> = {
-  "none": "No experience",
-  "less-than-1": "Less than 1 year",
-  "1-3": "1-3 years",
-  "3-plus": "3+ years",
-};
 
 /* ═══════════════════════════════════════════
    SYSTEM PROMPT — The personality + rules
@@ -67,19 +52,24 @@ Context:
 - Focus on helping them succeed, not impress with complexity`;
 
 export async function POST(req: Request) {
-  if (!process.env.OPENAI_API_KEY) {
-    return NextResponse.json({ error: "OpenAI API missing" }, { status: 500 });
-  }
+  const locale = getRequestLocale(req);
+  const copy = getInterviewGuideApiCopy(locale);
 
   try {
+    if (!process.env.OPENAI_API_KEY) {
+      return NextResponse.json({ error: copy.apiMissing }, { status: 500 });
+    }
+
     const session = await auth();
     const userId = session?.user?.id;
 
     const json = await req.json();
     const data = InputSchema.parse(json);
 
-    const concernLabel = data.concern ? CONCERN_LABELS[data.concern] ?? data.concern : null;
-    const experienceLabel = EXPERIENCE_LABELS[data.experienceLevel] ?? data.experienceLevel;
+    const concernLabels = copy.concernLabels as Record<string, string>;
+    const experienceLabels = copy.experienceLabels as Record<string, string>;
+    const concernLabel = data.concern ? concernLabels[data.concern] ?? data.concern : null;
+    const experienceLabel = experienceLabels[data.experienceLevel] ?? data.experienceLevel;
 
     /* ═══════════════════════════════════════════
        MAIN GENERATION PROMPT — The engine
@@ -113,7 +103,7 @@ Structure the response as follows:
 Important:
 - Make everything feel tailored to THIS user
 - Avoid generic advice
-- Keep language simple, clear, and confident`;
+- Keep language simple, clear, and confident${copy.outputLanguageInstruction}`;
 
     const { object } = await generateObject({
       model: openai("gpt-4o-mini"),
@@ -140,6 +130,6 @@ Important:
     return NextResponse.json({ id: generation.id });
   } catch (error) {
     console.error("[generate-guide]", error);
-    return NextResponse.json({ error: "Failed to generate guide" }, { status: 500 });
+    return NextResponse.json({ error: copy.failedGenerate }, { status: 500 });
   }
 }

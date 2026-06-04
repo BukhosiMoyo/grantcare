@@ -20,6 +20,53 @@ import { LOCALES, isLocale, type Locale } from "@/lib/site";
 import { isDatabaseConfigured } from "@/lib/server-env";
 import { getTranslationText } from "@/lib/translation-utils";
 
+const ZU_PLACEMENTS_COPY: Record<string, string> = {
+  Placements: "Izindawo",
+  "Database not configured.": "Idathabheyisi ayilungisiwe.",
+  "Placement saved.": "Indawo ilondoloziwe.",
+  "Placement deleted.": "Indawo isusiwe.",
+  "Check the placement form and try again.": "Hlola ifomu lendawo bese uzama futhi.",
+  "Edit placement": "Hlela indawo",
+  "New placement": "Indawo entsha",
+  Slug: "I-slug",
+  Title: "Isihloko",
+  Link: "Isixhumanisi",
+  "CTA label": "Ilebula ye-CTA",
+  Disclosure: "Ukudalula",
+  Placement: "Indawo",
+  "Payment dates": "Izinsuku zokukhokha",
+  "Guide inline": "Umhlahlandlela ngaphakathi",
+  "Dashboard helpful": "Usizo kudeshibhodi",
+  payment_dates: "izinsuku zokukhokha",
+  guide_inline: "umhlahlandlela ngaphakathi",
+  dashboard_helpful: "usizo kudeshibhodi",
+  "Grant target": "Isibonelelo esiqondiwe",
+  "All grants": "Zonke izibonelelo",
+  "Guide target": "Umhlahlandlela oqondiwe",
+  "All guides": "Yonke imihlahlandlela",
+  "Sort order": "Ukuhlelwa",
+  Status: "Isimo",
+  Draft: "Okusalungiswa",
+  Published: "Kushicilelwe",
+  draft: "okusalungiswa",
+  published: "kushicilelwe",
+  "Starts at": "Kuqala ngo",
+  "Ends at": "Kuphela ngo",
+  Body: "Umzimba",
+  Translations: "Ukuhumusha",
+  CTA: "CTA",
+  Saving: "Kuyalondolozwa",
+  "Save placement": "Londoloza indawo",
+  "All placements": "Zonke izindawo",
+  Edit: "Hlela",
+  "Delete this placement?": "Susa le ndawo?",
+  Delete: "Susa",
+};
+
+function placementCopy(locale: Locale, text: string) {
+  return locale === "zu" ? (ZU_PLACEMENTS_COPY[text] ?? text) : text;
+}
+
 export default async function AdminPlacementsPage({
   params,
   searchParams,
@@ -36,9 +83,9 @@ export default async function AdminPlacementsPage({
 
   if (!isDatabaseConfigured()) {
     return (
-      <Section eyebrow="Admin" title="Placements">
+      <Section eyebrow="Admin" title={placementCopy(locale, "Placements")}>
         <Card>
-          <p className="text-sm text-muted">Database not configured.</p>
+          <p className="text-sm text-muted">{placementCopy(locale, "Database not configured.")}</p>
         </Card>
       </Section>
     );
@@ -64,50 +111,50 @@ export default async function AdminPlacementsPage({
 
   return (
     <div className="space-y-8">
-      <Section eyebrow="Admin" title="Placements">
+      <Section eyebrow="Admin" title={placementCopy(locale, "Placements")}>
         <div className="space-y-4">
-          {resolvedSearchParams.message ? <StatusMessage>{resolvedSearchParams.message}</StatusMessage> : null}
+          {resolvedSearchParams.message ? <StatusMessage>{placementCopy(locale, resolvedSearchParams.message)}</StatusMessage> : null}
           {resolvedSearchParams.error ? (
-            <StatusMessage tone="error">{resolvedSearchParams.error}</StatusMessage>
+            <StatusMessage tone="error">{placementCopy(locale, resolvedSearchParams.error)}</StatusMessage>
           ) : null}
         </div>
       </Section>
 
-      <Section title={selectedBlock ? "Edit placement" : "New placement"}>
+      <Section title={placementCopy(locale, selectedBlock ? "Edit placement" : "New placement")}>
         <Card className="space-y-5">
           <form action={upsertMonetizationBlockAction} className="space-y-5">
             <input type="hidden" name="locale" value={locale} />
             <input type="hidden" name="id" value={selectedBlock?.id ?? ""} />
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Slug">
+              <Field label={placementCopy(locale, "Slug")}>
                 <Input name="slug" defaultValue={selectedBlock?.slug ?? ""} required />
               </Field>
-              <Field label="Title">
+              <Field label={placementCopy(locale, "Title")}>
                 <Input name="title" defaultValue={selectedBlock?.title ?? ""} required />
               </Field>
-              <Field label="Link">
+              <Field label={placementCopy(locale, "Link")}>
                 <Input name="href" defaultValue={selectedBlock?.href ?? ""} required />
               </Field>
-              <Field label="CTA label">
+              <Field label={placementCopy(locale, "CTA label")}>
                 <Input name="ctaLabel" defaultValue={selectedBlock?.ctaLabel ?? "Open"} required />
               </Field>
-              <Field label="Disclosure">
+              <Field label={placementCopy(locale, "Disclosure")}>
                 <Input
                   name="disclosureLabel"
                   defaultValue={selectedBlock?.disclosureLabel ?? "Sponsored"}
                   required
                 />
               </Field>
-              <Field label="Placement">
+              <Field label={placementCopy(locale, "Placement")}>
                 <Select name="placement" defaultValue={selectedBlock?.placement ?? "payment_dates"}>
-                  <option value="payment_dates">Payment dates</option>
-                  <option value="guide_inline">Guide inline</option>
-                  <option value="dashboard_helpful">Dashboard helpful</option>
+                  <option value="payment_dates">{placementCopy(locale, "Payment dates")}</option>
+                  <option value="guide_inline">{placementCopy(locale, "Guide inline")}</option>
+                  <option value="dashboard_helpful">{placementCopy(locale, "Dashboard helpful")}</option>
                 </Select>
               </Field>
-              <Field label="Grant target">
+              <Field label={placementCopy(locale, "Grant target")}>
                 <Select name="grantTypeId" defaultValue={selectedBlock?.grantTypeId ?? ""}>
-                  <option value="">All grants</option>
+                  <option value="">{placementCopy(locale, "All grants")}</option>
                   {grantTypes.map((grant) => (
                     <option key={grant.id} value={grant.id}>
                       {grant.name}
@@ -115,9 +162,9 @@ export default async function AdminPlacementsPage({
                   ))}
                 </Select>
               </Field>
-              <Field label="Guide target">
+              <Field label={placementCopy(locale, "Guide target")}>
                 <Select name="guideId" defaultValue={selectedBlock?.guideId ?? ""}>
-                  <option value="">All guides</option>
+                  <option value="">{placementCopy(locale, "All guides")}</option>
                   {guides.map((guide) => (
                     <option key={guide.id} value={guide.id}>
                       {guide.title}
@@ -125,23 +172,23 @@ export default async function AdminPlacementsPage({
                   ))}
                 </Select>
               </Field>
-              <Field label="Sort order">
+              <Field label={placementCopy(locale, "Sort order")}>
                 <Input name="sortOrder" type="number" min="0" defaultValue={selectedBlock?.sortOrder ?? 0} required />
               </Field>
-              <Field label="Status">
+              <Field label={placementCopy(locale, "Status")}>
                 <Select name="status" defaultValue={selectedBlock?.status ?? "draft"}>
-                  <option value="draft">Draft</option>
-                  <option value="published">Published</option>
+                  <option value="draft">{placementCopy(locale, "Draft")}</option>
+                  <option value="published">{placementCopy(locale, "Published")}</option>
                 </Select>
               </Field>
-              <Field label="Starts at">
+              <Field label={placementCopy(locale, "Starts at")}>
                 <Input
                   name="startsAt"
                   type="datetime-local"
                   defaultValue={selectedBlock?.startsAt?.toISOString().slice(0, 16) ?? ""}
                 />
               </Field>
-              <Field label="Ends at">
+              <Field label={placementCopy(locale, "Ends at")}>
                 <Input
                   name="endsAt"
                   type="datetime-local"
@@ -149,32 +196,32 @@ export default async function AdminPlacementsPage({
                 />
               </Field>
             </div>
-            <Field label="Body">
+            <Field label={placementCopy(locale, "Body")}>
               <Textarea name="body" defaultValue={selectedBlock?.body ?? ""} required />
             </Field>
             <div className="space-y-4 rounded-3xl border border-border bg-surface-muted p-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">Translations</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{placementCopy(locale, "Translations")}</p>
               {LOCALES.filter((entry) => entry.code !== "en").map((entry) => (
                 <div key={entry.code} className="grid gap-4 sm:grid-cols-2">
-                  <Field label={`Title (${entry.label})`}>
+                  <Field label={`${placementCopy(locale, "Title")} (${entry.label})`}>
                     <Input
                       name={`translation_title_${entry.code}`}
                       defaultValue={getTranslationText(selectedBlock?.translations, entry.code as Locale, "title")}
                     />
                   </Field>
-                  <Field label={`Body (${entry.label})`}>
+                  <Field label={`${placementCopy(locale, "Body")} (${entry.label})`}>
                     <Textarea
                       name={`translation_body_${entry.code}`}
                       defaultValue={getTranslationText(selectedBlock?.translations, entry.code as Locale, "body")}
                     />
                   </Field>
-                  <Field label={`CTA (${entry.label})`}>
+                  <Field label={`${placementCopy(locale, "CTA")} (${entry.label})`}>
                     <Input
                       name={`translation_ctaLabel_${entry.code}`}
                       defaultValue={getTranslationText(selectedBlock?.translations, entry.code as Locale, "ctaLabel")}
                     />
                   </Field>
-                  <Field label={`Disclosure (${entry.label})`}>
+                  <Field label={`${placementCopy(locale, "Disclosure")} (${entry.label})`}>
                     <Input
                       name={`translation_disclosureLabel_${entry.code}`}
                       defaultValue={getTranslationText(
@@ -187,19 +234,19 @@ export default async function AdminPlacementsPage({
                 </div>
               ))}
             </div>
-            <SubmitButton pendingLabel="Saving">Save placement</SubmitButton>
+            <SubmitButton pendingLabel={placementCopy(locale, "Saving")}>{placementCopy(locale, "Save placement")}</SubmitButton>
           </form>
         </Card>
       </Section>
 
-      <Section title="All placements">
+      <Section title={placementCopy(locale, "All placements")}>
         <div className="grid gap-4">
           {blocks.map((block) => (
             <Card key={block.id} className="space-y-4">
               <div className="space-y-1">
                 <h3 className="text-xl font-semibold">{block.title}</h3>
                 <p className="text-sm text-muted">
-                  {block.placement} · {block.status}
+                  {placementCopy(locale, block.placement)} · {placementCopy(locale, block.status)}
                   {block.publishedAt ? ` · ${block.publishedAt.toISOString().slice(0, 10)}` : ""}
                 </p>
               </div>
@@ -208,13 +255,13 @@ export default async function AdminPlacementsPage({
                   href={`?edit=${block.id}`}
                   className="focus-ring tap-target inline-flex items-center rounded-full border border-border bg-surface px-4 text-sm font-semibold"
                 >
-                  Edit
+                  {placementCopy(locale, "Edit")}
                 </a>
                 <form action={deleteMonetizationBlockAction}>
                   <input type="hidden" name="locale" value={locale} />
                   <input type="hidden" name="id" value={block.id} />
-                  <ConfirmSubmitButton confirmText="Delete this placement?">
-                    Delete
+                  <ConfirmSubmitButton confirmText={placementCopy(locale, "Delete this placement?")}>
+                    {placementCopy(locale, "Delete")}
                   </ConfirmSubmitButton>
                 </form>
               </div>

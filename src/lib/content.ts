@@ -43,7 +43,7 @@ import {
 import type { Locale } from "@/lib/site";
 import { filterIndexableGuides } from "@/lib/guide-seo";
 import { filterIndexablePaymentPeriods } from "@/lib/payment-seo";
-import { isDatabaseConfigured, isProductionServer } from "@/lib/server-env";
+import { isDatabaseConfigured, isProductionBuild, isProductionServer } from "@/lib/server-env";
 
 export {
   ELIGIBILITY_RESULT_SLUGS,
@@ -79,11 +79,44 @@ function isMissingNewsArticleTableError(error: unknown) {
 }
 
 function parseLocalizedFields(value: unknown): LocalizedFields {
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+
+    if (!trimmed) {
+      return {};
+    }
+
+    try {
+      const parsed = JSON.parse(trimmed);
+      return parseLocalizedFields(parsed);
+    } catch {
+      return {};
+    }
+  }
+
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     return {};
   }
 
   return value as LocalizedFields;
+}
+
+function mergeLocalizedFields(primary: unknown, fallback: unknown): LocalizedFields {
+  const primaryFields = parseLocalizedFields(primary);
+  const fallbackFields = parseLocalizedFields(fallback);
+  const locales = new Set<Locale>([
+    ...(Object.keys(fallbackFields) as Locale[]),
+    ...(Object.keys(primaryFields) as Locale[]),
+  ]);
+
+  return Array.from(locales).reduce<LocalizedFields>((merged, locale) => {
+    merged[locale] = {
+      ...((fallbackFields[locale] ?? {}) as TranslationFields),
+      ...((primaryFields[locale] ?? {}) as TranslationFields),
+    };
+
+    return merged;
+  }, {});
 }
 
 function getLocalizedFields(value: unknown, locale: Locale): TranslationFields {
@@ -97,7 +130,8 @@ function getLocalizedString(
   locale: Locale,
   key: string,
 ) {
-  const translated = getLocalizedFields(value, locale)[key];
+  const fields = getLocalizedFields(value, locale);
+  const translated = fields[key];
   return typeof translated === "string" && translated.trim().length > 0
     ? translated
     : baseValue;
@@ -208,7 +242,7 @@ async function withPublicFallback<T>(query: () => Promise<T>, fallback: () => T)
   try {
     return await query();
   } catch (error) {
-    if (!isProductionServer()) {
+    if (!isProductionServer() || isProductionBuild()) {
       if (isRecoverableDatabaseError(error)) {
         markDatabaseUnavailable();
       }
@@ -237,20 +271,23 @@ function mapGrantTypeRecord(
   },
   locale: Locale,
 ): PublicGrantType {
+  const fallbackTranslations = findFallbackGrantType(record.slug)?.translations;
+  const translations = mergeLocalizedFields(record.translations, fallbackTranslations);
+
   return {
     id: record.id,
     slug: record.slug,
-    name: getLocalizedString(record.name, record.translations, locale, "name"),
+    name: getLocalizedString(record.name, translations, locale, "name"),
     shortName: getLocalizedString(
       record.shortName ?? record.name,
-      record.translations,
+      translations,
       locale,
       "shortName",
     ),
-    summary: getLocalizedString(record.summary, record.translations, locale, "summary"),
+    summary: getLocalizedString(record.summary, translations, locale, "summary"),
     officialHref: record.officialHref,
-    checks: getLocalizedStringArray(record.checks, record.translations, locale, "checks"),
-    documents: getLocalizedStringArray(record.documents, record.translations, locale, "documents"),
+    checks: getLocalizedStringArray(record.checks, translations, locale, "checks"),
+    documents: getLocalizedStringArray(record.documents, translations, locale, "documents"),
     showInPaymentTool: record.showInPaymentTool,
     showInGrantLibrary: record.showInGrantLibrary,
     paymentGroupSlug: record.paymentGroup?.slug ?? null,
@@ -273,14 +310,17 @@ function mapStatusMeaningRecord(
   },
   locale: Locale,
 ): PublicStatusMeaning {
+  const fallbackTranslations = findFallbackStatusMeaning(record.slug)?.translations;
+  const translations = mergeLocalizedFields(record.translations, fallbackTranslations);
+
   return {
     id: record.id,
     slug: record.slug,
-    title: getLocalizedString(record.title, record.translations, locale, "title"),
-    meaning: getLocalizedString(record.meaning, record.translations, locale, "meaning"),
-    causes: getLocalizedStringArray(record.causes, record.translations, locale, "causes"),
-    fixes: getLocalizedStringArray(record.fixes, record.translations, locale, "fixes"),
-    nextSteps: getLocalizedStringArray(record.nextSteps, record.translations, locale, "nextSteps"),
+    title: getLocalizedString(record.title, translations, locale, "title"),
+    meaning: getLocalizedString(record.meaning, translations, locale, "meaning"),
+    causes: getLocalizedStringArray(record.causes, translations, locale, "causes"),
+    fixes: getLocalizedStringArray(record.fixes, translations, locale, "fixes"),
+    nextSteps: getLocalizedStringArray(record.nextSteps, translations, locale, "nextSteps"),
     officialHref: record.officialHref,
     sortOrder: record.sortOrder,
   };
@@ -303,12 +343,15 @@ function mapGuideRecord(
   },
   locale: Locale,
 ): PublicGuide {
+  const fallbackTranslations = findFallbackGuide(record.slug)?.translations;
+  const translations = mergeLocalizedFields(record.translations, fallbackTranslations);
+
   return {
     id: record.id,
     slug: record.slug,
-    title: getLocalizedString(record.title, record.translations, locale, "title"),
-    summary: getLocalizedString(record.summary, record.translations, locale, "summary"),
-    sections: getLocalizedSections(record.sections, record.translations, locale, "sections"),
+    title: getLocalizedString(record.title, translations, locale, "title"),
+    summary: getLocalizedString(record.summary, translations, locale, "summary"),
+    sections: getLocalizedSections(record.sections, translations, locale, "sections"),
     featured: record.featured,
     sponsored: record.sponsored,
     sortOrder: record.sortOrder,
@@ -328,10 +371,13 @@ function mapFaqRecord(
   },
   locale: Locale,
 ): PublicFaq {
+  const fallbackTranslations = FALLBACK_FAQS.find((entry) => entry.id === record.id)?.translations;
+  const translations = mergeLocalizedFields(record.translations, fallbackTranslations);
+
   return {
     id: record.id,
-    question: getLocalizedString(record.question, record.translations, locale, "question"),
-    answer: getLocalizedString(record.answer, record.translations, locale, "answer"),
+    question: getLocalizedString(record.question, translations, locale, "question"),
+    answer: getLocalizedString(record.answer, translations, locale, "answer"),
     sortOrder: record.sortOrder,
   };
 }
@@ -351,12 +397,15 @@ function mapNewsRecord(
   },
   locale: Locale,
 ): PublicNewsArticle {
+  const fallbackTranslations = findFallbackNewsArticle(record.slug)?.translations;
+  const translations = mergeLocalizedFields(record.translations, fallbackTranslations);
+
   return {
     id: record.id,
     slug: record.slug,
-    title: getLocalizedString(record.title, record.translations, locale, "title"),
-    summary: getLocalizedString(record.summary, record.translations, locale, "summary"),
-    sections: getLocalizedSections(record.sections, record.translations, locale, "sections"),
+    title: getLocalizedString(record.title, translations, locale, "title"),
+    summary: getLocalizedString(record.summary, translations, locale, "summary"),
+    sections: getLocalizedSections(record.sections, translations, locale, "sections"),
     sourceUrls: toStringArray(record.sourceUrls),
     featured: record.featured,
     sortOrder: record.sortOrder,
@@ -468,6 +517,19 @@ function createDefaultPaymentEntry(grant: PublicGrantType, fallback?: PublicPaym
   );
 }
 
+function localizeFallbackPaymentEntry(
+  entry: PublicPaymentEntry,
+  category: PublicGrantType | undefined,
+  locale: Locale,
+): PublicPaymentEntry {
+  return {
+    ...entry,
+    grantName: category?.name ?? entry.grantName,
+    shortName: category?.shortName ?? category?.name ?? entry.shortName,
+    note: getLocalizedString(entry.note, entry.translations, locale, "note"),
+  };
+}
+
 async function mapPaymentPeriodRecord(
   locale: Locale,
   record: {
@@ -507,6 +569,8 @@ async function mapPaymentPeriodRecord(
 
   for (const entry of record.entries) {
     const grantType = mapGrantTypeRecord(entry.grantType, locale);
+    const fallbackEntry = fallbackEntries[grantType.slug];
+    const entryTranslations = entry.translations ?? fallbackEntry?.translations;
     entryMap.set(grantType.slug, {
       id: entry.id,
       grantSlug: grantType.slug,
@@ -517,10 +581,15 @@ async function mapPaymentPeriodRecord(
       date: entry.paymentDate ? entry.paymentDate.toISOString().slice(0, 10) : null,
       note:
         grantType.slug === "social-relief" && entry.note?.includes("Use the official SRD portal")
-          ? "SRD paydays are assigned per approved applicant during the monthly payment window."
+          ? getLocalizedString(
+              "SRD paydays are assigned per approved applicant during the monthly payment window.",
+              fallbackEntry?.translations,
+              locale,
+              "note",
+            )
           : getLocalizedString(
-              entry.note ?? fallbackEntries[grantType.slug]?.note ?? "",
-              entry.translations,
+              entry.note ?? fallbackEntry?.note ?? "",
+              entryTranslations,
               locale,
               "note",
             ),
@@ -529,7 +598,13 @@ async function mapPaymentPeriodRecord(
   }
 
   const entries = categories.map((category) =>
-    entryMap.get(category.slug) ?? createDefaultPaymentEntry(category, fallbackEntries[category.slug]),
+    entryMap.get(category.slug) ??
+    createDefaultPaymentEntry(
+      category,
+      fallbackEntries[category.slug]
+        ? localizeFallbackPaymentEntry(fallbackEntries[category.slug], category, locale)
+        : null,
+    ),
   );
 
   return {
@@ -537,7 +612,7 @@ async function mapPaymentPeriodRecord(
     year: record.year,
     month: record.month,
     monthSlug: getMonthSlugFromNumber(record.month),
-    label: getMonthLabel(record.year, record.month),
+    label: getMonthLabel(record.year, record.month, locale),
     published: record.published,
     entries,
     grants: Object.fromEntries(entries.map((entry) => [entry.grantSlug, entry])),
@@ -848,14 +923,33 @@ export async function listPaymentPeriods(locale: Locale) {
       });
 
       if (records.length === 0) {
-        return FALLBACK_PAYMENT_PERIODS;
+        const categories = await listPaymentCategories(locale);
+        return localizeFallbackPaymentPeriods(locale, categories);
       }
 
       const mapped = await Promise.all(records.map((record) => mapPaymentPeriodRecord(locale, record)));
       return mapped;
     },
-    () => [...FALLBACK_PAYMENT_PERIODS],
+    () =>
+      localizeFallbackPaymentPeriods(locale),
   );
+}
+
+function localizeFallbackPaymentPeriods(locale: Locale, categories?: PublicGrantType[]) {
+  const categoryMap = new Map((categories ?? FALLBACK_GRANT_TYPES).map((category) => [category.slug, category]));
+
+  return FALLBACK_PAYMENT_PERIODS.map((period) => {
+    const entries = period.entries.map((entry) =>
+      localizeFallbackPaymentEntry(entry, categoryMap.get(entry.grantSlug), locale),
+    );
+
+    return {
+      ...period,
+      label: getMonthLabel(period.year, period.month, locale),
+      entries,
+      grants: Object.fromEntries(entries.map((entry) => [entry.grantSlug, entry])),
+    };
+  });
 }
 
 export async function getPaymentPeriod(locale: Locale, year: number, monthSlug: string) {

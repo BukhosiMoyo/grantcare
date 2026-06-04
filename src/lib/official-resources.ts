@@ -1,3 +1,6 @@
+import { DEFAULT_LOCALE, type Locale } from "@/lib/site";
+import { toGeneratedSetswanaText, toGeneratedXhosaText } from "./generated-guide-translations";
+
 export const WHATSAPP_CHANNEL = {
   label: "GrantCare WhatsApp Channel",
   href: "https://whatsapp.com/channel/0029VbC2OuyJpe8bnXFVWe3k",
@@ -51,6 +54,38 @@ export const OFFICIAL_SASSA_CONTACTS = [
   },
 ] as const;
 
+const OFFICIAL_SASSA_CONTACT_TRANSLATIONS: Partial<Record<Locale, Record<string, string>>> = {
+  zu: {
+    "Official website": "Iwebhusayithi esemthethweni",
+    "Online services": "Amasevisi aku-inthanethi",
+    "SRD portal": "Iphothali ye-SRD",
+    "Toll-free line": "Inombolo yamahhala",
+    "Grant enquiries": "Imibuzo ngezibonelelo",
+    "Head office": "Ihhovisi elikhulu",
+  },
+};
+
+function toGeneratedLocaleText(locale: Locale, value: string) {
+  if (locale === "tn") {
+    return toGeneratedSetswanaText(value);
+  }
+
+  if (locale === "xh") {
+    return toGeneratedXhosaText(value);
+  }
+
+  return value;
+}
+
+export function getOfficialSassaContacts(locale: Locale = DEFAULT_LOCALE) {
+  const translations = OFFICIAL_SASSA_CONTACT_TRANSLATIONS[locale] ?? {};
+
+  return OFFICIAL_SASSA_CONTACTS.map((item) => ({
+    ...item,
+    title: translations[item.title] ?? toGeneratedLocaleText(locale, item.title),
+  }));
+}
+
 export const LEGAL_LINKS = [
   { path: "/contact", label: "Contact" },
   { path: "/privacy", label: "Privacy" },
@@ -59,6 +94,26 @@ export const LEGAL_LINKS = [
   { path: "/editorial-policy", label: "Editorial policy" },
   { path: "/cookie-policy", label: "Cookie policy" },
 ] as const;
+
+const LEGAL_LINK_TRANSLATIONS: Partial<Record<Locale, Record<string, string>>> = {
+  zu: {
+    Contact: "Xhumana nathi",
+    Privacy: "Ubumfihlo",
+    Disclaimer: "Isitatimende sokuzikhulula",
+    Terms: "Imigomo",
+    "Editorial policy": "Inqubomgomo yokuhlela",
+    "Cookie policy": "Inqubomgomo yamakhukhi",
+  },
+};
+
+export function getLegalLinks(locale: Locale = DEFAULT_LOCALE) {
+  const translations = LEGAL_LINK_TRANSLATIONS[locale] ?? {};
+
+  return LEGAL_LINKS.map((item) => ({
+    ...item,
+    label: translations[item.label] ?? toGeneratedLocaleText(locale, item.label),
+  }));
+}
 
 export const REPORTED_CHECK_METHODS = [
   {
@@ -85,6 +140,40 @@ export const REPORTED_CHECK_METHODS = [
     href: "https://srd.sassa.gov.za/",
   },
 ] as const;
+
+const REPORTED_CHECK_METHOD_TRANSLATIONS: Partial<Record<Locale, Record<string, { title?: string; detail?: string }>>> = {
+  zu: {
+    "USSD code": {
+      title: "Ikhodi ye-USSD",
+      detail: "Okunye: *120*69277# no-*134*7737#",
+    },
+    WhatsApp: {
+      detail: "Thumela umlayezo wesimo noma wokubuyekeza",
+    },
+    "Call centre": {
+      title: "Isikhungo sezingcingo",
+      detail: "Inombolo yosizo evamile ye-SASSA",
+    },
+    "SRD portal": {
+      title: "Iphothali ye-SRD",
+      detail: "Isimo, izikhalazo, nezibuyekezo",
+    },
+  },
+};
+
+export function getReportedCheckMethods(locale: Locale = DEFAULT_LOCALE) {
+  const translations = REPORTED_CHECK_METHOD_TRANSLATIONS[locale] ?? {};
+
+  return REPORTED_CHECK_METHODS.map((item) => {
+    const translation = translations[item.title] ?? {};
+
+    return {
+      ...item,
+      title: translation.title ?? toGeneratedLocaleText(locale, item.title),
+      detail: translation.detail ?? toGeneratedLocaleText(locale, item.detail),
+    };
+  });
+}
 
 export const CURRENT_GRANT_AMOUNT_ROWS = [
   {
@@ -116,6 +205,27 @@ export const CURRENT_GRANT_AMOUNT_ROWS = [
     slug: "social-relief",
   },
 ] as const;
+
+const CURRENT_GRANT_AMOUNT_ROW_TRANSLATIONS: Partial<Record<Locale, Record<string, string>>> = {
+  zu: {
+    "Older Persons Grant": "Isibonelelo Sabantu Abadala",
+    "Disability Grant": "Isibonelelo Sokukhubazeka",
+    "Care Dependency Grant": "Isibonelelo Sokunakekelwa",
+    "Child Support Grant": "Isibonelelo Sokondla Ingane",
+    "Foster Child Grant": "Isibonelelo Sengane Yokutholwa",
+    "Grant-in-Aid": "Isibonelelo Sosizo",
+    "Social Relief of Distress": "Usizo Lomphakathi Lwesimo Esiphuthumayo",
+  },
+};
+
+export function getCurrentGrantAmountRows(locale: Locale = DEFAULT_LOCALE) {
+  const translations = CURRENT_GRANT_AMOUNT_ROW_TRANSLATIONS[locale] ?? {};
+
+  return CURRENT_GRANT_AMOUNT_ROWS.map((item) => ({
+    ...item,
+    name: translations[item.name] ?? toGeneratedLocaleText(locale, item.name),
+  }));
+}
 
 export type GrantAmountDetail = {
   label: string;
@@ -189,12 +299,101 @@ const GRANT_AMOUNT_DETAILS: Record<string, readonly GrantAmountDetail[]> = {
   ],
 };
 
-export function getGrantAmountDetails(slug: string) {
-  return GRANT_AMOUNT_DETAILS[slug] ?? null;
+const GRANT_AMOUNT_DETAIL_TRANSLATIONS: Partial<Record<Locale, Record<string, readonly GrantAmountDetail[]>>> = {
+  zu: {
+    "older-persons": [
+      {
+        label: "Abadala (60-74)",
+        amount: "R2 400",
+      },
+      {
+        label: "Abadala (75+)",
+        amount: "R2 420",
+      },
+      {
+        label: "Omakadebona Bempi",
+        amount: "R2 420",
+      },
+    ],
+    disability: [
+      {
+        label: "Ukukhubazeka",
+        amount: "R2 400",
+      },
+    ],
+    children: [
+      {
+        label: "Sokondla Ingane",
+        amount: "R580",
+      },
+      {
+        label: "Ingane Yokutholwa",
+        amount: "R1 290 (R1 300 kusukela ngo-Okthoba)",
+      },
+      {
+        label: "Sokunakekelwa",
+        amount: "R2 400",
+      },
+    ],
+    "child-support": [
+      {
+        label: "Sokondla Ingane",
+        amount: "R580",
+      },
+    ],
+    "foster-child": [
+      {
+        label: "Ingane Yokutholwa",
+        amount: "R1 290 (R1 300 kusukela ngo-Okthoba)",
+      },
+    ],
+    "care-dependency": [
+      {
+        label: "Sokunakekelwa",
+        amount: "R2 400",
+      },
+    ],
+    "grant-in-aid": [
+      {
+        label: "Isibonelelo Sosizo",
+        amount: "R580",
+      },
+    ],
+    "social-relief": [
+      {
+        label: "Isibonelelo se-SRD",
+        amount: "R370",
+      },
+    ],
+  },
+};
+
+export function getGrantAmountDetails(slug: string, locale: Locale = DEFAULT_LOCALE) {
+  const localized = GRANT_AMOUNT_DETAIL_TRANSLATIONS[locale]?.[slug];
+  if (localized) {
+    return localized;
+  }
+
+  const details = GRANT_AMOUNT_DETAILS[slug];
+  if (locale === "tn" && details) {
+    return details.map((detail) => ({
+      label: toGeneratedSetswanaText(detail.label),
+      amount: detail.amount.replace("from October", "go tloga ka Diphalane"),
+    }));
+  }
+
+  if (locale === "xh" && details) {
+    return details.map((detail) => ({
+      label: toGeneratedXhosaText(detail.label),
+      amount: detail.amount.replace("from October", "ukusukela ngo-Oktobha"),
+    }));
+  }
+
+  return details ?? null;
 }
 
-export function getGrantAmountLabel(slug: string) {
-  const details = getGrantAmountDetails(slug);
+export function getGrantAmountLabel(slug: string, locale: Locale = DEFAULT_LOCALE) {
+  const details = getGrantAmountDetails(slug, locale);
 
   if (!details || details.length === 0) {
     return null;

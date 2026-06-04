@@ -7,6 +7,7 @@ import { OfficialContactGrid } from "@/components/official-contact-grid";
 import { QuickCheckOptions } from "@/components/quick-check-options";
 import { Card, Section } from "@/components/ui";
 import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { LEGAL_LINKS } from "@/lib/official-resources";
 import { buildLocalePath, isLocale } from "@/lib/site";
@@ -23,13 +24,25 @@ export async function generateMetadata({
   }
 
   const currentYear = new Date().getUTCFullYear();
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      metaTitle: `SASSA Contact Details ${currentYear}: Phone Number and Offices`,
+      metaDescription:
+        "Get the official SASSA phone number, email, office details, and portal links in one place.",
+    },
+    {
+      metaTitle: `Imininingwane Yokuxhumana ne-SASSA ${currentYear}: Inombolo Yocingo Namahhovisi`,
+      metaDescription:
+        "Thola inombolo yocingo esemthethweni ye-SASSA, i-imeyili, imininingwane yamahhovisi, nezixhumanisi zephothali endaweni eyodwa.",
+    },
+  );
 
   return buildLocalizedMetadata({
     locale,
     path: "/contact",
-    title: `SASSA Contact Details ${currentYear}: Phone Number and Offices`,
-    description:
-      "Get the official SASSA phone number, email, office details, and portal links in one place.",
+    title: routeCopy.metaTitle,
+    description: routeCopy.metaDescription,
   });
 }
 
@@ -44,11 +57,52 @@ export default async function ContactPage({
     notFound();
   }
 
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      breadcrumbContact: "Contact",
+      schemaName: "SASSA Contact Details",
+      schemaDescription: "Official SASSA contact numbers, portal, email, and office details.",
+      eyebrow: "Contact",
+      quickCheckOptionsTitle: "Quick check options",
+      officialContactsTitle: "Official contacts",
+      officialContactsIntro: "Use these official SASSA channels when you need an official action, official answer, or official portal.",
+      stayUpdatedTitle: "Stay updated",
+      relatedPagesTitle: "Related pages",
+      legalLinkTranslations: {},
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      breadcrumbContact: "Xhumana nathi",
+      schemaName: "Imininingwane Yokuxhumana ne-SASSA",
+      schemaDescription: "Izinombolo zokuxhumana ezisemthethweni ze-SASSA, iphothali, i-imeyili, nemininingwane yamahhovisi.",
+      eyebrow: "Xhumana nathi",
+      quickCheckOptionsTitle: "Izindlela zokuhlola ngokushesha",
+      officialContactsTitle: "Oxhumana nabo abasemthethweni",
+      officialContactsIntro: "Sebenzisa lezi ziteshi ezisemthethweni ze-SASSA uma udinga isenzo esisemthethweni, impendulo esemthethweni, noma iphothali esemthethweni.",
+      stayUpdatedTitle: "Hlala unolwazi",
+      relatedPagesTitle: "Amakhasi ahlobene",
+      legalLinkTranslations: {
+        Contact: "Xhumana nathi",
+        Privacy: "Ubumfihlo",
+        Disclaimer: "Isitatimende sokuzikhulula",
+        Terms: "Imigomo",
+        "Editorial policy": "Inqubomgomo yokuhlela",
+        "Cookie policy": "Inqubomgomo yamakhukhi",
+      },
+    },
+  );
+  const legalLinkTranslations = routeCopy.legalLinkTranslations as Record<string, string>;
+  const legalLinks = LEGAL_LINKS.map((link) => ({
+    ...link,
+    label: legalLinkTranslations[link.label] ?? link.label,
+  }));
   const contactSchema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "SASSA Contact Details",
-    description: "Official SASSA contact numbers, portal, email, and office details.",
+    name: routeCopy.schemaName,
+    description: routeCopy.schemaDescription,
     mainEntity: {
       "@type": "GovernmentOrganization",
       name: "South African Social Security Agency (SASSA)",
@@ -62,35 +116,35 @@ export default async function ContactPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "Contact", path: "/contact" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
+          { label: routeCopy.breadcrumbContact, path: "/contact" },
         ]}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
       />
-      <Section eyebrow="Contact" title="Quick check options">
-        <QuickCheckOptions />
+      <Section eyebrow={routeCopy.eyebrow} title={routeCopy.quickCheckOptionsTitle}>
+        <QuickCheckOptions locale={locale} />
       </Section>
 
-      <Section eyebrow="Contact" title="Official contacts">
+      <Section eyebrow={routeCopy.eyebrow} title={routeCopy.officialContactsTitle}>
         <Card className="space-y-3">
           <p className="text-sm leading-7 text-muted">
-            Use these official SASSA channels when you need an official action, official answer, or official portal.
+            {routeCopy.officialContactsIntro}
           </p>
         </Card>
       </Section>
 
-      <OfficialContactGrid />
+      <OfficialContactGrid locale={locale} />
 
-      <Section title="Stay updated">
-        <WhatsAppChannelBanner />
+      <Section title={routeCopy.stayUpdatedTitle}>
+        <WhatsAppChannelBanner locale={locale} />
       </Section>
 
-      <Section title="Related pages">
+      <Section title={routeCopy.relatedPagesTitle}>
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-          {LEGAL_LINKS.filter((link) => link.path !== "/contact").map((link) => (
+          {legalLinks.filter((link) => link.path !== "/contact").map((link) => (
             <Link key={link.path} href={buildLocalePath(locale, link.path)}>
               <Card className="space-y-2">
                 <h2 className="text-lg font-semibold">{link.label}</h2>

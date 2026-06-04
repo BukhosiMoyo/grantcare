@@ -1,3 +1,5 @@
+import { addSetswanaTranslations } from "./generated-guide-translations";
+
 const section = (title: string, body: string) => ({ title, body });
 const faq = (question: string, answer: string) =>
   section(`FAQ: ${question}`, answer);
@@ -56,7 +58,7 @@ function guide({
   };
 }
 
-export const SEO_BATCH_TWELVE_GUIDES = [
+const SEO_BATCH_TWELVE_GUIDES_SOURCE = [
   guide({
     slug: "what-the-sassa-service-portal-is-for",
     title: "What the SASSA service portal is for",
@@ -1198,3 +1200,1534 @@ export const SEO_BATCH_TWELVE_GUIDES = [
     sortOrder: 263,
   }),
 ];
+
+type GuideTranslation = {
+  title: string;
+  summary: string;
+  sections: Array<{ title: string; body: string }>;
+};
+
+const ZU_TRANSLATIONS: Record<string, GuideTranslation> = {
+  "what-the-sassa-service-portal-is-for": {
+    "title": "Iyini ingosi yesevisi ye-SASSA",
+    "summary": "Umhlahlandlela wolimi olulula wokuthi abantu bavame ukusho ukuthini uma besesha ingosi yesevisi ye-SASSA kanye nendlela yokusebenzisa umzila osemthethweni olungile ngokuphepha.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ingosi yesevisi ye-SASSA ngokuvamile ibhekisela emzileni osemthethweni we-inthanethi ukuze uthole ulwazi oluhlobene nezibonelelo noma izenzo. Indlela ephephe kunazo zonke yokuyisebenzisa ukuqinisekisa umsebenzi kuqala, bese uqinisekisa ukuthi ukusayithi elisemthethweni langempela ngaphambi kokufaka noma yimiphi imininingwane."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abantu bavame ukucinga iphothali yesevisi lapho befuna indawo eyodwa yokuphatha isimo, isicelo, noma imisebenzi ehlobene nokuxhumana. Inkinga ukuthi imisebenzi ehlukene ingase isebenzise amakhasi asemthethweni ahlukene. Yingakho ukusesha kwengosi kungazwakala kulula kunalokho okuyikho ngempela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi bephatha lonke ikhasi elibukeka njengephothali njengento efanayo, bangagcina sebesendleleni engalungile noma benze iphutha umhlahlandlela ozimele wekhasi lesenzo elisemthethweni. Sula izindaba zokuhlukana lapha."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Nquma ukuthi yini ngempela okudingeka uyenze.\n2. Hlola ukuthi umsebenzi uhlobene yini nesimo, isicelo, inkokhelo, noma uhlobene.\n3. Qala emzileni osemthethweni ofana nalowo msebenzi.\n4. Qinisekisa ikhasi ngaphambi kokufaka imininingwane yakho.\n5. Sebenzisa i-GrantCare ukuze uthole incazelo, hhayi njengekhasi lesenzo elisemthethweni."
+      },
+      {
+        "title": "I-portal yigama elibanzi, hhayi impendulo eyodwa elula",
+        "body": "Ingosi yetemu lokusesha izwakala njengomnyango owodwa wayo yonke into. Empeleni, umnyakazo ophephe kakhulu ukukhomba umsebenzi oqondile kuqala bese usebenzisa umzila osemthethweni ofana nawo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yolwazi ezimele. Ayithathi indawo yengosi yesevisi ye-SASSA esemthethweni nanoma yiluphi uhlelo lokusebenza olusemthethweni, isimo, noma umzila wokukhokha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uthole ukuthi iyiphi indlela esemthethweni oyidingayo ngaphambi kokuchofoza, okwehlisa ithuba lokusebenzisa ikhasi elingalungile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-the-right-status-check-for-your-grant\n• /guides/how-to-find-the-official-application-form-safely\n• /guides/where-to-find-official-updates-safely\n• /guides/how-to-apply-without-using-unofficial-websites\n• /guides/official-status-check-vs-independent-guide"
+      },
+      {
+        "title": "I-FAQ: Ingabe ingosi yesevisi iyafana ne-GrantCare?",
+        "body": "Cha. I-GrantCare ichaza inqubo, kuyilapho izenzo ezisemthethweni zisengezamakhasi kahulumeni asemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha ngephothali kuzwakala kudida?",
+        "body": "Ngoba abantu basebenzisa igama elithi portal emisebenzini ehlukene okungenzeka ingenzeki yonke ekhasini elilodwa."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze ngaphambi kokufaka imininingwane?",
+        "body": "Qinisekisa ukuthi ikhasi liwumzila osemthethweni olungile womsebenzi owudingayo."
+      }
+    ]
+  },
+  "how-to-use-services-sassa-gov-za-safely": {
+    "title": "Isetshenziswa kanjani izinsiza.sassa.gov.za ngokuphepha",
+    "summary": "Igayidi yokuphepha yokuqala yokusebenzisa izinsiza.sassa.gov.za ngaphandle kokuyidida namakhasi akopishiwe, izixhumanisi ezingamanga, noma amawebhusayithi osizo lwemalimboleko angahlobene.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa amasevisi.sassa.gov.za ngokuphepha ngokuyivula emthonjeni othembekile, uhlole ikheli ngokucophelela, futhi uqinisekise ukuthi ikhasi lifana nomsebenzi ofuna ukuwuqedela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi basesha ikheli lezinsizakalo.sassa.gov.za ngoba bafuna ukufinyelela lapho beqala khona ngokusemthethweni ngokushesha. Lokho kwenza kube okujwayelekile okuhloswe ngakho ukudideka lapho kuvela izixhumanisi ezikopishiwe noma amakhasi afanayo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ikhasi lingasebenzisa amagama alungile futhi lingabi yindawo efanele yesenzo esisemthethweni. Ukusetshenziswa okuphephile kuqala ngokuhlola ikheli kanye nomsebenzi ngaphambi kokuthi uthembe ikhasi."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Thayipha ikheli ngokucophelela noma usebenzise umthombo othembekile olondoloziwe.\n2. Hlola ukuthi ikhasi lingelesizinda esisemthethweni.\n3. Qinisekisa ukuthi ikhasi lifana nomsebenzi wakho.\n4. Gwema ukufaka imininingwane yomuntu siqu kuzixhumanisi ezikopishiwe noma ezifushanisiwe.\n5. Buyela ku-GrantCare uma udinga usizo lokuqonda ukuthi ikhasi elisemthethweni libuza ini."
+      },
+      {
+        "title": "Ukuphepha kuqala ngaphambi kokuthi ikhasi lilayishe",
+        "body": "Umkhuba ophephe kakhulu awukona nje ukufunda ikhasi. Iphinde ihlole ukuthi uyifinyelele kanjani. Lokho kunciphisa ithuba lokufika ekhasini elibukeka lisemthethweni kuphela."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi akufanele isetshenziswe njengezinkonzo ezisemthethweni.sassa.gov.za ikhasi. Ilapha ukuze ikuqondise emzileni olungile, hhayi esikhundleni sayo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uthole ukuthi yiliphi ikhasi lomsebenzi elisemthethweni olidingayo ngaphambi kokusebenzisa isizinda esisemthethweni, ikakhulukazi uma ushintsha phakathi kwemibandela, isicelo, kanye nemibuzo yokukhokha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/how-to-find-the-right-sassa-website-for-your-task\n• /guides/how-to-find-the-official-application-form-safely\n• /guides/how-to-use-services-sassa-gov-za-login-safely\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngihlole ikheli eligcwele ngokucophelela?",
+        "body": "Ngoba izixhumanisi ezikopishiwe noma ezifanayo zingasebenzisa amagama afanayo ngaphandle kokuba umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngibekise ikhasi langempela uma ngilitholile?",
+        "body": "Lokho kungasiza, inqobo nje uma uqinisekile ukuthi ikhasi lokuqala bekuyilo elisemthethweni elilungile."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma ngisazizwa ngingaqiniseki?",
+        "body": "Sebenzisa i-GrantCare ukuze uqinisekise uhlobo lwekhasi elisemthethweni oludingayo ngaphambi kokuthi uqhubeke."
+      }
+    ]
+  },
+  "how-to-use-services-sassa-gov-za-login-safely": {
+    "title": "Isetshenziswa kanjani izinsiza.sassa.gov.za ngena ngokuphepha",
+    "summary": "Umhlahlandlela osebenzayo wemikhuba yokungena ephephile yamakhasi ephothali asemthethweni, ngokugxila ekugwemeni izikrini zokungena ezingamanga namaphutha asheshayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa amasevisi.sassa.gov.za ngena ngokuphepha ngokuqinisekisa ikhasi kuqala, usebenzisa kuphela imininingwane umzila osemthethweni oyibuzayo, nokugwema izixhumanisi ezivela emilayezweni engathenjwa."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amakhasi okungena ngemvume adala ingcindezi enkulu kunamakhasi olwazi olujwayelekile ngoba abasebenzisi bangase bafake imininingwane yomuntu siqu. Lokho kwenza ukuhlola ikheli kanye nokufanisa ikhasi kubaluleke kakhulu."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ikhasi lolwazi olungelona iqiniso liyadida. Ikhasi lokungena elingelona iqiniso liyingozi kakhulu, ngoba lingase lizame ukuthwebula imininingwane yomuntu siqu. Yingakho amakhasi okungena ngemvume adinga ukuqaphela okwengeziwe."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula ikhasi lokungena kumthombo othembekile.\n2. Hlola isizinda ngokucophelela.\n3. Qiniseka ukuthi ikhasi lifana nomsebenzi osemthethweni owufunayo.\n4. Faka imininingwane kuphela uma ngokusobala ikhasi lingelomzila osemthethweni.\n5. Yima uphinde uhlole uma kukhona okumayelana nekhasi okuzwakala njengokungajwayelekile noma kuphuthuma."
+      },
+      {
+        "title": "Amakhasi okungena ngemvume adinga ijubane lokufunda eliphansi",
+        "body": "Abantu bavame ukuhamba ngokushesha emakhasini okungena ngemvume ngoba bafuna ukufinyelela okusheshayo. Yingakho nje ukwehlisa ijubane imizuzwana embalwa kungakuvikela kakhulu."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikuphathi ukungena okusemthethweni. Kukusiza ukuthi uqonde ukuthi ungafinyelela kanjani ekhasini elisemthethweni elilungile ngokuphepha nokuthi uhlehla nini uma kukhona okungalungile."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlukanise izidingo zokungena ezisemthethweni kokuqukethwe komhlahlandlela ukuze wazi ukuthi kufanele ube nini ekhasini elisemthethweni nalapho udinga khona incazelo kuphela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-to-do-if-the-portal-login-page-keeps-failing\n• /guides/how-to-keep-your-portal-login-details-safe\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/how-to-find-official-portal-updates-without-fake-login-pages\n• /guides/official-status-check-vs-independent-guide"
+      },
+      {
+        "title": "I-FAQ: Kungani amakhasi okungena ngemvume eyingozi kunamakhasi avamile?",
+        "body": "Ngoba abasebenzisi bangafaka imininingwane yomuntu lapho, ngakho-ke ikhasi elingelona iqiniso lingabangela ukulimala okwengeziwe."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngingene ngisuka kusixhumanisi somlayezo ongahleliwe?",
+        "body": "Cha. Kuphephe kakhudlwana ukuqala emzileni owethembekile osuwazi."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma ikhasi libukeka lihluke kancane kunelakudala?",
+        "body": "Hlola ikheli eligcwele nomsebenzi ngaphambi kokuthi uqhubeke."
+      }
+    ]
+  },
+  "what-sassa-portal-login-is-for": {
+    "title": "Yini i-SASSA yokungena ngemvume yengosi",
+    "summary": "Umhlahlandlela ocacile wokuthi abasebenzisi ngokuvamile bathini ngokungena kwengosi ye-SASSA nokuthi unganquma kanjani ukuthi uyalidinga ngempela ikhasi lokungena ngemvume.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukungena kwengosi ye-SASSA kuvame ukusho indlela yokungena esemthethweni yomsebenzi othile we-inthanethi. Ngaphambi kokuthi useshele ukungena, kuyasiza ukuhlola ukuthi umsebenzi wakho udinga ngempela ukungena ngemvume noma ikhasi lolwazi elisemthethweni kuphela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abanye abasebenzisi basesha ukungena ngemvume ngoba bafuna ukufinyelela okusheshayo. Abanye basesha ngoba abanaso isiqiniseko sokuthi badinga liphi ikhasi. Empeleni, akuzona zonke izenzo ezihlobene nezibonelelo eziqala ngohlobo olufanayo lwekhasi lokungena ngemvume."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma useshela ukungena ngaphambi kokuthi wazi umsebenzi, ungamosha isikhathi emzileni ongalungile noma ugcine ngokufaka imininingwane lapho ungadingi khona."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Nquma umsebenzi kuqala.\n2. Hlola ukuthi lowo msebenzi udinga ngempela ikhasi lokungena ngemvume elisemthethweni.\n3. Sebenzisa umzila osemthethweni olungile wokwenza umsebenzi.\n4. Qinisekisa isizinda ngaphambi kokufaka noma yimiphi imininingwane.\n5. Gcina i-GrantCare ukuze uthole izincazelo kanye nekhasi elisemthethweni lesenzo sangempela."
+      },
+      {
+        "title": "Yenza kuqala, ngena ngemvume okwesibili",
+        "body": "Ukulandelana okuphephe kakhulu ukuqonda umsebenzi kuqala bese kuphela unquma ukuthi ikhasi lokungena engelalo yini. Lokho kunciphisa ukudideka okuningi okungagwemeka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare akulona ikhasi lokungena elisemthethweni lephothali futhi akufanele lithathwe njengelilodwa. Izenzo zokungena ngemvume ezisemthethweni zisengezohlelo lukahulumeni olusemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uthole ukuthi uyalidinga yini ikhasi lesimo, ikhasi lesicelo, ikhasi lokukhokha, noma umzila wokungena wangempela ngaphambi kokudlulela phambili."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-the-right-sassa-website-for-your-task\n• /guides/how-to-use-services-sassa-gov-za-login-safely\n• /guides/how-to-check-application-status-on-the-official-portal-safely\n• /guides/how-to-check-your-status-without-making-mistakes\n• /guides/how-to-find-the-official-application-form-safely"
+      },
+      {
+        "title": "I-FAQ: Ingabe zonke izenzo ezihlobene nesibonelelo zisebenzisa ikhasi lokungena elifanayo?",
+        "body": "Cha. Imisebenzi ehlukene esemthethweni ingase isebenzise imizila ehlukene noma ingangeni nhlobo."
+      },
+      {
+        "title": "I-FAQ: Kungani ukucabanga komsebenzi wokuqala kuphephile?",
+        "body": "Ngoba ikwenza ungajahi ikhasi elingalungile ngaphambi kokuthi wazi ukuthi yini oyidingayo ngempela."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingangifaka?",
+        "body": "Cha. I-GrantCare ichaza kuphela inqubo futhi ikukhomba ohlotsheni olulungile lomzila osemthethweni."
+      }
+    ]
+  },
+  "how-to-use-srd-sassa-gov-za-login-safely": {
+    "title": "Isetshenziswa kanjani i-SRD SASSA gov za login ngokuphepha",
+    "summary": "Umhlahlandlela wokusetshenziswa okuphephile kwamakhasi okungena esitayela se-SRD, ebhalelwe abasebenzisi abafuna ukufinyelela okusemthethweni ngaphandle kokufika emakhasini omgunyathi noma akopishiwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa amakhasi okungena esitayela se-SRD ngokuphepha ngokuqala emzileni osemthethweni we-SRD, uhlole ikheli ngokucophelela, futhi uphathe izixhumanisi ezikopishiwe zenkundla yezokuxhumana ngokuqapha."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuhlobene ne-SRD kuvame ukwenzeka ngaphansi kwengcindezi ngoba abantu bafuna isimo, isikhalazo, isicelo, noma imininingwane yokukhokha ngokushesha. Lokho kwenza abasebenzisi ukuthi bachofoze ikhasi lokuqala elibukeka belijwayele."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma umsebenzisi efuna ngokushesha umphumela, kuba lula ukweqa ukuhlola okuphepha okubavikela emakhasini mbumbulu noma angahlobene."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala emzileni osemthethweni we-SRD.\n2. Qinisekisa ikheli kanye nenjongo yekhasi.\n3. Gwema ukuvula izixhumanisi ezikopishiwe kumazwana noma ezingxoxweni zeqembu.\n4. Sebenzisa kuphela imininingwane ikhasi elisemthethweni eliyicelayo.\n5. Buyela ku-GrantCare uma udinga usizo lokuqonda isinyathelo esilandelayo ngemva kokulayishwa kwekhasi elisemthethweni."
+      },
+      {
+        "title": "Isivinini sidala ubungozi lapha",
+        "body": "Ukusesha kokungena kwe-SRD kuvame ukuvela ezimeni eziphuthumayo. Lokho kuphuthuma kungenza amakhasi mbumbulu noma adidayo aphumelele kakhulu, ngakho ukwehlisa ijubane imizuzwana embalwa kubaluleke kakhulu."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare akuyona ingosi ye-SRD esemthethweni. Ingakusiza ukuthi ufinyelele uhlobo olulungile lwekhasi elisemthethweni ngokuphepha, kodwa ayithathi indawo yokungena esemthethweni noma izenzo zesimo ezisemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ubone umehluko phakathi kokuhlolwa kwesimo se-SRD, izikhalazo, amakhasi okukhokha, nemizila efana nokungena ngemvume ukuze ungachofozi ngokungaboni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/official-srd-status-check-link-guide\n• /guides/how-to-use-srd-status-check-safely\n• /guides/how-to-find-official-status-check-updates-safely\n• /guides/how-to-find-official-portal-updates-without-fake-login-pages\n• /guides/how-to-apply-without-using-unofficial-websites"
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwe-SRD kuvame ukuheha izixhumanisi ezingamanga?",
+        "body": "Ngoba isidingo siphezulu futhi abasebenzisi abaningi bafuna izimpendulo ezisheshayo ngaphansi kwengcindezi."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngethembe isixhumanisi sokungena se-SRD esivela eqenjini lengxoxo?",
+        "body": "Kuphephe kakhudlwana ukudlula umzila osemthethweni owethembekile osuwazi."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze ngemva kokulayishwa kwekhasi elisemthethweni?",
+        "body": "Qedela kuphela isenzo esisemthethweni lapho futhi usebenzise i-GrantCare uma udinga usizo lokuqonda umphumela."
+      }
+    ]
+  },
+  "how-to-know-if-a-sassa-website-is-official": {
+    "title": "Ungazi kanjani ukuthi iwebhusayithi ye-SASSA isemthethweni",
+    "summary": "Umhlahlandlela ogxile ekuthembekeni wokuhlola ukuthi iwebhusayithi ehlobene ne-SASSA isemthethweni ngempela yini ngaphambi kokuthi uthembele kuyo ngesimo, izinhlelo zokusebenza, noma imininingwane yomuntu siqu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ungahlulela ukuthi iwebhusayithi ehlobene ne-SASSA isemthethweni yini ngokubheka isizinda ngokucophelela, ukufanisa ikhasi nomsebenzi, kanye nokuqapha kumasayithi akopisha amagama asemthethweni ngaphandle kobunikazi obusemthethweni obucacile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Amakhasi amaningi asebenzisa amagama okusesha afanayo, kodwa akuwona wonke asebenza indima efanayo. Amanye angamakhasi esenzo asemthethweni. Abanye bangabaqondisi abazimele. Abanye bangase bamane bakopishe ulimi olusemthethweni. Umehluko ubalulekile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngaphandle kokuhlolwa kokuthenjwa okuyisisekelo, abasebenzisi bangenza iphutha umhlahlandlela noma ikhasi lomgunyathi lomzila wesenzo sangempela. Lokho kungaholela ekudidekeni noma ekwabelaneni okungaphephile kwemininingwane yomuntu siqu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ikheli eligcwele ngokucophelela.\n2. Qinisekisa ukuthi ikhasi liyahambisana yini nomsebenzi osemthethweni owudingayo.\n3. Bheka izimpawu ezicacile zokuthi ikhasi elomzila osemthethweni.\n4. Gwema ukwethemba umbhalo okopishiwe uwedwa.\n5. Sebenzisa i-GrantCare ukuze uthole incazelo kanye nemizila esemthethweni yezenzo ezisemthethweni."
+      },
+      {
+        "title": "Amagama alungile awanele",
+        "body": "Ikhasi lingasebenzisa amagama alungile esibonelelo futhi lingabi yindawo efanele yesenzo esisemthethweni. Ikheli kanye neqhaza lekhasi kubaluleke kakhulu njengokusho kwamagama."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare izimele futhi isho ngokucacile. Lokho kwethembeka kuyingxenye yokuthi abasebenzisi bangahlukanisa kanjani isiqondiso esizimele emakhasini esenzo asemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uqonde ukuthi hlobo luni lwekhasi elisemthethweni oludingayo ngaphambi kokuthi uzame ukuqinisekisa ukuthi iwebhusayithi iwumzila wangempela yini."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-the-right-sassa-website-for-your-task\n• /guides/how-to-find-the-official-application-form-safely\n• /guides/how-to-use-services-sassa-gov-za-safely\n• /guides/how-to-know-if-a-sassa-app-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Ingabe isayithi elingelona elisemthethweni lingase libe usizo?",
+        "body": "Yebo, uma lihlala ngokucacile endimeni yokuqondisa futhi lingenzi sengathi ikhasi lesenzo elisemthethweni."
+      },
+      {
+        "title": "I-FAQ: Yini ebaluleke kakhulu ngaphandle kwamagama?",
+        "body": "Isizinda, umsebenzi, nokuthi ikhasi liwumzila osemthethweni wesenzo ngokusobala yini."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngifake imininingwane yomuntu siqu ekhasini elibonakala lijwayelekile kuphela?",
+        "body": "Cha. Qinisekisa ikhasi kuqala ngaphambi kokufaka noma yini ebucayi."
+      }
+    ]
+  },
+  "how-to-find-the-right-sassa-website-for-your-task": {
+    "title": "Ungayithola kanjani iwebhusayithi ye-SASSA efanele yomsebenzi wakho",
+    "summary": "Umhlahlandlela osebenzayo wokukhetha umzila osemthethweni olungile wesimo, isicelo, inkokhelo, nemisebenzi yokuxhumana esikhundleni sokusesha ngokungaboni.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Thola iwebhusayithi elungile ye-SASSA ngokunquma umsebenzi kuqala. Isimo, isicelo, inkokhelo, kanye nemisebenzi yokuxhumana ngokuvamile isebenzisa imizila esemthethweni ehlukene, ngakho ukusesha umsebenzi wokuqala kuphephe kakhulu."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi bavame ukuqala ngokusesha igama elithi iwebhusayithi lapho abakudingayo kuwuhlobo oluthile lwekhasi. Yingakho ukusesha okukodwa okubanzi kungaletha imizila eminingi kakhulu ebukeka ifana."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma umsebenzi usucacile, indlela efanele iba lula ukuyibona. Lokho kusiza abasebenzisi ukuthi bagweme izixhumanisi ezingamanga, amakhasi akopishiwe, nokudideka okungadingekile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Bhala phansi umsebenzi owudingayo.\n2. Nquma ukuthi kuhlobene yini nesimo, isicelo, inkokhelo, noma othintana naye.\n3. Bheka umzila osemthethweni ofana nalowo msebenzi.\n4. Hlola ikheli nenjongo yekhasi.\n5. Buyela ku-GrantCare uma udinga usizo lokuqonda ukuthi yisiphi isigaba somsebenzi esisebenzayo."
+      },
+      {
+        "title": "Ukusesha okubanzi kudinga umbuzo omncane",
+        "body": "Ukusesha kwewebhusayithi kuba lula kakhulu uma ukufinyela kube umsebenzi owodwa ocacile. Lokho kushintsha okulula kuvame ukususa iningi lokudideka."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare akuyona iwebhusayithi esemthethweni yezenzo zikahulumeni. Isiza abasebenzisi ukuthi baqonde ukuthi yimuphi umzila osemthethweni abawudingayo ngaphambi kokuthi bachofoze."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlele imisebenzi ibe yisimo, inkokhelo, isicelo, nezigaba zokuxhumana ukuze ukwazi ukusebenzisa ikhasi elisemthethweni elifanele ngokuzethemba okwengeziwe."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-the-right-status-check-for-your-grant\n• /guides/how-to-find-the-official-application-form-safely\n• /guides/how-to-understand-payment-dates\n• /guides/how-to-find-official-contact-details-safely\n• /guides/what-the-sassa-service-portal-is-for"
+      },
+      {
+        "title": "I-FAQ: Kungani ukusesha kwewebhusayithi okujwayelekile kuzwakala kungcolile?",
+        "body": "Ngoba imisebenzi ehlukene yesibonelelo ingase isebenzise amakhasi asemthethweni ahlukene nanoma amagama okusesha abukeka afana."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele nginqume kuqala?",
+        "body": "Nquma umsebenzi ngaphambi kokunquma ikhasi."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingangikhethela ikhasi elisemthethweni?",
+        "body": "Ingakuholela ohlotsheni olulungile lomzila, kodwa ikhasi elisemthethweni ngokwalo lihlala lihlukile."
+      }
+    ]
+  },
+  "sassa-website-vs-srd-portal-guide": {
+    "title": "Iwebhusayithi ye-SASSA vs SRD portal guide",
+    "summary": "Umhlahlandlela olula wokuqhathanisa obonisa ukuthi kungani ukusesha kwewebhusayithi ye-SASSA jikelele kanye nosesho lwengosi ye-SRD lungakhombisi ngaso sonke isikhathi umzila ofanayo osemthethweni.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ukusesha okujwayelekile kwewebhusayithi ye-SASSA kanye nosesho lwengosi ye-SRD kungaholela emizileni esemthethweni ehlukene ngoba ngokuvamile kuvame ukwenza imisebenzi eyahlukene. Ukunyakaza okuphephe kakhulu ukufanisa ikhasi nomsebenzi esikhundleni sokuthatha ukuthi ziyashintshana."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi bavame ukuhlanganisa ukusesha okubanzi kwe-SASSA nosesho oluthize lwe-SRD ngoba amagama ayagqagqana. Empeleni, izenzo ezihlobene ne-SRD zingakhomba umzila osemthethweni okhethekile kunolwazi olujwayelekile lwesibonelelo noma imisebenzi yokuxhumana."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma uphatha wonke amakhasi asemthethweni njengento efanayo, ungase ufunde ulwazi olungalungile noma uphuthelwe ikhasi eliphethe umsebenzi wakho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Nquma ukuthi umsebenzi wakho uhlobene ne-SRD-specific noma i-general-grant.\n2. Qondanisa indlela eya kulowo msebenzi.\n3. Qinisekisa ikhasi ngaphambi kokulisebenzisa.\n4. Gwema ukuthembela ezithombeni-skrini ezabiwe ezisusa umongo.\n5. Sebenzisa i-GrantCare uma udinga usizo lokuhlukanisa imizila ngaphambi kokuqhubeka."
+      },
+      {
+        "title": "Ukugqagqana emagameni akufani nokugqagqana ngenjongo",
+        "body": "Amagama SASSA kanye SRD avame ukuvela ndawonye, ​​kodwa ikhasi olidingayo lincike kulokho ozama ukukwenza. Leyo njongo ibaluleke ngaphezu kwelebula elibanzi."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iwumhlahlandlela ozimele. Ingakwazi ukuchaza umehluko phakathi kwemizila yesibonelelo sikahulumeni ebanzi kanye nemizila ethize ye-SRD, kodwa ayithathi indawo yanoma yiluphi uhlelo olusemthethweni."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza unqume ukuthi isinyathelo sakho esilandelayo sisekhasini lolwazi olujwayelekile, umzila wokuhlola isimo, ikhasi lokukhokha, noma ingosi ethize ye-SRD."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-the-srd-portal-is-for\n• /guides/what-the-sassa-service-portal-is-for\n• /guides/official-status-check-vs-independent-guide\n• /guides/how-to-check-srd-status-online\n• /guides/how-to-find-the-right-status-check-for-your-grant"
+      },
+      {
+        "title": "I-FAQ: Ingabe iwebhusayithi ye-SASSA kanye nengosi ye-SRD ihlala iyinto efanayo?",
+        "body": "Cha. Bangakhomba imizila esemthethweni eyahlukene kuye ngomsebenzi."
+      },
+      {
+        "title": "I-FAQ: Kungani abasebenzisi beyixuba?",
+        "body": "Ngoba amagama okusesha ayagqagqana futhi womabili axhunywe emisebenzini ehlobene nokunikezwayo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyifanise kuqala?",
+        "body": "Qondanisa umsebenzi nomzila ngaphambi kokuthi uphathe amakhasi njenganokushintshwa."
+      }
+    ]
+  },
+  "how-to-open-the-sassa-website-on-mobile": {
+    "title": "Uyivula kanjani iwebhusayithi ye-SASSA kuselula",
+    "summary": "Umhlahlandlela wokuqala weselula wokufinyelela iwebhusayithi elungile ehlobene ne-SASSA ngokuphepha ocingweni ngaphandle kokulahleka kuzixhumanisi ezikopishiwe noma amakhasi alayishwe kakhulu.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Vula iwebhusayithi ye-SASSA kuselula ngokuqala emzileni owethembekile, uhlole ikheli ngokucophelela, futhi uqinisekise ukuthi ulayisha ikhasi elifana nomsebenzi wakho kunesinqamuleli esikopishiwe."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi benza yonke into ocingweni, ngakho ukusesha kweselula kuvame ukwenzeka ngaphansi kwengcindezi yedatha noma ezikrinini ezincane. Lokho kungenza kube nzima ukubona umehluko phakathi komzila olungile nodidayo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ocingweni, abasebenzisi bangabona kuphela ingxenye yekheli noma bachofoze ngokushesha ngemiphumela yosesho. Umkhuba weselula ohamba kancane ungavimbela ikhasi elingalungile ekubeni yinkinga elandelayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Sebenzisa ibhukhimakhi ethembekile noma uthayiphe ngokucophelela umzila.\n2. Hlola ikheli lekhasi efonini yakho ngaphambi kokuqhubeka.\n3. Qiniseka ukuthi ikhasi lifana nomsebenzi wakho.\n4. Gwema izixhumanisi ezivela emilayezweni engahleliwe noma okuthunyelwe kwezithombe.\n5. Londoloza ikhasi elilungile uma usuqinisekise ukuthi liyindlela esemthethweni elungile."
+      },
+      {
+        "title": "Iselula idinga ukuqapha kweselula",
+        "body": "Amafoni enza ukufinyelela kube lula, kodwa futhi afihla imininingwane ethile. Ukuhlolwa kwekheli okufushane kuselula kungasindisa izinkinga eziningi kamuva."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare yakhelwe ukuthi isebenzise iselula, kodwa iseyisiqondiso esizimele. Izenzo ezisemthethweni kusafanele zenzeke ekhasini elisemthethweni elilungile olivula ocingweni lwakho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukhethe umzila olungile ngaphambi kokuthi uqale ukuchofoza emiphumeleni yosesho kuselula, okwenza uhambo lwefoni luzole kakhulu."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-use-sassa-status-check-for-r350\n• /guides/how-to-check-r350-status-on-mobile\n• /guides/how-to-find-the-right-sassa-website-for-your-task\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/how-to-find-official-portal-updates-without-fake-login-pages"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kulula ukuthola ukufinyelela kumakhalekhukhwini okungalungile?",
+        "body": "Ngoba ikheli nemininingwane yekhasi kungase kungabonakali esikrinini esincane."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngilondoloze ikhasi elilungile uma ngilitholile?",
+        "body": "Yebo, uma uqinisekile ukuthi umzila osemthethweni olungile womsebenzi."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyigweme kumakhalekhukhwini?",
+        "body": "Gwema izixhumanisi zemiyalezo engahleliwe nezithombe-skrini ezikopishiwe ezingawubonisi umzila ogcwele ngokucacile."
+      }
+    ]
+  },
+  "how-to-check-application-status-on-the-official-portal-safely": {
+    "title": "Ungasihlola kanjani isimo sohlelo lokusebenza kuphothali esemthethweni ngokuphepha",
+    "summary": "Umhlahlandlela wokufinyelela umzila olungile wesimo esisemthethweni ngokucophelela nokufunda umphumela ngaphandle kokuwudida namakhasi angahlobene.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Hlola isimo sohlelo lokusebenza ngokuphepha ngokusebenzisa umzila olungile wesimo osemthethweni wesibonelelo sakho, uqinisekise ikhasi kuqala, bese ufunda amagama esimo ngaphambi kokugxumela esiphethweni."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi basesha isimo ngoba bafuna isiqiniseko ngokushesha. Lokho kungabaholela kunoma yiliphi ikhasi elisho isimo, ngisho noma ikhasi lingewona umzila osemthethweni noma kungewona umzila olungile wohlobo lwabo lwesibonelelo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukusebenzisa ikhasi elingalungile kungamosha isikhathi, futhi ukufunda ikhasi elilungile ngokushesha kusengadala ukudideka. Ukuhlola okuphephile kuncike kukho kokubili umzila kanye nencazelo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Khomba ukuthi yisiphi isigaba sesibonelelo noma sosekelo osihlolayo.\n2. Vula umzila wesimo osemthethweni olungile waleso sigaba.\n3. Qinisekisa ikheli ngaphambi kokufaka noma yimiphi imininingwane.\n4. Funda ngokucophelela amagama omphumela.\n5. Sebenzisa i-GrantCare ukuze uqonde incazelo ngemuva kokuthi ikhasi elisemthethweni linikeze umphumela."
+      },
+      {
+        "title": "Ukuhlola okuphephile kunezingxenye ezimbili",
+        "body": "Ingxenye yokuqala ifinyelela ekhasini elisemthethweni elifanele. Ingxenye yesibili ifunda umphumela ngokucophelela. Abasebenzisi abaningi bacabanga kuphela ngomunye walabo ababili."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayisebenzisi uhlelo olusemthethweni lwesimo. Kukusiza ukuthi ufinyelele umzila olungile futhi uhumushe amagama owabona lapho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukhethe umzila wesimo olungile, uqonde ukuthi umphumela usho ukuthini, futhi unqume ukuthi hlobo luni lwesinyathelo esilandelayo esifanelana nalawo magama."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-the-right-status-check-for-your-grant\n• /guides/how-to-use-status-check-before-appealing\n• /guides/how-to-read-your-status-check-result\n• /guides/what-to-do-after-a-status-check-result\n• /status"
+      },
+      {
+        "title": "Imibuzo Evame Ukubuzwa: Kungani kufanele ngihlonze isibonelelo kuqala?",
+        "body": "Ngoba umzila osemthethweni wesimo ungancika ohlotsheni lwesibonelelo noma usekelo oluhlolayo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe umphumela wokuqala okhuluma ngesimo?",
+        "body": "Cha. Qinisekisa ukuthi ikhasi liwumzila osemthethweni olungile ngaphambi kokuwusebenzisa."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze ngemva kokubona isimo?",
+        "body": "Sebenzisa i-GrantCare ukuze uqonde amagama ngaphambi kokunquma ngesinyathelo esilandelayo."
+      }
+    ]
+  },
+  "what-to-do-if-the-portal-login-page-keeps-failing": {
+    "title": "Okufanele ukwenze uma ikhasi lokungena ngemvume lephothali lihlala lihluleka",
+    "summary": "Umhlahlandlela wokuxazulula izinkinga wamakhasi okungena ngemvume engosi esemthethweni angeke alayishe, avuselele kabi, noma abonakale ebambekile ngaphambi kokuthi uqhubeke.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ikhasi lokungena ngemvume lephothali lihlala lihluleka, qala ngokubheka umzila, uxhumano, kanye nekhasi ngokwalo ngaphambi kokuthi ucabange ukuthi inkinga yakho noma imininingwane iyinkinga."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukuhluleka kwekhasi lokungena kuvamise ukuba yinkinga yokufinyelela ikhasi kuqala, akusona isinqumo sokugcina mayelana nesicelo sakho noma isimo. Lowo mehluko ubalulekile ngoba ushintsha indlela okufanele uphendule ngayo."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi kwesinye isikhathi bayethuka futhi bagxumele ezixhumanisini ezikopishiwe lapho ikhasi elisemthethweni lehluleka. Lokho kungadala inkinga yokuthembana ngaphezulu kweyobuchwepheshe."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi usendleleni efanele esemthethweni.\n2. Vuselela ikhasi bese uzama futhi isiphequluli.\n3. Hlola ukuthi uxhumano lwakho luzinzile yini.\n4. Gwema ukuvula izixhumanisi ezishintshayo ezingahleliwe.\n5. Buyela emzileni osemthethweni uma inkinga yokufinyelela isixazululiwe."
+      },
+      {
+        "title": "Phatha lokhu njengenkinga yokufinyelela kuqala",
+        "body": "Ikhasi lokungena elihlulekayo ngokuvamile lisho ukuthi ikhasi alilayishi kahle noma umzila awulungile. Lokho kwehlukile emphumeleni wakho wesibonelelo sikahulumeni ngokwawo wokuba inkinga."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukulungisa ikhasi lokungena elisemthethweni. Ingakusiza ukuthi uhlale emzileni olungile futhi ugweme ukushintsha inkinga yokufinyelela yesikhashana ibe inkinga enkulu yokuphepha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlukanise izinkinga zokufinyelela kobuchwepheshe kusimo noma izinkinga zokukhokha ukuze ungaphenduli enkingeni engalungile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-to-do-if-you-cannot-log-in-to-the-sassa-portal\n• /guides/how-to-use-services-sassa-gov-za-login-safely\n• /guides/how-to-find-official-portal-updates-without-fake-login-pages\n• /guides/how-to-keep-your-portal-login-details-safe\n• /guides/what-to-do-if-the-status-check-page-will-not-load"
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhasi lokungena elihlulekayo lisho ukuthi isicelo sami sehlulekile?",
+        "body": "Cha. Ngokuvamile kuwukufinyelela kwekhasi noma inkinga yomzila kuqala."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngichofoze isixhumanisi esihlukile senkundla yezokuxhumana ngokushesha?",
+        "body": "Cha. Hlala nemizila esemthethweni ethembekile esikhundleni sokushintshwa okungahleliwe."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyihlole kuqala?",
+        "body": "Hlola umzila osemthethweni, uxhumano, kanye nesiphequluli ngaphambi kokuthatha inkinga enkulu."
+      }
+    ]
+  },
+  "what-to-do-if-you-cannot-log-in-to-the-sassa-portal": {
+    "title": "Okufanele ukwenze uma ungakwazi ukungena ku-portal ye-SASSA",
+    "summary": "Umhlahlandlela wokutakula wezinkinga zokungena ngemvume zephothali, ugxile ezinyathelweni ezilandelayo eziphephile esikhundleni sokuqagela okuphuthumayo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma ungeke ukwazi ukungena kuphothali ye-SASSA, qala uqinisekise ukuthi usekhasini elilungile, bese usebenzisa inkinga yokufinyelela ngokucophelela esikhundleni sokufaka imininingwane ngokuphindaphindiwe emakhasini angaqinisekile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Inkinga yokungena ingavela emzileni, ekhasini, ekuxhumekeni, noma emininingwaneni ozama ukuyisebenzisa. Okubalulekile wukunciphisa inkinga ngokuphepha kunokuzama ukulungisa okungahleliwe okuningi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Imizamo ephindaphindiwe yehlulekile ekhasini elingalungile noma ngokuqagela okusheshayo kungenza isimo sibe nengcindezi futhi singabi sobala."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi ikhasi liwumzila osemthethweni olungile.\n2. Hlola kabusha imininingwane ozama ukuyisebenzisa.\n3. Zama futhi ngokucophelela esikhundleni sokujaha imizamo ephindaphindiwe.\n4. Gcina inothi ukuthi yisiphi isinyathelo esihlulekayo ngempela.\n5. Sebenzisa ukuxhumana okusemthethweni noma imizila yosekelo uma inkinga yokufinyelela iqhubeka ngokucacile."
+      },
+      {
+        "title": "Ukuhlola ukungena ngemvume okuzolile kusebenza kangcono kunokuqagela okuphindaphindiwe",
+        "body": "Ukuthola kabusha okuphephile kokungena ngemvume isinyathelo nesinyathelo. Uma wazi ukuthi ingabe inkinga yikhasi, umzila, noma imininingwane yokungena ngemvume, umnyakazo olandelayo uba sobala kakhulu."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayilawuli ukufinyelela kokungena okusemthethweni. Ingakusiza ukuthi uhlale kumzila olungile futhi uqonde ukuthi iyiphi ingxenye yokugeleza kokungena ebonakala iyinkinga yangempela."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukubhanqa izinkinga zokungena noxhumana naye osemthethweni, ukuphepha kwewebhusayithi, nemihlahlandlela yokuzulazula yengosi ukuze ungaxazululi inkinga ebumnyameni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-use-services-sassa-gov-za-login-safely\n• /guides/how-to-find-official-contact-details-safely\n• /guides/how-to-keep-your-portal-login-details-safe\n• /guides/how-to-find-the-right-sassa-website-for-your-task\n• /guides/how-to-find-official-portal-updates-without-fake-login-pages"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngiqinisekise ikhasi kuqala?",
+        "body": "Ngoba inkinga yokungena ekhasini elingalungile ngeke ixazululwe ngokufaka imininingwane efanayo futhi."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqhubeke ngizama into efanayo ngokuphindaphindiwe?",
+        "body": "Ngokuvamile akukho. Kuyasiza kakhulu ukukhomba ukuthi iyiphi ingxenye yokungena ehlulekayo."
+      },
+      {
+        "title": "I-FAQ: Kufanele ngiyisebenzise nini imizila yokuxhumana esemthethweni?",
+        "body": "Wasebenzise lapho inkinga yokungena ngokusemthethweni iqhubeka ngemva kokuqinisekisa ukuthi usekhasini elilungile."
+      }
+    ]
+  },
+  "how-to-keep-your-portal-login-details-safe": {
+    "title": "Uyigcina kanjani imininingwane yakho yokungena kwiphothali iphephile",
+    "summary": "Umhlahlandlela osebenzayo wokuphepha wokuvikela imininingwane yokungena kwiphothali uma usesha isimo, izinkokhelo, noma usizo lohlelo lokusebenza ku-inthanethi.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Gcina imininingwane yakho yokungena kuphothali iphephile ngokuyifaka kuphela emakhasini asemthethweni aqinisekisiwe, ugweme izixhumanisi zokungena ezikopishiwe, futhi ungabelani ngazo ngokunethezeka ngezingxoxo noma ngokuthunyelwe komphakathi."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abantu bavame ukucabanga ngokuphepha kwekhasi kodwa hhayi mayelana nokuphepha kwemininingwane. Imininingwane ngokwayo ibalulekile kakhulu, ikakhulukazi uma ingcindezi yenza abasebenzisi bangaqapheli ukuthi bayibhala kuphi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma imininingwane yokungena isisetshenziswe ekhasini elingalungile, umonakalo ungaba nzima ukuhlehla kunokuchofoza okungalungile. Yingakho imikhuba yokuphepha emayelana nolwazi lokungena ibalulekile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Faka imininingwane kuphela ekhasini elisemthethweni eliqinisekisiwe.\n2. Gwema ukwabelana ngolwazi lokungena ezingxoxweni noma kumazwana.\n3. Qaphela ngezixhumanisi ezivela emilayezweni engaziwa.\n4. Yima uma ikhasi lizwakala ungalijwayele noma liphuthuma.\n5. Sebenzisa imizila yokuxhumana esemthethweni uma ucabanga ukuthi imininingwane yakho yokungena isetshenziswe ekhasini elingelona."
+      },
+      {
+        "title": "Vikela imininingwane, hhayi idivayisi kuphela",
+        "body": "Amaphutha amaningi okuphepha ayenzeka ngoba abasebenzisi bagxila ekutholeni ikhasi futhi bakhohlwe ukuthi imininingwane ngokwayo iyona edinga ukuvikelwa uma ikhasi selivele."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayisoze yakucela ukuthi ugcwalise izenzo zokungena ezisemthethweni ngaphakathi kwamakhasi ayo omhlahlandlela. Lokho kuhlukana kwenziwa ngamabomu futhi kuvikela ukwethembana."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza utshele umehluko phakathi kwekhasi lomhlahlandlela kanye nomzila wangempela osemthethweni ukuze wazi ukuthi kunini lapho imininingwane yokungena kungafanele ifakwe."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-use-services-sassa-gov-za-login-safely\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/how-to-find-official-portal-updates-without-fake-login-pages\n• /guides/how-to-know-if-a-sassa-app-is-official\n• /privacy"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngabelane ngemininingwane yokungena nomuntu ongisizayo?",
+        "body": "Kuphephile ukungakwenzi. Imininingwane yokungena esemthethweni kufanele ihlale ivikelekile futhi isetshenziswe kuphela emakhasini asemthethweni aqinisekisiwe."
+      },
+      {
+        "title": "I-FAQ: Kungani isixhumanisi sokungena esikopishiwe siyingozi?",
+        "body": "Ngoba ingase ikuthumele ekhasini elibukeka lilungile ngaphandle kokuba umzila osemthethweni."
+      },
+      {
+        "title": "I-FAQ: I-GrantCare ikuphatha kanjani ukungena okusemthethweni?",
+        "body": "Ayizibambi. Izenzo zokungena ezisemthethweni zihlala kumasistimu asemthethweni kuphela."
+      }
+    ]
+  },
+  "how-to-find-official-contact-details-safely": {
+    "title": "Uyithola kanjani imininingwane yokuxhumana esemthethweni ngokuphepha",
+    "summary": "Umhlahlandlela ogxile ekuthembekeni wokuthola imininingwane yokuxhumana esemthethweni ye-SASSA ngaphandle kokuncika ezinombolweni ezikopishiwe, izithombe-skrini ezindala, noma amakhasi angaphephile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Thola imininingwane yokuxhumana esemthethweni ngokuphepha ngokuqala emakhasini okuxhumana asemthethweni, uhlole ukuthi ikhasi liyahambisana yini nesevisi oyidingayo, futhi uqaphe ngezinombolo ezabiwe ngaphandle komongo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Imininingwane yokuxhumana ingashintsha, futhi akuzona zonke izinombolo okwabelwana ngazo ezamanje noma ezifanele wonke umsebenzi. Yingakho ukusesha othintana naye okuphephile kufanele kuqale ngekhasi lokuxhumana elisemthethweni elilungile, hhayi ngokuthunyelwe okungahleliwe."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abasebenzisi bavame ukucinga imininingwane yokuxhumana lapho bekhungathekile futhi bedinga usizo ngokushesha. Lokho kuphuthuma kungenza izinombolo eziphelelwe yisikhathi noma ezingekho emthethweni zibukeke zithembeke kakhulu kunalokho eziyikho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Nquma ukuthi yiluphi uhlobo losizo oludingayo.\n2. Sebenzisa ikhasi lokuxhumana elisemthethweni ngalolo hlobo losizo.\n3. Hlola ukuthi imininingwane yokuxhumana isabukeka njengeyamanje yini lapho.\n4. Gwema ukwethemba izinombolo ezikopishwe ngaphandle komthombo noma usuku.\n5. Gcina ikhasi lokuxhumana elisemthethweni ligciniwe uma usuliqinisekisile."
+      },
+      {
+        "title": "Imininingwane yokuxhumana idinga umthombo nomongo",
+        "body": "Inombolo iyodwa ayanele. Udinga futhi ukwazi ukuthi ingabe iphuma ekhasini elisemthethweni nokuthi iyahambisana yini nosizo oludingayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayizishicileli njengesikhungo sokuxhumana esisemthethweni. Ingakuqondisa emizileni yokuxhumana esemthethweni, kodwa ayikushintshi."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uthole ukuthi inkinga yakho idinga ukuthintwa, ukuhlolwa isimo, usizo lwehhovisi, noma omunye umzila osemthethweni ngaphambi kokuthi uqale ukusesha izinombolo."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-use-sassa-contact-numbers-safely\n• /guides/how-to-find-the-right-contact-number-for-r350-help\n• /guides/how-to-find-a-sassa-office-near-you-safely\n• /guides/when-to-use-contact-details-instead-of-status-check\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani kungafanele ngithembe izinombolo ezikopishiwe ngaso leso sikhathi?",
+        "body": "Ngoba kungenzeka ukuthi zidlulelwe yisikhathi, aziphelele, noma aziboshelwe ekhasini elisemthethweni lesevisi elisemthethweni."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele nginqume kuqala?",
+        "body": "Nquma ukuthi yiluphi usizo oludingayo ngaphambi kokuthi useshe inombolo."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare inganikeza usizo lokuxhumana olusemthethweni ngokuqondile?",
+        "body": "Cha. Ikusiza ukuthi uthole umzila olungile wokuxhumana naye esikhundleni salokho."
+      }
+    ]
+  },
+  "how-to-use-sassa-contact-numbers-safely": {
+    "title": "Zisetshenziswa kanjani izinombolo zokuxhumana ze-SASSA ngokuphepha",
+    "summary": "Umhlahlandlela osebenzayo wokusebenzisa izinombolo ngokucophelela ukuze ungachithi isikhathi enombolweni okungeyona noma uthembele engagunyaziwe.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa izinombolo zokuxhumana ze-SASSA ngokuphephile ngokuqinisekisa inombolo ekhasini lokuxhumana elisemthethweni, ukuyifanisa nomsebenzi wakho, nokugcina irekhodi lokuthi yiluphi usizo olucelile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi bavame ukucabanga ukuthi inselele enkulu ukuthola noma iyiphi inombolo. Inselele ephephile ukuthola inombolo efanelekile yomsebenzi ofanele nokuqinisekisa ukuthi inombolo iphuma emthonjeni osemthethweni ngempela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Inombolo engalungile noma ephelelwe yisikhathi ingadala ukubambezeleka okwengeziwe, ingcindezi eyengeziwe, nokudideka okwengeziwe. Ukusetshenziswa kwenombolo ephephile kunciphisa leyo ngozi."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa inombolo ekhasini lokuxhumana elisemthethweni.\n2. Qondanisa inombolo nosizo oludingayo.\n3. Gcina amaphuzu ngalokho okubuzile kanye nempendulo oyitholile.\n4. Gwema ukwethemba izinombolo ezingenamthombo osemthethweni ocacile.\n5. Buyela ekhasini lokuxhumana elisemthethweni uma udinga ukuphinda uhlole imininingwane ngokuhamba kwesikhathi."
+      },
+      {
+        "title": "Inombolo nomsebenzi kufanele kulingane",
+        "body": "Ngisho nenombolo yangempela esemthethweni iwusizo kuphela uma ifana nosizo oludinga ngempela. Yingakho ukufanisa umsebenzi kubaluleke kakhulu njengenombolo ngokwayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayisebenzi njengesikhungo sezingcingo esisemthethweni. Iwumhlahlandlela ozimele osiza abasebenzisi ukunquma lapho usizo lwefoni kuyisinyathelo esilandelayo esifanele."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi unciphise inkinga ngaphambi kokuthi ushaye ucingo, okwenza kube lula ukwazi ukuthi ukusekelwa kwefoni kuwumzila olungile nhlobo."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-official-contact-details-safely\n• /guides/how-to-find-the-right-contact-number-for-r350-help\n• /guides/when-to-use-contact-details-instead-of-status-check\n• /guides/how-to-find-a-sassa-office-near-you-safely\n• /guides/how-to-keep-records-of-payment-problems"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngifanise inombolo nomsebenzi?",
+        "body": "Ngoba akuzona zonke izinombolo ezisemthethweni ezisingatha zonke izinhlobo zezinkinga ezihlobene nezibonelelo."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyiqophe ngemva kokushaya ucingo?",
+        "body": "Rekhoda lokho okubuzile, lokho okutsheliwe, nokuthi ucingo lwenzeke nini."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiqhubeke ngisebenzisa kabusha inombolo evela kusithombe-skrini esidala?",
+        "body": "Kuphephe kakhudlwana ukuhlola kabusha ikhasi lokuxhumana elisemthethweni kuqala."
+      }
+    ]
+  },
+  "how-to-find-the-right-contact-number-for-r350-help": {
+    "title": "Ungayithola kanjani inombolo yokuxhumana efanele ukuze uthole usizo lwe-R350",
+    "summary": "Umhlahlandlela ogxilisiwe wabasebenzisi abafuna usizo lokuxhumana oluhlobene ne-R350 ngaphandle kokuxuba oxhumana nabo besibonelelo sikahulumeni nezinkinga ezithize ze-SRD.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Thola inombolo yokuxhumana efanele yosizo lwe-R350 ngokubheka umzila osemthethweni olingana nenkinga yakho ethile ehlobene ne-SRD ngaphambi kokuthi uthembe inombolo ekopishiwe."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha okuhlobene ne-R350 kuvame ukuvela ezimeni eziphuthumayo, ngakho abasebenzisi bangase baseshe noma iyiphi inombolo ezwakala iwusizo. Ukuthutha okuphephile ukunquma ukuthi inkinga imayelana nesimo, inkokhelo, isicelo, noma enye inkinga ehlobene ne-SRD kuqala."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ngaphandle kwalokho kuhlolwa komsebenzi, abasebenzisi bangamosha isikhathi emzileni ongalungile wokuxhumana noma baqhubeke nokuphinda umbuzo ofanayo endaweni engafanele."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Thola inkinga ehlobene ne-R350 ngqo.\n2. Hlola umzila wokuxhumana osemthethweni oxhunywe kuleyo nkinga.\n3. Qinisekisa umthombo ngaphambi kokushaya ucingo.\n4. Gcina inothi elifushane lenkinga nanoma imaphi amarekhodi ongase uwadinge.\n5. Londoloza ikhasi elisemthethweni kunokuthembela enombolweni ekopishiwe iyodwa."
+      },
+      {
+        "title": "Usizo lwe-R350 lusebenza kangcono uma udaba lucacisiwe",
+        "body": "Uma inkinga icacile, kuba lula ukuthola umzila olungile wokuxhumana osemthethweni. Ukusesha okubanzi kuvame ukudala ukudideka okuningi kunokucaca."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingakusiza unciphise inkinga ehlobene ne-SRD, kodwa ayinikezi usekelo lwefoni olusemthethweni ngokwalo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi uhlele izindaba ezihlobene ne-R350 zibe isimo, inkokhelo, isikhalazo, ukuthintana, noma izigaba zohlelo ngaphambi kokusebenzisa umzila osemthethweni wokuxhumana."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-use-sassa-contact-numbers-safely\n• /guides/how-to-check-srd-status-online\n• /guides/how-sassa-appeals-work\n• /guides/where-to-confirm-payment-problems-officially\n• /guides/how-to-find-official-contact-details-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele nginciphise inkinga ngaphambi kokubheka inombolo?",
+        "body": "Ngoba indlela yokuxhumana esemthethweni efanele incike ohlotsheni losizo oludinga ngempela."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngisebenzise inombolo yokuqala ye-R350 engiyibona ku-inthanethi?",
+        "body": "Cha. Qinisekisa umthombo osemthethweni kuqala."
+      },
+      {
+        "title": "I-FAQ: Yini esiza ngaphambi kokuthi ngishaye ucingo?",
+        "body": "Isifinyezo esicacile sodaba nanoma yiziphi izinsuku ezifanele noma amagama."
+      }
+    ]
+  },
+  "how-to-use-sassa-toll-free-and-contact-pages-safely": {
+    "title": "Ungayisebenzisa kanjani i-SASSA yamahhala kanye namakhasi wokuxhumana ngokuphepha",
+    "summary": "Umhlahlandlela wokusebenzisa amakhasi okuxhumana amahhala nasemthethweni ngokucophelela, ikakhulukazi uma izinombolo zingakopishwa noma ziphelelwe yisikhathi kwenye indawo ku-inthanethi.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa amakhasi amahhala nawokuxhumana ngokuphepha ngokuqala ekhasini lokuxhumana elisemthethweni, uhlole ukuthi imininingwane isasebenza yini odabeni lwakho, futhi ugweme izinombolo ezingaqinisekisiwe ezabiwe ngaphandle komongo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi bavame ukucinga usizo lwamahhala noma ucingo lwamahhala uma befuna ukufinyelela okunezindleko eziphansi. Lokho kuyaqondakala, kodwa kwenza ukuhlola umthombo okusemthethweni kubaluleke nakakhulu ngoba izinombolo ezindala noma ezikopishiwe zingasabalala kalula."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma abasebenzisi bethemba inombolo ephelelwe yisikhathi noma engekho emthethweni, bangase bachithe isikhathi nemali ngaphandle kokuthola usizo olufanele. Umthombo wenombolo ubaluleke kakhulu njengenombolo ngokwayo."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qala ekhasini lokuxhumana elisemthethweni.\n2. Hlola ukuthi inketho yamahhala noma yokuxhumana iyahambisana yini nenkinga yakho.\n3. Qinisekisa ukuthi imininingwane ingeyakamuva ekhasini elisemthethweni.\n4. Gcina ikhasi elisemthethweni lilondolozwe ukuze lihlolwe kamuva.\n5. Sebenzisa imizila yehhovisi noma yesimo uma ukuxhumana ngocingo kungesona isinyathelo esilandelayo esingcono kakhulu."
+      },
+      {
+        "title": "Ukuxhumana okunezindleko eziphansi kusadinga ukuthola ukuthola ukwethenjwa okuphezulu",
+        "body": "Abantu bavame ukugxila ekutheni inombolo ayikhokhelwa yini bakhohlwe ukubheka ukuthi eyamanje noma esemthethweni. Ukuhlola ukwethenjwa kusaza kuqala."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayisho ukuthi iyideski losizo elisemthethweni lamahhala. Isiza abasebenzisi ukuthi bathole imizila yokuxhumana esemthethweni ngokuphepha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi unqume ukuthi ukuthintana ngocingo, ukuvakasha kwehhovisi, noma umzila osemthethweni wesimo wenza umqondo owengeziwe ngenkinga yakho ngaphambi kokuthi uqale ukushayela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-official-contact-details-safely\n• /guides/how-to-use-sassa-contact-numbers-safely\n• /guides/how-to-find-a-sassa-office-near-you-safely\n• /guides/when-to-use-contact-details-instead-of-status-check\n• /guides/how-to-find-the-right-contact-number-for-r350-help"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele ngihlole ikhasi lokuxhumana elisemthethweni kuqala?",
+        "body": "Ngoba izinombolo zamahhala ezikopishiwe zingase zibe ezindala, ezingaphelele, noma zingaxhunywanga kusevisi efanele."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-toll-free isho ngokuzenzakalelayo ukuthi isemthethweni?",
+        "body": "Cha. Usadinga ukuqinisekisa umthombo."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma ukuthintana naye ngocingo kungabonakali njengesinyathelo esilandelayo esingcono kakhulu?",
+        "body": "Sebenzisa i-GrantCare ukuze uqhathanise othintana naye, ihhovisi, isimo, nezindlela zokukhokha kuqala."
+      }
+    ]
+  },
+  "how-to-know-if-a-sassa-whatsapp-number-is-official": {
+    "title": "Ungazi kanjani ukuthi inombolo ye-SASSA WhatsApp isemthethweni",
+    "summary": "Umhlahlandlela wokwethenjwa wokuhlola ukuthi inombolo ye-WhatsApp noma umlayezo othi usiza ngezinkinga zesibonelelo sikahulumeni usemthethweni ngempela.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Yazi ukuthi inombolo ye-WhatsApp ehlobene ne-SASSA isemthethweni yini ngokuyibheka ngokumelene namakhasi okuxhumana asemthethweni futhi uqaphele izinombolo ezabiwe kuzithombe-skrini, izingxoxo, noma amazwana ngaphandle komthombo osemthethweni ocacile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "I-WhatsApp izizwa ijwayelekile futhi kulula ukuyisebenzisa, engenza izinombolo ezingekho emthethweni zibukeke zithembeke kakhulu kunalokho okufanele. Kungakho ukusesha okuhlobene ne-WhatsApp kudinga ukuhlolwa komthombo okufanayo njengosesho lwewebhusayithi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Inombolo engalungile ye-WhatsApp ingaholela abasebenzisi ekudidekeni noma ekucindezelweni ngokushesha, ikakhulukazi uma izwakala iwusizo futhi iphuthuma. Yingakho ukuqinisekiswa kubalulekile ngaphambi kokuthi uthembele kukho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi inombolo iyavela yini ekhasini lokuxhumana elisemthethweni.\n2. Qaphela izinombolo ezabiwe ezithombeni-skrini noma ezingxoxweni zeqembu.\n3. Qhathanisa inhloso yenombolo nosizo oludingayo.\n4. Gwema ukwabelana ngemininingwane yomuntu siqu uze uqiniseke ngomthombo.\n5. Sebenzisa amakhasi okuxhumana asemthethweni uma umzila we-WhatsApp usazizwa ungaqinisekile."
+      },
+      {
+        "title": "Imiyalezo elula ayisusi isheke lokwethenjwa",
+        "body": "I-WhatsApp ingazizwa ilula kunewebhusayithi, kodwa umthetho ofanayo wokuphepha usasebenza: qinisekisa umthombo ngaphambi kokuthemba umzila."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare akuyona isevisi ye-WhatsApp esemthethweni. Isiza abasebenzisi ukuthi bahlole ukuthi ingabe umzila wemiyalezo ubukeka uthembekile ngaphambi kokuba bawusebenzise."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi unqume ukuthi inkinga yakho ingeyekhasi lesimo, umzila wokuxhumana, noma umzila wasehhovisi ngaphambi kokuthi uthembele kunombolo ye-WhatsApp."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-official-contact-details-safely\n• /guides/how-to-use-status-check-on-whatsapp-safely\n• /guides/how-to-use-sassa-contact-numbers-safely\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/where-to-find-official-updates-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani i-WhatsApp kulula ukuyethemba ngokushesha?",
+        "body": "Ngoba kuzwakala okomuntu siqu futhi kujwayelekile, okungehlisa ukuqapha komsebenzisi."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngithembe inombolo ye-WhatsApp kusukela kusithombe-skrini sodwa?",
+        "body": "Cha. Kuqinisekise ekhasini lokuxhumana elisemthethweni kuqala."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma inombolo izwakala iphuthumayo futhi iwusizo?",
+        "body": "Yilapho kanye ukuhlola umthombo osemthethweni kubaluleke kakhulu."
+      }
+    ]
+  },
+  "how-to-use-status-check-on-whatsapp-safely": {
+    "title": "Ungasisebenzisa kanjani ukuhlola isimo ku-WhatsApp ngokuphepha",
+    "summary": "Umhlahlandlela wabasebenzisi abafuna usizo lwesimo esisekelwe ku-WhatsApp futhi badinga ukuhlala emzileni othembekile ngaphandle kokudida usekelo lwengxoxo nezinhlelo ezisemthethweni zesimo.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa usizo lokuhlola isimo ku-WhatsApp ngokuphepha ngokuphatha imilayezo yengxoxo ngokucophelela futhi uqinisekise umzila osemthethweni ngaphambi kokwethemba noma yisiphi isimangalo noma isixhumanisi esihlobene nesimo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi bafuna usizo lwe-WhatsApp ngoba ingxoxo izwakala ilula kunokuzulazula kuwebhusayithi. Ingozi enkulu iwukuba umzila wengxoxo ungangena esikhundleni sesistimu yesimo esisemthethweni ngaphandle kokuhlola ukuthi isemthethweni noma yamanje kangakanani."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Igama lesimo selivele lidala ukukhathazeka. Ukwengeza umzila wengxoxo ongacacile ngaphezulu kwalokho kungenza isimo sidide nakakhulu uma umthombo ungacacile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi umzila we-WhatsApp uvela emthonjeni osemthethweni yini.\n2. Hlola ukuthi umsebenzi wakho udinga ngempela ikhasi lesimo esisemthethweni esikhundleni salokho.\n3. Gwema ukwethemba izimangalo zesimo esidluliselwe ngaphandle komthombo.\n4. Sebenzisa imizila yesimo esisemthethweni ukuze uqinisekiswe okokugcina.\n5. Sebenzisa i-GrantCare kamuva uma udinga usizo lokufunda umbhalo womphumela."
+      },
+      {
+        "title": "Usizo lwengxoxo nesimo esisemthethweni akuyona into efanayo",
+        "body": "Ingxoxo ingazwakala ilula, kodwa ukuqinisekiswa kwesimo esisemthethweni kusengokwesistimu esemthethweni. Lowo mehluko yiwo ogcina inqubo ithembekile."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayithathi indawo yezinhlelo zezimo ezisemthethweni futhi akufanele kudidaniswe nokuhlola okusemthethweni okusekelwe ku-WhatsApp."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uqonde lapho umzila wengxoxo ungase usekelwe kuphela nalapho usadinga ikhasi lesimo esisemthethweni ukuze uthole impendulo yangempela."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-know-if-a-sassa-whatsapp-number-is-official\n• /guides/how-to-check-srd-status-online\n• /guides/how-to-check-your-status-without-making-mistakes\n• /guides/official-status-check-vs-independent-guide\n• /guides/how-to-find-the-right-status-check-for-your-grant"
+      },
+      {
+        "title": "I-FAQ: Ingabe i-WhatsApp ingakwazi ukufaka ikhasi lesimo esisemthethweni?",
+        "body": "Hhayi ngokuphepha iyodwa. Ukuqinisekiswa kwesimo esisemthethweni kusengokwesistimu esemthethweni."
+      },
+      {
+        "title": "I-FAQ: Kungani abasebenzisi befuna usizo lwesimo se-WhatsApp?",
+        "body": "Ngoba kuzwakala kulula futhi kujwayeleke kakhulu kunewebhusayithi, ikakhulukazi kuselula."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze ngemva kwesibuyekezo esisekelwe engxoxweni?",
+        "body": "Sebenzisa umzila osemthethweni wesimo ukuze uthole isiqinisekiso sokugcina kanye ne-GrantCare ukuze uhunyushwe."
+      }
+    ]
+  },
+  "how-to-find-a-sassa-office-near-you-safely": {
+    "title": "Ungalithola kanjani ihhovisi le-SASSA eduze nawe ngokuphepha",
+    "summary": "Umhlahlandlela osebenzayo wokuthola ihhovisi eliseduze ngemizila ethembekile esikhundleni sokuncika kumakheli akopishiwe noma okuthunyelwe okuphelelwe yisikhathi.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Thola ihhovisi le-SASSA eliseduze nawe ngokuphepha ngokusebenzisa othintana naye osemthethweni noma imizila yendawo yehhovisi, uhlole ukuthi ulwazi lwendawo lusabukeka lwamanje, futhi unganciki ekuthunyelweni komphakathi kwakudala kuphela."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukusesha kwamahhovisi kuvame ukwenzeka lapho imizila eku-inthanethi izizwa idida noma ingatholakali. Lokho kwenza abasebenzisi bathembeke kakhulu ikheli lokuqala abalibonayo, ngisho noma liphelelwe yisikhathi noma lingacacile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uhambo lwasehhovisi olungalungile lungadla isikhathi, imali, namandla. Yingakho ukusesha ihhovisi okuphephile kubaluleke kakhulu njengokuseshwa kwewebhusayithi okuphephile."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Sebenzisa imininingwane yokuxhumana esemthethweni noma yendawo yehhovisi.\n2. Hlola ukuthi imininingwane yendawo isabukeka ingeyamanje.\n3. Qondanisa ukuvakashelwa kwehhovisi nohlobo losizo oludingayo.\n4. Gcina ikheli kanye nanoma iyiphi inothi yokuxhumana ndawonye.\n5. Lungiselela imibhalo yakho ngaphambi kokuhamba uma ukuvakasha kwehhovisi kudingekile."
+      },
+      {
+        "title": "Imininingwane yendawo idinga ukuhlolwa kokwethenjwa okufanayo njengezixhumanisi",
+        "body": "Abantu bavame ukuhlola amawebhusayithi ngokucophelela kodwa bathembe amakheli ehhovisi ngokushesha okukhulu. Zombili zidinga ukuhlolwa komthombo uma uhambo lubalulekile."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayiwasebenzisi amahhovisi. Ingasiza abasebenzisi banqume ukuthi usizo lwehhovisi lufanele ukulandelwa nini nokuthi bangayithola kanjani imininingwane yendawo esemthethweni ngokuphepha."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi unqume ukuthi uyakudinga ngempela ukuvakashelwa kwehhovisi noma ukuthi isimo, inkokhelo, noma umzila wokuxhumana uzoyixazulula yini inkinga kuqala."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-to-check-before-visiting-a-sassa-office\n• /guides/when-to-use-a-sassa-office-instead-of-the-portal\n• /guides/how-to-find-official-contact-details-safely\n• /guides/how-to-prepare-for-a-sassa-office-visit\n• /guides/when-to-use-contact-details-instead-of-status-check"
+      },
+      {
+        "title": "I-FAQ: Kungani kungafanele ngithembe noma yiliphi ikheli lehhovisi ku-inthanethi?",
+        "body": "Ngoba imininingwane yendawo ingaba midala, ingaphelele, noma yabiwe ngaphandle komthombo othembekile."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngilungiselele ngaphambi kokuhamba?",
+        "body": "Yebo. Kuyasiza ukuqinisekisa isizathu sokuvakasha kanye namadokhumenti ongawadinga."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare ingangitshela uma ngidinga ukuvakashelwa ehhovisi?",
+        "body": "Ingakusiza ucabange ukuthi ukuvakasha kwehhovisi cishe kuyisinyathelo esilandelayo esingcono kakhulu."
+      }
+    ]
+  },
+  "what-to-check-before-visiting-a-sassa-office": {
+    "title": "Yini okufanele uyihlole ngaphambi kokuvakashela ihhovisi le-SASSA",
+    "summary": "Umhlahlandlela wokulungiselela ukuvakasha kwamahhovisi ukuze abasebenzisi bangahambi ngaphandle kwezizathu ezicacile, amarekhodi ayisisekelo, noma okulindelekile okufanele.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngaphambi kokuvakashela ihhovisi le-SASSA, hlola ukuthi ukuvakasha kwehhovisi kuyadingeka ngempela, qinisekisa imininingwane yendawo, bese ulungisa amarekhodi noma imibhalo exhunywe nenkinga yakho."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Abasebenzisi abaningi baya ehhovisi ngoba imizila ye-inthanethi izizwa ingaqinisekile. Lokho kusengaba yisinyathelo esifanele, kodwa kuyasiza ukwenza uhambo lube ngamabomu esikhundleni sokuhamba ungenawo umsebenzi ocacile engqondweni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukuvakashela ehhovisi kungathatha isikhathi nemali. Ukuhlola okufushane kokulungiselela kungenza ukuvakasha kube usizo kakhulu futhi kunciphise ithuba lokubuya futhi ukuze uthole okuthile okulula."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Nquma isizathu esiqondile sokuvakasha.\n2. Qinisekisa imininingwane yehhovisi ngokusebenzisa imizila esemthethweni.\n3. Qoqa imibhalo noma amarekhodi axhunywe nenkinga.\n4. Gcina amanothi amagama noma izinsuku ezibalulekile.\n5. Qiniseka ukuthi inkinga akuyona into umzila osemthethweni we-inthanethi ongayixazulula kuqala."
+      },
+      {
+        "title": "Ukuhamba kufanele kuxazulule inkinga, hhayi ukudala entsha",
+        "body": "Ukuvakasha kwehhovisi okuhle kakhulu kuqala ngesizathu esithile kanye namarekhodi alungile. Lokho kuguqula uhambo olucindezelayo lube isinyathelo esilandelayo esigxile kakhulu."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukusebenza njengehhovisi noma ideski lamacala asemthethweni. Ingakusiza kuphela ukuthi unqume ukuthi ukuhamba kungase kube umnyakazo olandelayo owusizo kakhulu."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza ukuthi unciphise inkinga ngaphambi kokuvakasha ukuze wazi ukuthi yimaphi amagama, izinsuku, namarekhodi okufanele uze nawe."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-a-sassa-office-near-you-safely\n• /guides/how-to-prepare-for-a-sassa-office-visit\n• /guides/when-to-use-a-sassa-office-instead-of-the-portal\n• /guides/how-to-keep-records-of-payment-problems\n• /guides/how-to-find-official-contact-details-safely"
+      },
+      {
+        "title": "I-FAQ: Kungani kufanele nginqume isizathu kuqala?",
+        "body": "Ngenxa yokuthi isizathu esicacile siwukuthi, kuba lula ukuletha amarekhodi afanele futhi usebenzise ukuvakasha kahle."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngihambe ngaphambi kokuhlola imininingwane yendawo?",
+        "body": "Cha. Qinisekisa imininingwane yendawo esemthethweni kuqala."
+      },
+      {
+        "title": "I-FAQ: Kufanele ngiphathe ini?",
+        "body": "Letha amarekhodi, imibhalo, kanye nezinsuku ezixhumene ngqo nenkinga yakho."
+      }
+    ]
+  },
+  "when-to-use-a-sassa-office-instead-of-the-portal": {
+    "title": "Isetshenziswa nini ihhovisi le-SASSA esikhundleni sephothali",
+    "summary": "Umhlahlandlela wesinqumo wabasebenzisi abangenaso isiqiniseko sokuthi isinyathelo sabo esilandelayo singe-inthanethi noma mathupha.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Sebenzisa ihhovisi le-SASSA esikhundleni sephothali lapho udaba ludinga ngokusobala usizo lomuntu siqu noma lapho imizila ye-inthanethi ingaxazululi inkinga ngemva kokuqinisekisa ukuthi usebenzisa ikhasi elisemthethweni elilungile."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ezinye izinkinga zimayelana nokuqonda amagama, ukuhlola isikhathi, noma ukusebenzisa ikhasi elisemthethweni elilungile. Abanye bangase bafinyelele iphuzu lapho usizo lomuntu siqu lunengqondo. Inselele ukwazi umehluko."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma uye ehhovisi ngaphambi kwesikhathi kakhulu, ungamosha uhambo. Uma ugwema ihhovisi isikhathi eside kakhulu lapho lidingeka ngokucacile, inkinga ingase iqhubeke. Isinqumo esinokulinganisela sibalulekile lapha."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Hlola ukuthi udaba lusengasingathwa yini emzileni osemthethweni osemthethweni ku-inthanethi.\n2. Sebenzisa i-GrantCare ukuze uqonde amagama nomsebenzi kuqala.\n3. Nquma ukuthi ingabe inkinga manje idinga usizo lomuntu siqu.\n4. Qinisekisa imininingwane yehhovisi ngaphambi kokuhamba.\n5. Lungiselela amarekhodi afanele uma udinga ukuhamba."
+      },
+      {
+        "title": "I-inthanethi kuqala akusho ukuthi ku-inthanethi unomphela",
+        "body": "Isinyathelo esilandelayo esihlakaniphile asihlali sifana kuyo yonke inkinga. Ezinye izinkinga zidinga kuphela ukufunda okucacile. Abanye bafinyelela eqophelweni lapho ukwesekwa komuntu mathupha kuba okungokoqobo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ingasiza ngesinqumo, kodwa ayikwazi ukufaka esikhundleni sokusekela okusemthethweni komuntu uma lokho kudingekile."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "I-GrantCare ingakusiza uveze umehluko phakathi kwenkinga esadinga incazelo engcono kanye nenkinga okungenzeka manje idinga usizo oluqondile olusemthethweni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-a-sassa-office-near-you-safely\n• /guides/what-to-check-before-visiting-a-sassa-office\n• /guides/how-to-find-official-contact-details-safely\n• /guides/when-to-use-contact-details-instead-of-status-check\n• /guides/how-to-find-the-right-sassa-website-for-your-task"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngiye ehhovisi ngokushesha nje lapho ngizizwa ngididekile?",
+        "body": "Hhayi njalo. Okunye ukudideka kungaxazululwa kuqala ngokuqonda umsebenzi kanye nomzila osemthethweni olungile."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma umzila we-inthanethi ungakawuxazululi?",
+        "body": "Lokho kungase kube iphuzu lapho ukuvakasha kwehhovisi kuba okunengqondo."
+      },
+      {
+        "title": "I-FAQ: Yini engisiza ukuthi nginqume?",
+        "body": "Umqondo ocacile wokuthi ngabe udaba lusadinga incazelo noma manje ludinga isenzo esisemthethweni esiqondile mathupha."
+      }
+    ]
+  },
+  "how-to-prepare-for-a-sassa-office-visit": {
+    "title": "Ungakulungiselela kanjani ukuvakasha kwehhovisi le-SASSA",
+    "summary": "Umhlahlandlela osebenzayo wokulungiselela wokuqinisekisa ukuthi uletha amadokhumenti alungile ehhovisi le-SASSA, okuvimbela ukuthi ujikiswe ngemva kokulinda kulayini usuku lonke.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Ngaphambi kokuvakashela ihhovisi le-SASSA, hlala uletha incwadi yakho yokuqala kamazisi eluhlaza noma ikhadi elihlakaniphile, ikhophi yalo eqinisekisiwe, nobufakazi bendawo ohlala kuyo. Fika ngokushesha ngokuphepha ngangokunokwenzeka, njengoba olayini bakheka ngaphambi kokuba iminyango ivuleke."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ukuvakasha kwehhovisi le-SASSA akulona uhambo olusheshayo. Kuwuhlelo lukahulumeni olusemthethweni. Uma ufika ulahlekelwe yiphepha elilodwa nje, izikhulu azikwazi ukukusiza ngokomthetho, futhi kuzomele ubuye ngolunye usuku."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukulungiselela kuyisivikelo sakho esingcono kakhulu ekukhungathekeni. Ukwazi kahle ukuthi yini edingekayo kusho ukuthi kufanele ume kulowo mugqa omude kanye."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Qinisekisa ukuthi kungani uhamba. Ingabe kungenziwa ku-inthanethi esikhundleni salokho?\n2. Qoqa umazisi wakho wokuqala kanye nekhophi esanda kuqinisekiswa (ngaphansi kwezinyanga ezi-3 ubudala).\n3. Phatha ipeni, ibhodlela lamanzi, nanoma yiziphi izinhlamvu noma imiyalezo ye-SMS SASSA okuthumelele yona.\n4. Ungakhokhi noma ubani omi ngaphandle enikela ku-'hold your place in line' noma 'speed up your file'.\n5. Uma usungaphakathi, nikeza kuphela amadokhumenti akho kothile ohlezi ngemva kwedeski elisemthethweni le-SASSA."
+      },
+      {
+        "title": "Qaphela i-'helpers' yangaphandle",
+        "body": "Abakhwabanisi bavame ukuhlala ngaphandle kwamahhovisi e-SASSA begqoke imichilo ebukeka isemthethweni. Bazokunikeza ukukusiza weqe ulayini ngenkokhelo. Ungabanaki. Khuluma nezikhulu kuphela ngaphakathi kwesakhiwo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ikusiza ukuthi ulungiselele ngokwengqondo nokuphatha ukuvakasha kwakho. Asikwazi ukusheshisa ulayini noma sikubhukhele i-aphoyintimenti."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza izidingo eziqondile zezibonelelo ezahlukene, ukuze wazi kahle ukuthi imaphi amadokhumenti okufanele uwafake kufolda yakho ngaphambi kokuba uphume endlini."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-to-check-before-visiting-a-sassa-office\n• /guides/how-to-find-a-sassa-office-near-you-safely\n• /guides/how-to-keep-records-of-payment-problems\n• /guides/how-to-find-official-contact-details-safely\n• /guides/when-to-use-a-sassa-office-instead-of-the-portal"
+      },
+      {
+        "title": "I-FAQ: Ingabe omunye umuntu angangiyela ehhovisi?",
+        "body": "Ngokuvamile akunjalo, ngaphandle uma benegunya elisemthethweni, elisemthethweni Lommeli. I-SASSA idinga ukuqinisekisa ukuthi ungubani umfakisicelo wangempela."
+      },
+      {
+        "title": "I-FAQ: Ingabe ngidinga ukuphrinta izitatimende zami zasebhange?",
+        "body": "Uma ufaka isicelo sesibonelelo esisha noma ushintsha imininingwane yasebhange, yebo, ngokuvamile udinga izinyanga ezi-3 zezitatimende zasebhange ezinesitembu."
+      },
+      {
+        "title": "I-FAQ: Ingabe ikhona imali yokungena ehhovisi le-SASSA?",
+        "body": "Ungalokothi. Ukufinyelela ehhovisi likahulumeni nasezinsizeni zikahulumeni kumahhala 100%."
+      }
+    ]
+  },
+  "what-the-search-for-a-sassa-app-usually-means": {
+    "title": "Kungani mhlawumbe ungaludingi uhlelo lokusebenza lwe-SASSA",
+    "summary": "Umhlahlandlela wokuphepha ochaza ukuthi kungani ufuna uhlelo lokusebenza lwe-SASSA kuvame ukuholela ekulandeni isofthiwe yomkhonyovu eyingozi, nokuthi yini okufanele uyenze esikhundleni salokho.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Akuvamile ukuthi kube nesizathu sokulanda i-'SASSA App'. Abakhwabanisi badala izinhlelo zokusebenza ezingelona iqiniso ku-Google Play Store ukuze bantshontshe amaphasiwedi akho. Indlela ephephe kunazo zonke yokufinyelela i-SASSA ocingweni lwakho ukuthayipha 'srd.sassa.gov.za' esipheqululini sakho se-inthanethi."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Kulula kakhulu kumuntu okhohlisayo ukwakha uhlelo lokusebenza, alubize ngokuthi 'SASSA Status Checker', futhi alubeke esitolo sezinhlelo zokusebenza. Uma uyilanda futhi uthayipha inombolo yakho kamazisi, ithumela imininingwane yakho ngqo kumkhohlisi, hhayi kuhulumeni."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma ufaka uhlelo lokusebenza olunonya, ingase ingamane intshontshe ukungena kwakho kwe-SASSA—ingase futhi intshontshe amagama ayimfihlo akho ebhange noma ifunde imilayezo yakho ye-SMS ukuze ibambe ama-OTP."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ungacingi i-Google Play Store noma i-Apple App Store ukuze uthole i-'SASSA'.\n2. Vula isiphequluli sakho se-inthanethi (Chrome, Safari) esikhundleni salokho.\n3. Thayipha ngokwakho ikheli elisemthethweni (isb., srd.sassa.gov.za).\n4. Uma ulufuna ngempela uhlelo lokusebenza, landa olulodwa kuphela uma kunesixhumanisi esiqondile kulo kusuka kuwebhusayithi esemthethweni ye-sassa.gov.za.\n5. Khipha noma yiziphi izinhlelo zokusebenza ze-'Grant Helper' onazo njengamanje ocingweni lwakho ukuze uvikele ubumfihlo bakho."
+      },
+      {
+        "title": "Izinhlelo zokusebenza zinokufinyelela kufoni yakho",
+        "body": "Iwebhusayithi ingabona kuphela ukuthi uthayipha ini kuyo. Uhlelo lokusebenza lungakwazi ukubona amafayela akho, indawo yakho, nemilayezo yakho. Ukunikeza uhlelo lomgunyathi ukufinyelela kufoni yakho kuyingozi ngendlela emangalisayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare yiwebhusayithi, hhayi uhlelo lokusebenza. Awudingi ukulanda noma yini ukuze ufunde imihlahlandlela yethu, ugcine ifoni yakho iphephile futhi ivikelekile."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikufundisa indlela yokusebenzisa amawebhusayithi asemthethweni ngokushelela kufoni yakho ukuze ungalokothi uzizwe unesidingo sokulanda uhlelo lokusebenza oluyingozi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-the-search-for-an-srd-sassa-app-usually-means\n• /guides/how-to-know-if-a-sassa-app-is-official\n• /guides/should-you-use-a-sassa-app-or-the-website\n• /guides/how-to-open-the-sassa-website-on-mobile\n• /guides/how-to-find-the-right-sassa-website-for-your-task"
+      },
+      {
+        "title": "I-FAQ: Kodwa uhlelo lokusebenza lunophawu lwe-SASSA. Ingabe iphephile?",
+        "body": "Cha. Abakhohlisi bakopisha ilogo ukuze bakhohlise. Hlala usebenzisa iwebhusayithi ye-.gov.za esikhundleni salokho."
+      },
+      {
+        "title": "I-FAQ: Kuthiwani uma uhlelo lokusebenza lumahhala?",
+        "body": "Izinhlelo zokusebenza zomkhonyovu zihlala zimahhala ngoba zenza imali ngokweba isibonelelo sakho noma ngokuthengisa idatha yakho."
+      },
+      {
+        "title": "I-FAQ: Ingabe uhlelo lokusebenza lungahlola isimo sami ngokushesha?",
+        "body": "Cha. Isizindalwazi esisemthethweni siwumthombo oqondile weqiniso. Noma yiluphi uhlelo lokusebenza luvele lukhiphe kuwebhusayithi noma kunjalo, lwengeza umuntu ophakathi nendawo ongadingekile."
+      }
+    ]
+  },
+  "what-the-search-for-an-srd-sassa-app-usually-means": {
+    "title": "Ngokuvamile kusho ukuthini ukusesha kohlelo lokusebenza lwe-SRD SASSA",
+    "summary": "Umhlahlandlela osheshayo ochaza ukuthi kungani kungafanele uthembele kuzinhlelo zokusebenza zezinkampani zangaphandle ukuze uphathe isibonelelo sakho se-SRD, nokuthi ungafinyelela kanjani ngokuphephile ingosi esemthethweni ye-SRD kuselula yakho.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Abantu abaningi basesha uhlelo lokusebenza lwe-SRD ngethemba lendlela esheshayo yokuhlola isimo sabo. Nokho, alukho uhlelo lokusebenza olusemthethweni lwalokhu. Okuwukuphela kwendlela ephephile yokuphatha isibonelelo sakho se-R350 ukusebenzisa iwebhusayithi esemthethweni yeselula ye-srd.sassa.gov.za."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Ngenxa yokuthi isibonelelo se-SRD siphathwa ku-inthanethi ngokuphelele, abakhohlisi bayazi ukuthi izigidi zabantu zizosesha uhlelo lokusebenza. Bakha izinhlelo zokusebenza zomgunyathi ezilingisa ingosi ye-SRD ukuze zivune izinombolo zikamazisi nezinombolo zomakhalekhukhwini."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma ulanda uhlelo lokusebenza olungelona iqiniso lwe-SRD bese ufaka imininingwane yakho, abakhwabanisi bangangena ngokushesha kuphothali yangempela ye-SRD futhi bashintshe imininingwane yakho yasebhange. Ubanika okhiye be-R350 yakho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Susa noma yiziphi izinhlelo zokusebenza ze-'SRD Check' noma 'R350 Status' ozilandile.\n2. Vula isikrini sasekhaya sefoni's web browser.\n3. Type srd.sassa.gov.za into the address bar yourself.\n4. Bookmark the page on your phone's ukuze ufinyelele kalula ngokuzayo.\n5. Ungalokothi uthembe uhlelo lokusebenza olukucela i-PIN yephothali ye-SRD noma i-OTP."
+      },
+      {
+        "title": "Iwebhusayithi yakhelwe iselula",
+        "body": "Iwebhusayithi esemthethweni ye-srd.sassa.gov.za yakhelwe ngokuqondile ukusebenza kahle kuma-smartphones ashibhile. Awudingi uhlelo lokusebenza ukuze uthole umuzwa osheshayo, oshelelayo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare inikeza imihlahlandlela yezemfundo yokuthi ungalusebenzisa kanjani uhlelo lwe-SRD. Asinikezeli ngohlelo lokusebenza ukuhlola isimo sakho, njengoba lokho kungaphula ubumfihlo bakho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikubonisa ukuthi ungabhukhima kanjani iwebhusayithi esemthethweni ye-SRD kufoni yakho, ikunikeza ukunethezeka okufana nohlelo lokusebenza ngaphandle kwezingozi zokuphepha."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-the-srd-portal-is-for\n• /guides/how-to-check-srd-status-online\n• /guides/how-to-use-srd-status-check-safely\n• /guides/how-to-find-official-portal-updates-without-fake-login-pages\n• /guides/how-to-know-if-a-sassa-app-is-official"
+      },
+      {
+        "title": "I-FAQ: Kungani kunezinhlelo zokusebenza eziningi ze-SRD ku-Google Play Isitolo?",
+        "body": "Ngoba i-Google ayibambi ngokushesha bonke abakhohlisi. Balayisha izinhlelo zokusebenza ezingamanga ngokushesha kunokuba zingasuswa."
+      },
+      {
+        "title": "I-FAQ: Ingabe uhlelo lokusebenza lungangisiza ngifake isicelo sokwenqaba kwe-SRD yami?",
+        "body": "Cha. Izikhalazo kufanele zifakwe ngqo kusiGungu Ezizimele ngokusebenzisa iwebhusayithi yabo esemthethweni."
+      },
+      {
+        "title": "I-FAQ: Ingabe lukhona uhlelo lokusebenza olusemthethweni lwe-SRD nhlobo?",
+        "body": "Okwamanje, cha. Uhulumeni ukhetha ukusebenzisa amawebhusayithi anezinga elinguziro ukuze akulondolozele idatha."
+      }
+    ]
+  },
+  "how-to-know-if-a-sassa-app-is-official": {
+    "title": "Ungazi kanjani ukuthi uhlelo lokusebenza lwe-SASSA lusemthethweni",
+    "summary": "Uhlu lokuqinisekisa oluqinile lokukusiza ukuthi unqume ukuthi ingabe uhlelo lokusebenza lushicilelwe ngempela uhulumeni noma luwumkhonyovu ohlakaniphile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Okuwukuphela kwendlela yokwazi ukuthi uhlelo lokusebenza lusuka ku-SASSA ngokusemthethweni ukufuna isixhumanisi sokulanda esiqondile kuwebhusayithi esemthethweni ye-sassa.gov.za. Ungalokothi uthembe uhlelo lokusebenza ngoba luvela esitolo sezinhlelo zokusebenza."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Izitolo zezinhlelo zokusebenza (njenge-Google Play noma i-Apple App Store) aziqinisekisi kahle ukuthi ubani umnikazi welogo kahulumeni. Abakhwabanisi bangaqamba kalula inkampani yabo i-'SASSA Official Updates' futhi balayishe uhlelo lokusebenza olungelona iqiniso."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma uthemba imiphumela yosesho yesitolo sohlelo lokusebenza, cishe uzolanda umkhonyovu. Lena indlela eshesha kakhulu yokuthi ubunikazi bakho buntshontshwe futhi kuthathwe nesibonelelo sakho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ungacingi isitolo sakho sohlelo lokusebenza ukuthola amathuluzi e-SASSA.\n2. Vula isiphequluli sakho sewebhu bese uya ngqo ku-sassa.gov.za.\n3. Sesha iwebhusayithi esemthethweni ukuze uthole okukhulunywe ngakho ngohlelo lokusebenza leselula.\n4. Uma lungekho uhlelo lokusebenza olushiwo kuwebhusayithi ye-.gov.za, alukho uhlelo lokusebenza olusemthethweni olukhona.\n5. Uma ungabaza, sebenzisa iwebhusayithi esikhundleni salokho."
+      },
+      {
+        "title": "Umthombo weqiniso yisiza se-.gov.za",
+        "body": "Uhulumeni uzohlale ekhangisa amathuluzi akhe asemthethweni kuwebhusayithi yakhe evikelekile. Uma uhlelo lokusebenza lungaxhunywanga ekhelini le-.gov.za, liwumkhonyovu."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla yezemfundo ezimele. Asinalo uhlelo lokusebenza lweselula olucubungula izibonelelo, futhi noma yiluphi uhlelo lokusebenza oluthi 'GrantCare Official' lokucubungula isibonelelo luyinkohliso."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikufundisa ukuthi ungawabona kanjani lawa manga ngokushesha, ukuvikela ifoni yakho nemali yakho kuma-software anonya."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-the-search-for-a-sassa-app-usually-means\n• /guides/what-the-search-for-an-srd-sassa-app-usually-means\n• /guides/should-you-use-a-sassa-app-or-the-website\n• /guides/how-to-know-if-a-sassa-website-is-official\n• /guides/how-to-find-the-right-sassa-website-for-your-task"
+      },
+      {
+        "title": "I-FAQ: Ingabe uhlelo lokusebenza olupholishiwe lusengaba olungekho emthethweni?",
+        "body": "Yebo. Abakhwabanisi baqasha onjiniyela abangochwepheshe ukuze benze izinhlelo zabo zokusebenza zomgunyathi zibukeke zikholisa ngendlela emangalisayo."
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngifake imininingwane yomuntu siqu ngaphambi kokuthi ngiqinisekise uhlelo lokusebenza?",
+        "body": "Lutho neze. Ukuqinisekisa ukuba semthethweni kohlelo lokusebenza umugqa wakho wokuqala wokuzivikela."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiqhathanise nayo uhlelo lokusebenza?",
+        "body": "Qhathanisa nezimemezelo ezikuwebhusayithi esemthethweni ye-sassa.gov.za. Uma kungamenyezelwa lapho, kushaya indiva."
+      }
+    ]
+  },
+  "should-you-use-a-sassa-app-or-the-website": {
+    "title": "Ingabe kufanele usebenzise uhlelo lokusebenza lwe-SASSA noma iwebhusayithi?",
+    "summary": "Ukuqhathanisa okulula okuchaza ukuthi kungani iwebhusayithi esemthethweni kahulumeni cishe njalo iyisinqumo esiphephile nesihlakaniphe ngaphezu kokulanda uhlelo lokusebenza.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Kuzomele usebenzise njalo iwebhusayithi esemthethweni ye-SASSA (egcina ngo-.gov.za). Ngoba izinhlelo zokusebenza zomgunyathi zivame kakhulu futhi ziyingozi, ukuthembela kusiphequluli sakho sewebhu kuyindlela ephephe kakhulu yokuphatha isibonelelo sakho."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Nakuba izinhlelo zokusebenza zizizwa zishesha, zidinga ukuthi ufake isofthiwe efonini yakho engakwazi ukufinyelela amafayela akho omuntu siqu, imilayezo ye-SMS, nendawo. Iwebhusayithi ibona kuphela lokho okubhalayo kuyo ngokucacile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Ukukhetha uhlelo lokusebenza ngaphezu kwewebhusayithi ngokuvamile kusho ukuhweba ngokuvikeleka kwakho ukuze kube lula. Lapho usebenza ngeholo lakho kanye nomazisi, ukuphepha kufanele kuze kuqala ngaso sonke isikhathi."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Njalo qala ngokuvula ifoni yakho's web browser (Chrome, Safari).\n2. Type the official address (like srd.sassa.gov.za) yourself.\n3. Ignore pop-ups or ads suggesting you download a 'imenyu yohlelo lokusebenza olusheshayo'.\n4. If you really want an app-like experience, tap your browser's bese ukhetha 'Add to Home Screen'.\n5. Lokhu kudala isinqamuleli esiphephile ngqo kuwebhusayithi esemthethweni."
+      },
+      {
+        "title": "Amawebhusayithi alawulwa ngokuqinile",
+        "body": "Uhulumeni waseNingizimu Afrika ulawula ngokuqinile ukuthi ubani ongaba umnikazi wekheli lewebhu le-'.gov.za'. Kunzima ngendlela emangalisayo ukuthi abakhwabanisi benze umgunyathi. Amagama esitolo sezinhlelo zokusebenza awalawulwa nhlobo."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare yeluleka ngokumelene nokulanda izinhlelo zokusebenza zokuphatha izibonelelo zezinkampani zangaphandle. Sikholelwa ngokuqinile ukuthi iwebhusayithi esemthethweni ukuphela kwendlela evikelekile."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikubonisa ukuthi uyisebenzisa kanjani iwebhusayithi esemthethweni ngempumelelo, ukuze ungalokothi uzizwe ukhungathekile ukuze ube sengcupheni yokulanda uhlelo lokusebenza olunomthunzi."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-know-if-a-sassa-app-is-official\n• /guides/how-to-open-the-sassa-website-on-mobile\n• /guides/how-to-find-the-right-sassa-website-for-your-task\n• /guides/how-to-use-services-sassa-gov-za-safely\n• /guides/what-the-search-for-a-sassa-app-usually-means"
+      },
+      {
+        "title": "I-FAQ: Ingabe kufanele ngihlale ngikhetha uhlelo lokusebenza ngoba luzwakala lulula?",
+        "body": "Cha. Nge-SASSA, iwebhusayithi iyindlela yokuxhumana ehlosiwe, esemthethweni, nephephe kakhulu."
+      },
+      {
+        "title": "I-FAQ: Ingabe iwebhusayithi ivamise ukuba yindawo ephephile yokuqala?",
+        "body": "Yebo, iyona kuphela indawo yokuqala ephephile eqinisekisiwe inqobo nje uma uqinisekise ikheli le-.gov.za."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele iqondise isinqumo kakhulu?",
+        "body": "Ukuphepha kwakho. Ubungozi bokwebiwa kobunikazi kuhlelo lokusebenza olungelona iqiniso kukudlula kude ukusebenziseka elikunikezayo."
+      }
+    ]
+  },
+  "what-moya-app-searches-usually-mean-for-r350": {
+    "title": "Ukusebenzisa izinhlelo zokusebenza ezingenadatha njenge-Moya ye-R350",
+    "summary": "Umhlahlandlela oqondile wokuqonda ukuthi izinhlelo zokusebenza ezingenazo idatha zingena kanjani ohambweni lwakho lwe-SASSA, kanye nezingozi zokuthembela kuzo ukuze wenze izenzo ezisemthethweni.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Abantu abaningi basebenzisa izinhlelo zokusebenza ezingenadatha njenge-Moya ukuze bafinyelele i-inthanethi uma bengenaso isikhathi somoya. Nakuba lezi zinhlelo zokusebenza zingalayisha iwebhusayithi ye-SASSA, kusafanele uqinisekise ukuthi uzulazulela ekhasini elisemthethweni elithi srd.sassa.gov.za ngaphakathi kohlelo lokusebenza."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Izinhlelo zokusebenza ezingenazo idatha zisebenza njengewindi le-inthanethi. Nokho, ngenxa yokuthi uhlelo lokusebenza ngokwalo lusemthethweni akusho ukuthi zonke izixhumanisi ezingaphakathi kulo zisemthethweni. Usadinga ukuqinisekisa ikheli lewebhu olibhekile."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma uchofoza isixhumanisi esingahleliwe ngaphakathi kohlelo lokusebenza olungenayo idatha uthatha ngokuthi luphephile ngoba uhlelo lokusebenza luphephile, ungase ufike kusayithi lomkhonyovu. Kufanele ugcine ukuqapha kwakho."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Vula uhlelo lwakho lokusebenza olungenayo idatha (njenge-Moya).\n2. Esikhundleni sokuchofoza izibhengezo ezijwayelekile ze-'SASSA Help', bheka 'Discover' noma ingxenye yesiphequluli sewebhu.\n3. Thayipha okuthi srd.sassa.gov.za ngqo ku-app's browser bar.\n4. Verify the address before entering your ID.\n5. Never pay a fee to access 'premium' SASSA izixhumanisi ngaphakathi kohlelo lokusebenza."
+      },
+      {
+        "title": "Isayithi elisemthethweni nalo alinayo idatha",
+        "body": "Uhulumeni wenze iwebhusayithi ye-srd.sassa.gov.za esemthethweni yaba nguziro. Lokhu kusho ukuthi awudingi idatha ukuze ufinyelele kuyo ngokuqondile esipheqululini esivamile sefoni yakho (njenge-Chrome)."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iyinkundla ezimele futhi ayixhunyanisiwe nohlelo lokusebenza lwe-Moya. Sincoma ukusebenzisa isiphequluli esakhelwe ngaphakathi sefoni yakho ukuze ufinyelele ngokuqondile isayithi elisemthethweni le-SASSA elilinganiselwe ngoziro."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikukhumbuza ukuthi isayithi elisemthethweni le-SASSA ngeke likubize ngedatha, likunikeza ukuzethemba kokusebenzisa isiphequluli sakho esijwayelekile ngokuphephile."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-the-search-for-an-srd-sassa-app-usually-means\n• /guides/how-to-use-srd-status-check-safely\n• /guides/how-to-check-r350-status-on-mobile\n• /guides/how-to-know-if-a-sassa-app-is-official\n• /guides/how-to-find-official-portal-updates-without-fake-login-pages"
+      },
+      {
+        "title": "I-FAQ: Kungani abasebenzisi besesha uhlelo lokusebenza lwe-Moya ngosizo lwe-R350?",
+        "body": "Ngoba ziphelelwe yidatha futhi zidinga indlela yamahhala yokuhlola isimo sazo."
+      },
+      {
+        "title": "I-FAQ: Ingabe ukufaneleka kohlelo lokusebenza kufakazela isimo esisemthethweni?",
+        "body": "Cha. Uhlelo lokusebenza isiphequluli nje; iwebhusayithi engaphakathi kuyo kusafanele iqinisekiswe ngokusemthethweni."
+      },
+      {
+        "title": "I-FAQ: Ingabe ngidinga uhlelo lokusebenza ukuhlola isimo sami mahhala?",
+        "body": "Cha. Isayithi elisemthethweni le-srd.sassa.gov.za lilinganiselwe futhi ngeke likukhokhise idatha kumanethiwekhi amaningi amakhulu."
+      }
+    ]
+  },
+  "how-to-use-app-based-r350-information-safely": {
+    "title": "Ungalusebenzisa kanjani ulwazi olususelwe kuhlelo lokusebenza lwe-R350 ngokuphepha",
+    "summary": "Umhlahlandlela wokuphepha wabasebenzisi abafunda iseluleko se-SASSA kuzinhlelo zokusebenza zezinkampani zangaphandle, echaza umehluko obalulekile phakathi kweseluleko sokufunda nokuthatha isinyathelo esisemthethweni.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Kuhle kakhulu ukufunda izindaba noma imihlahlandlela mayelana nesibonelelo sakho se-R350 kuhlelo lokusebenza, kodwa akufanele neze ufake inombolo yakho ye-ID, iphasiwedi, noma imininingwane yasebhange kulolo hlelo lokusebenza. Ngaso sonke isikhathi iya kuwebhusayithi esemthethweni ukuze uthathe isinyathelo."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Izinhlelo zokusebenza namawebhusayithi azimele (njenge-GrantCare) alungele ukufunda. Kodwa ababona uhulumeni. Uma uhlelo lokusebenza luzama ukusuka ku-'giving advice' ukuya ku-'processing your grant', lweqa umugqa oyingozi."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Uma udida uhlelo lokusebenza lwezemfundo nephothali esemthethweni, uzonikezela imininingwane yakho ebucayi komunye umuntu. Lokhu kubeka ubuwena kanye nemali yakho yesibonelelo engozini enkulu."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Sebenzisa izinhlelo zokusebenza noma amasayithi azimele ukuze ufunde ukuthi inqubo isebenza kanjani.\n2. Uma usulungele ukufaka isicelo, isikhalazo, noma uhlole isimo sakho, vala uhlelo lokusebenza.\n3. Vula isiphequluli sewebhu socingo lwakho (Chrome, Safari).\n4. Thayipha u-srd.sassa.gov.za kubha yekheli ngokwakho.\n5. Yenza isenzo ngokuphephile kusayithi likahulumeni elisemthethweni."
+      },
+      {
+        "title": "Funda noma yikuphi, sebenzisa kuphela ku-.gov.za",
+        "body": "Cabanga ngezinhlelo zokusebenza ezizimele njengomtapo wolwazi lapho ufunda khona mayelana nokubhanga. Kodwa uma sekuyisikhathi sokufaka imali yakho, kufanele ungene ebhange elisemthethweni."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare iwulandela ngokuqinile lo mthetho. Sihlinzeka ngelabhulali yolwazi, kodwa asilokothi sikucele i-ID yakho noma sizame ukukucubungula isibonelelo sakho."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sikugcina uphephile ngokumaka ngokucacile umngcele phakathi kwezemfundo nesenzo sikahulumeni esisemthethweni."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/what-moya-app-searches-usually-mean-for-r350\n• /guides/what-the-search-for-an-srd-sassa-app-usually-means\n• /guides/how-to-check-srd-status-online\n• /guides/official-status-check-vs-independent-guide\n• /guides/how-to-apply-without-using-unofficial-websites"
+      },
+      {
+        "title": "I-FAQ: Ingabe ulwazi olusekelwe kuhlelo lokusebenza lusengaba usizo?",
+        "body": "Yebo, iseluleko sokufunda nemihlahlandlela kuyasiza kakhulu, inqobo nje uma ungasebenzisi uhlelo lokusebenza ukuthumela isicelo sakho sangempela."
+      },
+      {
+        "title": "I-FAQ: Iyiphi ingozi enkulu?",
+        "body": "Ingozi enkulu ukufaka inombolo yakho kamazisi ohlelweni lokusebenza olungaphethwe uhulumeni."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyenze ngaphambi kokufaka noma yimiphi imininingwane?",
+        "body": "Vala uhlelo lokusebenza bese uye ngqo kuwebhusayithi esemthethweni kahulumeni."
+      }
+    ]
+  },
+  "when-to-use-contact-details-instead-of-status-check": {
+    "title": "Isetshenziswa nini imininingwane yokuxhumana esikhundleni sokuhlola isimo",
+    "summary": "Umhlahlandlela wesinqumo ongakusiza wazi ukuthi sekuyisikhathi sokuyeka ukuhlola isimo sakho ku-inthanethi futhi uqale ukushayela i-SASSA ukuze uthole ukungenelela okuqondile.",
+    "sections": [
+      {
+        "title": "Impendulo esheshayo",
+        "body": "Uma isimo sakho sibambeke ku-'Pending' izinsuku ezingaphezu kwezingu-90, noma uma imininingwane yakho yasebhange ishintshiwe ngaphandle kwemvume yakho, yeka ukuhlola isimo sakho bese ushayela ngokushesha inombolo yamahhala ethi SASSA (0800 60 10 11)."
+      },
+      {
+        "title": "Kusho ukuthini lokhu",
+        "body": "Iphothali yokuhlola isimo ikutshela kuphela ukuthi ikhompuyutha icabangani njengamanje. Ayikwazi ukulungisa amaphutha. Uma kukhona ukubambezeleka okukhulu noma inkinga yokukhwabanisa, ukuvuselela ikhasi ngokuphindaphindiwe ngeke kusize. Udinga umuntu ozongenelela."
+      },
+      {
+        "title": "Kungani lokhu kubalulekile",
+        "body": "Abantu abaningi bamosha izinyanga ngokubheka isimo sabo nsuku zonke, ngethemba lokuthi kuzoshintsha. Ukubona lapho isistimu ezenzakalelayo yehlulekile kukongela isikhathi futhi kwenza inkinga yakho ifinyelele othile ongasiza ngempela."
+      },
+      {
+        "title": "Ongakwenza ngokulandelayo",
+        "body": "1. Ingabe isimo sakho sesilinde isikhathi esingaphezu kwezinyanga ezi-3? Uma kunjalo, shayela.\n2. Ingabe isimo sakho sithi 'Approved' kodwa awukaholi izinyanga ezi-2? Uma kunjalo, shayela.\n3. Ngabe usola ukuthi kukhona othola imali yakho? Uma kunjalo, shayela ngokushesha.\n4. Uma ushayela ku-0800 60 10 11, yiba nenombolo yakho kamazisi isilungile.\n5. Bhala phansi inombolo yereferensi i-ejenti ekunika yona ngaphambi kokuvala ucingo."
+      },
+      {
+        "title": "Amakhompiyutha abika, abantu bayaxazulula",
+        "body": "Iwebhusayithi iyintatheli ezenzakalelayo. Ayikwazi ukulungisa ifayela eliphukile. Uma ifayela libhajwe, kufanele uxhumane nesikhulu esingumuntu ukuze uliphushele phambili mathupha."
+      },
+      {
+        "title": "Izinto ezibalulekile okufanele uzikhumbule",
+        "body": "I-GrantCare ayikwazi ukuxhumana ne-SASSA esikhundleni sakho. Imithetho yobumfihlo ibeka ukuthi wena, ofake isicelo, kufanele ushayele wena ucingo."
+      },
+      {
+        "title": "I-GrantCare ingasiza kanjani",
+        "body": "Sichaza imigqa yesikhathi evamile yoshintsho lwesimo ukuze wazi kahle ukuthi ukubambezeleka sekungajwayelekile nini ukuze kugunyazwe ucingo."
+      },
+      {
+        "title": "Usizo oluhlobene",
+        "body": "Amakhasi alandelayo awusizo:\n• /guides/how-to-find-official-contact-details-safely\n• /guides/how-to-use-sassa-contact-numbers-safely\n• /guides/how-to-check-your-status-without-making-mistakes\n• /guides/how-to-save-your-status-results-for-reference\n• /guides/where-to-confirm-payment-problems-officially"
+      },
+      {
+        "title": "I-FAQ: Ngazi kanjani uma ukuhlolwa kwesimo kungasaneli?",
+        "body": "Uma isimo sakho sihlala singashintshile ngaphezu kwesikhathi esijwayelekile sokucubungula, noma uma ubona ukukhwabanisa okusobala njengemininingwane yasebhange eshintshile."
+      },
+      {
+        "title": "I-FAQ: Yini okufanele ngiyiqoqe ngaphambi kokuthi ngixhumane?",
+        "body": "Inombolo yakho kamazisi, inombolo yocingo obhalise ngayo, kanye negama eliqondile lesimo obambelele kuso."
+      },
+      {
+        "title": "I-FAQ: Ingabe i-GrantCare isengasiza ngemva kokuxhumana kwami?",
+        "body": "Yebo. Ngemva kokukhuluma nomenzeli, ungasebenzisa imihlahlandlela yethu ukuze uqonde amagama obuchwepheshe abawasebenzisile noma izinyathelo ezilandelayo abazincomile."
+      }
+    ]
+  }
+};
+
+function withZuTranslations<
+  T extends {
+    slug: string;
+    title: string;
+    summary: string;
+    sections: Array<{ title: string; body: string }>;
+    translations?: Record<string, unknown>;
+  },
+>(guide: T, translation: GuideTranslation) {
+  return {
+    ...guide,
+    translations: {
+      ...(guide.translations ?? {}),
+      zu: translation,
+    },
+  };
+}
+
+export const SEO_BATCH_TWELVE_GUIDES = SEO_BATCH_TWELVE_GUIDES_SOURCE.map((guide) =>
+  addSetswanaTranslations(withZuTranslations(guide, ZU_TRANSLATIONS[guide.slug])),
+);

@@ -20,6 +20,7 @@ import {
   listStatusMeanings,
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
 import { GRANT_AMOUNT_SOURCE, getGrantAmountDetails } from "@/lib/official-resources";
 import {
@@ -49,19 +50,30 @@ export async function generateMetadata({
     return {};
   }
 
-  const amountLabel = (await import("@/lib/official-resources")).getGrantAmountLabel(grantType);
+  const amountLabel = (await import("@/lib/official-resources")).getGrantAmountLabel(grantType, locale);
 
-  const seoName = getGrantSeoMetadataName(grant);
+  const seoName = getGrantSeoMetadataName(grant, locale);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      socialReliefMetaTitle: (name: string) => `${name}: SASSA Application, Status and Payment Help`,
+      grantMetaTitle: (name: string) => `${name}: SASSA Eligibility, Amount and How to Apply`,
+    },
+    {
+      socialReliefMetaTitle: (name: string) => `${name}: Isicelo se-SASSA, Isimo Nosizo Lokukhokha`,
+      grantMetaTitle: (name: string) => `${name}: Ukufaneleka kwe-SASSA, Inani Nendlela Yokufaka Isicelo`,
+    },
+  );
   const metadataTitle =
     grant.slug === "social-relief"
-      ? `${seoName}: SASSA Application, Status and Payment Help`
-      : `${seoName}: SASSA Eligibility, Amount and How to Apply`;
+      ? routeCopy.socialReliefMetaTitle(seoName)
+      : routeCopy.grantMetaTitle(seoName);
 
   return buildLocalizedMetadata({
     locale,
     path: `/grants/${grantType}`,
     title: metadataTitle,
-    description: getGrantSeoDescription(grant, amountLabel),
+    description: getGrantSeoDescription(grant, amountLabel, locale),
   });
 }
 
@@ -77,6 +89,23 @@ export default async function GrantDetailPage({
   }
 
   const copy = getCopy(locale);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      breadcrumbGrants: "Grants",
+      serviceType: "Social grant",
+      areaServed: "South Africa",
+      officialAmountSource: "Official amount source",
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      breadcrumbGrants: "Izibonelelo",
+      serviceType: "Isibonelelo somphakathi",
+      areaServed: "INingizimu Afrika",
+      officialAmountSource: "Umthombo osemthethweni wenani",
+    },
+  );
   const [grant, relatedGrants, statuses, paymentDefaults] = await Promise.all([
     getGrantBySlug(locale, grantType),
     listRelatedGrantTypes(locale, grantType, 3),
@@ -102,9 +131,9 @@ export default async function GrantDetailPage({
         `/payment-dates/${paymentDefaults.year}/${paymentDefaults.monthSlug}/${paymentGrantSlug}`,
       )
     : buildLocalePath(locale, "/payment-dates");
-  const amountDetails = getGrantAmountDetails(grant.slug);
+  const amountDetails = getGrantAmountDetails(grant.slug, locale);
   const paymentEntry = paymentGrantSlug ? paymentDefaults.grants[paymentGrantSlug] ?? null : null;
-  const displayGrantName = getGrantSeoDisplayName(grant);
+  const displayGrantName = getGrantSeoDisplayName(grant, locale);
   const hubLinks = (grant.slug === "social-relief"
     ? statuses.filter((status) =>
         ["pending", "identity-verification", "banking-issue", "reapplication-needed"].includes(
@@ -124,7 +153,7 @@ export default async function GrantDetailPage({
     "@type": "GovernmentService",
     name: `SASSA ${displayGrantName}`,
     description: grant.summary,
-    serviceType: "Social grant",
+    serviceType: routeCopy.serviceType,
     provider: {
       "@type": "GovernmentOrganization",
       name: "South African Social Security Agency (SASSA)",
@@ -132,7 +161,7 @@ export default async function GrantDetailPage({
     },
     areaServed: {
       "@type": "Country",
-      name: "South Africa",
+      name: routeCopy.areaServed,
     },
     url: new URL(buildLocalePath(locale, `/grants/${grantType}`), siteUrl).toString(),
   };
@@ -146,8 +175,8 @@ export default async function GrantDetailPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "Grants", path: "/grants" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
+          { label: routeCopy.breadcrumbGrants, path: "/grants" },
           { label: displayGrantName, path: `/grants/${grantType}` },
         ]}
       />
@@ -165,7 +194,7 @@ export default async function GrantDetailPage({
                   rel="noreferrer"
                   className="inline-flex text-sm font-semibold text-primary"
                 >
-                  Official amount source
+                  {routeCopy.officialAmountSource}
                 </a>
               ) : null}
               <div className="grid gap-4 md:grid-cols-2">
@@ -211,7 +240,7 @@ export default async function GrantDetailPage({
           payDayText={
             paymentEntry
               ? getPaymentSummaryDayText(copy, {
-                  date: paymentEntry.date ? formatDateLabel(paymentEntry.date) : null,
+                  date: paymentEntry.date ? formatDateLabel(paymentEntry.date, locale) : null,
                   grantSlug: paymentEntry.grantSlug,
                   month: paymentDefaults.month,
                   state: paymentEntry.state,
@@ -248,7 +277,7 @@ export default async function GrantDetailPage({
           {relatedGrants.map((relatedGrant) => (
             <Link key={relatedGrant.slug} href={buildLocalePath(locale, `/grants/${relatedGrant.slug}`)}>
               <Card className="space-y-2">
-                <h3 className="text-xl font-semibold">{getGrantSeoDisplayName(relatedGrant)}</h3>
+                <h3 className="text-xl font-semibold">{getGrantSeoDisplayName(relatedGrant, locale)}</h3>
                 <p className="text-sm text-muted">{relatedGrant.summary}</p>
               </Card>
             </Link>

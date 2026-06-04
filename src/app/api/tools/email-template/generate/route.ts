@@ -4,6 +4,7 @@ import { openai } from "@ai-sdk/openai";
 import { z } from "zod";
 import { auth } from "@/auth";
 import { db } from "@/lib/prisma";
+import { getEmailTemplateApiCopy, getRequestLocale } from "../copy";
 
 const InputSchema = z.object({
   emailType: z.string(),
@@ -23,29 +24,6 @@ const OutputSchema = z.object({
 });
 
 export const maxDuration = 30;
-
-/* ── Mappings ── */
-const TYPE_LABELS: Record<string, string> = {
-  "application": "Job Application",
-  "cold-cv": "Send CV without a specific vacancy",
-  "follow-up": "Follow up on a past application",
-  "confirm-interview": "Confirm interview invite",
-  "thank-you": "Thank you after interview",
-  "internship": "Internship / Learnership Application",
-};
-
-const EXP_LABELS: Record<string, string> = {
-  "none": "No experience",
-  "some": "Some experience",
-  "experienced": "Experienced",
-};
-
-const TONE_LABELS: Record<string, string> = {
-  "professional": "Professional (balanced, neutral)",
-  "friendly": "Friendly professional (slightly warm)",
-  "formal": "Formal (more structured)",
-  "confident": "Confident (stronger closing, assertive language)",
-};
 
 const SYSTEM_PROMPT = `You are a professional career assistant that writes high-quality job-related emails.
 
@@ -77,20 +55,26 @@ Important Feature:
 - Personalise the email with the given company name and job title in a natural, seamless way.`;
 
 export async function POST(req: Request) {
-  if (!process.env.OPENAI_API_KEY) {
-    return NextResponse.json({ error: "OpenAI API missing" }, { status: 500 });
-  }
+  const locale = getRequestLocale(req);
+  const copy = getEmailTemplateApiCopy(locale);
 
   try {
+    if (!process.env.OPENAI_API_KEY) {
+      return NextResponse.json({ error: copy.apiMissing }, { status: 500 });
+    }
+
     const session = await auth();
     const userId = session?.user?.id;
 
     const json = await req.json();
     const data = InputSchema.parse(json);
 
-    const typeLabel = TYPE_LABELS[data.emailType] ?? data.emailType;
-    const expLabel = EXP_LABELS[data.experienceLevel] ?? data.experienceLevel;
-    const toneLabel = TONE_LABELS[data.tone] ?? data.tone;
+    const typeLabels = copy.typeLabels as Record<string, string>;
+    const experienceLabels = copy.experienceLabels as Record<string, string>;
+    const toneLabels = copy.toneLabels as Record<string, string>;
+    const typeLabel = typeLabels[data.emailType] ?? data.emailType;
+    const expLabel = experienceLabels[data.experienceLevel] ?? data.experienceLevel;
+    const toneLabel = toneLabels[data.tone] ?? data.tone;
 
     const userPrompt = `Based on the following user details:
 
@@ -112,7 +96,7 @@ Requirements:
 3. Adjust tone based on the user's choice and experience level.
 4. Keep the email natural and realistic (not robotic).
 5. Make sure the email is easy to read and ready to send.
-6. Provide 2-3 quick tips for sending this email properly.`;
+6. Provide 2-3 quick tips for sending this email properly.${copy.outputLanguageInstruction}`;
 
     const { object } = await generateObject({
       model: openai("gpt-4o-mini"),
@@ -139,6 +123,6 @@ Requirements:
     return NextResponse.json({ id: generation.id });
   } catch (error) {
     console.error("[generate-email]", error);
-    return NextResponse.json({ error: "Failed to generate templates" }, { status: 500 });
+    return NextResponse.json({ error: copy.failedGenerate }, { status: 500 });
   }
 }

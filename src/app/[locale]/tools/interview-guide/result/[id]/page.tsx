@@ -4,11 +4,23 @@ import { buildLocalePath, isLocale } from "@/lib/site";
 import { Card, StatusMessage, ButtonLink } from "@/components/ui";
 import { auth } from "@/auth";
 import { UnlockButton } from "./unlock-button";
+import { getInterviewGuideCopy } from "../../copy";
 
-export const metadata = {
-  title: "Your Interview Guide",
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; id: string }>;
+}) {
+  const { locale } = await params;
+
+  if (!isLocale(locale)) return {};
+  const copy = getInterviewGuideCopy(locale);
+
+  return {
+    title: copy.resultMetadataTitle,
+    robots: { index: false, follow: false },
+  };
+}
 
 /* ── Types ── */
 
@@ -105,6 +117,7 @@ export default async function ResultPage({
   const { locale, id } = await params;
 
   if (!isLocale(locale)) notFound();
+  const copy = getInterviewGuideCopy(locale);
 
   const generation = await db.toolGeneration.findUnique({
     where: { id },
@@ -124,7 +137,7 @@ export default async function ResultPage({
   if (!output) {
     return (
       <div className="max-w-3xl mx-auto py-12">
-        <StatusMessage tone="error">Generation missing or corrupted.</StatusMessage>
+        <StatusMessage tone="error">{copy.missingGeneration}</StatusMessage>
       </div>
     );
   }
@@ -141,20 +154,20 @@ export default async function ResultPage({
       {/* ── Header ── */}
       <div className="space-y-4">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/70 sm:text-sm">
-          {isPaid ? "Your Full Guide" : "Free Preview"}
+          {isPaid ? copy.fullGuideEyebrow : copy.freePreviewEyebrow}
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
           {input?.jobTitle
-            ? `Your personalised guide for: ${input.jobTitle}`
-            : "Your Personalised Interview Guide"}
+            ? `${copy.resultTitlePrefix} ${input.jobTitle}`
+            : copy.resultTitle}
         </h1>
         {isPaid ? (
           <StatusMessage tone="info">
-            Your full guide is ready. Study these answers and walk into your interview with confidence.
+            {copy.paidStatus}
           </StatusMessage>
         ) : (
           <StatusMessage tone="info">
-            Here&apos;s a free preview — {FREE_QUESTION_COUNT} of {allQuestions.length} questions with short answers. Unlock the rest to fully prepare.
+            {copy.previewStatus(FREE_QUESTION_COUNT, allQuestions.length)}
           </StatusMessage>
         )}
       </div>
@@ -162,7 +175,7 @@ export default async function ResultPage({
       {/* ── Free Preview Questions (3 with truncated answers) ── */}
       <section className="space-y-4">
         <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-          {isPaid ? "Interview Questions & Answers" : "Preview Questions"}
+          {isPaid ? copy.paidQuestionsTitle : copy.previewQuestionsTitle}
         </h2>
         <div className="space-y-5">
           {freeQuestions.map((item, i) => (
@@ -172,6 +185,7 @@ export default async function ResultPage({
               answer={isPaid ? item.answer : truncateAnswer(item.answer)}
               index={i + 1}
               truncated={!isPaid}
+              copy={copy}
             />
           ))}
         </div>
@@ -188,6 +202,7 @@ export default async function ResultPage({
                 question={item.question}
                 answer={item.answer}
                 index={FREE_QUESTION_COUNT + i + 1}
+                copy={copy}
               />
             ))}
           </section>
@@ -196,7 +211,7 @@ export default async function ResultPage({
           {concernTips.length > 0 && (
             <section className="space-y-4">
               <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                💡 Tips for Your Biggest Concern
+                {copy.concernTipsTitle}
               </h2>
               <Card className="space-y-3">
                 {concernTips.map((tip, i) => (
@@ -213,7 +228,7 @@ export default async function ResultPage({
           {mistakesToAvoid.length > 0 && (
             <section className="space-y-4">
               <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                ⚠️ Common Mistakes to Avoid
+                {copy.mistakesTitle}
               </h2>
               <Card className="space-y-3">
                 {mistakesToAvoid.map((tip, i) => (
@@ -230,7 +245,7 @@ export default async function ResultPage({
           {questionsForEmployer.length > 0 && (
             <section className="space-y-4">
               <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                🎯 Questions to Ask the Interviewer
+                {copy.employerQuestionsTitle}
               </h2>
               <Card className="space-y-3">
                 {questionsForEmployer.map((q, i) => (
@@ -247,13 +262,13 @@ export default async function ResultPage({
           <section className="text-center py-4">
             <Card className="space-y-4 py-6">
               <p className="text-2xl">🎉</p>
-              <h3 className="text-lg font-semibold text-foreground">You&apos;re ready!</h3>
+              <h3 className="text-lg font-semibold text-foreground">{copy.readyTitle}</h3>
               <p className="text-muted max-w-md mx-auto text-[15px] leading-relaxed">
-                Practice these answers out loud. The more you rehearse, the more confident you&apos;ll be. Good luck with your interview!
+                {copy.readyBody}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
                 <ButtonLink href={toolPath} variant="secondary">
-                  Build Another Guide
+                  {copy.buildAnother}
                 </ButtonLink>
               </div>
             </Card>
@@ -289,22 +304,16 @@ export default async function ResultPage({
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold text-foreground">
-                    You&apos;re almost ready.
+                    {copy.paywallTitle}
                   </h3>
                   <p className="text-muted text-[15px] leading-relaxed max-w-sm mx-auto">
-                    Unlock your full interview guide and go in confident.
+                    {copy.paywallBody}
                   </p>
                 </div>
 
                 {/* Benefits list */}
                 <div className="text-left space-y-2.5 px-4">
-                  {[
-                    `✔ 10 tailored questions`,
-                    `✔ Strong sample answers`,
-                    `✔ What to say (step-by-step)`,
-                    `✔ Questions to ask the employer`,
-                    `✔ Mistakes to avoid`,
-                  ].map((benefit) => (
+                  {copy.paywallBenefits.map((benefit) => (
                     <div key={benefit} className="flex gap-2.5 items-center">
                       <span className="text-foreground text-[15px] font-medium">{benefit}</span>
                     </div>
@@ -320,10 +329,10 @@ export default async function ResultPage({
                       href={signInPath}
                       className="w-full"
                     >
-                      Unlock Now — R49
+                      {copy.unlock}
                     </ButtonLink>
                     <p className="text-xs text-muted">
-                      You&apos;ll need to sign in or create a free account
+                      {copy.accountRequired}
                     </p>
                   </div>
                 )}
@@ -343,11 +352,13 @@ function QACard({
   answer,
   index,
   truncated,
+  copy,
 }: {
   question: string;
   answer: string;
   index: number;
   truncated?: boolean;
+  copy: ReturnType<typeof getInterviewGuideCopy>;
 }) {
   return (
     <Card className="space-y-4 border-l-4 border-l-primary leading-relaxed">
@@ -361,14 +372,14 @@ function QACard({
       </div>
       <div className="rounded-2xl bg-surface-strong p-4 ml-10 space-y-1.5">
         <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-          {truncated ? "Short Preview" : "Sample Answer"}
+          {truncated ? copy.shortPreview : copy.sampleAnswer}
         </p>
         <p className="text-foreground text-[15px] leading-[1.75]">
           &quot;{answer}&quot;
         </p>
         {truncated && (
           <p className="text-xs text-muted pt-1 italic">
-            Full answer available in the complete guide
+            {copy.fullAnswerAvailable}
           </p>
         )}
       </div>

@@ -16,17 +16,14 @@ export const LOCALES = [
 export type Locale = (typeof LOCALES)[number]["code"];
 
 export const DEFAULT_LOCALE: Locale = "en";
-// Keep locale-aware content in place, but expose only the default locale publicly for now.
-export const PUBLIC_LOCALE_PREFIX_ENABLED = false;
+export const PUBLIC_LOCALE_CODES = ["en", "zu", "xh", "tn"] as const satisfies readonly Locale[];
 
 export function isLocale(value: string | undefined | null): value is Locale {
   return LOCALES.some((locale) => locale.code === value);
 }
 
 export function getPublicLocales() {
-  return PUBLIC_LOCALE_PREFIX_ENABLED
-    ? LOCALES
-    : LOCALES.filter((locale) => locale.code === DEFAULT_LOCALE);
+  return LOCALES.filter((locale) => (PUBLIC_LOCALE_CODES as readonly Locale[]).includes(locale.code));
 }
 
 export function isPublicLocale(value: string | undefined | null): value is Locale {
@@ -57,7 +54,7 @@ export function getInternalLocalePath(locale: Locale, pathname = "/") {
 }
 
 export function buildLocalePath(locale: Locale, pathname = "/") {
-  if (PUBLIC_LOCALE_PREFIX_ENABLED) {
+  if (locale !== DEFAULT_LOCALE && isPublicLocale(locale)) {
     return getInternalLocalePath(locale, pathname);
   }
 

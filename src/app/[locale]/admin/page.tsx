@@ -7,13 +7,76 @@ import { Card, Section } from "@/components/ui";
 import { getAdminAnalytics, type AnalyticsWindow } from "@/lib/admin-analytics";
 import { requireAdmin } from "@/lib/auth-guards";
 import { db } from "@/lib/prisma";
-import { buildLocalePath, isLocale } from "@/lib/site";
+import { buildLocalePath, isLocale, type Locale } from "@/lib/site";
 import { getLaunchReadiness, isDatabaseConfigured } from "@/lib/server-env";
 import { PricingToggle } from "./pricing-toggle";
 
 export const metadata: Metadata = {
   title: "Admin",
 };
+
+const ZU_ADMIN_COPY: Record<string, string> = {
+  "No data yet.": "Ayikho idatha okwamanje.",
+  "Claim checker type conversion": "Ukuguqulwa kohlobo lwe-claim checker",
+  "start to use": "ukuqala uye ekusebenziseni",
+  "use to click": "ukusebenzisa uye ekuchofozeni",
+  "Content admin": "Ukuphatha okuqukethwe",
+  "Database not configured.": "Idathabheyisi ayilungisiwe.",
+  "Grant types": "Izinhlobo zezibonelelo",
+  "Payment dates": "Izinsuku zokukhokha",
+  Statuses: "Izimo",
+  Guides: "Imihlahlandlela",
+  News: "Izindaba",
+  "FAQ entries": "Okufakiwe kwe-FAQ",
+  Notices: "Izaziso",
+  Placements: "Izindawo",
+  "Draft items": "Okusalungiswa",
+  "Pending dates": "Izinsuku ezisalindile",
+  "Portal-only dates": "Izinsuku zephothali kuphela",
+  "Scheduled notices": "Izaziso ezihleliwe",
+  "Missing translations": "Ukuhumusha okushodayo",
+  "Route views": "Ukubukwa kwemizila",
+  "Claim checker clicks": "Ukuchofoza kwe-claim checker",
+  "Claim checker starts": "Ukuqala kwe-claim checker",
+  "Claim checker uses": "Ukusetshenziswa kwe-claim checker",
+  "Reminder signups": "Ukubhalisela izikhumbuzo",
+  "Reminder unsubscribes": "Ukuyeka izikhumbuzo",
+  Signups: "Ukubhalisa",
+  Logins: "Ukungena",
+  "7 days": "Izinsuku ezi-7",
+  "30 days": "Izinsuku ezingama-30",
+  Settings: "Izilungiselelo",
+  "Launch status": "Isimo sokwethulwa",
+  Publishing: "Ukushicilela",
+  Analytics: "Izibalo",
+  Ready: "Kulungile",
+  Missing: "Kuyashoda",
+  Database: "Idathabheyisi",
+  "Auth secret": "Imfihlo ye-auth",
+  "Site URL": "I-URL yesayithi",
+  "Reminder email": "I-imeyili yesikhumbuzo",
+  "Cron secret": "Imfihlo ye-cron",
+  "Start to use": "Ukuqala uye ekusebenziseni",
+  "Use to click": "Ukusebenzisa uye ekuchofozeni",
+  "Start to click": "Ukuqala uye ekuchofozeni",
+  "Views by route": "Ukubukwa ngomzila",
+  "Claim checker topics": "Izihloko ze-claim checker",
+  "Claim checker targets": "Okuqondwe yi-claim checker",
+  "Guide views": "Ukubukwa kwemihlahlandlela",
+  "Payment-date views": "Ukubukwa kwezinsuku zokukhokha",
+  "Status views": "Ukubukwa kwezimo",
+  "Language preferences": "Izinketho zolimi",
+  "Preferred grants": "Izibonelelo ezikhethwayo",
+  "External link clicks": "Ukuchofoza izixhumanisi zangaphandle",
+};
+
+function adminCopy(locale: Locale, text: string) {
+  return locale === "zu" ? (ZU_ADMIN_COPY[text] ?? text) : text;
+}
+
+function liveCopy(locale: Locale, count: number) {
+  return locale === "zu" ? `${count} bukhoma` : `${count} live`;
+}
 
 function isMissingNewsArticleTableError(error: unknown) {
   return (
@@ -25,14 +88,16 @@ function isMissingNewsArticleTableError(error: unknown) {
 
 function RankingCard({
   items,
+  locale,
   title,
 }: {
   items: Array<{ label: string; value: number }>;
+  locale: Locale;
   title: string;
 }) {
   return (
     <Card className="space-y-3">
-      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{title}</p>
+      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{adminCopy(locale, title)}</p>
       {items.length > 0 ? (
         <div className="space-y-3">
           {items.map((item) => (
@@ -43,7 +108,7 @@ function RankingCard({
           ))}
         </div>
       ) : (
-        <p className="text-sm text-muted">No data yet.</p>
+        <p className="text-sm text-muted">{adminCopy(locale, "No data yet.")}</p>
       )}
     </Card>
   );
@@ -78,6 +143,7 @@ function FunnelRateCard({
 
 function ClaimCheckerTypeFunnelCard({
   items,
+  locale,
 }: {
   items: Array<{
     clicks: number;
@@ -87,11 +153,12 @@ function ClaimCheckerTypeFunnelCard({
     useToClickRate: number;
     uses: number;
   }>;
+  locale: Locale;
 }) {
   return (
     <Card className="space-y-3">
       <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
-        Claim checker type conversion
+        {adminCopy(locale, "Claim checker type conversion")}
       </p>
       {items.length > 0 ? (
         <div className="space-y-3">
@@ -104,14 +171,18 @@ function ClaimCheckerTypeFunnelCard({
                 </span>
               </div>
               <div className="flex flex-wrap gap-3 text-xs text-muted">
-                <span>{formatPercent(item.startToUseRate)} start to use</span>
-                <span>{formatPercent(item.useToClickRate)} use to click</span>
+                <span>
+                  {formatPercent(item.startToUseRate)} {adminCopy(locale, "start to use")}
+                </span>
+                <span>
+                  {formatPercent(item.useToClickRate)} {adminCopy(locale, "use to click")}
+                </span>
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <p className="text-sm text-muted">No data yet.</p>
+        <p className="text-sm text-muted">{adminCopy(locale, "No data yet.")}</p>
       )}
     </Card>
   );
@@ -135,9 +206,9 @@ export default async function AdminPage({
 
   if (!isDatabaseConfigured()) {
     return (
-      <Section eyebrow="Admin" title="Content admin">
+      <Section eyebrow="Admin" title={adminCopy(locale, "Content admin")}>
         <Card>
-          <p className="text-sm text-muted">Database not configured.</p>
+          <p className="text-sm text-muted">{adminCopy(locale, "Database not configured.")}</p>
         </Card>
       </Section>
     );
@@ -232,75 +303,75 @@ export default async function AdminPage({
     noticeMissingTranslations;
 
   const collections = [
-    { label: "Grant types", live: grantPublishedCount, value: grantCount, href: buildLocalePath(locale, "/admin/grants") },
-    { label: "Payment dates", live: paymentPublishedCount, value: paymentCount, href: buildLocalePath(locale, "/admin/payment-dates") },
-    { label: "Statuses", live: statusPublishedCount, value: statusCount, href: buildLocalePath(locale, "/admin/statuses") },
-    { label: "Guides", live: guidePublishedCount, value: guideCount, href: buildLocalePath(locale, "/admin/guides") },
-    { label: "News", live: newsPublishedCount, value: newsCount, href: buildLocalePath(locale, "/admin/news") },
-    { label: "FAQ entries", live: faqPublishedCount, value: faqCount, href: buildLocalePath(locale, "/admin/faqs") },
-    { label: "Notices", live: noticePublishedCount, value: noticeCount, href: buildLocalePath(locale, "/admin/notices") },
-    { label: "Placements", live: placementPublishedCount, value: placementCount, href: buildLocalePath(locale, "/admin/placements") },
+    { label: adminCopy(locale, "Grant types"), live: grantPublishedCount, value: grantCount, href: buildLocalePath(locale, "/admin/grants") },
+    { label: adminCopy(locale, "Payment dates"), live: paymentPublishedCount, value: paymentCount, href: buildLocalePath(locale, "/admin/payment-dates") },
+    { label: adminCopy(locale, "Statuses"), live: statusPublishedCount, value: statusCount, href: buildLocalePath(locale, "/admin/statuses") },
+    { label: adminCopy(locale, "Guides"), live: guidePublishedCount, value: guideCount, href: buildLocalePath(locale, "/admin/guides") },
+    { label: adminCopy(locale, "News"), live: newsPublishedCount, value: newsCount, href: buildLocalePath(locale, "/admin/news") },
+    { label: adminCopy(locale, "FAQ entries"), live: faqPublishedCount, value: faqCount, href: buildLocalePath(locale, "/admin/faqs") },
+    { label: adminCopy(locale, "Notices"), live: noticePublishedCount, value: noticeCount, href: buildLocalePath(locale, "/admin/notices") },
+    { label: adminCopy(locale, "Placements"), live: placementPublishedCount, value: placementCount, href: buildLocalePath(locale, "/admin/placements") },
   ];
 
   const publishingCards = [
-    { label: "Draft items", value: draftContentCount },
-    { label: "Pending dates", value: pendingPaymentCount },
-    { label: "Portal-only dates", value: portalOnlyPaymentCount },
-    { label: "Scheduled notices", value: scheduledNoticeCount },
-    { label: "Missing translations", value: missingTranslationCount },
+    { label: adminCopy(locale, "Draft items"), value: draftContentCount },
+    { label: adminCopy(locale, "Pending dates"), value: pendingPaymentCount },
+    { label: adminCopy(locale, "Portal-only dates"), value: portalOnlyPaymentCount },
+    { label: adminCopy(locale, "Scheduled notices"), value: scheduledNoticeCount },
+    { label: adminCopy(locale, "Missing translations"), value: missingTranslationCount },
   ];
 
   const analyticsCards = [
-    { label: "Route views", value: analytics.totals.routeViews },
-    { label: "Claim checker clicks", value: analytics.totals.claimCheckerClicks },
-    { label: "Claim checker starts", value: analytics.totals.claimCheckerStarts },
-    { label: "Claim checker uses", value: analytics.totals.claimCheckerUses },
-    { label: "Reminder signups", value: analytics.totals.reminderSignups },
-    { label: "Reminder unsubscribes", value: analytics.totals.reminderUnsubscribes },
-    { label: "Signups", value: analytics.totals.signups },
-    { label: "Logins", value: analytics.totals.logins },
+    { label: adminCopy(locale, "Route views"), value: analytics.totals.routeViews },
+    { label: adminCopy(locale, "Claim checker clicks"), value: analytics.totals.claimCheckerClicks },
+    { label: adminCopy(locale, "Claim checker starts"), value: analytics.totals.claimCheckerStarts },
+    { label: adminCopy(locale, "Claim checker uses"), value: analytics.totals.claimCheckerUses },
+    { label: adminCopy(locale, "Reminder signups"), value: analytics.totals.reminderSignups },
+    { label: adminCopy(locale, "Reminder unsubscribes"), value: analytics.totals.reminderUnsubscribes },
+    { label: adminCopy(locale, "Signups"), value: analytics.totals.signups },
+    { label: adminCopy(locale, "Logins"), value: analytics.totals.logins },
   ];
 
   const windowLinks = [
-    { label: "7 days", value: "7d" },
-    { label: "30 days", value: "30d" },
+    { label: adminCopy(locale, "7 days"), value: "7d" },
+    { label: adminCopy(locale, "30 days"), value: "30d" },
   ];
 
   return (
     <div className="space-y-8">
-      <Section eyebrow="Admin" title="Content admin">
+      <Section eyebrow="Admin" title={adminCopy(locale, "Content admin")}>
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {collections.map((collection) => (
             <Link key={collection.label} href={collection.href}>
               <Card className="space-y-2">
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{collection.label}</p>
                 <p className="text-3xl font-semibold">{collection.value}</p>
-                <p className="text-sm text-muted">{collection.live} live</p>
+                <p className="text-sm text-muted">{liveCopy(locale, collection.live)}</p>
               </Card>
             </Link>
           ))}
         </div>
       </Section>
 
-      <Section title="Settings">
+      <Section title={adminCopy(locale, "Settings")}>
         <Card className="max-w-md">
-          <PricingToggle isEnabled={toolsPricingEnabled} />
+          <PricingToggle isEnabled={toolsPricingEnabled} locale={locale} />
         </Card>
       </Section>
 
-      <Section title="Launch status">
+      <Section title={adminCopy(locale, "Launch status")}>
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
           {launchReadiness.map((item) => (
             <Card key={item.key} className="space-y-2">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{item.label}</p>
-              <p className="text-base font-semibold">{item.ready ? "Ready" : "Missing"}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{adminCopy(locale, item.label)}</p>
+              <p className="text-base font-semibold">{adminCopy(locale, item.ready ? "Ready" : "Missing")}</p>
               <p className="text-xs text-muted">{item.key}</p>
             </Card>
           ))}
         </div>
       </Section>
 
-      <Section title="Publishing">
+      <Section title={adminCopy(locale, "Publishing")}>
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
           {publishingCards.map((item) => (
             <Card key={item.label} className="space-y-2">
@@ -311,7 +382,7 @@ export default async function AdminPage({
         </div>
       </Section>
 
-      <Section title="Analytics">
+      <Section title={adminCopy(locale, "Analytics")}>
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">
             {windowLinks.map((item) => (
@@ -338,32 +409,32 @@ export default async function AdminPage({
           </div>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             <FunnelRateCard
-              label="Start to use"
+              label={adminCopy(locale, "Start to use")}
               numerator={analytics.claimCheckerFunnel.uses}
               denominator={analytics.claimCheckerFunnel.starts}
             />
             <FunnelRateCard
-              label="Use to click"
+              label={adminCopy(locale, "Use to click")}
               numerator={analytics.claimCheckerFunnel.clicks}
               denominator={analytics.claimCheckerFunnel.uses}
             />
             <FunnelRateCard
-              label="Start to click"
+              label={adminCopy(locale, "Start to click")}
               numerator={analytics.claimCheckerFunnel.clicks}
               denominator={analytics.claimCheckerFunnel.starts}
             />
           </div>
           <div className="grid gap-4 xl:grid-cols-3">
-            <RankingCard items={analytics.routeViews} title="Views by route" />
-            <RankingCard items={analytics.claimCheckerTopics} title="Claim checker topics" />
-            <ClaimCheckerTypeFunnelCard items={analytics.claimCheckerTypeFunnel} />
-            <RankingCard items={analytics.claimCheckerTargets} title="Claim checker targets" />
-            <RankingCard items={analytics.guideViews} title="Guide views" />
-            <RankingCard items={analytics.paymentViews} title="Payment-date views" />
-            <RankingCard items={analytics.statusViews} title="Status views" />
-            <RankingCard items={analytics.languageDistribution} title="Language preferences" />
-            <RankingCard items={analytics.preferredGrantDistribution} title="Preferred grants" />
-            <RankingCard items={analytics.externalClicks} title="External link clicks" />
+            <RankingCard items={analytics.routeViews} title={adminCopy(locale, "Views by route")} locale={locale} />
+            <RankingCard items={analytics.claimCheckerTopics} title={adminCopy(locale, "Claim checker topics")} locale={locale} />
+            <ClaimCheckerTypeFunnelCard items={analytics.claimCheckerTypeFunnel} locale={locale} />
+            <RankingCard items={analytics.claimCheckerTargets} title={adminCopy(locale, "Claim checker targets")} locale={locale} />
+            <RankingCard items={analytics.guideViews} title={adminCopy(locale, "Guide views")} locale={locale} />
+            <RankingCard items={analytics.paymentViews} title={adminCopy(locale, "Payment-date views")} locale={locale} />
+            <RankingCard items={analytics.statusViews} title={adminCopy(locale, "Status views")} locale={locale} />
+            <RankingCard items={analytics.languageDistribution} title={adminCopy(locale, "Language preferences")} locale={locale} />
+            <RankingCard items={analytics.preferredGrantDistribution} title={adminCopy(locale, "Preferred grants")} locale={locale} />
+            <RankingCard items={analytics.externalClicks} title={adminCopy(locale, "External link clicks")} locale={locale} />
           </div>
         </div>
       </Section>

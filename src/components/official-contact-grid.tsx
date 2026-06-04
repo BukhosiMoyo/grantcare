@@ -1,12 +1,34 @@
-import { CONTACT_DIRECTORY_SOURCE, OFFICIAL_SASSA_CONTACTS } from "@/lib/official-resources";
+import { CONTACT_DIRECTORY_SOURCE, getOfficialSassaContacts } from "@/lib/official-resources";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/site";
 
 import { Card } from "@/components/ui";
 
-export function OfficialContactGrid() {
+const COPY: Partial<Record<Locale, { directorySource: string }>> = {
+  zu: {
+    directorySource: "Umthombo wohla lwemibhalo lokuxhumana olusemthethweni",
+  },
+  tn: {
+    directorySource: "Motswedi wa semmuso wa lenaane la dikgokagano",
+  },
+  xh: {
+    directorySource: "Umthombo woluhlu lonxibelelwano olusemthethweni",
+  },
+};
+
+function getCopy(locale: Locale) {
+  return {
+    directorySource: "Official contact directory source",
+    ...(COPY[locale] ?? {}),
+  };
+}
+
+export function OfficialContactGrid({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
+  const copy = getCopy(locale);
+
   return (
     <div className="space-y-4">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {OFFICIAL_SASSA_CONTACTS.map((item) => {
+        {getOfficialSassaContacts(locale).map((item) => {
           const isHttp = item.href.startsWith("http");
 
           return (
@@ -25,7 +47,7 @@ export function OfficialContactGrid() {
         })}
       </div>
       <a href={CONTACT_DIRECTORY_SOURCE.href} target="_blank" rel="noreferrer" className="text-sm font-semibold text-primary">
-        Official contact directory source
+        {copy.directorySource}
       </a>
     </div>
   );

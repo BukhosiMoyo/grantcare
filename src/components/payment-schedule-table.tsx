@@ -8,7 +8,6 @@ import {
 import { getCopy } from "@/lib/copy";
 import { getGrantAmountDetails, PAYMENT_SCHEDULE_SOURCE } from "@/lib/official-resources";
 import { buildLocalePath, type Locale } from "@/lib/site";
-import { formatDateLabel } from "@/lib/utils";
 
 type PaymentScheduleEntry = {
   date: string | null;
@@ -16,6 +15,89 @@ type PaymentScheduleEntry = {
   grantSlug: string;
   state: "expected" | "pending" | "portal-only";
 };
+
+const LOCAL_COPY: Partial<Record<Locale, {
+  checkOfficialUpdate: string;
+  grant: string;
+  howMuchYouGet: string;
+  officialScheduleSource: string;
+  openMonth: string;
+  payDay: string;
+  status: string;
+}>> = {
+  zu: {
+    checkOfficialUpdate: "Hlola isibuyekezo esisemthethweni",
+    grant: "Isibonelelo",
+    howMuchYouGet: "Imali oyitholayo",
+    officialScheduleSource: "Umthombo wohlelo olusemthethweni",
+    openMonth: "Vula inyanga",
+    payDay: "Usuku lokukhokha",
+    status: "Isimo",
+  },
+  tn: {
+    checkOfficialUpdate: "Tlhola ntšhwafatso ya semmuso",
+    grant: "Thuso",
+    howMuchYouGet: "Madi a o a bonang",
+    officialScheduleSource: "Motswedi wa lenaneo la semmuso",
+    openMonth: "Bula kgwedi",
+    payDay: "Letsatsi la tefo",
+    status: "Maemo",
+  },
+  xh: {
+    checkOfficialUpdate: "Jonga uhlaziyo olusemthethweni",
+    grant: "Isibonelelo",
+    howMuchYouGet: "Imali oyifumanayo",
+    officialScheduleSource: "Umthombo weshedyuli esemthethweni",
+    openMonth: "Vula inyanga",
+    payDay: "Umhla wokuhlawula",
+    status: "Isimo",
+  },
+};
+
+function getLocalCopy(locale: Locale) {
+  return {
+    checkOfficialUpdate: "Check official update",
+    grant: "Grant",
+    howMuchYouGet: "How much you get",
+    officialScheduleSource: "Official schedule source",
+    openMonth: "Open month",
+    payDay: "Pay day",
+    status: "Status",
+    ...(LOCAL_COPY[locale] ?? {}),
+  };
+}
+
+function formatLocalizedDateLabel(date: string, locale: Locale) {
+  if (locale === "xh") {
+    const parsedDate = new Date(`${date}T00:00:00`);
+    const weekdays = ["Cawa", "Mvulo", "Lwesibini", "Lwesithathu", "Lwesine", "Lwesihlanu", "Mgqibelo"];
+    const months = [
+      "Januwari",
+      "Februwari",
+      "Matshi",
+      "Epreli",
+      "Meyi",
+      "Juni",
+      "Julayi",
+      "Agasti",
+      "Septemba",
+      "Oktobha",
+      "Novemba",
+      "Disemba",
+    ];
+
+    return `${weekdays[parsedDate.getDay()]}, ${parsedDate.getDate()} ${months[parsedDate.getMonth()]} ${parsedDate.getFullYear()}`;
+  }
+
+  const dateLocale = locale === "zu" ? "zu-ZA" : locale === "tn" ? "tn-ZA" : "en-ZA";
+
+  return new Intl.DateTimeFormat(dateLocale, {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(`${date}T00:00:00`));
+}
 
 export function PaymentScheduleTable({
   entries,
@@ -33,6 +115,7 @@ export function PaymentScheduleTable({
   year: number;
 }) {
   const copy = getCopy(locale);
+  const localCopy = getLocalCopy(locale);
 
   return (
     <div className="space-y-3">
@@ -40,10 +123,10 @@ export function PaymentScheduleTable({
         <p className="text-base text-muted sm:text-lg">{monthLabel}</p>
         <div className="flex flex-wrap gap-3 text-sm">
           <a href={PAYMENT_SCHEDULE_SOURCE.href} target="_blank" rel="noreferrer" className="font-semibold text-primary">
-            Official schedule source
+            {localCopy.officialScheduleSource}
           </a>
           <Link href={buildLocalePath(locale, monthPath)} className="font-semibold text-primary">
-            Open month
+            {localCopy.openMonth}
           </Link>
         </div>
       </div>
@@ -52,15 +135,15 @@ export function PaymentScheduleTable({
         <table className="min-w-full border-collapse text-left">
           <thead className="bg-surface-muted text-muted">
             <tr>
-              <th className="px-4 py-3 font-medium">Grant</th>
-              <th className="px-4 py-3 font-medium">Pay day</th>
-              <th className="px-4 py-3 font-medium">Status</th>
-              <th className="px-4 py-3 font-medium">How much you get</th>
+              <th className="px-4 py-3 font-medium">{localCopy.grant}</th>
+              <th className="px-4 py-3 font-medium">{localCopy.payDay}</th>
+              <th className="px-4 py-3 font-medium">{localCopy.status}</th>
+              <th className="px-4 py-3 font-medium">{localCopy.howMuchYouGet}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border bg-surface">
             {entries.map((entry) => {
-              const amountDetails = getGrantAmountDetails(entry.grantSlug);
+              const amountDetails = getGrantAmountDetails(entry.grantSlug, locale);
 
               return (
                 <tr key={entry.grantSlug}>
@@ -71,8 +154,9 @@ export function PaymentScheduleTable({
                   </td>
                   <td className="px-4 py-4 align-top text-base font-semibold text-primary sm:text-lg">
                     {getPaymentSummaryDayText(copy, {
-                      date: entry.date ? formatDateLabel(entry.date) : null,
+                      date: entry.date ? formatLocalizedDateLabel(entry.date, locale) : null,
                       grantSlug: entry.grantSlug,
+                      locale,
                       month,
                       state: entry.state,
                       year,
@@ -85,7 +169,7 @@ export function PaymentScheduleTable({
                     {amountDetails ? (
                       <GrantAmountDisplay details={amountDetails} variant="table" />
                     ) : (
-                      <p className="text-lg font-semibold text-primary">Check official update</p>
+                      <p className="text-lg font-semibold text-primary">{localCopy.checkOfficialUpdate}</p>
                     )}
                   </td>
                 </tr>

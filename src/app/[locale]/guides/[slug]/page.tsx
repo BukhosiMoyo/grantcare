@@ -21,6 +21,7 @@ import {
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { isGuideIndexable } from "@/lib/guide-seo";
+import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import {
   buildGuideMetaDescription,
   buildGuideMetaTitle,
@@ -58,7 +59,26 @@ function getSectionId(value: string) {
     .replace(/^-+|-+$/g, "");
 }
 
-function getInternalPathLabel(path: string) {
+function getInternalPathLabel(locale: Locale, path: string) {
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      paymentDates: "Payment dates",
+      paymentDatesForMonth: (month: string, year: string) => `${titleCase(month)} ${year} payment dates`,
+      paymentDatesForGrant: (grant: string, month: string, year: string) => `${titleCase(grant)} payment dates for ${titleCase(month)} ${year}`,
+      statusMeaning: (status: string) => `${titleCase(status)} status meaning`,
+      grantLabel: (grant?: string) => grant ? `${titleCase(grant)} grant` : "Grant types",
+      eligibilityChecker: "Eligibility checker",
+    },
+    {
+      paymentDates: "Izinsuku zokukhokha",
+      paymentDatesForMonth: (month: string, year: string) => `Izinsuku zokukhokha zango-${titleCase(month)} ${year}`,
+      paymentDatesForGrant: (grant: string, month: string, year: string) => `Izinsuku zokukhokha ze-${titleCase(grant)} zango-${titleCase(month)} ${year}`,
+      statusMeaning: (status: string) => `Incazelo yesimo esithi ${titleCase(status)}`,
+      grantLabel: (grant?: string) => grant ? `Isibonelelo se-${titleCase(grant)}` : "Izinhlobo zezibonelelo",
+      eligibilityChecker: "Isihloli sokufaneleka",
+    },
+  );
   const segments = path.split("/").filter(Boolean);
 
   if (segments.length === 0) {
@@ -74,29 +94,29 @@ function getInternalPathLabel(path: string) {
   }
 
   if (segments[0] === "status" && segments[1]) {
-    return `${titleCase(segments[1])} status meaning`;
+    return routeCopy.statusMeaning(segments[1]);
   }
 
   if (segments[0] === "payment-dates") {
     if (segments.length === 1) {
-      return "Payment dates";
+      return routeCopy.paymentDates;
     }
 
     if (segments.length === 3) {
-      return `${titleCase(segments[2])} ${segments[1]} payment dates`;
+      return routeCopy.paymentDatesForMonth(segments[2], segments[1]);
     }
 
     if (segments.length >= 4) {
-      return `${titleCase(segments[3])} payment dates for ${titleCase(segments[2])} ${segments[1]}`;
+      return routeCopy.paymentDatesForGrant(segments[3], segments[2], segments[1]);
     }
   }
 
   if (segments[0] === "grants") {
-    return segments[1] ? `${titleCase(segments[1])} grant` : "Grant types";
+    return routeCopy.grantLabel(segments[1]);
   }
 
   if (segments[0] === "eligibility-checker") {
-    return "Eligibility checker";
+    return routeCopy.eligibilityChecker;
   }
 
   return path;
@@ -184,7 +204,7 @@ function renderGuideText(locale: Locale, text: string) {
         href={buildLocalePath(locale, text)}
         className="font-medium text-primary underline decoration-border underline-offset-4"
       >
-        {getInternalPathLabel(text)}
+        {getInternalPathLabel(locale, text)}
       </Link>
     );
   }
@@ -220,6 +240,25 @@ function formatDisplayDate(locale: Locale, value: string | null | undefined) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) {
     return null;
+  }
+
+  if (locale === "xh") {
+    const months = [
+      "Jan",
+      "Feb",
+      "Mat",
+      "Epr",
+      "Meyi",
+      "Jun",
+      "Jul",
+      "Aga",
+      "Sep",
+      "Okt",
+      "Nov",
+      "Dis",
+    ];
+
+    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
   }
 
   return new Intl.DateTimeFormat(locale, {
@@ -299,6 +338,21 @@ export default async function GuideDetailPage({
   ]);
 
   const copy = getCopy(locale);
+  const routeCopy = getLocalizedRouteCopy(
+    locale,
+    {
+      breadcrumbHome: "Home",
+      breadcrumbGuides: "Guides",
+      defaultAuthorName: "GrantCare Editorial Team",
+      quickAnswerTitle: "Quick answer",
+    },
+    {
+      breadcrumbHome: "Ekhaya",
+      breadcrumbGuides: "Imihlahlandlela",
+      defaultAuthorName: "Ithimba Lokuhlela le-GrantCare",
+      quickAnswerTitle: "Impendulo esheshayo",
+    },
+  );
 
   const session = await auth();
   const savedGuide =
@@ -317,7 +371,7 @@ export default async function GuideDetailPage({
     `/payment-dates/${paymentDefaults.year}/${paymentDefaults.monthSlug}`,
   );
   const shareUrl = new URL(guidePath, getSiteUrl()).toString();
-  const authorName = guide.authorName ?? "GrantCare Editorial Team";
+  const authorName = guide.authorName ?? routeCopy.defaultAuthorName;
   const lastUpdatedAt = guide.updatedAt ?? guide.publishedAt ?? null;
   const formattedLastUpdated = formatDisplayDate(locale, lastUpdatedAt);
   const faqSectionId = "frequently-asked-questions";
@@ -386,8 +440,8 @@ export default async function GuideDetailPage({
       <BreadcrumbSchema
         locale={locale}
         items={[
-          { label: "Home", path: "/" },
-          { label: "Guides", path: "/guides" },
+          { label: routeCopy.breadcrumbHome, path: "/" },
+          { label: routeCopy.breadcrumbGuides, path: "/guides" },
           { label: guide.title, path: `/guides/${guide.slug}` },
         ]}
       />
@@ -434,7 +488,7 @@ export default async function GuideDetailPage({
               const sectionBlocks = renderGuideBlocks(locale, parseGuideBody(section.body));
               const sectionId = getSectionId(section.title);
 
-              if (section.title === "Quick answer") {
+              if (section.title === "Quick answer" || section.title === routeCopy.quickAnswerTitle) {
                 return (
                   <section key={section.title} id={sectionId} className="scroll-mt-28">
                     <h2 className="sr-only">{section.title}</h2>
