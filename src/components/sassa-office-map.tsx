@@ -17,8 +17,29 @@ declare global {
 }
 
 const GOOGLE_MAPS_SCRIPT_ID = "grantcare-google-maps";
+let googleMapsRuntimeKey = "";
 
-function loadGoogleMaps() {
+async function getGoogleMapsKey() {
+  const publicKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+
+  if (publicKey) {
+    return publicKey;
+  }
+
+  const response = await fetch("/api/maps/config", {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    return "";
+  }
+
+  const data = (await response.json()) as { key?: string };
+
+  return data.key ?? "";
+}
+
+async function loadGoogleMaps() {
   if (typeof window === "undefined") {
     return Promise.reject(new Error("Google Maps unavailable"));
   }
@@ -31,11 +52,13 @@ function loadGoogleMaps() {
     return window.__grantcareGoogleMaps;
   }
 
-  const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  const key = await getGoogleMapsKey();
 
   if (!key) {
     return Promise.reject(new Error("Google Maps key missing"));
   }
+
+  googleMapsRuntimeKey = key;
 
   window.__grantcareGoogleMaps = new Promise((resolve, reject) => {
     const existingScript = document.getElementById(GOOGLE_MAPS_SCRIPT_ID);
@@ -62,7 +85,7 @@ function loadGoogleMaps() {
 }
 
 function getStreetViewUrl(office: SassaOfficeSearchResult) {
-  const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || googleMapsRuntimeKey;
 
   if (!key) {
     return "";
