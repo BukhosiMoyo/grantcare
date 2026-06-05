@@ -89,6 +89,24 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     }),
     buildLocalizedSitemapEntry({
       locale: locale.code,
+      path: "/tools/sassa-appeal",
+      changeFrequency: "weekly",
+      priority: 0.76,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
+      path: "/tools/interview-guide",
+      changeFrequency: "weekly",
+      priority: 0.74,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
+      path: "/tools/email-template",
+      changeFrequency: "weekly",
+      priority: 0.72,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
       path: "/guides",
       changeFrequency: "daily",
       priority: 0.85,
