@@ -205,8 +205,18 @@ textarea {
   height: 0;
 }
 
+.sassa-office-map {
+  height: 22rem;
+}
+
 @media (min-width: 640px) {
   .guide-body {
     font-size: 1.09rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sassa-office-map {
+    height: 38rem;
   }
 }

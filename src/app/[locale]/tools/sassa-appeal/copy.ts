@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/site";
+import { getAppealReasonOptions } from "@/lib/appeals";
 import { toGeneratedSetswanaValue, toGeneratedXhosaValue } from "@/lib/generated-guide-translations";
 
 const ENGLISH_COPY = {
@@ -57,21 +58,34 @@ const ENGLISH_COPY = {
     { label: "Older Persons Grant", value: "older_persons" },
   ],
   rejectionReasons: [
-    { label: "Alternative Income Source", value: "alternative_income" },
-    { label: "UIF Registered", value: "uif_registered" },
-    { label: "NSFAS Registered", value: "nsfas_registered" },
-    { label: "Identity Verification Failed", value: "identity_failed" },
-    { label: "Medical Assessment Failed", value: "medical_failed" },
-    { label: "Other / Unsure", value: "other" },
+    { label: "Alternative income", value: "alternative_income" },
+    { label: "UIF registered", value: "uif_registered" },
+    { label: "NSFAS registered", value: "nsfas_registered" },
+    { label: "Identity verification failed", value: "identity_failed" },
+    { label: "Medical assessment failed", value: "medical_failed" },
+    { label: "Missing documents", value: "missing_documents" },
+    { label: "Income above threshold", value: "income_threshold" },
+    { label: "Other / unsure", value: "other" },
   ],
   grantQuestion: "Which SASSA grant was rejected?",
+  dateQuestion: "When was it declined?",
+  decisionDate: "Decision date",
+  declinedMonth: "Declined month",
+  decisionDatePlaceholder: "YYYY-MM-DD",
+  declinedMonthPlaceholder: "YYYY-MM",
   reasonQuestion: "Why did SASSA reject your application?",
   reasonSubtitle: "You can check your status on the SASSA portal to confirm.",
-  defenseQuestion: "Why is this rejection incorrect?",
+  defenseQuestion: "What needs correcting?",
   defenseSubtitle:
-    "Briefly explain the truth. We will structure it professionally for the Tribunal.",
+    "Briefly explain what is wrong or what changed.",
   defensePlaceholder:
     "e.g. I have not received any income since 2021. The bank deposit was a gift from my sister...",
+  reminderQuestion: "Appeal deadline reminder?",
+  reminderSubtitle: "Email reminders can be saved when you are signed in.",
+  reminderOptions: [
+    { label: "Remind me before the deadline", value: "yes" },
+    { label: "No reminder", value: "no" },
+  ],
   continue: "Continue",
   identityQuestion: "Your Details for the Appeal",
   identitySubtitle: "Your information is used to generate your appeal draft.",
@@ -95,9 +109,23 @@ const ENGLISH_COPY = {
   paidStatus: "Your appeal letter draft and required document checklist are ready.",
   previewStatus:
     "Your formal defense has been drafted according to ITSAA guidelines. Unlock it to submit your appeal today.",
+  reasonSummaryTitle: "Decline reason",
+  actionChecklistTitle: "Next steps",
+  deadlineTitle: "Deadline",
+  targetDeadlineLabel: "Target date",
+  finalDeadlineLabel: "Final date",
+  submissionTitle: "Submit appeal",
+  contactsTitle: "Official contacts",
+  reminderSaved: "Appeal reminders saved.",
+  reminderSignIn: "Sign in to save appeal reminders.",
+  readGuide: "Read guide",
+  print: "Print",
+  download: "Download",
+  copyLetter: "Copy letter",
+  copied: "Copied",
   letterDraftTitle: "Appeal Letter Draft",
-  requiredDocsTitle: "📎 Required Documents to Attach",
-  warningsTitle: "⚠️ Critical Warnings",
+  requiredDocsTitle: "Required documents",
+  warningsTitle: "Warnings",
   readyTitle: "You're ready to appeal.",
   readyBody:
     "Make sure you print and sign the letter before uploading it to the SASSA portal or delivering it to the DSD office.",
@@ -121,6 +149,8 @@ const ENGLISH_COPY = {
     "nsfas_registered": "NSFAS Registration",
     "identity_failed": "Failed Identity Verification",
     "medical_failed": "Medical Assessment",
+    "missing_documents": "Missing Documents",
+    "income_threshold": "Income Threshold",
     "other": "General Rejection",
   },
 };
@@ -186,16 +216,29 @@ const ZULU_COPY: typeof ENGLISH_COPY = {
     { label: "Ubhaliswe ku-NSFAS", value: "nsfas_registered" },
     { label: "Ukuqinisekiswa Kobuwena Kwehlulekile", value: "identity_failed" },
     { label: "Ukuhlolwa Kwezempilo Kwehlulekile", value: "medical_failed" },
+    { label: "Imibhalo engekho", value: "missing_documents" },
+    { label: "Imali engenayo iphezulu", value: "income_threshold" },
     { label: "Okunye / Angiqiniseki", value: "other" },
   ],
   grantQuestion: "Yisiphi isibonelelo se-SASSA esinqatshiwe?",
+  dateQuestion: "Senqatshwe nini?",
+  decisionDate: "Usuku lwesinqumo",
+  declinedMonth: "Inyanga yokwenqatshwa",
+  decisionDatePlaceholder: "YYYY-MM-DD",
+  declinedMonthPlaceholder: "YYYY-MM",
   reasonQuestion: "Kungani i-SASSA inqabe isicelo sakho?",
   reasonSubtitle: "Ungahlola isimo sakho ku-portal ye-SASSA ukuze uqinisekise.",
-  defenseQuestion: "Kungani lokhu kwenqatshwa kungalungile?",
+  defenseQuestion: "Yini okufanele ilungiswe?",
   defenseSubtitle:
-    "Chaza iqiniso kafushane. Sizokuhlela ngobuchwepheshe ukuze kulungele i-Tribunal.",
+    "Chaza kafushane okungalungile noma okushintshile.",
   defensePlaceholder:
     "isb. Angikaze ngithole imali kusukela ngo-2021. Imali efakwe ebhange yayiyisipho sikadadewethu...",
+  reminderQuestion: "Isikhumbuzi somnqamulajuqu wesikhalazo?",
+  reminderSubtitle: "Izikhumbuzi ze-imeyili zingalondolozwa uma ungene ngemvume.",
+  reminderOptions: [
+    { label: "Ngikhumbuze ngaphambi komnqamulajuqu", value: "yes" },
+    { label: "Asikho isikhumbuzi", value: "no" },
+  ],
   continue: "Qhubeka",
   identityQuestion: "Imininingwane Yakho Yesikhalazo",
   identitySubtitle: "Imininingwane yakho isetshenziswa ukwakha uhlaka lwesikhalazo sakho.",
@@ -219,9 +262,23 @@ const ZULU_COPY: typeof ENGLISH_COPY = {
   paidStatus: "Uhlaka lwencwadi yesikhalazo nohlu lwemibhalo edingekayo sekulungile.",
   previewStatus:
     "Ukuzivikela kwakho okusemthethweni kubhaliwe ngokweziqondiso ze-ITSAA. Kuvule ukuze uthumele isikhalazo sakho namuhla.",
+  reasonSummaryTitle: "Isizathu sokwenqatshwa",
+  actionChecklistTitle: "Izinyathelo ezilandelayo",
+  deadlineTitle: "Umnqamulajuqu",
+  targetDeadlineLabel: "Usuku okuhloswe ngalo",
+  finalDeadlineLabel: "Usuku lokugcina",
+  submissionTitle: "Thumela isikhalazo",
+  contactsTitle: "Oxhumana nabo abasemthethweni",
+  reminderSaved: "Izikhumbuzi zesikhalazo zilondoloziwe.",
+  reminderSignIn: "Ngena ngemvume ukuze ulondoloze izikhumbuzi zesikhalazo.",
+  readGuide: "Funda umhlahlandlela",
+  print: "Phrinta",
+  download: "Landa",
+  copyLetter: "Kopisha incwadi",
+  copied: "Kukopishiwe",
   letterDraftTitle: "Uhlaka Lwencwadi Yesikhalazo",
-  requiredDocsTitle: "📎 Imibhalo Okufanele Uyinamathisele",
-  warningsTitle: "⚠️ Izexwayiso Ezibalulekile",
+  requiredDocsTitle: "Imibhalo edingekayo",
+  warningsTitle: "Izexwayiso",
   readyTitle: "Usukulungele ukufaka isikhalazo.",
   readyBody:
     "Qiniseka ukuthi uyaphrinta futhi uyasayina incwadi ngaphambi kokuyilayisha ku-portal ye-SASSA noma ukuyisa ehhovisi le-DSD.",
@@ -246,16 +303,23 @@ const ZULU_COPY: typeof ENGLISH_COPY = {
     "nsfas_registered": "Ukubhaliswa ku-NSFAS",
     "identity_failed": "Ukuqinisekiswa Kobuwena Kwehlulekile",
     "medical_failed": "Ukuhlolwa Kwezempilo",
+    "missing_documents": "Imibhalo Engekho",
+    "income_threshold": "Umkhawulo Wemali Engenayo",
     "other": "Ukwenqatshwa Okujwayelekile",
   },
 };
 
 export function getSassaAppealCopy(locale: Locale) {
-  return locale === "zu"
+  const copy = locale === "zu"
     ? ZULU_COPY
     : locale === "tn"
       ? toGeneratedSetswanaValue(ENGLISH_COPY)
       : locale === "xh"
         ? toGeneratedXhosaValue(ENGLISH_COPY)
         : ENGLISH_COPY;
+
+  return {
+    ...copy,
+    rejectionReasons: getAppealReasonOptions(locale),
+  };
 }

@@ -83,6 +83,23 @@ export async function createUser(input: {
   });
 }
 
+export async function createOAuthUser(input: {
+  name: string | null;
+  email: string;
+  preferredLocale: Locale;
+}) {
+  assertDatabaseConfigured();
+
+  return db.user.create({
+    data: {
+      name: input.name,
+      email: input.email,
+      passwordHash: null,
+      preferredLocale: input.preferredLocale,
+    },
+  });
+}
+
 export async function getDashboardData(userId: string) {
   assertDatabaseConfigured();
 
@@ -119,6 +136,19 @@ export async function getDashboardData(userId: string) {
       toolGenerations: {
         orderBy: {
           createdAt: "desc",
+        },
+      },
+      appealCases: {
+        include: {
+          reminderJobs: {
+            orderBy: {
+              scheduledFor: "asc",
+            },
+          },
+          toolGeneration: true,
+        },
+        orderBy: {
+          finalDeadline: "desc",
         },
       },
     },

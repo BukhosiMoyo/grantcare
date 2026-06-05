@@ -40,6 +40,7 @@ export default async function SignUpPage({
   }
 
   const copy = getCopy(locale);
+  const googleAuthEnabled = Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
 
   return (
     <AuthShell
@@ -54,7 +55,7 @@ export default async function SignUpPage({
         </p>
       }
     >
-        <SignUpForm locale={locale} />
+        <SignUpForm locale={locale} googleAuthEnabled={googleAuthEnabled} />
     </AuthShell>
   );
 }

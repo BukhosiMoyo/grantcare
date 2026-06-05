@@ -70,6 +70,7 @@ export default async function ContactPage({
       officialContactsIntro: "Use these official SASSA channels when you need an official action, official answer, or official portal.",
       stayUpdatedTitle: "Stay updated",
       relatedPagesTitle: "Related pages",
+      officeLocator: "Office locator",
       legalLinkTranslations: {},
     },
     {
@@ -83,6 +84,7 @@ export default async function ContactPage({
       officialContactsIntro: "Sebenzisa lezi ziteshi ezisemthethweni ze-SASSA uma udinga isenzo esisemthethweni, impendulo esemthethweni, noma iphothali esemthethweni.",
       stayUpdatedTitle: "Hlala unolwazi",
       relatedPagesTitle: "Amakhasi ahlobene",
+      officeLocator: "Isitholi samahhovisi",
       legalLinkTranslations: {
         Contact: "Xhumana nathi",
         Privacy: "Ubumfihlo",
@@ -98,6 +100,10 @@ export default async function ContactPage({
     ...link,
     label: legalLinkTranslations[link.label] ?? link.label,
   }));
+  const relatedLinks = [
+    { path: "/sassa-office-locator", label: routeCopy.officeLocator },
+    ...legalLinks.filter((link) => link.path !== "/contact"),
+  ];
   const contactSchema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
@@ -144,7 +150,7 @@ export default async function ContactPage({
 
       <Section title={routeCopy.relatedPagesTitle}>
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-          {legalLinks.filter((link) => link.path !== "/contact").map((link) => (
+          {relatedLinks.map((link) => (
             <Link key={link.path} href={buildLocalePath(locale, link.path)}>
               <Card className="space-y-2">
                 <h2 className="text-lg font-semibold">{link.label}</h2>

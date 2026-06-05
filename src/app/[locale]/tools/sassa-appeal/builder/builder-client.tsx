@@ -12,19 +12,22 @@ import { getSassaAppealCopy } from "../copy";
 
 import "./builder.css";
 
-const TOTAL_STEPS = 4;
+const TOTAL_STEPS = 6;
 
 /* ── Types ── */
 
 type FlowData = {
   grantType: string;
   rejectionReason: string;
+  decisionDate: string;
+  declinedMonth: string;
   defense: string;
   fullName: string;
   idNumber: string;
+  wantsReminder: string;
 };
 
-type Screen = "grant" | "reason" | "defense" | "identity" | "loading";
+type Screen = "grant" | "date" | "reason" | "defense" | "identity" | "reminder" | "loading";
 
 /* ── Component ── */
 
@@ -37,18 +40,23 @@ export function BuilderClient({ locale }: { locale: Locale }) {
   const [formData, setFormData] = useState<FlowData>({
     grantType: "",
     rejectionReason: "",
+    decisionDate: "",
+    declinedMonth: "",
     defense: "",
     fullName: "",
     idNumber: "",
+    wantsReminder: "yes",
   });
   const [error, setError] = useState<string | null>(null);
 
   const stepIndex: Record<Screen, number> = {
     grant: 1,
-    reason: 2,
-    defense: 3,
-    identity: 4,
-    loading: 4,
+    date: 2,
+    reason: 3,
+    defense: 4,
+    identity: 5,
+    reminder: 6,
+    loading: 6,
   };
 
   const goTo = useCallback((next: Screen) => {
@@ -101,17 +109,60 @@ export function BuilderClient({ locale }: { locale: Locale }) {
           <OptionGroup
             options={copy.grantTypes}
             value={formData.grantType}
-            onChange={(v) => selectAndAdvance("grantType", v, "reason")}
+            onChange={(v) => selectAndAdvance("grantType", v, "date")}
           />
         </FlowScreen>
       )}
 
-      {/* ── Screen 2: Rejection Reason ── */}
+      {/* ── Screen 2: Decline Date ── */}
+      {screen === "date" && (
+        <FlowScreen
+          question={copy.dateQuestion}
+          onBack={() => goTo("grant")}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <div className="space-y-4 text-left w-full max-w-sm mx-auto">
+              <div>
+                <label className="block text-sm font-semibold mb-1">{copy.decisionDate}</label>
+                <input
+                  type="date"
+                  className="flow-input w-full"
+                  placeholder={copy.decisionDatePlaceholder}
+                  value={formData.decisionDate}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, decisionDate: e.target.value }))}
+                />
+              </div>
+              {formData.grantType === "srd_r370" && (
+                <div>
+                  <label className="block text-sm font-semibold mb-1">{copy.declinedMonth}</label>
+                  <input
+                    type="month"
+                    className="flow-input w-full"
+                    placeholder={copy.declinedMonthPlaceholder}
+                    value={formData.declinedMonth}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, declinedMonth: e.target.value }))}
+                  />
+                </div>
+              )}
+            </div>
+            <button
+              type="button"
+              className="flow-btn flow-btn-primary"
+              disabled={!formData.decisionDate || (formData.grantType === "srd_r370" && !formData.declinedMonth)}
+              onClick={() => goTo("reason")}
+            >
+              {copy.continue}
+            </button>
+          </div>
+        </FlowScreen>
+      )}
+
+      {/* ── Screen 3: Rejection Reason ── */}
       {screen === "reason" && (
         <FlowScreen
           question={copy.reasonQuestion}
           subtitle={copy.reasonSubtitle}
-          onBack={() => goTo("grant")}
+          onBack={() => goTo("date")}
         >
           <OptionGroup
             options={copy.rejectionReasons}
@@ -121,7 +172,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
         </FlowScreen>
       )}
 
-      {/* ── Screen 3: Your Defense ── */}
+      {/* ── Screen 4: Your Correction ── */}
       {screen === "defense" && (
         <FlowScreen
           question={copy.defenseQuestion}
@@ -149,7 +200,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
         </FlowScreen>
       )}
 
-      {/* ── Screen 4: Identity Details ── */}
+      {/* ── Screen 5: Identity Details ── */}
       {screen === "identity" && (
         <FlowScreen
           question={copy.identityQuestion}
@@ -179,7 +230,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
                   onChange={(e) => setFormData((prev) => ({ ...prev, idNumber: e.target.value }))}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && formData.fullName.length > 2 && formData.idNumber.length >= 13) {
-                      generate();
+                      goTo("reminder");
                     }
                   }}
                 />
@@ -190,6 +241,30 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               type="button"
               className="flow-btn flow-btn-primary mt-4"
               disabled={formData.fullName.trim().length < 2 || formData.idNumber.trim().length < 13}
+              onClick={() => goTo("reminder")}
+            >
+              {copy.continue}
+            </button>
+          </div>
+        </FlowScreen>
+      )}
+
+      {/* ── Screen 6: Reminder ── */}
+      {screen === "reminder" && (
+        <FlowScreen
+          question={copy.reminderQuestion}
+          subtitle={copy.reminderSubtitle}
+          onBack={() => goTo("identity")}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <OptionGroup
+              options={copy.reminderOptions}
+              value={formData.wantsReminder}
+              onChange={(v) => setFormData((prev) => ({ ...prev, wantsReminder: v }))}
+            />
+            <button
+              type="button"
+              className="flow-btn flow-btn-primary"
               onClick={generate}
             >
               {copy.cta}
@@ -198,7 +273,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
         </FlowScreen>
       )}
 
-      {/* ── Screen 5: Loading ── */}
+      {/* ── Loading ── */}
       {screen === "loading" && (
         <LoadingSequence
           error={error}

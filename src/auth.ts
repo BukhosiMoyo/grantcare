@@ -1,12 +1,15 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import Google from "next-auth/providers/google";
 import { compare } from "bcryptjs";
 
 import { trackServerEvent } from "@/lib/analytics";
-import { isProductionServer } from "@/lib/server-env";
+import { isDatabaseConfigured, isProductionServer } from "@/lib/server-env";
 import { DEFAULT_LOCALE, buildLocalePath } from "@/lib/site";
 import { signInSchema } from "@/lib/validation";
-import { getUserByEmail } from "@/lib/users";
+import { createOAuthUser, getUserByEmail } from "@/lib/users";
+
+const googleAuthEnabled = Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   trustHost: true,
@@ -70,10 +73,34 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         };
       },
     }),
+    ...(googleAuthEnabled
+      ? [
+          Google({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+          }),
+        ]
+      : []),
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
+    async jwt({ token, user, account }) {
+      if (account?.provider === "google" && token.email && isDatabaseConfigured()) {
+        const existingUser = await getUserByEmail(token.email);
+        const localUser =
+          existingUser ??
+          (await createOAuthUser({
+            name: typeof token.name === "string" ? token.name : null,
+            email: token.email,
+            preferredLocale: DEFAULT_LOCALE,
+          }));
+
+        token.sub = localUser.id;
+        token.role = localUser.role;
+        token.preferredLocale = localUser.preferredLocale;
+        token.preferredGrantTypeId = localUser.preferredGrantTypeId;
+      }
+
+      if (user && account?.provider !== "google") {
         token.role = typeof user.role === "string" ? user.role : "user";
         token.preferredLocale =
           typeof user.preferredLocale === "string" ? user.preferredLocale : DEFAULT_LOCALE;

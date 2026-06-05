@@ -3,21 +3,25 @@ import { generateObject } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { z } from "zod";
 import { auth } from "@/auth";
+import { buildAppealPack, calculateAppealDeadlines, parseAppealDate } from "@/lib/appeals";
+import { syncAppealReminderJobs } from "@/lib/appeal-reminders";
 import { db } from "@/lib/prisma";
 import { getRequestLocale, getSassaAppealApiCopy } from "../copy";
 
 const InputSchema = z.object({
   grantType: z.string(),
   rejectionReason: z.string(),
+  decisionDate: z.string().trim().min(1),
+  declinedMonth: z.string().trim().optional(),
   defense: z.string().min(5),
   fullName: z.string().min(2),
   idNumber: z.string().length(13),
+  wantsReminder: z.enum(["yes", "no"]).default("no"),
 });
 
 const OutputSchema = z.object({
   appealLetter: z.string().describe("The formal appeal letter draft"),
-  requiredDocuments: z.array(z.string()).describe("A list of 3-5 specific supporting documents the user MUST attach to this appeal (e.g. Affidavit, Bank Statements)"),
-  warnings: z.array(z.string()).describe("1-2 warnings/tips specific to this grant appeal (e.g. 'You only have 90 days from the rejection date to submit this')"),
+  warnings: z.array(z.string()).describe("1-2 warnings/tips specific to this grant appeal"),
 });
 
 export const maxDuration = 30;
@@ -41,8 +45,8 @@ Rules for the Letter:
 - Do NOT use placeholders. Generate a complete, ready-to-review, ready-to-print draft letter.
 
 Rules for Required Documents:
-- Based on the rejection reason, list exactly what they need to attach (e.g. If UIF registered -> "Affidavit from Police stating you have not worked", "Department of Labour UI-19 form", etc).
-- If alternative income -> "3 months stamped bank statements".`;
+- Refer only to the document categories supplied by GrantCare in the user prompt.
+- Do not invent official forms or contact details.`;
 
 export async function POST(req: Request) {
   const locale = getRequestLocale(req);
@@ -58,6 +62,11 @@ export async function POST(req: Request) {
 
     const json = await req.json();
     const data = InputSchema.parse(json);
+    const decisionDate = parseAppealDate(data.decisionDate);
+
+    if (!decisionDate) {
+      return NextResponse.json({ error: copy.failedGenerate }, { status: 400 });
+    }
 
     const grantLabels = copy.grantLabels as Record<string, string>;
     const reasonLabels = copy.reasonLabels as Record<string, string>;
@@ -70,9 +79,11 @@ Applicant Name: ${data.fullName}
 ID Number: ${data.idNumber}
 Grant Type: ${grantLabel}
 Rejection Reason: ${reasonLabel}
-User's Defense (in their words): "${data.defense}"
+Decision Date: ${data.decisionDate}
+Declined Month: ${data.declinedMonth || "Not applicable"}
+User's Correction Details (in their words): "${data.defense}"
 
-Generate the appeal letter, required documents list, and specific warnings.${copy.outputLanguageInstruction}`;
+Generate the appeal letter and specific warnings.${copy.outputLanguageInstruction}`;
 
     const { object } = await generateObject({
       model: openai("gpt-4o-mini"),
@@ -81,15 +92,74 @@ Generate the appeal letter, required documents list, and specific warnings.${cop
       prompt: userPrompt,
     });
 
+    const pack = buildAppealPack({
+      appealLetter: object.appealLetter,
+      decisionDate,
+      declinedMonth: data.declinedMonth || null,
+      fullName: data.fullName,
+      grantType: data.grantType,
+      idNumber: data.idNumber,
+      locale,
+      rejectionReason: data.rejectionReason,
+      warnings: object.warnings,
+    });
+
     const generation = await db.toolGeneration.create({
       data: {
         userId: userId ?? null,
         toolType: "sassa_appeal",
         inputData: data as never,
-        outputData: object as never,
+        outputData: {
+          ...pack,
+          reminder: {
+            saved: false,
+            signInRequired: data.wantsReminder === "yes" && !userId,
+          },
+        } as never,
         isPaid: false,
       }
     });
+
+    if (userId && data.wantsReminder === "yes") {
+      const deadlines = calculateAppealDeadlines(decisionDate, data.grantType);
+      const appealCase = await db.appealCase.create({
+        data: {
+          decisionDate,
+          declinedMonth: data.declinedMonth || null,
+          finalDeadline: deadlines.finalDeadline,
+          grantType: data.grantType,
+          rejectionReason: data.rejectionReason,
+          remindersEnabled: true,
+          targetDeadline: deadlines.targetDeadline,
+          toolGenerationId: generation.id,
+          userId,
+        },
+      });
+
+      await syncAppealReminderJobs({
+        appealCaseId: appealCase.id,
+        finalDeadline: deadlines.finalDeadline,
+        generationId: generation.id,
+        grantType: data.grantType,
+        locale,
+        rejectionReason: data.rejectionReason,
+        userId,
+      });
+
+      await db.toolGeneration.update({
+        where: { id: generation.id },
+        data: {
+          outputData: {
+            ...pack,
+            reminder: {
+              appealCaseId: appealCase.id,
+              saved: true,
+              signInRequired: false,
+            },
+          } as never,
+        },
+      });
+    }
 
     return NextResponse.json({ id: generation.id });
   } catch (error) {

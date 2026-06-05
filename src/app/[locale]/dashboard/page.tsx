@@ -17,8 +17,10 @@ import {
   StatusMessage,
   ButtonLink,
 } from "@/components/ui";
+import { EligibilityChecklistCard } from "@/components/eligibility-checklist-card";
 import { MonetizationBlocks } from "@/components/monetization-blocks";
 import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
+import { getAppealGrantLabel, getAppealReasonDetail } from "@/lib/appeals";
 import { formatDateLabel } from "@/lib/utils";
 import { requireUser } from "@/lib/auth-guards";
 import { listGrantTypes, listMonetizationBlocks, listPaymentCategories } from "@/lib/content";
@@ -27,6 +29,15 @@ import { buildLocalizedMetadata } from "@/lib/metadata";
 import { getDashboardData } from "@/lib/users";
 import { DEFAULT_LOCALE, buildLocalePath, isLocale } from "@/lib/site";
 import type { Locale } from "@/lib/site";
+
+type SavedEligibilityOutput = {
+  result?: {
+    title?: string;
+    status?: "likely" | "possible" | "unlikely" | "official";
+    checklist?: Array<{ key: string; label: string }>;
+  };
+  completedKeys?: string[];
+};
 
 const ZU_DASHBOARD_COPY: Record<string, string> = {
   "Manage your GrantCare preferences, reminders, and saved pages.":
@@ -37,6 +48,11 @@ const ZU_DASHBOARD_COPY: Record<string, string> = {
     "Thola izikhumbuzi zezinsuku zokukhokha nezibuyekezo zezibonelelo ngqo ku-WhatsApp. Joyina isiteshi sethu ukuze uhlale wazi.",
   "WhatsApp notifications coming soon": "Izaziso ze-WhatsApp ziyeza maduze",
   "My Interview Guides": "Imihlahlandlela yami yenhlolokhono",
+  "My Appeal Packs": "Amaphakethe ami ezikhalazo",
+  "Appeal reminder": "Isikhumbuzi sesikhalazo",
+  "Final date": "Usuku lokugcina",
+  "Open appeal pack": "Vula iphakethe lesikhalazo",
+  "Eligibility checklists": "Uhlu lokuhlola lokufaneleka",
   "Custom Role": "Indima eyenziwe ngokwezifiso",
 };
 
@@ -106,6 +122,12 @@ export default async function DashboardPage({
       dashboardData.user.preferredGrantType?.slug,
     limit: 2,
   });
+  const eligibilitySessions = dashboardData.user.toolGenerations.filter(
+    (item) => item.toolType === "eligibility_wizard",
+  );
+  const interviewGuides = dashboardData.user.toolGenerations.filter(
+    (item) => item.toolType === "interview_guide",
+  );
 
   return (
     <div className="space-y-8">
@@ -231,10 +253,47 @@ export default async function DashboardPage({
         )}
       </Section>
 
-      <Section title={dashboardCopy(locale, "My Interview Guides")}>
-        {dashboardData.user.toolGenerations?.length > 0 ? (
+      <Section title={dashboardCopy(locale, "Eligibility checklists")}>
+        {eligibilitySessions.length > 0 ? (
           <div className="grid gap-4 md:grid-cols-2">
-            {dashboardData.user.toolGenerations.map((item) => {
+            {eligibilitySessions.map((item) => {
+              const output = item.outputData as SavedEligibilityOutput | null;
+              const result = output?.result;
+
+              if (!result?.title || !result.status || !Array.isArray(result.checklist)) {
+                return null;
+              }
+
+              return (
+                <EligibilityChecklistCard
+                  key={item.id}
+                  id={item.id}
+                  result={{
+                    title: result.title,
+                    status: result.status,
+                    checklist: result.checklist,
+                  }}
+                  completedKeys={output?.completedKeys ?? []}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <Card className="space-y-4">
+            <p className="text-[16px] text-muted">No saved eligibility checklists yet.</p>
+            <div>
+              <ButtonLink href={buildLocalePath(locale, "/eligibility-checker")} variant="secondary">
+                Open eligibility checker
+              </ButtonLink>
+            </div>
+          </Card>
+        )}
+      </Section>
+
+      <Section title={dashboardCopy(locale, "My Interview Guides")}>
+        {interviewGuides.length > 0 ? (
+          <div className="grid gap-4 md:grid-cols-2">
+            {interviewGuides.map((item) => {
               const inputData = item.inputData as Record<string, unknown> | null | undefined;
               const jobTitle =
                 typeof inputData?.jobTitle === "string" && inputData.jobTitle.trim().length > 0
@@ -272,6 +331,55 @@ export default async function DashboardPage({
                  Create Interview Guide
                </ButtonLink>
             </div>
+          </Card>
+        )}
+      </Section>
+
+      <Section title={dashboardCopy(locale, "My Appeal Packs")}>
+        {dashboardData.user.appealCases.length > 0 ? (
+          <div className="grid gap-4 md:grid-cols-2">
+            {dashboardData.user.appealCases.map((item) => {
+              const pendingReminder = item.reminderJobs.find((job) => job.status === "pending");
+              const href = item.toolGenerationId
+                ? buildLocalePath(locale, `/tools/sassa-appeal/result/${item.toolGenerationId}`)
+                : buildLocalePath(locale, "/tools/sassa-appeal");
+
+              return (
+                <Card key={item.id} className="space-y-3">
+                  <div className="space-y-1">
+                    <h3 className="text-xl font-semibold tracking-tight">
+                      {getAppealGrantLabel(item.grantType, locale)}
+                    </h3>
+                    <p className="text-[16px] text-muted">
+                      {getAppealReasonDetail(item.rejectionReason, locale).label}
+                    </p>
+                  </div>
+                  <div className="space-y-1 text-sm text-muted">
+                    <p>
+                      <span className="font-semibold text-foreground">{dashboardCopy(locale, "Final date")}:</span>{" "}
+                      {formatDateLabel(item.finalDeadline.toISOString().slice(0, 10), locale)}
+                    </p>
+                    {pendingReminder ? (
+                      <p>
+                        <span className="font-semibold text-foreground">{dashboardCopy(locale, "Appeal reminder")}:</span>{" "}
+                        {formatDateLabel(pendingReminder.scheduledFor.toISOString().slice(0, 10), locale)}
+                      </p>
+                    ) : null}
+                  </div>
+                  <div>
+                    <ButtonLink href={href} variant="secondary">
+                      {dashboardCopy(locale, "Open appeal pack")}
+                    </ButtonLink>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
+        ) : (
+          <Card>
+            <ButtonLink href={buildLocalePath(locale, "/tools/sassa-appeal")} variant="secondary">
+              {dashboardCopy(locale, "Open appeal pack")}
+            </ButtonLink>
           </Card>
         )}
       </Section>

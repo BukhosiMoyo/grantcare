@@ -14,6 +14,7 @@ import { filterIndexableGuides } from "@/lib/guide-seo";
 import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { filterIndexablePaymentPeriods } from "@/lib/payment-seo";
 import { buildLocalizedMetadata } from "@/lib/metadata";
+import { SASSA_OFFICES } from "@/lib/sassa-offices";
 import { buildLocalePath, isPublicLocale } from "@/lib/site";
 
 export async function generateMetadata({
@@ -90,6 +91,7 @@ export default async function HtmlSitemapPage({
       grantTypes: "Grant types",
       grantAmounts: "Grant amounts",
       claimChecker: "Claim checker",
+      officeLocator: "Office locator",
       faq: "FAQ",
       contact: "Contact",
       privacy: "Privacy",
@@ -120,6 +122,7 @@ export default async function HtmlSitemapPage({
       grantTypes: "Izinhlobo zezibonelelo",
       grantAmounts: "Amanani ezibonelelo",
       claimChecker: "Isihloli sezimangalo",
+      officeLocator: "Isitholi samahhovisi",
       faq: "Imibuzo ejwayelekile",
       contact: "Xhumana nathi",
       privacy: "Ubumfihlo",
@@ -159,6 +162,11 @@ export default async function HtmlSitemapPage({
     { href: buildLocalePath(locale, "/grants"), label: routeCopy.grantTypes },
     { href: buildLocalePath(locale, "/grant-amounts"), label: routeCopy.grantAmounts },
     { href: buildLocalePath(locale, "/claim-checker"), label: routeCopy.claimChecker },
+    { href: buildLocalePath(locale, "/sassa-office-locator"), label: routeCopy.officeLocator },
+    ...SASSA_OFFICES.map((office) => ({
+      href: buildLocalePath(locale, `/sassa-office-locator/${office.slug}`),
+      label: office.name,
+    })),
     { href: buildLocalePath(locale, "/faq"), label: routeCopy.faq },
     { href: buildLocalePath(locale, "/contact"), label: routeCopy.contact },
     { href: buildLocalePath(locale, "/privacy"), label: routeCopy.privacy },

@@ -33,6 +33,8 @@ const ENGLISH_COPY = {
     "nsfas_registered": "NSFAS Registered",
     "identity_failed": "Identity Verification Failed",
     "medical_failed": "Medical Assessment Failed",
+    "missing_documents": "Missing Documents",
+    "income_threshold": "Income Above Threshold",
     "other": "Other / Unspecified",
   },
 };
@@ -60,6 +62,8 @@ const ZULU_COPY: typeof ENGLISH_COPY = {
     "nsfas_registered": "Ubhaliswe ku-NSFAS",
     "identity_failed": "Ukuqinisekiswa Kobuwena Kwehlulekile",
     "medical_failed": "Ukuhlolwa Kwezempilo Kwehlulekile",
+    "missing_documents": "Imibhalo Engekho",
+    "income_threshold": "Imali Engenayo Iphezulu",
     "other": "Okunye / Akucacisiwe",
   },
 };

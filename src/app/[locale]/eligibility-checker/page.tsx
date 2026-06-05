@@ -140,8 +140,8 @@ export default async function EligibilityPage({
           </p>
         </div>
 
-        <div className="w-full max-w-3xl rounded-3xl bg-surface-strong p-2 shadow-inner sm:p-4 text-left">
-          <EligibilityChecker locale={locale} grants={grants} />
+        <div className="w-full max-w-5xl rounded-3xl bg-surface-strong p-2 shadow-inner sm:p-4 text-left">
+          <EligibilityChecker locale={locale} />
         </div>
       </section>
 

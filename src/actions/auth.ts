@@ -221,3 +221,18 @@ export async function signOutAction(formData: FormData) {
     redirectTo: buildLocalePath(locale),
   });
 }
+
+export async function googleSignInAction(formData: FormData) {
+  const locale = getLocale(formData.get("locale"));
+  const nextPath = typeof formData.get("next") === "string" && formData.get("next")
+    ? String(formData.get("next"))
+    : buildLocalePath(locale, "/dashboard");
+
+  if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
+    return;
+  }
+
+  await signIn("google", {
+    redirectTo: nextPath,
+  });
+}

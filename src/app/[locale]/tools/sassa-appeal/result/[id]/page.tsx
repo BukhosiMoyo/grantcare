@@ -3,6 +3,7 @@ import { db } from "@/lib/prisma";
 import { buildLocalePath, isLocale } from "@/lib/site";
 import { Card, StatusMessage, ButtonLink } from "@/components/ui";
 import { auth } from "@/auth";
+import { AppealPackActions } from "./appeal-pack-actions";
 import { UnlockButton } from "./unlock-button";
 import { getSassaAppealCopy } from "../../copy";
 
@@ -25,9 +26,28 @@ export async function generateMetadata({
 /* ── Types ── */
 
 type OutputSchema = {
+  actions?: string[];
   appealLetter: string;
-  requiredDocuments: string[];
-  warnings: string[];
+  contacts?: Array<{ title: string; value: string; href: string }>;
+  decisionDate?: string;
+  declinedMonth?: string | null;
+  finalDeadline?: string;
+  grantLabel?: string;
+  guidePath?: string;
+  reasonExplanation?: string;
+  reasonLabel?: string;
+  reminder?: {
+    saved?: boolean;
+    signInRequired?: boolean;
+  };
+  requiredDocuments?: string[];
+  route?: {
+    href: string;
+    label: string;
+    method: string;
+  };
+  targetDeadline?: string | null;
+  warnings?: string[];
 };
 
 type InputSchema = {
@@ -68,6 +88,10 @@ export default async function ResultPage({
     notFound();
   }
 
+  if (generation.userId && generation.userId !== session?.user?.id) {
+    notFound();
+  }
+
   const output = generation.outputData as OutputSchema | undefined;
   const isPaid = generation.isPaid;
   const input = generation.inputData as InputSchema | undefined;
@@ -83,9 +107,15 @@ export default async function ResultPage({
   const partialLetter = getPartialLetter(output.appealLetter);
   const reasonLabels = copy.reasonLabels as Record<string, string>;
   const reasonLabel = reasonLabels[input?.rejectionReason || "other"] ?? reasonLabels.other;
+  const displayReasonLabel = output.reasonLabel ?? reasonLabel;
   const toolPath = buildLocalePath(locale, "/tools/sassa-appeal");
   const resultPath = buildLocalePath(locale, `/tools/sassa-appeal/result/${id}`);
   const signInPath = `${buildLocalePath(locale, "/sign-in")}?callbackUrl=${encodeURIComponent(resultPath)}`;
+  const requiredDocuments = output.requiredDocuments ?? [];
+  const warnings = output.warnings ?? [];
+  const actions = output.actions ?? [];
+  const contacts = output.contacts ?? [];
+  const guidePath = output.guidePath ? buildLocalePath(locale, output.guidePath) : toolPath;
 
   return (
     <div className="max-w-3xl mx-auto py-8 space-y-10">
@@ -95,7 +125,7 @@ export default async function ResultPage({
           {isPaid ? copy.packEyebrow : copy.draftEyebrow}
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-          {copy.appealTitlePrefix} {reasonLabel}
+          {copy.appealTitlePrefix} {displayReasonLabel}
         </h1>
         {isPaid ? (
           <StatusMessage tone="info">
@@ -108,6 +138,66 @@ export default async function ResultPage({
         )}
       </div>
 
+      <section className="space-y-4">
+        <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+          {copy.reasonSummaryTitle}
+        </h2>
+        <Card className="space-y-4">
+          <div className="space-y-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{displayReasonLabel}</p>
+            {output.reasonExplanation ? (
+              <p className="text-[15px] leading-7 text-muted">{output.reasonExplanation}</p>
+            ) : null}
+          </div>
+          {actions.length > 0 ? (
+            <div className="space-y-2">
+              <p className="font-semibold">{copy.actionChecklistTitle}</p>
+              <ul className="space-y-2 text-sm text-muted">
+                {actions.map((action) => (
+                  <li key={action}>• {action}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+          <div>
+            <ButtonLink href={guidePath} variant="secondary">
+              {copy.readGuide}
+            </ButtonLink>
+          </div>
+        </Card>
+      </section>
+
+      <section className="grid gap-4 md:grid-cols-2">
+        <Card className="space-y-3">
+          <h2 className="text-xl font-semibold tracking-tight text-foreground">{copy.deadlineTitle}</h2>
+          {output.targetDeadline ? (
+            <p className="text-sm text-muted">
+              <span className="font-semibold text-foreground">{copy.targetDeadlineLabel}:</span> {output.targetDeadline}
+            </p>
+          ) : null}
+          {output.finalDeadline ? (
+            <p className="text-sm text-muted">
+              <span className="font-semibold text-foreground">{copy.finalDeadlineLabel}:</span> {output.finalDeadline}
+            </p>
+          ) : null}
+          {output.reminder?.saved ? (
+            <StatusMessage>{copy.reminderSaved}</StatusMessage>
+          ) : output.reminder?.signInRequired ? (
+            <StatusMessage>{copy.reminderSignIn}</StatusMessage>
+          ) : null}
+        </Card>
+
+        {output.route ? (
+          <Card className="space-y-3">
+            <h2 className="text-xl font-semibold tracking-tight text-foreground">{copy.submissionTitle}</h2>
+            <p className="text-sm leading-7 text-muted">{output.route.method}</p>
+            <a href={output.route.href} target="_blank" rel="noreferrer" className="text-sm font-semibold text-primary">
+              {output.route.label}
+            </a>
+          </Card>
+        ) : null}
+      </section>
+
       {/* ── Paid Content ── */}
       {isPaid ? (
         <>
@@ -115,6 +205,14 @@ export default async function ResultPage({
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
               {copy.letterDraftTitle}
             </h2>
+            <AppealPackActions
+              appealLetter={output.appealLetter}
+              copiedLabel={copy.copied}
+              copyLabel={copy.copyLetter}
+              downloadLabel={copy.download}
+              fileName={`${displayReasonLabel} appeal letter`}
+              printLabel={copy.print}
+            />
             <Card className="border-l-4 border-l-primary">
               <div className="text-foreground text-[15px] leading-[1.75] whitespace-pre-wrap font-mono text-sm bg-surface-strong p-6 rounded-xl">
                 {output.appealLetter}
@@ -127,22 +225,22 @@ export default async function ResultPage({
               {copy.requiredDocsTitle}
             </h2>
             <Card className="space-y-3">
-              {output.requiredDocuments.map((doc, i) => (
+              {requiredDocuments.map((doc, i) => (
                 <div key={i} className="flex gap-3 items-start">
-                  <span className="flex-shrink-0 mt-0.5 text-primary font-bold text-sm">✓</span>
+                  <span className="flex-shrink-0 mt-0.5 text-primary font-bold text-sm">•</span>
                   <p className="text-[15px] leading-[1.7] text-foreground font-medium">{doc}</p>
                 </div>
               ))}
             </Card>
           </section>
 
-          {output.warnings && output.warnings.length > 0 && (
+          {warnings.length > 0 && (
             <section className="space-y-4">
               <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
                 {copy.warningsTitle}
               </h2>
               <Card className="space-y-3 border-danger/30 bg-danger/5">
-                {output.warnings.map((warn, i) => (
+                {warnings.map((warn, i) => (
                   <div key={i} className="flex gap-3 items-start">
                     <span className="flex-shrink-0 mt-0.5 text-danger font-bold text-sm">!</span>
                     <p className="text-[15px] leading-[1.7] text-danger font-medium">{warn}</p>
@@ -152,9 +250,35 @@ export default async function ResultPage({
             </section>
           )}
 
+          {contacts.length > 0 ? (
+            <section className="space-y-4">
+              <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+                {copy.contactsTitle}
+              </h2>
+              <div className="grid gap-3 md:grid-cols-2">
+                {contacts.map((contact) => {
+                  const isHttp = contact.href.startsWith("http");
+
+                  return (
+                    <Card key={contact.title} className="space-y-2">
+                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{contact.title}</p>
+                      <a
+                        href={contact.href}
+                        target={isHttp ? "_blank" : undefined}
+                        rel={isHttp ? "noreferrer" : undefined}
+                        className="text-sm leading-7 text-foreground hover:text-primary"
+                      >
+                        {contact.value}
+                      </a>
+                    </Card>
+                  );
+                })}
+              </div>
+            </section>
+          ) : null}
+
           <section className="text-center py-4">
             <Card className="space-y-4 py-6">
-              <p className="text-2xl">🏛️</p>
               <h3 className="text-lg font-semibold text-foreground">{copy.readyTitle}</h3>
               <p className="text-muted text-sm max-w-sm mx-auto">{copy.readyBody}</p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">

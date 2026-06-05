@@ -43,6 +43,7 @@ export default async function SignInPage({
   }
 
   const copy = getCopy(locale);
+  const googleAuthEnabled = Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
 
   return (
     <AuthShell
@@ -57,7 +58,11 @@ export default async function SignInPage({
         </p>
       }
     >
-        <SignInForm locale={locale} nextPath={resolvedSearchParams.next} />
+        <SignInForm
+          locale={locale}
+          nextPath={resolvedSearchParams.next}
+          googleAuthEnabled={googleAuthEnabled}
+        />
     </AuthShell>
   );
 }

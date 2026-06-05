@@ -16,6 +16,7 @@ import {
   getPaymentSitemapChangeFrequency,
   getPaymentSitemapLastModified,
 } from "@/lib/payment-seo";
+import { SASSA_OFFICES } from "@/lib/sassa-offices";
 import { getPublicLocales } from "@/lib/site";
 
 function escapeXml(value: string) {
@@ -79,6 +80,12 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       path: "/claim-checker",
       changeFrequency: "weekly",
       priority: 0.78,
+    }),
+    buildLocalizedSitemapEntry({
+      locale: locale.code,
+      path: "/sassa-office-locator",
+      changeFrequency: "weekly",
+      priority: 0.82,
     }),
     buildLocalizedSitemapEntry({
       locale: locale.code,
@@ -208,7 +215,27 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
-  return [...staticRoutes, ...paymentRoutes, ...guideRoutes, ...newsRoutes, ...grantRoutes, ...statusRoutes];
+  const officeRoutes = publicLocales.flatMap((locale) =>
+    SASSA_OFFICES.map((office) =>
+      buildLocalizedSitemapEntry({
+        locale: locale.code,
+        path: `/sassa-office-locator/${office.slug}`,
+        lastModified: office.lastVerified,
+        changeFrequency: "monthly",
+        priority: 0.68,
+      }),
+    ),
+  );
+
+  return [
+    ...staticRoutes,
+    ...paymentRoutes,
+    ...guideRoutes,
+    ...newsRoutes,
+    ...grantRoutes,
+    ...statusRoutes,
+    ...officeRoutes,
+  ];
 }
 
 export function buildSitemapXml(entries: MetadataRoute.Sitemap) {

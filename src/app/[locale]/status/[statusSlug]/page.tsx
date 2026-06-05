@@ -111,11 +111,13 @@ export default async function StatusDetailPage({
     {
       breadcrumbHome: "Home",
       breadcrumbStatusHelp: "Status help",
+      appealToolLabel: "Draft appeal",
       howToName: (title: string) => `How to fix SASSA "${title}" status`,
     },
     {
       breadcrumbHome: "Ekhaya",
       breadcrumbStatusHelp: "Usizo lwesimo",
+      appealToolLabel: "Bhala isikhalazo",
       howToName: (title: string) => `Indlela yokulungisa isimo se-SASSA esithi "${title}"`,
     },
   );
@@ -238,6 +240,11 @@ export default async function StatusDetailPage({
             <ButtonLink href={buildLocalePath(locale, getStatusGuidePath(statusSlug))} variant="secondary">
               {copy.readGuide}
             </ButtonLink>
+            {statusSlug === "declined" ? (
+              <ButtonLink href={buildLocalePath(locale, "/tools/sassa-appeal")} variant="secondary">
+                {routeCopy.appealToolLabel}
+              </ButtonLink>
+            ) : null}
           </div>
         </Card>
       </Section>

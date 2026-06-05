@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { processDueAppealReminderJobs } from "@/lib/appeal-reminders";
 import { processDueReminderJobs } from "@/lib/reminders";
 import {
   canRunReminderProcessing,
@@ -70,7 +71,10 @@ export async function GET(request: Request) {
     );
   }
 
-  const result = await processDueReminderJobs();
-  console.info("Reminder cron processed", result);
-  return NextResponse.json({ ok: true, result });
+  const [paymentResult, appealResult] = await Promise.all([
+    processDueReminderJobs(),
+    processDueAppealReminderJobs(),
+  ]);
+  console.info("Reminder cron processed", { appealResult, paymentResult });
+  return NextResponse.json({ ok: true, result: { appeal: appealResult, payment: paymentResult } });
 }

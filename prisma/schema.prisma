@@ -57,6 +57,12 @@ enum ReminderAttemptStatus {
   skipped
 }
 
+enum AppealReminderTrigger {
+  fourteen_days_before
+  seven_days_before
+  two_days_before
+}
+
 enum MonetizationPlacement {
   payment_dates
   guide_inline
@@ -76,6 +82,8 @@ model User {
   preferredGrantType    GrantType?             @relation("PreferredGrantType", fields: [preferredGrantTypeId], references: [id], onDelete: SetNull)
   reminderSubscriptions ReminderSubscription[]
   reminderJobs          ReminderJob[]
+  appealCases           AppealCase[]
+  appealReminderJobs    AppealReminderJob[]
   savedGuides           SavedGuide[]
   analyticsEvents       AnalyticsEvent[]
   passwordResetTokens   PasswordResetToken[]
@@ -313,6 +321,51 @@ model ReminderJobAttempt {
   @@index([jobId, createdAt])
 }
 
+model AppealCase {
+  id               String              @id @default(cuid())
+  userId           String
+  toolGenerationId String?             @unique
+  grantType        String
+  rejectionReason  String
+  decisionDate     DateTime
+  declinedMonth    String?
+  targetDeadline   DateTime?
+  finalDeadline    DateTime
+  remindersEnabled Boolean             @default(false)
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+  user             User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  toolGeneration   ToolGeneration?     @relation(fields: [toolGenerationId], references: [id], onDelete: SetNull)
+  reminderJobs     AppealReminderJob[]
+
+  @@index([userId, finalDeadline])
+}
+
+model AppealReminderJob {
+  id                  String                @id @default(cuid())
+  userId              String
+  appealCaseId        String
+  trigger             AppealReminderTrigger
+  status              ReminderJobStatus     @default(pending)
+  scheduledFor        DateTime
+  attemptCount        Int                   @default(0)
+  processingStartedAt DateTime?
+  lastAttemptAt       DateTime?
+  sentAt              DateTime?
+  lastError           String?
+  cancelReason        String?
+  providerMessageId   String?
+  payload             Json?
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  user                User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  appealCase          AppealCase            @relation(fields: [appealCaseId], references: [id], onDelete: Cascade)
+
+  @@unique([appealCaseId, trigger])
+  @@index([status, scheduledFor, attemptCount])
+  @@index([userId, scheduledFor])
+}
+
 model PasswordResetToken {
   id        String    @id @default(cuid())
   userId    String
@@ -380,6 +433,7 @@ model ToolGeneration {
 
   user     User?     @relation(fields: [userId], references: [id])
   purchase Purchase?
+  appealCase AppealCase?
 
   @@index([userId, toolType])
 }
