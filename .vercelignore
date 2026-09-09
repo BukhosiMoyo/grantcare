@@ -4,3 +4,6 @@
 node_modules
 coverage
 .DS_Store
+
+# Local audit evidence may contain private account reports.
+audit/

@@ -32,18 +32,10 @@ export function QuickCheckOptions({ locale = DEFAULT_LOCALE }: { locale?: Locale
           const content = (
             <Card className="space-y-2">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{item.title}</p>
-              <p className="font-mono text-xl font-semibold text-primary">{item.value}</p>
+              <p className="break-words font-mono text-xl font-semibold text-primary">{item.value}</p>
               <p className="text-sm text-muted">{item.detail}</p>
             </Card>
           );
-
-          if (!("href" in item) || !item.href) {
-            return (
-              <div key={item.title} className={item.title === "USSD code" ? "md:col-span-2" : undefined}>
-                {content}
-              </div>
-            );
-          }
 
           return (
             <a

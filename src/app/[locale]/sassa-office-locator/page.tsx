@@ -114,7 +114,7 @@ export default async function SassaOfficeLocatorPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
 
-      <Section eyebrow={routeCopy.eyebrow} title={routeCopy.title}>
+      <Section headingAs="h1" eyebrow={routeCopy.eyebrow} title={routeCopy.title}>
         <p className="max-w-3xl text-base leading-8 text-muted">{routeCopy.intro}</p>
       </Section>
 

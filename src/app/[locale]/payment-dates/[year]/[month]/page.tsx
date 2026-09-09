@@ -239,7 +239,7 @@ export default async function PaymentMonthPage({
           year: paymentMonth.year,
         }}
       />
-      <Section eyebrow={copy.paymentDates} title={paymentMonth.label}>
+      <Section headingAs="h1" eyebrow={copy.paymentDates} title={paymentMonth.label}>
         <p className="text-sm text-muted">{routeCopy.updatedLabel} {lastUpdated}</p>
         <div className="grid gap-4">
           {paymentMonth.entries.map((entry) => {

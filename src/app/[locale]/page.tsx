@@ -104,9 +104,9 @@ export default async function HomePage({
       openArrow: "Vula →",
       officialContactsTitle: "Oxhumana nabo abasemthethweni",
       checkMethodTranslations: {
-        "USSD code": {
-          title: "Ikhodi ye-USSD",
-          detail: "Okunye: *120*69277# no-*134*7737#",
+        "Online services": {
+          title: "Amasevisi aku-inthanethi",
+          detail: "Iphothali ye-SASSA esemthethweni",
         },
         WhatsApp: {
           detail: "Thumela umlayezo wesimo noma wokubuyekeza",
@@ -336,7 +336,6 @@ export default async function HomePage({
             currentYear={defaults.year}
             locale={locale}
             periods={yearPeriods}
-            title={homepage.yearScheduleTitle}
             description={homepage.yearScheduleBody}
           />
         </Card>

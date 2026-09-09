@@ -8,17 +8,17 @@ export const WHATSAPP_CHANNEL = {
 
 export const GRANT_AMOUNT_SOURCE = {
   label: "South African Government grant amounts effective April 2026",
-  href: "https://www.gov.za/news/media-statements/social-grant-amount-increases-effective-april-2026-24-mar-2026",
+  href: "https://www.dsd.gov.za/index.php/21-latest-news/680-sassa-confirms-2026-2027-social-grant-payment-schedule-and-increases",
 } as const;
 
 export const PAYMENT_SCHEDULE_SOURCE = {
   label: "South African Government 2026/2027 SASSA payment dates",
-  href: "https://www.gov.za/news/media-statements/20262027-sassa-payment-dates-are-announced-24-mar-2026",
+  href: "https://www.sanews.gov.za/south-africa/sassa-announces-202627-social-grant-payment-dates",
 } as const;
 
 export const CONTACT_DIRECTORY_SOURCE = {
   label: "South African Government SASSA contact directory",
-  href: "https://www.gov.za/about-government/contact-directory/national-government-directory/national-government-departments/south-african-social-security-agency-sassa",
+  href: "https://www.gov.za/about-government/contact-directory/soe/south-african-social-security-agency-sassa",
 } as const;
 
 export const OFFICIAL_SASSA_CONTACTS = [
@@ -117,9 +117,10 @@ export function getLegalLinks(locale: Locale = DEFAULT_LOCALE) {
 
 export const REPORTED_CHECK_METHODS = [
   {
-    title: "USSD code",
-    value: "*120*3210#",
-    detail: "Alt: *120*69277# and *134*7737#",
+    title: "Online services",
+    value: "services.sassa.gov.za",
+    detail: "Official SASSA portal",
+    href: "https://services.sassa.gov.za/portal/r/sassa/sassa",
   },
   {
     title: "WhatsApp",
@@ -143,9 +144,9 @@ export const REPORTED_CHECK_METHODS = [
 
 const REPORTED_CHECK_METHOD_TRANSLATIONS: Partial<Record<Locale, Record<string, { title?: string; detail?: string }>>> = {
   zu: {
-    "USSD code": {
-      title: "Ikhodi ye-USSD",
-      detail: "Okunye: *120*69277# no-*134*7737#",
+    "Online services": {
+      title: "Amasevisi aku-inthanethi",
+      detail: "Iphothali ye-SASSA esemthethweni",
     },
     WhatsApp: {
       detail: "Thumela umlayezo wesimo noma wokubuyekeza",

@@ -17,6 +17,7 @@ import {
   UserIcon,
 } from "@/components/icons";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { NavigationDetails } from "@/components/navigation-details";
 import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
 import { getSessionUser } from "@/lib/auth-guards";
 import { getCopy } from "@/lib/copy";
@@ -122,7 +123,7 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
     <header className="sticky top-0 z-20 border-b border-border/80 bg-background/90 backdrop-blur">
       <div className="shell py-3">
         <div className="flex items-center justify-between gap-3">
-          <Link href={buildLocalePath(locale)} className="focus-ring inline-flex shrink-0 items-center">
+          <Link href={buildLocalePath(locale)} className="focus-ring inline-flex min-w-0 items-center">
             <BrandLogo variant="full" className="h-8 w-auto sm:h-9" priority />
           </Link>
           <nav className="hidden flex-1 items-center justify-center gap-x-2 text-sm font-medium text-muted lg:flex">
@@ -135,7 +136,7 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
                 {item.label}
               </Link>
             ))}
-            <details className="group relative">
+            <NavigationDetails className="group relative">
               <summary className="focus-ring flex h-10 list-none items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 text-sm font-medium text-foreground transition-colors hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
                 {copy.explore}
                 <svg
@@ -150,7 +151,7 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
               <div className="absolute left-1/2 top-full z-30 mt-3 max-h-[calc(100dvh-5.5rem)] w-[min(56rem,calc(100vw-2rem))] -translate-x-1/2 overflow-y-auto rounded-[1.5rem] border border-border bg-surface p-4 shadow-[0_26px_70px_-34px_rgba(24,36,31,0.28)]">
                 <MegaMenuGroups groups={navGroups} />
               </div>
-            </details>
+            </NavigationDetails>
           </nav>
           <div className="hidden shrink-0 items-center gap-3 lg:flex">
             <LanguageSwitcher currentLocale={locale} label={copy.language} />
@@ -195,7 +196,7 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
           </div>
 
           <div className="flex shrink-0 items-center gap-2 lg:hidden">
-            <details className="relative">
+            <NavigationDetails className="relative">
               <summary className="focus-ring flex h-10 list-none items-center rounded-full border border-border bg-surface px-3.5 text-sm font-medium text-foreground hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
                 {localCopy.menu}
               </summary>
@@ -251,7 +252,7 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
                   </div>
                 </div>
               </div>
-            </details>
+            </NavigationDetails>
           </div>
         </div>
       </div>

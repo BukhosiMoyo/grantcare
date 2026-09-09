@@ -159,12 +159,6 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.2,
     }),
-    buildLocalizedSitemapEntry({
-      locale: locale.code,
-      path: "/sitemap",
-      changeFrequency: "weekly",
-      priority: 0.2,
-    }),
   ]);
 
   const paymentRoutes = publicLocales.flatMap((locale) =>
@@ -189,10 +183,12 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
   );
 
   const guideRoutes = publicLocales.flatMap((locale) =>
-    filterIndexableGuides(guides).map((guide) =>
+    filterIndexableGuides(guides).filter(guide => !guide.indexableLocales || guide.indexableLocales.includes(locale.code)).map((guide) =>
       buildLocalizedSitemapEntry({
         locale: locale.code,
         path: `/guides/${guide.slug}`,
+        lastModified: guide.updatedAt ?? guide.publishedAt,
+        indexableLocales: guide.indexableLocales,
         changeFrequency: "weekly",
         priority: 0.75,
       }),
@@ -200,11 +196,12 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
   );
 
   const newsRoutes = publicLocales.flatMap((locale) =>
-    newsArticles.map((article) =>
+    newsArticles.filter(article => !article.indexableLocales || article.indexableLocales.includes(locale.code)).map((article) =>
       buildLocalizedSitemapEntry({
         locale: locale.code,
         path: `/news/${article.slug}`,
-        lastModified: article.publishedAt ?? undefined,
+        lastModified: article.updatedAt ?? article.publishedAt ?? undefined,
+        indexableLocales: article.indexableLocales,
         changeFrequency: "daily",
         priority: 0.77,
       }),

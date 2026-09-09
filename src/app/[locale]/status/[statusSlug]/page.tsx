@@ -190,7 +190,7 @@ export default async function StatusDetailPage({
           statusSlug,
         }}
       />
-      <Section eyebrow={copy.statusHelp} title={status.title}>
+      <Section headingAs="h1" eyebrow={copy.statusHelp} title={status.title}>
         <Card className="space-y-6">
           <div className="space-y-2">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">{copy.meaningLabel}</p>

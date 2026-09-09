@@ -92,6 +92,8 @@ export type PublicStatusMeaning = {
 };
 
 export type PublicGuide = {
+  contentLocale?: Locale;
+  indexableLocales?: Locale[];
   id?: string;
   slug: string;
   title: string;
@@ -107,6 +109,9 @@ export type PublicGuide = {
 };
 
 export type PublicNewsArticle = {
+  contentLocale?: Locale;
+  indexableLocales?: Locale[];
+  updatedAt?: string | null;
   id?: string;
   slug: string;
   title: string;
@@ -954,25 +959,6 @@ export const FALLBACK_FAQS: PublicFaq[] = [
 
 export const FALLBACK_NOTICES: PublicNotice[] = [];
 
-function toIsoDate(date: Date) {
-  return date.toISOString().slice(0, 10);
-}
-
-function getFirstBusinessDays(year: number, monthIndex: number, count: number) {
-  const dates: string[] = [];
-  const current = new Date(Date.UTC(year, monthIndex, 1));
-
-  while (dates.length < count) {
-    const day = current.getUTCDay();
-    if (day !== 0 && day !== 6) {
-      dates.push(toIsoDate(current));
-    }
-    current.setUTCDate(current.getUTCDate() + 1);
-  }
-
-  return dates;
-}
-
 const OFFICIAL_PAYMENT_SCHEDULE: Record<
   string,
   { olderPersons: string; disability: string; children: string }
@@ -1006,15 +992,6 @@ const OFFICIAL_PAYMENT_SCHEDULE: Record<
 function getOfficialPaymentScheduleOverride(year: number, month: number) {
   const key = `${year}-${String(month).padStart(2, "0")}`;
   return OFFICIAL_PAYMENT_SCHEDULE[key] ?? null;
-}
-
-function getRelativeMonthState(year: number, monthIndex: number): PublicPaymentDateState {
-  const now = new Date();
-  const currentMonth = now.getUTCMonth();
-  const currentYear = now.getUTCFullYear();
-  const monthDiff = (year - currentYear) * 12 + (monthIndex - currentMonth);
-
-  return monthDiff > 2 ? "pending" : "expected";
 }
 
 export function getMonthSlugFromNumber(month: number): MonthSlug {
@@ -1089,13 +1066,12 @@ export function getMonthLabel(year: number, month: number, locale: Locale = "en"
 }
 
 function buildFallbackPaymentPeriod(year: number, month: number): PublicPaymentPeriod {
-  const monthIndex = month - 1;
   const officialOverride = getOfficialPaymentScheduleOverride(year, month);
   const [olderPersonsDate, disabilityDate, childrenDate] = officialOverride
     ? [officialOverride.olderPersons, officialOverride.disability, officialOverride.children]
-    : getFirstBusinessDays(year, monthIndex, 3);
+    : [null, null, null];
   const monthSlug = getMonthSlugFromNumber(month);
-  const state: PublicPaymentDateState = officialOverride ? "expected" : getRelativeMonthState(year, monthIndex);
+  const state: PublicPaymentDateState = officialOverride ? "expected" : "pending";
   const olderPersons = FALLBACK_GRANT_TYPES.find((entry) => entry.slug === "older-persons");
   const disability = FALLBACK_GRANT_TYPES.find((entry) => entry.slug === "disability");
   const children = FALLBACK_GRANT_TYPES.find((entry) => entry.slug === "children");

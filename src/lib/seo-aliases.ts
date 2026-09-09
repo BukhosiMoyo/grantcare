@@ -263,6 +263,13 @@ export function getPaymentGrantSeoTitle(
 ) {
   const metadataName = getLocalizedAliasValue(getGrantSeoAliasConfig(entry.grantSlug), locale, "metadataName") ?? entry.grantName;
 
+  if (entry.grantSlug === "social-relief") {
+    if (locale === "xh") return `Imihla yokuhlawula ye-SASSA SRD ka-${paymentMonthLabel}`;
+    if (locale === "tn") return `Malatsi a tefo a SASSA SRD a ${paymentMonthLabel}`;
+    if (locale === "zu") return `Izinsuku zokukhokhwa kwe-SASSA SRD ngo-${paymentMonthLabel}`;
+    return `SASSA SRD Payment Dates for ${paymentMonthLabel}`;
+  }
+
   if (paymentDateText) {
     if (locale === "xh") {
       const dateType = entry.grantSlug === "social-relief" ? "ifestile" : "umhla";
@@ -300,6 +307,13 @@ export function getPaymentGrantSeoDescription(
   locale: Locale = "en",
 ) {
   const metadataName = getLocalizedAliasValue(getGrantSeoAliasConfig(entry.grantSlug), locale, "metadataName") ?? entry.grantName;
+
+  if (entry.grantSlug === "social-relief") {
+    if (locale === "xh") return `Jonga usuku lwakho lokuhlawulwa kwe-SRD ka-${paymentMonthLabel} kwiwebhusayithi esemthethweni ye-SASSA. Imihla iyahluka ngomfaki-sicelo.`;
+    if (locale === "tn") return `Tlhola letsatsi la gago la tefo ya SRD la ${paymentMonthLabel} mo webosaeteng ya semmuso ya SASSA. Malatsi a farologana go ya ka mokopi.`;
+    if (locale === "zu") return `Hlola usuku lwakho lokukhokhwa kwe-SRD ngo-${paymentMonthLabel} kuwebhusayithi esemthethweni ye-SASSA. Izinsuku ziyahluka ngomfakisicelo.`;
+    return `SRD payment dates for ${paymentMonthLabel} vary by applicant. Check your own payment date on the official SASSA SRD portal.`;
+  }
 
   if (paymentDateText) {
     if (locale === "xh") {

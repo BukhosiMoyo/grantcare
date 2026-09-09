@@ -21,7 +21,8 @@
     "content:sync:dates": "node --import tsx scripts/sync-payment-dates.ts",
     "translations:audit:zu": "node --import tsx scripts/audit-translation-coverage.ts --locale=zu",
     "translations:audit:xh": "node --import tsx scripts/audit-translation-coverage.ts --locale=xh",
-    "translations:audit:tn": "node --import tsx scripts/audit-translation-coverage.ts --locale=tn"
+    "translations:audit:tn": "node --import tsx scripts/audit-translation-coverage.ts --locale=tn",
+    "test:seo": "node --import tsx --test tests/seo.test.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.53",

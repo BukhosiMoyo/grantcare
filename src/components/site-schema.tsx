@@ -4,8 +4,7 @@ import { getSiteUrl } from "@/lib/site-url";
  * Site-wide Organization + WebSite schema markup.
  * Renders on every page via the root layout.
  *
- * - Organization: Powers Google Knowledge Panel
- * - WebSite: Enables sitelinks search box in SERPs
+ * Entity identity only; rich-result eligibility is determined by search engines.
  */
 interface SiteSchemaProps {
   locale?: string;
@@ -49,14 +48,6 @@ export function SiteSchema({ locale = "en" }: SiteSchemaProps) {
         "@id": `${siteUrl}/#organization`,
       },
       inLanguage: locale,
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${siteUrl}/guides?q={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
-      },
     },
   ];
 

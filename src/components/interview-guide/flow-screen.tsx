@@ -34,7 +34,7 @@ export function FlowScreen({
       <div className="flow-screen" key={question}>
         <div className="flow-screen-inner">
           <div className="flow-question">
-            <h2>{question}</h2>
+            <h1>{question}</h1>
             {subtitle && <p>{subtitle}</p>}
           </div>
           {children}

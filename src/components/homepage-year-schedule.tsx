@@ -13,14 +13,12 @@ export function HomepageYearSchedule({
   currentYear,
   locale,
   periods,
-  title,
   description,
 }: {
   currentMonth: number;
   currentYear: number;
   locale: Locale;
   periods: PublicPaymentPeriod[];
-  title: string;
   description: string;
 }) {
   const mainGrants = ["older-persons", "disability", "children"] as const;
@@ -92,7 +90,6 @@ export function HomepageYearSchedule({
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
         <p className="max-w-3xl text-base leading-8 text-muted">{description}</p>
       </div>
 

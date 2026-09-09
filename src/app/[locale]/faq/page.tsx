@@ -128,7 +128,7 @@ export default async function FaqPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Section eyebrow={copy.faq} title={copy.frequentlyAskedQuestionsTitle}>
+      <Section headingAs="h1" eyebrow={copy.faq} title={copy.frequentlyAskedQuestionsTitle}>
         <div className="grid gap-3">
           {faqs.map((item) => (
             <Card key={item.question} className="space-y-2">

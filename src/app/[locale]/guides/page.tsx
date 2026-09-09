@@ -120,7 +120,7 @@ export default async function GuidesPage({
         ]}
       />
       <PageViewTracker name="page.viewed" locale={locale} />
-      <Section eyebrow={copy.guides} title={copy.guideLibraryTitle}>
+      <Section headingAs="h1" eyebrow={copy.guides} title={copy.guideLibraryTitle}>
         <div className="grid gap-4 md:grid-cols-2">
           {guides.map((guide) => (
             <Link key={guide.slug} href={buildLocalePath(locale, `/guides/${guide.slug}`)}>

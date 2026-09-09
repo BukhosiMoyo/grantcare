@@ -240,6 +240,8 @@ export async function generateMetadata({
     title: buildNewsMetaTitle(article.title),
     description: buildNewsMetaDescription(article.summary),
     openGraphType: "article",
+    noIndex: Boolean(article.contentLocale && article.contentLocale !== locale),
+    indexableLocales: article.indexableLocales,
   });
 }
 
@@ -298,7 +300,8 @@ export default async function NewsDetailPage({
       buildLocalePath(locale, `/news/${article.slug}`),
       getSiteUrl(),
     ).toString(),
-    inLanguage: locale,
+    inLanguage: article.contentLocale ?? locale,
+    dateModified: article.updatedAt ?? undefined,
     datePublished: article.publishedAt ?? undefined,
   };
 
@@ -321,7 +324,7 @@ export default async function NewsDetailPage({
   ];
 
   return (
-    <div className="space-y-8">
+    <div lang={article.contentLocale ?? locale} className="space-y-8">
       <PageViewTracker name="page.viewed" locale={locale} />
       <BreadcrumbSchema
         locale={locale}
@@ -337,12 +340,12 @@ export default async function NewsDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
-      <Section eyebrow={copy.news} title={article.title}>
+      <Section headingAs="h1" eyebrow={copy.news} title={article.title}>
         <div className="space-y-3">
           <p className="text-lg leading-8 text-muted">{article.summary}</p>
           {article.publishedAt ? (
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
-              {article.publishedAt.slice(0, 10)}
+              {article.updatedAt ? `Updated ${article.updatedAt.slice(0, 10)}` : article.publishedAt.slice(0, 10)}
             </p>
           ) : null}
         </div>

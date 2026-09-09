@@ -12,10 +12,12 @@ import { cn } from "@/lib/utils";
 export function Section({
   eyebrow,
   title,
+  headingAs: Heading = "h2",
   children,
 }: {
   eyebrow?: string;
   title: string;
+  headingAs?: "h1" | "h2";
   children: ReactNode;
 }) {
   return (
@@ -24,7 +26,7 @@ export function Section({
         {eyebrow ? (
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/70 sm:text-sm">{eyebrow}</p>
         ) : null}
-        <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">{title}</h2>
+        <Heading className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">{title}</Heading>
       </div>
       {children}
     </section>

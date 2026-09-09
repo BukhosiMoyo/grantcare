@@ -7,7 +7,6 @@ import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import {
   getPaymentSummaryDayText,
   getPaymentSummaryStatusText,
-  getSrdPaymentWindowText,
   GrantSummaryCard,
 } from "@/components/grant-summary-card";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
@@ -57,9 +56,7 @@ export async function generateMetadata({
 
   const paymentDateText = paymentEntry.date
     ? formatDateLabel(paymentEntry.date, locale)
-    : paymentEntry.grantSlug === "social-relief"
-      ? getSrdPaymentWindowText(paymentMonth.year, paymentMonth.month)
-      : null;
+    : null;
 
   return buildLocalizedMetadata({
     locale,
@@ -101,8 +98,8 @@ export default async function PaymentGrantPage({
       paymentWindow: "window",
       paymentDate: "date",
       faqReflectQuestion: (grantName: string, label: string) => `When will the SASSA ${grantName} payment for ${label} reflect?`,
-      faqSrdReflectAnswer: (label: string) => `SASSA Social Relief of Distress (SRD) R370 payments do not have a single fixed pay date. Instead, they are processed during the designated payment window at the end of the month (normally between the 20th and 30th of ${label}) once your status on the portal shows 'Approved'.`,
-      faqReflectAnswer: (grantName: string, payDayText: string) => `The SASSA ${grantName} is officially scheduled for payout on ${payDayText}. Commercial banks typically process these payments early in the morning, meaning your funds should reflect in your bank account or be ready for retail collection on that day.`,
+      faqSrdReflectAnswer: (label: string) => `SRD R370 does not have one fixed payment date for everyone in ${label}. Check the official SRD status result for your own payment date; an approved status without a payment date does not establish when funds will arrive.`,
+      faqReflectAnswer: (grantName: string, payDayText: string) => `The published payment information for ${grantName} is shown above: ${payDayText}. Check with SASSA or your payment provider if the scheduled date has passed and your money is unavailable.`,
       faqCollectQuestion: (grantName: string) => `Where can I collect my ${grantName} payout once it is paid?`,
       faqCollectAnswer: (grantName: string) => `Once paid, you can withdraw your SASSA ${grantName} funds directly from CAPITEC, FNB, Standard Bank, Nedbank, or TymeBank if you submitted bank details. Alternatively, you can collect your cash at participating South African retail merchants including Pick n Pay, Boxer, Shoprite, Checkers, and Usave.`,
       faqApprovedQuestion: (grantName: string) => `What does it mean if my ${grantName} status is 'Approved' but there is no payment date?`,
@@ -142,8 +139,8 @@ export default async function PaymentGrantPage({
       paymentWindow: "iwindi",
       paymentDate: "usuku",
       faqReflectQuestion: (grantName: string, label: string) => `Inkokhelo ye-SASSA ${grantName} yango-${label} izovela nini?`,
-      faqSrdReflectAnswer: (label: string) => `Izinkokhelo ze-SASSA Social Relief of Distress (SRD) R370 azinalo usuku olulodwa olumisiwe. Zicutshungulwa ngesikhathi sewindi lokukhokha ekupheleni kwenyanga, ngokuvamile phakathi komhla ka-20 no-30 ka-${label}, uma isimo sakho ephothali sithi 'Approved'.`,
-      faqReflectAnswer: (grantName: string, payDayText: string) => `I-SASSA ${grantName} ihlelelwe ngokusemthethweni ukukhokhwa ngo-${payDayText}. Amabhange avame ukucubungula lezi zinkokhelo ekuseni kakhulu, okusho ukuthi imali ingavela ku-akhawunti yakho yasebhange noma ilungele ukuqoqwa ngalolo suku.`,
+      faqSrdReflectAnswer: (label: string) => `I-SRD R370 ayinalo usuku olulodwa lokukhokha wonke umuntu ngo-${label}. Hlola usuku lwakho ephothali esemthethweni ye-SRD. Isimo esithi 'Approved' ngaphandle kosuku lokukhokha asisho ukuthi imali izofika nini.`,
+      faqReflectAnswer: (grantName: string, payDayText: string) => `Imininingwane yokukhokha ye-${grantName} iboniswe ngenhla: ${payDayText}. Xhumana ne-SASSA noma nomhlinzeki wakho wokukhokha uma usuku seludlulile kodwa imali ingakatholakali.`,
       faqCollectQuestion: (grantName: string) => `Ngingayiqoqa kuphi inkokhelo yami ye-${grantName} uma isikhokhiwe?`,
       faqCollectAnswer: (grantName: string) => `Uma isikhokhiwe, ungakhipha imali yakho ye-SASSA ${grantName} ngqo kwa-CAPITEC, FNB, Standard Bank, Nedbank, noma TymeBank uma ufake imininingwane yasebhange. Ungaqoqa futhi ukheshi kubadayisi baseNingizimu Afrika ababambe iqhaza, okuhlanganisa Pick n Pay, Boxer, Shoprite, Checkers, no-Usave.`,
       faqApprovedQuestion: (grantName: string) => `Kusho ukuthini uma isimo sami se-${grantName} sithi 'Approved' kodwa kungekho usuku lokukhokha?`,
@@ -314,7 +311,7 @@ export default async function PaymentGrantPage({
           year: paymentMonth.year,
         }}
       />
-      <Section
+      <Section headingAs="h1"
         eyebrow={copy.paymentDates}
         title={resultTitle}
       >

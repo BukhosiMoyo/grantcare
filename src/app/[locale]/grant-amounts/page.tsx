@@ -174,7 +174,7 @@ export default async function GrantAmountsPage({
       />
       <PageViewTracker name="page.viewed" locale={locale} />
 
-      <Section eyebrow={routeCopy.eyebrow} title={routeCopy.pageTitle}>
+      <Section headingAs="h1" eyebrow={routeCopy.eyebrow} title={routeCopy.pageTitle}>
         <Card className="space-y-3">
           <p className="text-base text-muted">
             {routeCopy.intro}

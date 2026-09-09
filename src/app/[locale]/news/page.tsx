@@ -116,7 +116,7 @@ export default async function NewsPage({
         ]}
       />
       <PageViewTracker name="page.viewed" locale={locale} />
-      <Section eyebrow={copy.news} title={routeCopy.latestNewsTitle}>
+      <Section headingAs="h1" eyebrow={copy.news} title={routeCopy.latestNewsTitle}>
         {articles.length > 0 ? (
           <div className="grid gap-4 md:grid-cols-2">
             {articles.map((article) => (

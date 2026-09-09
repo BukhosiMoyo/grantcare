@@ -130,7 +130,7 @@ export default async function ContactPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
       />
-      <Section eyebrow={routeCopy.eyebrow} title={routeCopy.quickCheckOptionsTitle}>
+      <Section headingAs="h1" eyebrow={routeCopy.eyebrow} title={routeCopy.quickCheckOptionsTitle}>
         <QuickCheckOptions locale={locale} />
       </Section>
 

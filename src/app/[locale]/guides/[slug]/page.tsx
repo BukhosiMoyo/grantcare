@@ -21,6 +21,7 @@ import {
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { isGuideIndexable } from "@/lib/guide-seo";
+import { resolveGuideLink } from "@/lib/guide-links";
 import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import {
   buildGuideMetaDescription,
@@ -198,13 +199,17 @@ function parseGuideBody(body: string): GuideBodyBlock[] {
 }
 
 function renderGuideText(locale: Locale, text: string) {
+  if (text.startsWith("https://")) {
+    return <a href={text} className="font-medium text-primary underline decoration-border underline-offset-4">{new URL(text).hostname.replace(/^www\./, "")}</a>;
+  }
   if (text.startsWith("/")) {
+    const destination = resolveGuideLink(text);
     return (
       <Link
-        href={buildLocalePath(locale, text)}
+        href={buildLocalePath(locale, destination)}
         className="font-medium text-primary underline decoration-border underline-offset-4"
       >
-        {getInternalPathLabel(locale, text)}
+        {getInternalPathLabel(locale, destination)}
       </Link>
     );
   }
@@ -290,7 +295,8 @@ export async function generateMetadata({
     path: `/guides/${slug}`,
     title: buildGuideMetaTitle(guide.title),
     description: buildGuideMetaDescription(guide.summary),
-    noIndex: !isGuideIndexable(guide),
+    noIndex: !isGuideIndexable(guide) || (guide.contentLocale !== undefined && guide.contentLocale !== locale),
+    indexableLocales: guide.indexableLocales,
     noIndexFollow: true,
     openGraphType: "article",
   });
@@ -383,7 +389,7 @@ export default async function GuideDetailPage({
     headline: guide.title,
     description: guide.summary,
     mainEntityOfPage: shareUrl,
-    inLanguage: locale,
+    inLanguage: guide.contentLocale ?? locale,
     author: {
       "@type": "Organization",
       name: authorName,
@@ -446,7 +452,7 @@ export default async function GuideDetailPage({
         ]}
       />
       <div className="mx-auto grid max-w-6xl items-start gap-8 lg:grid-cols-[minmax(0,1fr)_18rem]">
-        <div className="min-w-0 space-y-8 lg:max-w-3xl">
+        <div lang={guide.contentLocale ?? locale} className="min-w-0 space-y-8 lg:max-w-3xl">
           <header className="space-y-5">
             <div className="space-y-2">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">{copy.guideLabel}</p>

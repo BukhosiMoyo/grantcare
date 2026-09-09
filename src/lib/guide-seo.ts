@@ -25,6 +25,7 @@ const GUIDE_NOINDEX_PATTERNS = [
 ];
 
 export function isGuideIndexable(guide: { slug: string }) {
+  if (getDuplicateGuideRedirectPath(guide.slug)) return false;
   if (ALWAYS_INDEXED_GUIDE_SLUGS.has(guide.slug)) {
     return true;
   }
@@ -35,3 +36,4 @@ export function isGuideIndexable(guide: { slug: string }) {
 export function filterIndexableGuides<T extends { slug: string }>(guides: T[]) {
   return guides.filter(isGuideIndexable);
 }
+import { getDuplicateGuideRedirectPath } from "./guide-redirects";

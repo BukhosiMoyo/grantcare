@@ -203,7 +203,7 @@ function buildEnglishHomepageContent(monthLabel: string, year: number): Homepage
     waysToCheckBody:
       "Use any of these methods to check your grant application status or payment dates. For accuracy and privacy, try the official SRD portal first.",
     yearScheduleTitle: `SASSA Payment Dates ${year} — Full Year Schedule`,
-    yearScheduleBody: `All confirmed and expected SASSA payment dates for ${year}. Dates are based on usual business-day patterns and may change when officially published by SASSA.`,
+    yearScheduleBody: `Published SASSA payment dates for ${year}. Dates that have not been confirmed are marked separately.`,
     nextMonthTitle: "Coming up next",
     nextMonthBody: "Preview the following month's expected payment dates so you can plan ahead.",
   };
@@ -247,7 +247,7 @@ function buildZuluHomepageContent(monthLabel: string, year: number): HomepageCon
     waysToCheckBody:
       "Sebenzisa noma iyiphi yalezi zindlela ukuhlola isimo sesicelo sakho sesibonelelo noma izinsuku zokukhokha. Ukuze kube nokunemba nobumfihlo, zama iphothali esemthethweni ye-SRD kuqala.",
     yearScheduleTitle: `Izinsuku Zokukhokha ze-SASSA ${year} — Uhlelo Lonyaka Wonke`,
-    yearScheduleBody: `Zonke izinsuku zokukhokha ze-SASSA eziqinisekisiwe nezilindelekile zango-${year}. Izinsuku zisekelwe emaphethini avamile ezinsuku zebhizinisi futhi zingashintsha uma sezishicilelwe ngokusemthethweni yi-SASSA.`,
+    yearScheduleBody: `Izinsuku zokukhokha ze-SASSA ezishicilelwe zango-${year}. Izinsuku ezingakaqinisekiswa zimakwe ngokwehlukana.`,
     nextMonthTitle: "Okulandelayo",
     nextMonthBody: "Buka kuqala izinsuku zokukhokha ezilindelekile zenyanga elandelayo ukuze uhlele kusenesikhathi.",
   };
@@ -291,7 +291,7 @@ function buildSetswanaHomepageContent(monthLabel: string, year: number): Homepag
     waysToCheckBody:
       "Dirisa nngwe ya ditsela tseno go tlhola maemo a kopo ya gago kgotsa malatsi a tefo. Bakeng sa nepagalo le sephiri, leka portal ya semmuso ya SRD pele.",
     yearScheduleTitle: `Malatsi a Tefo a SASSA ${year} — Lenaneo la Ngwaga Otlhe`,
-    yearScheduleBody: `Malatsi otlhe a tefo a SASSA a a netefaditsweng kgotsa a a solofetsweng a ${year}. Malatsi a ikaegile ka paterone ya malatsi a tiro mme a ka fetoga fa SASSA e phasalatsa semmuso.`,
+    yearScheduleBody: `Malatsi a tefo a SASSA a a phasaladitsweng a ${year}. Malatsi a a iseng a netefadiwe a tshwailwe ka thoko.`,
     nextMonthTitle: "Se se latelang",
     nextMonthBody: "Leba pele malatsi a tefo a kgwedi e e latelang gore o kgone go rulaganya.",
   };

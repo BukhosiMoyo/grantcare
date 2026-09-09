@@ -47,6 +47,8 @@ export async function generateMetadata({
     path: "/sitemap",
     title: routeCopy.metaTitle,
     description: routeCopy.metaDescription,
+    noIndex: true,
+    noIndexFollow: true,
   });
 }
 
@@ -222,7 +224,7 @@ export default async function HtmlSitemapPage({
 
   return (
     <div className="shell space-y-10 py-8 sm:py-10">
-      <Section eyebrow={routeCopy.eyebrow} title={routeCopy.title}>
+      <Section headingAs="h1" eyebrow={routeCopy.eyebrow} title={routeCopy.title}>
         <p className="max-w-3xl text-sm leading-7 text-muted sm:text-base">
           {routeCopy.intro}
         </p>

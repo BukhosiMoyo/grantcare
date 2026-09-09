@@ -5,15 +5,15 @@ import { getSiteUrl } from "@/lib/site-url";
 
 const META_DESCRIPTION_MAX_LENGTH = 160;
 
-function buildLanguageAlternates(path: string) {
+function buildLanguageAlternates(path: string, locales = getPublicLocales().map(l => l.code)) {
   const siteUrl = getSiteUrl();
 
-  return Object.fromEntries(
-    getPublicLocales().map((entry) => [
-      entry.code,
-      new URL(buildLocalePath(entry.code, path), siteUrl).toString(),
+  return { ...Object.fromEntries(
+    locales.map((locale) => [
+      locale,
+      new URL(buildLocalePath(locale, path), siteUrl).toString(),
     ]),
-  );
+  ), "x-default": new URL(buildLocalePath("en", path), siteUrl).toString() };
 }
 
 function normalizeMetaText(value: string) {
@@ -82,6 +82,7 @@ export function buildNewsMetaDescription(summary: string) {
 export function buildLocalizedMetadata(input: {
   description: string;
   locale: Locale;
+  indexableLocales?: Locale[];
   noIndex?: boolean;
   noIndexFollow?: boolean;
   openGraphType?: "article" | "website";
@@ -92,7 +93,7 @@ export function buildLocalizedMetadata(input: {
   const canonicalPath = buildLocalePath(input.locale, input.path);
   const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
   const languages =
-    getPublicLocales().length > 1 ? buildLanguageAlternates(input.path) : undefined;
+    getPublicLocales().length > 1 ? buildLanguageAlternates(input.path, input.indexableLocales) : undefined;
 
   return {
     title: input.title,
@@ -130,6 +131,7 @@ export function buildLocalizedMetadata(input: {
 export function buildLocalizedSitemapEntry(input: {
   path: string;
   locale: Locale;
+  indexableLocales?: Locale[];
   lastModified?: string | Date | null;
   changeFrequency?: MetadataRoute.Sitemap[number]["changeFrequency"];
   priority?: number;
@@ -138,11 +140,11 @@ export function buildLocalizedSitemapEntry(input: {
   const canonicalPath = buildLocalePath(input.locale, input.path);
   const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
   const languages =
-    getPublicLocales().length > 1 ? buildLanguageAlternates(input.path) : undefined;
+    getPublicLocales().length > 1 ? buildLanguageAlternates(input.path, input.indexableLocales) : undefined;
 
   return {
     url: canonicalUrl,
-    lastModified: input.lastModified ? new Date(input.lastModified) : new Date(),
+    lastModified: input.lastModified ? new Date(input.lastModified) : undefined,
     changeFrequency: input.changeFrequency,
     priority: input.priority,
     ...(languages

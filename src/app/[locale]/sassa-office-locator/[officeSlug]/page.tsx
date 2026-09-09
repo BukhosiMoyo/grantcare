@@ -125,7 +125,7 @@ export default async function SassaOfficeDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(officeSchema) }}
       />
 
-      <Section eyebrow={office.province} title={office.name}>
+      <Section headingAs="h1" eyebrow={office.province} title={office.name}>
         <div className="grid gap-4 lg:grid-cols-[1fr_0.85fr]">
           <Card className="space-y-5">
             <div className="space-y-2">

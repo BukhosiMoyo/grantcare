@@ -31,7 +31,7 @@ export function LegalPage({
 
   return (
     <div className="space-y-8">
-      <Section eyebrow={eyebrow} title={title}>
+      <Section eyebrow={eyebrow} title={title} headingAs="h1">
         <Card className="space-y-3">
           {intro.map((paragraph) => (
             <p key={paragraph} className="text-sm leading-7 text-muted">

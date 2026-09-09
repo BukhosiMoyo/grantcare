@@ -42,6 +42,8 @@ import {
 } from "@/lib/fallback-content";
 import type { Locale } from "@/lib/site";
 import { filterIndexableGuides } from "@/lib/guide-seo";
+import { correctGuide, correctNews } from "@/lib/content-corrections";
+import { localizeArticle } from "@/lib/content-language";
 import { filterIndexablePaymentPeriods } from "@/lib/payment-seo";
 import { isDatabaseConfigured, isProductionBuild, isProductionServer } from "@/lib/server-env";
 
@@ -346,19 +348,31 @@ function mapGuideRecord(
   const fallbackTranslations = findFallbackGuide(record.slug)?.translations;
   const translations = mergeLocalizedFields(record.translations, fallbackTranslations);
 
-  return {
+  const guide = correctGuide({
     id: record.id,
     slug: record.slug,
-    title: getLocalizedString(record.title, translations, locale, "title"),
-    summary: getLocalizedString(record.summary, translations, locale, "summary"),
-    sections: getLocalizedSections(record.sections, translations, locale, "sections"),
+    title: record.title,
+    summary: record.summary,
+    sections: getLocalizedSections(record.sections, {}, "en", "sections"),
     featured: record.featured,
     sponsored: record.sponsored,
     sortOrder: record.sortOrder,
     authorName: "GrantCare Editorial Team",
     publishedAt: record.publishedAt?.toISOString() ?? null,
     updatedAt: record.updatedAt?.toISOString() ?? record.createdAt.toISOString(),
-  };
+    translations,
+  });
+  return localizeArticle(guide, guide.translations ?? {}, locale);
+}
+
+function localizeFallbackGuide(guide: PublicGuide, locale: Locale) {
+  const corrected = correctGuide(guide);
+  return localizeArticle(corrected, corrected.translations ?? {}, locale);
+}
+
+function localizeFallbackNews(article: PublicNewsArticle, locale: Locale) {
+  const corrected = correctNews(article);
+  return localizeArticle(corrected, corrected.translations ?? {}, locale);
 }
 
 function mapFaqRecord(
@@ -393,6 +407,7 @@ function mapNewsRecord(
     featured: boolean;
     sortOrder: number;
     publishedAt: Date | null;
+    updatedAt: Date;
     translations: unknown;
   },
   locale: Locale,
@@ -400,17 +415,19 @@ function mapNewsRecord(
   const fallbackTranslations = findFallbackNewsArticle(record.slug)?.translations;
   const translations = mergeLocalizedFields(record.translations, fallbackTranslations);
 
-  return {
+  return localizeFallbackNews({
     id: record.id,
     slug: record.slug,
-    title: getLocalizedString(record.title, translations, locale, "title"),
-    summary: getLocalizedString(record.summary, translations, locale, "summary"),
-    sections: getLocalizedSections(record.sections, translations, locale, "sections"),
+    title: record.title,
+    summary: record.summary,
+    sections: toSections(record.sections),
     sourceUrls: toStringArray(record.sourceUrls),
     featured: record.featured,
     sortOrder: record.sortOrder,
     publishedAt: record.publishedAt?.toISOString() ?? null,
-  };
+    updatedAt: record.updatedAt.toISOString(),
+    translations,
+  }, locale);
 }
 
 function mapNoticeRecord(
@@ -698,7 +715,7 @@ export async function listGuides(locale: Locale) {
 
       const mappedGuides = records.map((record) => mapGuideRecord(record, locale));
       const existingSlugs = new Set(mappedGuides.map((guide) => guide.slug));
-      const fallbackOnlyGuides = FALLBACK_GUIDES.filter((guide) => !existingSlugs.has(guide.slug));
+      const fallbackOnlyGuides = FALLBACK_GUIDES.filter((guide) => !existingSlugs.has(guide.slug)).map(guide => localizeFallbackGuide(guide, locale));
 
       return [...mappedGuides, ...fallbackOnlyGuides].sort((left, right) => {
         if (left.sortOrder !== right.sortOrder) {
@@ -708,7 +725,7 @@ export async function listGuides(locale: Locale) {
         return left.title.localeCompare(right.title);
       });
     },
-    () => [...FALLBACK_GUIDES],
+    () => FALLBACK_GUIDES.map(guide => localizeFallbackGuide(guide, locale)),
   );
 }
 
@@ -726,7 +743,7 @@ export async function listLatestGuides(locale: Locale, limit = 6) {
         limit,
       );
     },
-    () => filterIndexableGuides([...FALLBACK_GUIDES]).slice(-limit).reverse(),
+    () => filterIndexableGuides(FALLBACK_GUIDES.map(guide => localizeFallbackGuide(guide, locale))).slice(-limit).reverse(),
   );
 }
 
@@ -735,12 +752,16 @@ export async function getGuideBySlug(locale: Locale, slug: string) {
     async () => {
       const record = await db.guideArticle.findUnique({ where: { slug } });
       if (!record || record.status !== ContentStatus.published) {
-        return findFallbackGuide(slug);
+        const fallback = findFallbackGuide(slug);
+        return fallback ? localizeFallbackGuide(fallback, locale) : null;
       }
 
       return mapGuideRecord(record, locale);
     },
-    () => findFallbackGuide(slug),
+    () => {
+      const fallback = findFallbackGuide(slug);
+      return fallback ? localizeFallbackGuide(fallback, locale) : null;
+    },
   );
 }
 
@@ -756,7 +777,7 @@ export async function listNewsArticles(locale: Locale) {
         });
       } catch (error) {
         if (isMissingNewsArticleTableError(error)) {
-          return [...FALLBACK_NEWS_ARTICLES];
+          return FALLBACK_NEWS_ARTICLES.map(article => localizeFallbackNews(article, locale));
         }
 
         throw error;
@@ -765,7 +786,7 @@ export async function listNewsArticles(locale: Locale) {
       return records.map((record) => mapNewsRecord(record, locale));
     },
     () =>
-      [...FALLBACK_NEWS_ARTICLES].sort((left, right) => {
+      FALLBACK_NEWS_ARTICLES.map(article => localizeFallbackNews(article, locale)).sort((left, right) => {
         const leftTime = left.publishedAt ? new Date(left.publishedAt).getTime() : 0;
         const rightTime = right.publishedAt ? new Date(right.publishedAt).getTime() : 0;
 
@@ -787,7 +808,8 @@ export async function getNewsArticleBySlug(locale: Locale, slug: string) {
         record = await db.newsArticle.findUnique({ where: { slug } });
       } catch (error) {
         if (isMissingNewsArticleTableError(error)) {
-          return findFallbackNewsArticle(slug);
+          const fallback = findFallbackNewsArticle(slug);
+          return fallback ? localizeFallbackNews(fallback, locale) : null;
         }
 
         throw error;
@@ -799,7 +821,10 @@ export async function getNewsArticleBySlug(locale: Locale, slug: string) {
 
       return mapNewsRecord(record, locale);
     },
-    () => findFallbackNewsArticle(slug),
+    () => {
+      const fallback = findFallbackNewsArticle(slug);
+      return fallback ? localizeFallbackNews(fallback, locale) : null;
+    },
   );
 }
 

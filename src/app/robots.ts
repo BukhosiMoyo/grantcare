@@ -17,6 +17,8 @@ export default function robots(): MetadataRoute.Robots {
     "/sign-in",
     "/sign-up",
     "/unsubscribe",
+    "/tools/*/builder",
+    "/tools/*/result/",
   ];
 
   // Dynamically multiply private routes across all public locales to lock them down

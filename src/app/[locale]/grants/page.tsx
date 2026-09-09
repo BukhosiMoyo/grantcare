@@ -171,7 +171,7 @@ export default async function GrantsPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <PageViewTracker name="page.viewed" locale={locale} />
-      <Section eyebrow={copy.eligibility} title={routeCopy.pageTitle}>
+      <Section headingAs="h1" eyebrow={copy.eligibility} title={routeCopy.pageTitle}>
         <div className="grid gap-4 md:grid-cols-2">
           {grants.map((grant) => {
             const amountDetails = getGrantAmountDetails(grant.slug, locale);

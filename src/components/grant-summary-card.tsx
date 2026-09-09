@@ -57,48 +57,11 @@ export function getPaymentSummaryDayText(
     return input.date;
   }
 
-  if (input.grantSlug === "social-relief" && input.month && input.year) {
-    return getSrdPaymentWindowText(input.year, input.month, input.locale);
-  }
-
   if (input.state === "pending") {
     return copy.paymentPending;
   }
 
   return copy.paymentPortalOnly;
-}
-
-export function getSrdPaymentWindowText(
-  year: number,
-  month: number,
-  locale: Locale = DEFAULT_LOCALE,
-) {
-  if (locale === "xh") {
-    const months = [
-      "Januwari",
-      "Februwari",
-      "Matshi",
-      "Epreli",
-      "Meyi",
-      "Juni",
-      "Julayi",
-      "Agasti",
-      "Septemba",
-      "Oktobha",
-      "Novemba",
-      "Disemba",
-    ];
-
-    return `24-31 ${months[Math.max(0, Math.min(month - 1, months.length - 1))]} ${year}`;
-  }
-
-  const dateLocale = locale === "zu" ? "zu-ZA" : locale === "tn" ? "tn-ZA" : "en-ZA";
-  const monthLabel = new Intl.DateTimeFormat(dateLocale, {
-    month: "long",
-    year: "numeric",
-  }).format(new Date(Date.UTC(year, month - 1, 1)));
-
-  return `24-31 ${monthLabel}`;
 }
 
 export function GrantSummaryCard({

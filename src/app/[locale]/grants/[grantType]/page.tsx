@@ -180,7 +180,7 @@ export default async function GrantDetailPage({
           { label: displayGrantName, path: `/grants/${grantType}` },
         ]}
       />
-      <Section eyebrow={copy.eligibility} title={displayGrantName}>
+      <Section headingAs="h1" eyebrow={copy.eligibility} title={displayGrantName}>
         <GrantSummaryCard
           amountDetails={amountDetails}
           amountLabel={copy.summaryAmountLabel}
