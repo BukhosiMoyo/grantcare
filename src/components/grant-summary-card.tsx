@@ -77,21 +77,21 @@ export function GrantSummaryCard({
   title,
 }: GrantSummaryCardProps) {
   return (
-    <Card className={cn("space-y-4", className)}>
-      <div className="space-y-1">
+    <Card className={cn("payment-summary space-y-4", className)}>
+      <div className="payment-summary-heading space-y-1">
         <h3 className="text-xl font-semibold tracking-tight text-foreground">{title}</h3>
         <p className="text-base text-muted">{statusText}</p>
       </div>
 
-      <div className="grid gap-3 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.75fr)]">
-        <div className="rounded-3xl border border-border bg-surface px-4 py-4">
+      <div className="payment-summary-main">
+        <div className="payment-summary-day">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
             {payDayLabel}
           </p>
           <p className="mt-3 break-words text-2xl font-semibold text-primary sm:text-[2rem]">{payDayText}</p>
         </div>
 
-        <div className="rounded-3xl border border-border bg-surface px-4 py-4">
+        <div className="payment-summary-amount">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
             {amountLabel}
           </p>

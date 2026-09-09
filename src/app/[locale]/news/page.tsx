@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
+import { ArrowRightIcon, BellIcon } from "@/components/icons";
 import { Card, Section } from "@/components/ui";
 import { listNewsArticles } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
@@ -118,18 +119,11 @@ export default async function NewsPage({
       <PageViewTracker name="page.viewed" locale={locale} />
       <Section headingAs="h1" eyebrow={copy.news} title={routeCopy.latestNewsTitle}>
         {articles.length > 0 ? (
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="guide-grid">
             {articles.map((article) => (
-              <Link key={article.slug} href={buildLocalePath(locale, `/news/${article.slug}`)}>
-                <Card className="space-y-2">
-                  {article.publishedAt ? (
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/70">
-                      {article.publishedAt.slice(0, 10)}
-                    </p>
-                  ) : null}
-                  <h3 className="text-xl font-semibold">{article.title}</h3>
-                  <p className="text-sm text-muted">{article.summary}</p>
-                </Card>
+              <Link key={article.slug} href={buildLocalePath(locale, `/news/${article.slug}`)} className="story-card">
+                <div className="story-card-top"><BellIcon aria-hidden="true" /><span>{article.publishedAt?.slice(0, 10) ?? copy.news}</span></div>
+                <div className="story-card-body"><h3>{article.title}</h3><p>{article.summary}</p><span className="text-action">{copy.open}<ArrowRightIcon /></span></div>
               </Link>
             ))}
           </div>

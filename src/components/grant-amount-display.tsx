@@ -65,7 +65,7 @@ export function GrantAmountDisplay({
   if (variant === "table") {
     if (details.length === 1) {
       return (
-        <p className={cn("text-lg font-semibold text-primary sm:text-xl", className)}>
+        <p className={cn("amount-value text-lg font-semibold text-primary sm:text-xl", className)}>
           {details[0].amount}
         </p>
       );
@@ -75,10 +75,10 @@ export function GrantAmountDisplay({
       <div className={cn("space-y-3", className)}>
         {details.map((detail) => (
           <div key={detail.label} className="space-y-1">
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-primary/70 sm:text-sm">
+            <p className="amount-label text-xs font-medium leading-5 text-muted">
               {detail.label}
             </p>
-            <p className="text-lg font-semibold text-primary sm:text-xl">{detail.amount}</p>
+            <p className="amount-value text-lg font-semibold text-primary sm:text-xl">{detail.amount}</p>
           </div>
         ))}
       </div>

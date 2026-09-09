@@ -1,5 +1,13 @@
 import type { SVGProps } from "react";
 
+export function ArrowRightIcon(props: SVGProps<SVGSVGElement>) {
+  return <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M4 12h15m-6-6 6 6-6 6" /></svg>;
+}
+
+export function PlusIcon(props: SVGProps<SVGSVGElement>) {
+  return <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" {...props}><path d="M12 5v14M5 12h14" /></svg>;
+}
+
 export function CalendarIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>

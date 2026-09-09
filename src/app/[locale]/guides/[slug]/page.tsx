@@ -451,9 +451,9 @@ export default async function GuideDetailPage({
           { label: guide.title, path: `/guides/${guide.slug}` },
         ]}
       />
-      <div className="mx-auto grid max-w-6xl items-start gap-8 lg:grid-cols-[minmax(0,1fr)_18rem]">
-        <div lang={guide.contentLocale ?? locale} className="min-w-0 space-y-8 lg:max-w-3xl">
-          <header className="space-y-5">
+      <div className="article-layout">
+        <div lang={guide.contentLocale ?? locale} className="article-content space-y-8">
+          <header className="article-heading space-y-5">
             <div className="space-y-2">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">{copy.guideLabel}</p>
               <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">{guide.title}</h1>
@@ -498,7 +498,7 @@ export default async function GuideDetailPage({
                 return (
                   <section key={section.title} id={sectionId} className="scroll-mt-28">
                     <h2 className="sr-only">{section.title}</h2>
-                    <Card className="space-y-4 border border-primary/15 bg-primary/[0.04] sm:p-7">
+                    <Card className="quick-answer space-y-4 sm:p-7">
                       <Pill>
                         <span className="inline-flex items-center gap-2">
                           <CompassIcon className="h-4 w-4" aria-hidden="true" />
@@ -554,7 +554,7 @@ export default async function GuideDetailPage({
           ) : null}
         </div>
 
-        <aside className="space-y-4 lg:sticky lg:top-24">
+        <aside className="article-sidebar space-y-4">
           <GuideTableOfContents
             title={copy.tableOfContents}
             items={tocItems}

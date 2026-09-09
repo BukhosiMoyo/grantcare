@@ -1,22 +1,23 @@
 @import "tailwindcss";
+@import "./redesign.css";
 
 :root {
-  --background: #f6f0e2;
-  --surface: #fffaf0;
-  --surface-strong: #efe2c7;
-  --surface-muted: #f1eadc;
-  --foreground: #18241f;
-  --muted: #5d685f;
-  --border: #d7cab0;
-  --primary: #174c3c;
-  --primary-strong: #10382c;
-  --accent: #c98a2c;
-  --danger: #9c3d32;
-  --shadow: rgba(24, 36, 31, 0.08);
-  --radius-card: 1.5rem;
-  --text-xs: 0.875rem;
+  --background: #f7f9f6;
+  --surface: #ffffff;
+  --surface-strong: #e8f2e9;
+  --surface-muted: #f0f4ef;
+  --foreground: #18372c;
+  --muted: #596960;
+  --border: #dbe4db;
+  --primary: #176348;
+  --primary-strong: #103f30;
+  --accent: #bc7328;
+  --danger: #a52e2e;
+  --shadow: rgba(20, 57, 39, 0.09);
+  --radius-card: 1.125rem;
+  --text-xs: 0.8125rem;
   --text-xs--line-height: calc(1.25 / 0.875);
-  --text-sm: 1rem;
+  --text-sm: 0.9375rem;
   --text-sm--line-height: calc(1.5 / 1);
 }
 
@@ -33,7 +34,7 @@
   --color-accent: var(--accent);
   --color-danger: var(--danger);
   --font-sans: var(--font-body);
-  --font-mono: var(--font-mono);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 * {
@@ -46,35 +47,21 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(201, 138, 44, 0.12), transparent 28%),
-    linear-gradient(180deg, #fbf7ef 0%, #f6f0e2 48%, #efe6d3 100%);
+  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), sans-serif;
   font-size: 1rem;
   line-height: 1.6;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 12% 18%, rgba(23, 76, 60, 0.05), transparent 20%),
-    radial-gradient(circle at 85% 12%, rgba(201, 138, 44, 0.08), transparent 22%);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  button, input, select, textarea {
+    font: inherit;
+  }
 }
 
 ::selection {
@@ -82,15 +69,15 @@ textarea {
 }
 
 .shell {
-  width: min(100%, 78rem);
+  width: min(100%, 80rem);
   margin: 0 auto;
-  padding-inline: 1rem;
+  padding-inline: clamp(1.125rem, 3.5vw, 2.5rem);
 }
 
 .surface-card {
-  background: color-mix(in srgb, var(--surface) 92%, white);
+  background: var(--surface);
   border: 1px solid var(--border);
-  box-shadow: 0 18px 42px -28px var(--shadow);
+  box-shadow: 0 3px 8px -5px var(--shadow);
 }
 
 .tap-target {
@@ -98,8 +85,30 @@ textarea {
 }
 
 .focus-ring:focus-visible {
-  outline: 3px solid rgba(23, 76, 60, 0.25);
+  outline: 3px solid #278057;
   outline-offset: 2px;
+}
+
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid #278057;
+  outline-offset: 4px;
+}
+
+button, summary, select { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+img { max-width: 100%; }
+svg { flex-shrink: 0; }
+main { min-width: 0; }
+h1, h2, h3 { text-wrap: balance; }
+section[id] { scroll-margin-top: 7rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .primary-action,

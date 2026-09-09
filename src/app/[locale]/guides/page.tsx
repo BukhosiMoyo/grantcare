@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
 import { PageViewTracker } from "@/components/page-view-tracker";
-import { Card, Section } from "@/components/ui";
+import { GuideLibrary } from "@/components/guide-library";
+import { Section } from "@/components/ui";
 import { listGuides } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { filterIndexableGuides } from "@/lib/guide-seo";
 import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import { buildLocalizedMetadata } from "@/lib/metadata";
-import { buildLocalePath, isLocale } from "@/lib/site";
+import { isLocale } from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -121,16 +121,7 @@ export default async function GuidesPage({
       />
       <PageViewTracker name="page.viewed" locale={locale} />
       <Section headingAs="h1" eyebrow={copy.guides} title={copy.guideLibraryTitle}>
-        <div className="grid gap-4 md:grid-cols-2">
-          {guides.map((guide) => (
-            <Link key={guide.slug} href={buildLocalePath(locale, `/guides/${guide.slug}`)}>
-              <Card className="space-y-2">
-                <h3 className="text-xl font-semibold">{guide.title}</h3>
-                <p className="text-sm text-muted">{guide.summary}</p>
-              </Card>
-            </Link>
-          ))}
-        </div>
+        <GuideLibrary locale={locale} guides={guides.map(({ slug, title, summary }) => ({ slug, title, summary }))} />
       </Section>
       <InternalLinkGrid locale={locale} title={routeCopy.moreWaysTitle} items={hubLinks} />
     </div>

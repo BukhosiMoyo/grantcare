@@ -126,12 +126,12 @@ export default async function ClaimCheckerPage({
       />
       <PageViewTracker name="page.viewed" locale={locale} />
 
-      <section className="flex flex-col items-center justify-center space-y-8 rounded-[2rem] bg-surface px-4 py-12 text-center shadow-sm sm:px-6 sm:py-20 lg:py-24">
+      <section className="page-intro">
         <div className="space-y-4">
-          <h1 className="text-4xl font-black tracking-tight text-primary sm:text-5xl lg:text-7xl">
+          <h1 className="page-title">
             {claimCheckerCopy(locale, "Claim checker")}
           </h1>
-          <p className="mx-auto max-w-2xl text-lg leading-8 text-muted sm:text-xl">
+          <p className="max-w-2xl text-base leading-8 text-muted">
             {claimCheckerCopy(
               locale,
               "Check a status update, payment-date claim, grant increase story, or warning message before you trust it.",

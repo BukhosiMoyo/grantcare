@@ -19,7 +19,9 @@ export function LegalPage({
   sections: Array<{ title: string; paragraphs: string[] }>;
   title: string;
 }) {
-  const relatedLinks = getLegalLinks(locale).filter((link) => link.path !== currentPath);
+  const relatedLinks = getLegalLinks(locale).filter(
+    (link) => link.path !== currentPath,
+  );
   const relatedPagesTitle =
     locale === "zu"
       ? "Amakhasi ahlobene"
@@ -30,28 +32,30 @@ export function LegalPage({
           : "Related pages";
 
   return (
-    <div className="space-y-8">
-      <Section eyebrow={eyebrow} title={title} headingAs="h1">
-        <Card className="space-y-3">
-          {intro.map((paragraph) => (
-            <p key={paragraph} className="text-sm leading-7 text-muted">
-              {paragraph}
-            </p>
-          ))}
-        </Card>
-      </Section>
-
-      {sections.map((section) => (
-        <Section key={section.title} title={section.title}>
-          <Card className="space-y-3">
-            {section.paragraphs.map((paragraph) => (
+    <div className="mx-auto w-full max-w-5xl space-y-10">
+      <article className="article-content space-y-10">
+        <Section eyebrow={eyebrow} title={title} headingAs="h1">
+          <div className="narrative-copy">
+            {intro.map((paragraph) => (
               <p key={paragraph} className="text-sm leading-7 text-muted">
                 {paragraph}
               </p>
             ))}
-          </Card>
+          </div>
         </Section>
-      ))}
+
+        {sections.map((section) => (
+          <Section key={section.title} title={section.title}>
+            <div className="narrative-copy">
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="text-sm leading-7 text-muted">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </Section>
+        ))}
+      </article>
 
       <Section title={relatedPagesTitle}>
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">

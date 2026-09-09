@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 import { buildLocalePath, type Locale } from "@/lib/site";
-import { Card, Section } from "@/components/ui";
+import { Section } from "@/components/ui";
+import { ArrowRightIcon } from "@/components/icons";
 
 export function InternalLinkGrid({
   locale,
@@ -26,11 +27,8 @@ export function InternalLinkGrid({
     <Section title={title}>
       <div className={`grid gap-4 ${columns}`}>
         {items.map((item) => (
-          <Link key={item.href} href={buildLocalePath(locale, item.href)}>
-            <Card className="space-y-2">
-              <h3 className="text-xl font-semibold">{item.title}</h3>
-              <p className="text-sm leading-7 text-muted">{item.description}</p>
-            </Card>
+          <Link key={item.href} href={buildLocalePath(locale, item.href)} className="related-link">
+            <div><h3>{item.title}</h3><p>{item.description}</p></div><ArrowRightIcon />
           </Link>
         ))}
       </div>

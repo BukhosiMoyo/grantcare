@@ -21,12 +21,12 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-4">
-      <div className="space-y-1">
+    <section className={cn("section-block", Heading === "h1" && "section-page")}>
+      <div className="section-heading">
         {eyebrow ? (
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/70 sm:text-sm">{eyebrow}</p>
+          <p className="eyebrow">{eyebrow}</p>
         ) : null}
-        <Heading className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">{title}</Heading>
+        <Heading className={Heading === "h1" ? "page-title" : "section-title"}>{title}</Heading>
       </div>
       {children}
     </section>
@@ -73,7 +73,7 @@ export function ButtonLink({
       href={href}
       onClick={onClick}
       className={cn(
-        "focus-ring tap-target inline-flex items-center justify-center rounded-full px-6 py-2.5 text-[18px] font-semibold transition-colors",
+        "focus-ring tap-target inline-flex items-center justify-center gap-2.5 rounded-xl px-5 py-3 text-base font-bold transition-colors",
         variant === "primary"
           ? "primary-action bg-primary text-white hover:bg-primary-strong"
           : "border border-border bg-surface text-foreground hover:bg-surface-muted",
@@ -93,7 +93,7 @@ export function Field({
   children: ReactNode;
 }) {
   return (
-    <label className="space-y-2.5">
+    <label className="block min-w-0 space-y-2">
       <span className="text-sm font-medium text-muted">{label}</span>
       {children}
     </label>

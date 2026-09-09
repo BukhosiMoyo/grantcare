@@ -28,7 +28,6 @@ import {
   getPaymentIndexYear,
 } from "@/lib/payment-seo";
 import { buildLocalePath, isLocale } from "@/lib/site";
-import { WhatsAppChannelBanner } from "@/components/whatsapp-channel";
 
 export async function generateMetadata({
   params,
@@ -45,8 +44,8 @@ export async function generateMetadata({
   const routeCopy = getLocalizedRouteCopy(
     locale,
     {
-      metaTitle: `SASSA Grant Pay Dates ${currentYear} | SRD, R350 and R370 Payment Dates`,
-      metaDescription: `Check SASSA grant pay dates for ${currentYear} by month, including SRD payment dates, R350 and R370 search intent, old age grant pay dates, and other main grant categories.`,
+      metaTitle: `SASSA Payment Dates ${currentYear}: Monthly Grant Schedule`,
+      metaDescription: `Find the ${currentYear} SASSA payment schedule for older persons, disability and children's grants. Check monthly dates, grant amounts and individual SRD payment guidance.`,
     },
     {
       metaTitle: `Izinsuku Zokukhokha Zezibonelelo ze-SASSA ${currentYear} | Izinsuku Zokukhokha ze-SRD, R350 ne-R370`,
@@ -91,14 +90,14 @@ export default async function PaymentDatesPage({
       hubAmountsDescription: "Open current SASSA grant amounts if you need the amount beside the pay date.",
       hubDelayTitle: "Why payment is delayed",
       hubDelayDescription: "Open the delay guide if the date has passed or the wording still does not make sense.",
-      heroTitle: (year: number) => `SASSA grant pay dates ${year}`,
-      heroDescription: "Check SRD payment dates, R370 payment dates, old age grant pay dates, and the monthly schedule for every main grant category.",
+      heroTitle: (year: number) => `SASSA payment dates ${year}`,
+      heroDescription: "Find your grant's payment date and amount. Published dates are listed below; SRD payment dates vary by person.",
       quickPayoutCalendarsTitle: (label: string) => `Quick Payout Calendars (${label})`,
       srdDatesTitle: (label: string) => `SASSA SRD Dates (${label})`,
       grantDatesTitle: (grantName: string, label: string) => `${grantName} (${label})`,
       srdDatesDescription: "Check SRD R370 status, banking updates, and payment windows.",
       grantDatesDescription: (grantName: string) => `View official and estimated ${grantName.toLowerCase()} payout schedules.`,
-      upcomingPaymentsTitle: "Upcoming Payments",
+      upcomingPaymentsTitle: "Payment schedule",
       updatedLabel: "Updated",
       currentGrantAmountsTitle: "Current grant amounts",
       standardBaselineText: (year: number) => `Standard baseline ${year} amounts.`,
@@ -190,7 +189,7 @@ export default async function PaymentDatesPage({
   const paymentFaqs = faqs.slice(0, 5);
 
   return (
-    <div className="space-y-12">
+    <div className="payment-page space-y-10">
       <BreadcrumbSchema
         locale={locale}
         items={[
@@ -201,17 +200,38 @@ export default async function PaymentDatesPage({
       <PageViewTracker name="page.viewed" locale={locale} />
 
       {/* ── 1. Hero Redesign ── */}
-      <section className="flex flex-col items-center justify-center space-y-8 rounded-[2rem] bg-surface px-4 py-12 text-center shadow-sm sm:px-6 sm:py-20 lg:py-24">
+      <section className="page-intro">
         <div className="space-y-4">
-          <h1 className="text-4xl font-black tracking-tight text-primary sm:text-5xl lg:text-7xl">
+          <h1 className="page-title">
             {routeCopy.heroTitle(defaults.year)}
           </h1>
-          <p className="mx-auto max-w-2xl text-lg leading-8 text-muted sm:text-xl">
+          <p className="max-w-2xl text-base leading-8 text-muted">
             {routeCopy.heroDescription}
           </p>
         </div>
 
-        <div className="w-full max-w-4xl rounded-3xl bg-surface-strong p-2 shadow-inner sm:p-4">
+      </section>
+
+      <div className="space-y-8 lg:space-y-12">
+        {/* ── 2. Current Month Schedule ── */}
+        <section className="space-y-5">
+          <div className="space-y-2">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{routeCopy.upcomingPaymentsTitle}</h2>
+          </div>
+          <PaymentScheduleTable
+            entries={defaults.entries}
+            locale={locale}
+            month={defaults.month}
+            monthLabel={defaults.label}
+            monthPath={`/payment-dates/${defaults.year}/${defaults.monthSlug}`}
+            year={defaults.year}
+          />
+          <p className="text-xs text-muted">{routeCopy.updatedLabel} {lastUpdated}</p>
+        </section>
+
+        <section id="choose-month" className="section-block">
+          <h2 className="section-title">{locale === "en" ? "Choose another month" : copy.moreMonthsTitle}</h2>
+          <div className="w-full">
           <PaymentDateTool
             locale={locale}
             months={archive.map((entry) => ({
@@ -233,60 +253,6 @@ export default async function PaymentDatesPage({
             openLabel={copy.open}
           />
         </div>
-
-        <div className="pt-4">
-           <WhatsAppChannelBanner compact locale={locale} />
-        </div>
-      </section>
-
-      <div className="space-y-8 lg:space-y-12">
-        {/* ── Contextual Payout Links Grid ── */}
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            {routeCopy.quickPayoutCalendarsTitle(defaults.label)}
-          </h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {defaults.entries.map((entry) => {
-              const isSrd = entry.grantSlug === "social-relief";
-              const titleText = isSrd
-                ? routeCopy.srdDatesTitle(defaults.label)
-                : routeCopy.grantDatesTitle(entry.grantName, defaults.label);
-              const descText = isSrd
-                ? routeCopy.srdDatesDescription
-                : routeCopy.grantDatesDescription(entry.grantName);
-              return (
-                <Link
-                  key={entry.grantSlug}
-                  href={buildLocalePath(locale, `/payment-dates/${defaults.year}/${defaults.monthSlug}/${entry.grantSlug}`)}
-                  className="focus-ring group rounded-[1.5rem] border border-border bg-surface p-5 transition-all hover:border-primary/20 hover:bg-surface-muted hover:shadow-sm"
-                >
-                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {titleText}
-                  </h3>
-                  <p className="mt-2 text-xs leading-5 text-muted">
-                    {descText}
-                  </p>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* ── 2. Current Month Schedule ── */}
-        <section className="space-y-6 rounded-[2rem] border border-border bg-surface p-6 shadow-sm sm:p-8">
-          <div className="space-y-2 text-center lg:text-left">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{routeCopy.upcomingPaymentsTitle}</h2>
-            <p className="text-muted">{defaults.label}</p>
-            <p className="text-sm text-muted">{routeCopy.updatedLabel} {lastUpdated}</p>
-          </div>
-          <PaymentScheduleTable
-            entries={defaults.entries}
-            locale={locale}
-            month={defaults.month}
-            monthLabel={defaults.label}
-            monthPath={`/payment-dates/${defaults.year}/${defaults.monthSlug}`}
-            year={defaults.year}
-          />
         </section>
 
         {/* ── 3. Current Grant Amounts ── */}

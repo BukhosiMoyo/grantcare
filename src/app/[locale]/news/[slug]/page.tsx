@@ -324,7 +324,7 @@ export default async function NewsDetailPage({
   ];
 
   return (
-    <div lang={article.contentLocale ?? locale} className="space-y-8">
+    <div lang={article.contentLocale ?? locale} className="mx-auto w-full max-w-5xl space-y-10">
       <PageViewTracker name="page.viewed" locale={locale} />
       <BreadcrumbSchema
         locale={locale}
@@ -352,7 +352,7 @@ export default async function NewsDetailPage({
       </Section>
 
       <Section title={routeCopy.updateTitle}>
-        <Card className="space-y-6">
+        <Card className="article-content space-y-10">
           {article.sections.map((section) => (
             <div key={section.title} className="space-y-3">
               <h2 className="text-2xl font-semibold tracking-tight">{section.title}</h2>

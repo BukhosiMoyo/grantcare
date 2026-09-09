@@ -51,7 +51,7 @@ export function WhatsAppChannelBanner({
         href={WHATSAPP_CHANNEL.href}
         target="_blank"
         rel="noreferrer"
-        className="focus-ring tap-target inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-2.5 text-[18px] font-semibold text-white transition-colors hover:bg-[#1DA851]"
+        className="focus-ring tap-target inline-flex items-center gap-2 rounded-xl border border-primary/20 bg-surface-strong px-5 py-3 text-sm font-bold text-primary transition-colors hover:bg-primary/10"
       >
         <WhatsAppIcon className="h-5 w-5" />
         {copy.updates}
@@ -64,10 +64,10 @@ export function WhatsAppChannelBanner({
       href={WHATSAPP_CHANNEL.href}
       target="_blank"
       rel="noreferrer"
-      className="group block rounded-[1.5rem] border border-[#25D366]/30 bg-[linear-gradient(135deg,rgba(37,211,102,0.08),rgba(37,211,102,0.02))] px-5 py-4 transition-colors hover:border-[#25D366]/50 hover:bg-[linear-gradient(135deg,rgba(37,211,102,0.12),rgba(37,211,102,0.04))]"
+      className="group block rounded-xl border border-primary/20 bg-surface-muted px-5 py-4 transition-colors hover:border-primary/40"
     >
       <div className="flex items-center gap-4">
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#25D366] text-white">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-white">
           <WhatsAppIcon className="h-6 w-6" />
         </span>
         <div className="space-y-0.5">

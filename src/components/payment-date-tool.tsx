@@ -43,7 +43,7 @@ export function PaymentDateTool({
   const [grant, setGrant] = useState(defaultSelection.grantSlug);
 
   return (
-    <div className="surface-card grid gap-4 rounded-[var(--radius-card)] p-5 sm:grid-cols-[1fr_1fr_auto] sm:p-6">
+    <div className="input-panel grid items-end gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]">
       <label className="space-y-2">
         <span className="text-sm font-medium text-muted">{monthLabel}</span>
         <select
@@ -83,7 +83,7 @@ export function PaymentDateTool({
             router.push(buildLocalePath(locale, `/payment-dates/${year}/${month}/${grant}`));
           })
         }
-        className="primary-action focus-ring tap-target rounded-full bg-primary px-5 text-base font-semibold text-white hover:bg-primary-strong"
+        className="primary-action focus-ring tap-target rounded-xl bg-primary px-6 text-base font-bold text-white hover:bg-primary-strong"
       >
         {openLabel}
       </button>

@@ -20,7 +20,7 @@ export function StatusPicker({
   const [status, setStatus] = useState(statuses[0]?.slug ?? "");
 
   return (
-    <div className="surface-card flex flex-col gap-4 rounded-[var(--radius-card)] p-5 sm:flex-row sm:items-end sm:p-6">
+    <div className="input-panel flex flex-col gap-4 sm:flex-row sm:items-end">
       <label className="flex-1 space-y-2">
         <span className="text-sm font-medium text-muted">{statusLabel}</span>
         <select
@@ -43,7 +43,7 @@ export function StatusPicker({
             router.push(buildLocalePath(locale, `/status/${status}`));
           })
         }
-        className="primary-action focus-ring tap-target rounded-full bg-primary px-5 text-base font-semibold text-white hover:bg-primary-strong disabled:opacity-60"
+        className="primary-action focus-ring tap-target rounded-xl bg-primary px-6 text-base font-bold text-white hover:bg-primary-strong disabled:opacity-60"
       >
         {showLabel}
       </button>
