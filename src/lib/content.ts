@@ -44,6 +44,7 @@ import type { Locale } from "@/lib/site";
 import { filterIndexableGuides } from "@/lib/guide-seo";
 import { correctGuide, correctNews } from "@/lib/content-corrections";
 import { localizeArticle } from "@/lib/content-language";
+import { filterCanonicalNews } from "@/lib/news-seo";
 import { filterIndexablePaymentPeriods } from "@/lib/payment-seo";
 import { isDatabaseConfigured, isProductionBuild, isProductionServer } from "@/lib/server-env";
 
@@ -783,7 +784,7 @@ export async function listNewsArticles(locale: Locale) {
         throw error;
       }
 
-      return records.map((record) => mapNewsRecord(record, locale));
+      return filterCanonicalNews(records).map((record) => mapNewsRecord(record, locale));
     },
     () =>
       FALLBACK_NEWS_ARTICLES.map(article => localizeFallbackNews(article, locale)).sort((left, right) => {

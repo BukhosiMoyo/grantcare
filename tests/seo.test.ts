@@ -13,8 +13,17 @@ import { getSitemapEntries } from '../src/lib/sitemap';
 import { buildLocalizedMetadata } from '../src/lib/metadata';
 import { getPublicAnalyticsUrl, isPublicAnalyticsPath } from '../src/lib/public-analytics';
 import { getPublicLocales } from '../src/lib/site';
+import { filterCanonicalNews } from '../src/lib/news-seo';
 
 // All tests are offline: never create production analytics events or submissions.
+test('legacy CMS news copies are removed from the shared news listing and sitemap input', () => {
+  const canonical={slug:'sassa-payment-schedule-2026-2027',title:'Current published article'};
+  const unrelated={slug:'sassa-new-biometric-verification-rules',title:'Another article'};
+  const records=[{slug:'sassa-confirms-2026-2027-payment-schedule-and-increases',title:'Old duplicate'},canonical,unrelated];
+  assert.deepEqual(filterCanonicalNews(records),[canonical,unrelated]);
+  assert.equal(getSeoRedirects().find(r=>r.source==='/news/'+records[0].slug)?.destination,'/news/'+canonical.slug);
+});
+
 test('public analytics excludes every locale of account and personal-result routes and all URL parameters', () => {
   for (const prefix of ['', '/en', '/zu', '/xh', '/tn']) {
     for (const path of ['/admin', '/dashboard', '/sign-in', '/sign-up', '/forgot-password', '/reset-password', '/unsubscribe', '/api/analytics', '/tools/sassa-appeal/builder', '/tools/email-template/result/private-id']) {

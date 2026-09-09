@@ -1,5 +1,6 @@
 import { FALLBACK_GUIDES } from "./fallback-content";
 import { CORRECTED_LINKS } from "./guide-links";
+import { NEWS_REDIRECTS } from "./news-seo";
 
 import { redirectRules, explicitGuideRedirects, getDuplicateGuideRedirectPath } from "./guide-redirects";
 export { getDuplicateGuideRedirectPath } from "./guide-redirects";
@@ -84,11 +85,11 @@ export function getSeoRedirects() {
       { source: withDefaultLocaleSource(source), destination, permanent: true },
       { source: withNonDefaultLocaleSource(source), destination: `/:locale${destination}`, permanent: true },
     ]),
-    ...["", "/:locale(en)", "/:locale(zu|xh|tn)"].map(prefix => ({
-      source: `${prefix}/news/sassa-confirms-2026-2027-payment-schedule-and-increases`,
-      destination: `${prefix.includes("zu|") ? "/:locale" : ""}/news/sassa-payment-schedule-2026-2027`,
+    ...Object.entries(NEWS_REDIRECTS).flatMap(([slug, destination]) => ["", "/:locale(en)", "/:locale(zu|xh|tn)"].map(prefix => ({
+      source: `${prefix}/news/${slug}`,
+      destination: `${prefix.includes("zu|") ? "/:locale" : ""}/news/${destination}`,
       permanent: true,
-    })),
+    }))),
     ...dynamicRedirects,
     ...explicitRedirects,
     ...duplicateRedirects,

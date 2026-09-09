@@ -1,4 +1,5 @@
 import type { Locale } from "./site";
+import { NEWS_REDIRECTS } from "./news-seo";
 import {
   addSetswanaTranslations,
   toGeneratedSetswanaText,
@@ -1233,10 +1234,7 @@ export function findFallbackGuide(slug: string) {
 }
 
 export function findFallbackNewsArticle(slug: string) {
-  const fallbackSlug =
-    slug === "sassa-confirms-2026-2027-payment-schedule-and-increases"
-      ? "sassa-payment-schedule-2026-2027"
-      : slug;
+  const fallbackSlug = NEWS_REDIRECTS[slug] ?? slug;
 
   return FALLBACK_NEWS_ARTICLES.find((entry) => entry.slug === fallbackSlug) ?? null;
 }
