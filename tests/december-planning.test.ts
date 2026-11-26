@@ -25,6 +25,6 @@ test('December guides are real destinations, with English indexing only until tr
 test('seasonal content does not appear on unrelated months, years or untranslated pages', () => {
   assert.equal(hasDecemberPlanning('en', 2026, 12), true);
   for (const input of [['zu',2026,12],['xh',2026,12],['tn',2026,12],['en',2026,11],['en',2027,12]] as const) {
-    assert.equal(hasDecemberPlanning(...input), false);
+    assert.equal(hasDecemberPlanning(input[0], input[1], input[2]), false);
   }
 });
