@@ -1,17 +1,14 @@
 import { notFound } from "next/navigation";
-import { Manrope } from "next/font/google";
+import "../fonts.css";
 import "../globals.css";
 
+import { FloatingWhatsAppChannel } from "@/components/floating-whatsapp-channel";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { SiteSchema } from "@/components/site-schema";
 import { getPublicLocales, isPublicLocale, type Locale } from "@/lib/site";
 
-const bodyFont = Manrope({
-  variable: "--font-body",
-  subsets: ["latin"],
-});
 
 export function generateStaticParams() {
   return getPublicLocales().map((locale) => ({ locale: locale.code }));
@@ -36,8 +33,9 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       data-scroll-behavior="smooth"
-      className={bodyFont.variable}
+      className="grantcare-font"
     >
+      <head><link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" /></head>
       <body suppressHydrationWarning>
         <a href="#main-content" className="skip-link">{locale === "zu" ? "Yeqa uye kokuqukethwe" : "Skip to content"}</a>
         <SiteSchema locale={locale} />
@@ -46,6 +44,7 @@ export default async function LocaleLayout({
           <SiteHeader locale={locale as Locale} />
           <main id="main-content" className="shell site-main" tabIndex={-1}>{children}</main>
           <SiteFooter locale={locale as Locale} />
+          <FloatingWhatsAppChannel locale={locale as Locale} />
         </div>
       </body>
     </html>

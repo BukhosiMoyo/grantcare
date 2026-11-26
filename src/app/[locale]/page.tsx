@@ -1,3 +1,4 @@
+import { PaymentScheduleSources } from "@/components/payment-schedule-sources";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,6 +12,7 @@ import {
   ShieldCheckIcon,
   StatusIcon,
 } from "@/components/icons";
+import { FaqList } from "@/components/faq-list";
 import { FaqSchema } from "@/components/faq-schema";
 import { HomepageYearSchedule } from "@/components/homepage-year-schedule";
 import { PageViewTracker } from "@/components/page-view-tracker";
@@ -149,7 +151,7 @@ export default async function HomePage({
               : homepage.heroDescription}
           </p>
           <div className="hero-actions">
-            <ButtonLink href={buildLocalePath(locale, "/payment-dates")}>
+            <ButtonLink href={buildLocalePath(locale, "/payment-dates")} icon={false}>
               {copy.checkDates}
               <ArrowRightIcon className="h-4 w-4" />
             </ButtonLink>
@@ -414,17 +416,7 @@ export default async function HomePage({
             <ArrowRightIcon />
           </Link>
         </div>
-        <div className="faq-list">
-          {visibleFaqs.map((faq) => (
-            <details className="faq-item" key={faq.id}>
-              <summary>
-                {faq.question}
-                <PlusIcon />
-              </summary>
-              <p>{faq.answer}</p>
-            </details>
-          ))}
-        </div>
+        <FaqList items={visibleFaqs} />
       </section>
 
       <section className="official-strip">
@@ -443,6 +435,7 @@ export default async function HomePage({
         </div>
         <WhatsAppChannelLink locale={locale} className="text-action" />
       </section>
+      <PaymentScheduleSources locale={locale} />
     </div>
   );
 }
