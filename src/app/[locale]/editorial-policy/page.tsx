@@ -116,7 +116,12 @@ export default async function EditorialPolicyPage({
       eyebrow={content.eyebrow}
       intro={content.intro}
       locale={locale}
-      sections={content.sections}
+      sections={[...content.sections, ...[
+        { title: "What a source check means", paragraphs: ["A source-check date records when the named reference was examined and the stated claim was compared. It is separate from an article's last-edited date. A reference link alone does not certify every claim on a page. Article panels identify when a full factual review is still pending."] },
+        { title: "Conflicting and historical information", paragraphs: ["We prefer the applicable government notice and its effective date over an earlier announcement. We record conflicts rather than choose a convenient figure. Historical secondary-source checks, approximate map locations and unconfirmed future schedules are identified separately. Numeric means-test thresholds are not certified where the reviewed official publications disagree."] },
+        { title: "Reporting a correction", paragraphs: ["Email hello@symaxx.com with the page address, the claim you believe is wrong and any supporting official source. Do not send an ID number, bank credentials, OTP or private application record. We assess the evidence, correct supported errors and record material changes; no response time is guaranteed."] },
+        { title: "Scope of the current review", paragraphs: ["The current review includes the published calendar, the 2026 ordinary-grant amount notice, the published SRD extension and a comparison of listed office contacts. It is not a completed factual review of every guide, translation, eligibility result or individual application. Official sources can change after our check."] },
+      ].map(section => ({...section, lang: "en"}))]}
       title={content.title}
     />
   );
