@@ -333,7 +333,7 @@ export default async function PaymentGrantPage({
               <p className="text-sm text-muted">{routeCopy.updatedLabel} {lastUpdated}</p>
               <p className="max-w-2xl text-base text-muted">{paymentEntry.note}</p>
               {paymentEntry.date ? (
-                <div className="flex flex-wrap gap-3">
+                <div className="grid gap-2 sm:flex sm:flex-wrap sm:gap-3">
                   <ButtonLink href={buildLocalePath(locale, "/dashboard")}>{copy.saveDate}</ButtonLink>
                   <ButtonLink href={buildLocalePath(locale, "/dashboard")} variant="secondary">
                     {copy.notifyMe}
