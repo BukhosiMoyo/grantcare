@@ -43,7 +43,7 @@ import {
 import type { Locale } from "@/lib/site";
 import { filterIndexableGuides } from "@/lib/guide-seo";
 import { correctGuide, correctNews } from "@/lib/content-corrections";
-import { localizeArticle } from "@/lib/content-language";
+import { hasArticleTranslation, localizeArticle } from "@/lib/content-language";
 import { filterCanonicalNews } from "@/lib/news-seo";
 import { filterIndexablePaymentPeriods } from "@/lib/payment-seo";
 import { isDatabaseConfigured, isProductionBuild, isProductionServer } from "@/lib/server-env";
@@ -346,7 +346,8 @@ function mapGuideRecord(
   },
   locale: Locale,
 ): PublicGuide {
-  const fallbackTranslations = findFallbackGuide(record.slug)?.translations;
+  const fallbackGuide = findFallbackGuide(record.slug);
+  const fallbackTranslations = fallbackGuide?.translations;
   const translations = mergeLocalizedFields(record.translations, fallbackTranslations);
 
   const guide = correctGuide({
@@ -363,6 +364,18 @@ function mapGuideRecord(
     updatedAt: record.updatedAt?.toISOString() ?? record.createdAt.toISOString(),
     translations,
   });
+  // A legacy CMS translation may shadow newly authored copy for the same article.
+  // Use that copy only while the English source still matches the bundled version.
+  if (fallbackGuide?.translations && guide.title === fallbackGuide.title &&
+      guide.summary === fallbackGuide.summary && guide.sections.length === fallbackGuide.sections.length &&
+      guide.sections.every((s, i) => s.title === fallbackGuide.sections[i].title && s.body === fallbackGuide.sections[i].body)) {
+    for (const language of ["zu", "xh", "tn"] as const) {
+      if (!hasArticleTranslation(guide, guide.translations ?? {}, language) &&
+          hasArticleTranslation(guide, fallbackGuide.translations, language)) {
+        guide.translations = { ...guide.translations, [language]: fallbackGuide.translations[language] };
+      }
+    }
+  }
   return localizeArticle(guide, guide.translations ?? {}, locale);
 }
 

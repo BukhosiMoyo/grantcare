@@ -14,6 +14,7 @@ export const ANALYTICS_EVENT_NAMES = [
   "claim_checker.started",
   "claim_checker.used",
   "guide.viewed",
+  "interest.form_viewed",
   "language.changed",
   "monetization.clicked",
   "official_resource.clicked",

@@ -1,19 +1,28 @@
 import { addSetswanaTranslations } from "./generated-guide-translations";
 
+import { setswanaStatusGuides } from "./setswana-status-guides";
+import { isiXhosaStatusGuides } from "./isiXhosa-status-guides";
+import { isiZuluStatusGuides } from "./isiZulu-status-guides";
+
 const section = (title: string, body: string) => ({ title, body });
 const faq = (question: string, answer: string) =>
   section(`FAQ: ${question}`, answer);
 
 type GuideSection = { title: string; body: string };
 type TranslatableGuide = {
+  slug: string;
   title: string;
   summary: string;
   sections: GuideSection[];
   translations?: Record<string, unknown>;
 };
 
-function addZuluTranslations<T extends TranslatableGuide>(guide: T): T {
-  return guide;
+function addStatusGuideTranslations<T extends TranslatableGuide>(guide: T): T {
+  const zu = isiZuluStatusGuides[guide.slug];
+  const xh = isiXhosaStatusGuides[guide.slug];
+  const tn = setswanaStatusGuides[guide.slug];
+  if (!zu && !xh && !tn) return guide;
+  return { ...guide, translations: { ...guide.translations, ...(zu && { zu }), ...(xh && { xh }), ...(tn && { tn }) } };
 }
 
 export const SEO_BATCH_SIX_GUIDES = [
@@ -1669,4 +1678,4 @@ export const SEO_BATCH_SIX_GUIDES = [
     sponsored: false,
     sortOrder: 83,
   }
-].map(addZuluTranslations).map(addSetswanaTranslations);
+].map(addStatusGuideTranslations).map(addSetswanaTranslations);
