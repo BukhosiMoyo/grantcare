@@ -1,3 +1,4 @@
+import { ContentSources } from "@/components/content-sources";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -202,6 +203,7 @@ export default async function GrantsPage({
         <QuickCheckOptions locale={locale} />
       </Section>
       <InternalLinkGrid locale={locale} title={routeCopy.popularGrantRoutesTitle} items={hubLinks} />
+      <ContentSources locale={locale} topic={"grants"} path={"/grants"} />
     </>
   );
 }
