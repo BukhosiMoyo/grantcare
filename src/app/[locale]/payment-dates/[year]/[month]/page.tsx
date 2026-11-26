@@ -244,7 +244,7 @@ export default async function PaymentMonthPage({
       <Section headingAs="h1" eyebrow={copy.paymentDates} title={showDecemberPlanning ? "December 2026 grant payment dates" : paymentMonth.label}>
         <p className="text-sm text-muted">{routeCopy.updatedLabel} {lastUpdated}</p>
         {showDecemberPlanning ? <DecemberPaymentIntro /> : null}
-        <div id={showDecemberPlanning ? "december-schedule" : undefined} className="grid gap-4 lg:grid-cols-2">
+        <div id={showDecemberPlanning ? "december-schedule" : undefined} className={showDecemberPlanning ? "grid gap-4 lg:grid-cols-2" : "grid gap-4"}>
           {paymentMonth.entries.map((entry) => {
             const amountDetails = getGrantAmountDetails(entry.grantSlug, locale);
 
