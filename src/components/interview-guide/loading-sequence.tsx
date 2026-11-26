@@ -1,5 +1,6 @@
 "use client";
 
+import { RotateCcw } from "@/components/lucide-icons";
 import { useState, useEffect } from "react";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/site";
 
@@ -87,7 +88,7 @@ export function LoadingSequence({
           </h2>
           <p>{error}</p>
           {onRetry && (
-            <button className="flow-btn flow-btn-primary" onClick={onRetry} style={{ width: "auto", marginTop: "0.5rem" }}>
+            <button className="flow-btn flow-btn-primary" onClick={onRetry} style={{ width: "auto", marginTop: "0.5rem" }}><RotateCcw className="action-icon" />
               {copy.retry}
             </button>
           )}
