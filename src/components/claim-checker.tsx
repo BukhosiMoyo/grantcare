@@ -1,5 +1,6 @@
 "use client";
 
+import { Copy } from "@/components/lucide-icons";
 import { useEffect, useRef, useState } from "react";
 
 import {
@@ -229,7 +230,7 @@ export function ClaimChecker({ locale }: { locale: Locale }) {
                 lastTrackedKeyRef.current = "";
               }}
               className="focus-ring tap-target rounded-full border border-border bg-surface px-5 text-sm font-semibold"
-            >
+            ><Copy className="action-icon" />
               {copy.startAgain}
             </button>
           </div>

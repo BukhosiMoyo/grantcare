@@ -1,5 +1,7 @@
 "use client";
 
+import { Navigation } from "@/components/lucide-icons";
+import { Select } from "@/components/ui";
 import { useRouter } from "next/navigation";
 import { startTransition, useState } from "react";
 
@@ -23,7 +25,8 @@ export function StatusPicker({
     <div className="input-panel flex flex-col gap-4 sm:flex-row sm:items-end">
       <label className="flex-1 space-y-2">
         <span className="text-sm font-medium text-muted">{statusLabel}</span>
-        <select
+        <Select
+          aria-label={statusLabel}
           value={status}
           onChange={(event) => setStatus(event.target.value)}
           className="focus-ring tap-target w-full rounded-2xl border border-border bg-surface px-4"
@@ -33,7 +36,7 @@ export function StatusPicker({
               {entry.title}
             </option>
           ))}
-        </select>
+        </Select>
       </label>
       <button
         type="button"
@@ -44,7 +47,7 @@ export function StatusPicker({
           })
         }
         className="primary-action focus-ring tap-target rounded-xl bg-primary px-6 text-base font-bold text-white hover:bg-primary-strong disabled:opacity-60"
-      >
+      ><Navigation className="action-icon" />
         {showLabel}
       </button>
     </div>

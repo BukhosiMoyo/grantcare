@@ -15,21 +15,21 @@ const LOCAL_COPY: Partial<Record<Locale, {
 }>> = {
   zu: {
     checkOfficialUpdate: "Hlola isibuyekezo esisemthethweni",
-    currentAmounts: "Imali esemthethweni yamanje esebenza kusukela ngo-April 2026.",
+    currentAmounts: "Published maximum monthly amounts for 2026/27; Foster Child: R1 300 from 1 October 2026.",
     grant: "Isibonelelo",
     howMuchYouGet: "Imali oyitholayo",
     officialAmountSource: "Umthombo wemali esemthethweni",
   },
   tn: {
     checkOfficialUpdate: "Tlhola ntšhwafatso ya semmuso",
-    currentAmounts: "Madi a semmuso a gone jaanong a simolola ka Moranang 2026.",
+    currentAmounts: "Published maximum monthly amounts for 2026/27; Foster Child: R1 300 from 1 October 2026.",
     grant: "Thuso",
     howMuchYouGet: "Madi a o a bonang",
     officialAmountSource: "Motswedi wa semmuso wa madi",
   },
   xh: {
     checkOfficialUpdate: "Jonga uhlaziyo olusemthethweni",
-    currentAmounts: "Imali esemthethweni yangoku esebenza ukusukela ngo-Epreli 2026.",
+    currentAmounts: "Published maximum monthly amounts for 2026/27; Foster Child: R1 300 from 1 October 2026.",
     grant: "Isibonelelo",
     howMuchYouGet: "Imali oyifumanayo",
     officialAmountSource: "Umthombo wemali esemthethweni",
@@ -39,7 +39,7 @@ const LOCAL_COPY: Partial<Record<Locale, {
 function getLocalCopy(locale: Locale) {
   return {
     checkOfficialUpdate: "Check official update",
-    currentAmounts: "Current official amounts effective April 2026.",
+    currentAmounts: "Published maximum monthly amounts for 2026/27. Foster Child: R1 300 from 1 October 2026. Individual awards may differ.",
     grant: "Grant",
     howMuchYouGet: "How much you get",
     officialAmountSource: "Official amount source",
@@ -53,7 +53,7 @@ export function GrantAmountTable({ locale = DEFAULT_LOCALE }: { locale?: Locale 
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-base text-muted sm:text-lg">{copy.currentAmounts}</p>
+        <p className="text-base text-muted sm:text-lg" lang="en">{copy.currentAmounts}</p>
         <a href={GRANT_AMOUNT_SOURCE.href} target="_blank" rel="noreferrer" className="text-sm font-semibold text-primary">
           {copy.officialAmountSource}
         </a>

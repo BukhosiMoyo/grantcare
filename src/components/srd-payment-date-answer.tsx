@@ -63,7 +63,7 @@ export function SrdPaymentDateAnswer({ locale }: { locale: keyof typeof srdPayme
       <Link className={linkClass} href={buildLocalePath(locale, "/guides/how-to-understand-payment-dates")}>
         {labels.paymentGuide}
       </Link>
-      <details className="text-sm">
+      <details open className="text-sm">
         <summary className="focus-ring cursor-pointer py-2 font-medium">{labels.sources}</summary>
         <ul className="list-disc space-y-2 ps-5">
           <li><a className={linkClass} href="https://srd.sassa.gov.za/assets/status.pdf">{labels.statusKey}</a></li>

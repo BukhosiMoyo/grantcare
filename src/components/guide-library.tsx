@@ -1,5 +1,6 @@
 "use client";
 
+import { RotateCcw } from "@/components/lucide-icons";
 import Link from "next/link";
 import { useDeferredValue, useState } from "react";
 
@@ -88,7 +89,7 @@ export function GuideLibrary({
               setTopic("all");
             }}
             className="min-h-11 font-semibold text-primary underline underline-offset-4"
-          >
+          ><RotateCcw className="action-icon" />
             {copy.reset}
           </button>
         ) : null}

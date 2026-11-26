@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ActionIcon } from "@/components/action-icon";
+import { StyledSelect } from "@/components/styled-select";
 import type {
   AnchorHTMLAttributes,
   InputHTMLAttributes,
@@ -61,12 +63,14 @@ export function ButtonLink({
   variant = "primary",
   className,
   onClick,
+  icon,
 }: {
   href: string;
   children: ReactNode;
   variant?: "primary" | "secondary";
   className?: string;
   onClick?: AnchorHTMLAttributes<HTMLAnchorElement>["onClick"];
+  icon?: ReactNode;
 }) {
   return (
     <Link
@@ -80,6 +84,7 @@ export function ButtonLink({
         className,
       )}
     >
+      {icon !== false ? icon ?? <ActionIcon href={href} /> : null}
       {children}
     </Link>
   );
@@ -130,22 +135,8 @@ export function Textarea({
   );
 }
 
-export function Select({
-  className,
-  children,
-  ...props
-}: SelectHTMLAttributes<HTMLSelectElement>) {
-  return (
-    <select
-      {...props}
-      className={cn(
-        "focus-ring tap-target w-full rounded-2xl border border-border bg-surface px-4",
-        className,
-      )}
-    >
-      {children}
-    </select>
-  );
+export function Select(props: SelectHTMLAttributes<HTMLSelectElement>) {
+  return <StyledSelect {...props} />;
 }
 
 export function CheckboxRow({

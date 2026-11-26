@@ -1,5 +1,6 @@
 "use client";
 
+import { Copy } from "@/components/lucide-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -60,7 +61,7 @@ export function AdminNav({
                 ? "border-primary bg-primary text-white"
                 : "border-border bg-surface text-foreground hover:bg-surface-muted",
             )}
-          >
+          ><Copy className="action-icon" />
             {navCopy(locale, item.label)}
           </Link>
         );

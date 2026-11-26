@@ -1,3 +1,4 @@
+import { Copy } from "@/components/lucide-icons";
 import Link from "next/link";
 import type { ComponentType, SVGProps } from "react";
 
@@ -79,14 +80,14 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
         <Link
           href={buildLocalePath(locale, "/admin")}
           className="header-account"
-        >
+        ><Copy className="action-icon" />
           {copy.admin}
         </Link>
       ) : null}
       {sessionUser ? (
         <form action={signOutAction}>
           <input type="hidden" name="locale" value={locale} />
-          <button type="submit" className="header-account">
+          <button type="submit" className="header-account"><Copy className="action-icon" />
             {copy.signOut}
           </button>
         </form>

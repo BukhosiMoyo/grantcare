@@ -1,5 +1,7 @@
 "use client";
 
+import { Navigation } from "@/components/lucide-icons";
+import { Select } from "@/components/ui";
 import { useRouter } from "next/navigation";
 import { startTransition, useState } from "react";
 
@@ -46,7 +48,8 @@ export function PaymentDateTool({
     <div className="input-panel grid items-end gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]">
       <label className="space-y-2">
         <span className="text-sm font-medium text-muted">{monthLabel}</span>
-        <select
+        <Select
+          aria-label={monthLabel}
           value={`${year}-${month}`}
           onChange={(event) => {
             const [nextYear, nextMonth] = event.target.value.split("-");
@@ -60,11 +63,12 @@ export function PaymentDateTool({
               {entry.label}
             </option>
           ))}
-        </select>
+        </Select>
       </label>
       <label className="space-y-2">
         <span className="text-sm font-medium text-muted">{grantTypeLabel}</span>
-        <select
+        <Select
+          aria-label={grantTypeLabel}
           value={grant}
           onChange={(event) => setGrant(event.target.value)}
           className="focus-ring tap-target w-full rounded-2xl border border-border bg-surface px-4"
@@ -74,7 +78,7 @@ export function PaymentDateTool({
               {entry.name}
             </option>
           ))}
-        </select>
+        </Select>
       </label>
       <button
         type="button"
@@ -84,7 +88,7 @@ export function PaymentDateTool({
           })
         }
         className="primary-action focus-ring tap-target rounded-xl bg-primary px-6 text-base font-bold text-white hover:bg-primary-strong"
-      >
+      ><Navigation className="action-icon" />
         {openLabel}
       </button>
     </div>
