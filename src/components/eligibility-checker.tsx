@@ -1,5 +1,7 @@
 "use client";
 
+import { Download, MousePointerClick } from "@/components/lucide-icons";
+import { Copy, Bookmark, RotateCcw } from "@/components/lucide-icons";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { ComponentType, SVGProps } from "react";
@@ -254,7 +256,7 @@ export function EligibilityChecker({ locale }: { locale: Locale }) {
                   setSaveStatus("idle");
                 }}
                 className="focus-ring tap-target rounded-full border border-border bg-surface px-5 font-semibold"
-              >
+              ><Copy className="action-icon" />
                 {copy.startAgain}
               </button>
               <TrackedExternalLink
@@ -306,14 +308,14 @@ export function EligibilityChecker({ locale }: { locale: Locale }) {
                 disabled={saveStatus === "saving"}
                 onClick={saveChecklist}
                 className="primary-action focus-ring tap-target rounded-full bg-primary px-5 font-semibold text-white hover:bg-primary-strong disabled:cursor-not-allowed disabled:opacity-60"
-              >
+              ><Bookmark className="action-icon" />
                 {saveStatus === "saving" ? "Saving" : saveStatus === "saved" ? "Saved" : "Save"}
               </button>
               {sessionId ? (
                 <a
                   href={`/api/eligibility-wizard/sessions/${sessionId}/pdf`}
                   className="focus-ring tap-target inline-flex items-center rounded-full border border-border bg-surface px-5 font-semibold hover:bg-surface-muted"
-                >
+                ><Download className="action-icon" />
                   Download PDF
                 </a>
               ) : null}
@@ -321,7 +323,7 @@ export function EligibilityChecker({ locale }: { locale: Locale }) {
                 <Link
                   href={signInHref}
                   className="focus-ring tap-target inline-flex items-center rounded-full border border-border bg-surface px-5 font-semibold hover:bg-surface-muted"
-                >
+                ><MousePointerClick className="action-icon" />
                   Sign in
                 </Link>
               ) : null}
@@ -410,7 +412,7 @@ export function EligibilityChecker({ locale }: { locale: Locale }) {
                 setAnswers(clearLaterAnswers(nextAnswers, previous.key));
               }}
               className="focus-ring tap-target w-fit rounded-full border border-border bg-surface px-5 text-sm font-semibold"
-            >
+            ><RotateCcw className="action-icon" />
               Back
             </button>
           ) : null}

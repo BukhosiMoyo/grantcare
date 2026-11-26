@@ -1,3 +1,5 @@
+import { formatPublishedGrantAmount } from "./grant-amounts";
+import { EVIDENCE_SOURCES } from "./content-evidence";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/site";
 import { toGeneratedSetswanaText, toGeneratedXhosaText } from "./generated-guide-translations";
 
@@ -7,8 +9,8 @@ export const WHATSAPP_CHANNEL = {
 } as const;
 
 export const GRANT_AMOUNT_SOURCE = {
-  label: "South African Government grant amounts effective April 2026",
-  href: "https://www.dsd.gov.za/index.php/21-latest-news/680-sassa-confirms-2026-2027-social-grant-payment-schedule-and-increases",
+  label: EVIDENCE_SOURCES.amounts.label,
+  href: EVIDENCE_SOURCES.amounts.href,
 } as const;
 
 export const PAYMENT_SCHEDULE_SOURCE = {
@@ -233,164 +235,33 @@ export type GrantAmountDetail = {
   amount: string;
 };
 
-const GRANT_AMOUNT_DETAILS: Record<string, readonly GrantAmountDetail[]> = {
-  "older-persons": [
-    {
-      label: "Old Age (60–74)",
-      amount: "R2 400",
-    },
-    {
-      label: "Old Age (75+)",
-      amount: "R2 420",
-    },
-    {
-      label: "War Veterans",
-      amount: "R2 420",
-    },
-  ],
-  disability: [
-    {
-      label: "Disability",
-      amount: "R2 400",
-    },
-  ],
-  children: [
-    {
-      label: "Child Support",
-      amount: "R580",
-    },
-    {
-      label: "Foster Child",
-      amount: "R1 290 (R1 300 from October)",
-    },
-    {
-      label: "Care Dependency",
-      amount: "R2 400",
-    },
-  ],
-  "child-support": [
-    {
-      label: "Child Support",
-      amount: "R580",
-    },
-  ],
-  "foster-child": [
-    {
-      label: "Foster Child",
-      amount: "R1 290 (R1 300 from October)",
-    },
-  ],
-  "care-dependency": [
-    {
-      label: "Care Dependency",
-      amount: "R2 400",
-    },
-  ],
-  "grant-in-aid": [
-    {
-      label: "Grant-in-Aid",
-      amount: "R580",
-    },
-  ],
-  "social-relief": [
-    {
-      label: "SRD Grant",
-      amount: "R370",
-    },
-  ],
+const GRANT_AMOUNT_KEYS: Record<string, readonly string[]> = {
+  "older-persons": ["older-persons", "older-persons-75", "war-veterans"],
+  disability: ["disability"], children: ["child-support", "foster-child", "care-dependency"],
+  "child-support": ["child-support"], "foster-child": ["foster-child"],
+  "care-dependency": ["care-dependency"], "grant-in-aid": ["grant-in-aid"], "social-relief": ["social-relief"],
+};
+const GRANT_AMOUNT_LABELS: Record<string, string> = {
+  "older-persons": "Old Age (60–74)", "older-persons-75": "Old Age (75+)", "war-veterans": "War Veterans",
+  disability: "Disability", "child-support": "Child Support", "foster-child": "Foster Child",
+  "care-dependency": "Care Dependency", "grant-in-aid": "Grant-in-Aid", "social-relief": "SRD Grant",
+};
+const ZULU_AMOUNT_LABELS: Record<string, string> = {
+  "older-persons": "Abadala (60-74)", "older-persons-75": "Abadala (75+)", "war-veterans": "Omakadebona Bempi",
+  disability: "Ukukhubazeka", "child-support": "Sokondla Ingane", "foster-child": "Ingane Yokutholwa",
+  "care-dependency": "Sokunakekelwa", "grant-in-aid": "Isibonelelo Sosizo", "social-relief": "Isibonelelo se-SRD",
 };
 
-const GRANT_AMOUNT_DETAIL_TRANSLATIONS: Partial<Record<Locale, Record<string, readonly GrantAmountDetail[]>>> = {
-  zu: {
-    "older-persons": [
-      {
-        label: "Abadala (60-74)",
-        amount: "R2 400",
-      },
-      {
-        label: "Abadala (75+)",
-        amount: "R2 420",
-      },
-      {
-        label: "Omakadebona Bempi",
-        amount: "R2 420",
-      },
-    ],
-    disability: [
-      {
-        label: "Ukukhubazeka",
-        amount: "R2 400",
-      },
-    ],
-    children: [
-      {
-        label: "Sokondla Ingane",
-        amount: "R580",
-      },
-      {
-        label: "Ingane Yokutholwa",
-        amount: "R1 290 (R1 300 kusukela ngo-Okthoba)",
-      },
-      {
-        label: "Sokunakekelwa",
-        amount: "R2 400",
-      },
-    ],
-    "child-support": [
-      {
-        label: "Sokondla Ingane",
-        amount: "R580",
-      },
-    ],
-    "foster-child": [
-      {
-        label: "Ingane Yokutholwa",
-        amount: "R1 290 (R1 300 kusukela ngo-Okthoba)",
-      },
-    ],
-    "care-dependency": [
-      {
-        label: "Sokunakekelwa",
-        amount: "R2 400",
-      },
-    ],
-    "grant-in-aid": [
-      {
-        label: "Isibonelelo Sosizo",
-        amount: "R580",
-      },
-    ],
-    "social-relief": [
-      {
-        label: "Isibonelelo se-SRD",
-        amount: "R370",
-      },
-    ],
-  },
-};
-
-export function getGrantAmountDetails(slug: string, locale: Locale = DEFAULT_LOCALE) {
-  const localized = GRANT_AMOUNT_DETAIL_TRANSLATIONS[locale]?.[slug];
-  if (localized) {
-    return localized;
-  }
-
-  const details = GRANT_AMOUNT_DETAILS[slug];
-  if (locale === "tn" && details) {
-    return details.map((detail) => ({
-      label: toGeneratedSetswanaText(detail.label),
-      amount: detail.amount.replace("from October", "go tloga ka Diphalane"),
-    }));
-  }
-
-  if (locale === "xh" && details) {
-    return details.map((detail) => ({
-      label: toGeneratedXhosaText(detail.label),
-      amount: detail.amount.replace("from October", "ukusukela ngo-Oktobha"),
-    }));
-  }
-
-  return details ?? null;
+export function getGrantAmountDetails(slug: string, locale: Locale = DEFAULT_LOCALE, on?: string): GrantAmountDetail[] | null {
+  const keys = GRANT_AMOUNT_KEYS[slug];
+  if (!keys) return null;
+  const details = keys.map(key => {
+    const amount = formatPublishedGrantAmount(key, on);
+    if (!amount) return null;
+    const label = locale === "zu" ? ZULU_AMOUNT_LABELS[key] : toGeneratedLocaleText(locale, GRANT_AMOUNT_LABELS[key]);
+    return {label, amount};
+  }).filter((detail): detail is GrantAmountDetail => detail !== null);
+  return details.length ? details : null;
 }
 
 export function getGrantAmountLabel(slug: string, locale: Locale = DEFAULT_LOCALE) {

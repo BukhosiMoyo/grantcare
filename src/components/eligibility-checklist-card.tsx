@@ -1,5 +1,6 @@
 "use client";
 
+import { Download } from "@/components/lucide-icons";
 import { useState } from "react";
 
 import { Card } from "@/components/ui";
@@ -71,7 +72,7 @@ export function EligibilityChecklistCard({
       <a
         href={`/api/eligibility-wizard/sessions/${id}/pdf`}
         className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-5 text-sm font-semibold hover:bg-surface-muted"
-      >
+      ><Download className="action-icon" />
         Download PDF
       </a>
     </Card>

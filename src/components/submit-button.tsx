@@ -1,5 +1,6 @@
 "use client";
 
+import { Send } from "@/components/lucide-icons";
 import { useFormStatus } from "react-dom";
 
 import { cn } from "@/lib/utils";
@@ -23,7 +24,7 @@ export function SubmitButton({
         "primary-action focus-ring tap-target rounded-full bg-primary px-5 text-base font-semibold text-white transition-colors hover:bg-primary-strong disabled:cursor-not-allowed disabled:opacity-70",
         className,
       )}
-    >
+    ><Send className="action-icon" />
       {pending ? pendingLabel ?? children : children}
     </button>
   );

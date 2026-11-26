@@ -1,5 +1,6 @@
 "use client";
 
+import { Copy } from "@/components/lucide-icons";
 import { useState } from "react";
 import { type Locale, isLocale } from "@/lib/site";
 import { getInterviewGuideCopy } from "../../copy";
@@ -34,7 +35,7 @@ export function UnlockButton({ generationId, locale }: { generationId: string; l
       onClick={handleCheckout}
       disabled={isLoading}
       className="focus-ring tap-target inline-flex w-full items-center justify-center rounded-full px-8 py-3.5 text-[18px] font-semibold transition-all primary-action bg-primary text-white hover:bg-primary-strong shadow-[0_4px_12px_-4px_rgba(23,76,60,0.3)] hover:shadow-[0_6px_20px_-6px_rgba(23,76,60,0.4)] hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none disabled:translate-y-0"
-    >
+    ><Copy className="action-icon" />
       {isLoading ? (
         <span className="flex items-center gap-2">
           <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />

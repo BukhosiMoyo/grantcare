@@ -1,5 +1,6 @@
 "use client";
 
+import { Send } from "@/components/lucide-icons";
 import { cn } from "@/lib/utils";
 
 export function ConfirmSubmitButton({
@@ -23,7 +24,7 @@ export function ConfirmSubmitButton({
         "focus-ring tap-target rounded-full border border-danger/30 bg-white px-4 text-sm font-semibold text-danger hover:bg-danger/5",
         className,
       )}
-    >
+    ><Send className="action-icon" />
       {children}
     </button>
   );

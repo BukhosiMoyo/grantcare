@@ -1,3 +1,4 @@
+import { ContentSources } from "@/components/content-sources";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -284,6 +285,8 @@ export default async function GrantDetailPage({
           ))}
         </div>
       </Section>
+      <ContentSources locale={locale} topic="amounts" path={buildLocalePath(locale, `/grants/${grant.slug}`)} />
+      <ContentSources locale={locale} topic={"grants"} path={buildLocalePath(locale, `/grants/${grant.slug}`)} article />
     </div>
   );
 }

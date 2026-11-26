@@ -1,5 +1,6 @@
 "use client";
 
+import { Copy } from "@/components/lucide-icons";
 import { useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 
@@ -150,7 +151,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               className="flow-btn flow-btn-primary"
               disabled={!formData.decisionDate || (formData.grantType === "srd_r370" && !formData.declinedMonth)}
               onClick={() => goTo("reason")}
-            >
+            ><Copy className="action-icon" />
               {copy.continue}
             </button>
           </div>
@@ -193,7 +194,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               className="flow-btn flow-btn-primary"
               disabled={formData.defense.trim().length < 5}
               onClick={() => goTo("identity")}
-            >
+            ><Copy className="action-icon" />
               {copy.continue}
             </button>
           </div>
@@ -242,7 +243,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               className="flow-btn flow-btn-primary mt-4"
               disabled={formData.fullName.trim().length < 2 || formData.idNumber.trim().length < 13}
               onClick={() => goTo("reminder")}
-            >
+            ><Copy className="action-icon" />
               {copy.continue}
             </button>
           </div>
@@ -266,7 +267,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               type="button"
               className="flow-btn flow-btn-primary"
               onClick={generate}
-            >
+            ><Copy className="action-icon" />
               {copy.cta}
             </button>
           </div>

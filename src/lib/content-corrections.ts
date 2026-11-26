@@ -1,3 +1,4 @@
+import { correctUnverifiedTiming } from "./reviewed-guidance-corrections";
 import type { PublicGuide, PublicNewsArticle } from "./fallback-content";
 
 // Narrow corrections for the audited legacy records, including copies already
@@ -13,6 +14,10 @@ const GUIDANCE_REPLACEMENTS: Record<string, Array<[string, string]>> = {
 };
 
 export function correctGuide(guide: PublicGuide): PublicGuide {
+  return correctUnverifiedTiming(correctGuideLegacy(guide));
+}
+
+function correctGuideLegacy(guide: PublicGuide): PublicGuide {
   const replacements = GUIDANCE_REPLACEMENTS[guide.slug];
   if (replacements?.some(([before]) => guide.sections.some(section => section.body.includes(before)))) {
     return {

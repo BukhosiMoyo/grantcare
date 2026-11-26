@@ -1,7 +1,12 @@
+import { ContentSources } from "@/components/content-sources";
+import { PaymentScheduleSources } from "@/components/payment-schedule-sources";
+import { getPaymentFaqs } from "@/lib/public-faqs";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { DecemberPaymentIntro, DecemberPlanning, hasDecemberPlanning } from "@/components/december-planning";
+import { FaqList } from "@/components/faq-list";
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import {
   getPaymentSummaryDayText,
@@ -14,6 +19,7 @@ import { PageViewTracker } from "@/components/page-view-tracker";
 import { Card, Section } from "@/components/ui";
 import {
   getPaymentPeriod,
+  listFaqs,
   listMonetizationBlocks,
   listRecentPaymentPeriods,
   listRelatedGuides,
@@ -141,21 +147,9 @@ export default async function PaymentMonthPage({
       limit: 2,
     }),
   ]);
+  const showDecemberPlanning = hasDecemberPlanning(locale, paymentMonth.year, paymentMonth.month);
   const lastUpdated = formatPaymentPageLastUpdated();
-  const scheduleFaqs = [
-    {
-      question: routeCopy.faqClearQuestion(paymentMonth.label),
-      answer: routeCopy.faqClearAnswer,
-    },
-    {
-      question: routeCopy.faqWeekendQuestion,
-      answer: routeCopy.faqWeekendAnswer,
-    },
-    {
-      question: routeCopy.faqVerifyQuestion,
-      answer: routeCopy.faqVerifyAnswer,
-    },
-  ];
+  const scheduleFaqs = getPaymentFaqs(locale, { label: paymentMonth.label }, await listFaqs(locale));
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -239,9 +233,10 @@ export default async function PaymentMonthPage({
           year: paymentMonth.year,
         }}
       />
-      <Section headingAs="h1" eyebrow={copy.paymentDates} title={paymentMonth.label}>
+      <Section headingAs="h1" eyebrow={copy.paymentDates} title={showDecemberPlanning ? "December 2026 grant payment dates" : paymentMonth.label}>
         <p className="text-sm text-muted">{routeCopy.updatedLabel} {lastUpdated}</p>
-        <div className="grid gap-4">
+        {showDecemberPlanning ? <DecemberPaymentIntro /> : null}
+        <div id={showDecemberPlanning ? "december-schedule" : undefined} className={showDecemberPlanning ? "grid gap-4 lg:grid-cols-2" : "grid gap-4"}>
           {paymentMonth.entries.map((entry) => {
             const amountDetails = getGrantAmountDetails(entry.grantSlug, locale);
 
@@ -272,6 +267,10 @@ export default async function PaymentMonthPage({
           })}
         </div>
       </Section>
+
+      <PaymentScheduleSources locale={locale} year={paymentMonth.year} month={paymentMonth.month} />
+
+      {showDecemberPlanning ? <DecemberPlanning /> : null}
 
       <Section title={copy.moreMonthsTitle}>
         <div className="grid gap-4 md:grid-cols-3">
@@ -309,24 +308,7 @@ export default async function PaymentMonthPage({
       />
 
       <Section title={routeCopy.payoutFaqTitle(paymentMonth.label)}>
-        <div className="space-y-4">
-          {scheduleFaqs.map((faq) => (
-            <details
-              key={faq.question}
-              className="group rounded-[1.5rem] border border-border bg-surface p-6 transition-all hover:border-primary/20 hover:bg-surface-muted hover:shadow-sm"
-            >
-              <summary className="flex cursor-pointer items-center justify-between font-semibold tracking-tight text-foreground sm:text-lg">
-                {faq.question}
-                <span className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface-strong transition-transform group-open:rotate-180">
-                  ↓
-                </span>
-              </summary>
-              <p className="mt-4 text-sm leading-7 text-muted">
-                {faq.answer}
-              </p>
-            </details>
-          ))}
-        </div>
+        <FaqList items={scheduleFaqs} />
       </Section>
 
       <InternalLinkGrid locale={locale} title={routeCopy.morePaymentHelpTitle} items={hubLinks} />
@@ -336,6 +318,7 @@ export default async function PaymentMonthPage({
           <MonetizationBlocks blocks={blocks} locale={locale} placement="payment-dates" />
         </Section>
       ) : null}
+      <ContentSources locale={locale} topic="amounts" path="/payment-dates" />
     </div>
   );
 }

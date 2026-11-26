@@ -1,3 +1,4 @@
+import { ContentSources } from "@/components/content-sources";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ButtonLink, Card, Section } from "@/components/ui";
@@ -121,6 +122,7 @@ export default async function InterviewGuideMarketingPage({
           {copy.cta}
         </ButtonLink>
       </section>
+      <ContentSources locale={locale} topic="general" path="/tools/interview-guide" article />
     </>
   );
 }

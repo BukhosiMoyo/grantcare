@@ -1,5 +1,6 @@
 "use client";
 
+import { Printer, Download, Copy } from "@/components/lucide-icons";
 import { useMemo, useState } from "react";
 
 export function AppealPackActions({
@@ -50,14 +51,14 @@ export function AppealPackActions({
         type="button"
         className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-5 py-2.5 text-base font-semibold text-foreground hover:bg-surface-muted"
         onClick={() => window.print()}
-      >
+      ><Printer className="action-icon" />
         {printLabel}
       </button>
       <button
         type="button"
         className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-5 py-2.5 text-base font-semibold text-foreground hover:bg-surface-muted"
         onClick={download}
-      >
+      ><Download className="action-icon" />
         {downloadLabel}
       </button>
       <button
@@ -65,7 +66,7 @@ export function AppealPackActions({
         className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-5 py-2.5 text-base font-semibold text-foreground hover:bg-surface-muted disabled:opacity-50"
         disabled={!canCopy}
         onClick={copy}
-      >
+      ><Copy className="action-icon" />
         {copied ? copiedLabel : copyLabel}
       </button>
     </div>

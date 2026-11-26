@@ -96,6 +96,7 @@ export const ELIGIBILITY_QUESTIONS: EligibilityQuestion[] = [
     label: "Status",
     options: [
       { value: "yes", label: "Citizen / permanent resident / refugee" },
+      { value: "asylum-special", label: "Asylum seeker / qualifying special permit holder" },
       { value: "no", label: "None of these" },
       { value: "unsure", label: "Not sure" },
     ],
@@ -372,7 +373,7 @@ export function getEligibilityResult(answers: EligibilityAnswers, locale: Locale
   const grantSlug = resolveGrantSlug(answers);
   const blockers: string[] = [];
 
-  addBlocker(blockers, no(answers.citizenship), "Status");
+  addBlocker(blockers, no(answers.citizenship) || (answers.citizenship === "asylum-special" && grantSlug !== "social-relief"), "Status");
   addBlocker(blockers, no(answers.residesInSa), "Residence");
   addBlocker(blockers, answers.stateInstitution === "yes", "State institution");
 
@@ -417,6 +418,7 @@ export function getEligibilityResult(answers: EligibilityAnswers, locale: Locale
   }
 
   if (grantSlug === "social-relief") {
+    addBlocker(blockers, answers.ageBand !== "18to59", "Age: confirm the official SRD age rules");
     addBlocker(blockers, answers.srdNoSupport === "no", "Income support");
     addBlocker(blockers, answers.meansConcern === "high", "Income and assets");
   }

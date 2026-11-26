@@ -1,3 +1,4 @@
+import { ContentSources } from "@/components/content-sources";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -133,12 +134,13 @@ export default async function FaqPage({
           {faqs.map((item) => (
             <Card key={item.question} className="space-y-2">
               <h2 className="text-xl font-semibold">{item.question}</h2>
-              <p className="text-sm text-muted">{item.answer}</p>
+              <p className="text-base leading-7 text-muted">{item.answer}</p>
             </Card>
           ))}
         </div>
       </Section>
       <InternalLinkGrid locale={locale} title={routeCopy.helpfulNextPagesTitle} items={hubLinks} />
+      <ContentSources locale={locale} topic={"general"} path={"/faq"} article />
     </>
   );
 }

@@ -41,7 +41,7 @@ export const SASSA_OFFICES: SassaOffice[] = [
     name: "SASSA Head Office",
     province: "Gauteng",
     city: "Pretoria",
-    address: "501 Prodinsa Building, Cnr Beatrix and Pretorius Street, Pretoria",
+    address: "501 Prodinsa Building, cnr Steve Biko and Pretorius Streets, Pretoria",
     phone: "0800 60 10 11",
     email: "GrantEnquiries@sassa.gov.za",
     services: ["National support", "Grant enquiries"],
@@ -49,7 +49,7 @@ export const SASSA_OFFICES: SassaOffice[] = [
     longitude: 28.2111,
     sourceLabel: GOVERNMENT_DIRECTORY_SOURCE.label,
     sourceUrl: GOVERNMENT_DIRECTORY_SOURCE.href,
-    lastVerified: "2026-06-05",
+    lastVerified: "2026-11-26",
   },
   {
     slug: "sassa-eastern-cape-east-london",
@@ -66,7 +66,7 @@ export const SASSA_OFFICES: SassaOffice[] = [
     longitude: 27.9036,
     sourceLabel: SASSA_OFFICE_SOURCE.label,
     sourceUrl: SASSA_OFFICE_SOURCE.href,
-    lastVerified: "2026-06-05",
+    lastVerified: "2026-11-26",
   },
   {
     slug: "sassa-free-state-bloemfontein",
@@ -82,7 +82,7 @@ export const SASSA_OFFICES: SassaOffice[] = [
     longitude: 26.2182,
     sourceLabel: SASSA_OFFICE_SOURCE.label,
     sourceUrl: SASSA_OFFICE_SOURCE.href,
-    lastVerified: "2026-06-05",
+    lastVerified: "2026-11-26",
   },
   {
     slug: "sassa-gauteng-johannesburg",
@@ -98,7 +98,7 @@ export const SASSA_OFFICES: SassaOffice[] = [
     longitude: 28.041,
     sourceLabel: SASSA_OFFICE_SOURCE.label,
     sourceUrl: SASSA_OFFICE_SOURCE.href,
-    lastVerified: "2026-06-05",
+    lastVerified: "2026-11-26",
   },
   {
     slug: "sassa-kwazulu-natal-pietermaritzburg",
@@ -114,7 +114,7 @@ export const SASSA_OFFICES: SassaOffice[] = [
     longitude: 30.3794,
     sourceLabel: SASSA_OFFICE_SOURCE.label,
     sourceUrl: SASSA_OFFICE_SOURCE.href,
-    lastVerified: "2026-06-05",
+    lastVerified: "2026-11-26",
   },
   {
     slug: "sassa-limpopo-polokwane",
@@ -130,7 +130,7 @@ export const SASSA_OFFICES: SassaOffice[] = [
     longitude: 29.459,
     sourceLabel: SASSA_OFFICE_SOURCE.label,
     sourceUrl: SASSA_OFFICE_SOURCE.href,
-    lastVerified: "2026-06-05",
+    lastVerified: "2026-11-26",
   },
   {
     slug: "sassa-mpumalanga-mbombela",
@@ -146,7 +146,7 @@ export const SASSA_OFFICES: SassaOffice[] = [
     longitude: 30.97,
     sourceLabel: SASSA_OFFICE_SOURCE.label,
     sourceUrl: SASSA_OFFICE_SOURCE.href,
-    lastVerified: "2026-06-05",
+    lastVerified: "2026-11-26",
   },
   {
     slug: "sassa-north-west-mmabatho",
@@ -162,7 +162,7 @@ export const SASSA_OFFICES: SassaOffice[] = [
     longitude: 25.6145,
     sourceLabel: SASSA_OFFICE_SOURCE.label,
     sourceUrl: SASSA_OFFICE_SOURCE.href,
-    lastVerified: "2026-06-05",
+    lastVerified: "2026-11-26",
   },
   {
     slug: "sassa-northern-cape-kimberley",
@@ -178,7 +178,7 @@ export const SASSA_OFFICES: SassaOffice[] = [
     longitude: 24.7653,
     sourceLabel: SASSA_OFFICE_SOURCE.label,
     sourceUrl: SASSA_OFFICE_SOURCE.href,
-    lastVerified: "2026-06-05",
+    lastVerified: "2026-11-26",
   },
   {
     slug: "sassa-western-cape-cape-town",
@@ -194,7 +194,7 @@ export const SASSA_OFFICES: SassaOffice[] = [
     longitude: 18.4235,
     sourceLabel: SASSA_OFFICE_SOURCE.label,
     sourceUrl: SASSA_OFFICE_SOURCE.href,
-    lastVerified: "2026-06-05",
+    lastVerified: "2026-11-26",
   },
 ];
 
@@ -228,7 +228,7 @@ const COPY: Partial<
     call: "Shayela",
     directions: "Izikhombisi-ndlela",
     details: "Imininingwane",
-    lastVerified: "Kuqinisekiswe",
+    lastVerified: "Umthombo uhloliwe",
     noOfficesFound: "Awekho amahhovisi atholakele",
     noRecentReport: "Awukho umbiko wakamuva",
     openGoogleMaps: "Vula ku-Google Maps",
@@ -251,7 +251,7 @@ export function getSassaOfficeCopy(locale: Locale = DEFAULT_LOCALE) {
     call: "Call",
     directions: "Directions",
     details: "Details",
-    lastVerified: "Verified",
+    lastVerified: "Contact source checked",
     noOfficesFound: "No offices found",
     noRecentReport: "No recent report",
     openGoogleMaps: "Open Google Maps",

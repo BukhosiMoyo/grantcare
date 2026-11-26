@@ -1,6 +1,9 @@
 "use client";
 
+import { Phone, Info } from "@/components/lucide-icons";
+import { Navigation, LocateFixed } from "@/components/lucide-icons";
 import Link from "next/link";
+import { MapPin } from "@/components/lucide-icons";
 import { useCallback, useMemo, useState, type FormEvent } from "react";
 
 import { SassaOfficeMap } from "@/components/sassa-office-map";
@@ -9,6 +12,7 @@ import {
   getSassaOfficeCopy,
   getSassaOfficeRouteUrl,
   getSassaOfficeProvinces,
+  SASSA_OFFICES,
   searchSassaOffices,
   type SassaOfficeSearchResult,
 } from "@/lib/sassa-offices";
@@ -52,17 +56,18 @@ function OfficeCard({
 
   return (
     <Card
-      className={`space-y-4 transition-colors ${selected ? "border-primary/45 bg-surface" : ""}`}
+      className={`space-y-4 transition-colors ${selected ? "office-card-selected" : ""}`}
     >
       <button
         type="button"
         onClick={() => onSelect(office)}
+        aria-pressed={selected}
         className="focus-ring block w-full rounded-2xl text-left"
       >
         <div className="space-y-2">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
             <div className="space-y-1">
-              <h2 className="text-xl font-semibold tracking-tight text-foreground">{office.name}</h2>
+              <h2 className="flex items-start gap-2 text-xl font-semibold tracking-tight text-foreground"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />{office.name}</h2>
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">
                 {office.city}, {office.province}
               </p>
@@ -112,20 +117,20 @@ function OfficeCard({
         <a
           href={`tel:${office.phone.replace(/\D/g, "")}`}
           className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-4 text-sm font-semibold hover:bg-surface-muted"
-        >
+        ><Phone className="action-icon" />
           {copy.call}
         </a>
         <button
           type="button"
           onClick={() => onDirections(office)}
           className="primary-action focus-ring tap-target inline-flex items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold hover:bg-primary-strong"
-        >
+        ><Navigation className="action-icon" />
           {copy.directions}
         </button>
         <Link
           href={buildLocalePath(locale, `/sassa-office-locator/${office.slug}`)}
           className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-4 text-sm font-semibold hover:bg-surface-muted"
-        >
+        ><Info className="action-icon" />
           {copy.details}
         </Link>
       </div>
@@ -136,12 +141,10 @@ function OfficeCard({
 function RoutePlanner({
   locale,
   office,
-  onRouteRequest,
   userLocation,
 }: {
   locale: Locale;
   office: SassaOfficeSearchResult;
-  onRouteRequest: (origin: string) => void;
   userLocation: { latitude: number; longitude: number } | null;
 }) {
   const copy = getSassaOfficeCopy(locale);
@@ -157,7 +160,6 @@ function RoutePlanner({
 
     if (nextOrigin) {
       setSubmittedOrigin(nextOrigin);
-      onRouteRequest(nextOrigin);
     }
   }
 
@@ -169,7 +171,6 @@ function RoutePlanner({
     const nextOrigin = `${userLocation.latitude},${userLocation.longitude}`;
     setOrigin(nextOrigin);
     setSubmittedOrigin(nextOrigin);
-    onRouteRequest(nextOrigin);
   }
 
   return (
@@ -194,15 +195,15 @@ function RoutePlanner({
           <button
             type="submit"
             className="primary-action focus-ring tap-target inline-flex items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold hover:bg-primary-strong"
-          >
-            {copy.showRoute}
+          ><Navigation className="action-icon" />
+            {locale === "en" ? "Prepare directions" : copy.showRoute}
           </button>
           {userLocation ? (
             <button
               type="button"
               onClick={useCurrentLocation}
               className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-4 text-sm font-semibold hover:bg-surface-muted"
-            >
+            ><LocateFixed className="action-icon" />
               {copy.useMyLocation}
             </button>
           ) : null}
@@ -211,12 +212,13 @@ function RoutePlanner({
 
       {routeUrl ? (
         <div className="space-y-3">
+          <p className="text-sm leading-6 text-muted">{locale === "en" ? "Your start point is ready. Open the route in Google Maps for turn-by-turn directions." : copy.openGoogleMaps}</p>
           <a
             href={routeUrl}
             target="_blank"
             rel="noreferrer"
             className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-4 text-sm font-semibold hover:bg-surface-muted"
-          >
+          ><Navigation className="action-icon" />
             {copy.openGoogleMaps}
           </a>
         </div>
@@ -230,20 +232,22 @@ export function SassaOfficeLocator({ locale }: { locale: Locale }) {
   const provinces = useMemo(() => getSassaOfficeProvinces(), []);
   const [query, setQuery] = useState("");
   const [province, setProvince] = useState("");
+  const [city, setCity] = useState("");
+  const cityCopy = locale === "zu" ? {label:"Idolobha", all:"Wonke amadolobha"} : locale === "xh" ? {label:"Isixeko",all:"Zonke izixeko"} : locale === "tn" ? {label:"Toropo",all:"Ditoropo tsotlhe"} : {label:"City",all:"All cities"};
+  const cities = [...new Set(SASSA_OFFICES.filter(office => !province || office.province === province).map(office => office.city))].sort();
   const [selectedSlug, setSelectedSlug] = useState<string | undefined>();
   const [routeOfficeSlug, setRouteOfficeSlug] = useState<string | undefined>();
-  const [routeOrigin, setRouteOrigin] = useState("");
-  const [routeStatus, setRouteStatus] = useState("");
   const [userLocation, setUserLocation] = useState<{
     latitude: number;
     longitude: number;
   } | null>(null);
   const [locationError, setLocationError] = useState("");
 
-  const offices = useMemo(
+  const matchedOffices = useMemo(
     () => searchSassaOffices({ query, province, userLocation }),
     [province, query, userLocation],
   );
+  const offices = matchedOffices.filter(office => !city || office.city === city);
   const selectedOffice = offices.find((office) => office.slug === selectedSlug) ?? offices[0];
   const routeOffice = routeOfficeSlug
     ? offices.find((office) => office.slug === routeOfficeSlug)
@@ -251,21 +255,14 @@ export function SassaOfficeLocator({ locale }: { locale: Locale }) {
 
   const selectOffice = useCallback((office: SassaOfficeSearchResult) => {
     setSelectedSlug(office.slug);
-  }, []);
-
-  const selectOfficeBySlug = useCallback((slug: string) => {
-    setSelectedSlug(slug);
+    setRouteOfficeSlug("");
+    if (window.matchMedia("(max-width: 1023px)").matches) requestAnimationFrame(() => document.getElementById("office-locator-map")?.scrollIntoView({behavior:"smooth",block:"start"}));
   }, []);
 
   const planDirections = useCallback((office: SassaOfficeSearchResult) => {
     setSelectedSlug(office.slug);
     setRouteOfficeSlug(office.slug);
-    setRouteStatus("");
-  }, []);
-
-  const submitRoute = useCallback((origin: string) => {
-    setRouteOrigin(origin);
-    setRouteStatus("");
+    requestAnimationFrame(() => document.getElementById("office-locator-map")?.scrollIntoView({behavior:"smooth",block:"start"}));
   }, []);
 
   function requestLocation() {
@@ -293,7 +290,7 @@ export function SassaOfficeLocator({ locale }: { locale: Locale }) {
   return (
     <div className="space-y-5">
       <Card className="space-y-4">
-        <div className="grid gap-3 lg:grid-cols-[1fr_16rem_auto]">
+        <div className="grid gap-3 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)_auto]">
           <Field label={copy.search}>
             <Input
               value={query}
@@ -303,7 +300,7 @@ export function SassaOfficeLocator({ locale }: { locale: Locale }) {
             />
           </Field>
           <Field label={copy.province}>
-            <Select value={province} onChange={(event) => setProvince(event.target.value)}>
+            <Select aria-label={copy.province} value={province} onChange={(event) => {setProvince(event.target.value);setCity("");setSelectedSlug("");setRouteOfficeSlug("");}}>
               <option value="">{copy.allProvinces}</option>
               {provinces.map((entry) => (
                 <option key={entry} value={entry}>
@@ -312,12 +309,18 @@ export function SassaOfficeLocator({ locale }: { locale: Locale }) {
               ))}
             </Select>
           </Field>
+          <Field label={cityCopy.label}>
+            <Select aria-label={cityCopy.label} value={city} onChange={event => {setCity(event.target.value);setSelectedSlug("");setRouteOfficeSlug("");}}>
+              <option value="">{cityCopy.all}</option>
+              {cities.map(city => <option key={city} value={city}>{city}</option>)}
+            </Select>
+          </Field>
           <div className="flex items-end">
             <button
               type="button"
               onClick={requestLocation}
               className="primary-action focus-ring tap-target w-full rounded-full bg-primary px-5 text-sm font-semibold hover:bg-primary-strong lg:w-auto"
-            >
+            ><LocateFixed className="action-icon" />
               {copy.useMyLocation}
             </button>
           </div>
@@ -340,28 +343,20 @@ export function SassaOfficeLocator({ locale }: { locale: Locale }) {
           {offices.length === 0 ? <StatusMessage>{copy.noOfficesFound}</StatusMessage> : null}
         </div>
 
-        <div className="lg:sticky lg:top-24">
+        <div id="office-locator-map" className="order-first scroll-mt-24 lg:order-last lg:sticky lg:top-24">
           {routeOffice ? (
             <div className="mb-5">
               <RoutePlanner
+                key={routeOffice.slug}
                 locale={locale}
                 office={routeOffice}
-                onRouteRequest={submitRoute}
                 userLocation={userLocation}
               />
-              {routeStatus ? <StatusMessage tone="error">{routeStatus}</StatusMessage> : null}
             </div>
           ) : null}
           <SassaOfficeMap
             offices={offices}
-            routeRequest={
-              routeOffice && routeOrigin
-                ? { destinationSlug: routeOffice.slug, origin: routeOrigin }
-                : undefined
-            }
             selectedSlug={selectedOffice?.slug}
-            onRouteStatus={setRouteStatus}
-            onSelect={selectOfficeBySlug}
           />
         </div>
       </div>

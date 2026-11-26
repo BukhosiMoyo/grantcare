@@ -1,3 +1,4 @@
+import { ContentSources } from "@/components/content-sources";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -119,6 +120,7 @@ export default async function SassaOfficeLocatorPage({
       </Section>
 
       <SassaOfficeLocator locale={locale} />
+      <ContentSources locale={locale} topic={"contacts"} path={"/sassa-office-locator"} />
     </div>
   );
 }

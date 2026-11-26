@@ -1,3 +1,5 @@
+import { reconcilePaymentEntry } from "@/lib/payment-schedule";
+import { withMinimumFaqs } from "@/lib/public-faqs";
 import { ContentStatus, MonetizationPlacement, Prisma } from "@prisma/client";
 
 import { canQueryDatabase, isRecoverableDatabaseError, markDatabaseUnavailable } from "@/lib/database-readiness";
@@ -602,7 +604,7 @@ async function mapPaymentPeriodRecord(
     const grantType = mapGrantTypeRecord(entry.grantType, locale);
     const fallbackEntry = fallbackEntries[grantType.slug];
     const entryTranslations = entry.translations ?? fallbackEntry?.translations;
-    entryMap.set(grantType.slug, {
+    entryMap.set(grantType.slug, reconcilePaymentEntry({
       id: entry.id,
       grantSlug: grantType.slug,
       grantName: grantType.name,
@@ -625,7 +627,7 @@ async function mapPaymentPeriodRecord(
               "note",
             ),
       published: entry.published,
-    });
+    }, record.year, record.month, locale));
   }
 
   const entries = categories.map((category) =>
@@ -843,6 +845,7 @@ export async function getNewsArticleBySlug(locale: Locale, slug: string) {
 }
 
 export async function listFaqs(locale: Locale) {
+  const fallbackFaqs = FALLBACK_FAQS.map((faq) => mapFaqRecord({ ...faq, sortOrder: faq.sortOrder ?? 0, translations: faq.translations ?? {} }, locale));
   return withPublicFallback(
     async () => {
       const records = await db.faqEntry.findMany({
@@ -850,9 +853,9 @@ export async function listFaqs(locale: Locale) {
         orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }],
       });
 
-      return records.map((record) => mapFaqRecord(record, locale));
+      return withMinimumFaqs(records.map((record) => mapFaqRecord(record, locale)), fallbackFaqs);
     },
-    () => [...FALLBACK_FAQS],
+    () => fallbackFaqs,
   );
 }
 

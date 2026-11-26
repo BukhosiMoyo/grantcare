@@ -1,3 +1,4 @@
+import { ContentSources } from "@/components/content-sources";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -220,6 +221,7 @@ export default async function GrantAmountsPage({
       </Section>
 
       <InternalLinkGrid locale={locale} title={routeCopy.moreAmountHelpTitle} items={hubLinks} />
+      <ContentSources locale={locale} topic={"amounts"} path={"/grant-amounts"} />
     </div>
   );
 }

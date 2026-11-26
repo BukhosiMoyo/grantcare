@@ -1,5 +1,6 @@
 "use client";
 
+import { MousePointerClick, Copy } from "@/components/lucide-icons";
 import { useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 
@@ -123,7 +124,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
                     setFormData((prev) => ({ ...prev, jobTitle: job }));
                     setTimeout(() => goTo("industry"), 250);
                   }}
-                >
+                ><MousePointerClick className="action-icon" />
                   {job}
                 </button>
               ))}
@@ -133,7 +134,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               className="flow-btn flow-btn-primary"
               disabled={formData.jobTitle.trim().length < 2}
               onClick={() => goTo("industry")}
-            >
+            ><Copy className="action-icon" />
               {copy.continue}
             </button>
           </div>
@@ -209,7 +210,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               type="button"
               className="flow-btn flow-btn-primary"
               onClick={generate}
-            >
+            ><Copy className="action-icon" />
               {copy.generateButton}
             </button>
           </div>

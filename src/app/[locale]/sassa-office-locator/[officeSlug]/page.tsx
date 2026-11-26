@@ -1,3 +1,5 @@
+import { ContentSources } from "@/components/content-sources";
+import { Phone, Navigation } from "@/components/lucide-icons";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -102,11 +104,6 @@ export default async function SassaOfficeDetailPage({
     email: office.email,
     address: office.address,
     url: buildLocalePath(locale as Locale, `/sassa-office-locator/${office.slug}`),
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: office.latitude,
-      longitude: office.longitude,
-    },
   };
 
   return (
@@ -185,7 +182,7 @@ export default async function SassaOfficeDetailPage({
               <a
                 href={`tel:${office.phone.replace(/\D/g, "")}`}
                 className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-4 text-sm font-semibold hover:bg-surface-muted"
-              >
+              ><Phone className="action-icon" />
                 {copy.call}
               </a>
               <a
@@ -193,7 +190,7 @@ export default async function SassaOfficeDetailPage({
                 target="_blank"
                 rel="noreferrer"
                 className="primary-action focus-ring tap-target inline-flex items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold hover:bg-primary-strong"
-              >
+              ><Navigation className="action-icon" />
                 {copy.directions}
               </a>
             </div>
@@ -214,12 +211,13 @@ export default async function SassaOfficeDetailPage({
               target="_blank"
               rel="noreferrer"
               className="focus-ring tap-target inline-flex items-center justify-center rounded-full border border-border bg-surface px-4 text-sm font-semibold hover:bg-surface-muted"
-            >
+            ><Navigation className="action-icon" />
               {copy.directions}
             </a>
           </Card>
         </div>
       </Section>
+      <ContentSources locale={locale} topic={"contacts"} path={buildLocalePath(locale, `/sassa-office-locator/${office.slug}`)} />
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import type { PublicFaq } from "@/lib/fallback-content";
 
 /**
- * Renders FAQPage structured data (JSON-LD) for rich snippet eligibility.
- * Google uses this to show FAQ accordions directly in search results.
+ * Renders FAQPage structured data matching the questions and answers on the page.
+ * Search engines decide whether to show enhanced results.
  */
 export function FaqSchema({ faqs }: { faqs: PublicFaq[] }) {
   if (faqs.length === 0) {

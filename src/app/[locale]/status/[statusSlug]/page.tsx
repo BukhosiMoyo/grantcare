@@ -1,3 +1,5 @@
+import { getEvidenceTopic } from "@/lib/content-evidence";
+import { ContentSources } from "@/components/content-sources";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -274,6 +276,7 @@ export default async function StatusDetailPage({
           ))}
         </div>
       </Section>
+      <ContentSources locale={locale} topic={getEvidenceTopic(status.slug)} path={buildLocalePath(locale, `/status/${status.slug}`)} article />
     </div>
   );
 }

@@ -1,4 +1,5 @@
-"use client";
+"use client";import { MousePointerClick } from "@/components/lucide-icons";
+
 
 /**
  * Large tappable option card for single-select questions.
@@ -21,7 +22,7 @@ export function OptionCard({
       className="option-card"
       data-selected={selected}
       onClick={onClick}
-    >
+    ><MousePointerClick className="action-icon" />
       <span className="option-card-key">{shortcutKey}</span>
       <span className="option-card-label">{label}</span>
     </button>

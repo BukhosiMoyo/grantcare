@@ -16,7 +16,7 @@ export function LegalPage({
   eyebrow: string;
   intro: string[];
   locale: Locale;
-  sections: Array<{ title: string; paragraphs: string[] }>;
+  sections: Array<{ title: string; paragraphs: string[]; lang?: string }>;
   title: string;
 }) {
   const relatedLinks = getLegalLinks(locale).filter(
@@ -45,7 +45,7 @@ export function LegalPage({
         </Section>
 
         {sections.map((section) => (
-          <Section key={section.title} title={section.title}>
+          <div key={section.title} lang={section.lang}><Section title={section.title}>
             <div className="narrative-copy">
               {section.paragraphs.map((paragraph) => (
                 <p key={paragraph} className="text-sm leading-7 text-muted">
@@ -53,7 +53,7 @@ export function LegalPage({
                 </p>
               ))}
             </div>
-          </Section>
+          </Section></div>
         ))}
       </article>
 
