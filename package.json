@@ -23,7 +23,8 @@
     "translations:audit:zu": "node --import tsx scripts/audit-translation-coverage.ts --locale=zu",
     "translations:audit:xh": "node --import tsx scripts/audit-translation-coverage.ts --locale=xh",
     "translations:audit:tn": "node --import tsx scripts/audit-translation-coverage.ts --locale=tn",
-    "test:seo": "node --import tsx --test tests/seo.test.ts"
+    "audit:accuracy": "node --import tsx scripts/audit-content-accuracy.ts",
+    "test:seo": "node --import tsx --test tests/seo.test.ts tests/december-planning.test.ts tests/public-content-review.test.ts tests/office-map.test.ts tests/content-evidence.test.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.53",
