@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { DecemberPaymentIntro, DecemberPlanning, hasDecemberPlanning } from "@/components/december-planning";
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import {
   getPaymentSummaryDayText,
@@ -141,6 +142,7 @@ export default async function PaymentMonthPage({
       limit: 2,
     }),
   ]);
+  const showDecemberPlanning = hasDecemberPlanning(locale, paymentMonth.year, paymentMonth.month);
   const lastUpdated = formatPaymentPageLastUpdated();
   const scheduleFaqs = [
     {
@@ -239,9 +241,10 @@ export default async function PaymentMonthPage({
           year: paymentMonth.year,
         }}
       />
-      <Section headingAs="h1" eyebrow={copy.paymentDates} title={paymentMonth.label}>
+      <Section headingAs="h1" eyebrow={copy.paymentDates} title={showDecemberPlanning ? "December 2026 grant payment dates" : paymentMonth.label}>
         <p className="text-sm text-muted">{routeCopy.updatedLabel} {lastUpdated}</p>
-        <div className="grid gap-4">
+        {showDecemberPlanning ? <DecemberPaymentIntro /> : null}
+        <div id={showDecemberPlanning ? "december-schedule" : undefined} className="grid gap-4 lg:grid-cols-2">
           {paymentMonth.entries.map((entry) => {
             const amountDetails = getGrantAmountDetails(entry.grantSlug, locale);
 
@@ -272,6 +275,8 @@ export default async function PaymentMonthPage({
           })}
         </div>
       </Section>
+
+      {showDecemberPlanning ? <DecemberPlanning /> : null}
 
       <Section title={copy.moreMonthsTitle}>
         <div className="grid gap-4 md:grid-cols-3">
