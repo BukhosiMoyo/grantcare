@@ -8,16 +8,10 @@ export function hasDecemberPlanning(locale: string, year: number, month: number)
 
 export function DecemberPaymentIntro() {
   return (
-    <div className="space-y-4 rounded-2xl border border-primary/15 bg-surface-strong p-5 sm:p-6">
-      <p className="max-w-3xl text-base leading-7 text-foreground">
-        Start with your grant’s date and payment status below. Then plan for holiday costs and the essentials you’ll still need in January.
-      </p>
-      <nav aria-label="December page sections" className="flex flex-wrap gap-3">
-        <a href="#december-schedule" className="focus-ring rounded-lg bg-primary px-4 py-3 text-base font-semibold !text-white">View payment details</a>
-        <a href="#december-planning" className="focus-ring rounded-lg border border-primary/20 bg-white px-4 py-3 text-base font-semibold text-primary">Plan your December budget</a>
-      </nav>
-      <p className="max-w-3xl text-sm leading-6 text-muted">GrantCare is independent of SASSA. Read the status shown with each date; an SRD payment needs your individual official status check.</p>
-    </div>
+    <nav aria-label="December page sections" className="flex flex-wrap gap-3">
+      <a href="#december-schedule" className="focus-ring inline-flex min-h-11 items-center rounded-lg border border-border bg-surface px-3 py-2 text-base font-semibold text-primary">Payment details</a>
+      <a href="#december-planning" className="focus-ring inline-flex min-h-11 items-center rounded-lg border border-border bg-surface px-3 py-2 text-base font-semibold text-primary">Budget &amp; shopping</a>
+    </nav>
   );
 }
 
@@ -52,7 +46,7 @@ export function DecemberPlanning() {
           </Link>
         ))}
       </div>
-      <p className="border-t border-border px-5 py-4 text-sm leading-6 text-muted sm:px-8">General household planning. No retailer prices, extra grant payments or individual payment dates are promised.</p>
+      <p className="border-t border-border px-5 py-4 text-sm leading-6 text-muted sm:px-8">Practical checklists from the GrantCare Editorial Team, for planning at home before you shop.</p>
     </section>
   );
 }
