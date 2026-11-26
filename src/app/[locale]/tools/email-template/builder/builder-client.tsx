@@ -1,5 +1,6 @@
 "use client";
 
+import { MousePointerClick, Copy } from "@/components/lucide-icons";
 import { useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 
@@ -140,7 +141,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
                     setFormData((prev) => ({ ...prev, jobTitle: job }));
                     setTimeout(() => goTo("company"), 250);
                   }}
-                >
+                ><MousePointerClick className="action-icon" />
                   {job}
                 </button>
               ))}
@@ -150,7 +151,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               className="flow-btn flow-btn-primary"
               disabled={formData.jobTitle.trim().length < 2}
               onClick={() => goTo("company")}
-            >
+            ><Copy className="action-icon" />
               {copy.continue}
             </button>
           </div>
@@ -184,7 +185,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
                     setFormData((prev) => ({ ...prev, companyName: comp }));
                     setTimeout(() => goTo("experience"), 250);
                   }}
-                >
+                ><MousePointerClick className="action-icon" />
                   {comp}
                 </button>
               ))}
@@ -194,7 +195,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               className="flow-btn flow-btn-primary"
               disabled={formData.companyName.trim().length < 2}
               onClick={() => goTo("experience")}
-            >
+            ><Copy className="action-icon" />
               {copy.continue}
             </button>
           </div>
@@ -270,7 +271,7 @@ export function BuilderClient({ locale }: { locale: Locale }) {
               className="flow-btn flow-btn-primary"
               disabled={formData.userName.trim().length < 2}
               onClick={generate}
-            >
+            ><Copy className="action-icon" />
               {copy.cta}
             </button>
           </div>
