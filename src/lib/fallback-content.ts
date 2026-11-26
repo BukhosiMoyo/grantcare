@@ -1,4 +1,6 @@
+import { getReviewedPaymentSchedule, reconcilePaymentEntry } from "./payment-schedule";
 import type { Locale } from "./site";
+import { DECEMBER_PLANNING_GUIDES } from "./december-planning-guides";
 import { NEWS_REDIRECTS } from "./news-seo";
 import {
   addSetswanaTranslations,
@@ -809,7 +811,7 @@ export const FALLBACK_GUIDES: PublicGuide[] = [
   ...withGuideMetadata(SEO_BATCH_FOURTEEN_GUIDES),
   ...withGuideMetadata(SEO_BATCH_FIFTEEN_GUIDES),
   ...withGuideMetadata(SEO_BATCH_SIXTEEN_GUIDES),
-].map(addSetswanaTranslations);
+].map(addSetswanaTranslations).concat(withGuideMetadata(DECEMBER_PLANNING_GUIDES));
 
 export const FALLBACK_NEWS_ARTICLES: PublicNewsArticle[] = [
   {
@@ -956,44 +958,50 @@ export const FALLBACK_FAQS: PublicFaq[] = [
       },
     },
   },
+{
+  "id": "faq-srd-personal-date",
+  "question": "Does every SRD beneficiary have the same payday?",
+  "answer": "No. Check the payment date on your own official SRD status result. An approved result without a date does not confirm when money will arrive.",
+  "sortOrder": 4,
+  "translations": {
+    "zu": {
+      "question": "Ingabe bonke abahlomuli be-SRD banosuku olulodwa lokukhokha?",
+      "answer": "Cha. Hlola usuku lokukhokha emiphumeleni yakho esemthethweni yesimo se-SRD. Ukuvunywa ngaphandle kosuku akusho ukuthi imali izofika nini."
+    },
+    "xh": {
+      "question": "Ngaba bonke abaxhamli be-SRD bahlawulwa ngosuku olunye?",
+      "answer": "Hayi. Jonga umhla wentlawulo kwisiphumo sakho esisemthethweni se-SRD. Ukwamkelwa ngaphandle komhla akuqinisekisi ukuba imali iza kufika nini."
+    },
+    "tn": {
+      "question": "A bajalefa botlhe ba SRD ba duelwa ka letsatsi le le lengwe?",
+      "answer": "Nnyaa. Tlhola letsatsi la tefo mo dipholong tsa gago tsa semmuso tsa SRD. Go amogelwa go se na letsatsi ga go netefatse gore madi a tla tsena leng."
+    }
+  }
+},
+{
+  "id": "faq-calendar-revisions",
+  "question": "Can a published grant date change?",
+  "answer": "Yes. SASSA can announce a revised schedule. Check the month, grant category and latest official notice before making travel or spending plans.",
+  "sortOrder": 5,
+  "translations": {
+    "zu": {
+      "question": "Ingabe usuku lwesibonelelo olushicilelwe lungashintsha?",
+      "answer": "Yebo. I-SASSA ingamemezela uhlelo olubuyekeziwe. Hlola inyanga, uhlobo lwesibonelelo nesaziso esisemthethweni sakamuva ngaphambi kokuhlela uhambo noma ukusebenzisa imali."
+    },
+    "xh": {
+      "question": "Ngaba umhla wesibonelelo opapashiweyo ungatshintsha?",
+      "answer": "Ewe. I-SASSA ingabhengeza ishedyuli ehlaziyiweyo. Jonga inyanga, uhlobo lwesibonelelo nesaziso esisemthethweni samva nje phambi kokucwangcisa uhambo okanye ukuchitha imali."
+    },
+    "tn": {
+      "question": "A letsatsi la thuso le le phasaladitsweng le ka fetoga?",
+      "answer": "Ee. SASSA e ka itsise lenaneo le le fetotsweng. Tlhola kgwedi, mofuta wa thuso le kitsiso ya semmuso ya bosheng pele o rulaganya loeto kgotsa tiriso ya madi."
+    }
+  }
+},
 ].map(withSetswanaFaq);
 
 export const FALLBACK_NOTICES: PublicNotice[] = [];
 
-const OFFICIAL_PAYMENT_SCHEDULE: Record<
-  string,
-  { olderPersons: string; disability: string; children: string }
-> = {
-  "2025-04": { olderPersons: "2025-04-02", disability: "2025-04-03", children: "2025-04-04" },
-  "2025-05": { olderPersons: "2025-05-06", disability: "2025-05-07", children: "2025-05-08" },
-  "2025-06": { olderPersons: "2025-06-03", disability: "2025-06-04", children: "2025-06-05" },
-  "2025-07": { olderPersons: "2025-07-02", disability: "2025-07-03", children: "2025-07-04" },
-  "2025-08": { olderPersons: "2025-08-05", disability: "2025-08-06", children: "2025-08-07" },
-  "2025-09": { olderPersons: "2025-09-02", disability: "2025-09-03", children: "2025-09-04" },
-  "2025-10": { olderPersons: "2025-10-02", disability: "2025-10-03", children: "2025-10-06" },
-  "2025-11": { olderPersons: "2025-11-04", disability: "2025-11-05", children: "2025-11-06" },
-  "2025-12": { olderPersons: "2025-12-02", disability: "2025-12-03", children: "2025-12-04" },
-  "2026-01": { olderPersons: "2026-01-06", disability: "2026-01-07", children: "2026-01-08" },
-  "2026-02": { olderPersons: "2026-02-03", disability: "2026-02-04", children: "2026-02-05" },
-  "2026-03": { olderPersons: "2026-03-03", disability: "2026-03-04", children: "2026-03-05" },
-  "2026-04": { olderPersons: "2026-04-02", disability: "2026-04-07", children: "2026-04-08" },
-  "2026-05": { olderPersons: "2026-05-05", disability: "2026-05-06", children: "2026-05-07" },
-  "2026-06": { olderPersons: "2026-06-02", disability: "2026-06-03", children: "2026-06-04" },
-  "2026-07": { olderPersons: "2026-07-02", disability: "2026-07-03", children: "2026-07-06" },
-  "2026-08": { olderPersons: "2026-08-04", disability: "2026-08-05", children: "2026-08-06" },
-  "2026-09": { olderPersons: "2026-09-02", disability: "2026-09-03", children: "2026-09-04" },
-  "2026-10": { olderPersons: "2026-10-02", disability: "2026-10-05", children: "2026-10-06" },
-  "2026-11": { olderPersons: "2026-11-03", disability: "2026-11-04", children: "2026-11-05" },
-  "2026-12": { olderPersons: "2026-12-02", disability: "2026-12-03", children: "2026-12-04" },
-  "2027-01": { olderPersons: "2027-01-05", disability: "2027-01-06", children: "2027-01-07" },
-  "2027-02": { olderPersons: "2027-02-02", disability: "2027-02-03", children: "2027-02-04" },
-  "2027-03": { olderPersons: "2027-03-02", disability: "2027-03-03", children: "2027-03-04" },
-};
-
-function getOfficialPaymentScheduleOverride(year: number, month: number) {
-  const key = `${year}-${String(month).padStart(2, "0")}`;
-  return OFFICIAL_PAYMENT_SCHEDULE[key] ?? null;
-}
 
 export function getMonthSlugFromNumber(month: number): MonthSlug {
   return MONTHS[Math.max(0, Math.min(month - 1, MONTHS.length - 1))];
@@ -1067,7 +1075,7 @@ export function getMonthLabel(year: number, month: number, locale: Locale = "en"
 }
 
 function buildFallbackPaymentPeriod(year: number, month: number): PublicPaymentPeriod {
-  const officialOverride = getOfficialPaymentScheduleOverride(year, month);
+  const officialOverride = getReviewedPaymentSchedule(year, month);
   const [olderPersonsDate, disabilityDate, childrenDate] = officialOverride
     ? [officialOverride.olderPersons, officialOverride.disability, officialOverride.children]
     : [null, null, null];
@@ -1204,14 +1212,15 @@ function buildFallbackPaymentPeriod(year: number, month: number): PublicPaymentP
     },
   ];
 
+  const reviewedEntries = entries.map(entry => reconcilePaymentEntry(entry, year, month, "en"));
+  // Preserve the translated notes when fallback records are localized later.
+  for (const entry of reviewedEntries) {
+    entry.translations = { ...entry.translations, ...Object.fromEntries((["zu", "xh", "tn"] as const).map(locale => [locale, {note: reconcilePaymentEntry(entry, year, month, locale).note}])) };
+  }
   return {
-    year,
-    month,
-    monthSlug,
-    label: getMonthLabel(year, month),
-    published: true,
-    entries,
-    grants: Object.fromEntries(entries.map((entry) => [entry.grantSlug, entry])),
+    year, month, monthSlug, label: getMonthLabel(year, month), published: true,
+    entries: reviewedEntries,
+    grants: Object.fromEntries(reviewedEntries.map((entry) => [entry.grantSlug, entry])),
   };
 }
 
