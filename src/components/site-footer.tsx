@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BrandLogo } from "@/components/brand-logo";
 import { WhatsAppChannelLink } from "@/components/whatsapp-channel";
 import { getSessionUser } from "@/lib/auth-guards";
+import { isInterestCaptureEnabled } from "@/lib/interests";
 import { getCopy } from "@/lib/copy";
 import { getLegalLinks, getOfficialSassaContacts } from "@/lib/official-resources";
 import type { Locale } from "@/lib/site";
@@ -109,6 +110,9 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
           <Link href={buildLocalePath(locale, "/dashboard")} className="hover:text-foreground">
             {copy.dashboard}
           </Link>
+          {locale === "en" && isInterestCaptureEnabled() ? (
+            <Link href="/interests" className="hover:text-foreground">Tell us your interests</Link>
+          ) : null}
           {sessionUser?.role === "admin" ? (
             <Link href={buildLocalePath(locale, "/admin")} className="hover:text-foreground">
               {copy.admin}

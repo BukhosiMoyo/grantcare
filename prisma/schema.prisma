@@ -460,3 +460,48 @@ model SiteSetting {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+enum InterestTopic {
+  bank_account
+  mobile_data
+  payment_updates
+}
+
+enum InterestStatus {
+  new
+  contacted
+  confirmed
+  withdrawn
+}
+
+model InterestLead {
+  id                String         @id @default(cuid())
+  topic             InterestTopic
+  contactChannel    String
+  contactValue      String
+  contactHash       String
+  sourcePath        String
+  consentVersion    String
+  consentText       String
+  consentedAt       DateTime       @default(now())
+  withdrawalHash    String         @unique
+  status            InterestStatus @default(new)
+  confirmedAt       DateTime?
+  confirmedBy       String?
+  expiresAt         DateTime
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+
+  @@unique([contactHash, topic])
+  @@index([status, createdAt])
+  @@index([topic, createdAt])
+  @@index([expiresAt])
+}
+
+model InterestRateLimit {
+  key       String   @id
+  count     Int      @default(1)
+  expiresAt DateTime
+
+  @@index([expiresAt])
+}

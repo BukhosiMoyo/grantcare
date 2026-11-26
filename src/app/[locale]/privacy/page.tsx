@@ -118,7 +118,17 @@ export default async function PrivacyPage({
       eyebrow={content.eyebrow}
       intro={content.intro}
       locale={locale}
-      sections={content.sections}
+      sections={[
+        ...content.sections,
+        {
+          title: "Optional interests and contact requests (English)",
+          paragraphs: [
+            "GrantCare is operated by Symaxx Digital. If you register an optional interest, we store your chosen topic, the contact detail you supply, the source page, and a record of your permission for up to 90 days. We use these details to understand demand and contact you about that topic. Interest is not a product application or a promise of eligibility.",
+            "Only authorised administrators can view contact details. Aggregate demand reports contain counts, not contact details. This form does not authorise disclosure of your details to banks or other partners. We would identify the recipient and ask for separate permission before making a referral.",
+            "Visit /interests/manage with your withdrawal code to remove the contact detail. We retain a limited suppression and permission record until expiry. Contact hello@symaxx.com for access, corrections or removal if you no longer have the code. You may also raise concerns with the Information Regulator at inforegulator.org.za.",
+          ],
+        },
+      ]}
       title={content.title}
     />
   );

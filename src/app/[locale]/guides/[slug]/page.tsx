@@ -7,8 +7,11 @@ import { toggleSavedGuideAction } from "@/actions/dashboard";
 import { auth } from "@/auth";
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import { BookmarkIcon, CalendarIcon, CompassIcon, StatusIcon, UserIcon } from "@/components/icons";
+import { SrdPaymentDateAnswer, srdPaymentDateCopy } from "@/components/srd-payment-date-answer";
 import { GuideShareActions } from "@/components/guide-share-actions";
 import { GuideTableOfContents } from "@/components/guide-table-of-contents";
+import { GuideStatusAction, STATUS_ACTION_GUIDES } from "@/components/guide-status-action";
+import { InterestCapture, InterestInvitation } from "@/components/interest-capture";
 import { MonetizationBlocks } from "@/components/monetization-blocks";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { ButtonLink, Card, Pill, Section } from "@/components/ui";
@@ -21,6 +24,9 @@ import {
 } from "@/lib/content";
 import { getCopy } from "@/lib/copy";
 import { isGuideIndexable } from "@/lib/guide-seo";
+import { setswanaStatusLinkLabels } from "@/lib/setswana-status-guides";
+import { isiXhosaStatusLinkLabels } from "@/lib/isiXhosa-status-guides";
+import { isiZuluStatusLinkLabels } from "@/lib/isiZulu-status-guides";
 import { resolveGuideLink } from "@/lib/guide-links";
 import { getLocalizedRouteCopy } from "@/lib/homepage-content";
 import {
@@ -209,7 +215,10 @@ function renderGuideText(locale: Locale, text: string) {
         href={buildLocalePath(locale, destination)}
         className="font-medium text-primary underline decoration-border underline-offset-4"
       >
-        {getInternalPathLabel(locale, destination)}
+        {(locale === "zu" && isiZuluStatusLinkLabels[text]) ||
+          (locale === "xh" && isiXhosaStatusLinkLabels[text]) ||
+          (locale === "tn" && setswanaStatusLinkLabels[text]) ||
+          getInternalPathLabel(locale, destination)}
       </Link>
     );
   }
@@ -377,7 +386,9 @@ export default async function GuideDetailPage({
     `/payment-dates/${paymentDefaults.year}/${paymentDefaults.monthSlug}`,
   );
   const shareUrl = new URL(guidePath, getSiteUrl()).toString();
-  const authorName = guide.authorName ?? routeCopy.defaultAuthorName;
+  const authorName = guide.authorName === "GrantCare Editorial Team"
+    ? routeCopy.defaultAuthorName
+    : guide.authorName ?? routeCopy.defaultAuthorName;
   const lastUpdatedAt = guide.updatedAt ?? guide.publishedAt ?? null;
   const formattedLastUpdated = formatDisplayDate(locale, lastUpdatedAt);
   const faqSectionId = "frequently-asked-questions";
@@ -399,7 +410,12 @@ export default async function GuideDetailPage({
   };
   const faqSections = guide.sections.filter((section) => section.title.startsWith("FAQ: "));
   const contentSections = guide.sections.filter((section) => !section.title.startsWith("FAQ: "));
+  const paymentAnswerLocale = guide.slug === "how-to-use-sassa-status-check-for-r350" &&
+    (locale === "en" || locale === "zu" || locale === "xh" || locale === "tn") ? locale : null;
   const tocItems = [
+    ...(paymentAnswerLocale
+      ? [{ id: "approved-no-payment-date", label: srdPaymentDateCopy[paymentAnswerLocale].heading }]
+      : []),
     ...contentSections.map((section) => ({
       id: getSectionId(section.title),
       label: section.title,
@@ -456,10 +472,11 @@ export default async function GuideDetailPage({
           <header className="article-heading space-y-5">
             <div className="space-y-2">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">{copy.guideLabel}</p>
-              <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">{guide.title}</h1>
-              <p className="text-lg leading-8 text-muted">{guide.summary}</p>
+              <h1 className="text-[2rem] leading-[1.15] font-semibold tracking-tight text-foreground [overflow-wrap:anywhere] sm:text-5xl">{guide.title}</h1>
+              <p className="text-base leading-7 text-muted sm:text-lg sm:leading-8">{guide.summary}</p>
             </div>
-            <div className="flex flex-wrap gap-3">
+            {locale === "en" ? <GuideStatusAction slug={guide.slug} /> : null}
+            <div className="grid gap-2 min-[420px]:grid-cols-2 sm:flex sm:flex-wrap sm:gap-3">
               <ButtonLink href={buildLocalePath(locale, "/status")} variant="secondary">
                 <span className="inline-flex items-center gap-2">
                   <StatusIcon className="h-4 w-4" aria-hidden="true" />
@@ -487,16 +504,22 @@ export default async function GuideDetailPage({
                 </form>
               ) : null}
             </div>
+            <details className="rounded-2xl border border-border bg-surface px-4 lg:hidden">
+              <summary className="focus-ring flex min-h-12 cursor-pointer items-center justify-between text-sm font-semibold">{copy.tableOfContents}<span aria-hidden="true">＋</span></summary>
+              <nav aria-label={`${copy.tableOfContents} — mobile`} className="pb-3"><ol className="space-y-1">{tocItems.map((item) => <li key={item.id}><a href={`#${item.id}`} className="focus-ring flex min-h-11 items-center rounded-xl px-2 py-2 text-sm leading-6 text-primary hover:bg-surface-muted">{item.label}</a></li>)}</ol></nav>
+            </details>
           </header>
 
-          <article className="space-y-14">
+          <article className="space-y-9 sm:space-y-14">
+            {paymentAnswerLocale && <SrdPaymentDateAnswer locale={paymentAnswerLocale} />}
             {contentSections.map((section) => {
               const sectionBlocks = renderGuideBlocks(locale, parseGuideBody(section.body));
               const sectionId = getSectionId(section.title);
 
               if (section.title === "Quick answer" || section.title === routeCopy.quickAnswerTitle) {
                 return (
-                  <section key={section.title} id={sectionId} className="scroll-mt-28">
+                  <Fragment key={section.title}>
+                  <section id={sectionId} className="scroll-mt-28">
                     <h2 className="sr-only">{section.title}</h2>
                     <Card className="quick-answer space-y-4 sm:p-7">
                       <Pill>
@@ -510,6 +533,8 @@ export default async function GuideDetailPage({
                       </div>
                     </Card>
                   </section>
+                  {locale === "en" && STATUS_ACTION_GUIDES.has(guide.slug) ? <InterestInvitation /> : null}
+                  </Fragment>
                 );
               }
 
@@ -547,6 +572,8 @@ export default async function GuideDetailPage({
             ) : null}
           </article>
 
+          {locale === "en" && STATUS_ACTION_GUIDES.has(guide.slug) ? <InterestCapture sourcePath={guidePath} /> : null}
+
           {blocks.length > 0 ? (
             <Section title={copy.sponsoredTitle}>
               <MonetizationBlocks blocks={blocks} locale={locale} placement="guide-inline" />
@@ -555,10 +582,10 @@ export default async function GuideDetailPage({
         </div>
 
         <aside className="article-sidebar space-y-4">
-          <GuideTableOfContents
+          <div className="hidden lg:block"><GuideTableOfContents
             title={copy.tableOfContents}
             items={tocItems}
-          />
+          /></div>
           <Card className="space-y-4 p-4 text-left sm:p-4">
             <div className="space-y-3">
               <div className="flex items-start gap-2.5 text-left">
