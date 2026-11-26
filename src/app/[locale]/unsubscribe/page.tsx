@@ -1,3 +1,4 @@
+import { Copy } from "@/components/lucide-icons";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -59,7 +60,7 @@ export default async function UnsubscribePage({
         <a
           href={buildLocalePath(locale, "/dashboard")}
           className="focus-ring tap-target inline-flex items-center rounded-full border border-border bg-surface px-5 text-sm font-semibold"
-        >
+        ><Copy className="action-icon" />
           {copy.openDashboard}
         </a>
       </Card>
