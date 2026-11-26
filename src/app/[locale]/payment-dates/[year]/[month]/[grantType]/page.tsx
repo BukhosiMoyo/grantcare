@@ -1,7 +1,12 @@
+import { ContentSources } from "@/components/content-sources";
+import { PaymentScheduleSources } from "@/components/payment-schedule-sources";
+import { getPaymentFaqs } from "@/lib/public-faqs";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { DecemberPaymentIntro, DecemberPlanning, hasDecemberPlanning } from "@/components/december-planning";
+import { FaqList } from "@/components/faq-list";
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 import {
@@ -16,6 +21,7 @@ import { ButtonLink, Card, Section } from "@/components/ui";
 import {
   getPaymentEntry,
   getPaymentPeriod,
+  listFaqs,
   listMonetizationBlocks,
   listRecentPaymentPeriods,
   listRelatedGuides,
@@ -227,24 +233,10 @@ export default async function PaymentGrantPage({
           payDayText,
         )
       : routeCopy.paymentDatesTitle(displayGrantName, paymentMonth.label);
+  const showDecemberPlanning = hasDecemberPlanning(locale, paymentMonth.year, paymentMonth.month);
   const lastUpdated = formatPaymentPageLastUpdated();
 
-  const scheduleFaqs = [
-    {
-      question: routeCopy.faqReflectQuestion(displayGrantName, paymentMonth.label),
-      answer: paymentEntry.grantSlug === "social-relief"
-        ? routeCopy.faqSrdReflectAnswer(paymentMonth.label)
-        : routeCopy.faqReflectAnswer(displayGrantName, payDayText),
-    },
-    {
-      question: routeCopy.faqCollectQuestion(displayGrantName),
-      answer: routeCopy.faqCollectAnswer(displayGrantName),
-    },
-    {
-      question: routeCopy.faqApprovedQuestion(displayGrantName),
-      answer: routeCopy.faqApprovedAnswer(paymentMonth.label),
-    },
-  ];
+  const scheduleFaqs = getPaymentFaqs(locale, { label: paymentMonth.label, grantName: displayGrantName, payDayText, isSrd: paymentEntry.grantSlug === "social-relief" }, await listFaqs(locale));
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -313,8 +305,10 @@ export default async function PaymentGrantPage({
       />
       <Section headingAs="h1"
         eyebrow={copy.paymentDates}
-        title={resultTitle}
+        title={showDecemberPlanning ? `${displayGrantName}: December 2026 payment details` : resultTitle}
       >
+        {showDecemberPlanning ? <DecemberPaymentIntro /> : null}
+        <div id={showDecemberPlanning ? "december-schedule" : undefined}>
         <GrantSummaryCard
           amountDetails={amountDetails}
           amountLabel={copy.summaryAmountLabel}
@@ -351,7 +345,12 @@ export default async function PaymentGrantPage({
           statusText={getPaymentSummaryStatusText(copy, paymentEntry.state)}
           title={displayGrantName}
         />
+        </div>
       </Section>
+
+      <PaymentScheduleSources locale={locale} year={paymentMonth.year} month={paymentMonth.month} />
+
+      {showDecemberPlanning ? <DecemberPlanning /> : null}
 
       {/* ── Scam & Fraud Prevention Callout ── */}
       <Card className="border border-amber-500/15 bg-amber-500/[0.03] space-y-4 p-6 sm:p-7">
@@ -385,24 +384,7 @@ export default async function PaymentGrantPage({
 
       {/* ── Schedules FAQ Section ── */}
       <Section title={routeCopy.payoutFaqTitle(displayGrantName)}>
-        <div className="space-y-4">
-          {scheduleFaqs.map((faq) => (
-            <details
-              key={faq.question}
-              className="group rounded-[1.5rem] border border-border bg-surface p-6 transition-all hover:border-primary/20 hover:bg-surface-muted hover:shadow-sm"
-            >
-              <summary className="flex cursor-pointer items-center justify-between font-semibold tracking-tight text-foreground sm:text-lg">
-                {faq.question}
-                <span className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface-strong transition-transform group-open:rotate-180">
-                  ↓
-                </span>
-              </summary>
-              <p className="mt-4 text-sm leading-7 text-muted">
-                {faq.answer}
-              </p>
-            </details>
-          ))}
-        </div>
+        <FaqList items={scheduleFaqs} />
       </Section>
 
       <Section title={copy.relatedGuidesTitle}>
@@ -441,6 +423,7 @@ export default async function PaymentGrantPage({
           <MonetizationBlocks blocks={blocks} locale={locale} placement="payment-dates" />
         </Section>
       ) : null}
+      <ContentSources locale={locale} topic="amounts" path="/payment-dates" />
     </div>
   );
 }
