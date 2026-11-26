@@ -1,3 +1,4 @@
+import { ContentSources } from "@/components/content-sources";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -159,6 +160,7 @@ export default async function ContactPage({
           ))}
         </div>
       </Section>
+      <ContentSources locale={locale} topic={"contacts"} path={"/contact"} />
     </div>
   );
 }
