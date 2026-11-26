@@ -33,7 +33,7 @@ export const DECEMBER_PLANNING_GUIDES: PublicGuide[] = [
       },
       {
         "title": "Sources and scope",
-        "body": "General household planning guidance, prepared by the GrantCare Editorial Team on 26 November 2026. GrantCare is independent of SASSA. The NCR source below is guidance published in December 2022, not a new grant announcement or a source for 2026 payment dates.\nhttps://www.ncr.org.za/documents/Spend%20wisely%20during%20festive%20season%20December%202022.pdf"
+        "body": "General household planning guidance, prepared by the GrantCare Editorial Team on 26 November 2026. GrantCare is independent of SASSA. The NCR source below is guidance published in December 2022, not a new grant announcement or a source for 2026 payment dates.\n\nhttps://www.ncr.org.za/documents/Spend%20wisely%20during%20festive%20season%20December%202022.pdf"
       }
     ],
     "featured": false,
@@ -77,7 +77,7 @@ export const DECEMBER_PLANNING_GUIDES: PublicGuide[] = [
       },
       {
         "title": "Sources and scope",
-        "body": "General shopping guidance, prepared by the GrantCare Editorial Team on 26 November 2026. All rand amounts above are arithmetic examples, not advertised prices or retailer recommendations. The FSCA article below was published in November 2018; its planning principles do not establish current deals.\nhttps://www.fscamymoney.co.za/Pages/Black-Friday-Shopping-With-a-Purpose.aspx"
+        "body": "General shopping guidance, prepared by the GrantCare Editorial Team on 26 November 2026. All rand amounts above are arithmetic examples, not advertised prices or retailer recommendations. The FSCA article below was published in November 2018; its planning principles do not establish current deals.\n\nhttps://www.fscamymoney.co.za/Pages/Black-Friday-Shopping-With-a-Purpose.aspx"
       }
     ],
     "featured": false,
@@ -121,7 +121,7 @@ export const DECEMBER_PLANNING_GUIDES: PublicGuide[] = [
       },
       {
         "title": "Sources and scope",
-        "body": "General household planning guidance, prepared by the GrantCare Editorial Team on 26 November 2026. No school opening date, fee, grant bonus or future payment date is promised here. The NCR’s historical guidance explains why January expenses belong in festive planning.\nhttps://www.ncr.org.za/documents/Spend%20wisely%20during%20festive%20season%20December%202022.pdf"
+        "body": "General household planning guidance, prepared by the GrantCare Editorial Team on 26 November 2026. No school opening date, fee, grant bonus or future payment date is promised here. The NCR’s historical guidance explains why January expenses belong in festive planning.\n\nhttps://www.ncr.org.za/documents/Spend%20wisely%20during%20festive%20season%20December%202022.pdf"
       }
     ],
     "featured": false,
