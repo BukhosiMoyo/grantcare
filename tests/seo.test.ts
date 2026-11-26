@@ -82,7 +82,7 @@ test('factual corrections cover legacy content without overwriting subsequent ed
   ]) {
     const guide=correctGuide(FALLBACK_GUIDES.find(g=>g.slug===slug)!);
     assert.ok(!JSON.stringify(guide).includes(unsupported),slug);
-    assert.equal(guide.updatedAt,'2026-09-09',slug);
+    assert.equal(guide.updatedAt,['how-to-check-payment-method-before-pay-date','when-to-use-contact-details-instead-of-status-check'].includes(slug) ? '2026-11-26' : '2026-09-09',slug);
   }
 });
 
@@ -111,11 +111,12 @@ test('published payment dates remain exact and unknown fallback dates are not in
   const {findFallbackPaymentPeriod}=await import('../src/lib/fallback-content');
   const {getPaymentSummaryDayText}=await import('../src/components/grant-summary-card');
   const {getCopy}=await import('../src/lib/copy');
-  const expected=[[2026,4,2,7,8],[2026,5,5,6,7],[2026,6,2,3,4],[2026,7,2,3,6],[2026,8,4,5,6],[2026,9,2,3,4],[2026,10,2,5,6],[2026,11,3,4,5],[2026,12,2,3,4],[2027,1,5,6,7],[2027,2,2,3,4],[2027,3,2,3,4]];
+  const expected=[[2026,4,2,7,8],[2026,5,5,6,7],[2026,6,2,3,4],[2026,7,2,3,6],[2026,8,4,5,6],[2026,9,2,3,4],[2026,10,2,5,6],[2026,12,2,3,4],[2027,1,5,6,7],[2027,2,2,3,4],[2027,3,2,3,4]];
   for(const [year,month,...days] of expected){
     const period=findFallbackPaymentPeriod(year,month)!;
     ['older-persons','disability','children'].forEach((grant,i)=>assert.equal(period.grants[grant].date,`${year}-${String(month).padStart(2,'0')}-${String(days[i]).padStart(2,'0')}`));
   }
+  assert.deepEqual(['older-persons','disability','children'].map(slug=>findFallbackPaymentPeriod(2026,11)!.grants[slug].date),['2026-10-30','2026-11-02','2026-11-03']);
   assert.equal(findFallbackPaymentPeriod(2027,5)?.grants.children.date,null);
   for(const locale of ['en','zu','xh','tn'] as const) assert.equal(getPaymentSummaryDayText(getCopy(locale),{date:null,grantSlug:'social-relief',locale,month:2,year:2026,state:'portal-only'}),getCopy(locale).paymentPortalOnly);
   const srd = {grantSlug:'social-relief', grantName:'SRD'};
