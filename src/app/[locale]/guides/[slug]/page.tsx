@@ -1,3 +1,6 @@
+import { getEvidenceTopic } from "@/lib/content-evidence";
+import { ContentSources } from "@/components/content-sources";
+import { completeGuideFaqs } from "@/lib/public-faqs";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
@@ -343,7 +346,7 @@ export default async function GuideDetailPage({
 
   const [relatedGuides, relatedFaqs, blocks, paymentDefaults] = await Promise.all([
     listRelatedGuides(locale, 6, slug, guideReferenceText),
-    listRelatedFaqs(locale, 4),
+    listRelatedFaqs(locale, 5),
     listMonetizationBlocks(locale, {
       placement: "guide-inline",
       guideSlug: slug,
@@ -393,7 +396,6 @@ export default async function GuideDetailPage({
   const formattedLastUpdated = formatDisplayDate(locale, lastUpdatedAt);
   const faqSectionId = "frequently-asked-questions";
   const relatedGuidesId = "related-guides";
-  const commonQuestionsId = "common-questions";
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -408,7 +410,7 @@ export default async function GuideDetailPage({
     datePublished: guide.publishedAt ?? undefined,
     dateModified: lastUpdatedAt ?? undefined,
   };
-  const faqSections = guide.sections.filter((section) => section.title.startsWith("FAQ: "));
+  const faqSections = completeGuideFaqs(guide.sections.filter((section) => section.title.startsWith("FAQ: ")), relatedFaqs);
   const contentSections = guide.sections.filter((section) => !section.title.startsWith("FAQ: "));
   const paymentAnswerLocale = guide.slug === "how-to-use-sassa-status-check-for-r350" &&
     (locale === "en" || locale === "zu" || locale === "xh" || locale === "tn") ? locale : null;
@@ -477,13 +479,13 @@ export default async function GuideDetailPage({
             </div>
             {locale === "en" ? <GuideStatusAction slug={guide.slug} /> : null}
             <div className="grid gap-2 min-[420px]:grid-cols-2 sm:flex sm:flex-wrap sm:gap-3">
-              <ButtonLink href={buildLocalePath(locale, "/status")} variant="secondary">
+              <ButtonLink href={buildLocalePath(locale, "/status")} variant="secondary" icon={false}>
                 <span className="inline-flex items-center gap-2">
                   <StatusIcon className="h-4 w-4" aria-hidden="true" />
                   <span>{copy.checkStatus}</span>
                 </span>
               </ButtonLink>
-              <ButtonLink href={currentPaymentPath}>
+              <ButtonLink href={currentPaymentPath} icon={false}>
                 <span className="inline-flex items-center gap-2">
                   <CalendarIcon className="h-4 w-4" aria-hidden="true" />
                   <span>{copy.checkPaymentDates}</span>
@@ -549,7 +551,8 @@ export default async function GuideDetailPage({
             })}
 
             {faqSections.length > 0 ? (
-              <section id={faqSectionId} className="scroll-mt-28 space-y-6 pt-2">
+              <section id={faqSectionId} className="scroll-mt-28 space-y-6 pt-2" data-guide-faqs>
+                <span id="common-questions" className="scroll-mt-28" />
                 <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                   {copy.frequentlyAskedQuestionsTitle}
                 </h2>
@@ -646,20 +649,8 @@ export default async function GuideDetailPage({
         </section>
       ) : null}
 
-      {relatedFaqs.length > 0 ? (
-        <section id={commonQuestionsId} className="mx-auto max-w-6xl scroll-mt-28 pt-2">
-          <Section title={copy.commonQuestionsTitle}>
-            <div className="grid gap-4 md:grid-cols-2">
-              {relatedFaqs.map((faq) => (
-                <Card key={faq.id} className="space-y-2">
-                  <h3 className="text-xl font-semibold text-foreground">{faq.question}</h3>
-                  <p className="text-sm leading-7 text-muted">{faq.answer}</p>
-                </Card>
-              ))}
-            </div>
-          </Section>
-        </section>
-      ) : null}
+
+      <ContentSources locale={locale} topic={getEvidenceTopic(guide.slug)} path={guidePath} article />
     </div>
   );
 }
