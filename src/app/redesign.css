@@ -683,6 +683,7 @@
 }
 .faq-layout {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2rem;
 }
 .faq-list {
@@ -1032,10 +1033,6 @@ body:has(.builder-shell) .site-footer {
   }
   .guide-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .faq-layout {
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-    gap: 4rem;
   }
   .official-strip {
     flex-direction: row;
