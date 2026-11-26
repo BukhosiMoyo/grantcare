@@ -1,7 +1,10 @@
+import { ContentSources } from "@/components/content-sources";
+import { getTopicFaqs } from "@/lib/public-faqs";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { FaqList } from "@/components/faq-list";
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import { FaqSchema } from "@/components/faq-schema";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
@@ -77,7 +80,7 @@ export default async function EligibilityPage({
     listPublicGrantTypes(locale),
     listFaqs(locale),
   ]);
-  const eligibilityFaqs = faqs.slice(0, 5);
+  const eligibilityFaqs = getTopicFaqs(locale, "eligibility", faqs);
   const hubLinks = [
     {
       href: "/grants",
@@ -164,25 +167,10 @@ export default async function EligibilityPage({
       {eligibilityFaqs.length > 0 ? (
         <Section title={eligibilityPageCopy(locale, "Eligibility FAQ")}>
           <FaqSchema faqs={eligibilityFaqs} />
-          <div className="space-y-4">
-            {eligibilityFaqs.map((faq) => (
-              <details key={faq.question} className="group rounded-[1.5rem] border border-border bg-surface p-6 transition-colors hover:border-primary/20 hover:bg-surface-muted">
-                <summary className="flex cursor-pointer items-center justify-between font-semibold tracking-tight text-foreground sm:text-lg">
-                  {faq.question}
-                  <span className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface-strong transition-transform group-open:rotate-180">
-                    ↓
-                  </span>
-                </summary>
-                <div className="mt-4 text-sm leading-7 text-muted prose prose-sm prose-p:mb-4">
-                  {faq.answer.split('\n').map((line, i) => (
-                    line.trim() ? <p key={i}>{line}</p> : null
-                  ))}
-                </div>
-              </details>
-            ))}
-          </div>
+          <FaqList items={eligibilityFaqs} />
         </Section>
       ) : null}
+      <ContentSources locale={locale} topic={"grants"} path={"/eligibility-checker"} article />
     </div>
   );
 }
