@@ -1,0 +1,51 @@
+name: Interest intake and mobile checks
+on:
+  pull_request:
+    paths:
+      - "src/**"
+      - "prisma/**"
+      - "tests/**"
+      - "package*.json"
+      - ".github/workflows/interest-intake.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: grantcare_interest_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/grantcare_interest_test
+      DATABASE_URL_UNPOOLED: postgresql://postgres:postgres@127.0.0.1:5432/grantcare_interest_test
+      INTEREST_TEST_DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/grantcare_interest_test
+      AUTH_SECRET: disposable-interest-test-secret-not-for-production
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      INTEREST_CAPTURE_ENABLED: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npx prisma validate
+      - run: npx prisma db push
+      - run: npm run test:interests
+      - name: Run offline SEO tests without database access
+        run: env -u DATABASE_URL -u DATABASE_URL_UNPOOLED npm run test:seo
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run build
