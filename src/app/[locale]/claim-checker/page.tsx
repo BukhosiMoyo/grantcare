@@ -1,3 +1,4 @@
+import { ContentSources } from "@/components/content-sources";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -145,6 +146,7 @@ export default async function ClaimCheckerPage({
       </section>
 
       <InternalLinkGrid locale={locale} title={claimCheckerCopy(locale, "Related routes")} items={hubLinks} />
+      <ContentSources locale={locale} topic={"general"} path={"/claim-checker"} article />
     </div>
   );
 }
