@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "test:interests": "node --import tsx --test tests/interest-schema.test.ts tests/interest-database.test.ts",
     "postinstall": "prisma generate",
     "prisma:generate": "prisma generate",
     "db:up": "docker compose up -d db",
