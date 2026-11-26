@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { InterestCapture } from "@/components/interest-capture";
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 import { FaqSchema } from "@/components/faq-schema";
 import { InternalLinkGrid } from "@/components/internal-link-grid";
@@ -228,6 +229,8 @@ export default async function PaymentDatesPage({
           />
           <p className="text-xs text-muted">{routeCopy.updatedLabel} {lastUpdated}</p>
         </section>
+
+        {locale === "en" ? <InterestCapture sourcePath="/payment-dates" /> : null}
 
         <section id="choose-month" className="section-block">
           <h2 className="section-title">{locale === "en" ? "Choose another month" : copy.moreMonthsTitle}</h2>
