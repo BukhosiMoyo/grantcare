@@ -810,7 +810,7 @@ export const FALLBACK_GUIDES: PublicGuide[] = [
   ...withGuideMetadata(SEO_BATCH_FOURTEEN_GUIDES),
   ...withGuideMetadata(SEO_BATCH_FIFTEEN_GUIDES),
   ...withGuideMetadata(SEO_BATCH_SIXTEEN_GUIDES),
-].map(addSetswanaTranslations).concat(DECEMBER_PLANNING_GUIDES);
+].map(addSetswanaTranslations).concat(withGuideMetadata(DECEMBER_PLANNING_GUIDES));
 
 export const FALLBACK_NEWS_ARTICLES: PublicNewsArticle[] = [
   {
