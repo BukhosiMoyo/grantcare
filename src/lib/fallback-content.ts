@@ -1,4 +1,5 @@
 import type { Locale } from "./site";
+import { DECEMBER_PLANNING_GUIDES } from "./december-planning-guides";
 import { NEWS_REDIRECTS } from "./news-seo";
 import {
   addSetswanaTranslations,
@@ -809,7 +810,7 @@ export const FALLBACK_GUIDES: PublicGuide[] = [
   ...withGuideMetadata(SEO_BATCH_FOURTEEN_GUIDES),
   ...withGuideMetadata(SEO_BATCH_FIFTEEN_GUIDES),
   ...withGuideMetadata(SEO_BATCH_SIXTEEN_GUIDES),
-].map(addSetswanaTranslations);
+].map(addSetswanaTranslations).concat(DECEMBER_PLANNING_GUIDES);
 
 export const FALLBACK_NEWS_ARTICLES: PublicNewsArticle[] = [
   {
