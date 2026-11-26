@@ -135,3 +135,25 @@ test('previously broken public URLs redirect directly to real pages in each publ
     assert.equal(redirects.find(r=>r.source==='/:locale(zu|xh|af|nso|tn)'+path)?.destination,'/:locale'+root.destination);
   }
 });
+
+for (const language of ['zu', 'xh', 'tn'] as const) {
+  test(`${language} status guides include all sections, questions, steps and the official link`, () => {
+    for (const slug of ['how-to-use-sassa-status-check-for-r350', 'srd-sassa-gov-za-status-check-guide']) {
+      const source = FALLBACK_GUIDES.find(guide => guide.slug === slug);
+      assert.ok(source);
+      const translated = localizeArticle(source, source.translations ?? {}, language);
+      assert.equal(translated.contentLocale, language);
+      assert.ok(translated.indexableLocales.includes(language));
+      assert.notEqual(translated.summary, source.summary);
+      assert.equal(translated.sections.length, source.sections.length);
+      assert.equal(translated.sections.filter(s => s.title.startsWith('FAQ: ')).length, 3);
+      assert.ok(translated.sections[0].body.includes('https://srd.sassa.gov.za/'));
+      for (const [i, item] of translated.sections.entries()) {
+        assert.notEqual(item.title, source.sections[i].title);
+        assert.notEqual(item.body, source.sections[i].body);
+      }
+      assert.deepEqual(translated.sections.flatMap(s => s.body.match(/• \/[^\s]+/g) ?? []),
+        source.sections.flatMap(s => s.body.match(/• \/[^\s]+/g) ?? []));
+    }
+  });
+}
