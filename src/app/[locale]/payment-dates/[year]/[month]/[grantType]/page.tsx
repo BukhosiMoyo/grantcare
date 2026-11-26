@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { DecemberPaymentIntro, DecemberPlanning, hasDecemberPlanning } from "@/components/december-planning";
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 import {
@@ -227,6 +228,7 @@ export default async function PaymentGrantPage({
           payDayText,
         )
       : routeCopy.paymentDatesTitle(displayGrantName, paymentMonth.label);
+  const showDecemberPlanning = hasDecemberPlanning(locale, paymentMonth.year, paymentMonth.month);
   const lastUpdated = formatPaymentPageLastUpdated();
 
   const scheduleFaqs = [
@@ -313,8 +315,10 @@ export default async function PaymentGrantPage({
       />
       <Section headingAs="h1"
         eyebrow={copy.paymentDates}
-        title={resultTitle}
+        title={showDecemberPlanning ? `${displayGrantName}: December 2026 payment details` : resultTitle}
       >
+        {showDecemberPlanning ? <DecemberPaymentIntro /> : null}
+        <div id={showDecemberPlanning ? "december-schedule" : undefined}>
         <GrantSummaryCard
           amountDetails={amountDetails}
           amountLabel={copy.summaryAmountLabel}
@@ -351,7 +355,10 @@ export default async function PaymentGrantPage({
           statusText={getPaymentSummaryStatusText(copy, paymentEntry.state)}
           title={displayGrantName}
         />
+        </div>
       </Section>
+
+      {showDecemberPlanning ? <DecemberPlanning /> : null}
 
       {/* ── Scam & Fraud Prevention Callout ── */}
       <Card className="border border-amber-500/15 bg-amber-500/[0.03] space-y-4 p-6 sm:p-7">
